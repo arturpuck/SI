@@ -1,0 +1,184 @@
+* {
+  box-sizing: border-box;
+}
+
+.empire-footer {
+  width: 100%;
+  padding: 10px;
+  background: -webkit-gradient(linear, left top, right top, from(#000), to(#3b3a38));
+  background: linear-gradient(to right, #000, #3b3a38);
+  font-family: Aldrich;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+}
+
+.contact-us-link {
+  text-decoration: none;
+  color: white;
+  margin: 0 18px;
+}
+.contact-us-link:hover {
+  text-decoration: underline;
+}
+
+.navigation-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: flex;
+  background: #33332d;
+  -webkit-box-align: stretch;
+          align-items: stretch;
+}
+
+.navigation-element {
+  -webkit-transition: background 2s;
+  transition: background 2s;
+}
+.navigation-element:hover {
+  background: red;
+}
+
+.navigation-link {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  line-height: 100%;
+  padding: 6px;
+  font-family: Aldrich;
+  font-size: 1.5vw;
+}
+
+.main-page-navigation {
+  box-shadow: 2px 2px 2px 2px black;
+  position: relative;
+  z-index: 6;
+}
+
+@media (min-width: 620px) and (max-width: 1000px) {
+  .navigation-link {
+    font-size: 2.2vw;
+  }
+}
+@media (max-width: 619px) {
+  .navigation-link {
+    font-size: 4vw;
+  }
+}
+.single-line-text-input-label {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: baseline;
+          align-items: baseline;
+  background: #242229;
+  padding: 3px 10px;
+  border-radius: 8px;
+  color: white;
+  width: 95%;
+  font-family: "Exo 2", sans-serif;
+  font-size: 16px;
+  margin: 6px auto;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.text-input-description {
+  white-space: nowrap;
+}
+
+.single-line-text-input {
+  background: #242229;
+  border: none;
+  border-bottom: 1px solid transparent;
+  height: 24px;
+  color: #fff;
+  width: 1%;
+  -webkit-box-flex: 10;
+          flex-grow: 10;
+  padding-left: 4px;
+  font: inherit;
+}
+
+.single-line-text-input:focus {
+  outline: none;
+  border-bottom: 1px solid #86838f;
+}
+
+.submit-button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#0fe00b), to(#054004));
+  background: linear-gradient(#0fe00b, #054004);
+  padding: 5px;
+  color: white;
+  display: block;
+  width: 95%;
+  margin: 7px auto;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-family: "Exo 2", sans-serif;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.full-body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+.full-body background {
+  size: cover;
+  attachment: fixed;
+  image: url("../images/decoration/contact/background.jpg");
+}
+
+.contact-form {
+  max-width: 500px;
+  width: 95%;
+  background: rgba(0, 0, 0, 0.92);
+  border-radius: 5px;
+  box-shadow: 2px 2px 3px 3px;
+  margin: 40px auto 100px;
+  border: 1px solid transparent;
+}
+
+.user-message {
+  margin: 6px auto;
+  width: 95%;
+  display: block;
+  border-radius: 8px;
+  background: #242229;
+  color: white;
+  border: 2px solid transparent;
+  resize: none;
+  color: white;
+  font-size: 17px;
+  font-family: "Exo 2", sans-serif;
+}
+.user-message:focus {
+  outline: none;
+  border: 2px solid #6e0d1a;
+}
+
+.form-description {
+  color: white;
+  text-align: center;
+  padding: 4px;
+  font-size: 15px;
+  font-family: "Exo 2", sans-serif;
+}
+
+.message-label {
+  display: block;
+  text-align: center;
+  color: white;
+  font-size: 19px;
+  font-family: "Exo 2", sans-serif;
+}
+
+@media (min-width: 700px) and (max-width: 1200px) {
+  .full-body {
+    background-image: url("../images/decoration/contact/background.jpg");
+  }
+}

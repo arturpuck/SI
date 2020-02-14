@@ -1,0 +1,527 @@
+* {
+  box-sizing: border-box;
+}
+
+.empire-footer {
+  width: 100%;
+  padding: 10px;
+  background: -webkit-gradient(linear, left top, right top, from(#000), to(#3b3a38));
+  background: linear-gradient(to right, #000, #3b3a38);
+  font-family: Aldrich;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+}
+
+.contact-us-link {
+  text-decoration: none;
+  color: white;
+  margin: 0 18px;
+}
+.contact-us-link:hover {
+  text-decoration: underline;
+}
+
+.navigation-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: flex;
+  background: #33332d;
+  -webkit-box-align: stretch;
+          align-items: stretch;
+}
+
+.navigation-element {
+  -webkit-transition: background 2s;
+  transition: background 2s;
+}
+.navigation-element:hover {
+  background: red;
+}
+
+.navigation-link {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  line-height: 100%;
+  padding: 6px;
+  font-family: Aldrich;
+  font-size: 1.5vw;
+}
+
+.main-page-navigation {
+  box-shadow: 2px 2px 2px 2px black;
+  position: relative;
+  z-index: 6;
+}
+
+@media (min-width: 620px) and (max-width: 1000px) {
+  .navigation-link {
+    font-size: 2.2vw;
+  }
+}
+@media (max-width: 619px) {
+  .navigation-link {
+    font-size: 4vw;
+  }
+}
+.nice-checkbox {
+  opacity: 0;
+}
+
+.checkbox-description {
+  position: relative;
+  padding: 0 8px;
+}
+.checkbox-description:before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 2px;
+  left: -22px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  background: white;
+  border-radius: 3px;
+  z-index: 1;
+}
+.checkbox-description:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 2px;
+  left: -17px;
+  width: 4px;
+  height: 11px;
+  cursor: pointer;
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+  z-index: 2;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  opacity: 0;
+}
+
+.checkbox-container {
+  display: table;
+}
+
+.nice-checkbox:hover + .checkbox-description:before {
+  background: #e80e53;
+}
+
+.nice-checkbox:checked + .checkbox-description:before {
+  background: #e80e53;
+}
+
+.nice-checkbox:checked + .checkbox-description:after {
+  opacity: 1;
+}
+
+.single-line-text-input-label {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: baseline;
+          align-items: baseline;
+  background: #242229;
+  padding: 3px 10px;
+  border-radius: 8px;
+  color: white;
+  width: 95%;
+  font-family: "Exo 2", sans-serif;
+  font-size: 16px;
+  margin: 6px auto;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.text-input-description {
+  white-space: nowrap;
+}
+
+.single-line-text-input {
+  background: #242229;
+  border: none;
+  border-bottom: 1px solid transparent;
+  height: 24px;
+  color: #fff;
+  width: 1%;
+  -webkit-box-flex: 10;
+          flex-grow: 10;
+  padding-left: 4px;
+  font: inherit;
+}
+
+.single-line-text-input:focus {
+  outline: none;
+  border-bottom: 1px solid #86838f;
+}
+
+.select-label {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: baseline;
+          align-items: baseline;
+  border-radius: 7px;
+  padding: 5px;
+  color: white;
+  font-family: "Exo 2", sans-serif;
+  font-size: 16px;
+  width: 95%;
+  margin: 0 auto;
+  background: #242229;
+  position: relative;
+  border: 2px solid transparent;
+}
+
+.select-description {
+  white-space: nowrap;
+}
+
+.described-select {
+  width: 1%;
+  -webkit-box-flex: 10;
+          flex-grow: 10;
+  font-family: "Exo 2", sans-serif;
+  font-size: 16px;
+  color: white;
+  border: none;
+  background: #242229;
+  outline: none;
+}
+
+.icon-container {
+  top: 0;
+  right: 0;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 2;
+}
+
+.icon-correct-value {
+  background: green;
+  display: none;
+}
+
+.icon-incorrect-value {
+  background: red;
+  display: none;
+}
+
+.white-bar {
+  width: 80%;
+  height: 35%;
+  background: white;
+  margin: 30% auto;
+}
+
+.confirmation-icon-bird {
+  width: 8px;
+  height: 13px;
+  position: relative;
+  left: 30%;
+  top: 15%;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.birth-date-container {
+  width: 95%;
+  margin: 0 auto;
+  color: white;
+  font-family: "Exo 2", sans-serif;
+  font-size: 16px;
+}
+
+.request-text {
+  text-align: center;
+  padding: 3px;
+}
+
+.flex-container {
+  display: -webkit-box;
+  display: flex;
+  border-radius: 8px;
+  -webkit-box-pack: space-evenly;
+          justify-content: space-evenly;
+  background: #242229;
+  padding: 3px;
+  font-size: 13px;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.time-span-select {
+  border-radius: 4px;
+  background: #242229;
+  color: white;
+  font-family: inherit;
+  font-size: 15px;
+  border: 1px solid black;
+}
+
+.time-span-label {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+.time-span-container {
+  padding: 2px;
+  border-radius: 6px;
+}
+
+.submit-button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#0fe00b), to(#054004));
+  background: linear-gradient(#0fe00b, #054004);
+  padding: 5px;
+  color: white;
+  display: block;
+  width: 95%;
+  margin: 7px auto;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-family: "Exo 2", sans-serif;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.single-line-text-input-label {
+  margin: 0 auto;
+}
+
+.error-message-box {
+  visibility: hidden;
+  display: block;
+  font-size: 13px;
+  font-family: "Aldrich", sans-serif;
+  color: red;
+  padding: 2px 2px 3px;
+  text-align: center;
+  height: calc(1em + 6px);
+}
+
+.registration-information {
+  display: none;
+}
+
+.welcome-user {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.information-sections {
+  -webkit-box-flex: 10;
+          flex-grow: 10;
+  font-family: "Exo 2", sans-serif;
+  font-size: 15px;
+  color: white;
+  padding: 7px;
+  max-height: 390px;
+  overflow-y: auto;
+}
+
+.input-name {
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.input-list {
+  display: block;
+  margin: 5px 0;
+}
+
+.input-description {
+  display: block;
+  margin-left: 12px;
+}
+
+.mainpage-background-number-1 {
+  background-image: url("../images/decoration/mainpage/1.jpg");
+}
+
+.mainpage-background-number-2 {
+  background-image: url("../images/decoration/mainpage/2.jpg");
+}
+
+.mainpage-background-number-3 {
+  background-image: url("../images/decoration/mainpage/3.jpg");
+}
+
+.checkbox-description {
+  color: white;
+  font-size: 17px;
+  font-family: "Exo 2", sans-serif;
+}
+
+.checkbox-container {
+  margin: 7px auto;
+}
+
+.full-body {
+  margin: 0;
+  padding: 0;
+}
+
+.mainpage-background {
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  border: 0.1px solid transparent;
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+          align-items: center;
+  background-attachment: fixed;
+}
+
+.main-panel {
+  width: 60%;
+  margin: 100px 0 10px;
+  font-size: 0;
+  max-width: 800px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.92);
+  box-shadow: 3px 3px 2px 2px;
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.main-panel-form {
+  border-right: 2px solid black;
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+}
+
+.register-form {
+  display: none;
+}
+
+.form-switch-button {
+  padding: 10px;
+  color: white;
+  width: 50%;
+  border: none;
+  cursor: pointer;
+  font-family: "Exo 2";
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.form-switch-button:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(#212120), to(#000000)) !important;
+  background: linear-gradient(#212120, #000000) !important;
+}
+
+.switch-to-login {
+  background: -webkit-gradient(linear, left top, left bottom, from(#0fe00b), to(#054004));
+  background: linear-gradient(#0fe00b, #054004);
+}
+
+.switch-to-register {
+  background: -webkit-gradient(linear, left top, left bottom, from(#e81a4a), to(#780520));
+  background: linear-gradient(#e81a4a, #780520);
+}
+
+.switch-panel-options {
+  font-size: 0;
+}
+
+.login-or-register-panel {
+  width: 41%;
+  min-width: 265px;
+}
+
+.main-panel-label {
+  display: block;
+  text-align: center;
+  padding: 4px;
+  font-family: "Exo 2", sans-serif;
+  font-size: 18px;
+  color: white;
+}
+
+.main-panel-input {
+  background: #302e2e;
+  display: block;
+  width: 95%;
+  color: white;
+  margin: 0 auto;
+  border-radius: 4px;
+  border: 2px solid #302e2e;
+  outline: none;
+  font-size: 18px;
+  padding: 2px;
+}
+.main-panel-input:focus {
+  border: 2px solid #078a07;
+}
+
+.forgot-password-link {
+  display: block;
+  padding: 4px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-family: "Exo 2", sans-serif;
+  font-size: 17px;
+}
+.forgot-password-link:hover {
+  text-decoration: underline;
+}
+
+.login-information {
+  padding: 10px 10px 2px 10px;
+  color: white;
+  font-family: "Exo 2", sans-serif;
+  font-size: 14px;
+}
+
+@media (max-width: 840px) {
+  .main-panel {
+    width: 95%;
+    margin: 50px 10px;
+  }
+}
+@media (max-width: 529px) {
+  .main-panel {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    min-width: 300px;
+    max-width: 400px;
+  }
+
+  .login-or-register-panel {
+    min-width: 0;
+    width: 100%;
+    border-bottom: 2px solid white;
+  }
+
+  .main-panel-form {
+    border-right: none;
+  }
+
+  .welcome-user {
+    max-height: none;
+  }
+}
