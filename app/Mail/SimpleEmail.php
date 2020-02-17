@@ -7,21 +7,23 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class MessageFromUser extends Mailable
+class SimpleEmail extends Mailable
 {
     use Queueable, SerializesModels;
-    private $message;
+
+    private $sender;
+    private $msg;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($subject,$from, $message)
+    public function __construct(String $msg, String $subject = null, String $sender = null)
     {
-        $this->subject = empty($subject) ? "Brak tematu" : $subject;
-        $this->from = empty($from) ? "Nie podano emaila" : $from;
-        $this->message = $message;
+        $this->subject = $subject ?? "Brak tematu";
+        $this->sender = $sender ?? "Brak adresu";
+        $this->msg = $msg;
     }
 
     /**
@@ -32,9 +34,9 @@ class MessageFromUser extends Mailable
     public function build()
     {
 
-        return $this->from($this->from)
-                    ->view('mail.message_from_user')
+        return $this->from($this->sender)
+                    ->view('mails.simple_email')
                     ->subject($this->subject)
-                    ->with(['messageContent' => $this->message]);
+                    ->with(['messageContent' => $this->msg]);
     }
 }

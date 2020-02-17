@@ -14,6 +14,5 @@
 Route::get('/','LaunchMainPageController@showMainPage');
 Route::get('/verify-login/{login}', 'AJAXLoginValidationController@checkIfLoginAlreadyExists');
 Route::get('/verify-email/{email}', 'AJAXEmailValidationController@checkIfEmailAlreadyExists');
-Route::get('/kontakt', 'ShowContactFormController@showContactForm');
-
-Route::post('/kontakt', 'SendMessageFromUserController@sendMessageFromUser');
+Route::get('/kontakt', 'ContactFormController@showContactForm');
+Route::post('/kontakt', 'ContactFormController@sendMessageFromUser');

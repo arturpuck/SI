@@ -133,6 +133,6 @@ return [
 
     'log_channel' => env('MAIL_LOG_CHANNEL'),
 
-    'empire_email' => env('EMPIRE_EMAIL')
+    'management_email' => env('MANAGEMENT_EMAIL')
 
 ];

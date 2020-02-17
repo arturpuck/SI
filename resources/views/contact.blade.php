@@ -13,6 +13,26 @@
 	@main_page_navbar(['navigationItems' => [['Strona główna',''],['Porno','porno'],['Prostytucja','prostytucja'], ['Randki', 'randki']]])
 	@endmain_page_navbar
 
+	@if(Session::has('success'))
+        <div class="success-information-container information-container">
+        	{{Session::get('success')}}
+        </div>
+	@endif
+
+	@if($errors->any())
+	<div class="error-information-container information-container">
+    <div class="stop-sign-main">
+    	<div class="white-bar-main"></div>
+    </div>
+		Wykryto następujące problemy:
+		<ul class="error-list">
+            @foreach($errors->all() as $error)
+               <li class="error-list-element">{{$error}}</li>
+            @endforeach
+         </ul>
+    </div>
+	@endif
+
 	<form method="POST" class="contact-form">
 		@csrf
 		<div class="form-description">Aby skontaktować się z obsługą prosimy o skorzystanie z poniższego formularza. Pola email i temat nie są wymagane, treść wiadomości nie może przekroczyć 1000 znaków</div>
@@ -21,7 +41,7 @@
 		@single_line_labeled_text_input(['description' => "Temat :", "name" => "subject", "type" => "text"])
 		@endsingle_line_labeled_text_input
 		<label for="user-message" class="message-label">Treść wiadomości</label>
-		<textarea max="1000" required id="user-message" name="user_message" rows="10" class="user-message"></textarea>
+		<textarea max="1000" required id="user-message" name="message" rows="10" class="user-message"></textarea>
 		<input type="submit" class="submit-button" value="Wyślij">
 	</form>
 
