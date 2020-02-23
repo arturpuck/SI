@@ -31567,7 +31567,7 @@ new Vue({
     showErrorMessage: function showErrorMessage(refName) {
       var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
       this.$refs["correct_value_" + refName].style.display = "none";
-      this.$refs["incorrect_value_" + refName].style.display = "block";
+      this.$refs["incorrect_value_" + refName].style.display = "flex";
       this.$refs["label_ref_" + refName].style.border = "2px solid red";
 
       if (message !== undefined) {
@@ -31816,9 +31816,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/sex-imperium/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /var/www/sex-imperium/resources/sass/mainpage.scss */"./resources/sass/mainpage.scss");
-module.exports = __webpack_require__(/*! /var/www/sex-imperium/resources/sass/contact.scss */"./resources/sass/contact.scss");
+__webpack_require__(/*! C:\wamp64\www\sex-imperium\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\wamp64\www\sex-imperium\resources\sass\mainpage.scss */"./resources/sass/mainpage.scss");
+module.exports = __webpack_require__(/*! C:\wamp64\www\sex-imperium\resources\sass\contact.scss */"./resources/sass/contact.scss");
 
 
 /***/ })

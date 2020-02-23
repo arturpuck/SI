@@ -1,0 +1,22 @@
+.icon-container{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    z-index:2;
+}
+
+.icon-incorrect-value
+{
+    background: red;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    display:flex;
+}
+
+.white-bar
+{
+    width: 80%;
+    height: 30%;
+    background:white;
+}

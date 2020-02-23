@@ -34,7 +34,7 @@ var Vue = require('vue');
  	{
  			
  			this.$refs["correct_value_" + refName].style.display = "none";
- 			this.$refs["incorrect_value_" + refName].style.display = "block";
+ 			this.$refs["incorrect_value_" + refName].style.display = "flex";
  			this.$refs["label_ref_" + refName].style.border = "2px solid red";
 
       if(message !== undefined)

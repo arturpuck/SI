@@ -7,6 +7,27 @@
 @import 'components/main_page_navbar';
 @import 'components/single_line_labeled_text_input';
 @import 'components/submit_button';
+@import 'components/fixed_information_icons';
+@import 'components/incorrect_value_icon';
+@import 'components/fixed_information_icons';
+
+.single-line-text-input-label{
+	width:100%;
+}
+
+.icon-wraper{
+	position:relative;
+	width:95%;
+	margin:15px auto;
+}
+
+.icon-incorrect-value{
+	display:none;
+}
+
+ .error-active{
+ 	display:flex;
+ }
 
 .full-body
 {
@@ -32,8 +53,7 @@
 }
 
 .user-message{
-	margin:6px auto;
-	width:95%;
+	width:100%;
 	display:block;
 	border-radius:8px;
 	background:#242229;
@@ -53,7 +73,6 @@
 
 .form-description{
 	color:white;
-	text-align: center;
 	padding: 4px;
 	font:{
 		size: 15px;
@@ -106,25 +125,12 @@
 	}
 }
 
-.stop-sign-main{
-	background:red;
-	border-radius:50%;
-	width:35px;
-	height:35px;
-	display:flex;
-	flex-direction:column;
-	justify-content: space-around;
-	align-items: center;
-	position:absolute;
-	right:0;
-	top:0;
-	transform: translate(50%,-50%);
+.input-with-error{
+    border: 2px solid red;
 }
 
-.white-bar-main{
-	height:30%;
-	background:white;
-	width:85%;
+.error-active{
+    display:flex;
 }
 
 

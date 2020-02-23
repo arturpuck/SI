@@ -3,15 +3,18 @@
 {
 	box-sizing: border-box;
 }
-
+ 
 @import 'components/footer';
 @import 'components/main_page_navbar';
 @import 'components/nicecheckbox';
 @import 'components/single_line_labeled_text_input';
 @import 'components/described_select';
-@import 'components/correct_and_incorrect_icons';
+@import 'components/fixed_information_icons';
 @import 'components/date_picker_polish';
-@import 'components/submit_button';
+@import 'components/correct_value_icon';
+@import 'components/incorrect_value_icon';
+@import 'components/fixed_information_icons';
+@import 'components/submit_button';  
 
 
 .single-line-text-input-label{

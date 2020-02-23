@@ -107,6 +107,10 @@
   border-bottom: 1px solid #86838f;
 }
 
+.input-with-error {
+  border: 2px solid red;
+}
+
 .submit-button {
   background: -webkit-gradient(linear, left top, left bottom, from(#0fe00b), to(#054004));
   background: linear-gradient(#0fe00b, #054004);
@@ -121,6 +125,68 @@
   font-family: "Exo 2", sans-serif;
   font-size: 19px;
   font-weight: bold;
+}
+
+.icon-container {
+  top: 0;
+  right: 0;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  position: absolute;
+  display: none;
+}
+
+.icon-container {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.icon-incorrect-value {
+  background: red;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  justify-content: space-around;
+  -webkit-box-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: flex;
+}
+
+.white-bar {
+  width: 80%;
+  height: 30%;
+  background: white;
+}
+
+.icon-container {
+  top: 0;
+  right: 0;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  position: absolute;
+  display: none;
+}
+
+.single-line-text-input-label {
+  width: 100%;
+}
+
+.icon-wraper {
+  position: relative;
+  width: 95%;
+  margin: 15px auto;
+}
+
+.icon-incorrect-value {
+  display: none;
+}
+
+.error-active {
+  display: -webkit-box;
+  display: flex;
 }
 
 .full-body {
@@ -145,8 +211,7 @@
 }
 
 .user-message {
-  margin: 6px auto;
-  width: 95%;
+  width: 100%;
   display: block;
   border-radius: 8px;
   background: #242229;
@@ -164,7 +229,6 @@
 
 .form-description {
   color: white;
-  text-align: center;
   padding: 4px;
   font-size: 15px;
   font-family: "Exo 2", sans-serif;
@@ -211,30 +275,13 @@
   margin: 0 5px;
 }
 
-.stop-sign-main {
-  background: red;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  justify-content: space-around;
-  -webkit-box-align: center;
-          align-items: center;
-  position: absolute;
-  right: 0;
-  top: 0;
-  -webkit-transform: translate(50%, -50%);
-          transform: translate(50%, -50%);
+.input-with-error {
+  border: 2px solid red;
 }
 
-.white-bar-main {
-  height: 30%;
-  background: white;
-  width: 85%;
+.error-active {
+  display: -webkit-box;
+  display: flex;
 }
 
 @media (min-width: 700px) and (max-width: 1200px) {

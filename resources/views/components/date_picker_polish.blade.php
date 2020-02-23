@@ -7,8 +7,9 @@
   	</div>
   	<div @isset($vueHookID) ref="label_ref_{{$vueHookID}}" @endisset class="flex-container">
       @isset($verificationIcons)
-         @include('components.verification_icons', ['vueHookID' => $vueHookID])
-      @endisset
+         @include('components.icon_confirmation', ['vueHookID' => $vueHookID])
+         @include('components.icon_error', ['vueHookID' => $vueHookID, 'showError' => false])
+   @endisset
   		<div class="time-span-container">
   			<label for="data-picker-polish-day" class="time-span-label">Dzień</label>
  	 	    <select @isset($vueHookID) ref="day_ref_{{$vueHookID}}" v-on:change="{{$vueHookID}}Change" @endisset name="day" class="time-span-select">
