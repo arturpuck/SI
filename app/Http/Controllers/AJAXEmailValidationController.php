@@ -5,28 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Requests\AJAXEmailValidationRequest;
 
 class AJAXEmailValidationController extends Controller
 {
-    function checkIfEmailAlreadyExists($email)
+    function checkIfEmailAlreadyExists(AJAXEmailValidationRequest $request)
     {
-        try
-        {
-            if(User::where('email', '=', $email)->exists())
-            {
-        	     return response('invalid', 200)
-                      ->header('Content-Type', 'text/plain');
-            }
-            else
-            {
-        	   return response('valid', 200)
-                   ->header('Content-Type', 'text/plain');
-            }
-        }
-        catch(\Exception $error)
-        {
-        	return response($error->getMessage(), 400);
-        }
-        
+      return response('valid', 200)->header('Content-Type', 'text/plain');           
     }
 }

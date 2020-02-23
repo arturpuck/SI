@@ -92,20 +92,11 @@ var Vue = require('vue');
        {
               if(ajaxRequest.status === 200)
               {
-                    switch(ajaxRequest.responseText)
-                    {
-                        case "valid" :
-                            this.showValueIsCorrect(refName);
-                        break;
-
-                        case "invalid" :
-                            this.showErrorMessage(refName, errorMessage);
-                        break;
-                     }
+                  this.showValueIsCorrect(refName);     
                }
                else
               {
-                this.showErrorMessage(refName,'Nieoczekiwany błąd. Spróbuj później');
+                this.showErrorMessage(refName, errorMessage);
               }
       }
     },

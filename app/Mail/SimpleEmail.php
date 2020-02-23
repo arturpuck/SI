@@ -22,7 +22,7 @@ class SimpleEmail extends Mailable
     public function __construct(String $msg, String $subject = null, String $sender = null)
     {
         $this->subject = $subject ?? "Brak tematu";
-        $this->sender = $sender ?? "Brak adresu";
+        $this->sender = $sender ?? "undefined@email.com";
         $this->msg = $msg;
     }
 

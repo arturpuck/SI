@@ -11,7 +11,6 @@ class ContactFormController extends Controller
     
     public function sendMessageFromUser(SendMessageToManagementRequest $request, SendMessageToManagement $message)
     {
-       
        return $message->send($request->validated())['success'] ? back()->with('success','Pomyślnie wysłano wiadomość') : back()->withErrors(['Nieoczekiwany błąd podczas wysyłania wiadomości']);
     }
 

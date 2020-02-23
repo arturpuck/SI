@@ -8,5 +8,5 @@
 	 @endisset
 	
 	<span class="text-input-description">{{$description}}</span>
-	  <input name="{{$name}}" @isset($vueHookID)ref="input_ref_{{$vueHookID}}" v-on:focusout="{{$vueHookID}}LooseFocus"@endisset class="single-line-text-input" value="@if(old($name)){{old($name)}}@elseif(isset($initialValue)){{$initialValue}}@endif" type="{{$type}}">
+	  <input @isset($placeholder) placeholder="{{$placeholder}}" @endisset name="{{$name}}" @isset($vueHookID)ref="input_ref_{{$vueHookID}}" v-on:focusout="{{$vueHookID}}LooseFocus"@endisset class="single-line-text-input" value="@if(old($name)){{old($name)}}@elseif(isset($initialValue)){{$initialValue}}@endif" type="{{$type}}">
 </label>
