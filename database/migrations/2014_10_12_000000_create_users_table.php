@@ -17,10 +17,10 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('login')->unique();
             $table->string('email')->unique();
-            $table->enum('user_type', ['male', 'female', 'hermaphrodite', 'transsexual'])->nullable();
-            $table->enum('sexual_orientation', ['heterosexual', 'homosexual', 'bisexual', 'transsexual', 'autosexual'])->nullable();
+            $table->enum('user_type', ['male', 'female', 'hermaphrodite', 'transsexual', 'couple'])->nullable();
+            $table->enum('sexual_orientation', ['heterosexual', 'homosexual', 'bisexual', 'transsexual', 'autosexual', 'asexual'])->nullable();
             $table->string('password');
-            $table->date('date_of_birth');
+            $table->date('birth_date');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

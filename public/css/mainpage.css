@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
 }
@@ -197,13 +198,8 @@
   outline: none;
 }
 
-.icon-container {
-  top: 0;
-  right: 0;
-  -webkit-transform: translate(50%, -50%);
-          transform: translate(50%, -50%);
-  position: absolute;
-  display: none;
+.input-with-error {
+  border: 2px solid red;
 }
 
 .birth-date-container {
@@ -252,6 +248,10 @@
   border-radius: 6px;
 }
 
+.input-with-error {
+  border: 2px solid red;
+}
+
 .icon-correct-value {
   background: green;
 }
@@ -275,6 +275,14 @@
   z-index: 2;
 }
 
+.icon-correct-value-visible {
+  display: block;
+}
+
+.icon-correct-value-invisible {
+  display: none;
+}
+
 .icon-container {
   width: 30px;
   height: 30px;
@@ -290,23 +298,21 @@
   justify-content: space-around;
   -webkit-box-align: center;
           align-items: center;
+}
+
+.icon-incorrect-value-visible {
   display: -webkit-box;
   display: flex;
+}
+
+.icon-incorrect-value-invisible {
+  display: none;
 }
 
 .white-bar {
   width: 80%;
   height: 30%;
   background: white;
-}
-
-.icon-container {
-  top: 0;
-  right: 0;
-  -webkit-transform: translate(50%, -50%);
-          transform: translate(50%, -50%);
-  position: absolute;
-  display: none;
 }
 
 .submit-button {
@@ -323,6 +329,43 @@
   font-family: "Exo 2", sans-serif;
   font-size: 19px;
   font-weight: bold;
+}
+
+.error-information-container {
+  background: #96080f;
+}
+
+.information-container {
+  margin: 25px auto;
+  text-align: center;
+  font-family: "Exo 2", sans-serif;
+  border-radius: 6px;
+  color: white;
+  display: table;
+  padding: 5px;
+  border: 1px solid black;
+  position: relative;
+}
+
+.error-list {
+  text-align: left;
+  margin: 5px auto;
+  padding-left: 25px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.error-list-element:before {
+  content: " \25CF";
+  margin: 0 5px;
+}
+
+.icon-container {
+  top: 0;
+  right: 0;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  position: absolute;
 }
 
 .single-line-text-input-label {
@@ -441,7 +484,7 @@
   border-top: 1px solid transparent;
 }
 
-.register-form {
+.hidden-section-element {
   display: none;
 }
 
@@ -477,7 +520,7 @@
 
 .login-or-register-panel {
   width: 41%;
-  min-width: 265px;
+  min-width: 275px;
 }
 
 .main-panel-label {

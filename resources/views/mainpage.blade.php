@@ -10,17 +10,22 @@
 	<link href="https://fonts.googleapis.com/css?family=Exo+2|Aldrich&display=swap" rel="stylesheet">
 </head>
 <body class="full-body">
+
 	@main_page_navbar(['navigationItems' => [['Porno','porno'],['Prostytucja','prostytucja'], ['Randki', 'randki']]])
 	@endmain_page_navbar
+
 	<div class="mainpage-background mainpage-background-number-{{$randomImageNumber}}">
+		 @error_list
+         @enderror_list
 		<main id="main-panel" class="main-panel">
 			<section class="login-or-register-panel">
 				<div class="switch-panel-options">
 					<button ref="show_login_form_button" v-on:click="showLoginPanel" class="form-switch-button switch-to-login">Logowanie</button>
 					<button ref="show_register_form_button" v-on:click="showRegistrationPanel" class="form-switch-button switch-to-register">Rejestracja</button>
 				</div>
-				<form ref="login_panel" action="/login" method="POST" id="login-form" class="main-panel-form">
+				<form ref="login_panel" action="/login" method="POST" id="login-form" class="main-panel-form @if($errors->any() and old('register_panel_selected')) hidden-section-element @endif">
 					@csrf
+					<input type="hidden" name="login_panel_selected" value="1" >
 					<div class="login-information">Logowanie nie jest konieczne do korzystania z serwisu</div>
 					<label for="login" class="main-panel-label">Email lub nick</label>
 					<input type="text" class="main-panel-input" id="login" name="login">
@@ -42,26 +47,27 @@
 					@endnicecheckbox
 					<a href="" class="forgot-password-link">Zapomniałem hasła</a>
 				</form>
-				<form ref="register_panel" method="POST" action="/register" class="main-panel-form register-form">
+				<form ref="register_panel" method="POST" action="/register" class="main-panel-form register-form @if(!$errors->any() or old('login_panel_selected')) hidden-section-element @endif">
 					@csrf
-                    
-				    @single_line_labeled_text_input(['description' => "Login :", "name" => "registartion-login", "type" => "text", 'vueHookID' => 'registrationLogin', 'verificationIcons' => true, 'errorMessageBox' => true])
+                    <input type="hidden" name="register_panel_selected" value="1" >
+				    @single_line_labeled_text_input(['description' => "Login :", "name" => "registration_login", "type" => "text", 'vueHookID' => 'registrationLogin', 'verificationIcons' => true, 'errorMessageBox' => true])
 				    @endsingle_line_labeled_text_input
 
-				    @single_line_labeled_text_input(['description' => "Email :", "name" => "registartion-email", "type" => "email", 'vueHookID' => 'email', 'verificationIcons' => true, 'errorMessageBox' => true])
+				    @single_line_labeled_text_input(['description' => "Email :", "name" => "registration_email", "type" => "email", 'vueHookID' => 'email', 'verificationIcons' => true, 'errorMessageBox' => true])
 				    @endsingle_line_labeled_text_input
 				    
-                   	 @single_line_labeled_text_input(['description' => "Hasło :", "name" => "registartion-password", "type" => "password", 'vueHookID' => 'registrationPassword','verificationIcons' => true, 'errorMessageBox' => true])
+                   	 @single_line_labeled_text_input(['description' => "Hasło :", "name" => "registration_password", "type" => "password", 'vueHookID' => 'registrationPassword','verificationIcons' => true, 'errorMessageBox' => true])
 				    @endsingle_line_labeled_text_input
 
-				    @described_select(['description' => 'Jestem :', 'name' => 'user-type','options' => ['--wybierz--','mężczyzną', 'kobietą', 'parą', 'hermafrodytą', 'transseksualistą', 'nie chcę podać'], 'verificationIcons' => true, 'vueHookID' => 'userType', 'errorMessageBox' => true])
+				    @described_select(['description' => 'Jestem :', 'name' => 'user_type','options' => ['--wybierz--','mężczyzną', 'kobietą', 'parą', 'hermafrodytą', 'transseksualistą', 'nie chcę podać'], 'verificationIcons' => true, 'vueHookID' => 'userType', 'errorMessageBox' => true])
 				    @enddescribed_select
 
-				    @described_select(['description' => 'Orientacja :', 'name' => 'sexual-orientation', 'options' => ['--wybierz--','heterosesualna', 'homoseksualna', 'biseksualna','autoseksualna', 'aseksualna','nie chcę podać'], 'verificationIcons' => true, 'vueHookID' => 'sexualOrientation', 'errorMessageBox' => true])
+				    @described_select(['description' => 'Orientacja :', 'name' => 'sexual_orientation', 'options' => ['--wybierz--','heteroseksualna', 'homoseksualna', 'biseksualna','autoseksualna', 'aseksualna','nie chcę podać'], 'verificationIcons' => true, 'vueHookID' => 'sexualOrientation', 'errorMessageBox' => true])
 				    @enddescribed_select
 
-				    @date_picker_polish(['description' => 'Data urodzenia', 'timespan' => 120, 'numberOfYearsBeforeCurrentYear' => 18, 'vueHookID' => 'birthDate' , 'verificationIcons' => true, 'errorMessageBox' => true])
+				    @date_picker_polish(['description' => 'Data urodzenia', 'timespan' => 120, 'numberOfYearsBeforeCurrentYear' => 18, 'vueHookID' => 'birthDate' , 'verificationIcons' => true, 'errorMessageBox' => true, 'name' => 'birth_date'])
 				    @enddate_picker_polish
+
 
 					<input type="submit" class="submit-button" value="Zarejestruj">
 				</form>
@@ -78,7 +84,7 @@
 					<dt class="input-name">Login</dt>
 					<dd class="input-description">Od 3 do 20 znaków. Login nie może być wykorzystany przez innego użytkownika.</dd>
 					<dt class="input-name">Email</dt>
-					<dd class="input-description">Należy podać poprawny adres email, ponadto nie może on być wykorzystany przez innego użytkownika. Na ten adres zostanie również wysłany link aktywacyjny.</dd>
+					<dd class="input-description">Należy podać poprawny adres email, ponadto nie może on być wykorzystany przez innego użytkownika.</dd>
 					<dt class="input-name">Hasło</dt>
 					<dd class="input-description">Od 3 do 20 znaków. Im więcej symboli tym lepsze zabezpieczenie</dd>
 					<dt class="input-name">Kim jesteś</dt>

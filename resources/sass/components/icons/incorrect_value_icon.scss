@@ -11,7 +11,16 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    display:flex;
+}
+
+.icon-incorrect-value-visible
+{
+   display:flex;
+}
+
+.icon-incorrect-value-invisible
+{
+   display: none;
 }
 
 .white-bar
@@ -20,3 +29,4 @@
     height: 30%;
     background:white;
 }
+

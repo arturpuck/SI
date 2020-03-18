@@ -16,3 +16,4 @@ Route::get('/verify-login/{login}', 'AJAXLoginValidationController@checkIfLoginA
 Route::get('/verify-email/{email}', 'AJAXEmailValidationController@checkIfEmailAlreadyExists');
 Route::get('/kontakt', 'ContactFormController@showContactForm');
 Route::post('/kontakt', 'ContactFormController@sendMessageFromUser');
+Route::Auth();

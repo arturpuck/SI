@@ -1,10 +1,10 @@
 @isset($errorMessageBox)
-         @include('components.error_message_box', ['vueHookID' => $vueHookID])
+         @include('components.controls.error_message_box', ['vueHookID' => $vueHookID])
 @endisset
-<label @isset($vueHookID)ref="label_ref_{{$vueHookID}}"@endisset  class="single-line-text-input-label @error($name) input-with-error @enderror">
+<label @isset($vueHookID)ref="label_ref_{{$vueHookID}}"@endisset  class="single-line-text-input-label @if($errors->has($name)) input-with-error @endif">
 	 @isset($verificationIcons)
-         @include('components.icon_confirmation', ['vueHookID' => $vueHookID])
-         @include('components.icon_error', ['vueHookID' => $vueHookID, 'showError' => $errors->has($name)])
+         @include('components.icons.icon_confirmation', ['vueHookID' => $vueHookID, 'show' => false])
+         @include('components.icons.icon_error', ['vueHookID' => $vueHookID, 'show' => $errors->has($name)])
 	 @endisset
 	
 	<span class="text-input-description">{{$description}}</span>

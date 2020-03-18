@@ -6,15 +6,15 @@
  
 @import 'components/footer';
 @import 'components/main_page_navbar';
-@import 'components/nicecheckbox';
-@import 'components/single_line_labeled_text_input';
-@import 'components/described_select';
-@import 'components/fixed_information_icons';
-@import 'components/date_picker_polish';
-@import 'components/correct_value_icon';
-@import 'components/incorrect_value_icon';
-@import 'components/fixed_information_icons';
-@import 'components/submit_button';  
+@import 'components/controls/nicecheckbox';
+@import 'components/controls/single_line_labeled_text_input';
+@import 'components/controls/described_select';
+@import 'components/controls/date_picker_polish';
+@import 'components/icons/correct_value_icon';
+@import 'components/icons/incorrect_value_icon';
+@import 'components/controls/submit_button';
+@import 'components/error_list';
+@import 'components/icons/fixed_information_icons';
 
 .single-line-text-input-label{
 	margin:0 auto;
@@ -61,7 +61,6 @@
     background-attachment: fixed;
 }
 
-
 .main-panel
 {
 	width: 60%;
@@ -82,7 +81,7 @@
   border-top: 1px solid transparent;
 }
 
-.register-form{
+.hidden-section-element{
 	display:none;
 }
 
@@ -124,7 +123,7 @@
 .login-or-register-panel
 {
 	width:41%;
-	min-width:265px;
+	min-width:275px;
 }
 
 .main-panel-label

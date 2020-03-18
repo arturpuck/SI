@@ -68,6 +68,51 @@
     font-size: 4vw;
   }
 }
+.error-information-container {
+  background: #96080f;
+}
+
+.information-container {
+  margin: 25px auto;
+  text-align: center;
+  font-family: "Exo 2", sans-serif;
+  border-radius: 6px;
+  color: white;
+  display: table;
+  padding: 5px;
+  border: 1px solid black;
+  position: relative;
+}
+
+.error-list {
+  text-align: left;
+  margin: 5px auto;
+  padding-left: 25px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.error-list-element:before {
+  content: " \25CF";
+  margin: 0 5px;
+}
+
+.success-information-container {
+  background: #09960b;
+}
+
+.information-container {
+  margin: 25px auto;
+  text-align: center;
+  font-family: "Exo 2", sans-serif;
+  border-radius: 6px;
+  color: white;
+  display: table;
+  padding: 5px;
+  border: 1px solid black;
+  position: relative;
+}
+
 .single-line-text-input-label {
   display: -webkit-box;
   display: flex;
@@ -133,7 +178,6 @@
   -webkit-transform: translate(50%, -50%);
           transform: translate(50%, -50%);
   position: absolute;
-  display: none;
 }
 
 .icon-container {
@@ -151,8 +195,15 @@
   justify-content: space-around;
   -webkit-box-align: center;
           align-items: center;
+}
+
+.icon-incorrect-value-visible {
   display: -webkit-box;
   display: flex;
+}
+
+.icon-incorrect-value-invisible {
+  display: none;
 }
 
 .white-bar {
@@ -167,7 +218,6 @@
   -webkit-transform: translate(50%, -50%);
           transform: translate(50%, -50%);
   position: absolute;
-  display: none;
 }
 
 .single-line-text-input-label {
@@ -240,39 +290,6 @@
   color: white;
   font-size: 19px;
   font-family: "Exo 2", sans-serif;
-}
-
-.information-container {
-  margin: 25px auto;
-  text-align: center;
-  font-family: "Exo 2", sans-serif;
-  border-radius: 6px;
-  color: white;
-  display: table;
-  padding: 5px;
-  border: 1px solid black;
-  position: relative;
-}
-
-.error-information-container {
-  background: #96080f;
-}
-
-.success-information-container {
-  background: #09960b;
-}
-
-.error-list {
-  text-align: left;
-  margin: 5px auto;
-  padding-left: 25px;
-  list-style-type: none;
-  padding: 0;
-}
-
-.error-list-element:before {
-  content: " \25CF";
-  margin: 0 5px;
 }
 
 .input-with-error {
