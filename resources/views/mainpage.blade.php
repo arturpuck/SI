@@ -7,7 +7,7 @@
 	<meta name="author" content="Neuro-Boost">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{{asset('css/mainpage.css')}}">
-	<link href="https://fonts.googleapis.com/css?family=Exo+2|Aldrich&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Exo+2|Aldrich|Oxanium&display=swap" rel="stylesheet">
 </head>
 <body class="full-body">
 
@@ -17,7 +17,7 @@
 	<div class="mainpage-background mainpage-background-number-{{$randomImageNumber}}">
 		 @error_list
          @enderror_list
-		<main id="main-panel" class="main-panel">
+		<main id="main-panel" class="main-panel @if($errors->any())main-panel-without-top-margin @endif">
 			<section class="login-or-register-panel">
 				<div class="switch-panel-options">
 					<button ref="show_login_form_button" v-on:click="showLoginPanel" class="form-switch-button switch-to-login">Logowanie</button>
@@ -31,10 +31,11 @@
 					<input type="text" class="main-panel-input" id="login" name="login">
 					<label for="password" class="main-panel-label">Hasło</label>
 					<input type="password" class="main-panel-input" id="password" name="login">
-					<input type="submit" class="submit-button" value="Zaloguj">
+					@submit_button(['caption' => 'Zaloguj'])
+					@endsubmit_button
 					@nicecheckbox
                         @slot('name')
-                           remember-me
+                           remember_me
                         @endslot
 
                         @slot('id')
@@ -45,7 +46,7 @@
                            Zapamiętaj mnie
                         @endslot
 					@endnicecheckbox
-					<a href="" class="forgot-password-link">Zapomniałem hasła</a>
+					<a href="/password/reset" class="forgot-password-link">Zapomniałem hasła</a>
 				</form>
 				<form ref="register_panel" method="POST" action="/register" class="main-panel-form register-form @if(!$errors->any() or old('login_panel_selected')) hidden-section-element @endif">
 					@csrf
@@ -68,17 +69,17 @@
 				    @date_picker_polish(['description' => 'Data urodzenia', 'timespan' => 120, 'numberOfYearsBeforeCurrentYear' => 18, 'vueHookID' => 'birthDate' , 'verificationIcons' => true, 'errorMessageBox' => true, 'name' => 'birth_date'])
 				    @enddate_picker_polish
 
-
-					<input type="submit" class="submit-button" value="Zarejestruj">
+					@submit_button(['caption' => 'Zarejestruj'])
+					@endsubmit_button
 				</form>
 			</section>
 			<section class="information-sections">
-				<div ref="login_information" class="welcome-user user-information">
+				<div ref="login_information" class="welcome-user @if($errors->any() and old('register_panel_selected')) hidden-section-element @endif">
 				   Sex-imperium to nowy portal, którego celem jest dostarczanie wszelkich możliwości związanych z seksem i poznawaniem partnerów. Aktualnie oferujemy pornografię wraz z innowacyjnym systemem wyszukiwania, jednak pracujemy nad całkowicie bezpłatną funkcjonalnością(w przeciwieństwie do konkurencji) ułatwiającą znajdowanie partnerów, jak również 100% darmowym miejscem ogłoszeń dla osób trudniących się prostytucją. Bądź jednym z pierwszych, zarejestruj się i wspomóż budowę największego seks portalu w Polsce! Możesz też przeglądać zawartość nie będąc zalogowanym.
 				   <strong>Korzystanie z portalu jest dozwolone tylko dla osób pełnoletnich.</strong>
 			   </div>
 
-			   <div ref="registration_information" class="registration-information user-information">
+			   <div ref="registration_information" class="@if(!$errors->any() or old('login_panel_selected')) hidden-section-element @endif">
 				<strong>Rejestracja i korzystanie z serwisu tylko dla osób pełnoletnich.</strong> Podczas przechodzenia na inne pole wprowadzone informacje zostaną automatycznie sprawdzone. Informacje muszą spełniać wymienione poniżej kryteria. <strong>Zmiana daty urodzenia nie będzie możliwa po zarejestrowaniu</strong>
 				<dl class="input-list">
 					<dt class="input-name">Login</dt>

@@ -37,4 +37,24 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function attemptLogin(Request $request)
+    {
+        return $this->guard()->attempt(
+            $this->credentials($request), $request->filled('remember_me')
+        );
+    }
+
+    protected function validateLogin(Request $request)
+    {
+        $customErrorMessages = [
+           'password.required' => 'Nie podano hasła',
+           $this->username().'required' => 'Nie podano loginu'
+        ];
+
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+        ], $customErrorMessages);
+    }
 }

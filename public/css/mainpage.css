@@ -29,7 +29,7 @@
   margin: 0;
   display: -webkit-box;
   display: flex;
-  background: #33332d;
+  background: #0d0c0d;
   -webkit-box-align: stretch;
           align-items: stretch;
 }
@@ -48,7 +48,7 @@
   display: inline-block;
   line-height: 100%;
   padding: 6px;
-  font-family: Aldrich;
+  font-family: "Oxanium";
   font-size: 1.5vw;
 }
 
@@ -165,6 +165,10 @@
   border: 2px solid red;
 }
 
+.input-correct-value {
+  border: 2px solid green;
+}
+
 .select-label {
   display: -webkit-box;
   display: flex;
@@ -200,6 +204,10 @@
 
 .input-with-error {
   border: 2px solid red;
+}
+
+.input-correct-value {
+  border: 2px solid green;
 }
 
 .birth-date-container {
@@ -345,6 +353,8 @@
   padding: 5px;
   border: 1px solid black;
   position: relative;
+  max-width: 75%;
+  min-width: 310px;
 }
 
 .error-list {
@@ -478,6 +488,10 @@
   flex-wrap: nowrap;
 }
 
+.main-panel-without-top-margin {
+  margin-top: 0;
+}
+
 .main-panel-form {
   border-right: 2px solid black;
   border-bottom: 1px solid transparent;
@@ -573,6 +587,10 @@
     width: 95%;
     margin: 50px 10px;
   }
+
+  .main-panel-without-top-margin {
+    margin-top: 0;
+  }
 }
 @media (max-width: 529px) {
   .main-panel {
@@ -581,6 +599,10 @@
             flex-direction: column;
     min-width: 300px;
     max-width: 400px;
+  }
+
+  .main-panel-without-top-margin {
+    margin-top: 0;
   }
 
   .login-or-register-panel {

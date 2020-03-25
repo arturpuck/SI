@@ -31,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         \Blade::component('components.controls.described_select', 'described_select');
         \Blade::component('components.controls.date_picker_polish', 'date_picker_polish');
          \Blade::component('components.error_list', 'error_list');
+         \Blade::component('components.controls.submit_button', 'submit_button');
      
     }
 }

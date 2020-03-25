@@ -4,23 +4,23 @@
 	box-sizing: border-box;
 }
  
-@import 'components/footer';
-@import 'components/main_page_navbar';
-@import 'components/controls/nicecheckbox';
-@import 'components/controls/single_line_labeled_text_input';
-@import 'components/controls/described_select';
-@import 'components/controls/date_picker_polish';
-@import 'components/icons/correct_value_icon';
-@import 'components/icons/incorrect_value_icon';
-@import 'components/controls/submit_button';
-@import 'components/error_list';
-@import 'components/icons/fixed_information_icons';
+@import '../components/footer';
+@import '../components/main_page_navbar';
+@import '../components/controls/nicecheckbox';
+@import '../components/controls/single_line_labeled_text_input';
+@import '../components/controls/described_select';
+@import '../components/controls/date_picker_polish';
+@import '../components/icons/correct_value_icon';
+@import '../components/icons/incorrect_value_icon';
+@import '../components/controls/submit_button';
+@import '../components/error_list';
+@import '../components/icons/fixed_information_icons';
 
 .single-line-text-input-label{
 	margin:0 auto;
 }
 
-@import 'error_messages';
+@import '../error_messages';
 @import 'information_sections';
 @import 'main_page_background_images';
 
@@ -72,6 +72,10 @@
 	box-shadow: 3px 3px 2px 2px;
 	display: flex;
 	flex-wrap: nowrap;
+}
+
+.main-panel-without-top-margin{
+   margin-top:0;
 }
 
 .main-panel-form
@@ -195,7 +199,11 @@
    .main-panel{
    	width:95%;
    	margin:50px 10px;
-   }	
+   }
+
+   .main-panel-without-top-margin{
+		margin-top:0;
+	}	
 }
 
 @media(max-width : 529px){
@@ -203,6 +211,10 @@
 		flex-direction: column;
 		min-width: 300px;
 		max-width: 400px;
+	}
+
+	.main-panel-without-top-margin{
+		margin-top:0;
 	}
 
 	.login-or-register-panel{

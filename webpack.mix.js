@@ -11,5 +11,8 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.sass('resources/sass/mainpage.scss', 'public/css').sass('resources/sass/contact.scss', 'public/css').options({
-      processCssUrls: false}).js('resources/js/app.js', 'public/js');
+mix.sass('resources/sass/mainpage/mainpage.scss', 'public/css')
+.sass('resources/sass/contact.scss', 'public/css')
+.options({
+      processCssUrls: false}).js('resources/js/app.js', 'public/js')
+.sass('resources/sass/auth/password_reset.scss', 'public/css');

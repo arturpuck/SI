@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/mainpage.css": "/css/mainpage.css",
-    "/css/contact.css": "/css/contact.css"
+    "/css/contact.css": "/css/contact.css",
+    "/css/password_reset.css": "/css/password_reset.css"
 }
