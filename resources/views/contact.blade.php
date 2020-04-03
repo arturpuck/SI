@@ -13,11 +13,7 @@
 	@main_page_navbar(['navigationItems' => [['Strona główna',''],['Porno','porno'],['Prostytucja','prostytucja'], ['Randki', 'randki']]])
 	@endmain_page_navbar
 
-	@if(Session::has('success'))
-        <div class="success-information-container information-container">
-        	{{Session::get('success')}}
-        </div>
-	@endif
+	@includeWhen(Session::has('success'), 'components.success_information', ['message' => Session::get('success')])
 
    @error_list
    @enderror_list

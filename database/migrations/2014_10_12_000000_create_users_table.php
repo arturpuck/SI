@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration
             $table->enum('sexual_orientation', ['heterosexual', 'homosexual', 'bisexual', 'transsexual', 'autosexual', 'asexual'])->nullable();
             $table->string('password');
             $table->date('birth_date');
-            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

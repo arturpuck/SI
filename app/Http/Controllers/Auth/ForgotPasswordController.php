@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
 
+
 class ForgotPasswordController extends Controller
 {
     /*
@@ -34,5 +35,23 @@ class ForgotPasswordController extends Controller
            'email.exists' => 'Podany adres email nie istnieje'
         ];
         $request->validate(['email' => 'required|email|exists:users'], $errorMessages);
+    }
+
+     protected function sendResetLinkResponse(Request $request, $response)
+    {
+        return back()->with('success', "Link został wysłany pod wskazany adres");
+    }
+
+    /**
+     * Get the response for a failed password reset link.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
+    protected function sendResetLinkFailedResponse(Request $request, $response)
+    {
+        return back()->withErrors(['email' => 'Wprowadzone dane są najprawdopodobniej poprawne, jednak nastąpił bliżej nieokreślony błąd. Być może ponowna próba powiedzie się.']);
+                
     }
 }

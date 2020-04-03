@@ -15,7 +15,9 @@
 
     @error_list
     @enderror_list
-    
+
+    @includeWhen(Session::has('success'), 'components.success_information', ['message' => Session::get('success')])
+
 	@yield('reset_form')
 
     @footer

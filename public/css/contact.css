@@ -99,11 +99,7 @@
   margin: 0 5px;
 }
 
-.success-information-container {
-  background: #09960b;
-}
-
-.information-container {
+.success-information {
   margin: 25px auto;
   text-align: center;
   font-family: "Exo 2", sans-serif;
@@ -113,6 +109,7 @@
   padding: 5px;
   border: 1px solid black;
   position: relative;
+  background: #09960b;
 }
 
 .single-line-text-input-label {

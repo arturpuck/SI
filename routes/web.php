@@ -17,3 +17,4 @@ Route::get('/verify-email/{email}', 'AJAXEmailValidationController@checkIfEmailA
 Route::get('/kontakt', 'ContactFormController@showContactForm');
 Route::post('/kontakt', 'ContactFormController@sendMessageFromUser');
 Route::Auth();
+Route::get('/logout', 'Auth\LoginController@logout');
