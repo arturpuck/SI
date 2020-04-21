@@ -260,6 +260,10 @@
   border: 2px solid red;
 }
 
+.input-correct-value {
+  border: 2px solid green;
+}
+
 .icon-correct-value {
   background: green;
 }

@@ -39,7 +39,8 @@ class RegisterController extends Controller
             'user_type' => 
             ['required','in:mężczyzną,kobietą,parą,hermafrodytą,transseksualistą,nie chcę podać'],
             'sexual_orientation' => 
-            ['required', 'in:heteroseksualna,homoseksualna,biseksualna,autoseksualna,aseksualna,nie chcę podać']
+            ['required', 'in:heteroseksualna,homoseksualna,biseksualna,autoseksualna,aseksualna,nie chcę podać'],
+            'birth_date' => ['required', 'date']
         ];
     private $errorMessages = [
         'registration_login.required' => 'Nie podano loginu',
@@ -108,10 +109,15 @@ class RegisterController extends Controller
     private function prepareData(array $data) : array
     {
         $modifiedData = &$data;
-        $modifiedData['birth_date'] = $data['year'].'-'.$data['month'].'-'.$data['day'];
-        $earliestDate = $this->calculateDateYearsBeforeCurrentDay(120);
-        $dateEighteenYearsAgo = $this->calculateDateYearsBeforeCurrentDay(18);
-        $this->rules['birth_date'] = ['required', 'date', "after:$earliestDate", "before:$dateEighteenYearsAgo"];
+        if(($data['year'] != 0) and ($data['month'] != 0)  and ($data['day'] != 0) )
+        {
+           $modifiedData['birth_date'] = $data['year'].'-'.$data['month'].'-'.$data['day'];
+           $earliestDate = $this->calculateDateYearsBeforeCurrentDay(120);
+           $dateEighteenYearsAgo = $this->calculateDateYearsBeforeCurrentDay(18); 
+           array_push($this->rules['birth_date'], "after:$earliestDate");
+           array_push($this->rules['birth_date'], "before:$dateEighteenYearsAgo");
+        }
+            
         return $modifiedData;
     }
 

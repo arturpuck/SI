@@ -6,10 +6,10 @@
   	<div class="request-text">
   		{{$description}}
   	</div>
-  	<div @isset($vueHookID) ref="label_ref_{{$vueHookID}}" @endisset class="flex-container @if($errors->has($name)) input-with-error @endif">
+  	<div @isset($vueHookID) ref="label_ref_{{$vueHookID}}" @endisset class="flex-container @if(isset($showError) and $showError) input-with-error @elseif(isset($showConfirmation) and $showConfirmation) input-correct-value @endif">
       @isset($verificationIcons)
-         @include('components.icons.icon_confirmation', ['vueHookID' => $vueHookID, 'show' => false])
-         @include('components.icons.icon_error', ['vueHookID' => $vueHookID, 'show' => $errors->has($name)])
+         @include('components.icons.icon_confirmation', ['vueHookID' => $vueHookID, 'showIconConfirmation' => isset($showConfirmation) ? $showConfirmation : false])
+         @include('components.icons.icon_error', ['vueHookID' => $vueHookID, 'showIconError' => isset($showError) ? $showError : false])
    @endisset
   		<div class="time-span-container">
   			<label for="data-picker-polish-day" class="time-span-label">Dzień</label>

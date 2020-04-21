@@ -22,19 +22,19 @@
 		@csrf
 		<div class="form-description">Aby skontaktować się z obsługą prosimy o skorzystanie z poniższego formularza.</div>
 		<div class="icon-wraper">
-		   @include('components.icons.icon_error', ['show' => $errors->has('email')])
-		   @single_line_labeled_text_input(['description' => "Email :", "name" => "email", "type" => "email", 'placeholder' => 'niewymagany'])
+		   @include('components.icons.icon_error', ['showIconError' => $errors->has('email')])
+		   @single_line_labeled_text_input(['description' => "Email :", "name" => "email", "type" => "email", 'placeholder' => 'niewymagany', 'initialValue' => old('email') ? old('email') : '', 'showConfirmation' => ($errors->any() and !$errors->has('email')), 'showError' => $errors->has('email')])
 		   @endsingle_line_labeled_text_input
 		</div>
 		<div class="icon-wraper">
-		  @include('components.icons.icon_error', ['show' => $errors->has('subject')])
-		  @single_line_labeled_text_input(['description' => "Temat :", "name" => "subject", "type" => "text", 'placeholder' => 'niewymagany : 0-40 znaków'])
+		  @include('components.icons.icon_error', ['showIconError' => $errors->has('subject')])
+		  @single_line_labeled_text_input(['description' => "Temat :", "name" => "subject", "type" => "text", 'placeholder' => 'niewymagany : 0-40 znaków', 'initialValue' => old('subject') ? old('subject') : '', 'showConfirmation' => ($errors->any() and !$errors->has('subject')), 'showError' => $errors->has('subject')])
 		  @endsingle_line_labeled_text_input
 		</div>
 		
 		<label for="user-message" class="message-label">Treść wiadomości</label>
 		<div class="icon-wraper">
-			 @include('components.icons.icon_error', ['show' => $errors->has('message')])
+			 @include('components.icons.icon_error', ['showIconError' => $errors->has('message')])
 		<textarea min="3" max="1000" placeholder="wymagana : 3 - 1000 znaków" max="1000" required id="user-message" name="message" rows="10" class="user-message @error('message') input-with-error @enderror">{{old('message') ? old('message') : ''}}</textarea>
 		</div>
 		<input type="submit" class="submit-button" value="Wyślij">

@@ -51,22 +51,22 @@
 				<form ref="register_panel" method="POST" action="/register" class="main-panel-form register-form @if(!$errors->any() or old('login_panel_selected')) hidden-section-element @endif">
 					@csrf
                     <input type="hidden" name="register_panel_selected" value="1" >
-				    @single_line_labeled_text_input(['description' => "Login :", "name" => "registration_login", "type" => "text", 'vueHookID' => 'registrationLogin', 'verificationIcons' => true, 'errorMessageBox' => true])
+				    @single_line_labeled_text_input(['description' => "Login :", "name" => "registration_login", "type" => "text", 'vueHookID' => 'registrationLogin', 'verificationIcons' => true, 'errorMessageBox' => true, 'initialValue' => old('registration_login') ? old('registration_login') : '', 'showConfirmation' => ($errors->any() and !$errors->has('registration_login') and old('register_panel_selected')), 'showError' => $errors->has('registration_login') ])
 				    @endsingle_line_labeled_text_input
 
-				    @single_line_labeled_text_input(['description' => "Email :", "name" => "registration_email", "type" => "email", 'vueHookID' => 'email', 'verificationIcons' => true, 'errorMessageBox' => true])
+				    @single_line_labeled_text_input(['description' => "Email :", "name" => "registration_email", "type" => "email", 'vueHookID' => 'email', 'verificationIcons' => true, 'errorMessageBox' => true, 'initialValue' => old('registration_email') ? old('registration_email') : '', 'showConfirmation' => ($errors->any() and !$errors->has('registration_email') and old('register_panel_selected')), 'showError' => $errors->has('registration_email')])
 				    @endsingle_line_labeled_text_input
 				    
-                   	 @single_line_labeled_text_input(['description' => "Hasło :", "name" => "registration_password", "type" => "password", 'vueHookID' => 'registrationPassword','verificationIcons' => true, 'errorMessageBox' => true])
+                   	 @single_line_labeled_text_input(['description' => "Hasło :", "name" => "registration_password", "type" => "password", 'vueHookID' => 'registrationPassword','verificationIcons' => true, 'errorMessageBox' => true, 'initialValue' => old('registration_password') ? old('registration_password') : '', 'showConfirmation' => ($errors->any() and !$errors->has('registration_password') and old('register_panel_selected')), 'showError' => $errors->has('registration_password')])
 				    @endsingle_line_labeled_text_input
 
-				    @described_select(['description' => 'Jestem :', 'name' => 'user_type','options' => ['--wybierz--','mężczyzną', 'kobietą', 'parą', 'hermafrodytą', 'transseksualistą', 'nie chcę podać'], 'verificationIcons' => true, 'vueHookID' => 'userType', 'errorMessageBox' => true])
+				    @described_select(['description' => 'Jestem :', 'name' => 'user_type','options' => ['--wybierz--','mężczyzną', 'kobietą', 'parą', 'hermafrodytą', 'transseksualistą', 'nie chcę podać'], 'verificationIcons' => true, 'vueHookID' => 'userType', 'errorMessageBox' => true, 'showConfirmation' => ($errors->any() and !$errors->has('user_type') and old('register_panel_selected')), 'showError' => $errors->has('user_type')])
 				    @enddescribed_select
 
-				    @described_select(['description' => 'Orientacja :', 'name' => 'sexual_orientation', 'options' => ['--wybierz--','heteroseksualna', 'homoseksualna', 'biseksualna','autoseksualna', 'aseksualna','nie chcę podać'], 'verificationIcons' => true, 'vueHookID' => 'sexualOrientation', 'errorMessageBox' => true])
+				    @described_select(['description' => 'Orientacja :', 'name' => 'sexual_orientation', 'options' => ['--wybierz--','heteroseksualna', 'homoseksualna', 'biseksualna','autoseksualna', 'aseksualna','nie chcę podać'], 'verificationIcons' => true, 'vueHookID' => 'sexualOrientation', 'errorMessageBox' => true, 'showConfirmation' => ($errors->any() and !$errors->has('sexual_orientation') and old('register_panel_selected')), 'showError' => $errors->has('sexual_orientation')])
 				    @enddescribed_select
 
-				    @date_picker_polish(['description' => 'Data urodzenia', 'timespan' => 120, 'numberOfYearsBeforeCurrentYear' => 18, 'vueHookID' => 'birthDate' , 'verificationIcons' => true, 'errorMessageBox' => true, 'name' => 'birth_date'])
+				    @date_picker_polish(['description' => 'Data urodzenia', 'timespan' => 120, 'numberOfYearsBeforeCurrentYear' => 18, 'vueHookID' => 'birthDate' , 'verificationIcons' => true, 'errorMessageBox' => true, 'name' => 'birth_date', 'showConfirmation' => ($errors->any() and !$errors->has('birth_date') and old('register_panel_selected')), 'showError' => $errors->has('birth_date')])
 				    @enddate_picker_polish
 
 					@submit_button(['caption' => 'Zarejestruj'])
