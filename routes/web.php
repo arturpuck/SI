@@ -17,4 +17,8 @@ Route::get('/verify-email/{email}', 'AJAXEmailValidationController@checkIfEmailA
 Route::get('/kontakt', 'ContactFormController@showContactForm');
 Route::post('/kontakt', 'ContactFormController@sendMessageFromUser');
 Route::Auth();
-Route::get('/logout', 'Auth\LoginController@logout');
+Route::namespace('Auth')->group(function(){
+  Route::get('/logout', 'LoginController@logout');
+  Route::get('/potwierdzenie-zmiany-hasla', 'PasswordResetConfirmationController@showConfirmation' );
+});
+

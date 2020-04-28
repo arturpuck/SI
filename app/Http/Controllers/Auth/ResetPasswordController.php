@@ -7,6 +7,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
+use Illuminate\Auth\Events\PasswordReset;
 
 class ResetPasswordController extends Controller
 {
@@ -28,13 +30,36 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/potwierdzenie-zmiany-hasla';
 
     public function showResetForm(Request $request, $token = null)
     {
         return view('auth.password_reset_form')->with(
             ['token' => $token, 'email' => $request->email]
         );
+    }
+
+    protected function sendResetResponse(Request $request)
+    {
+        return redirect($this->redirectPath())
+                            ->with('email', $request->email);
+    }
+
+    protected function resetPassword($user, $password, $automaticLogin)
+    {
+        $this->setUserPassword($user, $password);
+
+        $user->setRememberToken(Str::random(60));
+
+        $user->save();
+
+        event(new PasswordReset($user));
+
+        if($automaticLogin)
+        {
+          $this->guard()->login($user);  
+        }
+        
     }
 
     public function reset(Request $request)
@@ -62,8 +87,8 @@ class ResetPasswordController extends Controller
         // will update the password on an actual user model and persist it to the
         // database. Otherwise we will parse the error and return the response.
         $response = $this->broker()->reset(
-            $this->credentials($request), function ($user, $password) {
-                $this->resetPassword($user, $password);
+            $this->credentials($request), function ($user, $password) use ($request) {
+                $this->resetPassword($user, $password, $request->has('log-me-in'));
             }
         );
 
@@ -71,7 +96,7 @@ class ResetPasswordController extends Controller
         // the application's home authenticated view. If there is an error we can
         // redirect them back to where they came from with their error message.
         return $response == Password::PASSWORD_RESET
-                    ? $this->sendResetResponse($request, $response)
+                    ? $this->sendResetResponse($request)
                     : $this->sendResetFailedResponse($request, $response);
     }
 

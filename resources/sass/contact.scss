@@ -3,19 +3,34 @@
 	box-sizing: border-box;
 }
 
+.user-message{
+	width:100%;
+	display:block;
+	border-radius:8px;
+	background:#242229;
+	color:white;
+	border:2px solid transparent;
+	resize:none;
+	color:white;
+	font:{
+		size: 17px;
+		family : 'Exo 2', sans-serif;
+	}
+	&:focus{
+		outline:none;
+		border:2px solid #6e0d1a;
+	}
+}
+
 @import 'components/footer'; 
 @import 'components/main_page_navbar';
 @import 'components/error_list';
 @import 'components/success_information';
 @import 'components/controls/single_line_labeled_text_input';
 @import 'components/controls/submit_button';
-@import 'components/icons/fixed_information_icons';
-@import 'components/icons/incorrect_value_icon';
-@import 'components/icons/fixed_information_icons';
-
 
 .single-line-text-input-label{
-	width:100%;
+	width:95%;
 }
 
 .icon-wraper{
@@ -49,25 +64,6 @@
 	box-shadow:2px 2px 3px 3px;
 	margin:40px auto 100px;
 	border:1px solid transparent;
-}
-
-.user-message{
-	width:100%;
-	display:block;
-	border-radius:8px;
-	background:#242229;
-	color:white;
-	border:2px solid transparent;
-	resize:none;
-	color:white;
-	font:{
-		size: 17px;
-		family : 'Exo 2', sans-serif;
-	}
-	&:focus{
-		outline:none;
-		border:2px solid #6e0d1a;
-	}
 }
 
 .form-description{

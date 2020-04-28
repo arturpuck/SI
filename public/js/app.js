@@ -31689,18 +31689,18 @@ new Vue({
       this.validateSelectedValue("sexualOrientation");
     },
     birthDateChange: function birthDateChange() {
-      function userIsAdult(userBirthDay, userBirthMonth, userBirthYear) {
-        userBirthDay = parseInt(userBirthDay);
-        userBirthMonth = parseInt(userBirthMonth);
-        userBirthYear = parseInt(userBirthYear);
+      function isDateBeforeGivenTimeSpan(day, month, year, timeSpan) {
+        day = parseInt(day);
+        month = parseInt(month);
+        year = parseInt(year);
+        timeSpan = parseInt(timeSpan);
         var currentDate = new Date();
         var currentMonth = currentDate.getMonth();
         var currentDay = currentDate.getDate();
         var currentYear = currentDate.getFullYear();
-        var yearEighteenYearsAgo = currentYear - 18;
-        var dateEighteenYearsAgo = new Date(yearEighteenYearsAgo, currentMonth, currentDay);
-        var userBirthDate = new Date(userBirthYear, userBirthMonth - 1, userBirthDay);
-        return userBirthDate.getTime() <= dateEighteenYearsAgo.getTime();
+        var dateTimeSpanAgo = new Date(currentYear - timeSpan, currentMonth, currentDay);
+        var examinedDate = new Date(year, month - 1, day);
+        return examinedDate.getTime() <= dateTimeSpanAgo.getTime();
       }
 
       var dayNumber = parseInt(this.$refs.day_ref_birthDate.value);
@@ -31732,8 +31732,12 @@ new Vue({
         }
 
         if (monthNumber !== 0 && year !== 0) {
-          if (userIsAdult(dayNumber, monthNumber, year)) {
-            this.showValueIsCorrect("birthDate");
+          if (isDateBeforeGivenTimeSpan(dayNumber, monthNumber, year, 18)) {
+            if (isDateBeforeGivenTimeSpan(dayNumber, monthNumber, year, 120)) {
+              this.showErrorMessage("birthDate", "Ludzie nie żyją dłużej niż 120 lat");
+            } else {
+              this.showValueIsCorrect("birthDate");
+            }
           } else {
             this.showErrorMessage("birthDate", "Musisz mieć ukończone 18 lat");
           }

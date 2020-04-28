@@ -210,24 +210,25 @@ var Vue = require('vue');
 
   birthDateChange()
   {
-      function userIsAdult(userBirthDay, userBirthMonth, userBirthYear)
+      
+      function isDateBeforeGivenTimeSpan(day, month, year, timeSpan)
       {
-          userBirthDay = parseInt(userBirthDay);
-          userBirthMonth = parseInt(userBirthMonth);
-          userBirthYear = parseInt(userBirthYear);
-          
+          day = parseInt(day);
+          month = parseInt(month);
+          year = parseInt(year);
+          timeSpan = parseInt(timeSpan);
+
           const currentDate = new Date();
           const currentMonth = currentDate.getMonth();
           const currentDay = currentDate.getDate();
           const currentYear = currentDate.getFullYear();
-          const yearEighteenYearsAgo = currentYear - 18;
-          const dateEighteenYearsAgo = new Date(yearEighteenYearsAgo, currentMonth, currentDay);
-          const userBirthDate = new Date(userBirthYear, userBirthMonth - 1, userBirthDay);
+          const dateTimeSpanAgo = new Date(currentYear - timeSpan, currentMonth, currentDay);
+          const examinedDate = new Date(year, month - 1, day);
         
-          return userBirthDate.getTime() <= dateEighteenYearsAgo.getTime();
+          return examinedDate.getTime() <= dateTimeSpanAgo.getTime();
       }
-     
-            
+
+      
            const dayNumber = parseInt(this.$refs.day_ref_birthDate.value);
            const monthNumber = parseInt(this.$refs.month_ref_birthDate.value);
 
@@ -267,15 +268,22 @@ var Vue = require('vue');
 
                if((monthNumber !== 0) && (year !== 0))
                {
-                  if(userIsAdult(dayNumber,monthNumber,year))
+                  if(isDateBeforeGivenTimeSpan(dayNumber,monthNumber,year,18))
                   {
-                    this.showValueIsCorrect("birthDate");
+                     if(isDateBeforeGivenTimeSpan(dayNumber,monthNumber,year,120))
+                     {
+                       this.showErrorMessage("birthDate", "Ludzie nie żyją dłużej niż 120 lat");
+                     }
+                     else
+                     {
+                       this.showValueIsCorrect("birthDate");
+                     }
                   }
                   else
                   {
                     this.showErrorMessage("birthDate", "Musisz mieć ukończone 18 lat");
                   }
-                  
+ 
                }
                else
                {

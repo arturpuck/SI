@@ -21,21 +21,18 @@
 	<form method="POST" class="contact-form">
 		@csrf
 		<div class="form-description">Aby skontaktować się z obsługą prosimy o skorzystanie z poniższego formularza.</div>
-		<div class="icon-wraper">
-		   @include('components.icons.icon_error', ['showIconError' => $errors->has('email')])
-		   @single_line_labeled_text_input(['description' => "Email :", "name" => "email", "type" => "email", 'placeholder' => 'niewymagany', 'initialValue' => old('email') ? old('email') : '', 'showConfirmation' => ($errors->any() and !$errors->has('email')), 'showError' => $errors->has('email')])
-		   @endsingle_line_labeled_text_input
-		</div>
-		<div class="icon-wraper">
-		  @include('components.icons.icon_error', ['showIconError' => $errors->has('subject')])
-		  @single_line_labeled_text_input(['description' => "Temat :", "name" => "subject", "type" => "text", 'placeholder' => 'niewymagany : 0-40 znaków', 'initialValue' => old('subject') ? old('subject') : '', 'showConfirmation' => ($errors->any() and !$errors->has('subject')), 'showError' => $errors->has('subject')])
-		  @endsingle_line_labeled_text_input
-		</div>
-		
+
+        @single_line_labeled_text_input(['description' => "Email :", "name" => "email", "type" => "email", 'verificationIcons' => true, 'initialValue' => old('email') ? old('email') : '', 'showConfirmation' => ($errors->any() and !$errors->has('email')), 'placeholder' => 'niewymagany', 'showError' => $errors->has('email')])
+		@endsingle_line_labeled_text_input
+
+		@single_line_labeled_text_input(['description' => "Temat :", "name" => "subject", "type" => "text", 'verificationIcons' => true, 'placeholder' => 'niewymagany', 'initialValue' => old('subject') ? old('subject') : '', 'showError' => $errors->has('subject'), 'showConfirmation' => ($errors->any() and !$errors->has('subject'))])
+		@endsingle_line_labeled_text_input
+
 		<label for="user-message" class="message-label">Treść wiadomości</label>
 		<div class="icon-wraper">
-			 @include('components.icons.icon_error', ['showIconError' => $errors->has('message')])
-		<textarea min="3" max="1000" placeholder="wymagana : 3 - 1000 znaków" max="1000" required id="user-message" name="message" rows="10" class="user-message @error('message') input-with-error @enderror">{{old('message') ? old('message') : ''}}</textarea>
+			 @includeWhen($errors->has('message'), 'components.icons.icon_error', ['showIconError' => true])
+			 @includeWhen($errors->any() and !$errors->has('message'), 'components.icons.icon_confirmation', ['showIconConfirmation' => true])
+		<textarea min="3" max="1000" placeholder="wymagana : 3 - 1000 znaków" max="1000" required id="user-message" name="message" rows="10" class="user-message @if($errors->has('message'))input-with-error @elseif($errors->any() and !$errors->has('message')) input-correct-value @endif">{{old('message') ? old('message') : ''}}</textarea>
 		</div>
 		<input type="submit" class="submit-button" value="Wyślij">
 	</form>
