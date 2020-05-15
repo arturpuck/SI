@@ -10,6 +10,6 @@ class PasswordResetConfirmationController extends Controller
 {
     public function showConfirmation(ShowPasswordResetConfirmationRequest $request)
     {
-    	return view('auth.password_reset_confirmation');
+    	return view('auth.password_reset_confirmation')->with('email', $request->email);
     }
 }

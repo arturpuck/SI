@@ -1,6 +1,7 @@
 require('./bootstrap');
 
 var Vue = require('vue');
+var navbar = require('./components/navbar');
  
   new Vue({
  el: '#main-panel',

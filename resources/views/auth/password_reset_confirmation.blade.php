@@ -6,7 +6,7 @@
 	<meta name="description" content="Potwierdzenie zresetowania hasła">
 	<meta name="author" content="Neuro-Boost">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="{{asset('css/password_reset.css')}}">
+	<link rel="stylesheet" href="{{asset('css/password_reset_confirmation.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Oxanium|Aldrich|Exo+2&display=swap" rel="stylesheet">
 </head>
 <body class="full-body">
@@ -14,14 +14,16 @@
 	@endmain_page_navbar
     
     <div class="user-notification">
-       <div>Poprawnie zresetowano hasło dla użytkownika korzystającego z następującego adresu email : {{$email}}
+      
+       <div class="notification-line">Poprawnie zresetowano hasło dla użytkownika korzystającego z następującego adresu email : <span class="user-email">{{Session::get('email')}}</span>
        </div>
-      <div>
+       @include('components.icons.icon_confirmation', ['showIconConfirmation' => true ])
+      <div class="notification-line">
       	@if(Auth::check())
-            Jesteś zalogowany. Przejście do strony głównej
-    	@else
-            Możesz się zalogować lub przejść do strony głównej
-    	@endif
+            Jesteś zalogowany. <a href="/" class="leave-confirmation-link">Przejście do strony głównej</a>
+    	  @else
+            Możesz się <a href="/logowanie" class="leave-confirmation-link">zalogować</a> lub przejść do <a href="/" class="leave-confirmation-link">strony głównej</a>
+    	  @endif
       </div>
     </div>
 

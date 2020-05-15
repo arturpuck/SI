@@ -31544,6 +31544,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 var Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
+var navbar = __webpack_require__(/*! ./components/navbar */ "./resources/js/components/navbar.js");
+
 new Vue({
   el: '#main-panel',
   data: {},
@@ -31783,10 +31785,45 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/components/navbar.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/navbar.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+module.exports = new Vue({
+  el: '#navbar',
+  data: {},
+  methods: {
+    showPornMenu: function showPornMenu() {
+      var pornMenuSubList = document.getElementById("porn-sub-menu-list");
+      pornMenuSubList.style.borderBottom = "1px solid #5c060d";
+      pornMenuSubList.style.boxShadow = "2px 2px 2px 2px black";
+      pornMenuSubList.style.maxHeight = "700px";
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/sass/auth/password_reset.scss":
 /*!*************************************************!*\
   !*** ./resources/sass/auth/password_reset.scss ***!
   \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/auth/password_reset_confirmation.scss":
+/*!**************************************************************!*\
+  !*** ./resources/sass/auth/password_reset_confirmation.scss ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -31817,16 +31854,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ }),
 
 /***/ 0:
-/*!***************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/mainpage/mainpage.scss ./resources/sass/contact.scss ./resources/sass/auth/password_reset.scss ***!
-  \***************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/mainpage/mainpage.scss ./resources/sass/contact.scss ./resources/sass/auth/password_reset.scss ./resources/sass/auth/password_reset_confirmation.scss ***!
+  \**********************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\wamp64\www\sex-imperium\resources\js\app.js */"./resources/js/app.js");
 __webpack_require__(/*! C:\wamp64\www\sex-imperium\resources\sass\mainpage\mainpage.scss */"./resources/sass/mainpage/mainpage.scss");
 __webpack_require__(/*! C:\wamp64\www\sex-imperium\resources\sass\contact.scss */"./resources/sass/contact.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\sex-imperium\resources\sass\auth\password_reset.scss */"./resources/sass/auth/password_reset.scss");
+__webpack_require__(/*! C:\wamp64\www\sex-imperium\resources\sass\auth\password_reset.scss */"./resources/sass/auth/password_reset.scss");
+module.exports = __webpack_require__(/*! C:\wamp64\www\sex-imperium\resources\sass\auth\password_reset_confirmation.scss */"./resources/sass/auth/password_reset_confirmation.scss");
 
 
 /***/ })

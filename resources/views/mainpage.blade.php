@@ -8,11 +8,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{{asset('css/mainpage.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Exo+2|Aldrich|Oxanium&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
 </head>
 <body class="full-body">
 
-	@main_page_navbar(['navigationItems' => [['Porno','porno'],['Prostytucja','prostytucja'], ['Randki', 'randki']]])
-	@endmain_page_navbar
+	@navbar
+	@endnavbar
 
 	<div class="mainpage-background mainpage-background-number-{{$randomImageNumber}}">
 		 @error_list

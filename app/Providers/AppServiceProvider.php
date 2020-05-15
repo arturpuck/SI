@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         
-        \Blade::component('components.main_page_navbar', 'main_page_navbar');
+        \Blade::component('components.navbar', 'navbar');
         \Blade::component('components.footer', 'footer');
         \Blade::component('components.controls.nicecheckbox', 'nicecheckbox');
         \Blade::component('components.controls.single_line_labeled_text_input', 'single_line_labeled_text_input');

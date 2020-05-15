@@ -32,6 +32,11 @@ class ResetPasswordController extends Controller
      */
     protected $redirectTo = '/potwierdzenie-zmiany-hasla';
 
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
     public function showResetForm(Request $request, $token = null)
     {
         return view('auth.password_reset_form')->with(
@@ -42,7 +47,7 @@ class ResetPasswordController extends Controller
     protected function sendResetResponse(Request $request)
     {
         return redirect($this->redirectPath())
-                            ->with('email', $request->email);
+                            ->with(['email' => $request->email, 'showPasswordResetConfirmation' => true]);
     }
 
     protected function resetPassword($user, $password, $automaticLogin)
@@ -71,7 +76,7 @@ class ResetPasswordController extends Controller
         ];
 
         $errorMessages = [
-           'token.required' => 'Brak tokena, prosimy spróbować ponownie',
+           'token.required' => 'Brak tokena, upewnij się, że kliknąłeś w poprawny link.',
            'email.required' => 'Nie podano adresu email',
            'email.email' => 'Wprowadzony adres email ma niewłaściwy format',
            'email.exists' => 'Wprowadzony adres email nie istnieje',

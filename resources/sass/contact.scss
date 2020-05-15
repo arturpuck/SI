@@ -51,7 +51,6 @@
 	background{
 		size:cover;
 		attachment:fixed;
-		image: url('../images/decoration/contact/background.jpg');
 	}
 	
 }
@@ -97,7 +96,15 @@
 @media (min-width: 700px) and (max-width: 1200px)
 {
   .full-body{
-  	background-image: url('../images/decoration/contact/background.jpg');
+  	background-image: url('../images/decoration/contact/compressed/background-min-1.jpg');
+  }
+  
+}
+
+@media (max-width: 699px)
+{
+  .full-body{
+  	background-image: url('../images/decoration/contact/background-1.jpg');
   }
   
 }

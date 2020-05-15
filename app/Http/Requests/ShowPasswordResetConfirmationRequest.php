@@ -12,15 +12,20 @@ class ShowPasswordResetConfirmationRequest extends FormRequest
      * @return bool
      */
 
+    public function authorize()
+    {
+        return \Session::has('email') and \Session::has('showPasswordResetConfirmation');
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
+
     public function rules()
     {
-        return [
-            'email' => ['required', 'exists:users', 'email']
-        ];
+        return [];
     }
+   
 }
