@@ -20,24 +20,32 @@
               
 		</li>
 	</ul>
-	<ul :class="pornSubMenuIsVisible ? 'visible-porn-sub-menu' : 'hidden-porn-sub-menu'" id="porn-sub-menu-list" class="sub-menu-list porn-sub-menu-list">
+	<ul :class="[pornSubMenuIsVisible ? 'visible-porn-sub-menu' : 'hidden-porn-sub-menu',  pornSubMenuHasShadow ?  'sub-menu-with-shadow' : 'sub-menu-no-shadow']" id="porn-sub-menu-list" class="sub-menu-list porn-sub-menu-list">
 		<li class="sub-menu-list-element intendation-first-level">
-			<div v-on:click="toggleMoviesSubMenu" v-on:mouseover="showMoviesSubMenu" class="sub-menu-level-one-item">
+			<div v-on:click="toggleMoviesSubMenu" class="sub-menu-level-one-item">
 				<span v-show="!moviesSubMenuIsVisible" class="fas navbar-icon navbar-icon-sub-menu fa-film"></span>
 				<span v-show="moviesSubMenuIsVisible" class="fas navbar-icon navbar-icon-sub-menu fa-arrow-up"></span>
 				     Filmy
-				 
 			</div>
 		</li>
 		<li>
 			<ul class="sub-menu-list-nested-level-two" :class="moviesSubMenuIsVisible && pornSubMenuIsVisible ? 'visible-movies-sub-menu' : 'hidden-movies-sub-menu'">
+					
 					<li class="sub-menu-list-element-intendation-second-level">
-						<span class="fas navbar-icon navbar-icon-sub-menu fa-search"></span>Wyszukiwanie zaawansowane
-			            
+						<span class="fas navbar-icon navbar-icon-sub-menu fa-images"></span>
+						Kategorie
 					</li>
 					<li class="sub-menu-list-element-intendation-second-level">
-						<span class="fas navbar-icon navbar-icon-sub-menu fa-images"></span>Kategorie
-			            
+						<span class="fas navbar-icon navbar-icon-sub-menu fa-folder-plus"></span>
+						Najnowsze
+					</li>
+					<li class="sub-menu-list-element-intendation-second-level">
+						<span class="fas navbar-icon navbar-icon-sub-menu fa-grin"></span>
+						Najpopularniejsze
+					</li>
+					<li class="sub-menu-list-element-intendation-second-level">
+						<span class="fas navbar-icon navbar-icon-sub-menu fa-search"></span>
+						Wyszukiwanie zaawansowane
 					</li>
 			  </ul>
 			  </li>
@@ -60,6 +68,7 @@
 		 	return {
 		 		pornSubMenuIsVisible : false,
 		 		moviesSubMenuIsVisible : false,
+		 		pornSubMenuHasShadow : false
 		 	};
  		},
 
@@ -73,6 +82,15 @@
 		   {
 		      this.pornSubMenuIsVisible = !this.pornSubMenuIsVisible;
 		      this.hideAllSecondLevelSubMenus();
+
+		      if(this.pornSubMenuIsVisible)
+		      {
+		      	 this.pornSubMenuHasShadow = true;
+		      }
+		      else
+		      {
+		      	setTimeout(() => this.pornSubMenuHasShadow = false,1400);
+		      }
 		   },
 
 		   toggleMoviesSubMenu()
@@ -80,20 +98,19 @@
 		      this.moviesSubMenuIsVisible = !this.moviesSubMenuIsVisible;
 		   },
 
-		   showMoviesSubMenu()
-		   {
-		   	 this.moviesSubMenuIsVisible = true;
-		   },
-
 		   showPornSubMenu()
 		   {
 		   	 this.pornSubMenuIsVisible = true;
+		   	 this.pornSubMenuHasShadow = true;
 		   },
 
 		   resetAll()
 		   {
 		   	  this.pornSubMenuIsVisible = false;
 		   	  this.hideAllSecondLevelSubMenus();
+		   	  setTimeout(() => {
+                this.pornSubMenuHasShadow = false;
+		      },1400);
 		   }
             
         }
@@ -139,7 +156,8 @@
     position: fixed;
     width: 100%;
     top:0;
-    z-index:1
+    z-index:1;
+    font-size:0;
 }
 
 $border-color: black;
@@ -171,12 +189,18 @@ $border-color: black;
 
 .hidden-porn-sub-menu{
 	max-height:0;
-	box-shadow: none;
 }
 
 .visible-porn-sub-menu{
 	max-height:1500px;
-	box-shadow: 2px 2px 4px 3px black;
+}
+
+.sub-menu-no-shadow{
+	box-shadow:none;
+}
+
+.sub-menu-with-shadow{
+   box-shadow: 2px 2px 4px 3px black;
 }
 
 .sub-menu-list-element

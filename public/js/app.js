@@ -1962,13 +1962,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'navbar',
   props: ['userIsLogedIn', 'userID'],
   data: function data() {
     return {
       pornSubMenuIsVisible: false,
-      moviesSubMenuIsVisible: false
+      moviesSubMenuIsVisible: false,
+      pornSubMenuHasShadow: false
     };
   },
   methods: {
@@ -1976,21 +1985,34 @@ __webpack_require__.r(__webpack_exports__);
       this.moviesSubMenuIsVisible = false;
     },
     togglePornSubMenu: function togglePornSubMenu() {
+      var _this = this;
+
       this.pornSubMenuIsVisible = !this.pornSubMenuIsVisible;
       this.hideAllSecondLevelSubMenus();
+
+      if (this.pornSubMenuIsVisible) {
+        this.pornSubMenuHasShadow = true;
+      } else {
+        setTimeout(function () {
+          return _this.pornSubMenuHasShadow = false;
+        }, 1400);
+      }
     },
     toggleMoviesSubMenu: function toggleMoviesSubMenu() {
       this.moviesSubMenuIsVisible = !this.moviesSubMenuIsVisible;
     },
-    showMoviesSubMenu: function showMoviesSubMenu() {
-      this.moviesSubMenuIsVisible = true;
-    },
     showPornSubMenu: function showPornSubMenu() {
       this.pornSubMenuIsVisible = true;
+      this.pornSubMenuHasShadow = true;
     },
     resetAll: function resetAll() {
+      var _this2 = this;
+
       this.pornSubMenuIsVisible = false;
       this.hideAllSecondLevelSubMenus();
+      setTimeout(function () {
+        _this2.pornSubMenuHasShadow = false;
+      }, 1400);
     }
   }
 });
@@ -2009,7 +2031,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".navigation-list {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  background: #0d0c0d;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  position: relative;\n  z-index: 3;\n  box-shadow: 2px 2px 2px 2px black;\n}\n.register-selection {\n  margin-left: auto;\n}\n.navigation-element {\n  -webkit-transition: background 2s;\n  transition: background 2s;\n  cursor: pointer;\n  color: white;\n  display: inline-block;\n  line-height: 100%;\n  padding: 6px;\n  font-family: \"Oxanium\";\n  font-size: 1.5vw;\n}\n.navigation-element:hover {\n  background: #2d2d30;\n}\n.main-page-navigation {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1;\n}\n.sub-menu-list {\n  position: relative;\n  overflow: hidden;\n  display: inline-block;\n  top: 1px;\n  max-height: 0;\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n  padding: 0;\n  list-style-type: none;\n  margin: 0;\n  font-family: \"Oxanium\";\n  font-size: 1.5vw;\n  color: white;\n  max-width: 30%;\n  min-width: 150px;\n  z-index: 1;\n  border-radius: 0 0 8px 8px;\n}\n.porn-sub-menu-list {\n  left: 1vw;\n}\n.hidden-porn-sub-menu {\n  max-height: 0;\n  box-shadow: none;\n}\n.visible-porn-sub-menu {\n  max-height: 1500px;\n  box-shadow: 2px 2px 4px 3px black;\n}\n.sub-menu-list-element {\n  background: #202120;\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n  border-bottom: 1px solid black;\n  cursor: pointer;\n}\n.sub-menu-list-nested-level-two {\n  list-style-type: none;\n  overflow: hidden;\n  padding: 0;\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n}\n.sub-menu-list-element-intendation-second-level {\n  padding: 5px 2px 5px 2vw;\n  border-bottom: 1px solid black;\n  background: -webkit-gradient(linear, left top, right top, from(#2b2a2a), to(#4c4c52));\n  background: linear-gradient(to right, #2b2a2a, #4c4c52);\n}\n.sub-menu-list-element-intendation-second-level:hover {\n  background: black;\n  cursor: pointer;\n}\n.visible-movies-sub-menu {\n  max-height: 500px;\n}\n.hidden-movies-sub-menu {\n  max-height: 0;\n}\n.sub-menu-level-one-item {\n  padding: 5px 2px 5px 1vw;\n}\n.sub-menu-level-one-item:hover {\n  background: black;\n}\n.sum-menu-list-element:last-child {\n  border-radius: 0 0 8px 8px;\n}\n.navbar-icon {\n  margin: 0 5px;\n  color: #eb091c;\n}\n.navbar-icon-sub-menu {\n  -webkit-transition: color 1s;\n  transition: color 1s;\n}\n.sub-menu-level-one-item:hover .navbar-icon-sub-menu, .sub-menu-list-element-intendation-second-level:hover .navbar-icon-sub-menu {\n  color: #27ba11;\n}\n@media (min-width: 620px) and (max-width: 1000px) {\n.navigation-element {\n    font-size: 2.2vw;\n}\n}\n@media (max-width: 619px) {\n.navigation-element {\n    font-size: 3.9vw;\n}\n}", ""]);
+exports.push([module.i, ".navigation-list {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  background: #0d0c0d;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  position: relative;\n  z-index: 3;\n  box-shadow: 2px 2px 2px 2px black;\n}\n.register-selection {\n  margin-left: auto;\n}\n.navigation-element {\n  -webkit-transition: background 2s;\n  transition: background 2s;\n  cursor: pointer;\n  color: white;\n  display: inline-block;\n  line-height: 100%;\n  padding: 6px;\n  font-family: \"Oxanium\";\n  font-size: 1.5vw;\n}\n.navigation-element:hover {\n  background: #2d2d30;\n}\n.main-page-navigation {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1;\n  font-size: 0;\n}\n.sub-menu-list {\n  position: relative;\n  overflow: hidden;\n  display: inline-block;\n  top: 1px;\n  max-height: 0;\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n  padding: 0;\n  list-style-type: none;\n  margin: 0;\n  font-family: \"Oxanium\";\n  font-size: 1.5vw;\n  color: white;\n  max-width: 30%;\n  min-width: 150px;\n  z-index: 1;\n  border-radius: 0 0 8px 8px;\n}\n.porn-sub-menu-list {\n  left: 1vw;\n}\n.hidden-porn-sub-menu {\n  max-height: 0;\n}\n.visible-porn-sub-menu {\n  max-height: 1500px;\n}\n.sub-menu-no-shadow {\n  box-shadow: none;\n}\n.sub-menu-with-shadow {\n  box-shadow: 2px 2px 4px 3px black;\n}\n.sub-menu-list-element {\n  background: #202120;\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n  border-bottom: 1px solid black;\n  cursor: pointer;\n}\n.sub-menu-list-nested-level-two {\n  list-style-type: none;\n  overflow: hidden;\n  padding: 0;\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n}\n.sub-menu-list-element-intendation-second-level {\n  padding: 5px 2px 5px 2vw;\n  border-bottom: 1px solid black;\n  background: -webkit-gradient(linear, left top, right top, from(#2b2a2a), to(#4c4c52));\n  background: linear-gradient(to right, #2b2a2a, #4c4c52);\n}\n.sub-menu-list-element-intendation-second-level:hover {\n  background: black;\n  cursor: pointer;\n}\n.visible-movies-sub-menu {\n  max-height: 500px;\n}\n.hidden-movies-sub-menu {\n  max-height: 0;\n}\n.sub-menu-level-one-item {\n  padding: 5px 2px 5px 1vw;\n}\n.sub-menu-level-one-item:hover {\n  background: black;\n}\n.sum-menu-list-element:last-child {\n  border-radius: 0 0 8px 8px;\n}\n.navbar-icon {\n  margin: 0 5px;\n  color: #eb091c;\n}\n.navbar-icon-sub-menu {\n  -webkit-transition: color 1s;\n  transition: color 1s;\n}\n.sub-menu-level-one-item:hover .navbar-icon-sub-menu, .sub-menu-list-element-intendation-second-level:hover .navbar-icon-sub-menu {\n  color: #27ba11;\n}\n@media (min-width: 620px) and (max-width: 1000px) {\n.navigation-element {\n    font-size: 2.2vw;\n}\n}\n@media (max-width: 619px) {\n.navigation-element {\n    font-size: 3.9vw;\n}\n}", ""]);
 
 // exports
 
@@ -20295,9 +20317,14 @@ var render = function() {
         "ul",
         {
           staticClass: "sub-menu-list porn-sub-menu-list",
-          class: _vm.pornSubMenuIsVisible
-            ? "visible-porn-sub-menu"
-            : "hidden-porn-sub-menu",
+          class: [
+            _vm.pornSubMenuIsVisible
+              ? "visible-porn-sub-menu"
+              : "hidden-porn-sub-menu",
+            _vm.pornSubMenuHasShadow
+              ? "sub-menu-with-shadow"
+              : "sub-menu-no-shadow"
+          ],
           attrs: { id: "porn-sub-menu-list" }
         },
         [
@@ -20309,10 +20336,7 @@ var render = function() {
                 "div",
                 {
                   staticClass: "sub-menu-level-one-item",
-                  on: {
-                    click: _vm.toggleMoviesSubMenu,
-                    mouseover: _vm.showMoviesSubMenu
-                  }
+                  on: { click: _vm.toggleMoviesSubMenu }
                 },
                 [
                   _c("span", {
@@ -20339,7 +20363,7 @@ var render = function() {
                     staticClass:
                       "fas navbar-icon navbar-icon-sub-menu fa-arrow-up"
                   }),
-                  _vm._v("\r\n\t\t\t\t     Filmy\r\n\t\t\t\t \r\n\t\t\t")
+                  _vm._v("\r\n\t\t\t\t     Filmy\r\n\t\t\t")
                 ]
               )
             ]
@@ -20355,11 +20379,19 @@ var render = function() {
                     ? "visible-movies-sub-menu"
                     : "hidden-movies-sub-menu"
               },
-              [_vm._m(3), _vm._v(" "), _vm._m(4)]
+              [
+                _vm._m(3),
+                _vm._v(" "),
+                _vm._m(4),
+                _vm._v(" "),
+                _vm._m(5),
+                _vm._v(" "),
+                _vm._m(6)
+              ]
             )
           ]),
           _vm._v(" "),
-          _vm._m(5)
+          _vm._m(7)
         ]
       )
     ]
@@ -20402,9 +20434,9 @@ var staticRenderFns = [
       { staticClass: "sub-menu-list-element-intendation-second-level" },
       [
         _c("span", {
-          staticClass: "fas navbar-icon navbar-icon-sub-menu fa-search"
+          staticClass: "fas navbar-icon navbar-icon-sub-menu fa-images"
         }),
-        _vm._v("Wyszukiwanie zaawansowane\r\n\t\t\t            \r\n\t\t\t\t\t")
+        _vm._v("\r\n\t\t\t\t\t\tKategorie\r\n\t\t\t\t\t")
       ]
     )
   },
@@ -20417,9 +20449,39 @@ var staticRenderFns = [
       { staticClass: "sub-menu-list-element-intendation-second-level" },
       [
         _c("span", {
-          staticClass: "fas navbar-icon navbar-icon-sub-menu fa-images"
+          staticClass: "fas navbar-icon navbar-icon-sub-menu fa-folder-plus"
         }),
-        _vm._v("Kategorie\r\n\t\t\t            \r\n\t\t\t\t\t")
+        _vm._v("\r\n\t\t\t\t\t\tNajnowsze\r\n\t\t\t\t\t")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "li",
+      { staticClass: "sub-menu-list-element-intendation-second-level" },
+      [
+        _c("span", {
+          staticClass: "fas navbar-icon navbar-icon-sub-menu fa-grin"
+        }),
+        _vm._v("\r\n\t\t\t\t\t\tNajpopularniejsze\r\n\t\t\t\t\t")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "li",
+      { staticClass: "sub-menu-list-element-intendation-second-level" },
+      [
+        _c("span", {
+          staticClass: "fas navbar-icon navbar-icon-sub-menu fa-search"
+        }),
+        _vm._v("\r\n\t\t\t\t\t\tWyszukiwanie zaawansowane\r\n\t\t\t\t\t")
       ]
     )
   },

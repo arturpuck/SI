@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{{asset('css/mainpage.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Exo+2|Aldrich|Oxanium&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+	<script src="https://kit.fontawesome.com/df4e1e2dba.js" crossorigin="anonymous"></script>
 </head>
 <body  class="full-body">
 <div id="app">
