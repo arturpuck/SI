@@ -10,10 +10,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Exo+2|Aldrich|Oxanium&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
 </head>
-<body class="full-body">
-
-	@navbar
-	@endnavbar
+<body  class="full-body">
+<div id="app">
+     <navbar></navbar>
+	
 
 	<div class="mainpage-background mainpage-background-number-{{$randomImageNumber}}">
 		 @error_list
@@ -104,6 +104,7 @@
 		@endfooter
 	</div>
 	
+	</div>
 	<script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>

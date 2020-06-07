@@ -1,10 +1,10 @@
 require('./bootstrap');
+import Vue from 'vue';
+import Navbar  from './components/navbar.vue';
+Vue.component('navbar', Navbar);
 
-var Vue = require('vue');
-var navbar = require('./components/navbar');
- 
   new Vue({
- el: '#main-panel',
+ el: '#app',
 
  data : {
     

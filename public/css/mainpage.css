@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
   box-sizing: border-box;
 }
@@ -19,112 +18,11 @@
   color: white;
   margin: 0 18px;
 }
+
 .contact-us-link:hover {
   text-decoration: underline;
 }
 
-.navigation-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: -webkit-box;
-  display: flex;
-  background: #0d0c0d;
-  -webkit-box-align: stretch;
-          align-items: stretch;
-}
-
-.register-selection {
-  margin-left: auto;
-}
-
-.navigation-element {
-  -webkit-transition: background 2s;
-  transition: background 2s;
-  cursor: pointer;
-  color: white;
-  display: inline-block;
-  line-height: 100%;
-  padding: 6px;
-  font-family: "Oxanium";
-  font-size: 1.5vw;
-}
-.navigation-element:hover {
-  background: #2d2d30;
-}
-
-.main-page-navigation {
-  box-shadow: 2px 2px 2px 2px black;
-  position: relative;
-  z-index: 6;
-  position: fixed;
-  width: 100%;
-}
-
-.sub-menu-container {
-  position: relative;
-  font-size: 0;
-}
-
-.sub-menu-list {
-  position: absolute;
-  overflow: hidden;
-  display: block;
-  top: 0;
-  max-height: 0;
-  -webkit-transition: max-height 1s;
-  transition: max-height 1s;
-  padding: 0;
-  list-style-type: none;
-  margin: 0;
-  font-family: "Oxanium";
-  font-size: 1.5vw;
-  color: white;
-  width: 90%;
-  top: 0;
-  left: 5%;
-  border-radius: 0 0 8px 8px;
-  border-left: 1px solid #5c060d;
-  border-right: 1px solid #5c060d;
-  box-shadow: 2px 2px 2px 2px black;
-}
-
-.sub-menu-list-element {
-  padding: 5px 0 5px 5vw;
-  cursor: pointer;
-}
-
-.sub-menu-list-element:nth-child(odd) {
-  background: #0d0c0d;
-}
-
-.sub-menu-list-element:nth-child(even) {
-  background: black;
-}
-
-.sub-menu-list-element:hover {
-  opacity: 0.95;
-}
-
-.sum-menu-list-element:last-child {
-  border-radius: 0 0 8px 8px;
-}
-
-.navbar-icon {
-  margin: 0 3px;
-  color: #eb091c;
-}
-
-@media (min-width: 620px) and (max-width: 1000px) {
-  .navigation-element {
-    font-size: 2.2vw;
-  }
-}
-@media (max-width: 619px) {
-  .navigation-element {
-    font-size: 3.9vw;
-  }
-}
 .nice-checkbox {
   opacity: 0;
 }
@@ -133,6 +31,7 @@
   position: relative;
   padding: 0 8px;
 }
+
 .checkbox-description:before {
   content: "";
   display: inline-block;
@@ -146,6 +45,7 @@
   border-radius: 3px;
   z-index: 1;
 }
+
 .checkbox-description:after {
   content: "";
   display: inline-block;
@@ -415,7 +315,7 @@
 .information-container {
   margin: 25px auto;
   text-align: center;
-  font-family: "Exo 2", sans-serif;
+  font-family: 'Exo 2', sans-serif;
   border-radius: 6px;
   color: white;
   display: table;
@@ -435,7 +335,7 @@
 }
 
 .error-list-element:before {
-  content: " \25CF";
+  content: ' \25CF   ';
   margin: 0 5px;
 }
 
@@ -569,7 +469,7 @@
   width: 50%;
   border: none;
   cursor: pointer;
-  font-family: "Exo 2";
+  font-family: 'Exo 2';
   font-weight: bold;
   font-size: 18px;
 }
@@ -619,6 +519,7 @@
   font-size: 18px;
   padding: 2px;
 }
+
 .main-panel-input:focus {
   border: 2px solid #078a07;
 }
@@ -632,6 +533,7 @@
   font-family: "Exo 2", sans-serif;
   font-size: 17px;
 }
+
 .forgot-password-link:hover {
   text-decoration: underline;
 }
@@ -648,11 +550,11 @@
     width: 95%;
     margin: 50px 10px;
   }
-
   .main-panel-without-top-margin {
     margin-top: 0;
   }
 }
+
 @media (max-width: 529px) {
   .main-panel {
     -webkit-box-orient: vertical;
@@ -661,21 +563,17 @@
     min-width: 300px;
     max-width: 400px;
   }
-
   .main-panel-without-top-margin {
     margin-top: 0;
   }
-
   .login-or-register-panel {
     min-width: 0;
     width: 100%;
     border-bottom: 2px solid white;
   }
-
   .main-panel-form {
     border-right: none;
   }
-
   .welcome-user {
     max-height: none;
   }
