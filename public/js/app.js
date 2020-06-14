@@ -1969,7 +1969,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'navbar',
   props: ['userIsLogedIn', 'userID'],
@@ -1994,7 +1993,9 @@ __webpack_require__.r(__webpack_exports__);
         this.pornSubMenuHasShadow = true;
       } else {
         setTimeout(function () {
-          return _this.pornSubMenuHasShadow = false;
+          if (!_this.pornSubMenuIsVisible) {
+            _this.pornSubMenuHasShadow = false;
+          }
         }, 1400);
       }
     },
@@ -2005,7 +2006,7 @@ __webpack_require__.r(__webpack_exports__);
       this.pornSubMenuIsVisible = true;
       this.pornSubMenuHasShadow = true;
     },
-    resetAll: function resetAll() {
+    resetNavbar: function resetNavbar() {
       var _this2 = this;
 
       this.pornSubMenuIsVisible = false;
@@ -2031,7 +2032,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".navigation-list {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  background: #0d0c0d;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  position: relative;\n  z-index: 3;\n  box-shadow: 2px 2px 2px 2px black;\n}\n.register-selection {\n  margin-left: auto;\n}\n.navigation-element {\n  -webkit-transition: background 2s;\n  transition: background 2s;\n  cursor: pointer;\n  color: white;\n  display: inline-block;\n  line-height: 100%;\n  padding: 6px;\n  font-family: \"Oxanium\";\n  font-size: 1.5vw;\n}\n.navigation-element:hover {\n  background: #2d2d30;\n}\n.main-page-navigation {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1;\n  font-size: 0;\n}\n.sub-menu-list {\n  position: relative;\n  overflow: hidden;\n  display: inline-block;\n  top: 1px;\n  max-height: 0;\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n  padding: 0;\n  list-style-type: none;\n  margin: 0;\n  font-family: \"Oxanium\";\n  font-size: 1.5vw;\n  color: white;\n  max-width: 30%;\n  min-width: 150px;\n  z-index: 1;\n  border-radius: 0 0 8px 8px;\n}\n.porn-sub-menu-list {\n  left: 1vw;\n}\n.hidden-porn-sub-menu {\n  max-height: 0;\n}\n.visible-porn-sub-menu {\n  max-height: 1500px;\n}\n.sub-menu-no-shadow {\n  box-shadow: none;\n}\n.sub-menu-with-shadow {\n  box-shadow: 2px 2px 4px 3px black;\n}\n.sub-menu-list-element {\n  background: #202120;\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n  border-bottom: 1px solid black;\n  cursor: pointer;\n}\n.sub-menu-list-nested-level-two {\n  list-style-type: none;\n  overflow: hidden;\n  padding: 0;\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n}\n.sub-menu-list-element-intendation-second-level {\n  padding: 5px 2px 5px 2vw;\n  border-bottom: 1px solid black;\n  background: -webkit-gradient(linear, left top, right top, from(#2b2a2a), to(#4c4c52));\n  background: linear-gradient(to right, #2b2a2a, #4c4c52);\n}\n.sub-menu-list-element-intendation-second-level:hover {\n  background: black;\n  cursor: pointer;\n}\n.visible-movies-sub-menu {\n  max-height: 500px;\n}\n.hidden-movies-sub-menu {\n  max-height: 0;\n}\n.sub-menu-level-one-item {\n  padding: 5px 2px 5px 1vw;\n}\n.sub-menu-level-one-item:hover {\n  background: black;\n}\n.sum-menu-list-element:last-child {\n  border-radius: 0 0 8px 8px;\n}\n.navbar-icon {\n  margin: 0 5px;\n  color: #eb091c;\n}\n.navbar-icon-sub-menu {\n  -webkit-transition: color 1s;\n  transition: color 1s;\n}\n.sub-menu-level-one-item:hover .navbar-icon-sub-menu, .sub-menu-list-element-intendation-second-level:hover .navbar-icon-sub-menu {\n  color: #27ba11;\n}\n@media (min-width: 620px) and (max-width: 1000px) {\n.navigation-element {\n    font-size: 2.2vw;\n}\n}\n@media (max-width: 619px) {\n.navigation-element {\n    font-size: 3.9vw;\n}\n}", ""]);
+exports.push([module.i, ".navigation-list {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  background: #0d0c0d;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  position: relative;\n  z-index: 3;\n  box-shadow: 2px 2px 2px 2px black;\n}\n.register-selection {\n  margin-left: auto;\n}\n.navigation-element {\n  -webkit-transition: background 2s;\n  transition: background 2s;\n  cursor: pointer;\n  color: white;\n  display: inline-block;\n  line-height: 100%;\n  padding: 6px;\n  font-family: \"Oxanium\";\n  font-size: 1.5vw;\n}\n.navigation-element:hover {\n  background: #2d2d30;\n}\n.main-page-navigation {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1;\n  font-size: 0;\n}\n.main-page-navigation:focus {\n  outline: none;\n}\n.sub-menu-list {\n  position: relative;\n  overflow: hidden;\n  display: inline-block;\n  top: 1px;\n  max-height: 0;\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n  padding: 0;\n  list-style-type: none;\n  margin: 0;\n  font-family: \"Oxanium\";\n  font-size: 1.5vw;\n  color: white;\n  max-width: 30%;\n  min-width: 150px;\n  z-index: 1;\n  border-radius: 0 0 8px 8px;\n}\n.porn-sub-menu-list {\n  left: 1vw;\n}\n.hidden-porn-sub-menu {\n  max-height: 0;\n}\n.visible-porn-sub-menu {\n  max-height: 1500px;\n}\n.sub-menu-no-shadow {\n  box-shadow: none;\n}\n.sub-menu-with-shadow {\n  box-shadow: 2px 2px 4px 3px black;\n}\n.sub-menu-list-element {\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n  border-bottom: 1px solid black;\n  cursor: pointer;\n}\n.sub-menu-list-nested-level-two {\n  list-style-type: none;\n  overflow: hidden;\n  padding: 0;\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n}\n.navbar-icon-second-level {\n  color: #bbb606;\n}\n.sub-menu-list-element-intendation-second-level {\n  padding: 5px 2px 5px 2vw;\n  border-bottom: 1px solid black;\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n}\n.sub-menu-list-element-intendation-second-level:hover {\n  background: black;\n  cursor: pointer;\n}\n.visible-movies-sub-menu {\n  max-height: 500px;\n}\n.hidden-movies-sub-menu {\n  max-height: 0;\n}\n.sub-menu-level-one-item {\n  padding: 5px 2px 5px 1vw;\n}\n.sub-menu-level-one-item:hover {\n  background: black;\n}\n.sum-menu-list-element:last-child {\n  border-radius: 0 0 8px 8px;\n}\n.navbar-icon {\n  margin: 0 5px;\n}\n.navbar-icon-outer {\n  color: #eb091c;\n}\n@media (min-width: 620px) and (max-width: 1000px) {\n.navigation-element {\n    font-size: 2.2vw;\n}\n}\n@media (max-width: 619px) {\n.navigation-element {\n    font-size: 3.9vw;\n}\n}", ""]);
 
 // exports
 
@@ -20267,8 +20268,8 @@ var render = function() {
     "nav",
     {
       staticClass: "main-page-navigation",
-      attrs: { id: "navbar" },
-      on: { mouseleave: _vm.resetAll }
+      attrs: { tabindex: "0", id: "navbar" },
+      on: { focusout: _vm.resetNavbar }
     },
     [
       _c("ul", { staticClass: "navigation-list" }, [
@@ -20288,7 +20289,7 @@ var render = function() {
                   expression: "!pornSubMenuIsVisible"
                 }
               ],
-              staticClass: "fas navbar-icon fa-camera-retro"
+              staticClass: "fas navbar-icon navbar-icon-outer fa-camera-retro"
             }),
             _vm._v(" "),
             _c("span", {
@@ -20300,9 +20301,9 @@ var render = function() {
                   expression: "pornSubMenuIsVisible"
                 }
               ],
-              staticClass: "fas navbar-icon navbar-icon-sub-menu fa-arrow-up"
+              staticClass: "fas navbar-icon navbar-icon-outer fa-arrow-up"
             }),
-            _vm._v("\r\n            \tPorno\r\n            \r\n\t\t")
+            _vm._v("\r\n            \tPorno\r\n\t\t")
           ]
         ),
         _vm._v(" "),
@@ -20348,7 +20349,7 @@ var render = function() {
                         expression: "!moviesSubMenuIsVisible"
                       }
                     ],
-                    staticClass: "fas navbar-icon navbar-icon-sub-menu fa-film"
+                    staticClass: "fas navbar-icon navbar-icon-outer fa-film"
                   }),
                   _vm._v(" "),
                   _c("span", {
@@ -20360,8 +20361,7 @@ var render = function() {
                         expression: "moviesSubMenuIsVisible"
                       }
                     ],
-                    staticClass:
-                      "fas navbar-icon navbar-icon-sub-menu fa-arrow-up"
+                    staticClass: "fas navbar-icon navbar-icon-outer fa-arrow-up"
                   }),
                   _vm._v("\r\n\t\t\t\t     Filmy\r\n\t\t\t")
                 ]
@@ -20403,8 +20403,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "navigation-element" }, [
-      _c("span", { staticClass: "fas navbar-icon fa-users" }),
-      _vm._v("Spotkania\r\n            \r\n\t\t")
+      _c("span", { staticClass: "fas navbar-icon navbar-icon-outer fa-users" }),
+      _vm._v("\r\n\t\t\tSpotkania\r\n\t\t")
     ])
   },
   function() {
@@ -20412,7 +20412,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "navigation-element register-selection" }, [
-      _c("span", { staticClass: "fas navbar-icon fa-user-plus" }),
+      _c("span", {
+        staticClass: "fas navbar-icon navbar-icon-outer fa-user-plus"
+      }),
       _vm._v("Rejestruj\r\n              \r\n\t\t")
     ])
   },
@@ -20421,7 +20423,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "navigation-element" }, [
-      _c("span", { staticClass: "fas navbar-icon fa-sign-in-alt" }),
+      _c("span", {
+        staticClass: "fas navbar-icon navbar-icon-outer fa-sign-in-alt"
+      }),
       _vm._v("Loguj\r\n              \r\n\t\t")
     ])
   },
@@ -20434,7 +20438,7 @@ var staticRenderFns = [
       { staticClass: "sub-menu-list-element-intendation-second-level" },
       [
         _c("span", {
-          staticClass: "fas navbar-icon navbar-icon-sub-menu fa-images"
+          staticClass: "fas navbar-icon navbar-icon-second-level fa-images"
         }),
         _vm._v("\r\n\t\t\t\t\t\tKategorie\r\n\t\t\t\t\t")
       ]
@@ -20449,7 +20453,7 @@ var staticRenderFns = [
       { staticClass: "sub-menu-list-element-intendation-second-level" },
       [
         _c("span", {
-          staticClass: "fas navbar-icon navbar-icon-sub-menu fa-folder-plus"
+          staticClass: "fas navbar-icon navbar-icon-second-level fa-folder-plus"
         }),
         _vm._v("\r\n\t\t\t\t\t\tNajnowsze\r\n\t\t\t\t\t")
       ]
@@ -20464,7 +20468,7 @@ var staticRenderFns = [
       { staticClass: "sub-menu-list-element-intendation-second-level" },
       [
         _c("span", {
-          staticClass: "fas navbar-icon navbar-icon-sub-menu fa-grin"
+          staticClass: "fas navbar-icon navbar-icon-second-level fa-grin"
         }),
         _vm._v("\r\n\t\t\t\t\t\tNajpopularniejsze\r\n\t\t\t\t\t")
       ]
@@ -20479,9 +20483,9 @@ var staticRenderFns = [
       { staticClass: "sub-menu-list-element-intendation-second-level" },
       [
         _c("span", {
-          staticClass: "fas navbar-icon navbar-icon-sub-menu fa-search"
+          staticClass: "fas navbar-icon navbar-icon-second-level fa-search"
         }),
-        _vm._v("\r\n\t\t\t\t\t\tWyszukiwanie zaawansowane\r\n\t\t\t\t\t")
+        _vm._v("\r\n\t\t\t\t\t\tSzukanie zaawansowane\r\n\t\t\t\t\t")
       ]
     )
   },
@@ -20495,7 +20499,7 @@ var staticRenderFns = [
       [
         _c("div", { staticClass: "sub-menu-level-one-item" }, [
           _c("span", {
-            staticClass: "fas navbar-icon navbar-icon-sub-menu fa-star"
+            staticClass: "fas navbar-icon navbar-icon-outer fa-star"
           }),
           _vm._v("\r\n\t\t\t\t\t Gwiazdy porno\r\n\t\t\t     \r\n\t\t\t\t\t")
         ])

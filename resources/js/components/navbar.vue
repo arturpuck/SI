@@ -1,30 +1,29 @@
 <template>
-<nav id="navbar" v-on:mouseleave="resetAll" class="main-page-navigation">
+<nav tabindex="0" v-on:focusout="resetNavbar" id="navbar"  class="main-page-navigation">
 	<ul class="navigation-list">
 		<li v-on:click="togglePornSubMenu" v-on:mouseover="showPornSubMenu" class="navigation-element">
-			<span v-show="!pornSubMenuIsVisible" class="fas navbar-icon fa-camera-retro"></span>
-			<span v-show="pornSubMenuIsVisible" class="fas navbar-icon navbar-icon-sub-menu fa-arrow-up"></span>
+			<span v-show="!pornSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-camera-retro"></span>
+			<span v-show="pornSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-arrow-up"></span>
             	Porno
-            
 		</li>
 		<li class="navigation-element">
-			<span class="fas navbar-icon fa-users"></span>Spotkania
-            
+			<span class="fas navbar-icon navbar-icon-outer fa-users"></span>
+			Spotkania
 		</li>
 		<li class="navigation-element register-selection">
-			<span class="fas navbar-icon fa-user-plus"></span>Rejestruj
+			<span class="fas navbar-icon navbar-icon-outer fa-user-plus"></span>Rejestruj
               
 		</li>
 		<li class="navigation-element">
-			<span class="fas navbar-icon fa-sign-in-alt"></span>Loguj
+			<span class="fas navbar-icon navbar-icon-outer fa-sign-in-alt"></span>Loguj
               
 		</li>
 	</ul>
 	<ul :class="[pornSubMenuIsVisible ? 'visible-porn-sub-menu' : 'hidden-porn-sub-menu',  pornSubMenuHasShadow ?  'sub-menu-with-shadow' : 'sub-menu-no-shadow']" id="porn-sub-menu-list" class="sub-menu-list porn-sub-menu-list">
 		<li class="sub-menu-list-element intendation-first-level">
 			<div v-on:click="toggleMoviesSubMenu" class="sub-menu-level-one-item">
-				<span v-show="!moviesSubMenuIsVisible" class="fas navbar-icon navbar-icon-sub-menu fa-film"></span>
-				<span v-show="moviesSubMenuIsVisible" class="fas navbar-icon navbar-icon-sub-menu fa-arrow-up"></span>
+				<span v-show="!moviesSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-film"></span>
+				<span v-show="moviesSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-arrow-up"></span>
 				     Filmy
 			</div>
 		</li>
@@ -32,26 +31,26 @@
 			<ul class="sub-menu-list-nested-level-two" :class="moviesSubMenuIsVisible && pornSubMenuIsVisible ? 'visible-movies-sub-menu' : 'hidden-movies-sub-menu'">
 					
 					<li class="sub-menu-list-element-intendation-second-level">
-						<span class="fas navbar-icon navbar-icon-sub-menu fa-images"></span>
+						<span class="fas navbar-icon navbar-icon-second-level fa-images"></span>
 						Kategorie
 					</li>
 					<li class="sub-menu-list-element-intendation-second-level">
-						<span class="fas navbar-icon navbar-icon-sub-menu fa-folder-plus"></span>
+						<span class="fas navbar-icon navbar-icon-second-level fa-folder-plus"></span>
 						Najnowsze
 					</li>
 					<li class="sub-menu-list-element-intendation-second-level">
-						<span class="fas navbar-icon navbar-icon-sub-menu fa-grin"></span>
+						<span class="fas navbar-icon navbar-icon-second-level fa-grin"></span>
 						Najpopularniejsze
 					</li>
 					<li class="sub-menu-list-element-intendation-second-level">
-						<span class="fas navbar-icon navbar-icon-sub-menu fa-search"></span>
-						Wyszukiwanie zaawansowane
+						<span class="fas navbar-icon navbar-icon-second-level fa-search"></span>
+						Szukanie zaawansowane
 					</li>
 			  </ul>
 			  </li>
 			  <li class="sub-menu-list-element intendation-first-level">
 					<div class="sub-menu-level-one-item">
-						<span class="fas navbar-icon navbar-icon-sub-menu fa-star"></span>
+						<span class="fas navbar-icon navbar-icon-outer fa-star"></span>
 					 Gwiazdy porno
 			     
 					</div>
@@ -68,7 +67,7 @@
 		 	return {
 		 		pornSubMenuIsVisible : false,
 		 		moviesSubMenuIsVisible : false,
-		 		pornSubMenuHasShadow : false
+		 		pornSubMenuHasShadow : false,
 		 	};
  		},
 
@@ -89,7 +88,12 @@
 		      }
 		      else
 		      {
-		      	setTimeout(() => this.pornSubMenuHasShadow = false,1400);
+		      	setTimeout(() => {
+		      		if(!this.pornSubMenuIsVisible)
+		      		{
+                      this.pornSubMenuHasShadow = false;
+		      		}
+		      	},1400);
 		      }
 		   },
 
@@ -104,15 +108,16 @@
 		   	 this.pornSubMenuHasShadow = true;
 		   },
 
-		   resetAll()
+		   resetNavbar()
 		   {
 		   	  this.pornSubMenuIsVisible = false;
 		   	  this.hideAllSecondLevelSubMenus();
 		   	  setTimeout(() => {
                 this.pornSubMenuHasShadow = false;
 		      },1400);
+		    
 		   }
-            
+    
         }
     }
 </script>
@@ -158,6 +163,9 @@
     top:0;
     z-index:1;
     font-size:0;
+    &:focus{
+    	outline:none;
+    };
 }
 
 $border-color: black;
@@ -205,7 +213,6 @@ $border-color: black;
 
 .sub-menu-list-element
 {
-  background: #202120;
   background:linear-gradient(to right,#0a0a0a, #2e2e2d);
   border-bottom: 1px solid $border-color;
   cursor:pointer;
@@ -218,10 +225,14 @@ $border-color: black;
 	transition: max-height 1.5s;
 }
 
+.navbar-icon-second-level{
+	color: #bbb606;
+}
+
 .sub-menu-list-element-intendation-second-level{
 	padding:5px 2px 5px 2vw;
 	border-bottom:1px solid black;
-	background: linear-gradient(to right, #2b2a2a, #4c4c52);
+	background:linear-gradient(to right,#0a0a0a, #2e2e2d);
 	&:hover{
 		background:black;
 		cursor:pointer;
@@ -249,17 +260,13 @@ $border-color: black;
 
 .navbar-icon{
 	margin:0 5px;
+	
+}
+
+.navbar-icon-outer{
 	color:#eb091c
 }
 
-.navbar-icon-sub-menu{
-	transition: color 1s;
-}
-
-.sub-menu-level-one-item:hover .navbar-icon-sub-menu, .sub-menu-list-element-intendation-second-level:hover .navbar-icon-sub-menu
-{
-	color: #27ba11;
-}
 
 @media (min-width:620px) and (max-width: 1000px)
 {
