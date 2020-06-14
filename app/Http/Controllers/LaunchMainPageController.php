@@ -8,6 +8,6 @@ class LaunchMainPageController extends Controller
 {
     public function showMainPage()
     {
-    	return view('mainpage')->with(['randomImageNumber' => rand(1,3)]);
+    	return view('mainpage');
     }
 }

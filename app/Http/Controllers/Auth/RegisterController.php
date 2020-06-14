@@ -82,7 +82,10 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        abort(403);
+        return view('auth.login_or_register')->with([
+          'randomImageNumber' => rand(1,3),
+          'visibleForm' => 'registration'
+        ]);
     }
 
     /**

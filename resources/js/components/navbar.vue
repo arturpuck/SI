@@ -1,22 +1,26 @@
 <template>
 <nav tabindex="0" v-on:focusout="resetNavbar" id="navbar" v-on:mouseenter="setElementToFocusState"  class="main-page-navigation">
 	<ul class="navigation-list">
-		<li v-on:click="togglePornSubMenu" v-on:mouseenter="showPornSubMenu"  class="navigation-element">
+		<li v-on:click="togglePornSubMenu" v-on:mouseenter="showPornSubMenu"  class="navigation-element-main navigation-element-padding">
 			<span v-show="!pornSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-camera-retro"></span>
 			<span v-show="pornSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-arrow-up"></span>
             	Porno
 		</li>
-		<li class="navigation-element">
+		<li class="navigation-element-main navigation-element-padding">
 			<span class="fas navbar-icon navbar-icon-outer fa-users"></span>
 			Spotkania
 		</li>
-		<li class="navigation-element register-selection">
-			<span class="fas navbar-icon navbar-icon-outer fa-user-plus"></span>Rejestruj
-              
+		<li class="navigation-element-main register-selection ">
+			<a class="navbar-link-main-manu" :href="registerRoute">
+			  <span class="fas navbar-icon navbar-icon-outer fa-user-plus"></span> 
+			  Rejestruj
+			</a> 
 		</li>
-		<li class="navigation-element">
-			<span class="fas navbar-icon navbar-icon-outer fa-sign-in-alt"></span>Loguj
-              
+		<li class="navigation-element-main">
+			<a class="navbar-link-main-manu" :href="loginRoute">
+			  <span class="fas navbar-icon navbar-icon-outer fa-sign-in-alt"></span>
+			  Loguj
+			</a> 
 		</li>
 	</ul>
 	<div v-on:click="resetNavbar" class="click-detector"></div>
@@ -63,7 +67,27 @@
 <script>
 	export default {
         name: 'navbar',
-        props: [ 'userIsLogedIn', 'userID'],
+        props: {
+        	authenticatedUser : {
+        		type: Boolean,
+        		required: true
+        	},
+
+        	userID : {
+        		type: Number,
+        		required: false
+        	},
+
+        	registerRoute : {
+        		required: false,
+        		type: String
+        	},
+
+        	loginRoute : {
+        		required: false,
+        		type: String
+        	}
+        },
          data() {
 		 	return {
 		 		pornSubMenuIsVisible : false,
@@ -137,7 +161,7 @@
 	margin-left: auto;
 }
 
-.navigation-element{
+.navigation-element-main{
 	transition: background 2s;
 	&:hover
 	{
@@ -147,11 +171,14 @@
 	color:white;
 	display: inline-block;
     line-height: 100%;
-    padding:6px;
 	font:{
 	  family: 'Oxanium';  
 	  size:1.5vw;
 	}
+}
+
+.navigation-element-padding{
+   padding:6px;
 }
 
 .main-page-navigation{
@@ -256,6 +283,14 @@ $border-color: black;
 
 .navbar-icon-outer{
 	color:#eb091c
+}
+
+.navbar-link-main-manu{
+	color:inherit;
+	text-decoration:none;
+	padding:6px;
+	height: 100%;
+    display: inline-block;
 }
 
 

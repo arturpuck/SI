@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -32699,230 +32699,6 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_navbar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/navbar.vue */ "./resources/js/components/navbar.vue");
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
-
-
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('navbar', _components_navbar_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
-new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-  el: '#app',
-  data: {},
-  methods: {
-    showRegistrationPanel: function showRegistrationPanel() {
-      this.$refs.login_panel.style.display = "none";
-      this.$refs.register_panel.style.display = "block";
-      this.$refs.show_login_form_button.style.background = "linear-gradient(#e81a4a, #780520)";
-      this.$refs.show_register_form_button.style.background = "linear-gradient(#0fe00b, #054004)";
-      this.$refs.registration_information.style.display = "block";
-      this.$refs.login_information.style.display = "none";
-    },
-    showLoginPanel: function showLoginPanel() {
-      this.$refs.login_panel.style.display = "block";
-      this.$refs.register_panel.style.display = "none";
-      this.$refs.show_login_form_button.style.background = "linear-gradient(#0fe00b, #054004)";
-      this.$refs.show_register_form_button.style.background = "linear-gradient(#e81a4a, #780520)";
-      this.$refs.registration_information.style.display = "none";
-      this.$refs.login_information.style.display = "block";
-    },
-    showErrorMessage: function showErrorMessage(refName) {
-      var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
-      this.$refs["correct_value_" + refName].style.display = "none";
-      this.$refs["incorrect_value_" + refName].style.display = "flex";
-      this.$refs["label_ref_" + refName].style.border = "2px solid red";
-
-      if (message !== undefined) {
-        var errorMessageBox = this.$refs[refName + "_error_message_box"];
-        errorMessageBox.textContent = message;
-        errorMessageBox.style.visibility = "visible";
-      }
-    },
-    inputLengthValidation: function inputLengthValidation(str) {
-      var minLength = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3;
-      var maxLength = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 20;
-
-      if (str.length < minLength) {
-        return {
-          success: false,
-          message: "mniej niż " + minLength + " znaki"
-        };
-      }
-
-      if (str.length > maxLength) {
-        return {
-          success: false,
-          message: "więcej niż " + maxLength + " znaków"
-        };
-      }
-
-      return {
-        success: true
-      };
-    },
-    showValueIsCorrect: function showValueIsCorrect(refName) {
-      this.$refs['incorrect_value_' + refName].style.display = "none";
-      this.$refs['correct_value_' + refName].style.display = "block";
-      this.$refs['label_ref_' + refName].style.border = "2px solid green";
-      this.$refs[refName + "_error_message_box"].style.visibility = "hidden";
-    },
-    showNoInformationAboutInput: function showNoInformationAboutInput(refName) {
-      this.$refs['incorrect_value_' + refName].style.display = "none";
-      this.$refs['correct_value_' + refName].style.display = "none";
-      this.$refs['label_ref_' + refName].style.border = "2px solid transparent";
-    },
-    handleAJAXResponse: function handleAJAXResponse(ajaxRequest, refName, errorMessage) {
-      if (ajaxRequest.readyState === XMLHttpRequest.DONE) {
-        if (ajaxRequest.status === 200) {
-          this.showValueIsCorrect(refName);
-        } else {
-          this.showErrorMessage(refName, errorMessage);
-        }
-      }
-    },
-    registrationLoginLooseFocus: function registrationLoginLooseFocus() {
-      var typedInLogin = this.$refs.input_ref_registrationLogin.value;
-
-      if (typedInLogin.length > 0) {
-        var validationResult = this.inputLengthValidation(typedInLogin);
-
-        if (validationResult.success === false) {
-          this.showErrorMessage("registrationLogin", "Błędny login - " + validationResult.message);
-          return;
-        }
-
-        var ajaxRequest = new XMLHttpRequest();
-        ajaxRequest.onreadystatechange = this.handleAJAXResponse.bind(this, ajaxRequest, "registrationLogin", "Login jest już zajęty");
-        var URL = '/verify-login/' + typedInLogin;
-        ajaxRequest.open("GET", URL);
-        ajaxRequest.send();
-      } else {
-        this.showNoInformationAboutInput("registrationLogin");
-      }
-    },
-    emailLooseFocus: function emailLooseFocus() {
-      function emailIsValid(email) {
-        var regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return regEx.test(String(email).toLowerCase());
-      }
-
-      var typedInEmail = this.$refs.input_ref_email.value;
-
-      if (typedInEmail.length > 0) {
-        if (emailIsValid(typedInEmail)) {
-          var ajaxRequest = new XMLHttpRequest();
-          ajaxRequest.onreadystatechange = this.handleAJAXResponse.bind(this, ajaxRequest, "email", "Email jest już zajęty");
-          var URL = '/verify-email/' + typedInEmail;
-          ajaxRequest.open("GET", URL);
-          ajaxRequest.send();
-        } else {
-          this.showErrorMessage('email', 'Email wygląda na nieprawidłowy');
-        }
-      } else {
-        this.showNoInformationAboutInput('email');
-      }
-    },
-    registrationPasswordLooseFocus: function registrationPasswordLooseFocus() {
-      var typedInPassword = this.$refs.input_ref_registrationPassword.value;
-
-      if (typedInPassword.length > 0) {
-        var lengthValidationResult = this.inputLengthValidation(typedInPassword);
-
-        if (lengthValidationResult.success === true) {
-          this.showValueIsCorrect("registrationPassword");
-        } else {
-          this.showErrorMessage("registrationPassword", "Złe hasło - " + lengthValidationResult.message);
-        }
-      }
-    },
-    validateSelectedValue: function validateSelectedValue(refName) {
-      var selectedOption = this.$refs["input_ref_" + refName].value;
-
-      if (selectedOption === "--wybierz--") {
-        this.showErrorMessage(refName, "Należy wybrać jedną opcję");
-      } else {
-        this.showValueIsCorrect(refName);
-      }
-    },
-    userTypeSelectOption: function userTypeSelectOption() {
-      this.validateSelectedValue("userType");
-    },
-    sexualOrientationSelectOption: function sexualOrientationSelectOption() {
-      this.validateSelectedValue("sexualOrientation");
-    },
-    birthDateChange: function birthDateChange() {
-      function isDateBeforeGivenTimeSpan(day, month, year, timeSpan) {
-        day = parseInt(day);
-        month = parseInt(month);
-        year = parseInt(year);
-        timeSpan = parseInt(timeSpan);
-        var currentDate = new Date();
-        var currentMonth = currentDate.getMonth();
-        var currentDay = currentDate.getDate();
-        var currentYear = currentDate.getFullYear();
-        var dateTimeSpanAgo = new Date(currentYear - timeSpan, currentMonth, currentDay);
-        var examinedDate = new Date(year, month - 1, day);
-        return examinedDate.getTime() <= dateTimeSpanAgo.getTime();
-      }
-
-      var dayNumber = parseInt(this.$refs.day_ref_birthDate.value);
-      var monthNumber = parseInt(this.$refs.month_ref_birthDate.value);
-
-      if (dayNumber === 0 || monthNumber === 0) {
-        this.showNoInformationAboutInput('birthDate');
-      } else {
-        var year = parseInt(this.$refs.year_ref_birthDate.value);
-        var monthWith31Days = [1, 3, 5, 7, 8, 10, 12].includes(monthNumber);
-
-        if (monthWith31Days && (dayNumber > 31 || dayNumber < 1)) {
-          this.showErrorMessage("birthDate", "Ten miesiąc nie ma tylu dni");
-          return;
-        }
-
-        if (!monthWith31Days) {
-          if (monthNumber === 2) {
-            var lastDayInFebruary = year % 4 === 0 ? 29 : 28;
-
-            if (dayNumber < 1 || dayNumber > lastDayInFebruary) {
-              this.showErrorMessage("birthDate", "Luty nie miał tylu dni");
-              return;
-            }
-          } else if (dayNumber < 1 || dayNumber > 30) {
-            this.showErrorMessage("birthDate", "Ten miesiąc nie ma tylu dni");
-            return;
-          }
-        }
-
-        if (monthNumber !== 0 && year !== 0) {
-          if (isDateBeforeGivenTimeSpan(dayNumber, monthNumber, year, 18)) {
-            if (isDateBeforeGivenTimeSpan(dayNumber, monthNumber, year, 120)) {
-              this.showErrorMessage("birthDate", "Ludzie nie żyją dłużej niż 120 lat");
-            } else {
-              this.showValueIsCorrect("birthDate");
-            }
-          } else {
-            this.showErrorMessage("birthDate", "Musisz mieć ukończone 18 lat");
-          }
-        } else {
-          this.showNoInformationAboutInput('birthDate');
-        }
-      }
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
@@ -33042,74 +32818,39 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/auth/login_or_register.scss":
-/*!****************************************************!*\
-  !*** ./resources/sass/auth/login_or_register.scss ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./resources/js/mainpage.js":
+/*!**********************************!*\
+  !*** ./resources/js/mainpage.js ***!
+  \**********************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_navbar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/navbar.vue */ "./resources/js/components/navbar.vue");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-/***/ }),
 
-/***/ "./resources/sass/auth/password_reset.scss":
-/*!*************************************************!*\
-  !*** ./resources/sass/auth/password_reset.scss ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/auth/password_reset_confirmation.scss":
-/*!**************************************************************!*\
-  !*** ./resources/sass/auth/password_reset_confirmation.scss ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('navbar', _components_navbar_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
+new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
+  el: '#app',
+  data: {},
+  methods: {}
+});
 
 /***/ }),
 
-/***/ "./resources/sass/contact.scss":
-/*!*************************************!*\
-  !*** ./resources/sass/contact.scss ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/mainpage/mainpage.scss":
-/*!***********************************************!*\
-  !*** ./resources/sass/mainpage/mainpage.scss ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!*******************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/auth/login_or_register.scss ./resources/sass/contact.scss ./resources/sass/mainpage/mainpage.scss ./resources/sass/auth/password_reset.scss ./resources/sass/auth/password_reset_confirmation.scss ***!
-  \*******************************************************************************************************************************************************************************************************************************************************/
+/***/ 1:
+/*!****************************************!*\
+  !*** multi ./resources/js/mainpage.js ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\sex-imperium\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\wamp64\www\sex-imperium\resources\sass\auth\login_or_register.scss */"./resources/sass/auth/login_or_register.scss");
-__webpack_require__(/*! C:\wamp64\www\sex-imperium\resources\sass\contact.scss */"./resources/sass/contact.scss");
-__webpack_require__(/*! C:\wamp64\www\sex-imperium\resources\sass\mainpage\mainpage.scss */"./resources/sass/mainpage/mainpage.scss");
-__webpack_require__(/*! C:\wamp64\www\sex-imperium\resources\sass\auth\password_reset.scss */"./resources/sass/auth/password_reset.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\sex-imperium\resources\sass\auth\password_reset_confirmation.scss */"./resources/sass/auth/password_reset_confirmation.scss");
+module.exports = __webpack_require__(/*! C:\wamp64\www\sex-imperium\resources\js\mainpage.js */"./resources/js/mainpage.js");
 
 
 /***/ })

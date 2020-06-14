@@ -11,9 +11,12 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.sass('resources/sass/mainpage/mainpage.scss', 'public/css')
+mix.sass('resources/sass/auth/login_or_register.scss', 'public/css/auth')
 .sass('resources/sass/contact.scss', 'public/css')
+.sass('resources/sass/mainpage/mainpage.scss', 'public/css')
 .options({
       processCssUrls: false}).js('resources/js/app.js', 'public/js')
+.js('resources/js/mainpage.js', 'public/js')
+.js('resources/js/login_or_register.js', 'public/js')
 .sass('resources/sass/auth/password_reset.scss', 'public/css')
 .sass('resources/sass/auth/password_reset_confirmation.scss', 'public/css');

@@ -57,4 +57,12 @@ class LoginController extends Controller
             'password' => 'required|string',
         ], $customErrorMessages);
     }
+
+    public function showLoginForm()
+    {
+        return view('auth.login_or_register')->with([
+            'randomImageNumber' => rand(1,3),
+            'visibleForm' => 'login'
+        ]);
+    }
 }

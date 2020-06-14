@@ -1,4 +1,4 @@
-@extends('auth.layouts.password_reseting')
+@extends('layouts.auth.password_reseting')
 
 @section('reset_form')
 
