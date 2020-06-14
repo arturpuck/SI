@@ -1,7 +1,7 @@
 <template>
-<nav tabindex="0" v-on:focusout="resetNavbar" id="navbar"  class="main-page-navigation">
+<nav tabindex="0" v-on:focusout="resetNavbar" id="navbar" v-on:mouseenter="setElementToFocusState"  class="main-page-navigation">
 	<ul class="navigation-list">
-		<li v-on:click="togglePornSubMenu" v-on:mouseover="showPornSubMenu" class="navigation-element">
+		<li v-on:click="togglePornSubMenu" v-on:mouseenter="showPornSubMenu"  class="navigation-element">
 			<span v-show="!pornSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-camera-retro"></span>
 			<span v-show="pornSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-arrow-up"></span>
             	Porno
@@ -19,7 +19,8 @@
               
 		</li>
 	</ul>
-	<ul :class="[pornSubMenuIsVisible ? 'visible-porn-sub-menu' : 'hidden-porn-sub-menu',  pornSubMenuHasShadow ?  'sub-menu-with-shadow' : 'sub-menu-no-shadow']" id="porn-sub-menu-list" class="sub-menu-list porn-sub-menu-list">
+	<div v-on:click="resetNavbar" class="click-detector"></div>
+	<ul ref="pornSubMenu" :class="pornSubMenuIsVisible ? 'visible-porn-sub-menu' : 'hidden-porn-sub-menu'"  id="porn-sub-menu-list" class="sub-menu-list porn-sub-menu-list">
 		<li class="sub-menu-list-element intendation-first-level">
 			<div v-on:click="toggleMoviesSubMenu" class="sub-menu-level-one-item">
 				<span v-show="!moviesSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-film"></span>
@@ -67,7 +68,6 @@
 		 	return {
 		 		pornSubMenuIsVisible : false,
 		 		moviesSubMenuIsVisible : false,
-		 		pornSubMenuHasShadow : false,
 		 	};
  		},
 
@@ -80,21 +80,8 @@
 		   togglePornSubMenu()
 		   {
 		      this.pornSubMenuIsVisible = !this.pornSubMenuIsVisible;
+		      this.anySubMenuIsVisible = !this.anySubMenuIsVisible;
 		      this.hideAllSecondLevelSubMenus();
-
-		      if(this.pornSubMenuIsVisible)
-		      {
-		      	 this.pornSubMenuHasShadow = true;
-		      }
-		      else
-		      {
-		      	setTimeout(() => {
-		      		if(!this.pornSubMenuIsVisible)
-		      		{
-                      this.pornSubMenuHasShadow = false;
-		      		}
-		      	},1400);
-		      }
 		   },
 
 		   toggleMoviesSubMenu()
@@ -102,20 +89,22 @@
 		      this.moviesSubMenuIsVisible = !this.moviesSubMenuIsVisible;
 		   },
 
-		   showPornSubMenu()
+		   showPornSubMenu(event)
 		   {
 		   	 this.pornSubMenuIsVisible = true;
-		   	 this.pornSubMenuHasShadow = true;
+		   	 this.anySubMenuIsVisible = true;
+		   	 this.$refs.pornSubMenu.focus();
+		   },
+
+		   setElementToFocusState(event)
+		   {
+               event.target.focus();
 		   },
 
 		   resetNavbar()
 		   {
-		   	  this.pornSubMenuIsVisible = false;
-		   	  this.hideAllSecondLevelSubMenus();
-		   	  setTimeout(() => {
-                this.pornSubMenuHasShadow = false;
-		      },1400);
-		    
+		   	  	this.pornSubMenuIsVisible = false;
+		   	    this.hideAllSecondLevelSubMenus();
 		   }
     
         }
@@ -134,6 +123,14 @@
 	position:relative;
 	z-index:3;
 	box-shadow: 2px 2px 2px 2px black;
+}
+
+.click-detector{
+	position:absolute;
+	z-index:0;
+	top:1px;
+	width:100%;
+	height:100%;
 }
 
 .register-selection{
@@ -176,7 +173,6 @@ $border-color: black;
 	display:inline-block;
 	top:1px;
 	max-height:0;
-	transition: max-height 1.5s;
 	padding: 0;
     list-style-type: none;
     margin: 0;
@@ -197,18 +193,13 @@ $border-color: black;
 
 .hidden-porn-sub-menu{
 	max-height:0;
+	transition:none;
 }
 
 .visible-porn-sub-menu{
+	transition: max-height 1.5s;
 	max-height:1500px;
-}
-
-.sub-menu-no-shadow{
-	box-shadow:none;
-}
-
-.sub-menu-with-shadow{
-   box-shadow: 2px 2px 4px 3px black;
+	box-shadow: 2px 2px 4px 3px black;
 }
 
 .sub-menu-list-element
@@ -222,7 +213,7 @@ $border-color: black;
 	list-style-type: none;
 	overflow:hidden;
 	padding:0;
-	transition: max-height 1.5s;
+	transition: max-height 0.7s;
 }
 
 .navbar-icon-second-level{
