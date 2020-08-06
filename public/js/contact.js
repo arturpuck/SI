@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -33417,10 +33417,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/mainpage.js":
-/*!**********************************!*\
-  !*** ./resources/js/mainpage.js ***!
-  \**********************************/
+/***/ "./resources/js/contact.js":
+/*!*********************************!*\
+  !*** ./resources/js/contact.js ***!
+  \*********************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -33429,11 +33429,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_navbar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/navbar.vue */ "./resources/js/components/navbar.vue");
+/* harmony import */ var _components_submit_button_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/submit_button.vue */ "./resources/js/components/submit_button.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
+
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('navbar', _components_navbar_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('submit-button', _components_submit_button_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   data: {},
@@ -33442,14 +33445,74 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
 /***/ }),
 
-/***/ 1:
-/*!****************************************!*\
-  !*** multi ./resources/js/mainpage.js ***!
-  \****************************************/
+/***/ "./resources/sass/auth/login_or_register.scss":
+/*!****************************************************!*\
+  !*** ./resources/sass/auth/login_or_register.scss ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/auth/password_reset.scss":
+/*!*************************************************!*\
+  !*** ./resources/sass/auth/password_reset.scss ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/auth/password_reset_confirmation.scss":
+/*!**************************************************************!*\
+  !*** ./resources/sass/auth/password_reset_confirmation.scss ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/contact.scss":
+/*!*************************************!*\
+  !*** ./resources/sass/contact.scss ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/mainpage/mainpage.scss":
+/*!***********************************************!*\
+  !*** ./resources/sass/mainpage/mainpage.scss ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 0:
+/*!***********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/contact.js ./resources/sass/auth/login_or_register.scss ./resources/sass/contact.scss ./resources/sass/mainpage/mainpage.scss ./resources/sass/auth/password_reset.scss ./resources/sass/auth/password_reset_confirmation.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/html/sex-imperium/resources/js/mainpage.js */"./resources/js/mainpage.js");
+__webpack_require__(/*! /var/www/html/sex-imperium/resources/js/contact.js */"./resources/js/contact.js");
+__webpack_require__(/*! /var/www/html/sex-imperium/resources/sass/auth/login_or_register.scss */"./resources/sass/auth/login_or_register.scss");
+__webpack_require__(/*! /var/www/html/sex-imperium/resources/sass/contact.scss */"./resources/sass/contact.scss");
+__webpack_require__(/*! /var/www/html/sex-imperium/resources/sass/mainpage/mainpage.scss */"./resources/sass/mainpage/mainpage.scss");
+__webpack_require__(/*! /var/www/html/sex-imperium/resources/sass/auth/password_reset.scss */"./resources/sass/auth/password_reset.scss");
+module.exports = __webpack_require__(/*! /var/www/html/sex-imperium/resources/sass/auth/password_reset_confirmation.scss */"./resources/sass/auth/password_reset_confirmation.scss");
 
 
 /***/ })

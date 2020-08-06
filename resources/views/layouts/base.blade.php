@@ -32,6 +32,6 @@
 	@footer
 	@endfooter
 	</div>
-	<script src="@yield('scripts')"></script>
+	@yield('scripts')
 </body>
 </html>

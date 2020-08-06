@@ -74,7 +74,8 @@
 					<input type="text" class="main-panel-input" id="login" name="login">
 					<label for="password" class="main-panel-label">Hasło</label>
 					<input type="password" class="main-panel-input" id="password" name="login">
-					<nice-checkbox>Zapamiętaj mnie</nice-checkbox>
+					<labeled-checkbox>Zapamiętaj mnie</labeled-checkbox>
+					<submit-button>Zaloguj</submit-button>
 					<a href="/password/reset" class="forgot-password-link">Zapomniałem hasła</a>
 				</form>
     </div>
@@ -82,12 +83,14 @@
 </template>
 
 <script>
-import NiceCheckbox from "./nicecheckbox.vue";
+import LabeledCheckbox from "./labeled_checkbox.vue";
+import SubmitButton from "./submit_button.vue";
 
 	export default {
 		name: 'navbar',
 		components :{
-          NiceCheckbox
+		  LabeledCheckbox,
+		  SubmitButton
 		},
         props: {
         	authenticatedUser : {
@@ -166,17 +169,32 @@ import NiceCheckbox from "./nicecheckbox.vue";
 
 <style lang="scss">
 
+.submit-button:hover{
+	background: #a00e30;
+}
+
+.labeled-checkbox-container{
+	display: block;
+    width: 95%;
+    margin: 4px auto 1px auto;
+}
+
+.labeled-checkbox-description{
+	color:black;
+}
+
 .login-info{
 	font:{
       size:19px;
 	  family:Play;
 	  weight:bold;
 	}
+	color:white;
 }
 
 .login-form-container{
 	position: fixed;
-	background: rgba(0,0,0,0.8);
+	background: rgba(0,0,0,0.95);
 	top:0;
 	left:0;
 	width:100vw;
@@ -186,7 +204,7 @@ import NiceCheckbox from "./nicecheckbox.vue";
 
 .login-panel-toolbar{
 	border-radius: 5px 5px 0 0;
-	background:linear-gradient(to bottom, #9ee83b, #083802);
+	background:linear-gradient(to bottom, #464843, #000000);
 	padding: 5px;
 	display:flex;
 	justify-content: space-between;
@@ -211,7 +229,7 @@ import NiceCheckbox from "./nicecheckbox.vue";
 	  family: "Exo 2", sans-serif;
 	  size: 18px;
 	}
-	color:white;
+	color:black;
 }
 
 .forgot-password-link
@@ -219,7 +237,7 @@ import NiceCheckbox from "./nicecheckbox.vue";
 	display:block;
 	padding:4px;
 	text-align:center;
-	color:white;
+	color:black;
 	text-decoration:none;
 	font: {
 		family:"Exo 2", sans-serif;
@@ -237,16 +255,16 @@ import NiceCheckbox from "./nicecheckbox.vue";
     background: #302e2e;
     display: block;
     width: 95%;
-    color: white;
+    background: white;
     margin: 0 auto;
     border-radius: 4px;
-    border: 2px solid #302e2e;
+    border: 1px solid #5a5555;
     outline: none;
     font-size:18px;
-    padding:2px;
+	padding:2px;
     &:focus
     {
-    	border: 2px solid #078a07;
+    	border: 1px solid #078a07;
     }
 }
 
@@ -260,92 +278,11 @@ import NiceCheckbox from "./nicecheckbox.vue";
 	top:50%;
 	left:50%;
 	transform: translate(-50%,-50%);
-	background: black;
+	background:white;
     border-radius: 5px;
     box-shadow: 3px 3px 3px 3px black;
 	min-width:320px;
-}
-
-
-.submit-button
-{
-	background: linear-gradient(#0fe00b, #054004);
-	padding:5px;
-	color:white;
-	display:block;
-	width:95%;
-	margin:7px auto;
-	border-radius: 5px;
-    
-    border: none;
-    cursor:pointer;
-   
-    font: {
-		family:"Exo 2", sans-serif;
-		size: 19px;
-		weight:bold;
-	}
-}
-
-.nice-checkbox
-{
-   opacity:0;
-}
-
-.checkbox-description{
-  position:relative;
-  padding: 0 8px; 
-  &:before{
-    content: "";
-    display: inline-block;
-    position: absolute;
-    top: 2px;
-    left: -22px;
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-    background: white;
-    border-radius: 3px;
-    z-index: 1;
-  }
-  &:after
-  {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    top: 2px;
-    left: -17px;
-    width: 4px;
-    height: 11px;
-    cursor: pointer;
-    border-bottom: 2px solid white;
-    border-right: 2px solid white;
-    z-index: 2;
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-    opacity: 0;
-  }
-}
-
-.checkbox-container
-{
-    display:table;
-}
-
-
-.nice-checkbox:hover + .checkbox-description:before
-{
-  background:#e80e53;
-}
-
-.nice-checkbox:checked + .checkbox-description:before
-{
-  background:#e80e53;
-}
-
-.nice-checkbox:checked + .checkbox-description:after
-{
-  opacity:1;
+	font-family: "Exo 2", sans-serif;
 }
 
 .navigation-list{

@@ -8,10 +8,6 @@
  {{asset('css/auth/login_or_register.css')}}
 @endsection
 
-@section('scripts')
- {{asset('js/login_or_register.js')}}
-@endsection
-
 @section('description')
   Logowanie i rejestracja w Sex-Imperium
 @endsection
@@ -73,4 +69,8 @@
 		</main>
 	</div>
 	@endsection
+
+@section('scripts')
+<script src="{{asset('js/register.js')}}"></script> 
+@endsection
 	

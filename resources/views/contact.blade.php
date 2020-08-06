@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-	<meta charset="UTF-8">
-	<title>Kontakt z obsługą portalu Sex-imperium</title>
-	<meta name="description" content="Skontaktuj się z obsługą portalu sex-imperium. Coś nie działa, chciałbyś zasugerować zmiany lub zapytać o coś innego? Pisz śmiało, informacje od użytkowników są bardzo cenne!">
-	<meta name="author" content="Neuro-Boost">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="{{asset('css/contact.css')}}">
-	<link href="https://fonts.googleapis.com/css?family=Exo+2|Aldrich|Oxanium&display=swap" rel="stylesheet">
-</head>
-<body class="full-body">
-	@main_page_navbar(['navigationItems' => [['Strona główna',''],['Porno','porno'],['Prostytucja','prostytucja'], ['Randki', 'randki']]])
-	@endmain_page_navbar
+@extends('layouts.base')
 
-	@includeWhen(Session::has('success'), 'components.success_information', ['message' => Session::get('success')])
+@section('title')
+  Kontakt z obsługą Sex-Imperium
+@endsection
+
+@section('file-with-styles')
+ {{asset('css/contact.css')}}
+@endsection
+
+@section('scripts')
+<script src="{{asset('js/contact.js')}}"></script> 
+@endsection
+
+@section('content')
+@includeWhen(Session::has('success'), 'components.success_information', ['message' => Session::get('success')])
 
    @error_list
    @enderror_list
@@ -34,10 +34,6 @@
 			 @includeWhen($errors->any() and !$errors->has('message'), 'components.icons.icon_confirmation', ['showIconConfirmation' => true])
 		<textarea min="3" max="1000" placeholder="wymagana : 3 - 1000 znaków" max="1000" required id="user-message" name="message" rows="10" class="user-message @if($errors->has('message'))input-with-error @elseif($errors->any() and !$errors->has('message')) input-correct-value @endif">{{old('message') ? old('message') : ''}}</textarea>
 		</div>
-		<input type="submit" class="submit-button" value="Wyślij">
+		<submit-button>Wyślij</submit-button>
 	</form>
-
-	@footer
-	@endfooter
-</body>
-</html>
+@endsection

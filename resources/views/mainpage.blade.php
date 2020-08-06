@@ -9,5 +9,5 @@
 @endsection
 
 @section('scripts')
- {{asset('js/mainpage.js')}}
+<script src="{{asset('js/mainpage.js')}}"></script> 
 @endsection

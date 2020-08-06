@@ -1,18 +1,18 @@
 <template>
-   <div class="checkbox-container">
-     <input type="checkbox" class="nice-checkbox" v-bind:name="name" v-bind:id="name">
-        <label v-bind:for="name" class="checkbox-description"><slot></slot></label>	
+   <div class="labeled-checkbox-container">
+     <input type="checkbox" class="labeled-checkbox" v-bind:name="name" v-bind:id="name">
+        <label v-bind:for="name" class="labeled-checkbox-description"><slot></slot></label>	
     </div>
 </template>
 
 <script>
 	export default {
-        name: 'nice-checkbox',
+        name: 'labeled-checkbox',
         props: {
         	name : {
         		type: String,
                 required: false,
-                default: "nice-checkbox"
+                default: "labeled-checkbox"
         	}
         }   
     }
@@ -20,14 +20,14 @@
 
 <style lang="scss">
 
-.nice-checkbox
+.labeled-checkbox
 {
    opacity:0;
 }
 
-.checkbox-description{
+.labeled-checkbox-description{
   position:relative;
-  padding: 0 8px; 
+  padding: 0 8px;
   &:before{
     content: "";
     display: inline-block;
@@ -38,7 +38,8 @@
     height: 16px;
     cursor: pointer;
     background: white;
-    border-radius: 3px;
+    border:1px solid #5a5555;
+    border-radius: 2px;
     z-index: 1;
   }
   &:after
@@ -60,23 +61,23 @@
   }
 }
 
-.checkbox-container
+.labeled-checkbox-container
 {
     display:table;
 }
 
 
-.nice-checkbox:hover + .checkbox-description:before
+.labeled-checkbox:hover + .labeled-checkbox-description:before
 {
   background:#e80e53;
 }
 
-.nice-checkbox:checked + .checkbox-description:before
+.labeled-checkbox:checked + .labeled-checkbox-description:before
 {
   background:#e80e53;
 }
 
-.nice-checkbox:checked + .checkbox-description:after
+.labeled-checkbox:checked + .labeled-checkbox-description:after
 {
   opacity:1;
 }

@@ -1,10 +1,10 @@
 {
-    "/js/app.js": "/js/app.js",
+    "/js/contact.js": "/js/contact.js",
     "/css/auth/login_or_register.css": "/css/auth/login_or_register.css",
     "/css/contact.css": "/css/contact.css",
     "/css/mainpage.css": "/css/mainpage.css",
     "/css/password_reset.css": "/css/password_reset.css",
     "/css/password_reset_confirmation.css": "/css/password_reset_confirmation.css",
-    "/js/login_or_register.js": "/js/login_or_register.js",
-    "/js/mainpage.js": "/js/mainpage.js"
+    "/js/mainpage.js": "/js/mainpage.js",
+    "/js/register.js": "/js/register.js"
 }
