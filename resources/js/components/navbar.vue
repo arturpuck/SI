@@ -1,4 +1,5 @@
 <template>
+<div>
 <nav tabindex="0" v-on:focusout="resetNavbar" id="navbar" v-on:mouseenter="setElementToFocusState"  class="main-page-navigation">
 	<ul class="navigation-list">
 		<li v-on:click="togglePornSubMenu" v-on:mouseenter="showPornSubMenu"  class="navigation-element-main navigation-element-padding">
@@ -17,10 +18,10 @@
 			</a> 
 		</li>
 		<li class="navigation-element-main">
-			<a class="navbar-link-main-manu" :href="loginRoute">
-			  <span class="fas navbar-icon navbar-icon-outer fa-sign-in-alt"></span>
+			<div v-on:click="toggleLoginPanel" class="login-button-container">
+              <span class="fas navbar-icon navbar-icon-outer fa-sign-in-alt"></span>
 			  Loguj
-			</a> 
+			</div>
 		</li>
 	</ul>
 	<div v-on:click="resetNavbar" class="click-detector"></div>
@@ -61,12 +62,33 @@
 					</div>
 			    </li>
 		</ul>
-	</nav>	
+	</nav>
+	<div v-show="loginPanelIsVisible" class="login-form-container">
+	            <form action="/login" method="POST" id="login-form" class="main-panel-form login-form">
+					<header class="login-panel-toolbar">
+						<span class="login-info">Zaloguj się do Sex-Imperium</span> 
+						<span v-on:click="toggleLoginPanel" title="zamknij okno logowania" aria-label="zamknij okno logowania" class="close-button"></span>
+					</header>
+					<input v-bind:value="csrfToken" type="hidden" name="_token">
+					<label for="login" class="main-panel-label">Email lub nick</label>
+					<input type="text" class="main-panel-input" id="login" name="login">
+					<label for="password" class="main-panel-label">Hasło</label>
+					<input type="password" class="main-panel-input" id="password" name="login">
+					<nice-checkbox>Zapamiętaj mnie</nice-checkbox>
+					<a href="/password/reset" class="forgot-password-link">Zapomniałem hasła</a>
+				</form>
+    </div>
+</div>	
 </template>
 
 <script>
+import NiceCheckbox from "./nicecheckbox.vue";
+
 	export default {
-        name: 'navbar',
+		name: 'navbar',
+		components :{
+          NiceCheckbox
+		},
         props: {
         	authenticatedUser : {
         		type: Boolean,
@@ -81,17 +103,14 @@
         	registerRoute : {
         		required: false,
         		type: String
-        	},
-
-        	loginRoute : {
-        		required: false,
-        		type: String
-        	}
+			}
         },
          data() {
 		 	return {
 		 		pornSubMenuIsVisible : false,
-		 		moviesSubMenuIsVisible : false,
+				moviesSubMenuIsVisible : false,
+				loginPanelIsVisible : false,
+				csrfToken : ""
 		 	};
  		},
 
@@ -129,13 +148,205 @@
 		   {
 		   	  	this.pornSubMenuIsVisible = false;
 		   	    this.hideAllSecondLevelSubMenus();
+		   },
+
+		   toggleLoginPanel()
+		   {
+			   this.loginPanelIsVisible = !this.loginPanelIsVisible;
 		   }
     
-        }
+		},
+		
+		mounted()
+		{
+           this.csrfToken = document.getElementById("csrf-token").content;
+		}
     }
 </script>
 
 <style lang="scss">
+
+.login-info{
+	font:{
+      size:19px;
+	  family:Play;
+	  weight:bold;
+	}
+}
+
+.login-form-container{
+	position: fixed;
+	background: rgba(0,0,0,0.8);
+	top:0;
+	left:0;
+	width:100vw;
+	height:100vh;
+	z-index: 999;
+}
+
+.login-panel-toolbar{
+	border-radius: 5px 5px 0 0;
+	background:linear-gradient(to bottom, #9ee83b, #083802);
+	padding: 5px;
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 19px;
+}
+
+.close-button{
+	width: 28px;
+    height: 28px;
+	display:inline-block;
+	cursor:pointer;
+	background-image: url("../../../public/images/decoration/icons/navbar/close.svg");	
+}
+
+.main-panel-label
+{
+	display:block;
+	text-align:center;
+	padding:4px;
+	font:{
+	  family: "Exo 2", sans-serif;
+	  size: 18px;
+	}
+	color:white;
+}
+
+.forgot-password-link
+{
+	display:block;
+	padding:4px;
+	text-align:center;
+	color:white;
+	text-decoration:none;
+	font: {
+		family:"Exo 2", sans-serif;
+		size: 17px;
+	}
+
+	&:hover
+	{
+	  text-decoration: underline;
+	}
+}
+
+.main-panel-input
+{
+    background: #302e2e;
+    display: block;
+    width: 95%;
+    color: white;
+    margin: 0 auto;
+    border-radius: 4px;
+    border: 2px solid #302e2e;
+    outline: none;
+    font-size:18px;
+    padding:2px;
+    &:focus
+    {
+    	border: 2px solid #078a07;
+    }
+}
+
+.login-button-container{
+	padding: 6px;
+    height: 100%;
+}
+
+.login-form{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	background: black;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 3px black;
+	min-width:320px;
+}
+
+
+.submit-button
+{
+	background: linear-gradient(#0fe00b, #054004);
+	padding:5px;
+	color:white;
+	display:block;
+	width:95%;
+	margin:7px auto;
+	border-radius: 5px;
+    
+    border: none;
+    cursor:pointer;
+   
+    font: {
+		family:"Exo 2", sans-serif;
+		size: 19px;
+		weight:bold;
+	}
+}
+
+.nice-checkbox
+{
+   opacity:0;
+}
+
+.checkbox-description{
+  position:relative;
+  padding: 0 8px; 
+  &:before{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 2px;
+    left: -22px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    background: white;
+    border-radius: 3px;
+    z-index: 1;
+  }
+  &:after
+  {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 2px;
+    left: -17px;
+    width: 4px;
+    height: 11px;
+    cursor: pointer;
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+    z-index: 2;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.checkbox-container
+{
+    display:table;
+}
+
+
+.nice-checkbox:hover + .checkbox-description:before
+{
+  background:#e80e53;
+}
+
+.nice-checkbox:checked + .checkbox-description:before
+{
+  background:#e80e53;
+}
+
+.nice-checkbox:checked + .checkbox-description:after
+{
+  opacity:1;
+}
 
 .navigation-list{
 	list-style-type: none;

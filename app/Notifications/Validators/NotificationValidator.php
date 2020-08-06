@@ -17,6 +17,6 @@ class NotificationValidator
 
 	public function validate()
 	{
-        $validator = Validator::make($data,$rules)
+        $validator = Validator::make($data,$rules);
 	}
 }

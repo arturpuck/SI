@@ -1908,6 +1908,7 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _nicecheckbox_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./nicecheckbox.vue */ "./resources/js/components/nicecheckbox.vue");
 //
 //
 //
@@ -1974,8 +1975,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'navbar',
+  components: {
+    NiceCheckbox: _nicecheckbox_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   props: {
     authenticatedUser: {
       type: Boolean,
@@ -1988,16 +2010,14 @@ __webpack_require__.r(__webpack_exports__);
     registerRoute: {
       required: false,
       type: String
-    },
-    loginRoute: {
-      required: false,
-      type: String
     }
   },
   data: function data() {
     return {
       pornSubMenuIsVisible: false,
-      moviesSubMenuIsVisible: false
+      moviesSubMenuIsVisible: false,
+      loginPanelIsVisible: false,
+      csrfToken: ""
     };
   },
   methods: {
@@ -2023,6 +2043,41 @@ __webpack_require__.r(__webpack_exports__);
     resetNavbar: function resetNavbar() {
       this.pornSubMenuIsVisible = false;
       this.hideAllSecondLevelSubMenus();
+    },
+    toggleLoginPanel: function toggleLoginPanel() {
+      this.loginPanelIsVisible = !this.loginPanelIsVisible;
+    }
+  },
+  mounted: function mounted() {
+    this.csrfToken = document.getElementById("csrf-token").content;
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/nicecheckbox.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/nicecheckbox.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'nice-checkbox',
+  props: {
+    name: {
+      type: String,
+      required: false,
+      "default": "nice-checkbox"
     }
   }
 });
@@ -2036,12 +2091,32 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+var escape = __webpack_require__(/*! ../../../node_modules/css-loader/lib/url/escape.js */ "./node_modules/css-loader/lib/url/escape.js");
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, ".navigation-list {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  background: #0d0c0d;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  position: relative;\n  z-index: 3;\n  box-shadow: 2px 2px 2px 2px black;\n}\n.click-detector {\n  position: absolute;\n  z-index: 0;\n  top: 1px;\n  width: 100%;\n  height: 100%;\n}\n.register-selection {\n  margin-left: auto;\n}\n.navigation-element-main {\n  -webkit-transition: background 2s;\n  transition: background 2s;\n  cursor: pointer;\n  color: white;\n  display: inline-block;\n  line-height: 100%;\n  font-family: \"Oxanium\";\n  font-size: 1.5vw;\n}\n.navigation-element-main:hover {\n  background: #2d2d30;\n}\n.navigation-element-padding {\n  padding: 6px;\n}\n.main-page-navigation {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1;\n  font-size: 0;\n}\n.main-page-navigation:focus {\n  outline: none;\n}\n.sub-menu-list {\n  position: relative;\n  overflow: hidden;\n  display: inline-block;\n  top: 1px;\n  max-height: 0;\n  padding: 0;\n  list-style-type: none;\n  margin: 0;\n  font-family: \"Oxanium\";\n  font-size: 1.5vw;\n  color: white;\n  max-width: 30%;\n  min-width: 150px;\n  z-index: 1;\n  border-radius: 0 0 8px 8px;\n}\n.porn-sub-menu-list {\n  left: 1vw;\n}\n.hidden-porn-sub-menu {\n  max-height: 0;\n  -webkit-transition: none;\n  transition: none;\n}\n.visible-porn-sub-menu {\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n  max-height: 1500px;\n  box-shadow: 2px 2px 4px 3px black;\n}\n.sub-menu-list-element {\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n  border-bottom: 1px solid black;\n  cursor: pointer;\n}\n.sub-menu-list-nested-level-two {\n  list-style-type: none;\n  overflow: hidden;\n  padding: 0;\n  -webkit-transition: max-height 0.7s;\n  transition: max-height 0.7s;\n}\n.navbar-icon-second-level {\n  color: #bbb606;\n}\n.sub-menu-list-element-intendation-second-level {\n  padding: 5px 2px 5px 2vw;\n  border-bottom: 1px solid black;\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n}\n.sub-menu-list-element-intendation-second-level:hover {\n  background: black;\n  cursor: pointer;\n}\n.visible-movies-sub-menu {\n  max-height: 500px;\n}\n.hidden-movies-sub-menu {\n  max-height: 0;\n}\n.sub-menu-level-one-item {\n  padding: 5px 2px 5px 1vw;\n}\n.sub-menu-level-one-item:hover {\n  background: black;\n}\n.sum-menu-list-element:last-child {\n  border-radius: 0 0 8px 8px;\n}\n.navbar-icon {\n  margin: 0 5px;\n}\n.navbar-icon-outer {\n  color: #eb091c;\n}\n.navbar-link-main-manu {\n  color: inherit;\n  text-decoration: none;\n  padding: 6px;\n  height: 100%;\n  display: inline-block;\n}\n@media (min-width: 620px) and (max-width: 1000px) {\n.navigation-element {\n    font-size: 2.2vw;\n}\n}\n@media (max-width: 619px) {\n.navigation-element {\n    font-size: 3.9vw;\n}\n}", ""]);
+exports.push([module.i, ".login-info {\n  font-size: 19px;\n  font-family: Play;\n  font-weight: bold;\n}\n.login-form-container {\n  position: fixed;\n  background: rgba(0, 0, 0, 0.8);\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  z-index: 999;\n}\n.login-panel-toolbar {\n  border-radius: 5px 5px 0 0;\n  background: -webkit-gradient(linear, left top, left bottom, from(#9ee83b), to(#083802));\n  background: linear-gradient(to bottom, #9ee83b, #083802);\n  padding: 5px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  font-size: 19px;\n}\n.close-button {\n  width: 28px;\n  height: 28px;\n  display: inline-block;\n  cursor: pointer;\n  background-image: url(" + escape(__webpack_require__(/*! ../../../public/images/decoration/icons/navbar/close.svg */ "./public/images/decoration/icons/navbar/close.svg")) + ");\n}\n.main-panel-label {\n  display: block;\n  text-align: center;\n  padding: 4px;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 18px;\n  color: white;\n}\n.forgot-password-link {\n  display: block;\n  padding: 4px;\n  text-align: center;\n  color: white;\n  text-decoration: none;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 17px;\n}\n.forgot-password-link:hover {\n  text-decoration: underline;\n}\n.main-panel-input {\n  background: #302e2e;\n  display: block;\n  width: 95%;\n  color: white;\n  margin: 0 auto;\n  border-radius: 4px;\n  border: 2px solid #302e2e;\n  outline: none;\n  font-size: 18px;\n  padding: 2px;\n}\n.main-panel-input:focus {\n  border: 2px solid #078a07;\n}\n.login-button-container {\n  padding: 6px;\n  height: 100%;\n}\n.login-form {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  background: black;\n  border-radius: 5px;\n  box-shadow: 3px 3px 3px 3px black;\n  min-width: 320px;\n}\n.submit-button {\n  background: -webkit-gradient(linear, left top, left bottom, from(#0fe00b), to(#054004));\n  background: linear-gradient(#0fe00b, #054004);\n  padding: 5px;\n  color: white;\n  display: block;\n  width: 95%;\n  margin: 7px auto;\n  border-radius: 5px;\n  border: none;\n  cursor: pointer;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 19px;\n  font-weight: bold;\n}\n.nice-checkbox {\n  opacity: 0;\n}\n.checkbox-description {\n  position: relative;\n  padding: 0 8px;\n}\n.checkbox-description:before {\n  content: \"\";\n  display: inline-block;\n  position: absolute;\n  top: 2px;\n  left: -22px;\n  width: 16px;\n  height: 16px;\n  cursor: pointer;\n  background: white;\n  border-radius: 3px;\n  z-index: 1;\n}\n.checkbox-description:after {\n  content: \"\";\n  display: inline-block;\n  position: absolute;\n  top: 2px;\n  left: -17px;\n  width: 4px;\n  height: 11px;\n  cursor: pointer;\n  border-bottom: 2px solid white;\n  border-right: 2px solid white;\n  z-index: 2;\n  -webkit-transform: rotate(45deg);\n  transform: rotate(45deg);\n  opacity: 0;\n}\n.checkbox-container {\n  display: table;\n}\n.nice-checkbox:hover + .checkbox-description:before {\n  background: #e80e53;\n}\n.nice-checkbox:checked + .checkbox-description:before {\n  background: #e80e53;\n}\n.nice-checkbox:checked + .checkbox-description:after {\n  opacity: 1;\n}\n.navigation-list {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  background: #0d0c0d;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  position: relative;\n  z-index: 3;\n  box-shadow: 2px 2px 2px 2px black;\n}\n.click-detector {\n  position: absolute;\n  z-index: 0;\n  top: 1px;\n  width: 100%;\n  height: 100%;\n}\n.register-selection {\n  margin-left: auto;\n}\n.navigation-element-main {\n  -webkit-transition: background 2s;\n  transition: background 2s;\n  cursor: pointer;\n  color: white;\n  display: inline-block;\n  line-height: 100%;\n  font-family: \"Oxanium\";\n  font-size: 1.5vw;\n}\n.navigation-element-main:hover {\n  background: #2d2d30;\n}\n.navigation-element-padding {\n  padding: 6px;\n}\n.main-page-navigation {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1;\n  font-size: 0;\n}\n.main-page-navigation:focus {\n  outline: none;\n}\n.sub-menu-list {\n  position: relative;\n  overflow: hidden;\n  display: inline-block;\n  top: 1px;\n  max-height: 0;\n  padding: 0;\n  list-style-type: none;\n  margin: 0;\n  font-family: \"Oxanium\";\n  font-size: 1.5vw;\n  color: white;\n  max-width: 30%;\n  min-width: 150px;\n  z-index: 1;\n  border-radius: 0 0 8px 8px;\n}\n.porn-sub-menu-list {\n  left: 1vw;\n}\n.hidden-porn-sub-menu {\n  max-height: 0;\n  -webkit-transition: none;\n  transition: none;\n}\n.visible-porn-sub-menu {\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n  max-height: 1500px;\n  box-shadow: 2px 2px 4px 3px black;\n}\n.sub-menu-list-element {\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n  border-bottom: 1px solid black;\n  cursor: pointer;\n}\n.sub-menu-list-nested-level-two {\n  list-style-type: none;\n  overflow: hidden;\n  padding: 0;\n  -webkit-transition: max-height 0.7s;\n  transition: max-height 0.7s;\n}\n.navbar-icon-second-level {\n  color: #bbb606;\n}\n.sub-menu-list-element-intendation-second-level {\n  padding: 5px 2px 5px 2vw;\n  border-bottom: 1px solid black;\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n}\n.sub-menu-list-element-intendation-second-level:hover {\n  background: black;\n  cursor: pointer;\n}\n.visible-movies-sub-menu {\n  max-height: 500px;\n}\n.hidden-movies-sub-menu {\n  max-height: 0;\n}\n.sub-menu-level-one-item {\n  padding: 5px 2px 5px 1vw;\n}\n.sub-menu-level-one-item:hover {\n  background: black;\n}\n.sum-menu-list-element:last-child {\n  border-radius: 0 0 8px 8px;\n}\n.navbar-icon {\n  margin: 0 5px;\n}\n.navbar-icon-outer {\n  color: #eb091c;\n}\n.navbar-link-main-manu {\n  color: inherit;\n  text-decoration: none;\n  padding: 6px;\n  height: 100%;\n  display: inline-block;\n}\n@media (min-width: 620px) and (max-width: 1000px) {\n.navigation-element {\n    font-size: 2.2vw;\n}\n}\n@media (max-width: 619px) {\n.navigation-element {\n    font-size: 3.9vw;\n}\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/nicecheckbox.vue?vue&type=style&index=0&lang=scss&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/nicecheckbox.vue?vue&type=style&index=0&lang=scss& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".nice-checkbox {\n  opacity: 0;\n}\n.checkbox-description {\n  position: relative;\n  padding: 0 8px;\n}\n.checkbox-description:before {\n  content: \"\";\n  display: inline-block;\n  position: absolute;\n  top: 2px;\n  left: -22px;\n  width: 16px;\n  height: 16px;\n  cursor: pointer;\n  background: white;\n  border-radius: 3px;\n  z-index: 1;\n}\n.checkbox-description:after {\n  content: \"\";\n  display: inline-block;\n  position: absolute;\n  top: 2px;\n  left: -17px;\n  width: 4px;\n  height: 11px;\n  cursor: pointer;\n  border-bottom: 2px solid white;\n  border-right: 2px solid white;\n  z-index: 2;\n  -webkit-transform: rotate(45deg);\n  transform: rotate(45deg);\n  opacity: 0;\n}\n.checkbox-container {\n  display: table;\n}\n.nice-checkbox:hover + .checkbox-description:before {\n  background: #e80e53;\n}\n.nice-checkbox:checked + .checkbox-description:before {\n  background: #e80e53;\n}\n.nice-checkbox:checked + .checkbox-description:after {\n  opacity: 1;\n}", ""]);
 
 // exports
 
@@ -2130,6 +2205,33 @@ function toComment(sourceMap) {
 	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
 
 	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/lib/url/escape.js":
+/*!***************************************************!*\
+  !*** ./node_modules/css-loader/lib/url/escape.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function escape(url) {
+    if (typeof url !== 'string') {
+        return url
+    }
+    // If url is already wrapped in quotes, remove them
+    if (/^['"].*['"]$/.test(url)) {
+        url = url.slice(1, -1);
+    }
+    // Should url be wrapped?
+    // See https://drafts.csswg.org/css-values-3/#urls
+    if (/["'() \t\n]/.test(url)) {
+        return '"' + url.replace(/"/g, '\\"').replace(/\n/g, '\\n') + '"'
+    }
+
+    return url
 }
 
 
@@ -19674,6 +19776,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/nicecheckbox.vue?vue&type=style&index=0&lang=scss&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--11-2!./node_modules/sass-loader/dist/cjs.js??ref--11-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/nicecheckbox.vue?vue&type=style&index=0&lang=scss& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--11-2!../../../node_modules/sass-loader/dist/cjs.js??ref--11-3!../../../node_modules/vue-loader/lib??vue-loader-options!./nicecheckbox.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/nicecheckbox.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -20273,174 +20405,261 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "nav",
-    {
-      staticClass: "main-page-navigation",
-      attrs: { tabindex: "0", id: "navbar" },
-      on: { focusout: _vm.resetNavbar, mouseenter: _vm.setElementToFocusState }
-    },
-    [
-      _c("ul", { staticClass: "navigation-list" }, [
-        _c(
-          "li",
-          {
-            staticClass: "navigation-element-main navigation-element-padding",
-            on: {
-              click: _vm.togglePornSubMenu,
-              mouseenter: _vm.showPornSubMenu
-            }
-          },
-          [
-            _c("span", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: !_vm.pornSubMenuIsVisible,
-                  expression: "!pornSubMenuIsVisible"
-                }
-              ],
-              staticClass: "fas navbar-icon navbar-icon-outer fa-camera-retro"
-            }),
-            _vm._v(" "),
-            _c("span", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.pornSubMenuIsVisible,
-                  expression: "pornSubMenuIsVisible"
-                }
-              ],
-              staticClass: "fas navbar-icon navbar-icon-outer fa-arrow-up"
-            }),
-            _vm._v("\r\n            \tPorno\r\n\t\t")
-          ]
-        ),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "li",
-          { staticClass: "navigation-element-main register-selection " },
-          [
-            _c(
-              "a",
-              {
-                staticClass: "navbar-link-main-manu",
-                attrs: { href: _vm.registerRoute }
-              },
-              [
-                _c("span", {
-                  staticClass: "fas navbar-icon navbar-icon-outer fa-user-plus"
-                }),
-                _vm._v(" \r\n\t\t\t  Rejestruj\r\n\t\t\t")
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c("li", { staticClass: "navigation-element-main" }, [
+  return _c("div", [
+    _c(
+      "nav",
+      {
+        staticClass: "main-page-navigation",
+        attrs: { tabindex: "0", id: "navbar" },
+        on: {
+          focusout: _vm.resetNavbar,
+          mouseenter: _vm.setElementToFocusState
+        }
+      },
+      [
+        _c("ul", { staticClass: "navigation-list" }, [
           _c(
-            "a",
+            "li",
             {
-              staticClass: "navbar-link-main-manu",
-              attrs: { href: _vm.loginRoute }
+              staticClass: "navigation-element-main navigation-element-padding",
+              on: {
+                click: _vm.togglePornSubMenu,
+                mouseenter: _vm.showPornSubMenu
+              }
             },
             [
               _c("span", {
-                staticClass: "fas navbar-icon navbar-icon-outer fa-sign-in-alt"
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: !_vm.pornSubMenuIsVisible,
+                    expression: "!pornSubMenuIsVisible"
+                  }
+                ],
+                staticClass: "fas navbar-icon navbar-icon-outer fa-camera-retro"
               }),
-              _vm._v("\r\n\t\t\t  Loguj\r\n\t\t\t")
+              _vm._v(" "),
+              _c("span", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.pornSubMenuIsVisible,
+                    expression: "pornSubMenuIsVisible"
+                  }
+                ],
+                staticClass: "fas navbar-icon navbar-icon-outer fa-arrow-up"
+              }),
+              _vm._v("\r\n            \tPorno\r\n\t\t")
             ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", {
-        staticClass: "click-detector",
-        on: { click: _vm.resetNavbar }
-      }),
-      _vm._v(" "),
-      _c(
-        "ul",
-        {
-          ref: "pornSubMenu",
-          staticClass: "sub-menu-list porn-sub-menu-list",
-          class: _vm.pornSubMenuIsVisible
-            ? "visible-porn-sub-menu"
-            : "hidden-porn-sub-menu",
-          attrs: { id: "porn-sub-menu-list" }
-        },
-        [
+          ),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
           _c(
             "li",
-            { staticClass: "sub-menu-list-element intendation-first-level" },
+            { staticClass: "navigation-element-main register-selection " },
             [
               _c(
-                "div",
+                "a",
                 {
-                  staticClass: "sub-menu-level-one-item",
-                  on: { click: _vm.toggleMoviesSubMenu }
+                  staticClass: "navbar-link-main-manu",
+                  attrs: { href: _vm.registerRoute }
                 },
                 [
                   _c("span", {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: !_vm.moviesSubMenuIsVisible,
-                        expression: "!moviesSubMenuIsVisible"
-                      }
-                    ],
-                    staticClass: "fas navbar-icon navbar-icon-outer fa-film"
+                    staticClass:
+                      "fas navbar-icon navbar-icon-outer fa-user-plus"
                   }),
-                  _vm._v(" "),
-                  _c("span", {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.moviesSubMenuIsVisible,
-                        expression: "moviesSubMenuIsVisible"
-                      }
-                    ],
-                    staticClass: "fas navbar-icon navbar-icon-outer fa-arrow-up"
-                  }),
-                  _vm._v("\r\n\t\t\t\t     Filmy\r\n\t\t\t")
+                  _vm._v(" \r\n\t\t\t  Rejestruj\r\n\t\t\t")
                 ]
               )
             ]
           ),
           _vm._v(" "),
-          _c("li", [
+          _c("li", { staticClass: "navigation-element-main" }, [
             _c(
-              "ul",
+              "div",
               {
-                staticClass: "sub-menu-list-nested-level-two",
-                class:
-                  _vm.moviesSubMenuIsVisible && _vm.pornSubMenuIsVisible
-                    ? "visible-movies-sub-menu"
-                    : "hidden-movies-sub-menu"
+                staticClass: "login-button-container",
+                on: { click: _vm.toggleLoginPanel }
               },
               [
-                _vm._m(1),
-                _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
-                _vm._m(3),
-                _vm._v(" "),
-                _vm._m(4)
+                _c("span", {
+                  staticClass:
+                    "fas navbar-icon navbar-icon-outer fa-sign-in-alt"
+                }),
+                _vm._v("\r\n\t\t\t  Loguj\r\n\t\t\t")
               ]
             )
-          ]),
-          _vm._v(" "),
-          _vm._m(5)
-        ]
-      )
-    ]
-  )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "click-detector",
+          on: { click: _vm.resetNavbar }
+        }),
+        _vm._v(" "),
+        _c(
+          "ul",
+          {
+            ref: "pornSubMenu",
+            staticClass: "sub-menu-list porn-sub-menu-list",
+            class: _vm.pornSubMenuIsVisible
+              ? "visible-porn-sub-menu"
+              : "hidden-porn-sub-menu",
+            attrs: { id: "porn-sub-menu-list" }
+          },
+          [
+            _c(
+              "li",
+              { staticClass: "sub-menu-list-element intendation-first-level" },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "sub-menu-level-one-item",
+                    on: { click: _vm.toggleMoviesSubMenu }
+                  },
+                  [
+                    _c("span", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: !_vm.moviesSubMenuIsVisible,
+                          expression: "!moviesSubMenuIsVisible"
+                        }
+                      ],
+                      staticClass: "fas navbar-icon navbar-icon-outer fa-film"
+                    }),
+                    _vm._v(" "),
+                    _c("span", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.moviesSubMenuIsVisible,
+                          expression: "moviesSubMenuIsVisible"
+                        }
+                      ],
+                      staticClass:
+                        "fas navbar-icon navbar-icon-outer fa-arrow-up"
+                    }),
+                    _vm._v("\r\n\t\t\t\t     Filmy\r\n\t\t\t")
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("li", [
+              _c(
+                "ul",
+                {
+                  staticClass: "sub-menu-list-nested-level-two",
+                  class:
+                    _vm.moviesSubMenuIsVisible && _vm.pornSubMenuIsVisible
+                      ? "visible-movies-sub-menu"
+                      : "hidden-movies-sub-menu"
+                },
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _vm._m(4)
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(5)
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.loginPanelIsVisible,
+            expression: "loginPanelIsVisible"
+          }
+        ],
+        staticClass: "login-form-container"
+      },
+      [
+        _c(
+          "form",
+          {
+            staticClass: "main-panel-form login-form",
+            attrs: { action: "/login", method: "POST", id: "login-form" }
+          },
+          [
+            _c("header", { staticClass: "login-panel-toolbar" }, [
+              _c("span", { staticClass: "login-info" }, [
+                _vm._v("Zaloguj się do Sex-Imperium")
+              ]),
+              _vm._v(" "),
+              _c("span", {
+                staticClass: "close-button",
+                attrs: {
+                  title: "zamknij okno logowania",
+                  "aria-label": "zamknij okno logowania"
+                },
+                on: { click: _vm.toggleLoginPanel }
+              })
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden", name: "_token" },
+              domProps: { value: _vm.csrfToken }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              { staticClass: "main-panel-label", attrs: { for: "login" } },
+              [_vm._v("Email lub nick")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "main-panel-input",
+              attrs: { type: "text", id: "login", name: "login" }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              { staticClass: "main-panel-label", attrs: { for: "password" } },
+              [_vm._v("Hasło")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "main-panel-input",
+              attrs: { type: "password", id: "password", name: "login" }
+            }),
+            _vm._v(" "),
+            _c("nice-checkbox", [_vm._v("Zapamiętaj mnie")]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "forgot-password-link",
+                attrs: { href: "/password/reset" }
+              },
+              [_vm._v("Zapomniałem hasła")]
+            )
+          ],
+          1
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -20536,6 +20755,42 @@ var staticRenderFns = [
     )
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/nicecheckbox.vue?vue&type=template&id=74a325eb&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/nicecheckbox.vue?vue&type=template&id=74a325eb& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "checkbox-container" }, [
+    _c("input", {
+      staticClass: "nice-checkbox",
+      attrs: { type: "checkbox", name: _vm.name, id: _vm.name }
+    }),
+    _vm._v(" "),
+    _c(
+      "label",
+      { staticClass: "checkbox-description", attrs: { for: _vm.name } },
+      [_vm._t("default")],
+      2
+    )
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -32699,6 +32954,17 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./public/images/decoration/icons/navbar/close.svg":
+/*!*********************************************************!*\
+  !*** ./public/images/decoration/icons/navbar/close.svg ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/close.svg?dc958991a3c50cf5b2c8731776ed32e8";
+
+/***/ }),
+
 /***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
@@ -32818,6 +33084,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/nicecheckbox.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/nicecheckbox.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _nicecheckbox_vue_vue_type_template_id_74a325eb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./nicecheckbox.vue?vue&type=template&id=74a325eb& */ "./resources/js/components/nicecheckbox.vue?vue&type=template&id=74a325eb&");
+/* harmony import */ var _nicecheckbox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nicecheckbox.vue?vue&type=script&lang=js& */ "./resources/js/components/nicecheckbox.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _nicecheckbox_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nicecheckbox.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/nicecheckbox.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _nicecheckbox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _nicecheckbox_vue_vue_type_template_id_74a325eb___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _nicecheckbox_vue_vue_type_template_id_74a325eb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/nicecheckbox.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/nicecheckbox.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/nicecheckbox.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_nicecheckbox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./nicecheckbox.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/nicecheckbox.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_nicecheckbox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/nicecheckbox.vue?vue&type=style&index=0&lang=scss&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/nicecheckbox.vue?vue&type=style&index=0&lang=scss& ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_nicecheckbox_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--11-2!../../../node_modules/sass-loader/dist/cjs.js??ref--11-3!../../../node_modules/vue-loader/lib??vue-loader-options!./nicecheckbox.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/nicecheckbox.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_nicecheckbox_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_nicecheckbox_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_nicecheckbox_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_nicecheckbox_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_11_2_node_modules_sass_loader_dist_cjs_js_ref_11_3_node_modules_vue_loader_lib_index_js_vue_loader_options_nicecheckbox_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/nicecheckbox.vue?vue&type=template&id=74a325eb&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/nicecheckbox.vue?vue&type=template&id=74a325eb& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_nicecheckbox_vue_vue_type_template_id_74a325eb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./nicecheckbox.vue?vue&type=template&id=74a325eb& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/nicecheckbox.vue?vue&type=template&id=74a325eb&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_nicecheckbox_vue_vue_type_template_id_74a325eb___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_nicecheckbox_vue_vue_type_template_id_74a325eb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/mainpage.js":
 /*!**********************************!*\
   !*** ./resources/js/mainpage.js ***!
@@ -32850,7 +33203,7 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\sex-imperium\resources\js\mainpage.js */"./resources/js/mainpage.js");
+module.exports = __webpack_require__(/*! /var/www/html/sex-imperium/resources/js/mainpage.js */"./resources/js/mainpage.js");
 
 
 /***/ })
