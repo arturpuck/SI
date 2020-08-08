@@ -12,7 +12,7 @@
 			Spotkania
 		</li>
 		<li class="navigation-element-main register-selection ">
-			<a class="navbar-link-main-manu" :href="registerRoute">
+			<a class="navbar-link-main-manu" v-bind:href="registerRoute">
 			  <span class="fas navbar-icon navbar-icon-outer fa-user-plus"></span> 
 			  Rejestruj
 			</a> 
@@ -76,7 +76,7 @@
 					<input type="password" class="main-panel-input" id="password" name="login">
 					<labeled-checkbox>Zapamiętaj mnie</labeled-checkbox>
 					<submit-button>Zaloguj</submit-button>
-					<a href="/password/reset" class="forgot-password-link">Zapomniałem hasła</a>
+					<a v-bind:href="forgotPasswordRoute" class="forgot-password-link">Zapomniałem hasła</a>
 				</form>
     </div>
 </div>	
@@ -93,19 +93,21 @@ import SubmitButton from "./submit_button.vue";
 		  SubmitButton
 		},
         props: {
-        	authenticatedUser : {
-        		type: Boolean,
-        		required: true
-        	},
 
         	userID : {
         		type: Number,
-        		required: false
+        		required: false,
+				default: undefined
         	},
 
         	registerRoute : {
         		required: false,
         		type: String
+			},
+
+			forgotPasswordRoute : {
+				required: false,
+				type: String
 			}
         },
          data() {
@@ -194,7 +196,7 @@ import SubmitButton from "./submit_button.vue";
 
 .login-form-container{
 	position: fixed;
-	background: rgba(0,0,0,0.95);
+	background: rgba(0,0,0,0.85);
 	top:0;
 	left:0;
 	width:100vw;
@@ -398,6 +400,7 @@ $border-color: black;
 .sub-menu-list-element-intendation-second-level{
 	padding:5px 2px 5px 2vw;
 	border-bottom:1px solid black;
+	white-space: nowrap;
 	background:linear-gradient(to right,#0a0a0a, #2e2e2d);
 	&:hover{
 		background:black;
@@ -442,17 +445,17 @@ $border-color: black;
 }
 
 
-@media (min-width:620px) and (max-width: 1000px)
+@media (min-width:450px) and (max-width: 800px)
 {
-	.navigation-element{
+	.navigation-element-main, .sub-menu-list{
 		font-size:2.2vw;
 	}
 }
 
-@media (max-width: 619px)
+@media (max-width: 449px)
 {
-	.navigation-element{
-		font-size:3.9vw;
+	.navigation-element-main, .sub-menu-list{
+		font-size:3.3vw;
 	}
 }
 	

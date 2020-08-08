@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 .user-message {
   width: 100%;
   display: block;
@@ -29,8 +25,6 @@
   font-size: 22px;
   color: white;
   text-align: center;
-  position: fixed;
-  bottom: 0;
 }
 
 .contact-us-link {
@@ -48,7 +42,7 @@
 }
 
 .information-container {
-  margin: 25px auto;
+  margin: 45px auto;
   text-align: center;
   font-family: 'Exo 2', sans-serif;
   border-radius: 6px;
@@ -205,20 +199,23 @@
   border: 2px solid green;
 }
 
-.submit-button {
-  background: -webkit-gradient(linear, left top, left bottom, from(#0fe00b), to(#054004));
-  background: linear-gradient(#0fe00b, #054004);
-  padding: 5px;
-  color: white;
-  display: block;
-  width: 95%;
-  margin: 7px auto;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-family: "Exo 2", sans-serif;
-  font-size: 19px;
-  font-weight: bold;
+* {
+  box-sizing: border-box;
+}
+
+.app-container {
+  min-height: calc(100vh - 40px);
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.full-body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .single-line-text-input-label {
@@ -234,17 +231,6 @@
 .error-active {
   display: -webkit-box;
   display: flex;
-}
-
-.full-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-}
-
-.full-body background {
-  size: cover;
-  attachment: fixed;
 }
 
 .contact-form {

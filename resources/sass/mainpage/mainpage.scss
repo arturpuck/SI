@@ -1,12 +1,3 @@
-* 
-{
-	box-sizing: border-box;
-}
- 
-@import '../components/footer';
 
-.full-body
-{
-   margin:0;
-   padding:0;
-}
+@import '../components/footer';
+@import '../basic';

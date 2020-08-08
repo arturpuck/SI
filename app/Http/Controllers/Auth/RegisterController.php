@@ -83,8 +83,7 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         return view('auth.register')->with([
-          'randomImageNumber' => rand(1,3),
-          'visibleForm' => 'registration'
+          'specificImageClass' => 'register-background-image-'.rand(1,3),
         ]);
     }
 

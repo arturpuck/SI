@@ -12,26 +12,23 @@
 	@yield('fonts')
 	<script src="https://kit.fontawesome.com/df4e1e2dba.js" crossorigin="anonymous"></script>
 </head>
-<body  class="full-body">
-<div id="app">
+<body  class="full-body @isset($specificImageClass){{$specificImageClass}}@endisset">
+<div class="app-container" id="app">
      <navbar
        @auth
-         v-bind:authenticated-user="true"
          user-id="{{Auth::user()->id}}"
        @endauth
 
        @guest
-         v-bind:authenticated-user="false"
 		 register-route="{{route('auth.register.form')}}"
+		 forgot-password-route="{{route('auth.password.reset.form')}}"
        @endguest
      >
      </navbar>
 	@yield('content')
-
-	
+	</div>
 	@footer
 	@endfooter
-	</div>
 	@yield('scripts')
 </body>
 </html>

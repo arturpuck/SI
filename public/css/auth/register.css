@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 .empire-footer {
   width: 100%;
   padding: 10px;
@@ -313,7 +309,7 @@
 }
 
 .information-container {
-  margin: 25px auto;
+  margin: 45px auto;
   text-align: center;
   font-family: 'Exo 2', sans-serif;
   border-radius: 6px;
@@ -389,56 +385,40 @@
   margin-left: 12px;
 }
 
-.mainpage-background-number-1 {
-  background-image: url("../../images/decoration/mainpage/1.jpg");
+.register-background-image-1 {
+  background-image: url("../../images/decoration/register/1.jpg");
 }
 
-.mainpage-background-number-2 {
-  background-image: url("../../images/decoration/mainpage/2.jpg");
+.register-background-image-2 {
+  background-image: url("../../images/decoration/register/2.jpg");
 }
 
-.mainpage-background-number-3 {
-  background-image: url("../../images/decoration/mainpage/3.jpg");
+.register-background-image-3 {
+  background-image: url("../../images/decoration/register/3.jpg");
 }
 
-.checkbox-description {
-  color: white;
-  font-size: 17px;
-  font-family: "Exo 2", sans-serif;
+* {
+  box-sizing: border-box;
 }
 
-.checkbox-container {
-  margin: 7px auto;
+.app-container {
+  min-height: calc(100vh - 40px);
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
 }
 
 .full-body {
   margin: 0;
   padding: 0;
-}
-
-.mainpage-background {
-  margin: 0;
-  padding: 0;
+  min-height: 100vh;
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
-  border: 0.1px solid transparent;
-  position: relative;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-          align-items: center;
   background-attachment: fixed;
 }
 
 .main-panel {
   width: 60%;
-  margin: 100px 0 10px;
+  margin: 100px auto 10px;
   font-size: 0;
   max-width: 800px;
   border-radius: 3px;
@@ -457,40 +437,6 @@
   border-right: 2px solid black;
   border-bottom: 1px solid transparent;
   border-top: 1px solid transparent;
-}
-
-.hidden-section-element {
-  display: none;
-}
-
-.form-switch-button {
-  padding: 10px;
-  color: white;
-  width: 50%;
-  border: none;
-  cursor: pointer;
-  font-family: 'Exo 2';
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.form-switch-button:hover {
-  background: -webkit-gradient(linear, left top, left bottom, from(#212120), to(#000000)) !important;
-  background: linear-gradient(#212120, #000000) !important;
-}
-
-.switch-to-login {
-  background: -webkit-gradient(linear, left top, left bottom, from(#0fe00b), to(#054004));
-  background: linear-gradient(#0fe00b, #054004);
-}
-
-.switch-to-register {
-  background: -webkit-gradient(linear, left top, left bottom, from(#e81a4a), to(#780520));
-  background: linear-gradient(#e81a4a, #780520);
-}
-
-.switch-panel-options {
-  font-size: 0;
 }
 
 .login-or-register-panel {
@@ -524,31 +470,10 @@
   border: 2px solid #078a07;
 }
 
-.forgot-password-link {
-  display: block;
-  padding: 4px;
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  font-family: "Exo 2", sans-serif;
-  font-size: 17px;
-}
-
-.forgot-password-link:hover {
-  text-decoration: underline;
-}
-
-.login-information {
-  padding: 10px 10px 2px 10px;
-  color: white;
-  font-family: "Exo 2", sans-serif;
-  font-size: 14px;
-}
-
 @media (max-width: 840px) {
   .main-panel {
     width: 95%;
-    margin: 50px 10px;
+    margin: 50px auto 10px;
   }
   .main-panel-without-top-margin {
     margin-top: 0;

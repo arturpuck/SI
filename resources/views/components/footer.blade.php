@@ -1,3 +1,3 @@
 <footer class="empire-footer">
-	Sex-Imperium 2020 © <a href="/kontakt" class="contact-us-link">Kontakt</a>
+	Sex-Imperium {{now()->year}} © <a href="{{route('contact')}}" class="contact-us-link">Kontakt</a>
 </footer>

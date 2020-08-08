@@ -5,7 +5,7 @@
 @endsection
 
 @section('file-with-styles')
- {{asset('css/auth/login_or_register.css')}}
+ {{asset('css/auth/register.css')}}
 @endsection
 
 @section('description')
@@ -13,7 +13,6 @@
 @endsection
 	
 @section('content')
-	<div class="mainpage-background mainpage-background-number-{{$randomImageNumber}}">
 		 @error_list
          @enderror_list
 		<main id="main-panel" class="main-panel @if($errors->any())main-panel-without-top-margin @endif">
@@ -67,7 +66,6 @@
 			</section>
 			
 		</main>
-	</div>
 	@endsection
 
 @section('scripts')

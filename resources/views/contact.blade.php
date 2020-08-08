@@ -8,10 +8,6 @@
  {{asset('css/contact.css')}}
 @endsection
 
-@section('scripts')
-<script src="{{asset('js/contact.js')}}"></script> 
-@endsection
-
 @section('content')
 @includeWhen(Session::has('success'), 'components.success_information', ['message' => Session::get('success')])
 
@@ -36,4 +32,8 @@
 		</div>
 		<submit-button>Wyślij</submit-button>
 	</form>
+@endsection
+
+@section('scripts')
+<script src="{{asset('js/contact.js')}}"></script> 
 @endsection
