@@ -1,7 +1,10 @@
 require('./bootstrap');
 import Vue from 'vue';
 import Navbar  from './components/navbar.vue';
+import TextInputCombo  from './components/text_input_combo.vue';
+
 Vue.component('navbar', Navbar);
+Vue.component('text-input-combo', TextInputCombo);
 
   new Vue({
  el: '#app',
@@ -11,6 +14,38 @@ Vue.component('navbar', Navbar);
  },
 
  methods : {
+   validateLogin(sender)
+   {
+      let login = sender.textInputValue;
+      
+      if(login.length < 3){
+         sender.showError("Login ma mniej niż 3 znaki");
+         return;
+      }
+
+      if(login.length > 20){
+         sender.showError("Login ma więcej niż 20 znaków");
+         return;
+      }
+
+      const ajaxRequest = new XMLHttpRequest();
+      ajaxRequest.onreadystatechange = () => {
+
+        if(ajaxRequest.readyState === XMLHttpRequest.DONE) {
+           let status = ajaxRequest.status;
+
+           if (status === 0 || (status >= 200 && status < 400)) {
+            sender.showValueIsOK();
+           } else {
+            sender.showError("Login jest już zajęty");
+          }
+
+        };
+     }
+     const URL = '/verify-login/' + login;
+     ajaxRequest.open("GET", URL);
+     ajaxRequest.send();
+  },
  	showRegistrationPanel()
  	{
  		this.$refs.login_panel.style.display = "none";

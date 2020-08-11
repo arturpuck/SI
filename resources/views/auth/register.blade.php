@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('title')
-  Logowanie i rejestracja : Sex-Imperium
+  Rejestracja w Sex-Imperium
 @endsection
 
 @section('file-with-styles')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('description')
-  Logowanie i rejestracja w Sex-Imperium
+   Rejestracja w Sex-Imperium
 @endsection
 	
 @section('content')
@@ -20,7 +20,13 @@
 				
 				<form ref="register_panel" method="POST" action="/register" class="main-panel-form register-form">
 					@csrf
-                    <input type="hidden" name="register_panel_selected" value="1" >
+					<text-input-combo
+					 v-bind:blur-callback="validateLogin"
+					 v-bind:complete-validation-display-available="true"
+					 v-bind:error-message-box-available="true"
+					>
+						Test
+					</text-input-combo>
 				    @single_line_labeled_text_input(['description' => "Login :", "name" => "registration_login", "type" => "text", 'vueHookID' => 'registrationLogin', 'verificationIcons' => true, 'errorMessageBox' => true, 'initialValue' => old('registration_login') ? old('registration_login') : '', 'showConfirmation' => ($errors->any() and !$errors->has('registration_login') and old('register_panel_selected')), 'showError' => $errors->has('registration_login'), 'required' => true ])
 				    @endsingle_line_labeled_text_input
 
