@@ -15,6 +15,7 @@
 <script>
 import IconStop from './icon_error_stop.vue';
 import IconConfirm from './icon_confirm.vue';
+import ExpectBar from './expect_bar.vue';
 
 	export default {
         name: 'text-input-combo',
@@ -166,7 +167,8 @@ import IconConfirm from './icon_confirm.vue';
 
         components : {
             IconConfirm,
-            IconStop
+            IconStop,
+            ExpectBar
         }
     }
 </script>

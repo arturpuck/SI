@@ -20,6 +20,11 @@
 				
 				<form ref="register_panel" method="POST" action="/register" class="main-panel-form register-form">
 					@csrf
+					<expect-bar
+					  label="Trwa weryfikacja"
+					  v-bind:hidden="true"
+					>
+					</expect-bar>
 					<text-input-combo
 					 v-bind:blur-callback="validateLogin"
 					 v-bind:complete-validation-display-available="true"

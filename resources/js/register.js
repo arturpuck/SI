@@ -2,9 +2,11 @@ require('./bootstrap');
 import Vue from 'vue';
 import Navbar  from './components/navbar.vue';
 import TextInputCombo  from './components/text_input_combo.vue';
+import ExpectBar  from './components/expect_bar.vue';
 
 Vue.component('navbar', Navbar);
 Vue.component('text-input-combo', TextInputCombo);
+Vue.component('expect-bar', ExpectBar);
 
   new Vue({
  el: '#app',
@@ -16,6 +18,7 @@ Vue.component('text-input-combo', TextInputCombo);
  methods : {
    validateLogin(sender)
    {
+      this.$root.$emit('awaitingResponse');
       let login = sender.textInputValue;
       
       if(login.length < 3){
