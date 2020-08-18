@@ -493,7 +493,7 @@
   font-size: 0;
 }
 
-.login-or-register-panel {
+.register-panel {
   width: 41%;
   min-width: 275px;
 }
@@ -566,7 +566,7 @@
   .main-panel-without-top-margin {
     margin-top: 0;
   }
-  .login-or-register-panel {
+  .register-panel {
     min-width: 0;
     width: 100%;
     border-bottom: 2px solid white;

@@ -1,6 +1,6 @@
 <template>
 <div>
-<nav tabindex="0" v-on:focusout="resetNavbar" id="navbar" v-on:mouseenter="setElementToFocusState"  class="main-page-navigation">
+<nav tabindex="0" v-on:focusout="resetNavbar" id="navbar" v-on:mouseenter="setElementToFocusState"  class="page-navigation">
 	<ul class="navigation-list">
 		<li v-on:click="togglePornSubMenu" v-on:mouseenter="showPornSubMenu"  class="navigation-element-main navigation-element-padding">
 			<span v-show="!pornSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-camera-retro"></span>
@@ -331,11 +331,11 @@ import SubmitButton from "./submit_button.vue";
    padding:6px;
 }
 
-.main-page-navigation{
+.page-navigation{
     position: fixed;
     width: 100%;
     top:0;
-    z-index:1;
+    z-index:10;
     font-size:0;
     &:focus{
     	outline:none;

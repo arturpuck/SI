@@ -1,5 +1,5 @@
 <template>
- <div v-bind:class="{'hidden-expect-bar' : hide}" class="container">
+ <div v-bind:class="{'hidden-expect-bar' : hide}" class="expect-bar-container">
     <div v-if="label" v-text="label" class="expect-bar-label">
 
     </div>
@@ -51,7 +51,6 @@
 
         mounted(){
             this.hide = this.hidden;
-            this.$root.$on('awaitingResponse', this.showBar);
         },
 
         methods : {
@@ -99,8 +98,9 @@
 	}
 }
 
-.container{
+.expect-bar-container{
   margin: 5px;
+  min-width: 200px;
 }
 
 .square{

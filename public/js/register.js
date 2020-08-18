@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -1957,7 +1969,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.hide = this.hidden;
-    this.$root.$on('awaitingResponse', this.showBar);
   },
   methods: {
     showBar: function showBar() {
@@ -2240,7 +2251,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _icon_error_stop_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./icon_error_stop.vue */ "./resources/js/components/icon_error_stop.vue");
 /* harmony import */ var _icon_confirm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./icon_confirm.vue */ "./resources/js/components/icon_confirm.vue");
-/* harmony import */ var _expect_bar_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./expect_bar.vue */ "./resources/js/components/expect_bar.vue");
 //
 //
 //
@@ -2255,7 +2265,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2382,8 +2391,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {
     IconConfirm: _icon_confirm_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    IconStop: _icon_error_stop_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    ExpectBar: _expect_bar_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    IconStop: _icon_error_stop_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
 
@@ -2401,7 +2409,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".expect-bar {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-flow: row nowrap;\n  -webkit-box-pack: space-evenly;\n          justify-content: space-evenly;\n  background: black;\n  -webkit-box-align: center;\n          align-items: center;\n  border: 1px solid #066106;\n  border-radius: 6px;\n  min-height: 25px;\n  height: 1vw;\n}\n.hidden-expect-bar {\n  visibility: hidden;\n}\n.expect-bar-label {\n  text-align: center;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 1.4vw;\n  color: white;\n  padding: 3px 0;\n}\n@media (max-width: 900px) {\n.expect-bar-label {\n    font-size: 18px;\n}\n}\n.container {\n  margin: 5px;\n}\n.square {\n  width: 0.4vw;\n  height: 0.4vw;\n  background: #2cf005;\n  min-height: 4px;\n  min-width: 4px;\n  border: none;\n}\n.square-1 {\n  -webkit-animation: growing-square 5.4s 0s infinite;\n          animation: growing-square 5.4s 0s infinite;\n}\n.square-2 {\n  -webkit-animation: growing-square 5.4s 0.3s infinite;\n          animation: growing-square 5.4s 0.3s infinite;\n}\n.square-3 {\n  -webkit-animation: growing-square 5.4s 0.6s infinite;\n          animation: growing-square 5.4s 0.6s infinite;\n}\n.square-4 {\n  -webkit-animation: growing-square 5.4s 0.9s infinite;\n          animation: growing-square 5.4s 0.9s infinite;\n}\n.square-5 {\n  -webkit-animation: growing-square 5.4s 1.2s infinite;\n          animation: growing-square 5.4s 1.2s infinite;\n}\n.square-6 {\n  -webkit-animation: growing-square 5.4s 1.5s infinite;\n          animation: growing-square 5.4s 1.5s infinite;\n}\n.square-7 {\n  -webkit-animation: growing-square 5.4s 1.8s infinite;\n          animation: growing-square 5.4s 1.8s infinite;\n}\n.square-8 {\n  -webkit-animation: growing-square 5.4s 2.1s infinite;\n          animation: growing-square 5.4s 2.1s infinite;\n}\n.square-9 {\n  -webkit-animation: growing-square 5.4s 2.4s infinite;\n          animation: growing-square 5.4s 2.4s infinite;\n}\n.square-10 {\n  -webkit-animation: growing-square 5.4s 2.7s infinite;\n          animation: growing-square 5.4s 2.7s infinite;\n}\n.square-11 {\n  -webkit-animation: growing-square 5.4s 3s infinite;\n          animation: growing-square 5.4s 3s infinite;\n}\n.square-12 {\n  -webkit-animation: growing-square 5.4s 3.3s infinite;\n          animation: growing-square 5.4s 3.3s infinite;\n}\n.square-13 {\n  -webkit-animation: growing-square 5.4s 3.6s infinite;\n          animation: growing-square 5.4s 3.6s infinite;\n}\n.square-14 {\n  -webkit-animation: growing-square 5.4s 3.9s infinite;\n          animation: growing-square 5.4s 3.9s infinite;\n}\n.square-15 {\n  -webkit-animation: growing-square 5.4s 4.2s infinite;\n          animation: growing-square 5.4s 4.2s infinite;\n}\n.square-16 {\n  -webkit-animation: growing-square 5.4s 4.5s infinite;\n          animation: growing-square 5.4s 4.5s infinite;\n}\n.square-17 {\n  -webkit-animation: growing-square 5.4s 4.8s infinite;\n          animation: growing-square 5.4s 4.8s infinite;\n}\n.square-18 {\n  -webkit-animation: growing-square 5.4s 5.1s infinite;\n          animation: growing-square 5.4s 5.1s infinite;\n}\n@-webkit-keyframes growing-square {\n0% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n}\n10%, 20% {\n    -webkit-transform: scale(2.2);\n            transform: scale(2.2);\n}\n100% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n}\n}\n@keyframes growing-square {\n0% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n}\n10%, 20% {\n    -webkit-transform: scale(2.2);\n            transform: scale(2.2);\n}\n100% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n}\n}", ""]);
+exports.push([module.i, ".expect-bar {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-flow: row nowrap;\n  -webkit-box-pack: space-evenly;\n          justify-content: space-evenly;\n  background: black;\n  -webkit-box-align: center;\n          align-items: center;\n  border: 1px solid #066106;\n  border-radius: 6px;\n  min-height: 25px;\n  height: 1vw;\n}\n.hidden-expect-bar {\n  visibility: hidden;\n}\n.expect-bar-label {\n  text-align: center;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 1.4vw;\n  color: white;\n  padding: 3px 0;\n}\n@media (max-width: 900px) {\n.expect-bar-label {\n    font-size: 18px;\n}\n}\n.expect-bar-container {\n  margin: 5px;\n  min-width: 200px;\n}\n.square {\n  width: 0.4vw;\n  height: 0.4vw;\n  background: #2cf005;\n  min-height: 4px;\n  min-width: 4px;\n  border: none;\n}\n.square-1 {\n  -webkit-animation: growing-square 5.4s 0s infinite;\n          animation: growing-square 5.4s 0s infinite;\n}\n.square-2 {\n  -webkit-animation: growing-square 5.4s 0.3s infinite;\n          animation: growing-square 5.4s 0.3s infinite;\n}\n.square-3 {\n  -webkit-animation: growing-square 5.4s 0.6s infinite;\n          animation: growing-square 5.4s 0.6s infinite;\n}\n.square-4 {\n  -webkit-animation: growing-square 5.4s 0.9s infinite;\n          animation: growing-square 5.4s 0.9s infinite;\n}\n.square-5 {\n  -webkit-animation: growing-square 5.4s 1.2s infinite;\n          animation: growing-square 5.4s 1.2s infinite;\n}\n.square-6 {\n  -webkit-animation: growing-square 5.4s 1.5s infinite;\n          animation: growing-square 5.4s 1.5s infinite;\n}\n.square-7 {\n  -webkit-animation: growing-square 5.4s 1.8s infinite;\n          animation: growing-square 5.4s 1.8s infinite;\n}\n.square-8 {\n  -webkit-animation: growing-square 5.4s 2.1s infinite;\n          animation: growing-square 5.4s 2.1s infinite;\n}\n.square-9 {\n  -webkit-animation: growing-square 5.4s 2.4s infinite;\n          animation: growing-square 5.4s 2.4s infinite;\n}\n.square-10 {\n  -webkit-animation: growing-square 5.4s 2.7s infinite;\n          animation: growing-square 5.4s 2.7s infinite;\n}\n.square-11 {\n  -webkit-animation: growing-square 5.4s 3s infinite;\n          animation: growing-square 5.4s 3s infinite;\n}\n.square-12 {\n  -webkit-animation: growing-square 5.4s 3.3s infinite;\n          animation: growing-square 5.4s 3.3s infinite;\n}\n.square-13 {\n  -webkit-animation: growing-square 5.4s 3.6s infinite;\n          animation: growing-square 5.4s 3.6s infinite;\n}\n.square-14 {\n  -webkit-animation: growing-square 5.4s 3.9s infinite;\n          animation: growing-square 5.4s 3.9s infinite;\n}\n.square-15 {\n  -webkit-animation: growing-square 5.4s 4.2s infinite;\n          animation: growing-square 5.4s 4.2s infinite;\n}\n.square-16 {\n  -webkit-animation: growing-square 5.4s 4.5s infinite;\n          animation: growing-square 5.4s 4.5s infinite;\n}\n.square-17 {\n  -webkit-animation: growing-square 5.4s 4.8s infinite;\n          animation: growing-square 5.4s 4.8s infinite;\n}\n.square-18 {\n  -webkit-animation: growing-square 5.4s 5.1s infinite;\n          animation: growing-square 5.4s 5.1s infinite;\n}\n@-webkit-keyframes growing-square {\n0% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n}\n10%, 20% {\n    -webkit-transform: scale(2.2);\n            transform: scale(2.2);\n}\n100% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n}\n}\n@keyframes growing-square {\n0% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n}\n10%, 20% {\n    -webkit-transform: scale(2.2);\n            transform: scale(2.2);\n}\n100% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n}\n}", ""]);
 
 // exports
 
@@ -2478,7 +2486,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".submit-button:hover {\n  background: #a00e30;\n}\n.labeled-checkbox-container {\n  display: block;\n  width: 95%;\n  margin: 4px auto 1px auto;\n}\n.labeled-checkbox-description {\n  color: black;\n}\n.login-info {\n  font-size: 19px;\n  font-family: Play;\n  font-weight: bold;\n  color: white;\n}\n.login-form-container {\n  position: fixed;\n  background: rgba(0, 0, 0, 0.85);\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  z-index: 999;\n}\n.login-panel-toolbar {\n  border-radius: 5px 5px 0 0;\n  background: -webkit-gradient(linear, left top, left bottom, from(#464843), to(#000000));\n  background: linear-gradient(to bottom, #464843, #000000);\n  padding: 5px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  font-size: 19px;\n}\n.close-button {\n  width: 28px;\n  height: 28px;\n  display: inline-block;\n  cursor: pointer;\n  background-image: url(" + escape(__webpack_require__(/*! ../../../public/images/decoration/icons/navbar/close.svg */ "./public/images/decoration/icons/navbar/close.svg")) + ");\n}\n.main-panel-label {\n  display: block;\n  text-align: center;\n  padding: 4px;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 18px;\n  color: black;\n}\n.forgot-password-link {\n  display: block;\n  padding: 4px;\n  text-align: center;\n  color: black;\n  text-decoration: none;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 17px;\n}\n.forgot-password-link:hover {\n  text-decoration: underline;\n}\n.main-panel-input {\n  background: #302e2e;\n  display: block;\n  width: 95%;\n  background: white;\n  margin: 0 auto;\n  border-radius: 4px;\n  border: 1px solid #5a5555;\n  outline: none;\n  font-size: 18px;\n  padding: 2px;\n}\n.main-panel-input:focus {\n  border: 1px solid #078a07;\n}\n.login-button-container {\n  padding: 6px;\n  height: 100%;\n}\n.login-form {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  background: white;\n  border-radius: 5px;\n  box-shadow: 3px 3px 3px 3px black;\n  min-width: 320px;\n  font-family: \"Exo 2\", sans-serif;\n}\n.navigation-list {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  background: #0d0c0d;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  position: relative;\n  z-index: 3;\n  box-shadow: 2px 2px 2px 2px black;\n}\n.click-detector {\n  position: absolute;\n  z-index: 0;\n  top: 1px;\n  width: 100%;\n  height: 100%;\n}\n.register-selection {\n  margin-left: auto;\n}\n.navigation-element-main {\n  -webkit-transition: background 2s;\n  transition: background 2s;\n  cursor: pointer;\n  color: white;\n  display: inline-block;\n  line-height: 100%;\n  font-family: \"Oxanium\";\n  font-size: 1.5vw;\n}\n.navigation-element-main:hover {\n  background: #2d2d30;\n}\n.navigation-element-padding {\n  padding: 6px;\n}\n.main-page-navigation {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 1;\n  font-size: 0;\n}\n.main-page-navigation:focus {\n  outline: none;\n}\n.sub-menu-list {\n  position: relative;\n  overflow: hidden;\n  display: inline-block;\n  top: 1px;\n  max-height: 0;\n  padding: 0;\n  list-style-type: none;\n  margin: 0;\n  font-family: \"Oxanium\";\n  font-size: 1.5vw;\n  color: white;\n  max-width: 30%;\n  min-width: 150px;\n  z-index: 1;\n  border-radius: 0 0 8px 8px;\n}\n.porn-sub-menu-list {\n  left: 1vw;\n}\n.hidden-porn-sub-menu {\n  max-height: 0;\n  -webkit-transition: none;\n  transition: none;\n}\n.visible-porn-sub-menu {\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n  max-height: 1500px;\n  box-shadow: 2px 2px 4px 3px black;\n}\n.sub-menu-list-element {\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n  border-bottom: 1px solid black;\n  cursor: pointer;\n}\n.sub-menu-list-nested-level-two {\n  list-style-type: none;\n  overflow: hidden;\n  padding: 0;\n  -webkit-transition: max-height 0.7s;\n  transition: max-height 0.7s;\n}\n.navbar-icon-second-level {\n  color: #bbb606;\n}\n.sub-menu-list-element-intendation-second-level {\n  padding: 5px 2px 5px 2vw;\n  border-bottom: 1px solid black;\n  white-space: nowrap;\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n}\n.sub-menu-list-element-intendation-second-level:hover {\n  background: black;\n  cursor: pointer;\n}\n.visible-movies-sub-menu {\n  max-height: 500px;\n}\n.hidden-movies-sub-menu {\n  max-height: 0;\n}\n.sub-menu-level-one-item {\n  padding: 5px 2px 5px 1vw;\n}\n.sub-menu-level-one-item:hover {\n  background: black;\n}\n.sum-menu-list-element:last-child {\n  border-radius: 0 0 8px 8px;\n}\n.navbar-icon {\n  margin: 0 5px;\n}\n.navbar-icon-outer {\n  color: #eb091c;\n}\n.navbar-link-main-manu {\n  color: inherit;\n  text-decoration: none;\n  padding: 6px;\n  height: 100%;\n  display: inline-block;\n}\n@media (min-width: 450px) and (max-width: 800px) {\n.navigation-element-main, .sub-menu-list {\n    font-size: 2.2vw;\n}\n}\n@media (max-width: 449px) {\n.navigation-element-main, .sub-menu-list {\n    font-size: 3.3vw;\n}\n}", ""]);
+exports.push([module.i, ".submit-button:hover {\n  background: #a00e30;\n}\n.labeled-checkbox-container {\n  display: block;\n  width: 95%;\n  margin: 4px auto 1px auto;\n}\n.labeled-checkbox-description {\n  color: black;\n}\n.login-info {\n  font-size: 19px;\n  font-family: Play;\n  font-weight: bold;\n  color: white;\n}\n.login-form-container {\n  position: fixed;\n  background: rgba(0, 0, 0, 0.85);\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  z-index: 999;\n}\n.login-panel-toolbar {\n  border-radius: 5px 5px 0 0;\n  background: -webkit-gradient(linear, left top, left bottom, from(#464843), to(#000000));\n  background: linear-gradient(to bottom, #464843, #000000);\n  padding: 5px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n  font-size: 19px;\n}\n.close-button {\n  width: 28px;\n  height: 28px;\n  display: inline-block;\n  cursor: pointer;\n  background-image: url(" + escape(__webpack_require__(/*! ../../../public/images/decoration/icons/navbar/close.svg */ "./public/images/decoration/icons/navbar/close.svg")) + ");\n}\n.main-panel-label {\n  display: block;\n  text-align: center;\n  padding: 4px;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 18px;\n  color: black;\n}\n.forgot-password-link {\n  display: block;\n  padding: 4px;\n  text-align: center;\n  color: black;\n  text-decoration: none;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 17px;\n}\n.forgot-password-link:hover {\n  text-decoration: underline;\n}\n.main-panel-input {\n  background: #302e2e;\n  display: block;\n  width: 95%;\n  background: white;\n  margin: 0 auto;\n  border-radius: 4px;\n  border: 1px solid #5a5555;\n  outline: none;\n  font-size: 18px;\n  padding: 2px;\n}\n.main-panel-input:focus {\n  border: 1px solid #078a07;\n}\n.login-button-container {\n  padding: 6px;\n  height: 100%;\n}\n.login-form {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  background: white;\n  border-radius: 5px;\n  box-shadow: 3px 3px 3px 3px black;\n  min-width: 320px;\n  font-family: \"Exo 2\", sans-serif;\n}\n.navigation-list {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  background: #0d0c0d;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  position: relative;\n  z-index: 3;\n  box-shadow: 2px 2px 2px 2px black;\n}\n.click-detector {\n  position: absolute;\n  z-index: 0;\n  top: 1px;\n  width: 100%;\n  height: 100%;\n}\n.register-selection {\n  margin-left: auto;\n}\n.navigation-element-main {\n  -webkit-transition: background 2s;\n  transition: background 2s;\n  cursor: pointer;\n  color: white;\n  display: inline-block;\n  line-height: 100%;\n  font-family: \"Oxanium\";\n  font-size: 1.5vw;\n}\n.navigation-element-main:hover {\n  background: #2d2d30;\n}\n.navigation-element-padding {\n  padding: 6px;\n}\n.page-navigation {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 10;\n  font-size: 0;\n}\n.page-navigation:focus {\n  outline: none;\n}\n.sub-menu-list {\n  position: relative;\n  overflow: hidden;\n  display: inline-block;\n  top: 1px;\n  max-height: 0;\n  padding: 0;\n  list-style-type: none;\n  margin: 0;\n  font-family: \"Oxanium\";\n  font-size: 1.5vw;\n  color: white;\n  max-width: 30%;\n  min-width: 150px;\n  z-index: 1;\n  border-radius: 0 0 8px 8px;\n}\n.porn-sub-menu-list {\n  left: 1vw;\n}\n.hidden-porn-sub-menu {\n  max-height: 0;\n  -webkit-transition: none;\n  transition: none;\n}\n.visible-porn-sub-menu {\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n  max-height: 1500px;\n  box-shadow: 2px 2px 4px 3px black;\n}\n.sub-menu-list-element {\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n  border-bottom: 1px solid black;\n  cursor: pointer;\n}\n.sub-menu-list-nested-level-two {\n  list-style-type: none;\n  overflow: hidden;\n  padding: 0;\n  -webkit-transition: max-height 0.7s;\n  transition: max-height 0.7s;\n}\n.navbar-icon-second-level {\n  color: #bbb606;\n}\n.sub-menu-list-element-intendation-second-level {\n  padding: 5px 2px 5px 2vw;\n  border-bottom: 1px solid black;\n  white-space: nowrap;\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n}\n.sub-menu-list-element-intendation-second-level:hover {\n  background: black;\n  cursor: pointer;\n}\n.visible-movies-sub-menu {\n  max-height: 500px;\n}\n.hidden-movies-sub-menu {\n  max-height: 0;\n}\n.sub-menu-level-one-item {\n  padding: 5px 2px 5px 1vw;\n}\n.sub-menu-level-one-item:hover {\n  background: black;\n}\n.sum-menu-list-element:last-child {\n  border-radius: 0 0 8px 8px;\n}\n.navbar-icon {\n  margin: 0 5px;\n}\n.navbar-icon-outer {\n  color: #eb091c;\n}\n.navbar-link-main-manu {\n  color: inherit;\n  text-decoration: none;\n  padding: 6px;\n  height: 100%;\n  display: inline-block;\n}\n@media (min-width: 450px) and (max-width: 800px) {\n.navigation-element-main, .sub-menu-list {\n    font-size: 2.2vw;\n}\n}\n@media (max-width: 449px) {\n.navigation-element-main, .sub-menu-list {\n    font-size: 3.3vw;\n}\n}", ""]);
 
 // exports
 
@@ -2658,7 +2666,7 @@ module.exports = function escape(url) {
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.19';
+  var VERSION = '4.17.20';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -18234,7 +18242,7 @@ module.exports = function escape(url) {
      * // => [{ 'a': 4, 'b': 5, 'c': 6 }]
      *
      * // Checking for several possible values
-     * _.filter(users, _.overSome([_.matches({ 'a': 1 }), _.matches({ 'a': 4 })]));
+     * _.filter(objects, _.overSome([_.matches({ 'a': 1 }), _.matches({ 'a': 4 })]));
      * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
      */
     function matches(source) {
@@ -18271,7 +18279,7 @@ module.exports = function escape(url) {
      * // => { 'a': 4, 'b': 5, 'c': 6 }
      *
      * // Checking for several possible values
-     * _.filter(users, _.overSome([_.matchesProperty('a', 1), _.matchesProperty('a', 4)]));
+     * _.filter(objects, _.overSome([_.matchesProperty('a', 1), _.matchesProperty('a', 4)]));
      * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
      */
     function matchesProperty(path, srcValue) {
@@ -19997,6 +20005,743 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/regenerator-runtime/runtime.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var runtime = (function (exports) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  exports.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunctionPrototype[toStringTagSymbol] =
+    GeneratorFunction.displayName = "GeneratorFunction";
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      prototype[method] = function(arg) {
+        return this._invoke(method, arg);
+      };
+    });
+  }
+
+  exports.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  exports.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      if (!(toStringTagSymbol in genFun)) {
+        genFun[toStringTagSymbol] = "GeneratorFunction";
+      }
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  exports.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return Promise.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return Promise.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new Promise(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  exports.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  exports.async = function(innerFn, outerFn, self, tryLocsList) {
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList)
+    );
+
+    return exports.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  Gp[toStringTagSymbol] = "Generator";
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function() {
+    return this;
+  };
+
+  Gp.toString = function() {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  exports.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+
+  // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+  return exports;
+
+}(
+  // If this script is executing as a CommonJS module, use module.exports
+  // as the regeneratorRuntime namespace. Otherwise create a new empty
+  // object. Either way, the resulting object will be used to initialize
+  // the regeneratorRuntime variable at the top of this file.
+   true ? module.exports : undefined
+));
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  Function("r", "regeneratorRuntime = r")(runtime);
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/setimmediate/setImmediate.js":
 /*!***************************************************!*\
   !*** ./node_modules/setimmediate/setImmediate.js ***!
@@ -21006,7 +21751,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container", class: { "hidden-expect-bar": _vm.hide } },
+    {
+      staticClass: "expect-bar-container",
+      class: { "hidden-expect-bar": _vm.hide }
+    },
     [
       _vm.label
         ? _c("div", {
@@ -21190,7 +21938,7 @@ var render = function() {
     _c(
       "nav",
       {
-        staticClass: "main-page-navigation",
+        staticClass: "page-navigation",
         attrs: { tabindex: "0", id: "navbar" },
         on: {
           focusout: _vm.resetNavbar,
@@ -34552,256 +35300,214 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_navbar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/navbar.vue */ "./resources/js/components/navbar.vue");
-/* harmony import */ var _components_text_input_combo_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/text_input_combo.vue */ "./resources/js/components/text_input_combo.vue");
-/* harmony import */ var _components_expect_bar_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/expect_bar.vue */ "./resources/js/components/expect_bar.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_navbar_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/navbar.vue */ "./resources/js/components/navbar.vue");
+/* harmony import */ var _components_text_input_combo_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/text_input_combo.vue */ "./resources/js/components/text_input_combo.vue");
+/* harmony import */ var _components_expect_bar_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/expect_bar.vue */ "./resources/js/components/expect_bar.vue");
+/* harmony import */ var _components_submit_button_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/submit_button.vue */ "./resources/js/components/submit_button.vue");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('navbar', _components_navbar_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('text-input-combo', _components_text_input_combo_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('expect-bar', _components_expect_bar_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
-new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
+
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('navbar', _components_navbar_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('text-input-combo', _components_text_input_combo_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('expect-bar', _components_expect_bar_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('submit-button', _components_submit_button_vue__WEBPACK_IMPORTED_MODULE_5__["default"]);
+new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
   el: '#app',
-  data: {},
+  data: {
+    verificationInProgress: false
+  },
   methods: {
     validateLogin: function validateLogin(sender) {
+      function checkIfLoginExists(_x) {
+        return _checkIfLoginExists.apply(this, arguments);
+      }
+
+      function _checkIfLoginExists() {
+        _checkIfLoginExists = _asyncToGenerator(
+        /*#__PURE__*/
+        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(login) {
+          var response;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  _context.prev = 0;
+                  _context.next = 3;
+                  return fetch("verify-login/".concat(login));
+
+                case 3:
+                  response = _context.sent;
+                  _context.t0 = response.status;
+                  _context.next = _context.t0 === 200 ? 7 : _context.t0 === 400 ? 9 : 11;
+                  break;
+
+                case 7:
+                  sender.showValueIsOK();
+                  return _context.abrupt("break", 13);
+
+                case 9:
+                  sender.showError("Login jest już zajęty");
+                  return _context.abrupt("break", 13);
+
+                case 11:
+                  sender.showError("Bliżej niezidentyfikowany błąd");
+                  return _context.abrupt("break", 13);
+
+                case 13:
+                  _context.next = 18;
+                  break;
+
+                case 15:
+                  _context.prev = 15;
+                  _context.t1 = _context["catch"](0);
+                  sender.showError("Bliżej niezidentyfikowany błąd");
+
+                case 18:
+                  _context.prev = 18;
+                  this.$root.$emit('responseReceived');
+                  return _context.finish(18);
+
+                case 21:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee, this, [[0, 15, 18, 21]]);
+        }));
+        return _checkIfLoginExists.apply(this, arguments);
+      }
+
       this.$root.$emit('awaitingResponse');
       var login = sender.textInputValue;
 
       if (login.length < 3) {
         sender.showError("Login ma mniej niż 3 znaki");
+        this.$root.$emit('responseReceived');
         return;
       }
 
       if (login.length > 20) {
         sender.showError("Login ma więcej niż 20 znaków");
+        this.$root.$emit('responseReceived');
         return;
       }
 
-      var ajaxRequest = new XMLHttpRequest();
-
-      ajaxRequest.onreadystatechange = function () {
-        if (ajaxRequest.readyState === XMLHttpRequest.DONE) {
-          var status = ajaxRequest.status;
-
-          if (status === 0 || status >= 200 && status < 400) {
-            sender.showValueIsOK();
-          } else {
-            sender.showError("Login jest już zajęty");
-          }
-        }
-
-        ;
-      };
-
-      var URL = '/verify-login/' + login;
-      ajaxRequest.open("GET", URL);
-      ajaxRequest.send();
+      checkIfLoginExists.call(this, login);
     },
-    showRegistrationPanel: function showRegistrationPanel() {
-      this.$refs.login_panel.style.display = "none";
-      this.$refs.register_panel.style.display = "block";
-      this.$refs.show_login_form_button.style.background = "linear-gradient(#e81a4a, #780520)";
-      this.$refs.show_register_form_button.style.background = "linear-gradient(#0fe00b, #054004)";
-      this.$refs.registration_information.style.display = "block";
-      this.$refs.login_information.style.display = "none";
-    },
-    showLoginPanel: function showLoginPanel() {
-      this.$refs.login_panel.style.display = "block";
-      this.$refs.register_panel.style.display = "none";
-      this.$refs.show_login_form_button.style.background = "linear-gradient(#0fe00b, #054004)";
-      this.$refs.show_register_form_button.style.background = "linear-gradient(#e81a4a, #780520)";
-      this.$refs.registration_information.style.display = "none";
-      this.$refs.login_information.style.display = "block";
-    },
-    showErrorMessage: function showErrorMessage(refName) {
-      var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
-      this.$refs["correct_value_" + refName].style.display = "none";
-      this.$refs["incorrect_value_" + refName].style.display = "flex";
-      this.$refs["label_ref_" + refName].style.border = "2px solid red";
-
-      if (message !== undefined) {
-        var errorMessageBox = this.$refs[refName + "_error_message_box"];
-        errorMessageBox.textContent = message;
-        errorMessageBox.style.visibility = "visible";
-      }
-    },
-    inputLengthValidation: function inputLengthValidation(str) {
-      var minLength = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3;
-      var maxLength = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 20;
-
-      if (str.length < minLength) {
-        return {
-          success: false,
-          message: "mniej niż " + minLength + " znaki"
-        };
+    validateEmail: function validateEmail(sender) {
+      function checkIfEmailExists(_x2) {
+        return _checkIfEmailExists.apply(this, arguments);
       }
 
-      if (str.length > maxLength) {
-        return {
-          success: false,
-          message: "więcej niż " + maxLength + " znaków"
-        };
-      }
+      function _checkIfEmailExists() {
+        _checkIfEmailExists = _asyncToGenerator(
+        /*#__PURE__*/
+        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(email) {
+          var response;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.prev = 0;
+                  _context2.next = 3;
+                  return fetch("verify-email/".concat(email));
 
-      return {
-        success: true
-      };
-    },
-    showValueIsCorrect: function showValueIsCorrect(refName) {
-      this.$refs['incorrect_value_' + refName].style.display = "none";
-      this.$refs['correct_value_' + refName].style.display = "block";
-      this.$refs['label_ref_' + refName].style.border = "2px solid green";
-      this.$refs[refName + "_error_message_box"].style.visibility = "hidden";
-    },
-    showNoInformationAboutInput: function showNoInformationAboutInput(refName) {
-      this.$refs['incorrect_value_' + refName].style.display = "none";
-      this.$refs['correct_value_' + refName].style.display = "none";
-      this.$refs['label_ref_' + refName].style.border = "2px solid transparent";
-    },
-    handleAJAXResponse: function handleAJAXResponse(ajaxRequest, refName, errorMessage) {
-      if (ajaxRequest.readyState === XMLHttpRequest.DONE) {
-        if (ajaxRequest.status === 200) {
-          this.showValueIsCorrect(refName);
-        } else {
-          this.showErrorMessage(refName, errorMessage);
-        }
-      }
-    },
-    registrationLoginLooseFocus: function registrationLoginLooseFocus() {
-      var typedInLogin = this.$refs.input_ref_registrationLogin.value;
+                case 3:
+                  response = _context2.sent;
+                  _context2.t0 = response.status;
+                  _context2.next = _context2.t0 === 200 ? 7 : _context2.t0 === 400 ? 9 : 11;
+                  break;
 
-      if (typedInLogin.length > 0) {
-        var validationResult = this.inputLengthValidation(typedInLogin);
+                case 7:
+                  sender.showValueIsOK();
+                  return _context2.abrupt("break", 13);
 
-        if (validationResult.success === false) {
-          this.showErrorMessage("registrationLogin", "Błędny login - " + validationResult.message);
-          return;
-        }
+                case 9:
+                  sender.showError("Email jest już zajęty");
+                  return _context2.abrupt("break", 13);
 
-        var ajaxRequest = new XMLHttpRequest();
-        ajaxRequest.onreadystatechange = this.handleAJAXResponse.bind(this, ajaxRequest, "registrationLogin", "Login jest już zajęty");
-        var URL = '/verify-login/' + typedInLogin;
-        ajaxRequest.open("GET", URL);
-        ajaxRequest.send();
-      } else {
-        this.showNoInformationAboutInput("registrationLogin");
-      }
-    },
-    emailLooseFocus: function emailLooseFocus() {
-      function emailIsValid(email) {
-        var regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return regEx.test(String(email).toLowerCase());
-      }
+                case 11:
+                  sender.showError("Bliżej niezidentyfikowany błąd");
+                  return _context2.abrupt("break", 13);
 
-      var typedInEmail = this.$refs.input_ref_email.value;
+                case 13:
+                  _context2.next = 18;
+                  break;
 
-      if (typedInEmail.length > 0) {
-        if (emailIsValid(typedInEmail)) {
-          var ajaxRequest = new XMLHttpRequest();
-          ajaxRequest.onreadystatechange = this.handleAJAXResponse.bind(this, ajaxRequest, "email", "Email jest już zajęty");
-          var URL = '/verify-email/' + typedInEmail;
-          ajaxRequest.open("GET", URL);
-          ajaxRequest.send();
-        } else {
-          this.showErrorMessage('email', 'Email wygląda na nieprawidłowy');
-        }
-      } else {
-        this.showNoInformationAboutInput('email');
-      }
-    },
-    registrationPasswordLooseFocus: function registrationPasswordLooseFocus() {
-      var typedInPassword = this.$refs.input_ref_registrationPassword.value;
+                case 15:
+                  _context2.prev = 15;
+                  _context2.t1 = _context2["catch"](0);
+                  sender.showError("Bliżej niezidentyfikowany błąd");
 
-      if (typedInPassword.length > 0) {
-        var lengthValidationResult = this.inputLengthValidation(typedInPassword);
+                case 18:
+                  _context2.prev = 18;
+                  this.$root.$emit('responseReceived');
+                  return _context2.finish(18);
 
-        if (lengthValidationResult.success === true) {
-          this.showValueIsCorrect("registrationPassword");
-        } else {
-          this.showErrorMessage("registrationPassword", "Złe hasło - " + lengthValidationResult.message);
-        }
-      }
-    },
-    validateSelectedValue: function validateSelectedValue(refName) {
-      var selectedOption = this.$refs["input_ref_" + refName].value;
-
-      if (selectedOption === "--wybierz--") {
-        this.showErrorMessage(refName, "Należy wybrać jedną opcję");
-      } else {
-        this.showValueIsCorrect(refName);
-      }
-    },
-    userTypeSelectOption: function userTypeSelectOption() {
-      this.validateSelectedValue("userType");
-    },
-    sexualOrientationSelectOption: function sexualOrientationSelectOption() {
-      this.validateSelectedValue("sexualOrientation");
-    },
-    birthDateChange: function birthDateChange() {
-      function isDateBeforeGivenTimeSpan(day, month, year, timeSpan) {
-        day = parseInt(day);
-        month = parseInt(month);
-        year = parseInt(year);
-        timeSpan = parseInt(timeSpan);
-        var currentDate = new Date();
-        var currentMonth = currentDate.getMonth();
-        var currentDay = currentDate.getDate();
-        var currentYear = currentDate.getFullYear();
-        var dateTimeSpanAgo = new Date(currentYear - timeSpan, currentMonth, currentDay);
-        var examinedDate = new Date(year, month - 1, day);
-        return examinedDate.getTime() <= dateTimeSpanAgo.getTime();
-      }
-
-      var dayNumber = parseInt(this.$refs.day_ref_birthDate.value);
-      var monthNumber = parseInt(this.$refs.month_ref_birthDate.value);
-
-      if (dayNumber === 0 || monthNumber === 0) {
-        this.showNoInformationAboutInput('birthDate');
-      } else {
-        var year = parseInt(this.$refs.year_ref_birthDate.value);
-        var monthWith31Days = [1, 3, 5, 7, 8, 10, 12].includes(monthNumber);
-
-        if (monthWith31Days && (dayNumber > 31 || dayNumber < 1)) {
-          this.showErrorMessage("birthDate", "Ten miesiąc nie ma tylu dni");
-          return;
-        }
-
-        if (!monthWith31Days) {
-          if (monthNumber === 2) {
-            var lastDayInFebruary = year % 4 === 0 ? 29 : 28;
-
-            if (dayNumber < 1 || dayNumber > lastDayInFebruary) {
-              this.showErrorMessage("birthDate", "Luty nie miał tylu dni");
-              return;
+                case 21:
+                case "end":
+                  return _context2.stop();
+              }
             }
-          } else if (dayNumber < 1 || dayNumber > 30) {
-            this.showErrorMessage("birthDate", "Ten miesiąc nie ma tylu dni");
-            return;
-          }
-        }
-
-        if (monthNumber !== 0 && year !== 0) {
-          if (isDateBeforeGivenTimeSpan(dayNumber, monthNumber, year, 18)) {
-            if (isDateBeforeGivenTimeSpan(dayNumber, monthNumber, year, 120)) {
-              this.showErrorMessage("birthDate", "Ludzie nie żyją dłużej niż 120 lat");
-            } else {
-              this.showValueIsCorrect("birthDate");
-            }
-          } else {
-            this.showErrorMessage("birthDate", "Musisz mieć ukończone 18 lat");
-          }
-        } else {
-          this.showNoInformationAboutInput('birthDate');
-        }
+          }, _callee2, this, [[0, 15, 18, 21]]);
+        }));
+        return _checkIfEmailExists.apply(this, arguments);
       }
+
+      function emailhasCorrectFormat(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      this.$root.$emit('awaitingResponse');
+      var email = sender.textInputValue;
+
+      if (!emailhasCorrectFormat(email)) {
+        sender.showError("Email wygląda na nieprawidłowy");
+        this.$root.$emit('responseReceived');
+        return;
+      }
+
+      checkIfEmailExists.call(this, email);
+    },
+    validatePassword: function validatePassword(sender) {
+      var password = sender.textInputValue;
+
+      if (password.length < 3) {
+        sender.showError("Hasło ma mniej niż 3 znaki");
+        return;
+      }
+
+      if (password.length > 20) {
+        sender.showError("Hasło ma więcej niż 20 znaków");
+        return;
+      }
+
+      sender.showValueIsOK();
     }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$root.$on('awaitingResponse', function () {
+      return _this.verificationInProgress = true;
+    });
+    this.$root.$on('responseReceived', function () {
+      return _this.verificationInProgress = false;
+    });
   }
 });
 

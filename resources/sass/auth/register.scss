@@ -1,18 +1,6 @@
- 
-
-@import '../components/controls/nicecheckbox';
-@import '../components/controls/single_line_labeled_text_input';
-@import '../components/controls/described_select';
-@import '../components/controls/date_picker_polish';
-@import '../components/controls/submit_button';
 @import '../components/error_list';
-
-.single-line-text-input-label{
-	margin:0 auto;
-}
-
 @import '../error_messages';
-@import 'information_sections';
+@import 'information_section';
 @import 'register_page_background_images';
 @import '../basic';
 
@@ -41,10 +29,11 @@
   border-top: 1px solid transparent;
 }
 
-.login-or-register-panel
+.register-panel
 {
 	width:41%;
 	min-width:275px;
+	position:relative;
 }
 
 .main-panel-label
@@ -77,6 +66,9 @@
     }
 }
 
+.expect-bar-container{
+	width:60%;
+}
 
 @media(max-width: 840px){
 
@@ -101,7 +93,7 @@
 		margin-top:0;
 	}
 
-	.login-or-register-panel{
+	.register-panel{
 		min-width:0;
 		width:100%;
 		border-bottom: 2px solid white;

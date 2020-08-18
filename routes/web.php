@@ -10,14 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/test',function(){dd('test');});
+Route::get('/','LaunchMainPageController@showMainPage');
 Route::get('/','LaunchMainPageController@showMainPage');
 Route::get('/verify-login/{login}', 'AJAXLoginValidationController@checkIfLoginAlreadyExists');
 Route::get('/verify-email/{email}', 'AJAXEmailValidationController@checkIfEmailAlreadyExists');
 Route::get('/kontakt', 'ContactFormController@showContactForm');
 Route::post('/kontakt', 'ContactFormController@sendMessageFromUser')
        ->name('contact');
-Route::Auth();
 Route::namespace('Auth')->name('auth.')->group(function(){
    Route::get('/wyloguj', 'LoginController@logout')
           ->name('logout');
