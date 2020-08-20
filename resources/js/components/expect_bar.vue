@@ -49,7 +49,7 @@
             }
         },
 
-        mounted(){
+        created(){
             this.hide = this.hidden;
         },
 

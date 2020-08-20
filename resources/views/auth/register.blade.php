@@ -20,24 +20,48 @@
 				<form ref="register_panel" method="POST" action="/register" class="main-panel-form register-form">
 					@csrf
 					<text-input-combo
-					 v-bind:blur-callback="validateLogin"
+					 v-bind:on-blur-callback="validateLogin"
 					 v-bind:complete-validation-display-available="true"
+					 name="login"
 					 v-bind:error-message-box-available="true">
-						Login
+						Login: 
 					</text-input-combo>
 					<text-input-combo
-					 v-bind:blur-callback="validateEmail"
+					 v-bind:on-blur-callback="validateEmail"
 					 v-bind:complete-validation-display-available="true"
+					 name="email"
 					 v-bind:error-message-box-available="true">
-						Email
+						Email: 
 					</text-input-combo>
 					<text-input-combo
-					 v-bind:blur-callback="validatePassword"
+					 v-bind:on-blur-callback="validatePassword"
 					 v-bind:complete-validation-display-available="true"
 					 input-type="password"
+					 name="password"
 					 v-bind:error-message-box-available="true">
-						Hasło
+						Hasło: 
 					</text-input-combo>
+					<described-select
+					  v-bind:visible-options-list="['--wybierz--','mężczyzną', 'kobietą', 'hermafrodytą', 'transseksualistą', 'parą', 'nie chcę podać']"
+					  v-bind:option-values="['not-selected','male', 'female', 'hermaphrodite', 'transsexual', 'couple', '']"
+					  v-bind:on-change-callback="validateSelect"
+					  v-bind:error-message-box-available="true"
+					  v-bind:complete-validation-display-available="true"
+					  name="user_type"
+					  >
+						Jestem
+					</described-select>
+					<described-select
+					  v-bind:visible-options-list="['--wybierz--','heteroseksualna', 'homoseksualna', 'biseksualna', 'aseksualna', 'autoseksualna', 'nie chcę podać']"
+					  v-bind:option-values="['not-selected','heterosexual', 'homosexual', 'bisexual', 'asexual', 'autosexual', '']"
+					  v-bind:on-change-callback="validateSelect"
+					  v-bind:error-message-box-available="true"
+					  v-bind:complete-validation-display-available="true"
+					  name="sexual_orientation"
+					  >
+						Orientacja
+					</described-select>
+					<date-picker>Data urodzenia</date-picker>
 				    
                     <submit-button>Zarejestruj</submit-button>
 				</form>

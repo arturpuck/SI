@@ -1,14 +1,14 @@
 <template>
 <div class="described-select-container">
-<div class="error-message-box">
+<div v-show="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box">
 	
 </div>
-<label class="select-label">
+<label class="select-label" v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" >
     <icon-stop v-show="displayIconError"/>
     <icon-confirm v-show="displayIconConfirmation"/>
 	<span class="select-description"><slot></slot></span>
-	<select class="described-select">
-            <option></option>
+	<select v-bind:name="name" ref="select_value" v-model="selectedValue" class="described-select">
+            <option v-for="(option, index) in visibleOptionsList" v-bind:value="optionValues[index]">{{option}}</option>
 	</select>
 </label>
 </div>
@@ -53,14 +53,21 @@ import IconConfirm from './icon_confirm.vue';
 
          },
 
-         mounted(){
+         created(){
              this.selectedValue = this.initialValue;
              this.errorMessage = this.initialErrorText;
              this.iconErrorCanBeDisplayed = (this.errorIconAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
              this.iconConfirmationCanBeDisplayed = (this.confirmationIconAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
              this.redBorderCanBeDisplayed = (this.redBorderAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
              this.greenBorderCanBeDisplayed = (this.greenBorderAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
-		}
+             this.optionValues = (this.optionValues === undefined) ? this.visibleOptionsList : this.optionValues;   
+        },
+        
+        mounted(){
+            if(this.onChangeCallback){
+                this.$refs.select_value.addEventListener('change',() => this.onChangeCallback(this));
+            }
+        },
 
         props : {
             visibleOptionsList : {
@@ -71,9 +78,20 @@ import IconConfirm from './icon_confirm.vue';
             optionValues : {
                 required : false,
                 type : Array,
-                default : []
+                default : undefined
             },
 
+            name : {
+                 required : false,
+                 type : String,
+                 default : "described_select"
+             },
+
+            initialValue : {
+                 required : false,
+                 type : String,
+                 default : "not-selected"
+             },
 
              errorIconAvailable : {
                  required : false,
@@ -133,6 +151,25 @@ import IconConfirm from './icon_confirm.vue';
                  required : false,
                  type : String,
                  default : undefined
+             },
+
+             onChangeCallback : {
+                 required : false,
+                 type : Function,
+                 default : null
+             }
+        },
+
+        methods : {
+
+            showError(errorMessage = ""){
+                this.valueOK = false;
+                this.errorMessage = errorMessage;
+             },
+
+             showValueIsOK(){
+                 this.valueOK = true;
+                 this.errorMessage = "";
              }
         },
 
@@ -177,6 +214,14 @@ import IconConfirm from './icon_confirm.vue';
 	border: none;
 	background:#242229;
 	outline:none;
+}
+
+.incorrect-value{
+    border: 2px solid red;
+}
+
+.correct-value{
+    border: 2px solid green;
 }
 
 </style>

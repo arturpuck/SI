@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('login')->unique();
             $table->string('email')->unique();
             $table->enum('user_type', ['male', 'female', 'hermaphrodite', 'transsexual', 'couple'])->nullable();
-            $table->enum('sexual_orientation', ['heterosexual', 'homosexual', 'bisexual', 'transsexual', 'autosexual', 'asexual'])->nullable();
+            $table->enum('sexual_orientation', ['heterosexual', 'homosexual', 'bisexual', 'autosexual', 'asexual'])->nullable();
             $table->string('password');
             $table->date('birth_date');
             $table->rememberToken();

@@ -3,11 +3,11 @@
   <div v-show="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box">
 	
   </div>
-  <label v-bind:class="{error : displayRedBorder, 'correct-value' : displayGreenBorder}" class="single-line-text-input-label">
+  <label v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" class="single-line-text-input-label">
      <icon-stop v-show="displayIconError"/>
      <icon-confirm v-show="displayIconConfirmation"/>
      <span class="text-input-description"><slot></slot></span>
-     <input v-on:blur="looseFocus" v-bind:name="name" class="single-line-text-input" v-model="textInputValue" v-bind:type="inputType">
+     <input ref="text_input" v-bind:name="name" class="single-line-text-input" v-model="textInputValue" v-bind:type="inputType">
   </label>
 </div>
 </template>
@@ -51,12 +51,8 @@ import IconConfirm from './icon_confirm.vue';
          },
 
          methods : {
-             looseFocus(){
-                 const sender = this;
-                 this.blurCallback(sender);
-             },
 
-             showError(errorMessage = undefined){
+             showError(errorMessage = ""){
                 this.valueOK = false;
                 this.errorMessage = errorMessage;
              },
@@ -68,14 +64,20 @@ import IconConfirm from './icon_confirm.vue';
 
          },
 
-         mounted(){
+         created(){
              this.textInputValue = this.initialValue;
              this.errorMessage = this.initialErrorText;
              this.iconErrorCanBeDisplayed = (this.errorIconAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
              this.iconConfirmationCanBeDisplayed = (this.confirmationIconAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
              this.redBorderCanBeDisplayed = (this.redBorderAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
              this.greenBorderCanBeDisplayed = (this.greenBorderAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
-		},
+        },
+        
+        mounted(){
+            if(this.onBlurCallback){
+                this.$refs.text_input.addEventListener('blur',() => this.onBlurCallback(this));
+            }
+        },
          
          props : {
              initialValue : {
@@ -156,7 +158,7 @@ import IconConfirm from './icon_confirm.vue';
                  default : undefined
              },
 
-             blurCallback : {
+             onBlurCallback : {
                  required : false,
                  type : Function,
                  default : null
@@ -220,7 +222,7 @@ import IconConfirm from './icon_confirm.vue';
     border-bottom: 1px solid #86838f;
 }
 
-.error{
+.incorrect-value{
     border: 2px solid red;
 }
 
