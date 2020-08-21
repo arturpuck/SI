@@ -45,9 +45,14 @@ Vue.component('date-picker', DatePicker);
             sender.showError(error);
          }  
       }
-         
-      this.$root.$emit('awaitingResponse');
       const login = sender.textInputValue;
+
+      if(!login){
+         return;
+      }
+          
+      this.$root.$emit('awaitingResponse');
+      
 
       try{
          if(login.length < 3){
@@ -96,9 +101,13 @@ Vue.component('date-picker', DatePicker);
     function emailhasCorrectFormat (email) {
        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
      }
-
-     this.$root.$emit('awaitingResponse');
      const email  = sender.textInputValue;
+
+     if(!email){
+        return;
+     }
+     this.$root.$emit('awaitingResponse');
+     
      try{
         if(!emailhasCorrectFormat(email)){
            throw "Email wygląda na nieprawidłowy";
@@ -117,6 +126,10 @@ Vue.component('date-picker', DatePicker);
 
      try{
          const password = sender.textInputValue;
+
+         if(!password){
+            return;
+         }
 
          if(password.length < 3){
             throw "Hasło ma mniej niż 3 znaki";
@@ -141,6 +154,19 @@ Vue.component('date-picker', DatePicker);
       else{
          sender.showValueIsOK();
       }
+  },
+
+  checkIfUserIsAdault(sender){
+     const dateNow = new Date();
+     const date18yearsAgo = dateNow.setFullYear(dateNow.getFullYear() - 18);
+     const userSelectedDate = new Date(sender.selectedYear, sender.selectedMonth - 1, sender.selectedDay);
+     if(userSelectedDate <= date18yearsAgo){
+        sender.showValueIsOK();
+     }
+     else{
+        sender.showError("Nie ukończyłeś 18 lat");
+     }
+      
   }
 },
 

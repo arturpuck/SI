@@ -1959,6 +1959,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -1969,21 +1970,43 @@ __webpack_require__.r(__webpack_exports__);
     IconConfirm: _icon_confirm_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
-    adjustByMonth: function adjustByMonth() {
-      var months31 = [1, 3, 5, 7, 8, 10, 12];
-      var months30 = [4, 6, 9, 11];
-      var currentMonth = this.selectedMonth;
+    adjustDays: function adjustDays() {
+      var selectedMonth = this.selectedMonth;
 
-      if (months31.includes(currentMonth)) {
-        this.numberOfDaysInMonth = 31;
-        return;
-      }
+      if (selectedMonth != "0") {
+        var months31 = [1, 3, 5, 7, 8, 10, 12];
+        var months30 = [4, 6, 9, 11];
+        var selectedYear = this.selectedYear;
 
-      if (months30.includes(currentMonth)) {
-        this.numberOfDaysInMonth = 30;
-        return;
+        if (months31.includes(selectedMonth)) {
+          this.numberOfDaysInMonth = 31;
+        } else if (months30.includes(selectedMonth)) {
+          this.numberOfDaysInMonth = 30;
+        } else {
+          this.numberOfDaysInMonth = selectedYear % 4 === 0 && selectedYear !== 0 ? 29 : 28;
+        }
+
+        this.selectedDay = this.selectedDay > this.numberOfDaysInMonth ? this.numberOfDaysInMonth : this.selectedDay;
+
+        if (selectedYear != "0" && this.selectedDay != "0" && this.onDateSelectCallback) {
+          this.onDateSelectCallback(this);
+        }
       } else {
-        this.numberOfDaysInMonth = this.selectedYear % 4 === 0 ? 29 : 28;
+        this.numberOfDaysInMonth = 31;
+      }
+    },
+    showError: function showError() {
+      var errorMessage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+      this.valueOK = false;
+      this.errorMessage = errorMessage;
+    },
+    showValueIsOK: function showValueIsOK() {
+      this.valueOK = true;
+      this.errorMessage = "";
+    },
+    invokeCallback: function invokeCallback() {
+      if (this.selectedDay != "0" && this.selectedMonth != 0 && this.selectedYear != 0) {
+        this.onDateSelectCallback(this);
       }
     }
   },
@@ -1992,6 +2015,11 @@ __webpack_require__.r(__webpack_exports__);
       required: false,
       type: String,
       "default": 'Polski'
+    },
+    name: {
+      required: false,
+      type: String,
+      "default": "date_picker"
     },
     sinceYear: {
       required: false,
@@ -2061,22 +2089,31 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      valueOK: undefined,
+      errorMessage: undefined,
       months: undefined,
       timespan: undefined,
       numberOfDaysInMonth: 31,
       selectedDay: 0,
       selectedMonth: 0,
-      selectedYear: 0
+      selectedYear: 0,
+      descriptions: undefined
     };
   },
   created: function created() {
-    this.months = _modules_helpers_months_in_different_languages_js__WEBPACK_IMPORTED_MODULE_2__["default"][this.language];
+    this.months = _modules_helpers_months_in_different_languages_js__WEBPACK_IMPORTED_MODULE_2__["default"][this.language]['months'];
     this.errorMessage = this.initialErrorText;
     this.iconErrorCanBeDisplayed = this.errorIconAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable;
     this.iconConfirmationCanBeDisplayed = this.confirmationIconAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable;
     this.redBorderCanBeDisplayed = this.redBorderAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable;
     this.greenBorderCanBeDisplayed = this.greenBorderAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable;
-    this.timespan = this.lastYear - this.sinceYear;
+    this.timespan = this.lastYear - this.sinceYear + 1;
+    this.descriptions = _modules_helpers_months_in_different_languages_js__WEBPACK_IMPORTED_MODULE_2__["default"][this.language]['timeSpanNames'];
+  },
+  mounted: function mounted() {
+    if (this.onDateSelectCallback) {
+      this.$refs.day_select.addEventListener('change', this.invokeCallback.bind(this));
+    }
   },
   computed: {
     displayIconError: function displayIconError() {
@@ -2090,6 +2127,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     displayGreenBorder: function displayGreenBorder() {
       return this.greenBorderCanBeDisplayed && this.valueOK === true;
+    },
+    dateString: function dateString() {
+      return "".concat(this.selectedDay.toString().padStart(2, "0"), "-").concat(this.selectedMonth.toString().padStart(2, "0"), "-").concat(this.selectedYear.toString().padStart(2, "0"));
     }
   }
 });
@@ -22207,6 +22247,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "date-picker-container" }, [
+    _c("input", {
+      attrs: { type: "hidden", name: _vm.name },
+      domProps: { value: _vm.dateString }
+    }),
+    _vm._v(" "),
     _c("div", {
       directives: [
         {
@@ -22229,7 +22274,13 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "date-picker-flex-container" },
+      {
+        staticClass: "date-picker-flex-container",
+        class: {
+          "incorrect-value": _vm.displayRedBorder,
+          "correct-value": _vm.displayGreenBorder
+        }
+      },
       [
         _c("icon-stop", {
           directives: [
@@ -22260,7 +22311,7 @@ var render = function() {
               staticClass: "time-span-label",
               attrs: { for: "date-picker-day" }
             },
-            [_vm._v("Dzień")]
+            [_vm._v(_vm._s(_vm.descriptions["day"]))]
           ),
           _vm._v(" "),
           _c(
@@ -22274,6 +22325,7 @@ var render = function() {
                   expression: "selectedDay"
                 }
               ],
+              ref: "day_select",
               staticClass: "time-span-select",
               attrs: { id: "date-picker-day" },
               on: {
@@ -22293,7 +22345,9 @@ var render = function() {
               }
             },
             [
-              _c("option", { attrs: { value: "0" } }, [_vm._v("--dzień--")]),
+              _c("option", { attrs: { value: "0" } }, [
+                _vm._v("--" + _vm._s(_vm.descriptions["day"]) + "--")
+              ]),
               _vm._v(" "),
               _vm._l(_vm.numberOfDaysInMonth, function(day) {
                 return _c("option", { domProps: { value: day } }, [
@@ -22312,7 +22366,7 @@ var render = function() {
               staticClass: "time-span-label",
               attrs: { for: "date-picker-month" }
             },
-            [_vm._v("Miesiąc")]
+            [_vm._v(_vm._s(_vm.descriptions["month"]))]
           ),
           _vm._v(" "),
           _c(
@@ -22343,12 +22397,14 @@ var render = function() {
                       ? $$selectedVal
                       : $$selectedVal[0]
                   },
-                  _vm.adjustByMonth
+                  _vm.adjustDays
                 ]
               }
             },
             [
-              _c("option", { attrs: { value: "0" } }, [_vm._v("--miesiąc--")]),
+              _c("option", { attrs: { value: "0" } }, [
+                _vm._v("--" + _vm._s(_vm.descriptions["month"]) + "--")
+              ]),
               _vm._v(" "),
               _vm._l(_vm.months, function(month, index) {
                 return _c("option", { domProps: { value: index + 1 } }, [
@@ -22367,7 +22423,7 @@ var render = function() {
               staticClass: "time-span-label",
               attrs: { for: "date-picker-year" }
             },
-            [_vm._v("Rok")]
+            [_vm._v(_vm._s(_vm.descriptions["year"]))]
           ),
           _vm._v(" "),
           _c(
@@ -22384,29 +22440,34 @@ var render = function() {
               staticClass: "time-span-select",
               attrs: { id: "date-picker-year" },
               on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.selectedYear = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
-                }
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.selectedYear = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  _vm.adjustDays
+                ]
               }
             },
             [
-              _c("option", { attrs: { value: "0" } }, [_vm._v("--rok--")]),
+              _c("option", { attrs: { value: "0" } }, [
+                _vm._v("--" + _vm._s(_vm.descriptions["year"]) + "--")
+              ]),
               _vm._v(" "),
               _vm._l(_vm.timespan, function(n) {
                 return _c(
                   "option",
-                  { domProps: { value: n + _vm.sinceYear } },
-                  [_vm._v(_vm._s(n + _vm.sinceYear))]
+                  { domProps: { value: _vm.lastYear - n + 1 } },
+                  [_vm._v(_vm._s(_vm.lastYear - n + 1))]
                 )
               })
             ],
@@ -36285,8 +36346,22 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  'Polski': ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'],
-  'English': ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  Polski: {
+    months: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'],
+    timeSpanNames: {
+      day: 'dzień',
+      month: 'miesiąc',
+      year: 'rok'
+    }
+  },
+  English: {
+    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    timeSpanNames: {
+      day: 'day',
+      month: 'month',
+      year: 'year'
+    }
+  }
 });
 
 /***/ }),
@@ -36390,8 +36465,13 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
         return _checkIfLoginExists.apply(this, arguments);
       }
 
-      this.$root.$emit('awaitingResponse');
       var login = sender.textInputValue;
+
+      if (!login) {
+        return;
+      }
+
+      this.$root.$emit('awaitingResponse');
 
       try {
         if (login.length < 3) {
@@ -36466,8 +36546,13 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
       }
 
-      this.$root.$emit('awaitingResponse');
       var email = sender.textInputValue;
+
+      if (!email) {
+        return;
+      }
+
+      this.$root.$emit('awaitingResponse');
 
       try {
         if (!emailhasCorrectFormat(email)) {
@@ -36484,6 +36569,10 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
     validatePassword: function validatePassword(sender) {
       try {
         var password = sender.textInputValue;
+
+        if (!password) {
+          return;
+        }
 
         if (password.length < 3) {
           throw "Hasło ma mniej niż 3 znaki";
@@ -36505,6 +36594,17 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
         sender.showError("Należy wybrać jedną opcję");
       } else {
         sender.showValueIsOK();
+      }
+    },
+    checkIfUserIsAdault: function checkIfUserIsAdault(sender) {
+      var dateNow = new Date();
+      var date18yearsAgo = dateNow.setFullYear(dateNow.getFullYear() - 18);
+      var userSelectedDate = new Date(sender.selectedYear, sender.selectedMonth - 1, sender.selectedDay);
+
+      if (userSelectedDate <= date18yearsAgo) {
+        sender.showValueIsOK();
+      } else {
+        sender.showError("Nie ukończyłeś 18 lat");
       }
     }
   },

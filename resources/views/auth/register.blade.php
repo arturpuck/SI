@@ -24,14 +24,14 @@
 					 v-bind:complete-validation-display-available="true"
 					 name="login"
 					 v-bind:error-message-box-available="true">
-						Login: 
+						Login : 
 					</text-input-combo>
 					<text-input-combo
 					 v-bind:on-blur-callback="validateEmail"
 					 v-bind:complete-validation-display-available="true"
 					 name="email"
 					 v-bind:error-message-box-available="true">
-						Email: 
+						Email : 
 					</text-input-combo>
 					<text-input-combo
 					 v-bind:on-blur-callback="validatePassword"
@@ -39,7 +39,7 @@
 					 input-type="password"
 					 name="password"
 					 v-bind:error-message-box-available="true">
-						Hasło: 
+						Hasło : 
 					</text-input-combo>
 					<described-select
 					  v-bind:visible-options-list="['--wybierz--','mężczyzną', 'kobietą', 'hermafrodytą', 'transseksualistą', 'parą', 'nie chcę podać']"
@@ -49,7 +49,7 @@
 					  v-bind:complete-validation-display-available="true"
 					  name="user_type"
 					  >
-						Jestem
+						Jestem : 
 					</described-select>
 					<described-select
 					  v-bind:visible-options-list="['--wybierz--','heteroseksualna', 'homoseksualna', 'biseksualna', 'aseksualna', 'autoseksualna', 'nie chcę podać']"
@@ -59,16 +59,23 @@
 					  v-bind:complete-validation-display-available="true"
 					  name="sexual_orientation"
 					  >
-						Orientacja
+						Orientacja : 
 					</described-select>
-					<date-picker>Data urodzenia</date-picker>
+					<date-picker
+					   v-bind:error-message-box-available="true"
+					   name="birth_date"
+					   v-bind:on-date-select-callback="checkIfUserIsAdault"
+					   v-bind:complete-validation-display-available="true"
+					>
+					    Data urodzenia
+					</date-picker>
 				    
                     <submit-button>Zarejestruj</submit-button>
 				</form>
 			</section>
 			<section class="information-section">
 				<div v-show="verificationInProgress" class="shadow-container">
-			   		<expect-bar label="Trwa weryfikacja" v-bind:hidden="false"></expect-bar>
+			   		<!--*<expect-bar label="Trwa weryfikacja" v-bind:hidden="false"></expect-bar>-->
 				</div>
 			   <div ref="registration_information">
 				<strong>Rejestracja i korzystanie z serwisu tylko dla osób pełnoletnich.</strong> Podczas przechodzenia na inne pole wprowadzone informacje zostaną automatycznie sprawdzone. Informacje muszą spełniać wymienione poniżej kryteria. <strong>Zmiana daty urodzenia nie będzie możliwa po zarejestrowaniu</strong>

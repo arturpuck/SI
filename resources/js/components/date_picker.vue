@@ -1,33 +1,34 @@
 <template>
 <div class="date-picker-container">
+    <input type="hidden" v-bind:value="dateString" v-bind:name="name">
     <div v-show="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box"></div>
   	<div class="date-picker-description">
   		<slot></slot>
   	</div>
-  	<div class="date-picker-flex-container">
+  	<div v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" class="date-picker-flex-container">
      <icon-stop v-show="displayIconError"/>
      <icon-confirm v-show="displayIconConfirmation"/>
   	<div class="time-span-container">
-  		<label for="date-picker-day" class="time-span-label">Dzień</label>
- 	 	<select v-model="selectedDay" id="date-picker-day" class="time-span-select">
- 	 	    <option value="0">--dzień--</option>
+  		<label for="date-picker-day" class="time-span-label">{{descriptions['day']}}</label>
+ 	 	<select ref="day_select" v-model="selectedDay" id="date-picker-day" class="time-span-select">
+ 	 	    <option value="0">--{{descriptions['day']}}--</option>
             <option v-for="day in numberOfDaysInMonth" v-bind:value="day">{{day}}</option>
  	 	</select>
  	</div>
   		
  	<div class="time-span-container">
- 	    <label for="date-picker-month" class="time-span-label">Miesiąc</label>
-        <select v-on:change="adjustByMonth" v-model="selectedMonth" id="date-picker-month" class="time-span-select">
-           	<option value="0">--miesiąc--</option>
+ 	    <label for="date-picker-month" class="time-span-label">{{descriptions['month']}}</label>
+        <select v-on:change="adjustDays" v-model="selectedMonth" id="date-picker-month" class="time-span-select">
+           	<option value="0">--{{descriptions['month']}}--</option>
                <option v-for="(month, index) in months" v-bind:value="index + 1">{{month}}</option>
  	 	</select>
  	</div>
  	    
  	<div class="time-span-container">
-  		<label for="date-picker-year" class="time-span-label">Rok</label>
- 	 	<select v-model="selectedYear" id="date-picker-year" class="time-span-select">
- 	 	    <option value="0">--rok--</option>
-            <option v-for="n in timespan" v-bind:value="n + sinceYear">{{n + sinceYear}}</option>
+  		<label for="date-picker-year" class="time-span-label">{{descriptions['year']}}</label>
+ 	 	<select v-on:change="adjustDays" v-model="selectedYear" id="date-picker-year" class="time-span-select">
+ 	 	    <option value="0">--{{descriptions['year']}}--</option>
+            <option v-for="n in  timespan" v-bind:value="lastYear - n + 1">{{lastYear - n +1}}</option>
  	 	</select>
  	</div>
   	</div>
@@ -48,24 +49,51 @@ import MonthsInDifferentLanguages from '../modules/helpers/months_in_different_l
         },
 
         methods : {
-           adjustByMonth(){
-               const months31 = [1,3,5,7,8,10,12];
-               const months30 = [4,6,9,11];
-               const currentMonth = this.selectedMonth;
+           adjustDays(){
+               const selectedMonth = this.selectedMonth;
+               if(selectedMonth != "0")
+               {
+                 const months31 = [1,3,5,7,8,10,12];
+                 const months30 = [4,6,9,11];
+                 const selectedYear = this.selectedYear;
 
-               if(months31.includes(currentMonth)){
-                   this.numberOfDaysInMonth = 31;
-                   return;
-               }
+                 if(months31.includes(selectedMonth)){
+                     this.numberOfDaysInMonth = 31;
+                 }
+                 else if(months30.includes(selectedMonth)){
+                     this.numberOfDaysInMonth = 30;
+                 }
+                 else{
+                     this.numberOfDaysInMonth = ((selectedYear % 4 === 0) && (selectedYear !== 0)) ? 29 : 28;
+                 }
 
-               if(months30.includes(currentMonth)){
-                   this.numberOfDaysInMonth = 30;
-                   return;
+                 this.selectedDay = (this.selectedDay > this.numberOfDaysInMonth) ? this.numberOfDaysInMonth : this.selectedDay;
+
+                 if((selectedYear != "0") && (this.selectedDay != "0") && (this.onDateSelectCallback)){
+                     this.onDateSelectCallback(this);
+                 }
                }
                else{
-                   this.numberOfDaysInMonth = (this.selectedYear % 4 === 0) ? 29 : 28;
+                   this.numberOfDaysInMonth = 31;
                }
-           }
+               
+           },
+
+           showError(errorMessage = ""){
+                this.valueOK = false;
+                this.errorMessage = errorMessage;
+             },
+
+             showValueIsOK(){
+                 this.valueOK = true;
+                 this.errorMessage = "";
+             },
+
+             invokeCallback(){
+                 if((this.selectedDay != "0") && (this.selectedMonth != 0) && (this.selectedYear != 0)){
+                     this.onDateSelectCallback(this);
+                 }
+             }
         },
 
         props : {
@@ -73,6 +101,12 @@ import MonthsInDifferentLanguages from '../modules/helpers/months_in_different_l
               required : false,
               type : String,
               default : 'Polski'
+          },
+
+          name : {
+                 required : false,
+                 type : String,
+                 default : "date_picker"
           },
 
           sinceYear : {
@@ -157,23 +191,33 @@ import MonthsInDifferentLanguages from '../modules/helpers/months_in_different_l
 
         data(){
             return{
+               valueOK : undefined,
+               errorMessage : undefined,
                months : undefined,
                timespan : undefined,
                numberOfDaysInMonth : 31,
                selectedDay : 0,
                selectedMonth : 0,
-               selectedYear : 0
+               selectedYear : 0,
+               descriptions : undefined
             };
         },
 
         created(){
-           this.months = MonthsInDifferentLanguages[this.language];
+           this.months = MonthsInDifferentLanguages[this.language]['months'];
            this.errorMessage = this.initialErrorText;
            this.iconErrorCanBeDisplayed = (this.errorIconAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
            this.iconConfirmationCanBeDisplayed = (this.confirmationIconAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
            this.redBorderCanBeDisplayed = (this.redBorderAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
            this.greenBorderCanBeDisplayed = (this.greenBorderAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
-           this.timespan = this.lastYear - this.sinceYear;
+           this.timespan = this.lastYear - this.sinceYear +1;
+           this.descriptions = MonthsInDifferentLanguages[this.language]['timeSpanNames'];
+        },
+
+        mounted(){
+           if(this.onDateSelectCallback){
+              this.$refs.day_select.addEventListener('change', this.invokeCallback.bind(this));
+           }
         },
 
         computed : {
@@ -192,6 +236,10 @@ import MonthsInDifferentLanguages from '../modules/helpers/months_in_different_l
 
             displayGreenBorder(){
                   return this.greenBorderCanBeDisplayed && (this.valueOK === true);
+            },
+
+            dateString(){
+                return `${this.selectedDay.toString().padStart(2,"0")}-${this.selectedMonth.toString().padStart(2,"0")}-${this.selectedYear.toString().padStart(2,"0")}`;
             }
         }
     }
