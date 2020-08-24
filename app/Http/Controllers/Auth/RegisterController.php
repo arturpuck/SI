@@ -8,7 +8,10 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Helpers\Translators\PolishToEnglishTranslator;
+use Illuminate\Http\Request;
+use Carbon\Carbon;
+use App\UserType;
+use App\SexualOrientation;
 
 class RegisterController extends Controller
 {
@@ -31,44 +34,29 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-  
-    private $rules = [
-            'registration_login' => ['required', 'string', 'max:20', 'min:3', 'unique:users,login'],
-            'registration_email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'registration_password' => ['required', 'min:3', 'max:20'],
-            'user_type' => 
-            ['required','in:mężczyzną,kobietą,parą,hermafrodytą,transseksualistą,nie chcę podać'],
-            'sexual_orientation' => 
-            ['required', 'in:heteroseksualna,homoseksualna,biseksualna,autoseksualna,aseksualna,nie chcę podać'],
-            'birth_date' => ['required', 'date']
-        ];
-    private $errorMessages = [
-        'registration_login.required' => 'Nie podano loginu',
-        'registration_login.string' => 'Login nie może składać się z samych liczb',
-        'registration_login.max' => 'Login nie może przekraczać 20 znaków',
-        'registration_login.min' => 'Login nie może mieć mniej niż 3 znaki',
-        'registration_login.unique' => 'Login jest już zajęty przez innego użytkownika',
-        'registration_email.required' => 'Nie podano adresu email',
-        'registration_email.string' => 'Login nie może składać się z samych liczb',
-        'registration_email.email' => 'Wartość podana jako adres email nie jest prawidłowym adresem email',
-        'registration_email.max' => 'Długość adresu email nie może przekraczać 255 znaków',
-        'registration_email.unique' => 'Adres email jest już wykorzystany przez innego użytkownika',
-        'registration_password.required' => 'Nie podano hasła',
-        'registration_password.min' => 'Hasło nie może mieć mniej niż 3 znaki',
-        'registration_password.max' => "hasło nie może mieć więcej niż 20 znaków",
-        'user_type.required' => 'Nie wybrano typu użytkownika',
-        'user_type.in' => "Typ użytkownika może przyjmować jedynie te wartości zdefiniowane na rozwijanej liście",
-        'sexual_orientation.required' => 'Nie podano orientacji',
-        'sexual_orientation.in' => 'Orientacja seksualna może przyjmować jedynie te wartości zdefiniowane na rozwijanej liście',
-        'birth_date.required' => 'Nie podano daty urodzenia',
-        'birth_date.date' => 'Wartośc podana jako data urodzenia nie jest prawidłową datą',
-        'birth_date.date_format' => 'Nieprawidłowy format daty urodzenia',
-        'birth_date.after' => 'Nieprawidłowa data urodzenia - ludzie nie żyją dłużej niż 120 lat',
-        'birth_date.before' => 'Nieprawidłowa data urodzenia - osoby niepełnoletnie nie mogą korzystać z serwisu'
+
+    protected $errorMessages = [
+       'login.required' => 'login_is_missing',
+       'login.string' => 'login_must_be_a_string',
+       'login.min' => 'login_must_contain_at_least_3_characters',
+       'login.max' => 'login_must_not_exceed_20_characters',
+       'login.unique' => 'login_has_already_been_taken',
+       'email.required' => 'email_is_missing',
+       'email.string' => 'email_must_be_a_string',
+       'email.email' => 'email_is_invalid',
+       'email.max' => 'email_must_not_exceed_255_characters',
+       'email.unique' => 'email_has_already_been_taken',
+       'password.required' => 'password_is_missing',
+       'password.min' => 'password_must_contain_at_least_3_characters',
+       'password.max' => 'password_must_not_exceed_20_characters',
+       'user_type_id.exists' => 'user_type_option_has_not_been_selected',
+       'sexual_orientation_id.exists' => 'sexual_orientation_has_not_been_selected',
+       'birth_date.required' => 'birth_date_is_required',
+       'birth_date.date' => 'birth_date_has_incorrect_format',
+       'birth_date.before_or_equal' => 'you_have_to_be_at_least_18_years_old',
+       'birth_date.after_or_equal' => 'date_is_too_old_humans_dont_live_that_long',
 
     ];
-
-    private $preparedData;
 
     /**
      * Create a new controller instance.
@@ -84,6 +72,8 @@ class RegisterController extends Controller
     {
         return view('auth.register')->with([
           'specificImageClass' => 'register-background-image-'.rand(1,3),
+          'sexualOrientations' => SexualOrientation::all(),
+          'userTypes' => UserType::all()
         ]);
     }
 
@@ -95,32 +85,19 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        $this->preparedData = $this->prepareData($data);
-        return Validator::make($this->preparedData, $this->rules, $this->errorMessages);
-    }
+        $date =  new Carbon();
+        $date18YearsAgo = $date->subYears(18)->format('Y-m-d');
+        $date = new Carbon();
+        $date120yearsAgo = $date->subYears(120)->format('Y-m-d');
 
-    private function calculateDateYearsBeforeCurrentDay(int $offset)
-    {
-       $currentDay = date('d');
-       $currentMonth = date('m');
-       $currentYear = intval(date('Y'));
-       $yearBeforeOffset = $currentYear - $offset;
-       return "$yearBeforeOffset-$currentMonth-$currentDay";
-    }
-
-    private function prepareData(array $data) : array
-    {
-        $modifiedData = &$data;
-        if(($data['year'] != 0) and ($data['month'] != 0)  and ($data['day'] != 0) )
-        {
-           $modifiedData['birth_date'] = $data['year'].'-'.$data['month'].'-'.$data['day'];
-           $earliestDate = $this->calculateDateYearsBeforeCurrentDay(120);
-           $dateEighteenYearsAgo = $this->calculateDateYearsBeforeCurrentDay(18); 
-           array_push($this->rules['birth_date'], "after:$earliestDate");
-           array_push($this->rules['birth_date'], "before:$dateEighteenYearsAgo");
-        }
-            
-        return $modifiedData;
+        return Validator::make($data, [
+            'login' => ['required', 'string', 'max:20', 'min:3', 'unique:users,login'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'password' => ['required', 'string', 'min:3', 'max:20'],
+            'user_type_id' => ['nullable', 'exists:user_types,id'],
+            'sexual_orientation_id' => ['nullable', 'exists:sexual_orientations,id'],
+            'birth_date' => ['required', 'date', 'before_or_equal:'.$date18YearsAgo, 'after_or_equal:'.$date120yearsAgo]
+        ], $this->errorMessages);
     }
 
     /**
@@ -131,14 +108,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-      
+        
         return User::create([
-            'login' => $this->preparedData['registration_login'],
-            'email' => $this->preparedData['registration_email'],
-            'password' => Hash::make($this->preparedData['registration_password']),
-            'birth_date' => $this->preparedData['birth_date'],
-            'user_type' => PolishToEnglishTranslator::get($this->preparedData['user_type']),
-            'sexual_orientation' => PolishToEnglishTranslator::get($this->preparedData['sexual_orientation'])
+            'login' => $data['login'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password'],),
+            'user_type_id' => $data['user_type_id'],
+            'sexual_orientation_id' => $data['sexual_orientation_id'],
+            'birth_date' => $data['birth_date']
         ]);
+    }
+
+    protected function registered(Request $request, $user)
+    {
+        session(['success' => 'Zostałeś zarejestrowany pomyślnie']);
     }
 }

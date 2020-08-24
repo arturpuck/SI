@@ -11,13 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.sass('resources/sass/auth/register.scss', 'public/css/auth')
-.sass('resources/sass/contact.scss', 'public/css')
-.sass('resources/sass/mainpage/mainpage.scss', 'public/css')
-.options({
-      processCssUrls: false}).js('resources/js/contact.js', 'public/js')
-.js('resources/js/mainpage.js', 'public/js')
-.js('resources/js/register.js', 'public/js')
-.js('resources/js/password_reset.js', 'public/js')
-.sass('resources/sass/auth/password_reset.scss', 'public/css')
-.sass('resources/sass/auth/password_reset_confirmation.scss', 'public/css');
+mix.js('resources/js/mainpage.js', 'public/js')
+.js('resources/js/auth/register.js', 'public/js')
+.js('resources/js/contact.js', 'public/js')
+.js('resources/js/auth/password_reset.js', 'public/js')
+    .sass('resources/sass/mainpage.scss', 'public/css')
+    .sass('resources/sass/contact.scss', 'public/css')
+    .sass('resources/sass/auth/password_reset.scss', 'public/css')
+    .sass('resources/sass/auth/register.scss', 'public/css')
+    .sass('resources/sass/auth/password_reset_confirmation.scss', 'public/css')
+    .options({processCssUrls: false});

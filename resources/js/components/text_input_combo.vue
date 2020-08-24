@@ -1,13 +1,13 @@
 <template>
-<div>
+<div class="text-input-combo-container">
   <div v-show="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box">
 	
   </div>
-  <label v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" class="single-line-text-input-label">
+  <label v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" class="text-input-combo-value-label">
      <icon-stop v-show="displayIconError"/>
      <icon-confirm v-show="displayIconConfirmation"/>
      <span class="text-input-description"><slot></slot></span>
-     <input ref="text_input" v-bind:name="name" class="single-line-text-input" v-model="textInputValue" v-bind:type="inputType">
+     <input ref="text_input" v-bind:name="name" class="text-input-combo-value" v-model="textInputValue" v-bind:type="inputType">
   </label>
 </div>
 </template>
@@ -71,6 +71,7 @@ import IconConfirm from './icon_confirm.vue';
              this.iconConfirmationCanBeDisplayed = (this.confirmationIconAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
              this.redBorderCanBeDisplayed = (this.redBorderAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
              this.greenBorderCanBeDisplayed = (this.greenBorderAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
+             this.valueOK = this.initialOk;
         },
         
         mounted(){
@@ -122,7 +123,7 @@ import IconConfirm from './icon_confirm.vue';
                  default : false
              },
 
-             initialOK : {
+             initialOk : {
                  required : false,
                  type : Boolean,
                  default : undefined
@@ -182,7 +183,7 @@ import IconConfirm from './icon_confirm.vue';
     position:absolute;
 }
 
-.single-line-text-input-label {
+.text-input-combo-value-label {
     display: flex;
     align-items: baseline;
     background: #242229;
@@ -203,9 +204,13 @@ import IconConfirm from './icon_confirm.vue';
 .text-input-description
 {
 	white-space: nowrap;
+    font:{
+        family: "Exo 2", sans-serif;
+        size:1.2vw;
+    };
 }
 
-.single-line-text-input {
+.text-input-combo-value {
     background: #242229;
     border: none;
     border-bottom: 1px solid transparent;
@@ -214,10 +219,13 @@ import IconConfirm from './icon_confirm.vue';
     width: 1%;
     flex-grow:10;
     padding-left:4px;
-    font:inherit;
+    font:{
+        family: "Exo 2", sans-serif;
+        size:1.2vw;
+    };
 }
 
-.single-line-text-input:focus {
+.text-input-combo-value:focus {
     outline: none;
     border-bottom: 1px solid #86838f;
 }
@@ -228,6 +236,13 @@ import IconConfirm from './icon_confirm.vue';
 
 .correct-value{
     border: 2px solid green;
+}
+
+@media (max-width:1200px) {
+
+   .text-input-description .text-input-combo-value{
+       font-size:18px;
+    }
 }
 
 </style>

@@ -1,11 +1,11 @@
-require('./bootstrap');
+
 import Vue from 'vue';
-import Navbar  from './components/navbar.vue';
-import TextInputCombo  from './components/text_input_combo.vue';
-import ExpectBar  from './components/expect_bar.vue';
-import SubmitButton from './components/submit_button.vue';
-import DescribedSelect from './components/described_select.vue';
-import DatePicker from './components/date_picker.vue';
+import Navbar  from '../components/navbar.vue';
+import TextInputCombo  from '../components/text_input_combo.vue';
+import ExpectBar  from '../components/expect_bar.vue';
+import SubmitButton from '../components/submit_button.vue';
+import DescribedSelect from '../components/described_select.vue';
+import DatePicker from '../components/date_picker.vue';
 
 Vue.component('navbar', Navbar);
 Vue.component('text-input-combo', TextInputCombo);

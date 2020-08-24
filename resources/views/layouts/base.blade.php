@@ -27,8 +27,7 @@
      </navbar>
 	@yield('content')
 	</div>
-	@footer
-	@endfooter
+    <x-footer/>
 	@yield('scripts')
 </body>
 </html>

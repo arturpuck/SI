@@ -60,7 +60,8 @@ import IconConfirm from './icon_confirm.vue';
              this.iconConfirmationCanBeDisplayed = (this.confirmationIconAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
              this.redBorderCanBeDisplayed = (this.redBorderAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
              this.greenBorderCanBeDisplayed = (this.greenBorderAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
-             this.optionValues = (this.optionValues === undefined) ? this.visibleOptionsList : this.optionValues;   
+             this.optionValues = (this.optionValues === undefined) ? this.visibleOptionsList : this.optionValues;
+             this.valueOK = this.initialOk;   
         },
         
         mounted(){
@@ -117,7 +118,7 @@ import IconConfirm from './icon_confirm.vue';
                  default : false
              },
 
-             initialOK : {
+             initialOk : {
                  required : false,
                  type : Boolean,
                  default : undefined

@@ -93,6 +93,16 @@ import MonthsInDifferentLanguages from '../modules/helpers/months_in_different_l
                  if((this.selectedDay != "0") && (this.selectedMonth != 0) && (this.selectedYear != 0)){
                      this.onDateSelectCallback(this);
                  }
+             },
+
+             initiateDate(){
+                 if(this.initialValue !== "00-00-00"){
+                    const splittedDate = this.initialValue.split("-");
+                    console.log(splittedDate);
+                    this.selectedYear = splittedDate[0];
+                    this.selectedMonth = splittedDate[1];
+                    this.selectedDay = splittedDate[2];
+                 }
              }
         },
 
@@ -102,6 +112,12 @@ import MonthsInDifferentLanguages from '../modules/helpers/months_in_different_l
               type : String,
               default : 'Polski'
           },
+
+          initialValue : {
+                 required : false,
+                 type : String,
+                 default : "00-00-00"
+             },
 
           name : {
                  required : false,
@@ -145,7 +161,7 @@ import MonthsInDifferentLanguages from '../modules/helpers/months_in_different_l
             default : false
         },
 
-        initialOK : {
+        initialOk : {
             required : false,
             type : Boolean,
             default : undefined
@@ -212,6 +228,8 @@ import MonthsInDifferentLanguages from '../modules/helpers/months_in_different_l
            this.greenBorderCanBeDisplayed = (this.greenBorderAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
            this.timespan = this.lastYear - this.sinceYear +1;
            this.descriptions = MonthsInDifferentLanguages[this.language]['timeSpanNames'];
+           this.valueOK = this.initialOk;
+           this.initiateDate();
         },
 
         mounted(){
@@ -239,7 +257,7 @@ import MonthsInDifferentLanguages from '../modules/helpers/months_in_different_l
             },
 
             dateString(){
-                return `${this.selectedDay.toString().padStart(2,"0")}-${this.selectedMonth.toString().padStart(2,"0")}-${this.selectedYear.toString().padStart(2,"0")}`;
+                return `${this.selectedYear.toString().padStart(2,"0")}-${this.selectedMonth.toString().padStart(2,"0")}-${this.selectedDay.toString().padStart(2,"0")}`;
             }
         }
     }

@@ -17,13 +17,18 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('login')->unique();
             $table->string('email')->unique();
-            $table->enum('user_type', ['male', 'female', 'hermaphrodite', 'transsexual', 'couple'])->nullable();
-            $table->enum('sexual_orientation', ['heterosexual', 'homosexual', 'bisexual', 'autosexual', 'asexual'])->nullable();
+            $table->unsignedBigInteger('user_type_id')->nullable();
+            $table->foreign('user_type_id')->references('id')->on('user_types');
+            $table->unsignedBigInteger('sexual_orientation_id')->nullable();
+            $table->foreign('sexual_orientation_id')->references('id')->on('sexual_orientations');
             $table->string('password');
             $table->date('birth_date');
             $table->rememberToken();
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

@@ -17,17 +17,30 @@ Route::get('/verify-email/{email}', 'AJAXEmailValidationController@checkIfEmailA
 Route::get('/kontakt', 'ContactFormController@showContactForm');
 Route::post('/kontakt', 'ContactFormController@sendMessageFromUser')
        ->name('contact');
+
+
+
 Route::namespace('Auth')->name('auth.')->group(function(){
-   Route::get('/wyloguj', 'LoginController@logout')
-          ->name('logout');
-   Route::get('/haslo/potwierdzenie-zmiany', 'PasswordResetConfirmationController@showConfirmation' );
-   Route::get('/haslo/resetuj', 'ForgotPasswordController@showLinkRequestForm')
-          ->name('password.reset.form');
-   Route::post('/haslo/resetuj', 'ForgotPasswordController@sendResetLinkEmail')
-          ->name('password.reset');
-   Route::get('/rejestruj', 'RegisterController@showRegistrationForm')
-          ->name('register.form');
-   Route::get('/zaloguj', 'LoginController@showLoginForm')
-          ->name('login.form');
+       Route::post('/rejestruj', 'RegisterController@register')
+             ->name('register.create');
+       Route::get('/rejestruj', 'RegisterController@showRegistrationForm')
+             ->name('register.form');
+
+
+
+              Route::get('/wyloguj', 'LoginController@logout')
+                    ->name('logout');
+       
+       Route::get('/haslo/potwierdzenie-zmiany', 'PasswordResetConfirmationController@showConfirmation' );
+       Route::get('/haslo/resetuj', 'ForgotPasswordController@showLinkRequestForm')
+              ->name('password.reset.form');
+       Route::post('/haslo/resetuj', 'ForgotPasswordController@sendResetLinkEmail')
+              ->name('password.reset');
+       
+       
 });
 
+Auth::routes();
+
+
+Route::get('/home', 'HomeController@index')->name('home');

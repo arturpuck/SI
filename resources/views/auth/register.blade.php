@@ -17,60 +17,121 @@
          @enderror_list
 		<main id="main-panel" class="main-panel @if($errors->any())main-panel-without-top-margin @endif">
 			<section class="register-panel">
-				<form ref="register_panel" method="POST" action="/register" class="main-panel-form register-form">
+				<form ref="register_panel" method="POST" action="{{route('auth.register.create')}}" class="main-panel-form register-form">
 					@csrf
 					<text-input-combo
-					 v-bind:on-blur-callback="validateLogin"
-					 v-bind:complete-validation-display-available="true"
-					 name="login"
-					 v-bind:error-message-box-available="true">
-						Login : 
+						@error('login')
+						  v-bind:initial-ok="false"
+						  initial-value="{{old('login')}}"
+						@enderror
+						
+						@if($errors->any() and !$errors->has('login'))
+							v-bind:initial-ok="true"
+							initial-value="{{old('login')}}"
+						@endif
+
+						v-bind:on-blur-callback="validateLogin"
+						v-bind:complete-validation-display-available="true"
+						name="login"
+						v-bind:error-message-box-available="true">
+						{{ucfirst(__('login'))}} : 
 					</text-input-combo>
+
 					<text-input-combo
-					 v-bind:on-blur-callback="validateEmail"
-					 v-bind:complete-validation-display-available="true"
-					 name="email"
-					 v-bind:error-message-box-available="true">
-						Email : 
+						@error('email')
+							v-bind:initial-ok="false"
+							initial-value="{{old('email')}}"
+						@enderror
+
+						@if($errors->any() and !$errors->has('email'))
+							v-bind:initial-ok="true"
+							initial-value="{{old('email')}}"
+						@endif
+						
+						v-bind:on-blur-callback="validateEmail"
+						v-bind:complete-validation-display-available="true"
+						name="email"
+						v-bind:error-message-box-available="true">
+						{{ucfirst(__('email'))}} : 
 					</text-input-combo>
+
 					<text-input-combo
-					 v-bind:on-blur-callback="validatePassword"
-					 v-bind:complete-validation-display-available="true"
-					 input-type="password"
-					 name="password"
-					 v-bind:error-message-box-available="true">
-						Hasło : 
+						@error('password')
+							v-bind:initial-ok="false"
+						@enderror
+
+						@if($errors->any() and !$errors->has('password'))
+							v-bind:initial-ok="true"
+							initial-value="{{old('password')}}"
+						@endif
+						
+						v-bind:on-blur-callback="validatePassword"
+						v-bind:complete-validation-display-available="true"
+						input-type="password"
+						name="password"
+						v-bind:error-message-box-available="true">
+						{{ucfirst(__('password'))}} : 
 					</text-input-combo>
+
 					<described-select
-					  v-bind:visible-options-list="['--wybierz--','mężczyzną', 'kobietą', 'hermafrodytą', 'transseksualistą', 'parą', 'nie chcę podać']"
-					  v-bind:option-values="['not-selected','male', 'female', 'hermaphrodite', 'transsexual', 'couple', '']"
-					  v-bind:on-change-callback="validateSelect"
-					  v-bind:error-message-box-available="true"
-					  v-bind:complete-validation-display-available="true"
-					  name="user_type"
-					  >
-						Jestem : 
+						@error('user_type_id')
+							v-bind:initial-ok="false"
+							initial-value="{{old('user_type_id')}}"
+						@enderror
+
+						@if($errors->any() and !$errors->has('user_type_id'))
+							v-bind:initial-ok="true"
+							initial-value="{{old('user_type_id')}}"
+						@endif
+						
+						v-bind:visible-options-list="['--{{__('choose')}}--',@foreach($userTypes as $userType) '{{__($userType->user_type_name.'_i')}}', @endforeach '{{__('i_dont_want_to_tell')}}']"
+						v-bind:option-values="['not-selected', @foreach($userTypes as $userType) '{{$userType->id}}', @endforeach '']"
+						v-bind:on-change-callback="validateSelect"
+						v-bind:error-message-box-available="true"
+						v-bind:complete-validation-display-available="true"
+						name="user_type_id">
+							{{ucfirst(__('i_am'))}} : 
 					</described-select>
+
 					<described-select
-					  v-bind:visible-options-list="['--wybierz--','heteroseksualna', 'homoseksualna', 'biseksualna', 'aseksualna', 'autoseksualna', 'nie chcę podać']"
-					  v-bind:option-values="['not-selected','heterosexual', 'homosexual', 'bisexual', 'asexual', 'autosexual', '']"
-					  v-bind:on-change-callback="validateSelect"
-					  v-bind:error-message-box-available="true"
-					  v-bind:complete-validation-display-available="true"
-					  name="sexual_orientation"
-					  >
-						Orientacja : 
+						@error('sexual_orientation_id')
+							v-bind:initial-ok="false"
+							initial-value="{{old('sexual_orientation_id')}}"
+						@enderror
+
+						@if($errors->any() and !$errors->has('sexual_orientation_id'))
+							v-bind:initial-ok="true"
+							initial-value="{{old('sexual_orientation_id')}}"
+						@endif
+						
+						v-bind:visible-options-list="['--{{__('choose')}}--',@foreach($sexualOrientations as $sexualOrientation) '{{__($sexualOrientation->sexual_orientation_name)}}', @endforeach '{{__('i_dont_want_to_tell')}}']"
+						v-bind:option-values="['not-selected', @foreach($sexualOrientations as $sexualOrientation) '{{$sexualOrientation->id}}', @endforeach '']"
+						v-bind:on-change-callback="validateSelect"
+						v-bind:error-message-box-available="true"
+						v-bind:complete-validation-display-available="true"
+						name="sexual_orientation_id">
+						{{ucfirst(__('orientation'))}} : 
 					</described-select>
+
 					<date-picker
+					   @error('birth_date')
+							v-bind:initial-ok="false"
+							initial-value="{{old('birth_date')}}"
+						@enderror
+
+					   @if($errors->any() and !$errors->has('birth_date'))
+							v-bind:initial-ok="true"
+							initial-value="{{old('birth_date')}}"
+					   @endif
+					   
 					   v-bind:error-message-box-available="true"
 					   name="birth_date"
 					   v-bind:on-date-select-callback="checkIfUserIsAdault"
-					   v-bind:complete-validation-display-available="true"
-					>
-					    Data urodzenia
+					   v-bind:complete-validation-display-available="true">
+					{{ucfirst(__('birth_date'))}}
 					</date-picker>
 				    
-                    <submit-button>Zarejestruj</submit-button>
+                    <submit-button>{{ucfirst(__('register'))}}</submit-button>
 				</form>
 			</section>
 			<section class="information-section">
@@ -80,9 +141,9 @@
 			   <div ref="registration_information">
 				<strong>Rejestracja i korzystanie z serwisu tylko dla osób pełnoletnich.</strong> Podczas przechodzenia na inne pole wprowadzone informacje zostaną automatycznie sprawdzone. Informacje muszą spełniać wymienione poniżej kryteria. <strong>Zmiana daty urodzenia nie będzie możliwa po zarejestrowaniu</strong>
 				<dl class="input-list">
-					<dt class="input-name">Login</dt>
+					<dt class="input-name">{{ucfirst(__('login'))}}</dt>
 					<dd class="input-description">Od 3 do 20 znaków. Login nie może być wykorzystany przez innego użytkownika.</dd>
-					<dt class="input-name">Email</dt>
+					<dt class="input-name">{{ucfirst(__('email'))}}</dt>
 					<dd class="input-description">Należy podać poprawny adres email, ponadto nie może on być wykorzystany przez innego użytkownika.</dd>
 					<dt class="input-name">Hasło</dt>
 					<dd class="input-description">Od 3 do 20 znaków. Im więcej symboli tym lepsze zabezpieczenie</dd>

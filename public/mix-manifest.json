@@ -1,11 +1,11 @@
 {
     "/js/contact.js": "/js/contact.js",
-    "/css/auth/register.css": "/css/auth/register.css",
-    "/css/contact.css": "/css/contact.css",
-    "/css/mainpage.css": "/css/mainpage.css",
-    "/css/password_reset.css": "/css/password_reset.css",
-    "/css/password_reset_confirmation.css": "/css/password_reset_confirmation.css",
     "/js/mainpage.js": "/js/mainpage.js",
+    "/css/mainpage.css": "/css/mainpage.css",
+    "/css/contact.css": "/css/contact.css",
+    "/css/password_reset.css": "/css/password_reset.css",
+    "/css/register.css": "/css/register.css",
+    "/css/password_reset_confirmation.css": "/css/password_reset_confirmation.css",
     "/js/password_reset.js": "/js/password_reset.js",
     "/js/register.js": "/js/register.js"
 }
