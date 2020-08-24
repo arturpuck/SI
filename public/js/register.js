@@ -901,6 +901,10 @@ __webpack_require__.r(__webpack_exports__);
     showValueIsOK: function showValueIsOK() {
       this.valueOK = true;
       this.errorMessage = "";
+    },
+    resetValidation: function resetValidation() {
+      this.valueOK = undefined;
+      this.errorMessage = "";
     }
   },
   created: function created() {
@@ -1032,7 +1036,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".select-label {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n  border-radius: 7px;\n  padding: 5px;\n  color: white;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 16px;\n  width: 95%;\n  margin: 0 auto;\n  background: #242229;\n  position: relative;\n  border: 2px solid transparent;\n}\n.select-description {\n  white-space: nowrap;\n}\n.described-select {\n  width: 1%;\n  -webkit-box-flex: 10;\n          flex-grow: 10;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 16px;\n  color: white;\n  border: none;\n  background: #242229;\n  outline: none;\n}\n.incorrect-value {\n  border: 2px solid red;\n}\n.correct-value {\n  border: 2px solid green;\n}", ""]);
+exports.push([module.i, ".error-message-box {\n  display: block;\n  font-size: 1vw;\n  font-family: \"Aldrich\", sans-serif;\n  color: red;\n  padding: 2px 2px 3px;\n  text-align: center;\n  height: calc(1em + 6px);\n}\n@media (max-width: 1200px) {\n.error-message-box {\n    font-size: 13px;\n}\n}\n.select-label {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n  border-radius: 7px;\n  padding: 3px 10px;\n  color: white;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 1.2vw;\n  width: 95%;\n  margin: 0 auto;\n  background: #242229;\n  position: relative;\n  border: 2px solid transparent;\n}\n.select-description {\n  white-space: nowrap;\n}\n.described-select {\n  width: 1%;\n  -webkit-box-flex: 10;\n          flex-grow: 10;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 1.2vw;\n  color: white;\n  border: none;\n  background: #242229;\n  outline: none;\n}\n@media (max-width: 1200px) {\n.select-description, .described-select {\n    font-size: 16px;\n}\n}\n.incorrect-value {\n  border: 2px solid red;\n}\n.correct-value {\n  border: 2px solid green;\n}", ""]);
 
 // exports
 
@@ -1166,7 +1170,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".icon-container {\n  top: 0;\n  right: 0;\n  -webkit-transform: translate(50%, -50%);\n          transform: translate(50%, -50%);\n  position: absolute;\n}\n.text-input-combo-value-label {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n  background: #242229;\n  padding: 3px 10px;\n  border-radius: 8px;\n  color: white;\n  width: 95%;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 16px;\n  margin: 6px auto;\n  border: 2px solid transparent;\n  position: relative;\n}\n.text-input-description {\n  white-space: nowrap;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 1.2vw;\n}\n.text-input-combo-value {\n  background: #242229;\n  border: none;\n  border-bottom: 1px solid transparent;\n  height: 24px;\n  color: #fff;\n  width: 1%;\n  -webkit-box-flex: 10;\n          flex-grow: 10;\n  padding-left: 4px;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 1.2vw;\n}\n.text-input-combo-value:focus {\n  outline: none;\n  border-bottom: 1px solid #86838f;\n}\n.incorrect-value {\n  border: 2px solid red;\n}\n.correct-value {\n  border: 2px solid green;\n}\n@media (max-width: 1200px) {\n.text-input-description .text-input-combo-value {\n    font-size: 18px;\n}\n}", ""]);
+exports.push([module.i, ".error-message-box {\n  display: block;\n  font-size: 1vw;\n  font-family: \"Aldrich\", sans-serif;\n  color: red;\n  padding: 2px 2px 3px;\n  text-align: center;\n  height: calc(1em + 6px);\n}\n@media (max-width: 1200px) {\n.error-message-box {\n    font-size: 13px;\n}\n}\n.icon-container {\n  top: 0;\n  right: 0;\n  -webkit-transform: translate(50%, -50%);\n          transform: translate(50%, -50%);\n  position: absolute;\n}\n.text-input-combo-value-label {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n  background: #242229;\n  padding: 3px 10px;\n  border-radius: 8px;\n  color: white;\n  width: 95%;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 16px;\n  margin: 0 auto;\n  border: 2px solid transparent;\n  position: relative;\n}\n.text-input-description {\n  white-space: nowrap;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 1.2vw;\n}\n.text-input-combo-value {\n  background: #242229;\n  border: none;\n  border-bottom: 1px solid transparent;\n  color: #fff;\n  width: 1%;\n  -webkit-box-flex: 10;\n          flex-grow: 10;\n  padding-left: 4px;\n  font-family: \"Exo 2\", sans-serif;\n  font-size: 1.2vw;\n}\n.text-input-combo-value:focus {\n  outline: none;\n  border-bottom: 1px solid #86838f;\n}\n.incorrect-value {\n  border: 2px solid red;\n}\n.correct-value {\n  border: 2px solid green;\n}\n@media (max-width: 1200px) {\n.text-input-description, .text-input-combo-value {\n    font-size: 16px;\n}\n}", ""]);
 
 // exports
 
@@ -3292,19 +3296,6 @@ var render = function() {
       domProps: { value: _vm.dateString }
     }),
     _vm._v(" "),
-    _c("div", {
-      directives: [
-        {
-          name: "show",
-          rawName: "v-show",
-          value: _vm.errorMessageBoxAvailable,
-          expression: "errorMessageBoxAvailable"
-        }
-      ],
-      staticClass: "error-message-box",
-      domProps: { textContent: _vm._s(_vm.errorMessage) }
-    }),
-    _vm._v(" "),
     _c(
       "div",
       { staticClass: "date-picker-description" },
@@ -3516,7 +3507,20 @@ var render = function() {
         ])
       ],
       1
-    )
+    ),
+    _vm._v(" "),
+    _c("div", {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: _vm.errorMessageBoxAvailable,
+          expression: "errorMessageBoxAvailable"
+        }
+      ],
+      staticClass: "error-message-box",
+      domProps: { textContent: _vm._s(_vm.errorMessage) }
+    })
   ])
 }
 var staticRenderFns = []
@@ -16628,6 +16632,7 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
       var login = sender.textInputValue;
 
       if (!login) {
+        sender.resetValidation();
         return;
       }
 
@@ -16709,6 +16714,7 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
       var email = sender.textInputValue;
 
       if (!email) {
+        sender.resetValidation();
         return;
       }
 
@@ -16731,6 +16737,7 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
         var password = sender.textInputValue;
 
         if (!password) {
+          sender.resetValidation();
           return;
         }
 

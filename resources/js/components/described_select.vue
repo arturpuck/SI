@@ -183,15 +183,17 @@ import IconConfirm from './icon_confirm.vue';
 
 <style lang="scss">
 
+@import '../../sass/error_message_box';
+
 .select-label{
 	display:flex;
 	align-items: baseline;
 	border-radius:7px;
-	padding: 5px;
+	padding: 3px 10px;
 	color:white;
 	font:{
       family: "Exo 2", sans-serif;
-      size: 16px;
+      size:1.2vw;
 	};
 	width:95%;
 	margin:0 auto;
@@ -209,12 +211,20 @@ import IconConfirm from './icon_confirm.vue';
 	flex-grow: 10;
 	font:{
       family: "Exo 2", sans-serif;
-      size: 16px;
+      size: 1.2vw;
 	};
 	color:white;
 	border: none;
 	background:#242229;
 	outline:none;
+}
+
+@media (max-width:1200px) {
+
+   .select-description, .described-select{
+       font-size:16px;
+    }
+
 }
 
 .incorrect-value{

@@ -5,7 +5,7 @@
 @endsection
 
 @section('file-with-styles')
- {{asset('css/auth/register.css')}}
+ {{asset('css/register.css')}}
 @endsection
 
 @section('description')
@@ -136,7 +136,7 @@
 			</section>
 			<section class="information-section">
 				<div v-show="verificationInProgress" class="shadow-container">
-			   		<!--*<expect-bar label="Trwa weryfikacja" v-bind:hidden="false"></expect-bar>-->
+			   		<<expect-bar label="{{__('verification_in_progress')}}" v-bind:hidden="false"></expect-bar>
 				</div>
 			   <div ref="registration_information">
 				<strong>Rejestracja i korzystanie z serwisu tylko dla osób pełnoletnich.</strong> Podczas przechodzenia na inne pole wprowadzone informacje zostaną automatycznie sprawdzone. Informacje muszą spełniać wymienione poniżej kryteria. <strong>Zmiana daty urodzenia nie będzie możliwa po zarejestrowaniu</strong>

@@ -48,6 +48,7 @@ Vue.component('date-picker', DatePicker);
       const login = sender.textInputValue;
 
       if(!login){
+         sender.resetValidation();
          return;
       }
           
@@ -104,6 +105,7 @@ Vue.component('date-picker', DatePicker);
      const email  = sender.textInputValue;
 
      if(!email){
+        sender.resetValidation();
         return;
      }
      this.$root.$emit('awaitingResponse');
@@ -128,6 +130,7 @@ Vue.component('date-picker', DatePicker);
          const password = sender.textInputValue;
 
          if(!password){
+            sender.resetValidation();
             return;
          }
 

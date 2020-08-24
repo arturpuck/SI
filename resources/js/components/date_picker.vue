@@ -1,7 +1,6 @@
 <template>
 <div class="date-picker-container">
     <input type="hidden" v-bind:value="dateString" v-bind:name="name">
-    <div v-show="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box"></div>
   	<div class="date-picker-description">
   		<slot></slot>
   	</div>
@@ -32,6 +31,7 @@
  	 	</select>
  	</div>
   	</div>
+    <div v-show="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box"></div>
   </div>
 </template>
 

@@ -37,5 +37,6 @@
     "birth_date_is_required" : "Nie podano daty urodzenia",
     "birth_date_has_incorrect_format" : "Data urodzenia ma niepoprawny format lub jest niekompletna",
     "you_have_to_be_at_least_18_years_old" : "Nie ukończyłeś 18-ego roku życia",
-    "date_is_too_old_humans_dont_live_that_long" : "Data urodzenia przekracza 120 lat wstecz"
+    "date_is_too_old_humans_dont_live_that_long" : "Data urodzenia przekracza 120 lat wstecz",
+    "verification_in_progress" : "Trwa weryfikacja"
 }

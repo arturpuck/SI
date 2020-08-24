@@ -1,7 +1,7 @@
 .error-message-box{
 	display:block;
 	font:{
-		size:13px;
+		size:1vw;
 		family:"Aldrich", sans-serif;
 	}
 	color:red;
@@ -9,6 +9,13 @@
 	text-align: center;
 	height: calc(1em + 6px);
 }
+
+@media (max-width:1200px) {
+ 
+	 .error-message-box{
+		 font-size: 13px;
+	 }
+ }
 
 
 

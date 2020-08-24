@@ -31,12 +31,18 @@
 
 .error-message-box {
   display: block;
-  font-size: 13px;
+  font-size: 1vw;
   font-family: "Aldrich", sans-serif;
   color: red;
   padding: 2px 2px 3px;
   text-align: center;
   height: calc(1em + 6px);
+}
+
+@media (max-width: 1200px) {
+  .error-message-box {
+    font-size: 13px;
+  }
 }
 
 .registration-information {
@@ -55,7 +61,7 @@
   font-size: 15px;
   color: white;
   padding: 7px;
-  max-height: 390px;
+  max-height: 370px;
   overflow-y: auto;
   position: relative;
 }

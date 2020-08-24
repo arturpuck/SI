@@ -135,7 +135,7 @@
       <change beforePath="$PROJECT_DIR$/resources/sass/components/main_page_navbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/components/main_page_navbar.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/sass/components/success_information.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/components/success_information.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/sass/contact.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/contact.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/error_messages.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/error_messages.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/error_message_box.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/error_message_box.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/sass/mainpage/mainpage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/mainpage/mainpage.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/login_or_register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login_or_register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/password_reset_confirmation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/password_reset_confirmation.blade.php" afterDir="false" />

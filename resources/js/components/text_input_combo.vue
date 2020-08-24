@@ -60,6 +60,11 @@ import IconConfirm from './icon_confirm.vue';
              showValueIsOK(){
                  this.valueOK = true;
                  this.errorMessage = "";
+             },
+
+             resetValidation(){
+                 this.valueOK = undefined;
+                 this.errorMessage = "";
              }
 
          },
@@ -176,12 +181,16 @@ import IconConfirm from './icon_confirm.vue';
 
 <style lang="scss">
 
+@import '../../sass/error_message_box';
+
 .icon-container{
     top: 0;
     right:0;
     transform:translate(50%,-50%);
     position:absolute;
 }
+
+
 
 .text-input-combo-value-label {
     display: flex;
@@ -195,7 +204,7 @@ import IconConfirm from './icon_confirm.vue';
     	family: "Exo 2", sans-serif;
     	size: 16px;
     }
-    margin:6px auto;
+    margin:0 auto;
     border: 2px solid transparent;
     position:relative;
 }
@@ -214,7 +223,6 @@ import IconConfirm from './icon_confirm.vue';
     background: #242229;
     border: none;
     border-bottom: 1px solid transparent;
-    height: 24px;
     color: #fff;
     width: 1%;
     flex-grow:10;
@@ -240,9 +248,10 @@ import IconConfirm from './icon_confirm.vue';
 
 @media (max-width:1200px) {
 
-   .text-input-description .text-input-combo-value{
-       font-size:18px;
+   .text-input-description, .text-input-combo-value{
+       font-size:16px;
     }
+
 }
 
 </style>
