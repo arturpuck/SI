@@ -20,6 +20,9 @@
 </script>
 
 <style lang="scss">
+
+@import'../../../sass/fonts';
+
 .submit-button
 {
 	background: linear-gradient(#0fe00b, #054004);
@@ -29,14 +32,9 @@
 	width:95%;
 	margin:7px auto;
 	border-radius: 5px;
-    
+    font-weight:bold;
     border: none;
     cursor:pointer;
-   
-    font: {
-		family:"Exo 2", sans-serif;
-		size: 19px;
-		weight:bold;
-	}
+    @include responsive-font(1.5vw, 19px);
 }
 </style>

@@ -32,11 +32,17 @@
 .error-message-box {
   display: block;
   font-size: 1vw;
-  font-family: "Aldrich", sans-serif;
+  font-family: "Exo 2", sans-serif;
   color: red;
   padding: 2px 2px 3px;
   text-align: center;
   height: calc(1em + 6px);
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 @media (max-width: 1200px) {
@@ -58,7 +64,7 @@
   -webkit-box-flex: 10;
           flex-grow: 10;
   font-family: "Exo 2", sans-serif;
-  font-size: 15px;
+  font-size: 1.2vw;
   color: white;
   padding: 7px;
   max-height: 370px;
@@ -97,6 +103,12 @@
           align-items: center;
 }
 
+@media (max-width: 1200px) {
+  .information-section {
+    font-size: 16px;
+  }
+}
+
 .register-background-image-1 {
   background-image: url("../../images/decoration/register/1.jpg");
 }
@@ -114,10 +126,16 @@
   padding: 10px;
   background: -webkit-gradient(linear, left top, right top, from(#000), to(#3b3a38));
   background: linear-gradient(to right, #000, #3b3a38);
-  font-family: Aldrich;
-  font-size: 22px;
+  font-size: 1.7vw;
+  font-family: Aldrich, sans-serif;
   color: white;
   text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .empire-footer {
+    font-size: 22px;
+  }
 }
 
 .contact-us-link {
@@ -213,9 +231,6 @@
     width: 95%;
     margin: 50px auto 10px;
   }
-  .main-panel-without-top-margin {
-    margin-top: 0;
-  }
 }
 
 @media (max-width: 529px) {
@@ -225,9 +240,6 @@
             flex-direction: column;
     min-width: 300px;
     max-width: 400px;
-  }
-  .main-panel-without-top-margin {
-    margin-top: 0;
   }
   .register-panel {
     min-width: 0;

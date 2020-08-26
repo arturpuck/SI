@@ -77,9 +77,6 @@
    	margin:50px auto 10px;
    }
 
-   .main-panel-without-top-margin{
-		margin-top:0;
-	}	
 }
 
 @media(max-width : 529px){
@@ -87,10 +84,6 @@
 		flex-direction: column;
 		min-width: 300px;
 		max-width: 400px;
-	}
-
-	.main-panel-without-top-margin{
-		margin-top:0;
 	}
 
 	.register-panel{

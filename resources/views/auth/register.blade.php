@@ -30,6 +30,7 @@
 							initial-value="{{old('login')}}"
 						@endif
 
+                        v-bind:input-is-required="true"
 						v-bind:on-blur-callback="validateLogin"
 						v-bind:complete-validation-display-available="true"
 						name="login"
@@ -47,10 +48,12 @@
 							v-bind:initial-ok="true"
 							initial-value="{{old('email')}}"
 						@endif
-						
+
+						v-bind:input-is-required="true"
 						v-bind:on-blur-callback="validateEmail"
 						v-bind:complete-validation-display-available="true"
 						name="email"
+						input-type="email"
 						v-bind:error-message-box-available="true">
 						{{ucfirst(__('email'))}} : 
 					</text-input-combo>
@@ -64,7 +67,8 @@
 							v-bind:initial-ok="true"
 							initial-value="{{old('password')}}"
 						@endif
-						
+
+						v-bind:input-is-required="true"
 						v-bind:on-blur-callback="validatePassword"
 						v-bind:complete-validation-display-available="true"
 						input-type="password"
@@ -103,7 +107,7 @@
 							v-bind:initial-ok="true"
 							initial-value="{{old('sexual_orientation_id')}}"
 						@endif
-						
+
 						v-bind:visible-options-list="['--{{__('choose')}}--',@foreach($sexualOrientations as $sexualOrientation) '{{__($sexualOrientation->sexual_orientation_name)}}', @endforeach '{{__('i_dont_want_to_tell')}}']"
 						v-bind:option-values="['not-selected', @foreach($sexualOrientations as $sexualOrientation) '{{$sexualOrientation->id}}', @endforeach '']"
 						v-bind:on-change-callback="validateSelect"
@@ -123,7 +127,7 @@
 							v-bind:initial-ok="true"
 							initial-value="{{old('birth_date')}}"
 					   @endif
-					   
+
 					   v-bind:error-message-box-available="true"
 					   name="birth_date"
 					   v-bind:on-date-select-callback="checkIfUserIsAdault"
@@ -136,7 +140,7 @@
 			</section>
 			<section class="information-section">
 				<div v-show="verificationInProgress" class="shadow-container">
-			   		<<expect-bar label="{{__('verification_in_progress')}}" v-bind:hidden="false"></expect-bar>
+			   		<expect-bar label="{{__('verification_in_progress')}}" v-bind:hidden="false"></expect-bar>
 				</div>
 			   <div ref="registration_information">
 				<strong>Rejestracja i korzystanie z serwisu tylko dla osób pełnoletnich.</strong> Podczas przechodzenia na inne pole wprowadzone informacje zostaną automatycznie sprawdzone. Informacje muszą spełniać wymienione poniżej kryteria. <strong>Zmiana daty urodzenia nie będzie możliwa po zarejestrowaniu</strong>

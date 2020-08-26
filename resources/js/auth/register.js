@@ -1,11 +1,11 @@
 
 import Vue from 'vue';
 import Navbar  from '../components/navbar.vue';
-import TextInputCombo  from '../components/text_input_combo.vue';
-import ExpectBar  from '../components/expect_bar.vue';
-import SubmitButton from '../components/submit_button.vue';
-import DescribedSelect from '../components/described_select.vue';
-import DatePicker from '../components/date_picker.vue';
+import TextInputCombo  from '../components/form_controls/text_input_combo.vue';
+import ExpectBar  from '../components/decoration/expect_bar.vue';
+import SubmitButton from '../components/form_controls/submit_button.vue';
+import DescribedSelect from '../components/form_controls/described_select.vue';
+import DatePicker from '../components/form_controls/date_picker.vue';
 
 Vue.component('navbar', Navbar);
 Vue.component('text-input-combo', TextInputCombo);

@@ -83,8 +83,8 @@
 </template>
 
 <script>
-import LabeledCheckbox from "./labeled_checkbox.vue";
-import SubmitButton from "./submit_button.vue";
+import LabeledCheckbox from "./form_controls/labeled_checkbox.vue";
+import SubmitButton from "./form_controls/submit_button.vue";
 
 	export default {
 		name: 'navbar',
@@ -325,6 +325,9 @@ import SubmitButton from "./submit_button.vue";
 	  family: 'Oxanium';  
 	  size:1.5vw;
 	}
+	display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .navigation-element-padding{

@@ -1,28 +1,31 @@
 <template>
-<div class="text-input-combo-container">
-  <div v-show="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box">
+<div class="described-select-container">
+<div v-show="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box">
 	
-  </div>
-  <label v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" class="text-input-combo-value-label">
-     <icon-stop v-show="displayIconError"/>
-     <icon-confirm v-show="displayIconConfirmation"/>
-     <span class="text-input-description"><slot></slot></span>
-     <input ref="text_input" v-bind:name="name" class="text-input-combo-value" v-model="textInputValue" v-bind:type="inputType">
-  </label>
+</div>
+<label class="select-label" v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" >
+    <icon-stop v-show="displayIconError"/>
+    <icon-confirm v-show="displayIconConfirmation"/>
+	<span class="select-description"><slot></slot></span>
+	<select v-bind:name="name" ref="select_value" v-model="selectedValue" class="described-select">
+            <option v-for="(option, index) in visibleOptionsList" v-bind:value="optionValues[index]">{{option}}</option>
+	</select>
+</label>
 </div>
 </template>
 
 <script>
-import IconStop from './icon_error_stop.vue';
-import IconConfirm from './icon_confirm.vue';
+import IconStop from '../decoration/icon_stop.vue';
+import IconConfirm from '../decoration/icon_confirm.vue';
 
 	export default {
-        name: 'text-input-combo',
+        name: 'described-select',
+
         data() {
 		 	return {
                  valueOK : undefined,
                  errorMessage : undefined,
-                 textInputValue : undefined,
+                 selectedValue : undefined,
                  iconErrorCanBeDisplayed : undefined,
                  iconConfirmationCanBeDisplayed : undefined,
                  redBorderCanBeDisplayed : undefined,
@@ -50,58 +53,45 @@ import IconConfirm from './icon_confirm.vue';
 
          },
 
-         methods : {
-
-             showError(errorMessage = ""){
-                this.valueOK = false;
-                this.errorMessage = errorMessage;
-             },
-
-             showValueIsOK(){
-                 this.valueOK = true;
-                 this.errorMessage = "";
-             },
-
-             resetValidation(){
-                 this.valueOK = undefined;
-                 this.errorMessage = "";
-             }
-
-         },
-
          created(){
-             this.textInputValue = this.initialValue;
+             this.selectedValue = this.initialValue;
              this.errorMessage = this.initialErrorText;
              this.iconErrorCanBeDisplayed = (this.errorIconAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
              this.iconConfirmationCanBeDisplayed = (this.confirmationIconAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
              this.redBorderCanBeDisplayed = (this.redBorderAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
              this.greenBorderCanBeDisplayed = (this.greenBorderAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
-             this.valueOK = this.initialOk;
+             this.optionValues = (this.optionValues === undefined) ? this.visibleOptionsList : this.optionValues;
+             this.valueOK = this.initialOk;   
         },
         
         mounted(){
-            if(this.onBlurCallback){
-                this.$refs.text_input.addEventListener('blur',() => this.onBlurCallback(this));
+            if(this.onChangeCallback){
+                this.$refs.select_value.addEventListener('change',() => this.onChangeCallback(this));
             }
         },
-         
-         props : {
-             initialValue : {
+
+        props : {
+            visibleOptionsList : {
+                required : true,
+                type : Array
+            },
+
+            optionValues : {
+                required : false,
+                type : Array,
+                default : undefined
+            },
+
+            name : {
                  required : false,
                  type : String,
-                 default : ""
+                 default : "described_select"
              },
 
-             name : {
+            initialValue : {
                  required : false,
                  type : String,
-                 default : "text_input_combo"
-             },
-
-             inputType : {
-                 required : false,
-                 type : String,
-                 default : "text"
+                 default : "not-selected"
              },
 
              errorIconAvailable : {
@@ -164,13 +154,25 @@ import IconConfirm from './icon_confirm.vue';
                  default : undefined
              },
 
-             onBlurCallback : {
+             onChangeCallback : {
                  required : false,
                  type : Function,
                  default : null
              }
+        },
 
-         },
+        methods : {
+
+            showError(errorMessage = ""){
+                this.valueOK = false;
+                this.errorMessage = errorMessage;
+             },
+
+             showValueIsOK(){
+                 this.valueOK = true;
+                 this.errorMessage = "";
+             }
+        },
 
         components : {
             IconConfirm,
@@ -181,61 +183,37 @@ import IconConfirm from './icon_confirm.vue';
 
 <style lang="scss">
 
-@import '../../sass/error_message_box';
+@import '../../../sass/error_message_box';
+@import'../../../sass/fonts';
 
-.icon-container{
-    top: 0;
-    right:0;
-    transform:translate(50%,-50%);
-    position:absolute;
+.select-label{
+	display:flex;
+	align-items: baseline;
+	border-radius:7px;
+	padding: 3px 10px;
+	color:white;
+	width:95%;
+	margin:0 auto;
+	background:#242229;
+	position:relative;
+	border: 2px solid transparent;
 }
 
-
-
-.text-input-combo-value-label {
-    display: flex;
-    align-items: baseline;
-    background: #242229;
-    padding: 3px 10px;
-    border-radius: 8px;
-    color:white;
-    width:95%;
-    font:{
-    	family: "Exo 2", sans-serif;
-    	size: 16px;
-    }
-    margin:0 auto;
-    border: 2px solid transparent;
-    position:relative;
-}
-
-
-.text-input-description
-{
+.select-description{
 	white-space: nowrap;
-    font:{
-        family: "Exo 2", sans-serif;
-        size:1.2vw;
-    };
 }
 
-.text-input-combo-value {
-    background: #242229;
-    border: none;
-    border-bottom: 1px solid transparent;
-    color: #fff;
-    width: 1%;
-    flex-grow:10;
-    padding-left:4px;
-    font:{
-        family: "Exo 2", sans-serif;
-        size:1.2vw;
-    };
+.described-select{
+	width:1%;
+	flex-grow: 10;
+	color:white;
+	border: none;
+	background:#242229;
+	outline:none;
 }
 
-.text-input-combo-value:focus {
-    outline: none;
-    border-bottom: 1px solid #86838f;
+.described-select, .select-description{
+    @include responsive-font;
 }
 
 .incorrect-value{
@@ -244,14 +222,6 @@ import IconConfirm from './icon_confirm.vue';
 
 .correct-value{
     border: 2px solid green;
-}
-
-@media (max-width:1200px) {
-
-   .text-input-description, .text-input-combo-value{
-       font-size:16px;
-    }
-
 }
 
 </style>

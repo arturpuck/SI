@@ -65,6 +65,8 @@
 
 <style lang="scss">
 
+@import'../../../sass/fonts';
+
 .expect-bar{
    display:flex;
    flex-flow:row nowrap;
@@ -83,19 +85,9 @@
 
 .expect-bar-label{
     text-align:center;
-    font:{
-        family:"Exo 2", sans-serif;
-        size:1.4vw;
-    }
     color:white;
     padding:3px 0;
-}
-
-@media(max-width: 900px)
-{
-	.expect-bar-label{
-		font-size:18px;
-	}
+    @include responsive-font(1.4vw,18px);
 }
 
 .expect-bar-container{

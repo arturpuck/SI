@@ -1,42 +1,5 @@
-
-.user-message{
-	width:100%;
-	display:block;
-	border-radius:8px;
-	background:#242229;
-	color:white;
-	border:2px solid transparent;
-	resize:none;
-	color:white;
-	font:{
-		size: 17px;
-		family : 'Exo 2', sans-serif;
-	}
-	&:focus{
-		outline:none;
-		border:2px solid #6e0d1a;
-	}
-}
-
-@import 'components/footer'; 
-@import 'components/error_list';
-@import 'components/success_information';
-@import 'components/controls/single_line_labeled_text_input';
+@import 'components/report';
 @import 'basic';
-
-.single-line-text-input-label{
-	width:95%;
-}
-
-.icon-wraper{
-	position:relative;
-	width:95%;
-	margin:15px auto;
-}
-
- .error-active{
- 	display:flex;
- }
 
 .contact-form{
 	max-width:500px;
@@ -51,29 +14,9 @@
 .form-description{
 	color:white;
 	padding: 4px;
-	font:{
-		size: 15px;
-		family : 'Exo 2', sans-serif;
-	}
+	@include responsive-font(1.2vw,15px);
 }
 
-.message-label{
-	display:block;
-	text-align:center;
-	color:white;
-	font:{
-		size: 19px;
-		family : 'Exo 2', sans-serif;
-	}
-}
-
-.input-with-error{
-    border: 2px solid red;
-}
-
-.error-active{
-    display:flex;
-}
 
 @media (min-width: 1201px)
 {

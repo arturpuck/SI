@@ -1,12 +1,11 @@
+@import '../fonts';
+
 .empire-footer
 {
 	width:100%;
 	padding:10px;
 	background: linear-gradient(to right,#000,#3b3a38);
-	font:{
-     family: Aldrich;
-     size:22px;
-	}
+	@include responsive-font(1.7vw,22px, Aldrich);
 	color:white;
 	text-align: center;
 }

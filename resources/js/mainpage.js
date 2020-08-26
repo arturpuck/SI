@@ -1,6 +1,7 @@
 
 import Vue from 'vue';
 import Navbar  from './components/navbar.vue';
+
 Vue.component('navbar', Navbar);
 
   new Vue({

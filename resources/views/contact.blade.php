@@ -9,28 +9,68 @@
 @endsection
 
 @section('content')
-@includeWhen(Session::has('success'), 'components.success_information', ['message' => Session::get('success')])
-
-   @error_list
-   @enderror_list
+   <x-report/>
 
 	<form method="POST" class="contact-form">
 		@csrf
-		<div class="form-description">Aby skontaktować się z obsługą prosimy o skorzystanie z poniższego formularza.</div>
+		<div class="form-description">{{__("to_contact_us_please_use_form_below")}}</div>
 
-        @single_line_labeled_text_input(['description' => "Email :", "name" => "email", "type" => "email", 'verificationIcons' => true, 'initialValue' => old('email') ? old('email') : '', 'showConfirmation' => ($errors->any() and !$errors->has('email')), 'placeholder' => 'niewymagany', 'showError' => $errors->has('email')])
-		@endsingle_line_labeled_text_input
+        <text-input-combo
+			@error('email')
+				v-bind:initial-ok="false"
+				initial-value="{{old('email')}}"
+			@enderror
 
-		@single_line_labeled_text_input(['description' => "Temat :", "name" => "subject", "type" => "text", 'verificationIcons' => true, 'placeholder' => 'niewymagany', 'initialValue' => old('subject') ? old('subject') : '', 'showError' => $errors->has('subject'), 'showConfirmation' => ($errors->any() and !$errors->has('subject'))])
-		@endsingle_line_labeled_text_input
+			@if($errors->any() and !$errors->has('email'))
+				v-bind:initial-ok="true"
+				initial-value="{{old('email')}}"
+			@endif
+			input-type="email"			
+			v-bind:on-blur-callback="validateEmail"
+			v-bind:complete-error-display-available="true"
+			name="email"
+			placeholder-text="{{__('not_required')}}"
+			v-bind:error-message-box-available="true">
+			{{ucfirst(__('email'))}} : 
+		</text-input-combo>
 
-		<label for="user-message" class="message-label">Treść wiadomości</label>
-		<div class="icon-wraper">
-			 @includeWhen($errors->has('message'), 'components.icons.icon_error', ['showIconError' => true])
-			 @includeWhen($errors->any() and !$errors->has('message'), 'components.icons.icon_confirmation', ['showIconConfirmation' => true])
-		<textarea min="3" max="1000" placeholder="wymagana : 3 - 1000 znaków" max="1000" required id="user-message" name="message" rows="10" class="user-message @if($errors->has('message'))input-with-error @elseif($errors->any() and !$errors->has('message')) input-correct-value @endif">{{old('message') ? old('message') : ''}}</textarea>
-		</div>
-		<submit-button>Wyślij</submit-button>
+		<text-input-combo
+			@error('subject')
+				v-bind:initial-ok="false"
+				initial-value="{{old('subject')}}"
+			@enderror
+
+			@if($errors->any() and !$errors->has('subject'))
+				v-bind:initial-ok="true"
+				initial-value="{{old('subject')}}"
+			@endif
+            
+			v-bind:on-blur-callback="validateSubject"			
+			v-bind:complete-error-display-available="true"
+			name="subject"
+			placeholder-text="{{__('not_required').', '.__('max_40_characters')}}"
+			v-bind:error-message-box-available="true">
+			{{ucfirst(__('subject'))}} : 
+		</text-input-combo>
+
+		<textarea-combo
+		  v-bind:input-is-required="true"
+		  textarea-name="message"
+		  v-bind:error-message-box-available="true"
+		  placeholder-text="{{__('required_between_3_and_1000')}}"
+		  v-bind:on-blur-callback="validateMessage"
+		  v-bind:complete-error-display-available="true"
+		  @error('message')
+				v-bind:initial-ok="false"
+				initial-value="{{old('message')}}"
+		  @enderror
+		  @if($errors->any() and !$errors->has('message'))
+				v-bind:initial-ok="true"
+				initial-value="{{old('message')}}"
+		 @endif >
+			{{ucfirst(__('message_content'))}}
+		</textarea-combo>
+		<submit-button>{{ucfirst(__('send'))}}</submit-button>
 	</form>
 @endsection
 

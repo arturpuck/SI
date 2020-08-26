@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         \Blade::aliasComponent('components.footer', 'footer');
         \Blade::aliasComponent('components.controls.nicecheckbox', 'nicecheckbox');
          \Blade::aliasComponent('components.error_list', 'error_list');
-         \Blade::aliasComponent('components.success_or_error_notification', 'report');
+         \Blade::aliasComponent('components.report', 'report');
      
     }
 }

@@ -1,40 +1,13 @@
-.user-message {
-  width: 100%;
-  display: block;
-  border-radius: 8px;
-  background: #242229;
-  color: white;
-  border: 2px solid transparent;
-  resize: none;
-  color: white;
-  font-size: 17px;
-  font-family: 'Exo 2', sans-serif;
-}
-
-.user-message:focus {
-  outline: none;
-  border: 2px solid #6e0d1a;
-}
-
-.empire-footer {
-  width: 100%;
-  padding: 10px;
-  background: -webkit-gradient(linear, left top, right top, from(#000), to(#3b3a38));
-  background: linear-gradient(to right, #000, #3b3a38);
-  font-family: Aldrich;
-  font-size: 22px;
-  color: white;
+.success-information {
+  margin: calc(25px + 1.6vw) auto;
   text-align: center;
-}
-
-.contact-us-link {
-  text-decoration: none;
+  border-radius: 6px;
   color: white;
-  margin: 0 18px;
-}
-
-.contact-us-link:hover {
-  text-decoration: underline;
+  display: table;
+  padding: 5px;
+  border: 1px solid black;
+  position: relative;
+  background: #09960b;
 }
 
 .error-information-container {
@@ -42,9 +15,8 @@
 }
 
 .information-container {
-  margin: 45px auto;
+  margin: calc(25px + 1.6vw) auto;
   text-align: center;
-  font-family: 'Exo 2', sans-serif;
   border-radius: 6px;
   color: white;
   display: table;
@@ -63,140 +35,20 @@
   padding: 0;
 }
 
+.success-information, .information-container {
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
+}
+
+@media (max-width: 1200px) {
+  .success-information, .information-container {
+    font-size: 16px;
+  }
+}
+
 .error-list-element:before {
   content: ' \25CF   ';
   margin: 0 5px;
-}
-
-.success-information {
-  margin: 25px auto;
-  text-align: center;
-  font-family: 'Exo 2', sans-serif;
-  border-radius: 6px;
-  color: white;
-  display: table;
-  padding: 5px;
-  border: 1px solid black;
-  position: relative;
-  background: #09960b;
-}
-
-.icon-correct-value {
-  background: green;
-}
-
-.confirmation-icon-bird {
-  width: 30%;
-  height: 50%;
-  position: relative;
-  left: 35%;
-  top: 15%;
-  border-right: 2px solid white;
-  border-bottom: 2px solid white;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-}
-
-.icon-container {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  z-index: 2;
-}
-
-.icon-correct-value-visible {
-  display: block;
-}
-
-.icon-correct-value-invisible {
-  display: none;
-}
-
-.icon-container {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  z-index: 2;
-}
-
-.icon-incorrect-value {
-  background: red;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  justify-content: space-around;
-  -webkit-box-align: center;
-          align-items: center;
-}
-
-.icon-incorrect-value-visible {
-  display: -webkit-box;
-  display: flex;
-}
-
-.icon-incorrect-value-invisible {
-  display: none;
-}
-
-.white-bar {
-  width: 80%;
-  height: 30%;
-  background: white;
-}
-
-.icon-container {
-  top: 0;
-  right: 0;
-  -webkit-transform: translate(50%, -50%);
-          transform: translate(50%, -50%);
-  position: absolute;
-}
-
-.single-line-text-input-label {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-align: baseline;
-          align-items: baseline;
-  background: #242229;
-  padding: 3px 10px;
-  border-radius: 8px;
-  color: white;
-  width: 95%;
-  font-family: "Exo 2", sans-serif;
-  font-size: 16px;
-  margin: 6px auto;
-  border: 2px solid transparent;
-  position: relative;
-}
-
-.text-input-description {
-  white-space: nowrap;
-}
-
-.single-line-text-input {
-  background: #242229;
-  border: none;
-  border-bottom: 1px solid transparent;
-  height: 24px;
-  color: #fff;
-  width: 1%;
-  -webkit-box-flex: 10;
-          flex-grow: 10;
-  padding-left: 4px;
-  font: inherit;
-}
-
-.single-line-text-input:focus {
-  outline: none;
-  border-bottom: 1px solid #86838f;
-}
-
-.input-with-error {
-  border: 2px solid red;
-}
-
-.input-correct-value {
-  border: 2px solid green;
 }
 
 .empire-footer {
@@ -204,10 +56,16 @@
   padding: 10px;
   background: -webkit-gradient(linear, left top, right top, from(#000), to(#3b3a38));
   background: linear-gradient(to right, #000, #3b3a38);
-  font-family: Aldrich;
-  font-size: 22px;
+  font-size: 1.7vw;
+  font-family: Aldrich, sans-serif;
   color: white;
   text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .empire-footer {
+    font-size: 22px;
+  }
 }
 
 .contact-us-link {
@@ -239,21 +97,6 @@
   background-attachment: fixed;
 }
 
-.single-line-text-input-label {
-  width: 95%;
-}
-
-.icon-wraper {
-  position: relative;
-  width: 95%;
-  margin: 15px auto;
-}
-
-.error-active {
-  display: -webkit-box;
-  display: flex;
-}
-
 .contact-form {
   max-width: 500px;
   width: 95%;
@@ -267,25 +110,14 @@
 .form-description {
   color: white;
   padding: 4px;
-  font-size: 15px;
-  font-family: 'Exo 2', sans-serif;
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
 }
 
-.message-label {
-  display: block;
-  text-align: center;
-  color: white;
-  font-size: 19px;
-  font-family: 'Exo 2', sans-serif;
-}
-
-.input-with-error {
-  border: 2px solid red;
-}
-
-.error-active {
-  display: -webkit-box;
-  display: flex;
+@media (max-width: 1200px) {
+  .form-description {
+    font-size: 15px;
+  }
 }
 
 @media (min-width: 1201px) {

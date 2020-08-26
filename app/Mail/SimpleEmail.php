@@ -19,10 +19,10 @@ class SimpleEmail extends Mailable
      *
      * @return void
      */
-    public function __construct(String $msg, String $subject = null, String $sender = null)
+    public function __construct(String $msg, String $subject = "Brak tematu", String $sender = "undefined@email.com")
     {
-        $this->subject = $subject ?? "Brak tematu";
-        $this->sender = $sender ?? "undefined@email.com";
+        $this->subject = $subject;
+        $this->sender = $sender;
         $this->msg = $msg;
     }
 

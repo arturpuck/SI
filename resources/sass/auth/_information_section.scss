@@ -11,7 +11,7 @@
 	flex-grow:10;
 	font:{
 	  family: "Exo 2", sans-serif;
-	  size: 15px;
+	  size: 1.2vw;
 	}
 	color:white;
 	padding:7px;
@@ -48,3 +48,9 @@
     align-items: center;
 }
 
+@media(max-width:1200px){
+	
+	.information-section{
+		font-size: 16px;
+	}
+}

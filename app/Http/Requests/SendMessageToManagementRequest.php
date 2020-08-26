@@ -25,11 +25,11 @@ class SendMessageToManagementRequest extends FormRequest
     public function messages()
     {
         return [
-           'email.email' => 'Email jest nieprawidłowy',
-           'subject.max' => 'Długość tematu przekracza 40 znaków',
-           'message.required' => 'Nie podano treści wiadomości',
-           'message.min' => 'Wiadomość musi zawierać co najmniej 3 znaki',
-           'message.max' => 'Wiadomość nie może zawierać więcej niż 1000 znaków'
+           'email.email' => 'email_is_invalid',
+           'subject.max' => 'subject_length_exceeds_40_characters',
+           'message.required' => 'message_is_missing',
+           'message.min' => 'message_must_contain_at_least_3_characters',
+           'message.max' => 'message_must_not_exceed_1000_characters'
         ];
     }
 }

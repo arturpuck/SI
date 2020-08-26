@@ -36,9 +36,9 @@
 </template>
 
 <script>
-import IconStop from './icon_error_stop.vue';
-import IconConfirm from './icon_confirm.vue';
-import MonthsInDifferentLanguages from '../modules/helpers/months_in_different_languages.js'
+import IconStop from '../decoration/icon_stop.vue';
+import IconConfirm from '../decoration/icon_confirm.vue';
+import MonthsInDifferentLanguages from '../../modules/helpers/months_in_different_languages.js'
 
 	export default {
         name : 'date-picker',
@@ -265,18 +265,17 @@ import MonthsInDifferentLanguages from '../modules/helpers/months_in_different_l
 
 <style lang="scss">
 
+   @import'../../../sass/fonts';
+
    .date-picker-container{
 		color:white;
-        font:{
-         family: "Exo 2", sans-serif;
-         size: 1.3vw;
-        } 
 	}
 
 	.date-picker-description{
 		text-align: center;
         padding:3px;
         color:white;
+        @include responsive-font(1.3vw,17px);
 	}
 
 	.date-picker-flex-container{
@@ -296,10 +295,7 @@ import MonthsInDifferentLanguages from '../modules/helpers/months_in_different_l
         background: #242229;
         color: white;
         border: 1px solid black;
-        font:{
-            size:1vw;
-            family:inherit
-        }
+        @include responsive-font(1vw,14px);
 	}
 
 	.time-span-label{
@@ -319,20 +315,6 @@ import MonthsInDifferentLanguages from '../modules/helpers/months_in_different_l
 
     .correct-value{
       border: 2px solid green;
-   }
-
-   @media (max-width:900px){
-
-     .date-picker-container{
-           font-size:18px;
-       }
-
-   }
-
-   @media (max-width:1200px){
-       .time-span-select{
-           font-size:14px;
-       }
    }
 
 </style>

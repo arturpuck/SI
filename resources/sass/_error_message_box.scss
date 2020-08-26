@@ -1,0 +1,17 @@
+@import 'fonts';
+
+.error-message-box{
+	display:block;
+	@include responsive-font(1vw,13px);
+	color:red;
+	padding:2px 2px 3px;
+	text-align: center;
+	height: calc(1em + 6px);
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
