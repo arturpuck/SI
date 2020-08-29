@@ -51,6 +51,22 @@
   }
 }
 
+.shadow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  height: 100%;
+  z-index: 2;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
 .registration-information {
   display: none;
 }
@@ -85,22 +101,6 @@
 .input-description {
   display: block;
   margin-left: 12px;
-}
-
-.shadow-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.95);
-  height: 100%;
-  z-index: 2;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-          align-items: center;
 }
 
 @media (max-width: 1200px) {

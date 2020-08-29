@@ -26,11 +26,11 @@ Vue.component('textarea-combo', TextareaCombo);
 
     const email  = sender.textInputValue;
 
-     if(!emailhasCorrectFormat(email)){
+    if(!email || emailhasCorrectFormat(email)){
+      sender.resetValidation();
+    }
+    else{
       sender.showError("Email wygląda na nieprawidłowy");
-     }
-     else {
-      sender.resetValidation()
     }
 
    },
@@ -43,7 +43,7 @@ Vue.component('textarea-combo', TextareaCombo);
       sender.showError("Temat przekracza 40 znaków");
     }
     else{
-      sender.resetValidation()
+      sender.resetValidation();
     }
     
    },
@@ -51,15 +51,18 @@ Vue.component('textarea-combo', TextareaCombo);
    validateMessage(sender){
 
       const message  = sender.textInputValue;
-    
-      if(message.length > 1000){
+
+      if(!message){
+        sender.resetValidation();
+      }
+      else if(message.length > 1000){
         sender.showError("Wiadomość przekracza 1000 znaków");
       }
       else if(message.length < 3){
           sender.showError("Wiadomość ma mniej niż 3 znaki");
       }
       else{
-        sender.resetValidation()
+        sender.resetValidation();
       }
       
    }

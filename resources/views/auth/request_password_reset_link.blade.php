@@ -1,29 +1,30 @@
-@extends('layouts.base')
+<x-base title="{{__('password_reset_request_form')}}" description="{{__('password_reset_description')}}" >
+<x-report/>  
+<form method="POST" action="{{route('auth.request.password.reset.link')}}" class="password-reset-form">
+      @csrf
+      <div class="user-information-container">
+        <div v-show="verificationInProgress" class="shadow-container">
+              <expect-bar label="{{__('verification_in_progress')}}" v-bind:hidden="false"></expect-bar>
+        </div>
+        <div class="user-information">
+          {{__('request_password_reset_link_form_description')}}
+        </div>
+      </div>
 
-@section('title')
-  Resetowanie hasła Sex-Imperium - podaj email
-@endsection
+      <text-input-combo
+						@error('email')
+							v-bind:initial-ok="false"
+							initial-value="{{old('email')}}"
+						@enderror
 
-@section('file-with-styles')
- {{asset('css/password_reset.css')}}
-@endsection
-
-
-@section('content')
-    @error_list
-    @enderror_list
-
-   @includeWhen(Session::has('success'), 'components.success_information', ['message' => Session::get('success')])
-
-   <form method="POST" action="{{route('auth.password.reset')}}" class="password-reset-form">
-   	@csrf
-   	 <div class="user-information">Aby zresetować hasło prosimy wpisać poniżej adres email użytkownika podany przy rejestracji. Na ten adres zostanie wysłany link, w który należy kliknąć i następnie wypełnić formularz, który się pojawi.</div>
-   	 @single_line_labeled_text_input(['description' => "Email :", "name" => "email", "type" => "email",'verificationIcons' => true, 'required' => true, 'initialValue' => old('email') ? old('email') : '', 'showError' => $errors->has('email')])
-	 @endsingle_line_labeled_text_input
-   	 <submit-button>Wyślij link</submit-button>
-   </form>
-@endsection
-
-@section('scripts')
-<script src="{{asset('js/password_reset.js')}}"></script> 
-@endsection
+						v-bind:input-is-required="true"
+						v-bind:on-blur-callback="validateEmail"
+						v-bind:complete-validation-display-available="true"
+						name="email"
+						input-type="email"
+						v-bind:error-message-box-available="true">
+						{{ucfirst(__('email'))}} : 
+			</text-input-combo>
+      <submit-button>{{__("send_link")}}</submit-button>
+    </form>
+</x-base>

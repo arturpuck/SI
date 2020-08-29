@@ -1,16 +1,5 @@
-@extends('layouts.base')
-
-@section('title')
-  Kontakt z obsługą Sex-Imperium
-@endsection
-
-@section('file-with-styles')
- {{asset('css/contact.css')}}
-@endsection
-
-@section('content')
+<x-base title="{{__('contact_management')}}" description="{{__('contact_form_allows_you_to_contact_management')}}">
    <x-report/>
-
 	<form method="POST" class="contact-form">
 		@csrf
 		<div class="form-description">{{__("to_contact_us_please_use_form_below")}}</div>
@@ -72,8 +61,4 @@
 		</textarea-combo>
 		<submit-button>{{ucfirst(__('send'))}}</submit-button>
 	</form>
-@endsection
-
-@section('scripts')
-<script src="{{asset('js/contact.js')}}"></script> 
-@endsection
+</x-base>

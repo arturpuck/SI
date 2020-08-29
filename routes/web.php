@@ -25,6 +25,12 @@ Route::namespace('Auth')->name('auth.')->group(function(){
              ->name('register.create');
        Route::get('/rejestruj', 'RegisterController@showRegistrationForm')
              ->name('register.form');
+       Route::post('/password/reset/link', 'ForgotPasswordController@sendResetLinkEmail')
+              ->name('request.password.reset.link');
+       Route::get('/haslo/resetuj/{token}', 'ResetPasswordController@showResetForm')
+              ->name('password.reset.form');
+       Route::post('/password/reset', 'ResetPasswordController@reset')
+               ->name('password.reset');
 
 
 
@@ -32,15 +38,9 @@ Route::namespace('Auth')->name('auth.')->group(function(){
                     ->name('logout');
        
        Route::get('/haslo/potwierdzenie-zmiany', 'PasswordResetConfirmationController@showConfirmation' );
-       Route::get('/haslo/resetuj', 'ForgotPasswordController@showLinkRequestForm')
+       Route::get('/haslo/resetuj/wyslij-link', 'ForgotPasswordController@showLinkRequestForm')
               ->name('password.reset.form');
-       Route::post('/haslo/resetuj', 'ForgotPasswordController@sendResetLinkEmail')
-              ->name('password.reset');
-       
-       
 });
 
 Auth::routes();
-
-
 Route::get('/home', 'HomeController@index')->name('home');

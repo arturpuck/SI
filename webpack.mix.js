@@ -14,10 +14,10 @@ const mix = require('laravel-mix');
 mix.js('resources/js/mainpage.js', 'public/js')
 .js('resources/js/auth/register.js', 'public/js')
 .js('resources/js/contact.js', 'public/js')
-.js('resources/js/auth/password_reset.js', 'public/js')
+.js('resources/js/auth/request_password_reset_link.js', 'public/js')
     .sass('resources/sass/mainpage.scss', 'public/css')
     .sass('resources/sass/contact.scss', 'public/css')
-    .sass('resources/sass/auth/password_reset.scss', 'public/css')
+    .sass('resources/sass/auth/request_password_reset_link.scss', 'public/css')
     .sass('resources/sass/auth/register.scss', 'public/css')
     .sass('resources/sass/auth/password_reset_confirmation.scss', 'public/css')
     .options({processCssUrls: false});

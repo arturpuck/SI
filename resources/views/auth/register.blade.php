@@ -1,20 +1,5 @@
-@extends('layouts.base')
-
-@section('title')
-  Rejestracja w Sex-Imperium
-@endsection
-
-@section('file-with-styles')
- {{asset('css/register.css')}}
-@endsection
-
-@section('description')
-   Rejestracja w Sex-Imperium
-@endsection
-	
-@section('content')
-		 @error_list
-         @enderror_list
+<x-base title="{{__('create_an_account')}}" specificImageClass="{{$specificImageClass}}" description="{{__('registration_description')}}">
+<x-error-list/>
 		<main id="main-panel" class="main-panel @if($errors->any())main-panel-without-top-margin @endif">
 			<section class="register-panel">
 				<form ref="register_panel" method="POST" action="{{route('auth.register.create')}}" class="main-panel-form register-form">
@@ -160,11 +145,5 @@
 				</dl>
 			   </div>
 			</section>
-			
 		</main>
-	@endsection
-
-@section('scripts')
-<script src="{{asset('js/register.js')}}"></script> 
-@endsection
-	
+</x-base>
