@@ -14398,6 +14398,17 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
 /***/ }),
 
+/***/ "./resources/sass/auth/password_reset.scss":
+/*!*************************************************!*\
+  !*** ./resources/sass/auth/password_reset.scss ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/auth/password_reset_confirmation.scss":
 /*!**************************************************************!*\
   !*** ./resources/sass/auth/password_reset_confirmation.scss ***!
@@ -14413,17 +14424,6 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*!*******************************************!*\
   !*** ./resources/sass/auth/register.scss ***!
   \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./resources/sass/auth/request_password_reset_link.scss":
-/*!**************************************************************!*\
-  !*** ./resources/sass/auth/request_password_reset_link.scss ***!
-  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -14454,16 +14454,16 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /***/ }),
 
 /***/ 0:
-/*!*******************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/mainpage.js ./resources/sass/mainpage.scss ./resources/sass/contact.scss ./resources/sass/auth/request_password_reset_link.scss ./resources/sass/auth/register.scss ./resources/sass/auth/password_reset_confirmation.scss ***!
-  \*******************************************************************************************************************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/mainpage.js ./resources/sass/mainpage.scss ./resources/sass/contact.scss ./resources/sass/auth/password_reset.scss ./resources/sass/auth/register.scss ./resources/sass/auth/password_reset_confirmation.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /var/www/html/sex-imperium/resources/js/mainpage.js */"./resources/js/mainpage.js");
 __webpack_require__(/*! /var/www/html/sex-imperium/resources/sass/mainpage.scss */"./resources/sass/mainpage.scss");
 __webpack_require__(/*! /var/www/html/sex-imperium/resources/sass/contact.scss */"./resources/sass/contact.scss");
-__webpack_require__(/*! /var/www/html/sex-imperium/resources/sass/auth/request_password_reset_link.scss */"./resources/sass/auth/request_password_reset_link.scss");
+__webpack_require__(/*! /var/www/html/sex-imperium/resources/sass/auth/password_reset.scss */"./resources/sass/auth/password_reset.scss");
 __webpack_require__(/*! /var/www/html/sex-imperium/resources/sass/auth/register.scss */"./resources/sass/auth/register.scss");
 module.exports = __webpack_require__(/*! /var/www/html/sex-imperium/resources/sass/auth/password_reset_confirmation.scss */"./resources/sass/auth/password_reset_confirmation.scss");
 

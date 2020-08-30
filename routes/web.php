@@ -11,7 +11,6 @@
 |
 */
 Route::get('/','LaunchMainPageController@showMainPage');
-Route::get('/','LaunchMainPageController@showMainPage');
 Route::get('/verify-login/{login}', 'AJAXLoginValidationController@checkIfLoginAlreadyExists');
 Route::get('/verify-email/{email}', 'AJAXEmailValidationController@checkIfEmailAlreadyExists');
 Route::get('/kontakt', 'ContactFormController@showContactForm');
@@ -27,20 +26,19 @@ Route::namespace('Auth')->name('auth.')->group(function(){
              ->name('register.form');
        Route::post('/password/reset/link', 'ForgotPasswordController@sendResetLinkEmail')
               ->name('request.password.reset.link');
+       Route::get('/haslo/resetuj/wyslij-link', 'ForgotPasswordController@showLinkRequestForm')
+              ->name('request.password.reset.link.form');
        Route::get('/haslo/resetuj/{token}', 'ResetPasswordController@showResetForm')
               ->name('password.reset.form');
        Route::post('/password/reset', 'ResetPasswordController@reset')
                ->name('password.reset');
 
-
-
-              Route::get('/wyloguj', 'LoginController@logout')
+       Route::get('/wyloguj', 'LoginController@logout')
                     ->name('logout');
        
        Route::get('/haslo/potwierdzenie-zmiany', 'PasswordResetConfirmationController@showConfirmation' );
-       Route::get('/haslo/resetuj/wyslij-link', 'ForgotPasswordController@showLinkRequestForm')
-              ->name('password.reset.form');
+       
 });
 
-Auth::routes();
+//Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

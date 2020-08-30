@@ -23,14 +23,14 @@ class ViewProvider extends ServiceProvider
                 "contact",
                 "mainpage",
                 "register",
-                "request_password_reset_link"
+                "request_password_reset_link",
             ];
 
             $viewName = Str::afterLast($view->getName(), ".");
 
             if(in_array($viewName, $viewNames)){
-                View::share('CSSFilePath', asset("css/".$viewName.".css"));
-                View::share('JSFilePath',  asset("js/".$viewName.".js"));
+                View::share('cssFilePath', asset("css/".$viewName.".css"));
+                View::share('jsFilePath',  asset("js/".$viewName.".js"));
             }
             
         });

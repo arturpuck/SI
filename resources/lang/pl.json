@@ -67,7 +67,15 @@
     "send_link" : "Wyślij link",
     "We can't find a user with that e-mail address." : "Nie istnieje użytkownik o takim adresie email",
     "we_have_successfully_sent_the_reset_link_to_the_given_email_address" : "Pomyślnie wysłano link pod wskazany adres",
-    "Please wait before retrying" : "Proszę chwilę poczekać przed ponowną próbą",
+    "Please wait before retrying." : "Proszę chwilę poczekać przed ponowną próbą",
     "password_reset_form_description" : "Formularz resetowania hasła Sex-Imperium",
-    "please_fill_the_form_below_and_submit_it" : "Proszę wypełnić formularz i zatwierdzić zmiany"
+    "please_fill_the_form_below_and_submit_it" : "Proszę wypełnić formularz i zatwierdzić zmiany",
+    "password_confirmation" : "Potwierdź hasło",
+    "reset_password" : "Resetuj hasło",
+    "password_reset_token_is_missing" : "Brak tokena. Czy kliknąłeś we właściwy link?",
+    "passwords_do_not_match" : "Hasło i potwierdzenie nie są identyczne",
+    "password_reseting" : "Resetowanie hasła",
+    "we_have_registered_password_reset_request" : "Zarejestrowaliśmy chęć zresetowania hasła dla użytkownika Sex-Imperium. Aby tego dokonać prosimy kliknąć w poniższy link, wypełnić formularz który się pojawi i kliknąć zielony przycisk.",
+    "the_password_has_been_successfully_changed" : "Pomyślnie zmieniono hasło",
+    "This password reset token is invalid." : "Token jest nieprawidłowy. Może być przeterminowany"
 }

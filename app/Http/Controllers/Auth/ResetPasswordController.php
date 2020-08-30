@@ -22,17 +22,48 @@ class ResetPasswordController extends Controller
 
     use ResetsPasswords;
 
-    public function showResetForm(Request $request, $token = null)
-    {
-        return view('auth.password_reset_form')->with(
-            ['token' => $token, 'email' => $request->email]
-        );
-    }
-
     /**
      * Where to redirect users after resetting their password.
      *
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    protected function validationErrorMessages()
+    {
+        return [
+            'token.required' => 'password_reset_token_is_missing',
+            'email.required' => 'email_is_missing',
+            'email.email' => 'email_is_invalid',
+            'password.required' => 'password_is_missing',
+            'password.confirmed' => 'passwords_do_not_match',
+            'password.min' => 'password_must_contain_at_least_3_characters'
+        ];
+    }
+
+    protected function rules()
+    {
+        return [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:3',
+        ];
+    }
+
+    public function showResetForm(Request $request, $token = null)
+    {
+        return view('auth.password_reset')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
+    }
+
+    protected function sendResetResponse(Request $request, $response)
+    {
+        if ($request->wantsJson()) {
+            return new JsonResponse(['message' => trans($response)], 200);
+        }
+
+        return redirect($this->redirectPath())
+                            ->with('success', "the_password_has_been_successfully_changed");
+    }
 }

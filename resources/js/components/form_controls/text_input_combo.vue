@@ -231,6 +231,10 @@ import IconConfirm from '../decoration/icon_confirm.vue';
     padding-left:4px;
 }
 
+.text-input-combo-value:-webkit-autofill, .text-input-combo-value:-webkit-autofill:hover, .text-input-combo-value:-webkit-autofill:focus{
+    background: #242229;
+}
+
 .text-input-combo-value, .text-input-description{
     @include responsive-font;
 }
@@ -247,8 +251,5 @@ import IconConfirm from '../decoration/icon_confirm.vue';
 .correct-value{
     border: 2px solid green;
 }
-
-
-
 
 </style>

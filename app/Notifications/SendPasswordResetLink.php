@@ -42,7 +42,7 @@ class SendPasswordResetLink extends Notification
      */
     public function toMail($notifiable)
     {
-        $link = url( "/password/reset/" . $this->token.'?email='.request()->email);
+        $link =  route('auth.password.reset.form', ['token' => $this->token]).'?email='.request()->email;
 
         return (new MailMessage)
                      ->view('mails.password_reset', ['link' => $link])
