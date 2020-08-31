@@ -36,6 +36,12 @@
 				v-bind:error-message-box-available="true">
 				{{ucfirst(__('password_confirmation'))}} : 
 			</text-input-combo>
+			<labeled-checkbox
+			  name="log-me-in"
+			  v-bind:checked-at-start="true"
+			>
+				{{__('log_me_in_after_reseting')}}
+			</labeled-checkbox>
            <submit-button>{{__('reset_password')}}</submit-button>
   <form>
 </x-base>

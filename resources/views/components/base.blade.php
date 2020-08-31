@@ -22,6 +22,7 @@
        @guest
 		 register-route="{{route('auth.register.form')}}"
 		 forgot-password-route="{{route('auth.request.password.reset.link.form')}}"
+		 login-route="{{route('auth.login')}}"
        @endguest
      >
      </navbar>

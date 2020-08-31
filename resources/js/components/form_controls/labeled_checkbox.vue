@@ -1,7 +1,7 @@
 <template>
-   <div class="labeled-checkbox-container">
-     <input type="checkbox" class="labeled-checkbox" v-bind:name="name" v-bind:id="name">
-        <label v-bind:for="name" class="labeled-checkbox-description"><slot></slot></label>	
+   <div ref="container" class="labeled-checkbox-container">
+     <input ref="checkbox" type="checkbox" class="labeled-checkbox" v-bind:name="name" v-bind:id="name">
+        <label ref="label" v-bind:for="name" class="labeled-checkbox-description"><slot></slot></label>	
     </div>
 </template>
 
@@ -11,10 +11,32 @@
         props: {
         	name : {
         		type: String,
-                required: false,
-                default: "labeled-checkbox"
-        	}
-        }   
+            required: false,
+            default: "labeled-checkbox"
+          },
+          
+          aditionalClasses: {
+        		type: Object,
+            required: false,
+            default: undefined
+          },
+
+          checkedAtStart:{
+            type: Boolean,
+            required: false,
+            default: false
+          }
+        },
+        
+        mounted(){
+          if(this.aditionalClasses){
+                Object.keys(this.aditionalClasses).forEach((key) => this.$refs[key].classList.add(this.aditionalClasses[key]));
+          }
+
+          if(this.checkedAtStart){
+            this.$refs.checkbox.checked = true;
+          }
+        }
     }
 </script>
 
@@ -32,13 +54,13 @@
     content: "";
     display: inline-block;
     position: absolute;
-    top: 2px;
-    left: -22px;
-    width: 16px;
-    height: 16px;
+    bottom: 0;
+    left: -1.2vw;
+    width: 1.2vw;
+    height: 1.2vw;
     cursor: pointer;
     background: white;
-    border:1px solid #5a5555;
+    border:none;
     border-radius: 2px;
     z-index: 1;
   }
@@ -47,10 +69,10 @@
     content: "";
     display: inline-block;
     position: absolute;
-    top: 2px;
-    left: -17px;
-    width: 4px;
-    height: 11px;
+    bottom: 0.2vw;
+    left: -0.8vw;
+    width: 0.3vw;
+    height: 0.8vw;
     cursor: pointer;
     border-bottom: 2px solid white;
     border-right: 2px solid white;
@@ -59,6 +81,22 @@
     transform: rotate(45deg);
     opacity: 0;
   }
+}
+
+@media(max-width: 1200px){
+  .labeled-checkbox-description:before{
+    left: -16px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .labeled-checkbox-description:after{
+    top: 2px;
+    left: -11px;
+    width: 5px;
+    height: 12px;
+  }
+  
 }
 
 .labeled-checkbox-container

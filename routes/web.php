@@ -13,9 +13,10 @@
 Route::get('/','LaunchMainPageController@showMainPage');
 Route::get('/verify-login/{login}', 'AJAXLoginValidationController@checkIfLoginAlreadyExists');
 Route::get('/verify-email/{email}', 'AJAXEmailValidationController@checkIfEmailAlreadyExists');
-Route::get('/kontakt', 'ContactFormController@showContactForm');
-Route::post('/kontakt', 'ContactFormController@sendMessageFromUser')
-       ->name('contact');
+Route::get('/kontakt', 'ContactFormController@showContactForm')
+      ->name('contact.show.form');
+Route::post('/contact/send-message', 'ContactFormController@sendMessageFromUser')
+       ->name('contact.send.message');
 
 
 
@@ -32,6 +33,8 @@ Route::namespace('Auth')->name('auth.')->group(function(){
               ->name('password.reset.form');
        Route::post('/password/reset', 'ResetPasswordController@reset')
                ->name('password.reset');
+       Route::post('/zaloguj', 'LoginController@login')
+              ->name('login');
 
        Route::get('/wyloguj', 'LoginController@logout')
                     ->name('logout');

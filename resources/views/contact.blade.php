@@ -1,4 +1,4 @@
-<x-base title="{{__('contact_management')}}" description="{{__('contact_form_allows_you_to_contact_management')}}">
+<x-base title="{{__('contact_management')}}" action="{{route('contact.send.message')}}" description="{{__('contact_form_allows_you_to_contact_management')}}">
    <x-report/>
 	<form method="POST" class="contact-form">
 		@csrf

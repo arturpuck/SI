@@ -3,7 +3,7 @@
   <div v-show="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box">
 	
   </div>
-  <label v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" class="text-input-combo-value-label">
+  <label ref="label" v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" class="text-input-combo-value-label">
      <icon-stop v-show="displayIconError"/>
      <icon-confirm v-show="displayIconConfirmation"/>
      <span class="text-input-description"><slot></slot></span>
@@ -82,6 +82,14 @@ import IconConfirm from '../decoration/icon_confirm.vue';
         mounted(){
             if(this.onBlurCallback){
                 this.$refs.text_input.addEventListener('blur',() => this.onBlurCallback(this));
+            }
+
+            if(this.inputId){
+                this.$refs.text_input.id = this.inputId;
+            }
+
+            if(this.aditionalClasses){
+                Object.keys(this.aditionalClasses).forEach((key) => this.$refs[key].classList.add(this.aditionalClasses[key]));
             }
         },
          
@@ -181,6 +189,18 @@ import IconConfirm from '../decoration/icon_confirm.vue';
                  type : Boolean,
                  default : false
              },
+
+             inputId : {
+                required : false,
+                type : String,
+                default : undefined 
+             },
+
+             aditionalClasses : {
+                required : false,
+                type : Object,
+                default : undefined 
+             }
 
 
          },

@@ -58,23 +58,36 @@
 					<div class="sub-menu-level-one-item">
 						<span class="fas navbar-icon navbar-icon-outer fa-star"></span>
 					 Gwiazdy porno
-			     
 					</div>
 			    </li>
 		</ul>
 	</nav>
 	<div v-show="loginPanelIsVisible" class="login-form-container">
-	            <form action="/login" method="POST" id="login-form" class="main-panel-form login-form">
+	            <form v-bind:action="loginRoute" method="POST" id="login-form" class="login-form">
 					<header class="login-panel-toolbar">
-						<span class="login-info">Zaloguj się do Sex-Imperium</span> 
-						<span v-on:click="toggleLoginPanel" title="zamknij okno logowania" aria-label="zamknij okno logowania" class="close-button"></span>
+						<span class="login-info">Zaloguj się do Sex-Imperium</span>
+						<icon-close v-on:click.native="toggleLoginPanel" title="Zamknij okno logowania" aria-label="Zamknij okno logowania"/> 
 					</header>
 					<input v-bind:value="csrfToken" type="hidden" name="_token">
 					<label for="login" class="main-panel-label">Email lub nick</label>
-					<input type="text" class="main-panel-input" id="login" name="login">
+					<text-input-combo
+						v-bind:input-is-required="true"
+						input-id="login"
+						inputType="text"
+						name="login">
+					</text-input-combo>
 					<label for="password" class="main-panel-label">Hasło</label>
-					<input type="password" class="main-panel-input" id="password" name="login">
-					<labeled-checkbox>Zapamiętaj mnie</labeled-checkbox>
+					<text-input-combo
+						v-bind:input-is-required="true"
+						input-id="password"
+						inputType="password"
+						name="password">
+					</text-input-combo>
+					<labeled-checkbox
+					  name="remember-me"
+					  v-bind:aditional-classes="{label: 'remember-me-description'}">
+						Zapamiętaj mnie
+					</labeled-checkbox>
 					<submit-button>Zaloguj</submit-button>
 					<a v-bind:href="forgotPasswordRoute" class="forgot-password-link">Zapomniałem hasła</a>
 				</form>
@@ -85,12 +98,16 @@
 <script>
 import LabeledCheckbox from "./form_controls/labeled_checkbox.vue";
 import SubmitButton from "./form_controls/submit_button.vue";
+import TextInputCombo from "./form_controls/text_input_combo.vue";
+import IconClose from "./decoration/icon_close.vue";
 
 	export default {
 		name: 'navbar',
 		components :{
 		  LabeledCheckbox,
-		  SubmitButton
+		  SubmitButton,
+		  TextInputCombo,
+		  IconClose
 		},
         props: {
 
@@ -102,12 +119,20 @@ import SubmitButton from "./form_controls/submit_button.vue";
 
         	registerRoute : {
         		required: false,
-        		type: String
+        		type: String,
+				default : "rejestruj"
 			},
 
 			forgotPasswordRoute : {
 				required: false,
-				type: String
+				type: String,
+				default : "haslo/resetuj/wyslij-link"
+			},
+
+			loginRoute : {
+				required : false,
+				type: String,
+				default : 'zaloguj'
 			}
         },
          data() {
@@ -120,50 +145,42 @@ import SubmitButton from "./form_controls/submit_button.vue";
  		},
 
         methods: {
-        	hideAllSecondLevelSubMenus()
-		   {
+        	hideAllSecondLevelSubMenus(){
 		      this.moviesSubMenuIsVisible = false;
 		   },
 
-		   togglePornSubMenu()
-		   {
+		   togglePornSubMenu(){
 		      this.pornSubMenuIsVisible = !this.pornSubMenuIsVisible;
 		      this.anySubMenuIsVisible = !this.anySubMenuIsVisible;
 		      this.hideAllSecondLevelSubMenus();
 		   },
 
-		   toggleMoviesSubMenu()
-		   {
+		   toggleMoviesSubMenu(){
 		      this.moviesSubMenuIsVisible = !this.moviesSubMenuIsVisible;
 		   },
 
-		   showPornSubMenu(event)
-		   {
+		   showPornSubMenu(event){
 		   	 this.pornSubMenuIsVisible = true;
 		   	 this.anySubMenuIsVisible = true;
 		   	 this.$refs.pornSubMenu.focus();
 		   },
 
-		   setElementToFocusState(event)
-		   {
+		   setElementToFocusState(event){
                event.target.focus();
 		   },
 
-		   resetNavbar()
-		   {
+		   resetNavbar(){
 		   	  	this.pornSubMenuIsVisible = false;
 		   	    this.hideAllSecondLevelSubMenus();
 		   },
 
-		   toggleLoginPanel()
-		   {
+		   toggleLoginPanel(){
 			   this.loginPanelIsVisible = !this.loginPanelIsVisible;
 		   }
     
 		},
 		
-		mounted()
-		{
+		mounted(){
            this.csrfToken = document.getElementById("csrf-token").content;
 		}
     }
@@ -171,8 +188,15 @@ import SubmitButton from "./form_controls/submit_button.vue";
 
 <style lang="scss">
 
+@import '../../sass/fonts';
+
 .submit-button:hover{
 	background: #a00e30;
+}
+
+.remember-me-description{
+	color: white;
+	@include responsive-font();
 }
 
 .labeled-checkbox-container{
@@ -182,21 +206,17 @@ import SubmitButton from "./form_controls/submit_button.vue";
 }
 
 .labeled-checkbox-description{
-	color:black;
+	color:white;
 }
 
 .login-info{
-	font:{
-      size:19px;
-	  family:Play;
-	  weight:bold;
-	}
+	@include responsive-font(1.5vw, 19px, Play);
 	color:white;
 }
 
 .login-form-container{
 	position: fixed;
-	background: rgba(0,0,0,0.85);
+	background: rgba(0,0,0,0.75);
 	top:0;
 	left:0;
 	width:100vw;
@@ -206,7 +226,7 @@ import SubmitButton from "./form_controls/submit_button.vue";
 
 .login-panel-toolbar{
 	border-radius: 5px 5px 0 0;
-	background:linear-gradient(to bottom, #464843, #000000);
+	background:#242229;
 	padding: 5px;
 	display:flex;
 	justify-content: space-between;
@@ -214,24 +234,13 @@ import SubmitButton from "./form_controls/submit_button.vue";
 	font-size: 19px;
 }
 
-.close-button{
-	width: 28px;
-    height: 28px;
-	display:inline-block;
-	cursor:pointer;
-	background-image: url("../../../public/images/decoration/icons/navbar/close.svg");	
-}
-
 .main-panel-label
 {
 	display:block;
 	text-align:center;
 	padding:4px;
-	font:{
-	  family: "Exo 2", sans-serif;
-	  size: 18px;
-	}
-	color:black;
+	@include responsive-font(1.3vw, 18px);
+	color:white;
 }
 
 .forgot-password-link
@@ -239,35 +248,15 @@ import SubmitButton from "./form_controls/submit_button.vue";
 	display:block;
 	padding:4px;
 	text-align:center;
-	color:black;
+	color:white;
 	text-decoration:none;
-	font: {
-		family:"Exo 2", sans-serif;
-		size: 17px;
-	}
-
+	@include responsive-font(1.2vw, 17px);
 	&:hover
 	{
 	  text-decoration: underline;
 	}
-}
-
-.main-panel-input
-{
-    background: #302e2e;
-    display: block;
-    width: 95%;
-    background: white;
-    margin: 0 auto;
-    border-radius: 4px;
-    border: 1px solid #5a5555;
-    outline: none;
-    font-size:18px;
-	padding:2px;
-    &:focus
-    {
-    	border: 1px solid #078a07;
-    }
+	border-radius: 0 0 7px 7px;
+	background:#242229;
 }
 
 .login-button-container{
@@ -280,11 +269,13 @@ import SubmitButton from "./form_controls/submit_button.vue";
 	top:50%;
 	left:50%;
 	transform: translate(-50%,-50%);
-	background:white;
-    border-radius: 5px;
+	background: black;
+    border-radius: 8px;
     box-shadow: 3px 3px 3px 3px black;
 	min-width:320px;
+	width:25%;
 	font-family: "Exo 2", sans-serif;
+	border: 2px solid #242229;
 }
 
 .navigation-list{
@@ -320,7 +311,7 @@ import SubmitButton from "./form_controls/submit_button.vue";
 	cursor:pointer;
 	color:white;
 	display: inline-block;
-    line-height: 100%;
+	line-height: 100%;
 	font:{
 	  family: 'Oxanium';  
 	  size:1.5vw;
