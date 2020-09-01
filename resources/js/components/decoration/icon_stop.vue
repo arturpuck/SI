@@ -1,8 +1,6 @@
 <template>
   <div class="icon-container icon-incorrect-value">
-    <div  class="white-bar">
-      
-    </div>
+    <div  class="white-bar"></div>
  </div>
 </template>
 
@@ -15,26 +13,25 @@
 <style lang="scss">
 
 .icon-container{
-    width: 30px;
-    height: 30px;
     border-radius: 50%;
     z-index:2;
+    width: 2.1vw;
+    height: 2.1vw;
+    min-width: 30px; 
+    min-height: 30px;
+    font-size: 0;
 }
 
 .icon-incorrect-value
 {
     background: red;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    display:flex;
 }
 
 .white-bar
 {
-    width: 80%;
-    height: 30%;
     background:white;
+    height: 100%;
+    clip-path: polygon(13% 34%, 87% 34%, 87% 64%, 13% 64%);
 }
 
 </style>

@@ -63,10 +63,10 @@
 		</ul>
 	</nav>
 	<div v-show="loginPanelIsVisible" class="login-form-container">
-	            <form v-bind:action="loginRoute" method="POST" id="login-form" class="login-form">
+	            <form v-bind:action="loginRoute" method="POST" id="login-form" v-bind:class="{'visible-login-form' : animatePanel}" class="login-form">
 					<header class="login-panel-toolbar">
 						<span class="login-info">Zaloguj się do Sex-Imperium</span>
-						<icon-close v-on:click.native="toggleLoginPanel" title="Zamknij okno logowania" aria-label="Zamknij okno logowania"/> 
+						<icon-close v-on:click.native="toggleLoginPanel" title="Zamknij okno logowania" aria-label="Zamknij okno logowania"></icon-close> 
 					</header>
 					<input v-bind:value="csrfToken" type="hidden" name="_token">
 					<label for="login" class="main-panel-label">Email lub nick</label>
@@ -99,10 +99,11 @@
 import LabeledCheckbox from "./form_controls/labeled_checkbox.vue";
 import SubmitButton from "./form_controls/submit_button.vue";
 import TextInputCombo from "./form_controls/text_input_combo.vue";
-import IconClose from "./decoration/icon_close.vue";
+import IconClose from "./form_controls/icon_close.vue";
 
 	export default {
 		name: 'navbar',
+		
 		components :{
 		  LabeledCheckbox,
 		  SubmitButton,
@@ -140,7 +141,8 @@ import IconClose from "./decoration/icon_close.vue";
 		 		pornSubMenuIsVisible : false,
 				moviesSubMenuIsVisible : false,
 				loginPanelIsVisible : false,
-				csrfToken : ""
+				csrfToken : "",
+				animatePanel : false
 		 	};
  		},
 
@@ -176,6 +178,7 @@ import IconClose from "./decoration/icon_close.vue";
 
 		   toggleLoginPanel(){
 			   this.loginPanelIsVisible = !this.loginPanelIsVisible;
+			   setTimeout(()=> this.animatePanel = !this.animatePanel,300);
 		   }
     
 		},
@@ -231,7 +234,6 @@ import IconClose from "./decoration/icon_close.vue";
 	display:flex;
 	justify-content: space-between;
 	align-items: center;
-	font-size: 19px;
 }
 
 .main-panel-label
@@ -276,6 +278,12 @@ import IconClose from "./decoration/icon_close.vue";
 	width:25%;
 	font-family: "Exo 2", sans-serif;
 	border: 2px solid #242229;
+	opacity: 0;
+	transition: opacity 1.5s;
+}
+
+.visible-login-form{
+	opacity:1;
 }
 
 .navigation-list{

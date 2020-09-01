@@ -17,7 +17,7 @@
 			{{ucfirst(__('email'))}} : 
 		 </text-input-combo>
 
-          <text-input-combo
+          <text-input-combo ref="password"
 				v-bind:input-is-required="true"
 				v-bind:on-blur-callback="checkPassword"
 				v-bind:complete-validation-display-available="true"
@@ -27,7 +27,7 @@
 				{{ucfirst(__('password'))}} : 
 			</text-input-combo>
 
-          <text-input-combo
+          <text-input-combo ref="password_confirmation"
 				v-bind:input-is-required="true"
 				v-bind:on-blur-callback="checkPassword"
 				v-bind:complete-validation-display-available="true"

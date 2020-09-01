@@ -1,4 +1,20 @@
 @import '../fonts';
+@import 'icons/icon_error_cross';
+
+.error-information-container{
+    border-radius: 9px;
+    overflow: hidden;
+    box-shadow: 2px 2px 4px 3px black;
+    border: 2px solid #ef0244;
+    margin: calc(25px + 1.6vw) auto;
+    text-align: center;
+    color: white;
+    display: table;
+    position:relative;
+    max-width:75%;
+    min-width:310px;
+    @include responsive-font;
+}
 
 .success-information{
 	margin: calc(25px + 1.6vw) auto;
@@ -12,8 +28,13 @@
     background:#09960b;
 }
 
-.error-information-container{
-    background: #96080f;
+.error-header{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: nowrap;
+    background: rgba(0,0,0,0.9);
+    padding: 7px;
 }
 
 .information-container{
@@ -22,7 +43,6 @@
     border-radius: 6px;
     color: white;
     display: table;
-    padding: 5px;
     border: 1px solid black;
     position:relative;
     max-width:75%;
@@ -31,10 +51,18 @@
 
 .error-list{
     text-align: left;
-    margin: 5px auto;
+    margin:0;
     padding-left: 25px;
     list-style-type: none;
     padding: 0;
+}
+
+.error-list{
+    background:#ef0244eb;
+}
+
+.error-list-element{
+    padding: 6px;
 }
 
 .success-information, .information-container{

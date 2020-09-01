@@ -13,21 +13,10 @@ Vue.component('labeled-checkbox',LabeledCheckbox);
   new Vue({
  el: '#app',
 
-  data(){
-
-      return {
-        password : null,
-        password_confirmation : null
-      };
-
-  },
-
  methods : {
-
+    
  checkPassword(sender){
     const textInputValue  = sender.textInputValue;
-    this[sender.name] = sender;
-
     const validationResult = this.passwordIsValid(textInputValue);
 
       switch(validationResult){
@@ -64,14 +53,14 @@ Vue.component('labeled-checkbox',LabeledCheckbox);
 },
 
 comparePasswords(sender){
-   const password = this.password.textInputValue;
-   const passwordConfirmation = this.password_confirmation.textInputValue;
+   const password = this.$refs.password;
+   const passwordConfirmation = this.$refs.password_confirmation;
 
-   if(password && passwordConfirmation){
+   if(password.textInputValue && passwordConfirmation.textInputValue){
 
-      if(password === passwordConfirmation){
-         this.password.showValueIsOK();
-         this.password_confirmation.showValueIsOK();
+      if(password.textInputValue === passwordConfirmation.textInputValue){
+         password.showValueIsOK();
+         passwordConfirmation.showValueIsOK();
       }
       else{
          sender.showError("Hasła nie pokrywają się");

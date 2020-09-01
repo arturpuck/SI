@@ -14,7 +14,7 @@
 
 .icon-correct-value{
    background:green;
-   display:block;
+   display:inline-block;
 }
 
 .confirmation-icon-bird{
@@ -29,10 +29,13 @@
 }
 
 .icon-container{
-    width: 30px;
-    height: 30px;
     border-radius: 50%;
     z-index:2;
+    width: 2.1vw;
+    height: 2.1vw;
+    min-width: 25px; 
+    min-height: 25px;
+    font-size: 0;
 }
 
 </style>
