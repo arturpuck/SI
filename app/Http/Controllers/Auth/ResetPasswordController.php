@@ -57,13 +57,34 @@ class ResetPasswordController extends Controller
         );
     }
 
+    protected function resetPassword($user, $password)
+    {
+        $this->setUserPassword($user, $password);
+
+        $user->setRememberToken(Str::random(60));
+
+        $user->save();
+
+        event(new PasswordReset($user));
+
+        if(request()->has('log-me-in')){
+            $this->guard()->login($user);
+        }
+        
+    }
+
     protected function sendResetResponse(Request $request, $response)
     {
         if ($request->wantsJson()) {
             return new JsonResponse(['message' => trans($response)], 200);
         }
+        $redirectPath = $request->has('log-me-in') ? $this->redirectPath() : route('auth.password.reset.confirmation');
+        return redirect($redirectPath)
+                        ->with('success', "the_password_has_been_successfully_changed");
+    }
 
-        return redirect($this->redirectPath())
-                            ->with('success', "the_password_has_been_successfully_changed");
+    public function showConfirmation(Request $request)
+    {
+    	return view('auth.password_reset_confirmation')->with('email', $request->email);
     }
 }

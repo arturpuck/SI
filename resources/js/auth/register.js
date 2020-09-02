@@ -25,8 +25,12 @@ Vue.component('date-picker', DatePicker);
    validateLogin(sender){
 
       async function checkIfLoginExists(login){
+      
+         login = encodeURI(login);
+
          try{
             const response = await fetch(`verify-login/${login}`);
+
             switch(response.status){
                case 200:
                   sender.showValueIsOK();
@@ -35,6 +39,10 @@ Vue.component('date-picker', DatePicker);
                case 400:
                   throw "Login jest już zajęty";
                break;
+
+               case 429:
+                   throw "Za dużo prób w ciągu 1 minuty";
+                break;
 
                default:
                   throw "Bliżej niezidentyfikowany błąd";
@@ -78,6 +86,9 @@ Vue.component('date-picker', DatePicker);
   validateEmail(sender){
 
    async function checkIfEmailExists(email){
+
+      email = encodeURI(email);
+
       try{
          const response = await fetch(`verify-email/${email}`);
              switch(response.status){
@@ -87,6 +98,10 @@ Vue.component('date-picker', DatePicker);
 
                 case 400:
                    throw "Email jest już zajęty";
+                break;
+
+                case 429:
+                   throw "Za dużo prób w ciągu 1 minuty";
                 break;
 
                 default:

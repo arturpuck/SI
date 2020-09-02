@@ -212,7 +212,7 @@ import IconConfirm from '../decoration/icon_confirm.vue';
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 @import '../../../sass/error_message_box';
 @import'../../../sass/fonts';

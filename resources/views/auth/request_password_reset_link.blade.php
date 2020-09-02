@@ -1,4 +1,4 @@
-<x-base title="{{__('password_reset_request_form')}}" description="{{__('password_reset_description')}}" >
+<x-base title="{{__('password_reset_request_form')}}" cssFilePath="{{asset('css/password_reset.css')}}" description="{{__('password_reset_description')}}" >
 <x-report/>  
 <form method="POST" action="{{route('auth.request.password.reset.link')}}" class="password-reset-form">
       @csrf

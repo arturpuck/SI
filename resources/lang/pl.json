@@ -78,5 +78,7 @@
     "we_have_registered_password_reset_request" : "Zarejestrowaliśmy chęć zresetowania hasła dla użytkownika Sex-Imperium. Aby tego dokonać prosimy kliknąć w poniższy link, wypełnić formularz który się pojawi i kliknąć zielony przycisk.",
     "the_password_has_been_successfully_changed" : "Pomyślnie zmieniono hasło",
     "This password reset token is invalid." : "Token jest nieprawidłowy. Może być przeterminowany",
-    "log_me_in_after_reseting" : "Zaloguj mnie po zmianie hasła"
+    "log_me_in_after_reseting" : "Zaloguj mnie po zmianie hasła",
+    "password_reset_confirmation" : "Potwierdzenie zmiany hasła Sex-Imperium",
+    "password_has_been_successfully_changed" : "Pomyślnie zmieniono hasło dla użytkownika z adresem email : "
 }

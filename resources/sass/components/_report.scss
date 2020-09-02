@@ -1,5 +1,6 @@
 @import '../fonts';
 @import 'icons/icon_error_cross';
+@import 'success_information';
 
 .error-information-container{
     border-radius: 9px;
@@ -14,18 +15,6 @@
     max-width:75%;
     min-width:310px;
     @include responsive-font;
-}
-
-.success-information{
-	margin: calc(25px + 1.6vw) auto;
-    text-align: center;
-    border-radius: 6px;
-    color: white;
-    display: table;
-    padding: 5px;
-    border: 1px solid black;
-    position:relative;
-    background:#09960b;
 }
 
 .error-header{
@@ -55,9 +44,6 @@
     padding-left: 25px;
     list-style-type: none;
     padding: 0;
-}
-
-.error-list{
     background:#ef0244eb;
 }
 

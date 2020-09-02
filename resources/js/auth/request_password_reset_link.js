@@ -27,6 +27,8 @@ Vue.component('expect-bar', ExpectBar);
     async function checkIfEmailExists(email){
        try{
           const response = await fetch(`/verify-email/${email}`);
+          email = encodeURI(email);
+
               switch(response.status){
                  case 200:
                   throw "Taki adres email nie istnieje";
@@ -34,6 +36,10 @@ Vue.component('expect-bar', ExpectBar);
  
                  case 400:
                   sender.showValueIsOK();
+                 break;
+
+                 case 429:
+                   throw "Za dużo prób w ciągu 1 minuty";
                  break;
  
                  default:

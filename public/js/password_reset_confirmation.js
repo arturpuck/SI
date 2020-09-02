@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -14945,10 +14945,10 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./resources/js/auth/password_reset.js":
-/*!*********************************************!*\
-  !*** ./resources/js/auth/password_reset.js ***!
-  \*********************************************/
+/***/ "./resources/js/auth/password_reset_confirmation.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/auth/password_reset_confirmation.js ***!
+  \**********************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -14957,70 +14957,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_navbar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/navbar.vue */ "./resources/js/components/navbar.vue");
-/* harmony import */ var _components_form_controls_submit_button_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/form_controls/submit_button.vue */ "./resources/js/components/form_controls/submit_button.vue");
-/* harmony import */ var _components_form_controls_text_input_combo_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/form_controls/text_input_combo.vue */ "./resources/js/components/form_controls/text_input_combo.vue");
-/* harmony import */ var _components_form_controls_labeled_checkbox_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/form_controls/labeled_checkbox.vue */ "./resources/js/components/form_controls/labeled_checkbox.vue");
-
-
-
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('navbar', _components_navbar_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('submit-button', _components_form_controls_submit_button_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('text-input-combo', _components_form_controls_text_input_combo_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('labeled-checkbox', _components_form_controls_labeled_checkbox_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-  el: '#app',
-  methods: {
-    checkPassword: function checkPassword(sender) {
-      var textInputValue = sender.textInputValue;
-      var validationResult = this.passwordIsValid(textInputValue);
-
-      switch (validationResult) {
-        case true:
-          this.comparePasswords(sender);
-          break;
-
-        case undefined:
-          sender.resetValidation();
-          break;
-
-        default:
-          sender.showError(validationResult);
-          break;
-      }
-    },
-    passwordIsValid: function passwordIsValid(password) {
-      if (!password) {
-        return undefined;
-      }
-
-      if (password.length < 3) {
-        return "Hasło ma mniej niż 3 znaki";
-      }
-
-      if (password.length > 20) {
-        return "Hasło ma więcej niż 20 znaków";
-      }
-
-      return true;
-    },
-    comparePasswords: function comparePasswords(sender) {
-      var password = this.$refs.password;
-      var passwordConfirmation = this.$refs.password_confirmation;
-
-      if (password.textInputValue && passwordConfirmation.textInputValue) {
-        if (password.textInputValue === passwordConfirmation.textInputValue) {
-          password.showValueIsOK();
-          passwordConfirmation.showValueIsOK();
-        } else {
-          sender.showError("Hasła nie pokrywają się");
-        }
-      } else {
-        sender.showValueIsOK();
-      }
-    }
-  }
+  el: '#app'
 });
 
 /***/ }),
@@ -15634,14 +15575,14 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 4:
-/*!***************************************************!*\
-  !*** multi ./resources/js/auth/password_reset.js ***!
-  \***************************************************/
+/***/ 5:
+/*!****************************************************************!*\
+  !*** multi ./resources/js/auth/password_reset_confirmation.js ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/html/sex-imperium/resources/js/auth/password_reset.js */"./resources/js/auth/password_reset.js");
+module.exports = __webpack_require__(/*! /var/www/html/sex-imperium/resources/js/auth/password_reset_confirmation.js */"./resources/js/auth/password_reset_confirmation.js");
 
 
 /***/ })

@@ -1,12 +1,26 @@
 <template>
-  <div class="icon-container icon-incorrect-value">
+  <div ref="container" class="icon-container icon-incorrect-value">
     <div  class="white-bar"></div>
  </div>
 </template>
 
 <script>
 	export default {
-        name: 'icon-stop'
+        name: 'icon-stop',
+
+        props : {
+            aditionalClasses : {
+                required : false,
+                type : Object,
+                default : undefined 
+             }
+        },
+
+        mounted(){
+            if(this.aditionalClasses){
+                Object.keys(this.aditionalClasses).forEach((key) => this.$refs[key].classList.add(this.aditionalClasses[key]));
+            }
+        }
     }
 </script>
 

@@ -10,9 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => ['api']], function () {
+       Route::get('/verify-login/{login}', 'AJAXLoginValidationController@checkIfLoginAlreadyExists');
+       Route::get('/verify-email/{email}', 'AJAXEmailValidationController@checkIfEmailAlreadyExists');  
+   });
+
+
 Route::get('/','LaunchMainPageController@showMainPage');
-Route::get('/verify-login/{login}', 'AJAXLoginValidationController@checkIfLoginAlreadyExists');
-Route::get('/verify-email/{email}', 'AJAXEmailValidationController@checkIfEmailAlreadyExists');
+
 Route::get('/kontakt', 'ContactFormController@showContactForm')
       ->name('contact.show.form');
 Route::post('/contact/send-message', 'ContactFormController@sendMessageFromUser')
@@ -33,13 +38,14 @@ Route::namespace('Auth')->name('auth.')->group(function(){
               ->name('password.reset.form');
        Route::post('/password/reset', 'ResetPasswordController@reset')
                ->name('password.reset');
-       Route::post('/zaloguj', 'LoginController@login')
+       Route::post('/login', 'LoginController@login')
               ->name('login');
 
        Route::get('/wyloguj', 'LoginController@logout')
                     ->name('logout');
        
-       Route::get('/haslo/potwierdzenie-zmiany', 'PasswordResetConfirmationController@showConfirmation' );
+       Route::get('/haslo/potwierdzenie-zmiany', 'ResetPasswordController@showConfirmation')
+              ->name('password.reset.confirmation');
        
 });
 

@@ -1,41 +1,31 @@
 <template>
-  <div class="icon-container icon-correct-value">
+  <div ref="container" class="icon-container icon-correct-value">
     <div class="confirmation-icon-bird"></div>
   </div>
 </template>
 
 <script>
 	export default {
-        name: 'icon-ok'
+        name: 'icon-ok',
+
+        props : {
+            aditionalClasses : {
+                required : false,
+                type : Object,
+                default : undefined 
+             }
+        },
+
+         mounted(){
+            if(this.aditionalClasses){
+                Object.keys(this.aditionalClasses).forEach((key) => this.$refs[key].classList.add(this.aditionalClasses[key]));
+            }
+        }
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
-.icon-correct-value{
-   background:green;
-   display:inline-block;
-}
-
-.confirmation-icon-bird{
-    width:30%;
-    height:50%;
-    position: relative;
-    left: 35%;
-    top: 15%;
-    border-right:2px solid white;
-    border-bottom:2px solid white;
-    transform:rotate(45deg);
-}
-
-.icon-container{
-    border-radius: 50%;
-    z-index:2;
-    width: 2.1vw;
-    height: 2.1vw;
-    min-width: 25px; 
-    min-height: 25px;
-    font-size: 0;
-}
+@import '../../../sass/components/icons/icon_confirmation';
 
 </style>
