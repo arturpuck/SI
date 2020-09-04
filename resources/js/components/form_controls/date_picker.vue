@@ -5,8 +5,8 @@
   		<slot></slot>
   	</div>
   	<div v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" class="date-picker-flex-container">
-     <icon-stop v-show="displayIconError"/>
-     <icon-confirm v-show="displayIconConfirmation"/>
+     <icon-stop v-if="iconErrorCanBeDisplayed" v-show="displayIconError"/>
+     <icon-confirm v-if="iconConfirmationCanBeDisplayed" v-show="displayIconConfirmation"/>
   	<div class="time-span-container">
   		<label for="date-picker-day" class="time-span-label">{{descriptions['day']}}</label>
  	 	<select ref="day_select" v-model="selectedDay" id="date-picker-day" class="time-span-select">
@@ -31,7 +31,7 @@
  	 	</select>
  	</div>
   	</div>
-    <div v-show="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box"></div>
+    <div v-if="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box"></div>
   </div>
 </template>
 
@@ -263,7 +263,7 @@ import MonthsInDifferentLanguages from '../../modules/helpers/months_in_differen
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
    @import'../../../sass/fonts';
 

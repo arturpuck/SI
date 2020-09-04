@@ -1,11 +1,11 @@
 <template>
 <div class="described-select-container">
-<div v-show="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box">
+<div v-if="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box">
 	
 </div>
 <label class="select-label" v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" >
-    <icon-stop v-show="displayIconError"/>
-    <icon-confirm v-show="displayIconConfirmation"/>
+    <icon-stop v-if="iconErrorCanBeDisplayed" v-show="displayIconError"/>
+    <icon-confirm v-if="iconConfirmationCanBeDisplayed" v-show="displayIconConfirmation"/>
 	<span class="select-description"><slot></slot></span>
 	<select v-bind:name="name" ref="select_value" v-model="selectedValue" class="described-select">
             <option v-for="(option, index) in visibleOptionsList" v-bind:value="optionValues[index]">{{option}}</option>
@@ -181,10 +181,17 @@ import IconConfirm from '../decoration/icon_confirm.vue';
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 @import '../../../sass/error_message_box';
 @import'../../../sass/fonts';
+
+.icon-container{
+    top: 0;
+    right:0;
+    transform:translate(50%,-50%);
+    position:absolute;
+}
 
 .select-label{
 	display:flex;

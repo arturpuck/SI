@@ -1,5 +1,4 @@
 <x-base cssFilePath="{{asset('css/password_reset.css')}}" jsFilePath="{{asset('js/password_reset.js')}}" title="{{__('reset_your_password')}}" description="{{__('password_reset_form_description')}}">
-  <x-report/>
   <form method="POST" action="{{route('auth.password.reset')}}" class="password-reset-form">
     @csrf
     <input type="hidden" value="{{$token}}" name="token">

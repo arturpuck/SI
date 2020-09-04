@@ -80,5 +80,11 @@
     "This password reset token is invalid." : "Token jest nieprawidłowy. Może być przeterminowany",
     "log_me_in_after_reseting" : "Zaloguj mnie po zmianie hasła",
     "password_reset_confirmation" : "Potwierdzenie zmiany hasła Sex-Imperium",
-    "password_has_been_successfully_changed" : "Pomyślnie zmieniono hasło dla użytkownika z adresem email : "
+    "password_has_been_successfully_changed" : "Pomyślnie zmieniono hasło dla użytkownika z adresem email : ",
+    "invalid_authorisation_data" : "Niepoprawne dane logowania",
+    "user_identification_is_missing" : "Nie podano ani loginu ani adresu email",
+    "user_identification_must_be_a_string" : "Login lub hasło musi być ciągiem znaków",
+    "password_is_required" : "Nie podano hasła",
+    "password_must_be_a_string" : "Hasło musi być ciągiem znaków",
+    "to_many_login_attempts" : "Zbyt dużo prób w jednostce czasu. Proszę odczekać chwilę"
 }

@@ -4,7 +4,8 @@
 		   <x-icon-confirmation aditional-class-name="icon-confirmation-center"/>
 		</div>
 		<div class="user-message">
-            {{__('password_has_been_successfully_changed')}} {{$email}}
+            {{__('password_has_been_successfully_changed')}}
 		</div>
+		<address class="user-email-address">{{$email}}</address>
 	</div>
 </x-base>

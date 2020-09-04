@@ -1,3 +1,5 @@
+@import 'icons/icon_confirmation';
+
 
 .success-information{
 	margin: calc(30px + 3vw) auto;
@@ -6,9 +8,27 @@
     border-radius: 6px;
     color: white;
     display: table;
-    padding: 5px;
-    border: 1px solid black;
     position:relative;
-    background: linear-gradient(#0fe00b, #054004);
-    box-shadow: 2px 2px 4px 3px black;
+    box-shadow: 2px 2px 3px 2px black;
+    overflow: hidden;
+}
+
+.icon-background{
+    background: rgba(0,0,0,0.9);
+    padding: 7px;
+}
+
+.icon-confirmation-center{
+    display: block;
+    margin:0 auto;
+    width:3vw;
+    height:3vw;
+    min-width: 35px;
+    min-height: 35px;
+}
+
+.confirmation-text{
+    text-align: center;
+    padding: 10px;
+    background:linear-gradient(#16d012, #021502);
 }

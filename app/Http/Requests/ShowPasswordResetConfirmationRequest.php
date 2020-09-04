@@ -14,7 +14,7 @@ class ShowPasswordResetConfirmationRequest extends FormRequest
 
     public function authorize()
     {
-        return \Session::has('email') and \Session::has('showPasswordResetConfirmation');
+        return \Session::has('email');
     }
 
     /**

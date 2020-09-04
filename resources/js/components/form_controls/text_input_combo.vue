@@ -1,11 +1,11 @@
 <template>
 <div class="text-input-combo-container">
-  <div v-show="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box">
+  <div v-if="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box">
 	
   </div>
   <label ref="label" v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" class="text-input-combo-value-label">
-     <icon-stop v-show="displayIconError"/>
-     <icon-confirm v-show="displayIconConfirmation"/>
+     <icon-stop v-if="iconErrorCanBeDisplayed" v-show="displayIconError"/>
+     <icon-confirm v-if="iconConfirmationCanBeDisplayed" v-show="displayIconConfirmation"/>
      <span class="text-input-description"><slot></slot></span>
      <input ref="text_input" v-bind:name="name" :required="inputIsRequired" v-bind:placeholder="placeholderText" class="text-input-combo-value" v-model="textInputValue" v-bind:type="inputType">
   </label>
@@ -249,10 +249,7 @@ import IconConfirm from '../decoration/icon_confirm.vue';
     width: 1%;
     flex-grow:10;
     padding-left:4px;
-}
-
-.text-input-combo-value:-webkit-autofill, .text-input-combo-value:-webkit-autofill:hover, .text-input-combo-value:-webkit-autofill:focus{
-    background: #242229;
+    box-shadow: 0 0 0 1000px #242229 inset;
 }
 
 .text-input-combo-value, .text-input-description{

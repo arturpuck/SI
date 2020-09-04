@@ -7,25 +7,25 @@
 			<span v-show="pornSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-arrow-up"></span>
             	Porno
 		</li>
-		<li class="navigation-element-main navigation-element-padding">
-			<span class="fas navbar-icon navbar-icon-outer fa-users"></span>
-			Spotkania
-		</li>
-		<li class="navigation-element-main register-selection ">
+		<li v-if="!userIsAuthenticated" class="navigation-element-main register-selection ">
 			<a class="navbar-link-main-manu" v-bind:href="registerRoute">
 			  <span class="fas navbar-icon navbar-icon-outer fa-user-plus"></span> 
 			  Rejestruj
 			</a> 
 		</li>
-		<li class="navigation-element-main">
+		<li v-if="!userIsAuthenticated" class="navigation-element-main">
 			<div v-on:click="toggleLoginPanel" class="login-button-container">
               <span class="fas navbar-icon navbar-icon-outer fa-sign-in-alt"></span>
 			  Loguj
 			</div>
 		</li>
+		<li v-if="userIsAuthenticated" v-on:mouseenter="showUserSubMenu" v-on:click="toggleUserSubMenu" class="navigation-element-main navbar-element-user navigation-element-padding">
+			<span class="fas navbar-icon navbar-icon-outer fa-user"></span>
+            <span v-text="userName" class="user-nick"></span>
+		</li>
 	</ul>
 	<div v-on:click="resetNavbar" class="click-detector"></div>
-	<ul ref="pornSubMenu" :class="pornSubMenuIsVisible ? 'visible-porn-sub-menu' : 'hidden-porn-sub-menu'"  id="porn-sub-menu-list" class="sub-menu-list porn-sub-menu-list">
+	<ul v-bind:class="{'visible-sub-menu' : pornSubMenuIsVisible , 'hidden-sub-menu' : !pornSubMenuIsVisible}" class="sub-menu-list porn-sub-menu-list">
 		<li class="sub-menu-list-element intendation-first-level">
 			<div v-on:click="toggleMoviesSubMenu" class="sub-menu-level-one-item">
 				<span v-show="!moviesSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-film"></span>
@@ -61,20 +61,38 @@
 					</div>
 			    </li>
 		</ul>
+		<ul v-bind:class="{'visible-sub-menu' : userSubMenuIsVisible,  'hidden-sub-menu' : !userSubMenuIsVisible}" class="sub-menu-list user-panel-sub-menu-list">
+			<li class="sub-menu-list-element intendation-first-level">
+				<div class="sub-menu-level-one-item">
+					<span class="fas navbar-icon navbar-icon-outer fa-cogs"></span>
+						Ustawienia profilu
+				</div>
+			</li>
+			<li class="sub-menu-list-element intendation-first-level">
+				<div v-on:click="logout" class="sub-menu-level-one-item">
+					<span class="fas navbar-icon navbar-icon-outer fa-sign-out-alt"></span>
+						Wyloguj
+						<form ref="logoutForm" class="logout-form" method="POST" v-bind:action="logoutRoute">
+							<input type="hidden" v-bind:value="csrfToken" name="_token">
+						</form>
+				</div>
+			</li>
+		</ul>
+		
 	</nav>
-	<div v-show="loginPanelIsVisible" class="login-form-container">
+	<div v-if="!userIsAuthenticated" v-show="loginPanelIsVisible" class="login-form-container">
 	            <form v-bind:action="loginRoute" method="POST" id="login-form" v-bind:class="{'visible-login-form' : animatePanel}" class="login-form">
 					<header class="login-panel-toolbar">
 						<span class="login-info">Zaloguj się do Sex-Imperium</span>
 						<icon-close v-on:click.native="toggleLoginPanel" title="Zamknij okno logowania" aria-label="Zamknij okno logowania"></icon-close> 
 					</header>
 					<input v-bind:value="csrfToken" type="hidden" name="_token">
-					<label for="login" class="main-panel-label">Email lub nick</label>
+					<label for="login" class="main-panel-label">Email lub login</label>
 					<text-input-combo
 						v-bind:input-is-required="true"
 						input-id="login"
 						inputType="text"
-						name="login">
+						name="login-or-email">
 					</text-input-combo>
 					<label for="password" class="main-panel-label">Hasło</label>
 					<text-input-combo
@@ -84,7 +102,7 @@
 						name="password">
 					</text-input-combo>
 					<labeled-checkbox
-					  name="remember-me"
+					  name="remember"
 					  v-bind:aditional-classes="{label: 'remember-me-description'}">
 						Zapamiętaj mnie
 					</labeled-checkbox>
@@ -112,29 +130,42 @@ import IconClose from "./form_controls/icon_close.vue";
 		},
         props: {
 
-        	userID : {
+        	userId : {
         		type: Number,
         		required: false,
 				default: undefined
-        	},
+			},
+			
+			userName : {
+              required: false,
+        	  type: String,
+			  default : ""
+			},
 
         	registerRoute : {
         		required: false,
         		type: String,
-				default : "rejestruj"
+				default : ""
 			},
 
 			forgotPasswordRoute : {
 				required: false,
 				type: String,
-				default : "haslo/resetuj/wyslij-link"
+				default : ""
 			},
 
 			loginRoute : {
 				required : false,
 				type: String,
-				default : 'zaloguj'
+				default : ""
+			},
+
+			logoutRoute : {
+				required : false,
+				type: String,
+				default : ""
 			}
+
         },
          data() {
 		 	return {
@@ -142,7 +173,9 @@ import IconClose from "./form_controls/icon_close.vue";
 				moviesSubMenuIsVisible : false,
 				loginPanelIsVisible : false,
 				csrfToken : "",
-				animatePanel : false
+				animatePanel : false,
+				userIsAuthenticated : undefined,
+				userSubMenuIsVisible : false
 		 	};
  		},
 
@@ -152,8 +185,8 @@ import IconClose from "./form_controls/icon_close.vue";
 		   },
 
 		   togglePornSubMenu(){
-		      this.pornSubMenuIsVisible = !this.pornSubMenuIsVisible;
-		      this.anySubMenuIsVisible = !this.anySubMenuIsVisible;
+			  this.pornSubMenuIsVisible = !this.pornSubMenuIsVisible;
+			  this.hideAllSubMenusExcept("pornSubMenuIsVisible");
 		      this.hideAllSecondLevelSubMenus();
 		   },
 
@@ -162,9 +195,14 @@ import IconClose from "./form_controls/icon_close.vue";
 		   },
 
 		   showPornSubMenu(event){
-		   	 this.pornSubMenuIsVisible = true;
-		   	 this.anySubMenuIsVisible = true;
-		   	 this.$refs.pornSubMenu.focus();
+			   this.pornSubMenuIsVisible = true;
+			   this.hideAllSubMenusExcept("pornSubMenuIsVisible");
+		   },
+
+		   showUserSubMenu(){
+			  this.userSubMenuIsVisible = true;
+			  this.hideAllSubMenusExcept("userSubMenuIsVisible");
+			  this.hideAllSecondLevelSubMenus();
 		   },
 
 		   setElementToFocusState(event){
@@ -172,19 +210,44 @@ import IconClose from "./form_controls/icon_close.vue";
 		   },
 
 		   resetNavbar(){
-		   	  	this.pornSubMenuIsVisible = false;
+				this.pornSubMenuIsVisible = false;
+				this.userSubMenuIsVisible = false
 		   	    this.hideAllSecondLevelSubMenus();
 		   },
 
 		   toggleLoginPanel(){
 			   this.loginPanelIsVisible = !this.loginPanelIsVisible;
 			   setTimeout(()=> this.animatePanel = !this.animatePanel,300);
+		   },
+
+		   toggleUserSubMenu(){
+			   this.userSubMenuIsVisible = !this.userSubMenuIsVisible;
+			   this.hideAllSubMenusExcept("userSubMenuIsVisible");
+			   this.hideAllSecondLevelSubMenus();
+		   },
+
+		   hideAllSubMenusExcept(except = ""){
+			   const subMenusControlVariableNames = [
+				   "userSubMenuIsVisible",
+				   "pornSubMenuIsVisible"
+			   ];
+
+			   for(const variableName of subMenusControlVariableNames){
+				   if(variableName != except){
+                      this[variableName] = false;
+				   }
+			   }
+		   },
+
+		   logout(){
+			   this.$refs.logoutForm.submit();
 		   }
     
 		},
 		
 		mounted(){
-           this.csrfToken = document.getElementById("csrf-token").content;
+		   this.csrfToken = document.getElementById("csrf-token").content;
+		   this.userIsAuthenticated = Boolean(this.userId);
 		}
     }
 </script>
@@ -192,6 +255,18 @@ import IconClose from "./form_controls/icon_close.vue";
 <style lang="scss">
 
 @import '../../sass/fonts';
+
+.user-panel-sub-menu-list{
+	right:1vw;
+}
+
+.logout-form{
+	display: none;
+}
+
+.navbar-element-user{
+	margin-left: auto;
+}
 
 .submit-button:hover{
 	background: #a00e30;
@@ -320,10 +395,7 @@ import IconClose from "./form_controls/icon_close.vue";
 	color:white;
 	display: inline-block;
 	line-height: 100%;
-	font:{
-	  family: 'Oxanium';  
-	  size:1.5vw;
-	}
+	@include responsive-font(1.5vw, 18px, 'Oxanium');
 	display: flex;
     flex-direction: row;
     align-items: center;
@@ -347,21 +419,17 @@ import IconClose from "./form_controls/icon_close.vue";
 $border-color: black;
 
 .sub-menu-list{
-	position:relative;
+	position:absolute;
 	overflow:hidden;
 	display:inline-block;
-	top:1px;
+	top:100%;
 	max-height:0;
 	padding: 0;
     list-style-type: none;
     margin: 0;
-    font:{
-	  family: 'Oxanium';  
-	  size:1.5vw;
-	}
+	@include responsive-font(1.5vw, 18px, 'Oxanium');
 	color:white;
-	max-width: 30%;
-	min-width:150px;
+	min-width:140px;
 	z-index:1;
     border-radius: 0 0 8px 8px;
 }
@@ -370,12 +438,12 @@ $border-color: black;
 	left:1vw;
 }
 
-.hidden-porn-sub-menu{
+.hidden-sub-menu{
 	max-height:0;
 	transition:none;
 }
 
-.visible-porn-sub-menu{
+.visible-sub-menu{
 	transition: max-height 1.5s;
 	max-height:1500px;
 	box-shadow: 2px 2px 4px 3px black;
@@ -445,21 +513,5 @@ $border-color: black;
 	height: 100%;
     display: inline-block;
 }
-
-
-@media (min-width:450px) and (max-width: 800px)
-{
-	.navigation-element-main, .sub-menu-list{
-		font-size:2.2vw;
-	}
-}
-
-@media (max-width: 449px)
-{
-	.navigation-element-main, .sub-menu-list{
-		font-size:3.3vw;
-	}
-}
-	
 
 </style>

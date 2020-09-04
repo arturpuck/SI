@@ -1,8 +1,7 @@
-@import '../components/error_list';
-@import '../error_message_box';
+@import '../basic';
 @import 'information_section';
 @import 'register_page_background_images';
-@import '../basic';
+@import '../components/report';
 
 
 .main-panel
@@ -24,7 +23,6 @@
 
 .main-panel-form
 {
-  border-right: 2px solid black;
   border-bottom: 1px solid transparent;
   border-top: 1px solid transparent;
 }
@@ -34,6 +32,7 @@
 	width:41%;
 	min-width:275px;
 	position:relative;
+	border-right: 2px solid black;
 }
 
 .main-panel-label

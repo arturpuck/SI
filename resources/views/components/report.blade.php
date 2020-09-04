@@ -1,6 +1,11 @@
 @if(Session::has('success'))
 <div class="success-information">
-       {{__(Session::get('success'))}}
+   <div class="confirmation-text">
+      {{__(Session::get('success'))}}
+   </div>
+   <div class="icon-background">
+      <x-icon-confirmation aditional-class-name="icon-confirmation-center"/>
+   </div>   
 </div>
 @elseif($errors->any())
 <div class="error-information-container">

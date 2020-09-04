@@ -24,7 +24,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .icon-container{
     border-radius: 50%;

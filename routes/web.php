@@ -15,15 +15,11 @@ Route::group(['middleware' => ['api']], function () {
        Route::get('/verify-email/{email}', 'AJAXEmailValidationController@checkIfEmailAlreadyExists');  
    });
 
-
 Route::get('/','LaunchMainPageController@showMainPage');
-
 Route::get('/kontakt', 'ContactFormController@showContactForm')
       ->name('contact.show.form');
 Route::post('/contact/send-message', 'ContactFormController@sendMessageFromUser')
        ->name('contact.send.message');
-
-
 
 Route::namespace('Auth')->name('auth.')->group(function(){
        Route::post('/rejestruj', 'RegisterController@register')
@@ -41,13 +37,10 @@ Route::namespace('Auth')->name('auth.')->group(function(){
        Route::post('/login', 'LoginController@login')
               ->name('login');
 
-       Route::get('/wyloguj', 'LoginController@logout')
+       Route::post('/wyloguj', 'LoginController@logout')
                     ->name('logout');
        
        Route::get('/haslo/potwierdzenie-zmiany', 'ResetPasswordController@showConfirmation')
               ->name('password.reset.confirmation');
        
 });
-
-//Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');

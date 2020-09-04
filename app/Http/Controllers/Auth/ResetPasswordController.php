@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Support\Str;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
+use App\Http\Requests\ShowPasswordResetConfirmationRequest;
 
 class ResetPasswordController extends Controller
 {
@@ -78,13 +81,13 @@ class ResetPasswordController extends Controller
         if ($request->wantsJson()) {
             return new JsonResponse(['message' => trans($response)], 200);
         }
-        $redirectPath = $request->has('log-me-in') ? $this->redirectPath() : route('auth.password.reset.confirmation');
-        return redirect($redirectPath)
-                        ->with('success', "the_password_has_been_successfully_changed");
+        
+        return redirect(route('auth.password.reset.confirmation'))
+                        ->with('email', $request->email);
     }
 
-    public function showConfirmation(Request $request)
+    public function showConfirmation(ShowPasswordResetConfirmationRequest $request)
     {
-    	return view('auth.password_reset_confirmation')->with('email', $request->email);
+    	return view('auth.password_reset_confirmation')->with('email', $request->session()->get('email'));
     }
 }

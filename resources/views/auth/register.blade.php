@@ -1,10 +1,11 @@
 <x-base title="{{__('create_an_account')}}" specificImageClass="{{$specificImageClass}}" description="{{__('registration_description')}}">
-<x-error-list/>
 		<main id="main-panel" class="main-panel @if($errors->any())main-panel-without-top-margin @endif">
 			<section class="register-panel">
 				<form ref="register_panel" method="POST" action="{{route('auth.register.create')}}" class="main-panel-form register-form">
 					@csrf
+					<input type="hidden" value="register-form" name="register-form-has-been-used">
 					<text-input-combo
+					@if(old('register-form-has-been-used'))
 						@error('login')
 						  v-bind:initial-ok="false"
 						  initial-value="{{old('login')}}"
@@ -14,6 +15,7 @@
 							v-bind:initial-ok="true"
 							initial-value="{{old('login')}}"
 						@endif
+					@endif
 
                         v-bind:input-is-required="true"
 						v-bind:on-blur-callback="validateLogin"
@@ -24,6 +26,7 @@
 					</text-input-combo>
 
 					<text-input-combo
+					@if(old('register-form-has-been-used'))
 						@error('email')
 							v-bind:initial-ok="false"
 							initial-value="{{old('email')}}"
@@ -33,7 +36,7 @@
 							v-bind:initial-ok="true"
 							initial-value="{{old('email')}}"
 						@endif
-
+                    @endif
 						v-bind:input-is-required="true"
 						v-bind:on-blur-callback="validateEmail"
 						v-bind:complete-validation-display-available="true"
@@ -44,6 +47,7 @@
 					</text-input-combo>
 
 					<text-input-combo
+					@if(old('register-form-has-been-used'))
 						@error('password')
 							v-bind:initial-ok="false"
 						@enderror
@@ -52,7 +56,7 @@
 							v-bind:initial-ok="true"
 							initial-value="{{old('password')}}"
 						@endif
-
+                    @endif
 						v-bind:input-is-required="true"
 						v-bind:on-blur-callback="validatePassword"
 						v-bind:complete-validation-display-available="true"
@@ -63,6 +67,7 @@
 					</text-input-combo>
 
 					<described-select
+					@if(old('register-form-has-been-used'))
 						@error('user_type_id')
 							v-bind:initial-ok="false"
 							initial-value="{{old('user_type_id')}}"
@@ -72,7 +77,7 @@
 							v-bind:initial-ok="true"
 							initial-value="{{old('user_type_id')}}"
 						@endif
-						
+					@endif	
 						v-bind:visible-options-list="['--{{__('choose')}}--',@foreach($userTypes as $userType) '{{__($userType->user_type_name.'_i')}}', @endforeach '{{__('i_dont_want_to_tell')}}']"
 						v-bind:option-values="['not-selected', @foreach($userTypes as $userType) '{{$userType->id}}', @endforeach '']"
 						v-bind:on-change-callback="validateSelect"
@@ -83,6 +88,7 @@
 					</described-select>
 
 					<described-select
+					@if(old('register-form-has-been-used'))
 						@error('sexual_orientation_id')
 							v-bind:initial-ok="false"
 							initial-value="{{old('sexual_orientation_id')}}"
@@ -92,7 +98,7 @@
 							v-bind:initial-ok="true"
 							initial-value="{{old('sexual_orientation_id')}}"
 						@endif
-
+                    @endif
 						v-bind:visible-options-list="['--{{__('choose')}}--',@foreach($sexualOrientations as $sexualOrientation) '{{__($sexualOrientation->sexual_orientation_name)}}', @endforeach '{{__('i_dont_want_to_tell')}}']"
 						v-bind:option-values="['not-selected', @foreach($sexualOrientations as $sexualOrientation) '{{$sexualOrientation->id}}', @endforeach '']"
 						v-bind:on-change-callback="validateSelect"
@@ -103,6 +109,7 @@
 					</described-select>
 
 					<date-picker
+					@if(old('register-form-has-been-used'))
 					   @error('birth_date')
 							v-bind:initial-ok="false"
 							initial-value="{{old('birth_date')}}"
@@ -112,7 +119,7 @@
 							v-bind:initial-ok="true"
 							initial-value="{{old('birth_date')}}"
 					   @endif
-
+                    @endif
 					   v-bind:error-message-box-available="true"
 					   name="birth_date"
 					   v-bind:on-date-select-callback="checkIfUserIsAdault"

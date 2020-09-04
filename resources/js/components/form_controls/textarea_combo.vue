@@ -2,10 +2,10 @@
    <div class="textarea-combo-container">
         <label for="textarea-combo-message" class="message-label"><slot></slot></label>
         <div class="textarea-wrapper">
-            <icon-stop v-show="displayIconError"/>
-            <icon-confirm v-show="displayIconConfirmation"/>
+            <icon-stop v-if="iconErrorCanBeDisplayed" v-show="displayIconError"/>
+            <icon-confirm v-if="iconConfirmationCanBeDisplayed" v-show="displayIconConfirmation"/>
 		    <textarea ref="text_input" v-model="textInputValue" v-bind:max="maxCharacters" v-bind:placeholder="placeholderText" :required="inputIsRequired" id="textarea-combo-message" v-bind:name="textareaName" v-bind:rows="rowsNumber" v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" class="textarea-combo-message"></textarea>
-            <div v-show="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box"></div>
+            <div v-if="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box"></div>
 	    </div>
     </div>
 </template>

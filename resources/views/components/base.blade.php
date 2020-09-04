@@ -13,10 +13,13 @@
 	<script src="https://kit.fontawesome.com/df4e1e2dba.js" crossorigin="anonymous"></script>
 </head>
 <body  class="full-body @isset($specificImageClass){{$specificImageClass}}@endisset">
-<div class="app-container" id="app">
+	<x-report/>
+    <div class="app-container" id="app">
      <navbar
        @auth
-         user-id="{{Auth::user()->id}}"
+         v-bind:user-id="{{Auth::user()->id}}"
+		 user-name="{{Auth::user()->login}}"
+		 logout-route="{{route('auth.logout')}}"
        @endauth
 
        @guest

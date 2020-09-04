@@ -12,8 +12,7 @@
              
          },
 
-        mounted()
-        {
+        mounted(){
             this.description = this.$slots.default[0].text;
         }
     }
