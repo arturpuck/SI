@@ -1,4 +1,3 @@
-@import 'components/report';
 @import 'basic';
 
 .contact-form{
@@ -27,18 +26,10 @@
 }
 
 
-@media (min-width: 700px) and (max-width: 1200px)
+@media(max-width: 1200px)
 {
   .full-body{
-  	background-image: url('../images/decoration/contact/compressed/background-min-1.jpg');
-  }
-  
-}
-
-@media (max-width: 699px)
-{
-  .full-body{
-  	background-image: url('../images/decoration/contact/background-1.jpg');
+  	background-image: url('../images/decoration/contact/compressed/girl-with-phone-min.jpg');
   }
   
 }

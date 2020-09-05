@@ -1,3 +1,8 @@
 @import 'basic';
-@import 'components/report';
+@import 'mainpage_background_images';
+
+@include mainpage-background-image(japanese-schoolgirl,1,right);
+@include mainpage-background-image(cute-girl,2);
+@include mainpage-background-image(car-date,3,left);
+@include mainpage-background-image(japanese-chick-in-lambo,4);
 

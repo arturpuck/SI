@@ -1,3 +1,33 @@
+.empire-footer {
+  width: 100%;
+  padding: 10px;
+  background: black;
+  font-size: 2vw;
+  font-family: Aldrich, sans-serif;
+  color: white;
+  text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .empire-footer {
+    font-size: 30px;
+  }
+}
+
+.contact-us-link {
+  text-decoration: none;
+  color: white;
+  margin: 0 18px;
+}
+
+.contact-us-link:hover {
+  text-decoration: underline;
+}
+
+.empire-icon {
+  color: red;
+}
+
 .icon-error-close {
   display: inline-block;
   background: white;
@@ -161,33 +191,6 @@
   margin: 0 5px;
 }
 
-.empire-footer {
-  width: 100%;
-  padding: 10px;
-  background: -webkit-gradient(linear, left top, right top, from(#000), to(#3b3a38));
-  background: linear-gradient(to right, #000, #3b3a38);
-  font-size: 1.7vw;
-  font-family: Aldrich, sans-serif;
-  color: white;
-  text-align: center;
-}
-
-@media (max-width: 1200px) {
-  .empire-footer {
-    font-size: 22px;
-  }
-}
-
-.contact-us-link {
-  text-decoration: none;
-  color: white;
-  margin: 0 18px;
-}
-
-.contact-us-link:hover {
-  text-decoration: underline;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -236,14 +239,8 @@
   }
 }
 
-@media (min-width: 700px) and (max-width: 1200px) {
+@media (max-width: 1200px) {
   .full-body {
-    background-image: url("../images/decoration/contact/compressed/background-min-1.jpg");
-  }
-}
-
-@media (max-width: 699px) {
-  .full-body {
-    background-image: url("../images/decoration/contact/background-1.jpg");
+    background-image: url("../images/decoration/contact/compressed/girl-with-phone-min.jpg");
   }
 }

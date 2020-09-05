@@ -8,6 +8,8 @@ class LaunchMainPageController extends Controller
 {
     public function showMainPage()
     {
-    	return view('mainpage');
+    	return view('mainpage')->with([
+            'specificImageClass' => 'mainpage-background-image-'.rand(1,4)
+        ]);
     }
 }

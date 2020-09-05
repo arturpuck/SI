@@ -4,8 +4,8 @@
 {
 	width:100%;
 	padding:10px;
-	background: linear-gradient(to right,#000,#3b3a38);
-	@include responsive-font(1.7vw,22px, Aldrich);
+	background: black;
+	@include responsive-font(2vw,30px, Aldrich);
 	color:white;
 	text-align: center;
 }
@@ -19,4 +19,8 @@
 	{
 		text-decoration: underline;
 	}
+}
+
+.empire-icon{
+	color:red;
 }

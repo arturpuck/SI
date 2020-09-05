@@ -1,9 +1,8 @@
 .empire-footer {
   width: 100%;
   padding: 10px;
-  background: -webkit-gradient(linear, left top, right top, from(#000), to(#3b3a38));
-  background: linear-gradient(to right, #000, #3b3a38);
-  font-size: 1.7vw;
+  background: black;
+  font-size: 2vw;
   font-family: Aldrich, sans-serif;
   color: white;
   text-align: center;
@@ -11,7 +10,7 @@
 
 @media (max-width: 1200px) {
   .empire-footer {
-    font-size: 22px;
+    font-size: 30px;
   }
 }
 
@@ -25,93 +24,8 @@
   text-decoration: underline;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-.app-container {
-  min-height: calc(100vh - 40px);
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
-}
-
-.full-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-.shadow-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.95);
-  height: 100%;
-  z-index: 2;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-          align-items: center;
-}
-
-.registration-information {
-  display: none;
-}
-
-.welcome-user {
-  max-height: 250px;
-  overflow-y: auto;
-}
-
-.information-section {
-  -webkit-box-flex: 10;
-          flex-grow: 10;
-  font-family: "Exo 2", sans-serif;
-  font-size: 1.2vw;
-  color: white;
-  padding: 7px;
-  max-height: 370px;
-  overflow-y: auto;
-  position: relative;
-}
-
-.input-name {
-  font-weight: bold;
-  margin: 5px 0;
-}
-
-.input-list {
-  display: block;
-  margin: 5px 0;
-}
-
-.input-description {
-  display: block;
-  margin-left: 12px;
-}
-
-@media (max-width: 1200px) {
-  .information-section {
-    font-size: 16px;
-  }
-}
-
-.register-background-image-1 {
-  background-image: url("../../images/decoration/register/1.jpg");
-}
-
-.register-background-image-2 {
-  background-image: url("../../images/decoration/register/2.jpg");
-}
-
-.register-background-image-3 {
-  background-image: url("../../images/decoration/register/3.jpg");
+.empire-icon {
+  color: red;
 }
 
 .icon-error-close {
@@ -275,6 +189,95 @@
 .error-list-element:before {
   content: ' \25CF   ';
   margin: 0 5px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.app-container {
+  min-height: calc(100vh - 40px);
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.full-body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.shadow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  height: 100%;
+  z-index: 2;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.registration-information {
+  display: none;
+}
+
+.welcome-user {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.information-section {
+  -webkit-box-flex: 10;
+          flex-grow: 10;
+  font-family: "Exo 2", sans-serif;
+  font-size: 1.2vw;
+  color: white;
+  padding: 7px;
+  max-height: 370px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.input-name {
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.input-list {
+  display: block;
+  margin: 5px 0;
+}
+
+.input-description {
+  display: block;
+  margin-left: 12px;
+}
+
+@media (max-width: 1200px) {
+  .information-section {
+    font-size: 16px;
+  }
+}
+
+.register-background-image-1 {
+  background-image: url("../../images/decoration/register/1.jpg");
+}
+
+.register-background-image-2 {
+  background-image: url("../../images/decoration/register/2.jpg");
+}
+
+.register-background-image-3 {
+  background-image: url("../../images/decoration/register/3.jpg");
 }
 
 .main-panel {

@@ -19,10 +19,16 @@ class ForgotPasswordController extends Controller
     |
     */
 
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+
     public function showLinkRequestForm()
     {
         return view('auth.request_password_reset_link');
     }
+
 
     protected function sendResetLinkResponse(Request $request, $response)
     {

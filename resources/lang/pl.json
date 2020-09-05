@@ -86,5 +86,6 @@
     "user_identification_must_be_a_string" : "Login lub hasło musi być ciągiem znaków",
     "password_is_required" : "Nie podano hasła",
     "password_must_be_a_string" : "Hasło musi być ciągiem znaków",
-    "to_many_login_attempts" : "Zbyt dużo prób w jednostce czasu. Proszę odczekać chwilę"
+    "to_many_login_attempts" : "Zbyt dużo prób w jednostce czasu. Proszę odczekać chwilę",
+    "contact" : "kontakt"
 }
