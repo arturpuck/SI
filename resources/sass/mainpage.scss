@@ -6,3 +6,122 @@
 @include mainpage-background-image(car-date,3,left);
 @include mainpage-background-image(japanese-chick-in-lambo,4);
 
+@mixin news-header-basic{
+    padding:7px 3px;
+    text-align: center;
+    display:block;
+    margin:0;
+    color:white;
+    background:black;
+    height: calc(1.1em + 14px);
+}
+
+@mixin news-icon-basic {
+    color:  #ef0244;
+    margin:0 7px;
+}
+
+.news-introduction{
+    padding:3px 5px;
+    margin:0;
+}
+
+.main-content{
+    display:flex;
+    background: rgba(0,0,0,0.95);
+    flex-wrap: nowrap;
+    flex-direction: row;
+    overflow: hidden;
+    border-radius:8px;
+    box-shadow:2px 2px 2px 2px black;
+    margin:calc(40px + 5vw) auto;
+    width:70%;
+    min-width: 750px;
+}
+
+.introductory-content{
+    height: 100%;
+    width:30%;
+    min-width:320px;
+    @include responsive-font(1.3vw,17px);
+    color:white;
+    border-right: 1px solid silver
+}
+
+.introductory-header, .news-header{
+    @include responsive-font(2vw, 25px, Aldrich);
+    @include news-header-basic();
+}
+
+.introductory-header-icon{
+    @include news-icon-basic();
+}
+
+.quick-start-icon{
+    @include news-icon-basic();
+}
+
+.news-container{
+    flex-grow: 100;
+}
+
+.quick-start-header{
+    @include responsive-font(1.3vw, 18px, Aldrich);
+    @include news-header-basic();
+    background:#211e1e;
+}
+
+.quickstart-options-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    background: black;
+}
+
+.quickstart-option{
+    text-align: center;
+    cursor:pointer;
+    margin:0;
+    padding:0;
+    flex-grow: 1;
+    transition: background 1.5s;
+    &:hover{
+        background:#ef0244;
+    }
+}
+
+.quickstart-option:hover .quickstart-option-icon{
+    color:white;
+}
+
+.quickstart-option-icon{
+    @include news-icon-basic();
+    display:block;
+    padding-bottom: 3px;
+}
+
+.quickstart-option-description{
+    display:block;
+    text-align: center;
+    @include responsive-font(1.1vw,14px);
+    color:white;
+    padding:3px 0;
+}
+
+@media(max-width:790px){
+    .main-content{
+        flex-direction: column;
+        min-width: 300px;
+        width:95%;
+    }
+
+    .introductory-content{
+        width:100%;
+        border-right: none;
+    }
+}
+

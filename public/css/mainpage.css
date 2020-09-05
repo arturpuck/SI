@@ -283,3 +283,162 @@
     background-image: url("../images/decoration/mainpage/background-images/compressed/japanese-chick-in-lambo-m-0-min.jpg");
   }
 }
+
+.news-introduction {
+  padding: 3px 5px;
+  margin: 0;
+}
+
+.main-content {
+  display: -webkit-box;
+  display: flex;
+  background: rgba(0, 0, 0, 0.95);
+  flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px 2px black;
+  margin: calc(40px + 5vw) auto;
+  width: 70%;
+  min-width: 750px;
+}
+
+.introductory-content {
+  height: 100%;
+  width: 30%;
+  min-width: 320px;
+  font-size: 1.3vw;
+  font-family: "Exo 2", sans-serif;
+  color: white;
+  border-right: 1px solid silver;
+}
+
+@media (max-width: 1200px) {
+  .introductory-content {
+    font-size: 17px;
+  }
+}
+
+.introductory-header, .news-header {
+  font-size: 2vw;
+  font-family: Aldrich, sans-serif;
+  padding: 7px 3px;
+  text-align: center;
+  display: block;
+  margin: 0;
+  color: white;
+  background: black;
+  height: calc(1.1em + 14px);
+}
+
+@media (max-width: 1200px) {
+  .introductory-header, .news-header {
+    font-size: 25px;
+  }
+}
+
+.introductory-header-icon {
+  color: #ef0244;
+  margin: 0 7px;
+}
+
+.quick-start-icon {
+  color: #ef0244;
+  margin: 0 7px;
+}
+
+.news-container {
+  -webkit-box-flex: 100;
+          flex-grow: 100;
+}
+
+.quick-start-header {
+  font-size: 1.3vw;
+  font-family: Aldrich, sans-serif;
+  padding: 7px 3px;
+  text-align: center;
+  display: block;
+  margin: 0;
+  color: white;
+  background: black;
+  height: calc(1.1em + 14px);
+  background: #211e1e;
+}
+
+@media (max-width: 1200px) {
+  .quick-start-header {
+    font-size: 18px;
+  }
+}
+
+.quickstart-options-list {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  flex-wrap: nowrap;
+  -webkit-box-pack: space-evenly;
+          justify-content: space-evenly;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background: black;
+}
+
+.quickstart-option {
+  text-align: center;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  -webkit-box-flex: 1;
+          flex-grow: 1;
+  -webkit-transition: background 1.5s;
+  transition: background 1.5s;
+}
+
+.quickstart-option:hover {
+  background: #ef0244;
+}
+
+.quickstart-option:hover .quickstart-option-icon {
+  color: white;
+}
+
+.quickstart-option-icon {
+  color: #ef0244;
+  margin: 0 7px;
+  display: block;
+  padding-bottom: 3px;
+}
+
+.quickstart-option-description {
+  display: block;
+  text-align: center;
+  font-size: 1.1vw;
+  font-family: "Exo 2", sans-serif;
+  color: white;
+  padding: 3px 0;
+}
+
+@media (max-width: 1200px) {
+  .quickstart-option-description {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 790px) {
+  .main-content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    min-width: 300px;
+    width: 95%;
+  }
+  .introductory-content {
+    width: 100%;
+    border-right: none;
+  }
+}
