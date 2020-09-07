@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SendMessageToManagementRequest;
-use App\Services\SendMessageToManagement;
+use App\Services\Contact\SendMessageToManagement;
 
 
 class ContactFormController extends Controller

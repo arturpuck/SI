@@ -1,0 +1,27 @@
+.default-news-header{
+    @include news-header-basic();
+    background:#211e1e;
+    @include responsive-font(1.2vw,14px, Aldrich);
+    display:flex;
+    align-items: center;
+}
+
+.default-news-content{
+   @include responsive-font();
+   color:white;
+   padding:5px;
+}
+
+.default-news-header-text{
+    margin-left: 10%;
+}
+
+.default-news-added-at-date{
+    margin-left: auto;
+}
+
+@media(max-width: 400px){
+    .default-news-header-text{
+        margin-left:5%;
+    }
+}

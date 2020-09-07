@@ -19,8 +19,13 @@
             </li>
           </ul>
       </header>
+      <div class="news-all">
+      <h2 class="news-header">{{__('news_header')}}</h2>
       <div class="news-container">
-          <h2 class="news-header">{{__('news_header')}}</h2>
+          @foreach($news as $article)
+              @include('news.'.$article->template_name)
+          @endforeach
+      </div>
       </div>
    </main>
 </x-base>

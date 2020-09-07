@@ -210,6 +210,55 @@
   background-attachment: fixed;
 }
 
+.default-news-header {
+  padding: 7px 3px;
+  text-align: center;
+  display: block;
+  margin: 0;
+  color: white;
+  height: calc(1.1em + 14px);
+  background: #211e1e;
+  font-size: 1.2vw;
+  font-family: Aldrich, sans-serif;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .default-news-header {
+    font-size: 14px;
+  }
+}
+
+.default-news-content {
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
+  color: white;
+  padding: 5px;
+}
+
+@media (max-width: 1200px) {
+  .default-news-content {
+    font-size: 16px;
+  }
+}
+
+.default-news-header-text {
+  margin-left: 10%;
+}
+
+.default-news-added-at-date {
+  margin-left: auto;
+}
+
+@media (max-width: 400px) {
+  .default-news-header-text {
+    margin-left: 5%;
+  }
+}
+
 @media (min-width: 2000px) {
   .mainpage-background-image-1 {
     background-image: url("../images/decoration/mainpage/background-images/compressed/japanese-schoolgirl-m-2000-min.jpg");
@@ -287,6 +336,8 @@
 .news-introduction {
   padding: 3px 5px;
   margin: 0;
+  -webkit-box-flex: 10;
+          flex-grow: 10;
 }
 
 .main-content {
@@ -297,22 +348,30 @@
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
-  overflow: hidden;
   border-radius: 8px;
-  box-shadow: 2px 2px 2px 2px black;
+  box-shadow: 2px 2px 3px 3px black;
   margin: calc(40px + 5vw) auto;
   width: 70%;
   min-width: 750px;
+  height: 55vh;
+  min-height: 360px;
+  -webkit-box-pack: stretch;
+          justify-content: stretch;
+  overflow: hidden;
 }
 
 .introductory-content {
-  height: 100%;
   width: 30%;
   min-width: 320px;
   font-size: 1.3vw;
   font-family: "Exo 2", sans-serif;
   color: white;
   border-right: 1px solid silver;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
 }
 
 @media (max-width: 1200px) {
@@ -329,8 +388,8 @@
   display: block;
   margin: 0;
   color: white;
-  background: black;
   height: calc(1.1em + 14px);
+  background: black;
 }
 
 @media (max-width: 1200px) {
@@ -352,6 +411,7 @@
 .news-container {
   -webkit-box-flex: 100;
           flex-grow: 100;
+  margin-top: 7px;
 }
 
 .quick-start-header {
@@ -362,7 +422,6 @@
   display: block;
   margin: 0;
   color: white;
-  background: black;
   height: calc(1.1em + 14px);
   background: #211e1e;
 }
@@ -429,6 +488,17 @@
   }
 }
 
+.news-container {
+  overflow: auto;
+  height: calc(100% - 14px - 1.4vw);
+}
+
+@media (max-width: 1200px) {
+  .news-container {
+    height: calc(100% - 55px);
+  }
+}
+
 @media (max-width: 790px) {
   .main-content {
     -webkit-box-orient: vertical;
@@ -436,9 +506,18 @@
             flex-direction: column;
     min-width: 300px;
     width: 95%;
+    max-height: none;
+    height: auto;
   }
   .introductory-content {
     width: 100%;
     border-right: none;
+  }
+  .news-header {
+    border-top: 1px solid silver;
+  }
+  .news-all {
+    height: 50vh;
+    min-height: 250px;
   }
 }

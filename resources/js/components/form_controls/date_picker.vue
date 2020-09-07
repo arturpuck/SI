@@ -269,7 +269,14 @@ import MonthsInDifferentLanguages from '../../modules/helpers/months_in_differen
 
    .date-picker-container{
 		color:white;
-	}
+    }
+    
+    .icon-container{
+        top: 0;
+        right:0;
+        transform:translate(50%,-50%);
+        position:absolute;
+}
 
 	.date-picker-description{
 		text-align: center;

@@ -2,14 +2,14 @@
 import Vue from 'vue';
 import Navbar  from '../components/navbar.vue';
 import TextInputCombo  from '../components/form_controls/text_input_combo.vue';
-import ExpectBar  from '../components/decoration/expect_bar.vue';
+import ExpectCircle  from '../components/decoration/expect_circle.vue';
 import SubmitButton from '../components/form_controls/submit_button.vue';
 import DescribedSelect from '../components/form_controls/described_select.vue';
 import DatePicker from '../components/form_controls/date_picker.vue';
 
 Vue.component('navbar', Navbar);
 Vue.component('text-input-combo', TextInputCombo);
-Vue.component('expect-bar', ExpectBar);
+Vue.component('expect-circle', ExpectCircle);
 Vue.component('submit-button',SubmitButton);
 Vue.component('described-select', DescribedSelect);
 Vue.component('date-picker', DatePicker);

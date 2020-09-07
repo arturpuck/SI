@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\User;
 
 class CreateUsersTable extends Migration
 {
@@ -29,6 +30,14 @@ class CreateUsersTable extends Migration
         });
 
         Schema::enableForeignKeyConstraints();
+        User::create([
+            'login' => 'Imperator',
+            'email' => 'arturmostowiak@gmail.com',
+            'user_type_id' => 1,
+            'sexual_orientation_id' => 1,
+            'password' => Hash::make('Implementation6'),
+            'birth_date' => '1987-02-12'
+        ]);
     }
 
     /**

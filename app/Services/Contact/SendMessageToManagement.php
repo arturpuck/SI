@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Contact;
 
 use App\Notifications\SendEmail;
 use App\Mail\SimpleEmail;
