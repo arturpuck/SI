@@ -791,6 +791,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -830,6 +836,11 @@ __webpack_require__.r(__webpack_exports__);
       "default": ""
     },
     logoutRoute: {
+      required: false,
+      type: String,
+      "default": ""
+    },
+    userSettingsRoute: {
       required: false,
       type: String,
       "default": ""
@@ -1057,7 +1068,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".user-panel-sub-menu-list {\n  right: 1vw;\n}\n.logout-form {\n  display: none;\n}\n.navbar-element-user {\n  margin-left: auto;\n}\n.submit-button:hover {\n  background: #a00e30;\n}\n.remember-me-description {\n  color: white;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.remember-me-description {\n    font-size: 16px;\n}\n}\n.labeled-checkbox-container {\n  display: block;\n  width: 95%;\n  margin: 4px auto 1px auto;\n}\n.labeled-checkbox-description {\n  color: white;\n}\n.login-info {\n  font-size: 1.5vw;\n  font-family: Play, sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.login-info {\n    font-size: 19px;\n}\n}\n.login-form-container {\n  position: fixed;\n  background: rgba(0, 0, 0, 0.75);\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  z-index: 999;\n}\n.login-panel-toolbar {\n  border-radius: 5px 5px 0 0;\n  background: #242229;\n  padding: 5px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.main-panel-label {\n  display: block;\n  text-align: center;\n  padding: 4px;\n  font-size: 1.3vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.main-panel-label {\n    font-size: 18px;\n}\n}\n.forgot-password-link {\n  display: block;\n  padding: 4px;\n  text-align: center;\n  color: white;\n  text-decoration: none;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  border-radius: 0 0 7px 7px;\n  background: #242229;\n}\n@media (max-width: 1200px) {\n.forgot-password-link {\n    font-size: 17px;\n}\n}\n.forgot-password-link:hover {\n  text-decoration: underline;\n}\n.login-button-container {\n  padding: 6px;\n  height: 100%;\n}\n.login-form {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  background: black;\n  border-radius: 8px;\n  box-shadow: 3px 3px 3px 3px black;\n  min-width: 320px;\n  width: 25%;\n  font-family: \"Exo 2\", sans-serif;\n  border: 2px solid #242229;\n  opacity: 0;\n  -webkit-transition: opacity 1.5s;\n  transition: opacity 1.5s;\n}\n.visible-login-form {\n  opacity: 1;\n}\n.navigation-list {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  background: #0d0c0d;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  position: relative;\n  z-index: 3;\n  box-shadow: 2px 2px 2px 2px black;\n}\n.click-detector {\n  position: absolute;\n  z-index: 0;\n  top: 1px;\n  width: 100%;\n  height: 100%;\n}\n.register-selection {\n  margin-left: auto;\n}\n.navigation-element-main {\n  -webkit-transition: background 2s;\n  transition: background 2s;\n  cursor: pointer;\n  color: white;\n  display: inline-block;\n  line-height: 100%;\n  font-size: 1.5vw;\n  font-family: \"Oxanium\", sans-serif;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.navigation-element-main:hover {\n  background: #2d2d30;\n}\n@media (max-width: 1200px) {\n.navigation-element-main {\n    font-size: 18px;\n}\n}\n.navigation-element-padding {\n  padding: 6px;\n}\n.page-navigation {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 10;\n  font-size: 0;\n}\n.page-navigation:focus {\n  outline: none;\n}\n.sub-menu-list {\n  position: absolute;\n  overflow: hidden;\n  display: inline-block;\n  top: 100%;\n  max-height: 0;\n  padding: 0;\n  list-style-type: none;\n  margin: 0;\n  font-size: 1.5vw;\n  font-family: \"Oxanium\", sans-serif;\n  color: white;\n  min-width: 140px;\n  z-index: 1;\n  border-radius: 0 0 8px 8px;\n}\n@media (max-width: 1200px) {\n.sub-menu-list {\n    font-size: 18px;\n}\n}\n.porn-sub-menu-list {\n  left: 1vw;\n}\n.hidden-sub-menu {\n  max-height: 0;\n  -webkit-transition: none;\n  transition: none;\n}\n.visible-sub-menu {\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n  max-height: 1500px;\n  box-shadow: 2px 2px 4px 3px black;\n}\n.sub-menu-list-element {\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n  border-bottom: 1px solid black;\n  cursor: pointer;\n}\n.sub-menu-list-nested-level-two {\n  list-style-type: none;\n  overflow: hidden;\n  padding: 0;\n  -webkit-transition: max-height 0.7s;\n  transition: max-height 0.7s;\n}\n.navbar-icon-second-level {\n  color: #bbb606;\n}\n.sub-menu-list-element-intendation-second-level {\n  padding: 5px 2px 5px 2vw;\n  border-bottom: 1px solid black;\n  white-space: nowrap;\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n}\n.sub-menu-list-element-intendation-second-level:hover {\n  background: black;\n  cursor: pointer;\n}\n.visible-movies-sub-menu {\n  max-height: 500px;\n}\n.hidden-movies-sub-menu {\n  max-height: 0;\n}\n.sub-menu-level-one-item {\n  padding: 5px 2px 5px 1vw;\n}\n.sub-menu-level-one-item:hover {\n  background: black;\n}\n.sum-menu-list-element:last-child {\n  border-radius: 0 0 8px 8px;\n}\n.navbar-icon {\n  margin: 0 5px;\n}\n.navbar-icon-outer {\n  color: #eb091c;\n}\n.navbar-link-main-manu {\n  color: inherit;\n  text-decoration: none;\n  padding: 6px;\n  height: 100%;\n  display: inline-block;\n}", ""]);
+exports.push([module.i, ".logo-link {\n  color: white;\n  text-decoration: none;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n}\n.sub-menu-link {\n  text-decoration: none;\n  color: inherit;\n  display: block;\n}\n.logo-description::after {\n  content: \"Sex-Imperium\";\n}\n.user-panel-sub-menu-list {\n  right: 1vw;\n}\n.logout-form {\n  display: none;\n}\n.navbar-element-user {\n  margin-left: auto;\n}\n.submit-button:hover {\n  background: #a00e30;\n}\n.remember-me-description {\n  color: white;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.remember-me-description {\n    font-size: 16px;\n}\n}\n.labeled-checkbox-container {\n  display: block;\n  width: 95%;\n  margin: 4px auto 1px auto;\n}\n.labeled-checkbox-description {\n  color: white;\n}\n.login-info {\n  font-size: 1.5vw;\n  font-family: Play, sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.login-info {\n    font-size: 19px;\n}\n}\n.login-form-container {\n  position: fixed;\n  background: rgba(0, 0, 0, 0.75);\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  z-index: 999;\n}\n.login-panel-toolbar {\n  border-radius: 5px 5px 0 0;\n  background: #242229;\n  padding: 5px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.main-panel-label {\n  display: block;\n  text-align: center;\n  padding: 4px;\n  font-size: 1.3vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.main-panel-label {\n    font-size: 18px;\n}\n}\n.forgot-password-link {\n  display: block;\n  padding: 4px;\n  text-align: center;\n  color: white;\n  text-decoration: none;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  border-radius: 0 0 7px 7px;\n  background: #242229;\n}\n@media (max-width: 1200px) {\n.forgot-password-link {\n    font-size: 17px;\n}\n}\n.forgot-password-link:hover {\n  text-decoration: underline;\n}\n.login-button-container {\n  height: 100%;\n}\n.login-form {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  background: black;\n  border-radius: 8px;\n  box-shadow: 3px 3px 3px 3px black;\n  min-width: 320px;\n  width: 25%;\n  font-family: \"Exo 2\", sans-serif;\n  border: 2px solid #242229;\n  opacity: 0;\n  -webkit-transition: opacity 1.5s;\n  transition: opacity 1.5s;\n}\n.visible-login-form {\n  opacity: 1;\n}\n.navigation-list {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  background: #0d0c0d;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  position: relative;\n  z-index: 3;\n  box-shadow: 2px 2px 2px 2px black;\n}\n.click-detector {\n  position: absolute;\n  z-index: 0;\n  top: 1px;\n  width: 100%;\n  height: 100%;\n}\n.register-selection {\n  margin-left: auto;\n}\n.navigation-element-main {\n  -webkit-transition: background 2s;\n  transition: background 2s;\n  cursor: pointer;\n  color: white;\n  display: inline-block;\n  line-height: 100%;\n  font-size: 1.5vw;\n  font-family: \"Aldrich\", sans-serif;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n  padding: 6px;\n}\n.navigation-element-main:hover {\n  background: #2d2d30;\n}\n@media (max-width: 1200px) {\n.navigation-element-main {\n    font-size: 18px;\n}\n}\n.page-navigation {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 10;\n  font-size: 0;\n}\n.page-navigation:focus {\n  outline: none;\n}\n.sub-menu-list {\n  position: absolute;\n  overflow: hidden;\n  display: inline-block;\n  top: 100%;\n  max-height: 0;\n  padding: 0;\n  list-style-type: none;\n  margin: 0;\n  font-size: 1.5vw;\n  font-family: \"Aldrich\", sans-serif;\n  color: white;\n  min-width: 140px;\n  z-index: 1;\n  border-radius: 0 0 8px 8px;\n}\n@media (max-width: 1200px) {\n.sub-menu-list {\n    font-size: 18px;\n}\n}\n.porn-sub-menu-list {\n  left: 13vw;\n}\n.hidden-sub-menu {\n  max-height: 0;\n  -webkit-transition: none;\n  transition: none;\n}\n.visible-sub-menu {\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n  max-height: 1500px;\n  box-shadow: 2px 2px 4px 3px black;\n}\n.sub-menu-list-element {\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n  border-bottom: 1px solid black;\n  cursor: pointer;\n}\n.sub-menu-list-nested-level-two {\n  list-style-type: none;\n  overflow: hidden;\n  padding: 0;\n  -webkit-transition: max-height 0.7s;\n  transition: max-height 0.7s;\n}\n.navbar-icon-second-level {\n  color: #bbb606;\n}\n.sub-menu-list-element-intendation-second-level {\n  padding: 5px 2px 5px 2vw;\n  border-bottom: 1px solid black;\n  white-space: nowrap;\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n}\n.sub-menu-list-element-intendation-second-level:hover {\n  background: black;\n  cursor: pointer;\n}\n.visible-movies-sub-menu {\n  max-height: 500px;\n}\n.hidden-movies-sub-menu {\n  max-height: 0;\n}\n.sub-menu-level-one-item {\n  padding: 5px 2px 5px 1vw;\n}\n.sub-menu-level-one-item:hover {\n  background: black;\n}\n.sum-menu-list-element:last-child {\n  border-radius: 0 0 8px 8px;\n}\n.navbar-icon {\n  margin: 0 5px;\n}\n.navbar-icon-outer {\n  color: #eb091c;\n}\n.navbar-link-main-manu {\n  color: white;\n  text-decoration: none;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n}\n@media (max-width: 400px) {\n.navigation-element-main {\n    padding: 3px 1px;\n    font-size: 16px;\n}\n.sub-menu-list {\n    font-size: 16px;\n}\n.navbar-icon {\n    margin: 0 3px;\n}\n}\n@media (min-width: 520px) and (max-width: 1200px) {\n.porn-sub-menu-list {\n    left: 150px;\n}\n}\n@media (max-width: 520px) {\n.logo-description::after {\n    content: \"SI\";\n}\n.porn-sub-menu-list {\n    left: 50px;\n}\n}", ""]);
 
 // exports
 
@@ -2841,10 +2852,12 @@ var render = function() {
       },
       [
         _c("ul", { staticClass: "navigation-list" }, [
+          _vm._m(0),
+          _vm._v(" "),
           _c(
             "li",
             {
-              staticClass: "navigation-element-main navigation-element-padding",
+              staticClass: "navigation-element-main",
               on: {
                 click: _vm.togglePornSubMenu,
                 mouseenter: _vm.showPornSubMenu
@@ -2924,8 +2937,7 @@ var render = function() {
             ? _c(
                 "li",
                 {
-                  staticClass:
-                    "navigation-element-main navbar-element-user navigation-element-padding",
+                  staticClass: "navigation-element-main navbar-element-user",
                   on: {
                     mouseenter: _vm.showUserSubMenu,
                     click: _vm.toggleUserSubMenu
@@ -3012,69 +3024,94 @@ var render = function() {
                       : "hidden-movies-sub-menu"
                 },
                 [
-                  _vm._m(0),
-                  _vm._v(" "),
                   _vm._m(1),
                   _vm._v(" "),
                   _vm._m(2),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _vm._m(4)
                 ]
               )
             ]),
             _vm._v(" "),
-            _vm._m(4)
+            _vm._m(5)
           ]
         ),
         _vm._v(" "),
-        _c(
-          "ul",
-          {
-            staticClass: "sub-menu-list user-panel-sub-menu-list",
-            class: {
-              "visible-sub-menu": _vm.userSubMenuIsVisible,
-              "hidden-sub-menu": !_vm.userSubMenuIsVisible
-            }
-          },
-          [
-            _vm._m(5),
-            _vm._v(" "),
-            _c(
-              "li",
-              { staticClass: "sub-menu-list-element intendation-first-level" },
+        _vm.userIsAuthenticated
+          ? _c(
+              "ul",
+              {
+                staticClass: "sub-menu-list user-panel-sub-menu-list",
+                class: {
+                  "visible-sub-menu": _vm.userSubMenuIsVisible,
+                  "hidden-sub-menu": !_vm.userSubMenuIsVisible
+                }
+              },
               [
                 _c(
-                  "div",
+                  "li",
                   {
-                    staticClass: "sub-menu-level-one-item",
-                    on: { click: _vm.logout }
+                    staticClass: "sub-menu-list-element intendation-first-level"
                   },
                   [
-                    _c("span", {
-                      staticClass:
-                        "fas navbar-icon navbar-icon-outer fa-sign-out-alt"
-                    }),
-                    _vm._v("\r\n\t\t\t\t\t\tWyloguj\r\n\t\t\t\t\t\t"),
                     _c(
-                      "form",
+                      "a",
                       {
-                        ref: "logoutForm",
-                        staticClass: "logout-form",
-                        attrs: { method: "POST", action: _vm.logoutRoute }
+                        staticClass: "sub-menu-link sub-menu-level-one-item",
+                        attrs: { href: _vm.userSettingsRoute }
                       },
                       [
-                        _c("input", {
-                          attrs: { type: "hidden", name: "_token" },
-                          domProps: { value: _vm.csrfToken }
-                        })
+                        _c("span", {
+                          staticClass:
+                            "fas navbar-icon navbar-icon-outer fa-cogs"
+                        }),
+                        _vm._v("\r\n\t\t\t\t\tUstawienia profilu\r\n\t\t\t\t")
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "sub-menu-list-element intendation-first-level"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "sub-menu-level-one-item",
+                        on: { click: _vm.logout }
+                      },
+                      [
+                        _c("span", {
+                          staticClass:
+                            "fas navbar-icon navbar-icon-outer fa-sign-out-alt"
+                        }),
+                        _vm._v("\r\n\t\t\t\t\t\tWyloguj\r\n\t\t\t\t\t\t"),
+                        _c(
+                          "form",
+                          {
+                            ref: "logoutForm",
+                            staticClass: "logout-form",
+                            attrs: { method: "POST", action: _vm.logoutRoute }
+                          },
+                          [
+                            _c("input", {
+                              attrs: { type: "hidden", name: "_token" },
+                              domProps: { value: _vm.csrfToken }
+                            })
+                          ]
+                        )
                       ]
                     )
                   ]
                 )
               ]
             )
-          ]
-        )
+          : _vm._e()
       ]
     ),
     _vm._v(" "),
@@ -3200,6 +3237,27 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "navigation-element-main" }, [
+      _c(
+        "a",
+        {
+          staticClass: "logo-link",
+          attrs: { title: "Strona główna", href: "/" }
+        },
+        [
+          _c("span", {
+            staticClass: "fas navbar-icon navbar-icon-outer fa-heartbeat"
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "logo-description" })
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "li",
       { staticClass: "sub-menu-list-element-intendation-second-level" },
@@ -3269,23 +3327,6 @@ var staticRenderFns = [
             staticClass: "fas navbar-icon navbar-icon-outer fa-star"
           }),
           _vm._v("\r\n\t\t\t\t\t Gwiazdy porno\r\n\t\t\t\t\t")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "li",
-      { staticClass: "sub-menu-list-element intendation-first-level" },
-      [
-        _c("div", { staticClass: "sub-menu-level-one-item" }, [
-          _c("span", {
-            staticClass: "fas navbar-icon navbar-icon-outer fa-cogs"
-          }),
-          _vm._v("\r\n\t\t\t\t\t\tUstawienia profilu\r\n\t\t\t\t")
         ])
       ]
     )

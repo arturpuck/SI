@@ -20,6 +20,7 @@
          v-bind:user-id="{{Auth::user()->id}}"
 		 user-name="{{Auth::user()->login}}"
 		 logout-route="{{route('auth.logout')}}"
+		 user-settings-route="{{route('user.settings.show.panel')}}"
        @endauth
 
        @guest

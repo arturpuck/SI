@@ -1,9 +1,14 @@
 .default-news-header{
     @include news-header-basic();
-    background:#211e1e;
-    @include responsive-font(1.2vw,14px, Aldrich);
+    @include responsive-font(1.2vw,14px);
     display:flex;
     align-items: center;
+    background: #211e1e
+}
+
+.default-news-header-icon{
+    margin: 0 7px;
+    color:#ef0244;
 }
 
 .default-news-content{
@@ -13,7 +18,7 @@
 }
 
 .default-news-header-text{
-    margin-left: 10%;
+    flex-grow: 10;
 }
 
 .default-news-added-at-date{

@@ -2,7 +2,13 @@
 <div>
 <nav tabindex="0" v-on:focusout="resetNavbar" id="navbar" v-on:mouseenter="setElementToFocusState"  class="page-navigation">
 	<ul class="navigation-list">
-		<li v-on:click="togglePornSubMenu" v-on:mouseenter="showPornSubMenu"  class="navigation-element-main navigation-element-padding">
+		<li class="navigation-element-main">
+			<a title="Strona główna" href="/" class="logo-link">
+			   <span class="fas navbar-icon navbar-icon-outer fa-heartbeat"></span>
+			   <span class="logo-description"></span>
+			</a>
+		</li>
+		<li v-on:click="togglePornSubMenu" v-on:mouseenter="showPornSubMenu"  class="navigation-element-main">
 			<span v-show="!pornSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-camera-retro"></span>
 			<span v-show="pornSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-arrow-up"></span>
             	Porno
@@ -19,7 +25,7 @@
 			  Loguj
 			</div>
 		</li>
-		<li v-if="userIsAuthenticated" v-on:mouseenter="showUserSubMenu" v-on:click="toggleUserSubMenu" class="navigation-element-main navbar-element-user navigation-element-padding">
+		<li v-if="userIsAuthenticated" v-on:mouseenter="showUserSubMenu" v-on:click="toggleUserSubMenu" class="navigation-element-main navbar-element-user">
 			<span class="fas navbar-icon navbar-icon-outer fa-user"></span>
             <span v-text="userName" class="user-nick"></span>
 		</li>
@@ -61,12 +67,12 @@
 					</div>
 			    </li>
 		</ul>
-		<ul v-bind:class="{'visible-sub-menu' : userSubMenuIsVisible,  'hidden-sub-menu' : !userSubMenuIsVisible}" class="sub-menu-list user-panel-sub-menu-list">
+		<ul v-if="userIsAuthenticated" v-bind:class="{'visible-sub-menu' : userSubMenuIsVisible,  'hidden-sub-menu' : !userSubMenuIsVisible}" class="sub-menu-list user-panel-sub-menu-list">
 			<li class="sub-menu-list-element intendation-first-level">
-				<div class="sub-menu-level-one-item">
+				<a v-bind:href="userSettingsRoute" class="sub-menu-link sub-menu-level-one-item">
 					<span class="fas navbar-icon navbar-icon-outer fa-cogs"></span>
-						Ustawienia profilu
-				</div>
+					Ustawienia profilu
+				</a>
 			</li>
 			<li class="sub-menu-list-element intendation-first-level">
 				<div v-on:click="logout" class="sub-menu-level-one-item">
@@ -164,6 +170,12 @@ import IconClose from "./form_controls/icon_close.vue";
 				required : false,
 				type: String,
 				default : ""
+			},
+
+			userSettingsRoute : {
+				required : false,
+				type: String,
+				default : ""
 			}
 
         },
@@ -212,7 +224,7 @@ import IconClose from "./form_controls/icon_close.vue";
 		   resetNavbar(){
 				this.pornSubMenuIsVisible = false;
 				this.userSubMenuIsVisible = false
-		   	    this.hideAllSecondLevelSubMenus();
+				this.hideAllSecondLevelSubMenus();  
 		   },
 
 		   toggleLoginPanel(){
@@ -255,6 +267,27 @@ import IconClose from "./form_controls/icon_close.vue";
 <style lang="scss">
 
 @import '../../sass/fonts';
+
+@mixin navbar-link{
+	color:white;
+	text-decoration: none;
+	display:flex;
+	align-items: baseline;
+}
+
+.logo-link{
+	@include navbar-link();
+}
+
+.sub-menu-link{
+	text-decoration: none;
+	color:inherit;
+	display: block;
+}
+
+.logo-description::after{
+	content: "Sex-Imperium";
+}
 
 .user-panel-sub-menu-list{
 	right:1vw;
@@ -337,7 +370,6 @@ import IconClose from "./form_controls/icon_close.vue";
 }
 
 .login-button-container{
-	padding: 6px;
     height: 100%;
 }
 
@@ -395,14 +427,11 @@ import IconClose from "./form_controls/icon_close.vue";
 	color:white;
 	display: inline-block;
 	line-height: 100%;
-	@include responsive-font(1.5vw, 18px, 'Oxanium');
+	@include responsive-font(1.5vw, 18px, 'Aldrich');
 	display: flex;
     flex-direction: row;
-    align-items: center;
-}
-
-.navigation-element-padding{
-   padding:6px;
+	align-items: baseline;
+	padding:6px;
 }
 
 .page-navigation{
@@ -427,7 +456,7 @@ $border-color: black;
 	padding: 0;
     list-style-type: none;
     margin: 0;
-	@include responsive-font(1.5vw, 18px, 'Oxanium');
+	@include responsive-font(1.5vw, 18px, 'Aldrich');
 	color:white;
 	min-width:140px;
 	z-index:1;
@@ -435,7 +464,7 @@ $border-color: black;
 }
 
 .porn-sub-menu-list{
-	left:1vw;
+	left:13vw;
 }
 
 .hidden-sub-menu{
@@ -507,11 +536,39 @@ $border-color: black;
 }
 
 .navbar-link-main-manu{
-	color:inherit;
-	text-decoration:none;
-	padding:6px;
-	height: 100%;
-    display: inline-block;
+	@include navbar-link();
+}
+
+@media(max-width: 400px){
+	.navigation-element-main{
+		padding:3px 1px;
+		font-size:16px;
+	}
+
+	.sub-menu-list{
+		font-size:16px;
+	}
+
+	.navbar-icon{
+		margin:0 3px;
+	}
+}
+
+@media(min-width:520px) and (max-width: 1200px){
+	.porn-sub-menu-list{
+       left:150px;
+	}
+}
+
+@media(max-width: 520px){
+	.logo-description::after{
+		content: "SI";
+	}
+
+	.porn-sub-menu-list{
+       left:50px;
+	}
+
 }
 
 </style>

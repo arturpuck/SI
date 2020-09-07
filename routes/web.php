@@ -39,8 +39,15 @@ Route::namespace('Auth')->name('auth.')->group(function(){
 
        Route::post('/wyloguj', 'LoginController@logout')
                     ->name('logout');
-       
        Route::get('/haslo/potwierdzenie-zmiany', 'ResetPasswordController@showConfirmation')
               ->name('password.reset.confirmation');
        
 });
+
+Route::middleware(['auth'])->name('user.')->namespace('User')->group(function(){
+
+       Route::get('profil/ustawienia', 'UserSettingsController@showPanel')
+              ->name('settings.show.panel');
+
+});
+
