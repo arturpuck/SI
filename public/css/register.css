@@ -195,12 +195,6 @@
   box-sizing: border-box;
 }
 
-.app-container {
-  min-height: calc(100vh - 40px);
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
-}
-
 .full-body {
   margin: 0;
   padding: 0;

@@ -24,7 +24,8 @@ class ViewProvider extends ServiceProvider
                 "mainpage",
                 "register",
                 "request_password_reset_link",
-                "password_reset_confirmation"
+                "password_reset_confirmation",
+                "settings_panel"
             ];
 
             $viewName = Str::afterLast($view->getName(), ".");

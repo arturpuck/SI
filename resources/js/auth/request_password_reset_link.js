@@ -4,11 +4,13 @@ import Navbar  from '../components/navbar.vue';
 import SubmitButton from "../components/form_controls/submit_button.vue";
 import TextInputCombo from "../components/form_controls/text_input_combo.vue";
 import ExpectBar from "../components/decoration/expect_bar.vue";
+import ClickDetector from '../components/click_detector.vue';
 
 Vue.component('navbar', Navbar);
 Vue.component('submit-button', SubmitButton);
 Vue.component('text-input-combo', TextInputCombo);
 Vue.component('expect-bar', ExpectBar);
+Vue.component('click-detector', ClickDetector);
 
   new Vue({
  el: '#app',

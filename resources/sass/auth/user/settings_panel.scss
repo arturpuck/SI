@@ -1,0 +1,5 @@
+@import '../../basic';
+@import '../../background_images';
+
+$imageFolder : user-settings;
+@include background-image(chick-in-bar,1);

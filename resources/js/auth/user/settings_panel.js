@@ -1,0 +1,19 @@
+import Vue from 'vue';
+import ClickDetector from '../../components/click_detector.vue';
+import Navbar  from '../../components/navbar.vue';
+
+Vue.component('navbar', Navbar);
+Vue.component('click-detector', ClickDetector);
+
+new Vue({
+    el: '#app',
+   
+    data : {
+       
+    },
+   
+    methods : {
+        
+   }
+   
+});

@@ -16,6 +16,8 @@ class ContactFormController extends Controller
 
      public function showContactForm()
     {
-    	return view('contact');
+    	return view('contact')->with([
+            'specificImageClass' => 'empire-background-image-'.rand(1,1)
+        ]);
     }
 }

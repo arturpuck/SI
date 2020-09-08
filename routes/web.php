@@ -44,7 +44,7 @@ Route::namespace('Auth')->name('auth.')->group(function(){
        
 });
 
-Route::middleware(['auth'])->name('user.')->namespace('User')->group(function(){
+Route::middleware(['auth'])->name('auth.user.')->namespace('Auth\User')->group(function(){
 
        Route::get('profil/ustawienia', 'UserSettingsController@showPanel')
               ->name('settings.show.panel');

@@ -195,12 +195,6 @@
   box-sizing: border-box;
 }
 
-.app-container {
-  min-height: calc(100vh - 40px);
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
-}
-
 .full-body {
   margin: 0;
   padding: 0;
@@ -266,75 +260,75 @@
 }
 
 @media (min-width: 2000px) {
-  .mainpage-background-image-1 {
+  .empire-background-image-1 {
     background-image: url("../images/decoration/mainpage/background-images/compressed/japanese-schoolgirl-m-2000-min.jpg");
   }
 }
 
 @media (min-width: 1200px) and (max-width: 1999px) {
-  .mainpage-background-image-1 {
+  .empire-background-image-1 {
     background-image: url("../images/decoration/mainpage/background-images/compressed/japanese-schoolgirl-m-1200-min.jpg");
   }
 }
 
 @media (max-width: 1199px) {
-  .mainpage-background-image-1 {
+  .empire-background-image-1 {
     background-image: url("../images/decoration/mainpage/background-images/compressed/japanese-schoolgirl-m-0-min.jpg");
     background-position: right;
   }
 }
 
 @media (min-width: 2000px) {
-  .mainpage-background-image-2 {
+  .empire-background-image-2 {
     background-image: url("../images/decoration/mainpage/background-images/compressed/cute-girl-m-2000-min.jpg");
   }
 }
 
 @media (min-width: 1200px) and (max-width: 1999px) {
-  .mainpage-background-image-2 {
+  .empire-background-image-2 {
     background-image: url("../images/decoration/mainpage/background-images/compressed/cute-girl-m-1200-min.jpg");
   }
 }
 
 @media (max-width: 1199px) {
-  .mainpage-background-image-2 {
+  .empire-background-image-2 {
     background-image: url("../images/decoration/mainpage/background-images/compressed/cute-girl-m-0-min.jpg");
   }
 }
 
 @media (min-width: 2000px) {
-  .mainpage-background-image-3 {
+  .empire-background-image-3 {
     background-image: url("../images/decoration/mainpage/background-images/compressed/car-date-m-2000-min.jpg");
   }
 }
 
 @media (min-width: 1200px) and (max-width: 1999px) {
-  .mainpage-background-image-3 {
+  .empire-background-image-3 {
     background-image: url("../images/decoration/mainpage/background-images/compressed/car-date-m-1200-min.jpg");
   }
 }
 
 @media (max-width: 1199px) {
-  .mainpage-background-image-3 {
+  .empire-background-image-3 {
     background-image: url("../images/decoration/mainpage/background-images/compressed/car-date-m-0-min.jpg");
     background-position: left;
   }
 }
 
 @media (min-width: 2000px) {
-  .mainpage-background-image-4 {
+  .empire-background-image-4 {
     background-image: url("../images/decoration/mainpage/background-images/compressed/japanese-chick-in-lambo-m-2000-min.jpg");
   }
 }
 
 @media (min-width: 1200px) and (max-width: 1999px) {
-  .mainpage-background-image-4 {
+  .empire-background-image-4 {
     background-image: url("../images/decoration/mainpage/background-images/compressed/japanese-chick-in-lambo-m-1200-min.jpg");
   }
 }
 
 @media (max-width: 1199px) {
-  .mainpage-background-image-4 {
+  .empire-background-image-4 {
     background-image: url("../images/decoration/mainpage/background-images/compressed/japanese-chick-in-lambo-m-0-min.jpg");
   }
 }

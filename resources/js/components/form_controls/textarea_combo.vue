@@ -184,7 +184,7 @@ import IconConfirm from '../decoration/icon_confirm.vue';
              rowsNumber : {
                  required : false,
                  type : Number,
-                 default : 10
+                 default : 6
              }
 
 

@@ -195,12 +195,6 @@
   box-sizing: border-box;
 }
 
-.app-container {
-  min-height: calc(100vh - 40px);
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
-}
-
 .full-body {
   margin: 0;
   padding: 0;
@@ -233,14 +227,20 @@
   }
 }
 
-@media (min-width: 1201px) {
-  .full-body {
-    background-image: url("../images/decoration/contact/compressed/background-min-3.jpg");
+@media (min-width: 2000px) {
+  .empire-background-image-1 {
+    background-image: url("../images/decoration/contact/background-images/compressed/chick-on-piano-m-2000-min.jpg");
   }
 }
 
-@media (max-width: 1200px) {
-  .full-body {
-    background-image: url("../images/decoration/contact/compressed/girl-with-phone-min.jpg");
+@media (min-width: 1200px) and (max-width: 1999px) {
+  .empire-background-image-1 {
+    background-image: url("../images/decoration/contact/background-images/compressed/chick-on-piano-m-1200-min.jpg");
+  }
+}
+
+@media (max-width: 1199px) {
+  .empire-background-image-1 {
+    background-image: url("../images/decoration/contact/background-images/compressed/chick-on-piano-m-0-min.jpg");
   }
 }

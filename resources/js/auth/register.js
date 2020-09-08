@@ -6,6 +6,7 @@ import ExpectCircle  from '../components/decoration/expect_circle.vue';
 import SubmitButton from '../components/form_controls/submit_button.vue';
 import DescribedSelect from '../components/form_controls/described_select.vue';
 import DatePicker from '../components/form_controls/date_picker.vue';
+import ClickDetector from '../components/click_detector.vue';
 
 Vue.component('navbar', Navbar);
 Vue.component('text-input-combo', TextInputCombo);
@@ -13,6 +14,7 @@ Vue.component('expect-circle', ExpectCircle);
 Vue.component('submit-button',SubmitButton);
 Vue.component('described-select', DescribedSelect);
 Vue.component('date-picker', DatePicker);
+Vue.component('click-detector', ClickDetector);
 
   new Vue({
  el: '#app',

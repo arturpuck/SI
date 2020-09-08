@@ -13,13 +13,14 @@
 }
 
 @import 'basic';
-@import 'mainpage_background_images';
+@import 'background_images';
 @import 'news/default_news';
+$imageFolder : mainpage;
 
-@include mainpage-background-image(japanese-schoolgirl,1,right);
-@include mainpage-background-image(cute-girl,2);
-@include mainpage-background-image(car-date,3,left);
-@include mainpage-background-image(japanese-chick-in-lambo,4);
+@include background-image(japanese-schoolgirl,1,right);
+@include background-image(cute-girl,2);
+@include background-image(car-date,3,left);
+@include background-image(japanese-chick-in-lambo,4);
 
 .news-introduction{
     padding:3px 5px;

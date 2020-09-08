@@ -1,6 +1,6 @@
 <template>
 <div>
-<nav tabindex="0" v-on:focusout="resetNavbar" id="navbar" v-on:mouseenter="setElementToFocusState"  class="page-navigation">
+<nav class="page-navigation">
 	<ul class="navigation-list">
 		<li class="navigation-element-main">
 			<a title="Strona główna" href="/" class="logo-link">
@@ -30,7 +30,6 @@
             <span v-text="userName" class="user-nick"></span>
 		</li>
 	</ul>
-	<div v-on:click="resetNavbar" class="click-detector"></div>
 	<ul v-bind:class="{'visible-sub-menu' : pornSubMenuIsVisible , 'hidden-sub-menu' : !pornSubMenuIsVisible}" class="sub-menu-list porn-sub-menu-list">
 		<li class="sub-menu-list-element intendation-first-level">
 			<div v-on:click="toggleMoviesSubMenu" class="sub-menu-level-one-item">
@@ -41,7 +40,6 @@
 		</li>
 		<li>
 			<ul class="sub-menu-list-nested-level-two" :class="moviesSubMenuIsVisible && pornSubMenuIsVisible ? 'visible-movies-sub-menu' : 'hidden-movies-sub-menu'">
-					
 					<li class="sub-menu-list-element-intendation-second-level">
 						<span class="fas navbar-icon navbar-icon-second-level fa-images"></span>
 						Kategorie
@@ -217,10 +215,6 @@ import IconClose from "./form_controls/icon_close.vue";
 			  this.hideAllSecondLevelSubMenus();
 		   },
 
-		   setElementToFocusState(event){
-               event.target.focus();
-		   },
-
 		   resetNavbar(){
 				this.pornSubMenuIsVisible = false;
 				this.userSubMenuIsVisible = false
@@ -253,13 +247,28 @@ import IconClose from "./form_controls/icon_close.vue";
 
 		   logout(){
 			   this.$refs.logoutForm.submit();
+		   },
+
+		   handleClickoutsideNavbar(){
+
+               if(this.anySubMenuIsVisible){
+				   this.resetNavbar();
+			   }
 		   }
     
+		},
+
+		computed : {
+
+            anySubMenuIsVisible(){
+				return this.pornSubMenuIsVisible || this.userSubMenuIsVisible;
+			}
 		},
 		
 		mounted(){
 		   this.csrfToken = document.getElementById("csrf-token").content;
 		   this.userIsAuthenticated = Boolean(this.userId);
+		   this.$root.$on('clickOutsideNavbar',this.handleClickoutsideNavbar);
 		}
     }
 </script>
@@ -267,6 +276,7 @@ import IconClose from "./form_controls/icon_close.vue";
 <style lang="scss">
 
 @import '../../sass/fonts';
+@import '../../sass/components/login_panel';
 
 @mixin navbar-link{
 	color:white;
@@ -274,6 +284,8 @@ import IconClose from "./form_controls/icon_close.vue";
 	display:flex;
 	align-items: baseline;
 }
+
+
 
 .logo-link{
 	@include navbar-link();
@@ -318,30 +330,6 @@ import IconClose from "./form_controls/icon_close.vue";
 
 .labeled-checkbox-description{
 	color:white;
-}
-
-.login-info{
-	@include responsive-font(1.5vw, 19px, Play);
-	color:white;
-}
-
-.login-form-container{
-	position: fixed;
-	background: rgba(0,0,0,0.75);
-	top:0;
-	left:0;
-	width:100vw;
-	height:100vh;
-	z-index: 999;
-}
-
-.login-panel-toolbar{
-	border-radius: 5px 5px 0 0;
-	background:#242229;
-	padding: 5px;
-	display:flex;
-	justify-content: space-between;
-	align-items: center;
 }
 
 .main-panel-label

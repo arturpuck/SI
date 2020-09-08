@@ -1,0 +1,23 @@
+.login-info{
+	@include responsive-font(1.5vw, 19px, Play);
+	color:white;
+}
+
+.login-form-container{
+	position: fixed;
+	background: rgba(0,0,0,0.75);
+	top:0;
+	left:0;
+	width:100vw;
+	height:100vh;
+	z-index: 999;
+}
+
+.login-panel-toolbar{
+	border-radius: 5px 5px 0 0;
+	background:#242229;
+	padding: 5px;
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+}

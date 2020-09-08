@@ -1,4 +1,7 @@
 @import 'basic';
+@import 'background_images';
+
+$imageFolder : contact;
 
 .contact-form{
 	max-width:500px;
@@ -16,20 +19,4 @@
 	@include responsive-font(1.2vw,15px);
 }
 
-
-@media (min-width: 1201px)
-{
-  .full-body{
-  	background-image: url('../images/decoration/contact/compressed/background-min-3.jpg');
-  }
-  
-}
-
-
-@media(max-width: 1200px)
-{
-  .full-body{
-  	background-image: url('../images/decoration/contact/compressed/girl-with-phone-min.jpg');
-  }
-  
-}
+@include background-image(chick-on-piano,1);
