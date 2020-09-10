@@ -96,5 +96,10 @@
     "categories" : "Kategorie",
     "search_engine" : "Wyszukiwarka",
     "user_settings_title" : "Ustawienia profilu użytkownika",
-    "user_settings_description" : "Ustawienia i preferencje użytkownika. Zmień avatar, dane osobiste lub usuń konto"
+    "user_settings_description" : "Ustawienia i preferencje użytkownika. Zmień avatar, dane osobiste lub usuń konto",
+    "basic_user_data" : "Dane użytkownika",
+    "avatar" : "Avatar",
+    "data_is_beeing_saved" : "Zapisywanie danych",
+    "data" : "Dane",
+    "save_data" : "Zapisz dane"
 }

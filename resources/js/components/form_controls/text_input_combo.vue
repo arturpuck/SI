@@ -1,5 +1,5 @@
 <template>
-<div class="text-input-combo-container">
+<div ref="container" class="text-input-combo-container">
   <div v-if="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box">
 	
   </div>
@@ -7,7 +7,7 @@
      <icon-stop v-if="iconErrorCanBeDisplayed" v-show="displayIconError"/>
      <icon-confirm v-if="iconConfirmationCanBeDisplayed" v-show="displayIconConfirmation"/>
      <span class="text-input-description"><slot></slot></span>
-     <input ref="text_input" v-bind:name="name" :required="inputIsRequired" v-bind:placeholder="placeholderText" class="text-input-combo-value" v-model="textInputValue" v-bind:type="inputType">
+     <input v-bind:disabled="isDisabled" ref="text_input" v-bind:name="name" :required="inputIsRequired" v-bind:placeholder="placeholderText" class="text-input-combo-value" v-model="inputValue" v-bind:type="inputType">
   </label>
 </div>
 </template>
@@ -22,7 +22,7 @@ import IconConfirm from '../decoration/icon_confirm.vue';
 		 	return {
                  valueOK : undefined,
                  errorMessage : undefined,
-                 textInputValue : undefined,
+                 inputValue : undefined,
                  iconErrorCanBeDisplayed : undefined,
                  iconConfirmationCanBeDisplayed : undefined,
                  redBorderCanBeDisplayed : undefined,
@@ -70,7 +70,7 @@ import IconConfirm from '../decoration/icon_confirm.vue';
          },
 
          created(){
-             this.textInputValue = this.initialValue;
+             this.inputValue = this.initialValue;
              this.errorMessage = this.initialErrorText;
              this.iconErrorCanBeDisplayed = (this.errorIconAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
              this.iconConfirmationCanBeDisplayed = (this.confirmationIconAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
@@ -200,6 +200,12 @@ import IconConfirm from '../decoration/icon_confirm.vue';
                 required : false,
                 type : Object,
                 default : undefined 
+             },
+
+             isDisabled : {
+                 required : false,
+                 type : Boolean,
+                 default : false
              }
 
 
@@ -235,6 +241,7 @@ import IconConfirm from '../decoration/icon_confirm.vue';
     margin:0 auto;
     border: 2px solid transparent;
     position:relative;
+    height: 2em;
 }
 
 .text-input-description{
@@ -252,7 +259,7 @@ import IconConfirm from '../decoration/icon_confirm.vue';
     box-shadow: 0 0 0 1000px #242229 inset;
 }
 
-.text-input-combo-value, .text-input-description{
+.text-input-combo-value, .text-input-description, .text-input-combo-value-label{
     @include responsive-font;
 }
 

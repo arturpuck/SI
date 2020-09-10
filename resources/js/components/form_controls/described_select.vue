@@ -7,7 +7,7 @@
     <icon-stop v-if="iconErrorCanBeDisplayed" v-show="displayIconError"/>
     <icon-confirm v-if="iconConfirmationCanBeDisplayed" v-show="displayIconConfirmation"/>
 	<span class="select-description"><slot></slot></span>
-	<select v-bind:name="name" ref="select_value" v-model="selectedValue" class="described-select">
+	<select v-bind:name="name" ref="select_value" v-model="inputValue" class="described-select">
             <option v-for="(option, index) in visibleOptionsList" v-bind:value="optionValues[index]">{{option}}</option>
 	</select>
 </label>
@@ -25,7 +25,7 @@ import IconConfirm from '../decoration/icon_confirm.vue';
 		 	return {
                  valueOK : undefined,
                  errorMessage : undefined,
-                 selectedValue : undefined,
+                 inputValue : undefined,
                  iconErrorCanBeDisplayed : undefined,
                  iconConfirmationCanBeDisplayed : undefined,
                  redBorderCanBeDisplayed : undefined,
@@ -54,7 +54,7 @@ import IconConfirm from '../decoration/icon_confirm.vue';
          },
 
          created(){
-             this.selectedValue = this.initialValue;
+             this.inputValue = this.initialValue;
              this.errorMessage = this.initialErrorText;
              this.iconErrorCanBeDisplayed = (this.errorIconAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
              this.iconConfirmationCanBeDisplayed = (this.confirmationIconAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
@@ -203,7 +203,8 @@ import IconConfirm from '../decoration/icon_confirm.vue';
 	margin:0 auto;
 	background:#242229;
 	position:relative;
-	border: 2px solid transparent;
+    border: 2px solid transparent;
+    height: 2em;
 }
 
 .select-description{
@@ -219,7 +220,7 @@ import IconConfirm from '../decoration/icon_confirm.vue';
 	outline:none;
 }
 
-.described-select, .select-description{
+.described-select, .select-description, .select-label{
     @include responsive-font;
 }
 

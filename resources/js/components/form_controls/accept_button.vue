@@ -1,28 +1,20 @@
 <template>
-   <input type="submit" class="submit-button" v-bind:value="description">
+   <button type="button" class="accept-button">
+       <slot></slot>
+   </button>
 </template>
 
 <script>
 	export default {
-        name: 'submit-button',
-        data() {
-		 	return {
-		 		description : "Zaloguj"
-             };
-             
-         },
-
-        mounted(){
-            this.description = this.$slots.default[0].text;
-        }
+        name: 'accept-button',
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 @import'../../../sass/fonts';
 
-.submit-button
+.accept-button
 {
 	background: linear-gradient(#0fe00b, #054004);
 	padding:5px;

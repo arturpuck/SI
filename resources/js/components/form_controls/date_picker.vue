@@ -1,6 +1,6 @@
 <template>
 <div class="date-picker-container">
-    <input type="hidden" v-bind:value="dateString" v-bind:name="name">
+    <input type="hidden" v-bind:disabled="isDisabled" v-bind:value="dateString" v-bind:name="name">
   	<div class="date-picker-description">
   		<slot></slot>
   	</div>
@@ -9,7 +9,7 @@
      <icon-confirm v-if="iconConfirmationCanBeDisplayed" v-show="displayIconConfirmation"/>
   	<div class="time-span-container">
   		<label for="date-picker-day" class="time-span-label">{{descriptions['day']}}</label>
- 	 	<select ref="day_select" v-model="selectedDay" id="date-picker-day" class="time-span-select">
+ 	 	<select v-bind:disabled="isDisabled" ref="day_select" v-model="selectedDay" id="date-picker-day" class="time-span-select">
  	 	    <option value="0">--{{descriptions['day']}}--</option>
             <option v-for="day in numberOfDaysInMonth" v-bind:value="day">{{day}}</option>
  	 	</select>
@@ -17,7 +17,7 @@
   		
  	<div class="time-span-container">
  	    <label for="date-picker-month" class="time-span-label">{{descriptions['month']}}</label>
-        <select v-on:change="adjustDays" v-model="selectedMonth" id="date-picker-month" class="time-span-select">
+        <select v-bind:disabled="isDisabled" v-on:change="adjustDays" v-model="selectedMonth" id="date-picker-month" class="time-span-select">
            	<option value="0">--{{descriptions['month']}}--</option>
                <option v-for="(month, index) in months" v-bind:value="index + 1">{{month}}</option>
  	 	</select>
@@ -25,7 +25,7 @@
  	    
  	<div class="time-span-container">
   		<label for="date-picker-year" class="time-span-label">{{descriptions['year']}}</label>
- 	 	<select v-on:change="adjustDays" v-model="selectedYear" id="date-picker-year" class="time-span-select">
+ 	 	<select v-bind:disabled="isDisabled" v-on:change="adjustDays" v-model="selectedYear" id="date-picker-year" class="time-span-select">
  	 	    <option value="0">--{{descriptions['year']}}--</option>
             <option v-for="n in  timespan" v-bind:value="lastYear - n + 1">{{lastYear - n +1}}</option>
  	 	</select>
@@ -98,10 +98,9 @@ import MonthsInDifferentLanguages from '../../modules/helpers/months_in_differen
              initiateDate(){
                  if(this.initialValue !== "00-00-00"){
                     const splittedDate = this.initialValue.split("-");
-                    console.log(splittedDate);
-                    this.selectedYear = splittedDate[0];
-                    this.selectedMonth = splittedDate[1];
-                    this.selectedDay = splittedDate[2];
+                    this.selectedYear = splittedDate[0].replace("0","");
+                    this.selectedMonth = splittedDate[1].replace("0","");
+                    this.selectedDay = splittedDate[2].replace("0","");
                  }
              }
         },
@@ -201,6 +200,12 @@ import MonthsInDifferentLanguages from '../../modules/helpers/months_in_differen
             required : false,
             type : Function,
             default : null
+        },
+
+        isDisabled : {
+            required : false,
+            type : Boolean,
+            default : false
         }
 
     },
@@ -294,7 +299,10 @@ import MonthsInDifferentLanguages from '../../modules/helpers/months_in_differen
 		border: 2px solid transparent;
         position:relative;
         width: 95%;
+        height: 2em;
         margin: 0 auto;
+        @include responsive-font(1vw,14px);
+        align-items: center;
 	}
 
 	.time-span-select{

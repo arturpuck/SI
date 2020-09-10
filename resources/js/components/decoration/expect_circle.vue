@@ -54,6 +54,7 @@
   padding:4px 0;
   text-align:center;
   @include responsive-font();
+  color:white;
 }
 
 .expect-circles-inner-container{
@@ -62,6 +63,7 @@
   width:10vw;
   height:10vw;
   position:relative;
+  margin: 0 auto;
 }
 
 .flickering-circle{
@@ -71,7 +73,7 @@
   background:white;
   position:absolute;
   opacity:0;
-  animation:flicker 2s linear 0s infinite;
+  animation:flicker 4s linear 0s infinite;
 }
 
 .circle-1{
@@ -82,43 +84,43 @@
 .circle-2{
   top:15%;
   right:15%;
-  animation-delay:0.25s;
+  animation-delay:0.5s;
 }
 
 .circle-3{
   top:40%;
   right:5%;
-  animation-delay:0.50s;
+  animation-delay:1s;
 }
 
 .circle-4{
   bottom:15%;
   right:15%;
-  animation-delay:0.75s;
+  animation-delay:1.5s;
 }
 
 .circle-5{
   bottom:5%;
   left:40%;
-  animation-delay:1s;
+  animation-delay:2s;
 }
 
 .circle-6{
   left:15%;
   bottom:15%;
-  animation-delay:1.25s;
+  animation-delay:2.5s;
 }
 
 .circle-7{
   left:5%;
   top:40%;
-  animation-delay:1.5s;
+  animation-delay:3s;
 }
 
 .circle-8{
   top:15%;
   left:15%;
-  animation-delay:1.75s;
+  animation-delay:3.5s;
 }
 
 @keyframes flicker{
@@ -126,8 +128,12 @@
     opacity:0;
   }
   
-  10%{
+  50%{
     opacity:1;
+  }
+
+  70%{
+    opacity:0;
   }
 
   

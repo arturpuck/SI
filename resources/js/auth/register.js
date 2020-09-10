@@ -55,7 +55,7 @@ Vue.component('click-detector', ClickDetector);
             sender.showError(error);
          }  
       }
-      const login = sender.textInputValue;
+      const login = sender.inputValue;
 
       if(!login){
          sender.resetValidation();
@@ -92,7 +92,7 @@ Vue.component('click-detector', ClickDetector);
       email = encodeURI(email);
 
       try{
-         const response = await fetch(`verify-email/${email}`);
+         const response = await fetch(`/verify-email/${email}`);
              switch(response.status){
                 case 200:
                   sender.showValueIsOK();
@@ -119,7 +119,7 @@ Vue.component('click-detector', ClickDetector);
     function emailhasCorrectFormat (email) {
        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
      }
-     const email  = sender.textInputValue;
+     const email  = sender.inputValue;
 
      if(!email){
         sender.resetValidation();
@@ -144,7 +144,7 @@ Vue.component('click-detector', ClickDetector);
   validatePassword(sender){
 
      try{
-         const password = sender.textInputValue;
+         const password = sender.inputValue;
 
          if(!password){
             sender.resetValidation();
@@ -166,7 +166,7 @@ Vue.component('click-detector', ClickDetector);
   },
   
   validateSelect(sender){
-     const userType = sender.selectedValue;
+     const userType = sender.inputValue;
 
       if(userType === 'not-selected'){
          sender.showError("Należy wybrać jedną opcję");

@@ -1,7 +1,9 @@
 @mixin responsive-font($relativeFontSize : 1.2vw, $smallScreenFontSize : 16px, $family : "Exo 2", $changeAt : 1200px) {
 	font:{
 		size: $relativeFontSize;
-		family: $family, sans-serif;
+		@if $family != ""{
+			family: $family, sans-serif;
+		}
 	} 
 
 	@media(max-width: $changeAt){

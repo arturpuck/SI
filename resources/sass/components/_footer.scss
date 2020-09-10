@@ -8,6 +8,8 @@
 	@include responsive-font(2vw,30px, Aldrich);
 	color:white;
 	text-align: center;
+	position: relative;
+	z-index:1;
 }
 
 .contact-us-link

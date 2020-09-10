@@ -425,7 +425,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       valueOK: undefined,
       errorMessage: undefined,
-      textInputValue: undefined,
+      inputValue: undefined,
       iconErrorCanBeDisplayed: undefined,
       iconConfirmationCanBeDisplayed: undefined,
       redBorderCanBeDisplayed: undefined,
@@ -462,7 +462,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    this.textInputValue = this.initialValue;
+    this.inputValue = this.initialValue;
     this.errorMessage = this.initialErrorText;
     this.iconErrorCanBeDisplayed = this.errorIconAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable;
     this.iconConfirmationCanBeDisplayed = this.confirmationIconAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable;
@@ -579,6 +579,11 @@ __webpack_require__.r(__webpack_exports__);
       required: false,
       type: Object,
       "default": undefined
+    },
+    isDisabled: {
+      required: false,
+      type: Boolean,
+      "default": false
     }
   },
   components: {
@@ -602,6 +607,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _form_controls_submit_button_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./form_controls/submit_button.vue */ "./resources/js/components/form_controls/submit_button.vue");
 /* harmony import */ var _form_controls_text_input_combo_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./form_controls/text_input_combo.vue */ "./resources/js/components/form_controls/text_input_combo.vue");
 /* harmony import */ var _form_controls_icon_close_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./form_controls/icon_close.vue */ "./resources/js/components/form_controls/icon_close.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -778,7 +801,7 @@ __webpack_require__.r(__webpack_exports__);
       csrfToken: "",
       animatePanel: false,
       userIsAuthenticated: undefined,
-      userSubMenuIsVisible: false
+      userSideBarIsVisible: true
     };
   },
   methods: {
@@ -797,14 +820,8 @@ __webpack_require__.r(__webpack_exports__);
       this.pornSubMenuIsVisible = true;
       this.hideAllSubMenusExcept("pornSubMenuIsVisible");
     },
-    showUserSubMenu: function showUserSubMenu() {
-      this.userSubMenuIsVisible = true;
-      this.hideAllSubMenusExcept("userSubMenuIsVisible");
-      this.hideAllSecondLevelSubMenus();
-    },
     resetNavbar: function resetNavbar() {
-      this.pornSubMenuIsVisible = false;
-      this.userSubMenuIsVisible = false;
+      this.hideAllSubMenusExcept();
       this.hideAllSecondLevelSubMenus();
     },
     toggleLoginPanel: function toggleLoginPanel() {
@@ -815,14 +832,9 @@ __webpack_require__.r(__webpack_exports__);
         return _this.animatePanel = !_this.animatePanel;
       }, 300);
     },
-    toggleUserSubMenu: function toggleUserSubMenu() {
-      this.userSubMenuIsVisible = !this.userSubMenuIsVisible;
-      this.hideAllSubMenusExcept("userSubMenuIsVisible");
-      this.hideAllSecondLevelSubMenus();
-    },
     hideAllSubMenusExcept: function hideAllSubMenusExcept() {
       var except = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-      var subMenusControlVariableNames = ["userSubMenuIsVisible", "pornSubMenuIsVisible"];
+      var subMenusControlVariableNames = ["pornSubMenuIsVisible"];
 
       for (var _i = 0, _subMenusControlVaria = subMenusControlVariableNames; _i < _subMenusControlVaria.length; _i++) {
         var variableName = _subMenusControlVaria[_i];
@@ -835,6 +847,17 @@ __webpack_require__.r(__webpack_exports__);
     logout: function logout() {
       this.$refs.logoutForm.submit();
     },
+    hideSideBar: function hideSideBar() {
+      this.userSideBarIsVisible = false;
+      this.storeSideBarInformation('hidden');
+    },
+    showSideBar: function showSideBar() {
+      this.userSideBarIsVisible = true;
+      this.storeSideBarInformation('visible');
+    },
+    storeSideBarInformation: function storeSideBarInformation(visible) {
+      localStorage.setItem('sideBar', visible);
+    },
     handleClickoutsideNavbar: function handleClickoutsideNavbar() {
       if (this.anySubMenuIsVisible) {
         this.resetNavbar();
@@ -843,12 +866,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     anySubMenuIsVisible: function anySubMenuIsVisible() {
-      return this.pornSubMenuIsVisible || this.userSubMenuIsVisible;
+      return this.pornSubMenuIsVisible;
+    }
+  },
+  created: function created() {
+    this.userIsAuthenticated = Boolean(this.userId);
+
+    if (this.userIsAuthenticated) {
+      var sideBarInfo = localStorage.getItem('sideBar');
+      this.userSideBarIsVisible = sideBarInfo == 'hidden' ? false : true;
     }
   },
   mounted: function mounted() {
     this.csrfToken = document.getElementById("csrf-token").content;
-    this.userIsAuthenticated = Boolean(this.userId);
     this.$root.$on('clickOutsideNavbar', this.handleClickoutsideNavbar);
   }
 });
@@ -981,7 +1011,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".submit-button {\n  background: -webkit-gradient(linear, left top, left bottom, from(#0fe00b), to(#054004));\n  background: linear-gradient(#0fe00b, #054004);\n  padding: 5px;\n  color: white;\n  display: block;\n  width: 95%;\n  margin: 7px auto;\n  border-radius: 5px;\n  font-weight: bold;\n  border: none;\n  cursor: pointer;\n  font-size: 1.5vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.submit-button {\n    font-size: 19px;\n}\n}", ""]);
+exports.push([module.i, ".submit-button {\n  background: -webkit-gradient(linear, left top, left bottom, from(#0fe00b), to(#054004));\n  background: linear-gradient(#0fe00b, #054004);\n  padding: 5px;\n  color: white;\n  display: block;\n  width: 95%;\n  margin: 7px auto;\n  border-radius: 5px;\n  font-weight: bold;\n  border: none;\n  cursor: pointer;\n  font-size: 1.5vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n.submit-button:hover {\n  background: #ef0244;\n}\n@media (max-width: 1200px) {\n.submit-button {\n    font-size: 19px;\n}\n}", ""]);
 
 // exports
 
@@ -1000,7 +1030,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".error-message-box[data-v-6c07a9d0] {\n  display: block;\n  font-size: 1vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: red;\n  padding: 2px 2px 3px;\n  text-align: center;\n  height: calc(1em + 6px);\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n@media (max-width: 1200px) {\n.error-message-box[data-v-6c07a9d0] {\n    font-size: 13px;\n}\n}\n.icon-container[data-v-6c07a9d0] {\n  top: 0;\n  right: 0;\n  -webkit-transform: translate(50%, -50%);\n          transform: translate(50%, -50%);\n  position: absolute;\n}\n.text-input-combo-value-label[data-v-6c07a9d0] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n  background: #242229;\n  padding: 3px 10px;\n  border-radius: 8px;\n  color: white;\n  width: 95%;\n  margin: 0 auto;\n  border: 2px solid transparent;\n  position: relative;\n}\n.text-input-description[data-v-6c07a9d0] {\n  white-space: nowrap;\n}\n.text-input-combo-value[data-v-6c07a9d0] {\n  background: #242229;\n  border: none;\n  border-bottom: 1px solid transparent;\n  color: #fff;\n  width: 1%;\n  -webkit-box-flex: 10;\n          flex-grow: 10;\n  padding-left: 4px;\n  box-shadow: 0 0 0 1000px #242229 inset;\n}\n.text-input-combo-value[data-v-6c07a9d0], .text-input-description[data-v-6c07a9d0] {\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.text-input-combo-value[data-v-6c07a9d0], .text-input-description[data-v-6c07a9d0] {\n    font-size: 16px;\n}\n}\n.text-input-combo-value[data-v-6c07a9d0]:focus {\n  outline: none;\n  border-bottom: 1px solid #86838f;\n}\n.incorrect-value[data-v-6c07a9d0] {\n  border: 2px solid red;\n}\n.correct-value[data-v-6c07a9d0] {\n  border: 2px solid green;\n}", ""]);
+exports.push([module.i, ".error-message-box[data-v-6c07a9d0] {\n  display: block;\n  font-size: 1vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: red;\n  padding: 2px 2px 3px;\n  text-align: center;\n  height: calc(1em + 6px);\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n@media (max-width: 1200px) {\n.error-message-box[data-v-6c07a9d0] {\n    font-size: 13px;\n}\n}\n.icon-container[data-v-6c07a9d0] {\n  top: 0;\n  right: 0;\n  -webkit-transform: translate(50%, -50%);\n          transform: translate(50%, -50%);\n  position: absolute;\n}\n.text-input-combo-value-label[data-v-6c07a9d0] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n  background: #242229;\n  padding: 3px 10px;\n  border-radius: 8px;\n  color: white;\n  width: 95%;\n  margin: 0 auto;\n  border: 2px solid transparent;\n  position: relative;\n  height: 2em;\n}\n.text-input-description[data-v-6c07a9d0] {\n  white-space: nowrap;\n}\n.text-input-combo-value[data-v-6c07a9d0] {\n  background: #242229;\n  border: none;\n  border-bottom: 1px solid transparent;\n  color: #fff;\n  width: 1%;\n  -webkit-box-flex: 10;\n          flex-grow: 10;\n  padding-left: 4px;\n  box-shadow: 0 0 0 1000px #242229 inset;\n}\n.text-input-combo-value[data-v-6c07a9d0], .text-input-description[data-v-6c07a9d0], .text-input-combo-value-label[data-v-6c07a9d0] {\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.text-input-combo-value[data-v-6c07a9d0], .text-input-description[data-v-6c07a9d0], .text-input-combo-value-label[data-v-6c07a9d0] {\n    font-size: 16px;\n}\n}\n.text-input-combo-value[data-v-6c07a9d0]:focus {\n  outline: none;\n  border-bottom: 1px solid #86838f;\n}\n.incorrect-value[data-v-6c07a9d0] {\n  border: 2px solid red;\n}\n.correct-value[data-v-6c07a9d0] {\n  border: 2px solid green;\n}", ""]);
 
 // exports
 
@@ -1019,7 +1049,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".login-info {\n  font-size: 1.5vw;\n  font-family: Play, sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.login-info {\n    font-size: 19px;\n}\n}\n.login-form-container {\n  position: fixed;\n  background: rgba(0, 0, 0, 0.75);\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  z-index: 999;\n}\n.login-panel-toolbar {\n  border-radius: 5px 5px 0 0;\n  background: #242229;\n  padding: 5px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.logo-link {\n  color: white;\n  text-decoration: none;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n}\n.sub-menu-link {\n  text-decoration: none;\n  color: inherit;\n  display: block;\n}\n.logo-description::after {\n  content: \"Sex-Imperium\";\n}\n.user-panel-sub-menu-list {\n  right: 1vw;\n}\n.logout-form {\n  display: none;\n}\n.navbar-element-user {\n  margin-left: auto;\n}\n.submit-button:hover {\n  background: #a00e30;\n}\n.remember-me-description {\n  color: white;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.remember-me-description {\n    font-size: 16px;\n}\n}\n.labeled-checkbox-container {\n  display: block;\n  width: 95%;\n  margin: 4px auto 1px auto;\n}\n.labeled-checkbox-description {\n  color: white;\n}\n.main-panel-label {\n  display: block;\n  text-align: center;\n  padding: 4px;\n  font-size: 1.3vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.main-panel-label {\n    font-size: 18px;\n}\n}\n.forgot-password-link {\n  display: block;\n  padding: 4px;\n  text-align: center;\n  color: white;\n  text-decoration: none;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  border-radius: 0 0 7px 7px;\n  background: #242229;\n}\n@media (max-width: 1200px) {\n.forgot-password-link {\n    font-size: 17px;\n}\n}\n.forgot-password-link:hover {\n  text-decoration: underline;\n}\n.login-button-container {\n  height: 100%;\n}\n.login-form {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  background: black;\n  border-radius: 8px;\n  box-shadow: 3px 3px 3px 3px black;\n  min-width: 320px;\n  width: 25%;\n  font-family: \"Exo 2\", sans-serif;\n  border: 2px solid #242229;\n  opacity: 0;\n  -webkit-transition: opacity 1.5s;\n  transition: opacity 1.5s;\n}\n.visible-login-form {\n  opacity: 1;\n}\n.navigation-list {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  background: #0d0c0d;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  position: relative;\n  z-index: 3;\n  box-shadow: 2px 2px 2px 2px black;\n}\n.click-detector {\n  position: absolute;\n  z-index: 0;\n  top: 1px;\n  width: 100%;\n  height: 100%;\n}\n.register-selection {\n  margin-left: auto;\n}\n.navigation-element-main {\n  -webkit-transition: background 2s;\n  transition: background 2s;\n  cursor: pointer;\n  color: white;\n  display: inline-block;\n  line-height: 100%;\n  font-size: 1.5vw;\n  font-family: \"Aldrich\", sans-serif;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n  padding: 6px;\n}\n.navigation-element-main:hover {\n  background: #2d2d30;\n}\n@media (max-width: 1200px) {\n.navigation-element-main {\n    font-size: 18px;\n}\n}\n.page-navigation {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 10;\n  font-size: 0;\n}\n.page-navigation:focus {\n  outline: none;\n}\n.sub-menu-list {\n  position: absolute;\n  overflow: hidden;\n  display: inline-block;\n  top: 100%;\n  max-height: 0;\n  padding: 0;\n  list-style-type: none;\n  margin: 0;\n  font-size: 1.5vw;\n  font-family: \"Aldrich\", sans-serif;\n  color: white;\n  min-width: 140px;\n  z-index: 1;\n  border-radius: 0 0 8px 8px;\n}\n@media (max-width: 1200px) {\n.sub-menu-list {\n    font-size: 18px;\n}\n}\n.porn-sub-menu-list {\n  left: 13vw;\n}\n.hidden-sub-menu {\n  max-height: 0;\n  -webkit-transition: none;\n  transition: none;\n}\n.visible-sub-menu {\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n  max-height: 1500px;\n  box-shadow: 2px 2px 4px 3px black;\n}\n.sub-menu-list-element {\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n  border-bottom: 1px solid black;\n  cursor: pointer;\n}\n.sub-menu-list-nested-level-two {\n  list-style-type: none;\n  overflow: hidden;\n  padding: 0;\n  -webkit-transition: max-height 0.7s;\n  transition: max-height 0.7s;\n}\n.navbar-icon-second-level {\n  color: #bbb606;\n}\n.sub-menu-list-element-intendation-second-level {\n  padding: 5px 2px 5px 2vw;\n  border-bottom: 1px solid black;\n  white-space: nowrap;\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n}\n.sub-menu-list-element-intendation-second-level:hover {\n  background: black;\n  cursor: pointer;\n}\n.visible-movies-sub-menu {\n  max-height: 500px;\n}\n.hidden-movies-sub-menu {\n  max-height: 0;\n}\n.sub-menu-level-one-item {\n  padding: 5px 2px 5px 1vw;\n}\n.sub-menu-level-one-item:hover {\n  background: black;\n}\n.sum-menu-list-element:last-child {\n  border-radius: 0 0 8px 8px;\n}\n.navbar-icon {\n  margin: 0 5px;\n}\n.navbar-icon-outer {\n  color: #eb091c;\n}\n.navbar-link-main-manu {\n  color: white;\n  text-decoration: none;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n}\n@media (max-width: 400px) {\n.navigation-element-main {\n    padding: 3px 1px;\n    font-size: 16px;\n}\n.sub-menu-list {\n    font-size: 16px;\n}\n.navbar-icon {\n    margin: 0 3px;\n}\n}\n@media (min-width: 520px) and (max-width: 1200px) {\n.porn-sub-menu-list {\n    left: 150px;\n}\n}\n@media (max-width: 520px) {\n.logo-description::after {\n    content: \"SI\";\n}\n.porn-sub-menu-list {\n    left: 50px;\n}\n}", ""]);
+exports.push([module.i, ".login-info {\n  font-size: 1.5vw;\n  font-family: Play, sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.login-info {\n    font-size: 19px;\n}\n}\n.login-form-container {\n  position: fixed;\n  background: rgba(0, 0, 0, 0.75);\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  z-index: 999;\n}\n.login-panel-toolbar {\n  border-radius: 5px 5px 0 0;\n  background: #242229;\n  padding: 5px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.login-form {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  background: black;\n  border-radius: 8px;\n  box-shadow: 3px 3px 3px 3px black;\n  min-width: 320px;\n  width: 25%;\n  font-family: \"Exo 2\", sans-serif;\n  border: 2px solid #242229;\n  opacity: 0;\n  -webkit-transition: opacity 1.5s;\n  transition: opacity 1.5s;\n}\n.visible-login-form {\n  opacity: 1;\n}\n.user-sidebar {\n  position: fixed;\n  right: 0;\n  top: 0;\n  width: 4vw;\n  min-width: 55px;\n  z-index: 0;\n  background: #0d0c0d;\n  box-shadow: -1px -1px 2px 2px black;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-transition: height 1s;\n  transition: height 1s;\n  overflow: hidden;\n}\n.visible-sidebar {\n  height: 100vh;\n}\n.hidden-sidebar {\n  height: 0;\n}\n.user-sidebar-list {\n  padding: calc(25px + 2vw) 0 0 0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  margin: 0;\n  list-style-type: none;\n}\n.user-sidebar-element {\n  padding: 4px 0;\n  margin-top: 6px;\n  border-radius: 3px;\n  cursor: pointer;\n}\n.user-sidebar-element:hover {\n  background: #211e1e;\n}\n.sidebar-icon, .sidebar-item-description, .show-sidebar-button-element {\n  display: block;\n  text-align: center;\n}\n.sidebar-item-description {\n  font-size: 0.9vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.sidebar-item-description {\n    font-size: 10px;\n}\n}\n.sidebar-icon {\n  color: red;\n  font-size: 1.4vw;\n  font-family: initial, sans-serif;\n}\n@media (max-width: 1200px) {\n.sidebar-icon {\n    font-size: 16px;\n}\n}\n.logout-form {\n  display: none;\n}\n.show-sidebar-button {\n  position: absolute;\n  top: 100%;\n  right: 0;\n  width: 40%;\n  min-width: 30px;\n  text-align: center;\n  color: white;\n  border-radius: 0 0 5px 5px;\n  border-left: 1px solid black;\n  border-right: 1px solid black;\n  border-bottom: 1px solid black;\n  border-top: none;\n  background: #0d0c0d;\n  opacity: 0;\n  cursor: pointer;\n  -webkit-transition: opacity 1s, background 2s;\n  transition: opacity 1s, background 2s;\n  box-shadow: -1px 2px 2px 1px black;\n}\n.show-sidebar-button:hover {\n  background: #2d2d30;\n}\n.visible-sidebar-button {\n  opacity: 1;\n}\n.show-sidebar-button-decoration {\n  font-size: 1.5vw;\n}\n@media (max-width: 1200px) {\n.show-sidebar-button-decoration {\n    font-size: 18px;\n}\n}\n.logo-link {\n  color: white;\n  text-decoration: none;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n}\n.sub-menu-link {\n  text-decoration: none;\n  color: inherit;\n  display: block;\n}\n.logo-description::after {\n  content: \"Sex-Imperium\";\n}\n.user-panel-sub-menu-list {\n  right: 1vw;\n}\n.navbar-element-user {\n  margin-left: auto;\n  position: relative;\n}\n.remember-me-description {\n  color: white;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.remember-me-description {\n    font-size: 16px;\n}\n}\n.labeled-checkbox-container {\n  display: block;\n  width: 95%;\n  margin: 4px auto 1px auto;\n}\n.labeled-checkbox-description {\n  color: white;\n}\n.main-panel-label {\n  display: block;\n  text-align: center;\n  padding: 4px;\n  font-size: 1.3vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.main-panel-label {\n    font-size: 18px;\n}\n}\n.forgot-password-link {\n  display: block;\n  padding: 4px;\n  text-align: center;\n  color: white;\n  text-decoration: none;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  border-radius: 0 0 7px 7px;\n  background: #242229;\n}\n@media (max-width: 1200px) {\n.forgot-password-link {\n    font-size: 17px;\n}\n}\n.forgot-password-link:hover {\n  text-decoration: underline;\n}\n.login-button-container {\n  height: 100%;\n}\n.navigation-list {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  background: #0d0c0d;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  position: relative;\n  z-index: 3;\n  box-shadow: 2px 2px 2px 2px black;\n}\n.register-selection {\n  margin-left: auto;\n}\n.navigation-element-main {\n  -webkit-transition: background 2s;\n  transition: background 2s;\n  color: white;\n  display: inline-block;\n  line-height: 100%;\n  font-size: 1.5vw;\n  font-family: \"Aldrich\", sans-serif;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n  padding: 6px;\n}\n.navigation-element-main:hover {\n  background: #2d2d30;\n}\n.navigation-element-main:hover {\n  cursor: pointer;\n}\n@media (max-width: 1200px) {\n.navigation-element-main {\n    font-size: 18px;\n}\n}\n.page-navigation {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 10;\n  font-size: 0;\n}\n.page-navigation:focus {\n  outline: none;\n}\n.sub-menu-list {\n  position: absolute;\n  overflow: hidden;\n  display: inline-block;\n  top: 100%;\n  max-height: 0;\n  padding: 0;\n  list-style-type: none;\n  margin: 0;\n  font-size: 1.5vw;\n  font-family: \"Aldrich\", sans-serif;\n  color: white;\n  min-width: 140px;\n  z-index: 1;\n  border-radius: 0 0 8px 8px;\n}\n@media (max-width: 1200px) {\n.sub-menu-list {\n    font-size: 18px;\n}\n}\n.porn-sub-menu-list {\n  left: 13vw;\n}\n.hidden-sub-menu {\n  max-height: 0;\n  -webkit-transition: none;\n  transition: none;\n}\n.visible-sub-menu {\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n  max-height: 1500px;\n  box-shadow: 2px 2px 4px 3px black;\n}\n.sub-menu-list-element {\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n  border-bottom: 1px solid black;\n  cursor: pointer;\n}\n.sub-menu-list-nested-level-two {\n  list-style-type: none;\n  overflow: hidden;\n  padding: 0;\n  -webkit-transition: max-height 0.7s;\n  transition: max-height 0.7s;\n}\n.navbar-icon-second-level {\n  color: #bbb606;\n}\n.sub-menu-list-element-intendation-second-level {\n  padding: 5px 2px 5px 2vw;\n  border-bottom: 1px solid black;\n  white-space: nowrap;\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n}\n.sub-menu-list-element-intendation-second-level:hover {\n  background: black;\n  cursor: pointer;\n}\n.visible-movies-sub-menu {\n  max-height: 500px;\n}\n.hidden-movies-sub-menu {\n  max-height: 0;\n}\n.sub-menu-level-one-item {\n  padding: 5px 2px 5px 1vw;\n}\n.sub-menu-level-one-item:hover {\n  background: black;\n}\n.sum-menu-list-element:last-child {\n  border-radius: 0 0 8px 8px;\n}\n.navbar-icon {\n  margin: 0 5px;\n}\n.navbar-icon-outer {\n  color: #eb091c;\n}\n.navbar-link-main-manu {\n  color: white;\n  text-decoration: none;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n}\n@media (max-width: 400px) {\n.navigation-element-main {\n    padding: 3px 1px;\n    font-size: 16px;\n}\n.sub-menu-list {\n    font-size: 16px;\n}\n.navbar-icon {\n    margin: 0 3px;\n}\n}\n@media (min-width: 520px) and (max-width: 1200px) {\n.porn-sub-menu-list {\n    left: 150px;\n}\n}\n@media (max-width: 520px) {\n.logo-description::after {\n    content: \"SI\";\n}\n.porn-sub-menu-list {\n    left: 50px;\n}\n}", ""]);
 
 // exports
 
@@ -3385,159 +3415,166 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "text-input-combo-container" }, [
-    _vm.errorMessageBoxAvailable
-      ? _c("div", {
-          staticClass: "error-message-box",
-          domProps: { textContent: _vm._s(_vm.errorMessage) }
-        })
-      : _vm._e(),
-    _vm._v(" "),
-    _c(
-      "label",
-      {
-        ref: "label",
-        staticClass: "text-input-combo-value-label",
-        class: {
-          "incorrect-value": _vm.displayRedBorder,
-          "correct-value": _vm.displayGreenBorder
-        }
-      },
-      [
-        _vm.iconErrorCanBeDisplayed
-          ? _c("icon-stop", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.displayIconError,
-                  expression: "displayIconError"
-                }
-              ]
-            })
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.iconConfirmationCanBeDisplayed
-          ? _c("icon-confirm", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.displayIconConfirmation,
-                  expression: "displayIconConfirmation"
-                }
-              ]
-            })
-          : _vm._e(),
-        _vm._v(" "),
-        _c(
-          "span",
-          { staticClass: "text-input-description" },
-          [_vm._t("default")],
-          2
-        ),
-        _vm._v(" "),
-        _vm.inputType === "checkbox"
-          ? _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.textInputValue,
-                  expression: "textInputValue"
-                }
-              ],
-              ref: "text_input",
-              staticClass: "text-input-combo-value",
-              attrs: {
-                name: _vm.name,
-                required: _vm.inputIsRequired,
-                placeholder: _vm.placeholderText,
-                type: "checkbox"
-              },
-              domProps: {
-                checked: Array.isArray(_vm.textInputValue)
-                  ? _vm._i(_vm.textInputValue, null) > -1
-                  : _vm.textInputValue
-              },
-              on: {
-                change: function($event) {
-                  var $$a = _vm.textInputValue,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.textInputValue = $$a.concat([$$v]))
+  return _c(
+    "div",
+    { ref: "container", staticClass: "text-input-combo-container" },
+    [
+      _vm.errorMessageBoxAvailable
+        ? _c("div", {
+            staticClass: "error-message-box",
+            domProps: { textContent: _vm._s(_vm.errorMessage) }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "label",
+        {
+          ref: "label",
+          staticClass: "text-input-combo-value-label",
+          class: {
+            "incorrect-value": _vm.displayRedBorder,
+            "correct-value": _vm.displayGreenBorder
+          }
+        },
+        [
+          _vm.iconErrorCanBeDisplayed
+            ? _c("icon-stop", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.displayIconError,
+                    expression: "displayIconError"
+                  }
+                ]
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.iconConfirmationCanBeDisplayed
+            ? _c("icon-confirm", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.displayIconConfirmation,
+                    expression: "displayIconConfirmation"
+                  }
+                ]
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "span",
+            { staticClass: "text-input-description" },
+            [_vm._t("default")],
+            2
+          ),
+          _vm._v(" "),
+          _vm.inputType === "checkbox"
+            ? _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.inputValue,
+                    expression: "inputValue"
+                  }
+                ],
+                ref: "text_input",
+                staticClass: "text-input-combo-value",
+                attrs: {
+                  disabled: _vm.isDisabled,
+                  name: _vm.name,
+                  required: _vm.inputIsRequired,
+                  placeholder: _vm.placeholderText,
+                  type: "checkbox"
+                },
+                domProps: {
+                  checked: Array.isArray(_vm.inputValue)
+                    ? _vm._i(_vm.inputValue, null) > -1
+                    : _vm.inputValue
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.inputValue,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.inputValue = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.inputValue = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
                     } else {
-                      $$i > -1 &&
-                        (_vm.textInputValue = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
+                      _vm.inputValue = $$c
                     }
-                  } else {
-                    _vm.textInputValue = $$c
                   }
                 }
-              }
-            })
-          : _vm.inputType === "radio"
-          ? _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.textInputValue,
-                  expression: "textInputValue"
-                }
-              ],
-              ref: "text_input",
-              staticClass: "text-input-combo-value",
-              attrs: {
-                name: _vm.name,
-                required: _vm.inputIsRequired,
-                placeholder: _vm.placeholderText,
-                type: "radio"
-              },
-              domProps: { checked: _vm._q(_vm.textInputValue, null) },
-              on: {
-                change: function($event) {
-                  _vm.textInputValue = null
-                }
-              }
-            })
-          : _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.textInputValue,
-                  expression: "textInputValue"
-                }
-              ],
-              ref: "text_input",
-              staticClass: "text-input-combo-value",
-              attrs: {
-                name: _vm.name,
-                required: _vm.inputIsRequired,
-                placeholder: _vm.placeholderText,
-                type: _vm.inputType
-              },
-              domProps: { value: _vm.textInputValue },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+              })
+            : _vm.inputType === "radio"
+            ? _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.inputValue,
+                    expression: "inputValue"
                   }
-                  _vm.textInputValue = $event.target.value
+                ],
+                ref: "text_input",
+                staticClass: "text-input-combo-value",
+                attrs: {
+                  disabled: _vm.isDisabled,
+                  name: _vm.name,
+                  required: _vm.inputIsRequired,
+                  placeholder: _vm.placeholderText,
+                  type: "radio"
+                },
+                domProps: { checked: _vm._q(_vm.inputValue, null) },
+                on: {
+                  change: function($event) {
+                    _vm.inputValue = null
+                  }
                 }
-              }
-            })
-      ],
-      1
-    )
-  ])
+              })
+            : _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.inputValue,
+                    expression: "inputValue"
+                  }
+                ],
+                ref: "text_input",
+                staticClass: "text-input-combo-value",
+                attrs: {
+                  disabled: _vm.isDisabled,
+                  name: _vm.name,
+                  required: _vm.inputIsRequired,
+                  placeholder: _vm.placeholderText,
+                  type: _vm.inputType
+                },
+                domProps: { value: _vm.inputValue },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.inputValue = $event.target.value
+                  }
+                }
+              })
+        ],
+        1
+      )
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -3650,10 +3687,7 @@ var render = function() {
               "li",
               {
                 staticClass: "navigation-element-main navbar-element-user",
-                on: {
-                  mouseenter: _vm.showUserSubMenu,
-                  click: _vm.toggleUserSubMenu
-                }
+                on: { click: _vm.showSideBar }
               },
               [
                 _c("span", {
@@ -3663,7 +3697,24 @@ var render = function() {
                 _c("span", {
                   staticClass: "user-nick",
                   domProps: { textContent: _vm._s(_vm.userName) }
-                })
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "show-sidebar-button",
+                    class: {
+                      "visible-sidebar-button": !_vm.userSideBarIsVisible
+                    },
+                    attrs: { title: "rozwiń menu użytkownika" }
+                  },
+                  [
+                    _c("span", {
+                      staticClass:
+                        "fas fa-angle-down show-sidebar-button-decoration show-sidebar-button-element"
+                    })
+                  ]
+                )
               ]
             )
           : _vm._e()
@@ -3743,81 +3794,102 @@ var render = function() {
           _vm._v(" "),
           _vm._m(5)
         ]
-      ),
-      _vm._v(" "),
-      _vm.userIsAuthenticated
-        ? _c(
-            "ul",
-            {
-              staticClass: "sub-menu-list user-panel-sub-menu-list",
-              class: {
-                "visible-sub-menu": _vm.userSubMenuIsVisible,
-                "hidden-sub-menu": !_vm.userSubMenuIsVisible
-              }
-            },
-            [
+      )
+    ]),
+    _vm._v(" "),
+    _vm.userIsAuthenticated
+      ? _c(
+          "nav",
+          {
+            staticClass: "user-sidebar",
+            class: {
+              "visible-sidebar": _vm.userSideBarIsVisible,
+              "hidden-sidebar": !_vm.userSideBarIsVisible
+            }
+          },
+          [
+            _c("ul", { staticClass: "user-sidebar-list" }, [
               _c(
                 "li",
                 {
-                  staticClass: "sub-menu-list-element intendation-first-level"
+                  staticClass: "user-sidebar-element",
+                  attrs: { title: "schowaj boczny pasek" },
+                  on: { click: _vm.hideSideBar }
                 },
                 [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "sub-menu-link sub-menu-level-one-item",
-                      attrs: { href: _vm.userSettingsRoute }
-                    },
-                    [
-                      _c("span", {
-                        staticClass: "fas navbar-icon navbar-icon-outer fa-cogs"
-                      }),
-                      _vm._v("\r\n\t\t\t\t\tUstawienia profilu\r\n\t\t\t\t")
-                    ]
-                  )
+                  _c("span", { staticClass: "fas fa-angle-up sidebar-icon" }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "sidebar-item-description" }, [
+                    _vm._v("schowaj")
+                  ])
                 ]
               ),
               _vm._v(" "),
               _c(
                 "li",
                 {
-                  staticClass: "sub-menu-list-element intendation-first-level"
+                  staticClass: "user-sidebar-element",
+                  attrs: { title: "ustawienia profilu" }
                 },
                 [
                   _c(
-                    "div",
+                    "a",
                     {
-                      staticClass: "sub-menu-level-one-item",
-                      on: { click: _vm.logout }
+                      staticClass: "sub-menu-link",
+                      attrs: { href: _vm.userSettingsRoute }
                     },
                     [
-                      _c("span", {
-                        staticClass:
-                          "fas navbar-icon navbar-icon-outer fa-sign-out-alt"
-                      }),
-                      _vm._v("\r\n\t\t\t\t\t\tWyloguj\r\n\t\t\t\t\t\t"),
-                      _c(
-                        "form",
-                        {
-                          ref: "logoutForm",
-                          staticClass: "logout-form",
-                          attrs: { method: "POST", action: _vm.logoutRoute }
-                        },
-                        [
-                          _c("input", {
-                            attrs: { type: "hidden", name: "_token" },
-                            domProps: { value: _vm.csrfToken }
-                          })
-                        ]
-                      )
+                      _c("span", { staticClass: "fas fa-cogs sidebar-icon" }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "sidebar-item-description" }, [
+                        _vm._v("profil")
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(6),
+              _vm._v(" "),
+              _vm._m(7),
+              _vm._v(" "),
+              _vm._m(8),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "user-sidebar-element",
+                  on: { click: _vm.logout }
+                },
+                [
+                  _c("span", {
+                    staticClass: "fas fa-sign-out-alt sidebar-icon"
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "sidebar-item-description" }, [
+                    _vm._v("wyloguj")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "form",
+                    {
+                      ref: "logoutForm",
+                      staticClass: "logout-form",
+                      attrs: { method: "POST", action: _vm.logoutRoute }
+                    },
+                    [
+                      _c("input", {
+                        attrs: { type: "hidden", name: "_token" },
+                        domProps: { value: _vm.csrfToken }
+                      })
                     ]
                   )
                 ]
               )
-            ]
-          )
-        : _vm._e()
-    ]),
+            ])
+          ]
+        )
+      : _vm._e(),
     _vm._v(" "),
     !_vm.userIsAuthenticated
       ? _c(
@@ -4034,6 +4106,56 @@ var staticRenderFns = [
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "li",
+      {
+        staticClass: "user-sidebar-element",
+        attrs: { title: "twoje wiadomości" }
+      },
+      [
+        _c("span", { staticClass: "fas fa-envelope sidebar-icon" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sidebar-item-description" }, [
+          _vm._v("skrzynka")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "li",
+      {
+        staticClass: "user-sidebar-element",
+        attrs: { title: "ulubione filmy itp." }
+      },
+      [
+        _c("span", { staticClass: "fas fa-thumbs-up sidebar-icon" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sidebar-item-description" }, [
+          _vm._v("ulubione")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "user-sidebar-element" }, [
+      _c("span", { staticClass: "fas fa-user-friends sidebar-icon" }),
+      _vm._v(" "),
+      _c("span", { staticClass: "sidebar-item-description" }, [
+        _vm._v("znajomi")
+      ])
+    ])
   }
 ]
 render._withStripped = true

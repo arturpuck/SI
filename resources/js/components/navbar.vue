@@ -25,9 +25,12 @@
 			  Loguj
 			</div>
 		</li>
-		<li v-if="userIsAuthenticated" v-on:mouseenter="showUserSubMenu" v-on:click="toggleUserSubMenu" class="navigation-element-main navbar-element-user">
+		<li v-if="userIsAuthenticated" v-on:click="showSideBar" class="navigation-element-main navbar-element-user">
 			<span class="fas navbar-icon navbar-icon-outer fa-user"></span>
             <span v-text="userName" class="user-nick"></span>
+			<button title="rozwiń menu użytkownika" v-bind:class="{'visible-sidebar-button' : !userSideBarIsVisible}" class="show-sidebar-button">
+				<span class="fas fa-angle-down show-sidebar-button-decoration show-sidebar-button-element"></span>
+			</button>
 		</li>
 	</ul>
 	<ul v-bind:class="{'visible-sub-menu' : pornSubMenuIsVisible , 'hidden-sub-menu' : !pornSubMenuIsVisible}" class="sub-menu-list porn-sub-menu-list">
@@ -65,24 +68,39 @@
 					</div>
 			    </li>
 		</ul>
-		<ul v-if="userIsAuthenticated" v-bind:class="{'visible-sub-menu' : userSubMenuIsVisible,  'hidden-sub-menu' : !userSubMenuIsVisible}" class="sub-menu-list user-panel-sub-menu-list">
-			<li class="sub-menu-list-element intendation-first-level">
-				<a v-bind:href="userSettingsRoute" class="sub-menu-link sub-menu-level-one-item">
-					<span class="fas navbar-icon navbar-icon-outer fa-cogs"></span>
-					Ustawienia profilu
-				</a>
-			</li>
-			<li class="sub-menu-list-element intendation-first-level">
-				<div v-on:click="logout" class="sub-menu-level-one-item">
-					<span class="fas navbar-icon navbar-icon-outer fa-sign-out-alt"></span>
-						Wyloguj
-						<form ref="logoutForm" class="logout-form" method="POST" v-bind:action="logoutRoute">
-							<input type="hidden" v-bind:value="csrfToken" name="_token">
-						</form>
-				</div>
-			</li>
-		</ul>
-		
+	</nav>
+	<nav v-if="userIsAuthenticated" v-bind:class="{'visible-sidebar' : userSideBarIsVisible, 'hidden-sidebar' : !userSideBarIsVisible}" class="user-sidebar">
+       <ul class="user-sidebar-list">
+		   <li v-on:click="hideSideBar" title="schowaj boczny pasek" class="user-sidebar-element">
+			   <span class="fas fa-angle-up sidebar-icon"></span>
+			   <span class="sidebar-item-description">schowaj</span>
+		   </li>
+		   <li title="ustawienia profilu" class="user-sidebar-element">
+			  <a v-bind:href="userSettingsRoute" class="sub-menu-link">
+				<span class="fas fa-cogs sidebar-icon"></span>
+				<span class="sidebar-item-description">profil</span>
+			  </a>
+		   </li>
+		   <li title="twoje wiadomości" class="user-sidebar-element">
+			   <span class="fas fa-envelope sidebar-icon"></span>
+			   <span class="sidebar-item-description">skrzynka</span>
+		   </li>
+		   <li title="ulubione filmy itp." class="user-sidebar-element">
+			   <span class="fas fa-thumbs-up sidebar-icon"></span>
+			   <span class="sidebar-item-description">ulubione</span>
+		   </li>
+		   <li class="user-sidebar-element">
+			   <span class="fas fa-user-friends sidebar-icon"></span>
+			   <span class="sidebar-item-description">znajomi</span>
+		   </li>
+		   <li v-on:click="logout" class="user-sidebar-element">
+			   <span class="fas fa-sign-out-alt sidebar-icon"></span>
+			   <span class="sidebar-item-description">wyloguj</span>
+			   <form ref="logoutForm" class="logout-form" method="POST" v-bind:action="logoutRoute">
+				  <input type="hidden" v-bind:value="csrfToken" name="_token">
+			   </form>
+		   </li>
+	   </ul>
 	</nav>
 	<div v-if="!userIsAuthenticated" v-show="loginPanelIsVisible" class="login-form-container">
 	            <form v-bind:action="loginRoute" method="POST" id="login-form" v-bind:class="{'visible-login-form' : animatePanel}" class="login-form">
@@ -185,7 +203,7 @@ import IconClose from "./form_controls/icon_close.vue";
 				csrfToken : "",
 				animatePanel : false,
 				userIsAuthenticated : undefined,
-				userSubMenuIsVisible : false
+				userSideBarIsVisible : true
 		 	};
  		},
 
@@ -209,15 +227,8 @@ import IconClose from "./form_controls/icon_close.vue";
 			   this.hideAllSubMenusExcept("pornSubMenuIsVisible");
 		   },
 
-		   showUserSubMenu(){
-			  this.userSubMenuIsVisible = true;
-			  this.hideAllSubMenusExcept("userSubMenuIsVisible");
-			  this.hideAllSecondLevelSubMenus();
-		   },
-
 		   resetNavbar(){
-				this.pornSubMenuIsVisible = false;
-				this.userSubMenuIsVisible = false
+				this.hideAllSubMenusExcept();
 				this.hideAllSecondLevelSubMenus();  
 		   },
 
@@ -226,15 +237,8 @@ import IconClose from "./form_controls/icon_close.vue";
 			   setTimeout(()=> this.animatePanel = !this.animatePanel,300);
 		   },
 
-		   toggleUserSubMenu(){
-			   this.userSubMenuIsVisible = !this.userSubMenuIsVisible;
-			   this.hideAllSubMenusExcept("userSubMenuIsVisible");
-			   this.hideAllSecondLevelSubMenus();
-		   },
-
 		   hideAllSubMenusExcept(except = ""){
 			   const subMenusControlVariableNames = [
-				   "userSubMenuIsVisible",
 				   "pornSubMenuIsVisible"
 			   ];
 
@@ -249,6 +253,21 @@ import IconClose from "./form_controls/icon_close.vue";
 			   this.$refs.logoutForm.submit();
 		   },
 
+		   hideSideBar(){
+			   this.userSideBarIsVisible = false;
+			   this.storeSideBarInformation('hidden');
+		   },
+
+		   showSideBar(){
+			   this.userSideBarIsVisible = true;
+			   this.storeSideBarInformation('visible');
+			   
+		   },
+
+		   storeSideBarInformation(visible){
+                localStorage.setItem('sideBar',visible);
+		   },
+
 		   handleClickoutsideNavbar(){
 
                if(this.anySubMenuIsVisible){
@@ -261,13 +280,21 @@ import IconClose from "./form_controls/icon_close.vue";
 		computed : {
 
             anySubMenuIsVisible(){
-				return this.pornSubMenuIsVisible || this.userSubMenuIsVisible;
+				return this.pornSubMenuIsVisible;
+			}
+		},
+
+		created(){
+			this.userIsAuthenticated = Boolean(this.userId);
+
+			if(this.userIsAuthenticated){
+			   const sideBarInfo = localStorage.getItem('sideBar');
+               this.userSideBarIsVisible = (sideBarInfo == 'hidden') ? false : true;
 			}
 		},
 		
 		mounted(){
 		   this.csrfToken = document.getElementById("csrf-token").content;
-		   this.userIsAuthenticated = Boolean(this.userId);
 		   this.$root.$on('clickOutsideNavbar',this.handleClickoutsideNavbar);
 		}
     }
@@ -277,6 +304,7 @@ import IconClose from "./form_controls/icon_close.vue";
 
 @import '../../sass/fonts';
 @import '../../sass/components/login_panel';
+@import '../../sass/components/side_bar';
 
 @mixin navbar-link{
 	color:white;
@@ -284,8 +312,6 @@ import IconClose from "./form_controls/icon_close.vue";
 	display:flex;
 	align-items: baseline;
 }
-
-
 
 .logo-link{
 	@include navbar-link();
@@ -305,16 +331,9 @@ import IconClose from "./form_controls/icon_close.vue";
 	right:1vw;
 }
 
-.logout-form{
-	display: none;
-}
-
 .navbar-element-user{
 	margin-left: auto;
-}
-
-.submit-button:hover{
-	background: #a00e30;
+	position:relative;
 }
 
 .remember-me-description{
@@ -361,26 +380,6 @@ import IconClose from "./form_controls/icon_close.vue";
     height: 100%;
 }
 
-.login-form{
-	position:absolute;
-	top:50%;
-	left:50%;
-	transform: translate(-50%,-50%);
-	background: black;
-    border-radius: 8px;
-    box-shadow: 3px 3px 3px 3px black;
-	min-width:320px;
-	width:25%;
-	font-family: "Exo 2", sans-serif;
-	border: 2px solid #242229;
-	opacity: 0;
-	transition: opacity 1.5s;
-}
-
-.visible-login-form{
-	opacity:1;
-}
-
 .navigation-list{
 	list-style-type: none;
 	padding:0;
@@ -393,25 +392,18 @@ import IconClose from "./form_controls/icon_close.vue";
 	box-shadow: 2px 2px 2px 2px black;
 }
 
-.click-detector{
-	position:absolute;
-	z-index:0;
-	top:1px;
-	width:100%;
-	height:100%;
-}
-
 .register-selection{
 	margin-left: auto;
 }
 
 .navigation-element-main{
 	transition: background 2s;
-	&:hover
-	{
+	&:hover{
 		background: #2d2d30;
 	}
-	cursor:pointer;
+	&:hover{
+      cursor:pointer;
+	}
 	color:white;
 	display: inline-block;
 	line-height: 100%;

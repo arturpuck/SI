@@ -6,6 +6,8 @@
   font-family: Aldrich, sans-serif;
   color: white;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 1200px) {
@@ -204,6 +206,22 @@
   background-attachment: fixed;
 }
 
+.shadow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  height: 100%;
+  z-index: 2;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
 @media (min-width: 2000px) {
   .empire-background-image-1 {
     background-image: url("../images/decoration/user-settings/background-images/compressed/chick-in-bar-m-2000-min.jpg");
@@ -220,4 +238,93 @@
   .empire-background-image-1 {
     background-image: url("../images/decoration/user-settings/background-images/compressed/chick-in-bar-m-0-min.jpg");
   }
+}
+
+.user-settings-panel {
+  background: rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px 2px black;
+  min-width: 320px;
+  width: 30%;
+  margin: calc(40px + 5vw) auto;
+}
+
+.user-settings-tab-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: baseline;
+          align-items: baseline;
+}
+
+.user-settings-tab {
+  text-align: center;
+  font-size: 1.6vw;
+  font-family: "Exo 2", sans-serif;
+  line-height: 180%;
+  margin: 0;
+  color: white;
+  background: black;
+  -webkit-transition: background 1s;
+  transition: background 1s;
+  cursor: pointer;
+  padding: 0 8px;
+  line-height: 170%;
+  border-radius: 8px 8px 0 0;
+}
+
+@media (max-width: 1200px) {
+  .user-settings-tab {
+    font-size: 18px;
+  }
+}
+
+.active-tab {
+  background: #242229;
+  color: white;
+}
+
+.tab-icon {
+  margin: 0 5px;
+}
+
+.first-tab {
+  margin-left: 5%;
+}
+
+.user-settings {
+  border: 3px solid #242229;
+  border-radius: 0 0 8px 8px;
+  padding: 10px 0;
+}
+
+.arrows-container {
+  background: #242229;
+  padding: 3px;
+  font-size: 1.6vw;
+  font-family: "Exo 2", sans-serif;
+}
+
+@media (max-width: 1200px) {
+  .arrows-container {
+    font-size: 19px;
+  }
+}
+
+.arrow-icon {
+  border-radius: 50%;
+  padding: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.arrow-icon:hover {
+  background: black;
+}
+
+.settings-controls-container {
+  position: relative;
 }
