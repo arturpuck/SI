@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Requests\User\AJAXLoginValidationRequest;
+use App\Http\Requests\User\AJAXEmailValidationRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\UserType;
 use App\SexualOrientation;
+use Symfony\Component\HttpFoundation\Response;
 
 class RegisterController extends Controller
 {
@@ -66,6 +69,16 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    function checkIfLoginAlreadyExists(AJAXLoginValidationRequest $request)
+    {
+       return response('valid', 200)->header('Content-Type', 'text/plain');    
+    }
+
+    function checkIfEmailAlreadyExists(AJAXEmailValidationRequest $request)
+    {
+      return response('valid', 200)->header('Content-Type', 'text/plain');           
     }
 
     public function showRegistrationForm()

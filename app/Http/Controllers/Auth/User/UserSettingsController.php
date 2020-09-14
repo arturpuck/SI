@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\UserType;
 use App\SexualOrientation;
+use App\Http\Requests\User\EditUserDataRequest;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserSettingsController extends Controller
 {
@@ -15,5 +17,9 @@ class UserSettingsController extends Controller
             'userTypes' => UserType::all(),
             'sexualOrientations' => SexualOrientation::all()
         ]);
+    }
+
+    public function updateBasicSettings(EditUserDataRequest $request){
+         return auth()->user()->modifyBasicData($request);
     }
 }

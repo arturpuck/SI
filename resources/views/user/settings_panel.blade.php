@@ -23,15 +23,21 @@
                 </expect-circle>
             </div>
             <form v-show="basicUserDataTabIsActive" class="basic-user-data-settings user-settings">
+                <div class="password-reminder">
+                    <div>
+                       <span class="fas fa-info-circle password-reminder-icon"></span>
+                    </div>
+                    {{__('password_is_required_for_any_changes')}}
+                </div>
                 <text-input-combo
                     initial-value="{{Auth::user()->login}}"
-                    v-on:click.native="showNotification"
+                    v-on:click.native="notifyUserAboutLockedInput"
                     name="login"
                     v-bind:is-disabled="true"
                     input-type="text">
                     {{ucfirst(__('login'))}} : 
                 </text-input-combo>   
-                <text-input-combo ref="Email"
+                <text-input-combo ref="email"
                     v-bind:input-is-required="true"
                     v-bind:complete-validation-display-available="true"
                     initial-value="{{Auth::user()->email}}"
@@ -41,7 +47,7 @@
                     v-bind:error-message-box-available="true">
                     {{ucfirst(__('email'))}} : 
                 </text-input-combo>
-                <described-select ref="UserType"
+                <described-select ref="user_type_id"
                     v-bind:visible-options-list="['--{{__('choose')}}--',@foreach($userTypes as $userType) '{{__($userType->user_type_name.'_i')}}', @endforeach '{{__('i_dont_want_to_tell')}}']"
                     v-bind:option-values="['not-selected', @foreach($userTypes as $userType) '{{$userType->id}}', @endforeach '']"
                     v-bind:error-message-box-available="true"
@@ -51,7 +57,7 @@
                     name="user_type_id">
                     {{ucfirst(__('i_am'))}} : 
                 </described-select>
-                <described-select ref="SexualOrientation"
+                <described-select ref="sexual_orientation_id"
                     v-bind:visible-options-list="['--{{__('choose')}}--',@foreach($sexualOrientations as $sexualOrientation) '{{__($sexualOrientation->sexual_orientation_name)}}', @endforeach '{{__('i_dont_want_to_tell')}}']"
                     v-bind:option-values="['not-selected', @foreach($sexualOrientations as $sexualOrientation) '{{$sexualOrientation->id}}', @endforeach '']"
                     v-bind:error-message-box-available="true"
@@ -64,14 +70,23 @@
                 <date-picker
                     name="birth_date"
                     initial-value="{{Auth::user()->birth_date}}"
-                    v-on:click.native="showNotification"
+                    v-on:click.native="notifyUserAboutLockedInput"
                     v-bind:is-disabled="true">
                     {{ucfirst(__('birth_date'))}}
                 </date-picker>
-                <accept-button v-on:click.native="attemptUserDataEdition">{{__('save_data')}}</accept-button>
+                <text-input-combo ref="password"
+                    v-bind:input-is-required="true"
+                    v-bind:complete-error-display-available="true"
+                    name="password"
+                    input-type="password"
+                    v-bind:on-blur-callback="validatePassword"
+                    v-bind:error-message-box-available="true">
+                    {{ucfirst(__('password'))}} : 
+                </text-input-combo>
+                <accept-button v-on:click.native="tryToEditUserData">{{__('save_data')}}</accept-button>
             </form>
             <form v-show="avatarTabIsActive" class="avatar-settings user-settings">
-
+                
             </form>
        </div>
     </main>

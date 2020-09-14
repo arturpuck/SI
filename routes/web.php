@@ -10,12 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['middleware' => ['api']], function () {
-       Route::get('/verify-login/{login}', 'AJAXLoginValidationController@checkIfLoginAlreadyExists');
-       Route::get('/verify-email/{email}', 'AJAXEmailValidationController@checkIfEmailAlreadyExists');  
-   });
 
-Route::get('/','LaunchMainPageController@showMainPage');
+Route::get('/','LaunchMainPageController@showMainPage')
+      ->name('main.page');
 Route::get('/kontakt', 'ContactFormController@showContactForm')
       ->name('contact.show.form');
 Route::post('/contact/send-message', 'ContactFormController@sendMessageFromUser')
@@ -41,6 +38,11 @@ Route::namespace('Auth')->name('auth.')->group(function(){
                     ->name('logout');
        Route::get('/haslo/potwierdzenie-zmiany', 'ResetPasswordController@showConfirmation')
               ->name('password.reset.confirmation');
+
+              Route::group(['middleware' => ['api']], function () {
+                     Route::get('/verify-login/{login}', 'RegisterController@checkIfLoginAlreadyExists');
+                     Route::get('/verify-email/{email}', 'RegisterController@checkIfEmailAlreadyExists');  
+                 });
        
 });
 
@@ -48,6 +50,9 @@ Route::middleware(['auth'])->name('auth.user.')->namespace('Auth\User')->group(f
 
        Route::get('profil/ustawienia', 'UserSettingsController@showPanel')
               ->name('settings.show.panel');
+
+       Route::patch('user/profile', 'UserSettingsController@updateBasicSettings')
+              ->name('update.basic.settings')->middleware('api');
 
 });
 

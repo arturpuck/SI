@@ -4,6 +4,7 @@
 	
   </div>
   <label ref="label" v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" class="text-input-combo-value-label">
+     <span v-if="isDisabled" class="fas fa-lock disabled-input-icon"></span>
      <icon-stop v-if="iconErrorCanBeDisplayed" v-show="displayIconError"/>
      <icon-confirm v-if="iconConfirmationCanBeDisplayed" v-show="displayIconConfirmation"/>
      <span class="text-input-description"><slot></slot></span>
@@ -228,6 +229,15 @@ import IconConfirm from '../decoration/icon_confirm.vue';
     right:0;
     transform:translate(50%,-50%);
     position:absolute;
+}
+
+.disabled-input-icon{
+    top:50%;
+    transform:translateY(-50%);
+    right:1%;
+    position: absolute;
+    color:red;
+    @include responsive-font(1.3vw,18px,"");
 }
 
 .text-input-combo-value-label {

@@ -125,12 +125,13 @@ Vue.component('click-detector', ClickDetector);
         sender.resetValidation();
         return;
      }
-     this.$root.$emit('awaitingResponse');
+     
      
      try{
         if(!emailhasCorrectFormat(email)){
            throw "Email wygląda na nieprawidłowy";
          }
+         this.$root.$emit('awaitingResponse');
          checkIfEmailExists.call(this,email);
      }
      catch(error){

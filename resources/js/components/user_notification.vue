@@ -1,11 +1,16 @@
 <template>
-  <div v-bind:class="{'visible-user-notification-container' : visible}" class="user-notification-container">
-    <header class="notification-bar">
-        <h1 v-text="headerText" class="notification-header"></h1> <icon-close v-on:click.native="closeNotification"></icon-close>
+  <div v-bind:class="{'visible-user-notification-container' : visible, 'flickering-background' : flicker}" class="user-notification-container">
+    <header v-bind:class="{'no-error-notification-bar' : !showsError, 'error-notification-bar' : showsError}" class="notification-bar">   
+       <h1 v-text="headerText" class="notification-header"></h1> 
+       <icon-close v-on:click.native="closeNotification"></icon-close>
     </header>
-    <p v-text="notificationText" class="notification-content">
+        <p v-text="notificationText" class="notification-content">
 
-    </p>
+        </p>
+        <div class="notification-pseudo-footer">
+            <span v-show="!showsError" class="fas fa-info-circle icon-information" aria-hidden="true"></span>
+            <span v-show="showsError" class="fas fa-exclamation-triangle icon-error"></span>
+        </div>
  </div>
 </template>
 
@@ -20,7 +25,9 @@ import IconClose from './form_controls/icon_close.vue';
             return {
                notificationText : "",
                visible : false,
-               headerText : "Informacja"
+               headerText : "Information",
+               type: "no-error",
+               flicker: false
             };
         },
 
@@ -31,16 +38,25 @@ import IconClose from './form_controls/icon_close.vue';
 
             showNotification(content){
                 
-                if(content['header']){
-                  this.headerText = content['header'];
+                const currentType = this.type;
+                const currentNotificationText = this.notificationText;
+
+                if(content['headerText']){
+                  this.headerText = content['headerText'];
                 }
 
                 if(content['notificationText']){
                    this.notificationText = content['notificationText'];
                 }
-                
+
+                if(content['notificationType']){
+                  this.type = content['notificationType'];
+                }
+                if(this.visible && (this.type === currentType) && (this.notificationText === currentNotificationText)){
+                    this.flicker = true;
+                    setTimeout(()=> this.flicker = false,1000);
+                }
                 this.visible = true;
-                
             }
         },
 
@@ -50,6 +66,13 @@ import IconClose from './form_controls/icon_close.vue';
 
         props : {
             
+        },
+
+        computed : {
+           showsError(){
+              return this.type === 'error';
+           }
+
         },
 
         mounted(){
@@ -63,10 +86,23 @@ import IconClose from './form_controls/icon_close.vue';
 
 @import '../../sass/fonts';
 
+.notification-pseudo-footer{
+    padding:2px;
+    text-align: center;
+}
+
+.icon-information{
+   color:green;
+}
+
+.icon-information, .icon-error{
+   @include responsive-font(1.5vw,21px,"");
+}
+
   .user-notification-container{
       position:fixed;
-      z-index:3;
-      right:0;
+      z-index:5;
+      right:1%;
       bottom:0;
       transform: translateY(100%);
       transition: transform 1.5s;
@@ -74,7 +110,9 @@ import IconClose from './form_controls/icon_close.vue';
       min-width:180px;
       overflow:hidden;
       border-radius:8px 8px 0 0;
-      border:2px solid #242229;
+      box-shadow: 2px 2px 2px 2px black;
+      background: #b1b1ca;
+      color:black;
   }
 
   .visible-user-notification-container{
@@ -85,25 +123,40 @@ import IconClose from './form_controls/icon_close.vue';
       display:flex;
       align-items: center;
       justify-content: space-between;
-      background:#242229;
       padding:0 8px;
       line-height: 2.2em;
       @include responsive-font();
+  }
+
+  .no-error-notification-bar{
+    background:linear-gradient(#0fe00b, #054004);
+    color:white;
+  }
+
+  .error-notification-bar{
+      background:#ca1a1a;
+      color:black;
   }
 
   .notification-header{
       @include responsive-font(1.4vw,21px);
       margin:0;
       padding:0;
-      color:white;
   }
 
   .notification-content{
       margin:0;
       padding:4px;
-      background:rgba(0,0,0,0.9);
-      color:white;
       @include responsive-font(1.2vw,15px);
+  }
+
+  .flickering-background{
+      background:#ca1a1a;
+      color:white;
+  }
+
+  .icon-error{
+      color: #ca1a1a;
   }
 
 </style>

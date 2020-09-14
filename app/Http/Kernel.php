@@ -38,9 +38,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-            'throttle:10,1',
-            'startsession',
-            'csrfprotection',
+            'throttle:10,1'
         ]
         
     ];

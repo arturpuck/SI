@@ -101,5 +101,6 @@
     "avatar" : "Avatar",
     "data_is_beeing_saved" : "Zapisywanie danych",
     "data" : "Dane",
-    "save_data" : "Zapisz dane"
+    "save_data" : "Zapisz dane",
+    "password_is_required_for_any_changes" : "Aby wprowadzić zmiany należy podać hasło"
 }

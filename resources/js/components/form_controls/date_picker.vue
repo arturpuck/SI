@@ -3,6 +3,7 @@
     <input type="hidden" v-bind:disabled="isDisabled" v-bind:value="dateString" v-bind:name="name">
   	<div class="date-picker-description">
   		<slot></slot>
+        <span v-if="isDisabled" class="fas fa-lock disabled-input-icon"></span>
   	</div>
   	<div v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" class="date-picker-flex-container">
      <icon-stop v-if="iconErrorCanBeDisplayed" v-show="displayIconError"/>
@@ -271,9 +272,19 @@ import MonthsInDifferentLanguages from '../../modules/helpers/months_in_differen
 <style lang="scss" scoped>
 
    @import'../../../sass/fonts';
+   @import'../../../sass/error_message_box';
 
    .date-picker-container{
 		color:white;
+    }
+
+   .disabled-input-icon{
+        top:50%;
+        transform:translateY(-50%);
+        right:1%;
+        position: absolute;
+        color:red;
+         @include responsive-font(1.3vw,18px,"");
     }
     
     .icon-container{
@@ -284,7 +295,8 @@ import MonthsInDifferentLanguages from '../../modules/helpers/months_in_differen
 }
 
 	.date-picker-description{
-		text-align: center;
+        text-align: center;
+        position: relative;
         padding:3px;
         color:white;
         @include responsive-font(1.3vw,17px);

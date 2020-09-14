@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
         \Blade::component('components.decoration.icon_error_cross', 'icon-error-cross');
         \Blade::component('components.decoration.icon_confirmation', 'icon-confirmation');
         
+        
     }
 
     /**
@@ -25,6 +27,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        Validator::extend('current_password',
+        function($attribute, $value, $parameters, $validator){
+            return \Hash::check($value, auth()->user()->password);
+        });
     }
 }

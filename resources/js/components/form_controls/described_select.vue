@@ -171,6 +171,11 @@ import IconConfirm from '../decoration/icon_confirm.vue';
              showValueIsOK(){
                  this.valueOK = true;
                  this.errorMessage = "";
+             },
+
+             resetValidation(){
+                 this.valueOK = undefined;
+                 this.errorMessage = "";
              }
         },
 

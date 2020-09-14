@@ -70,7 +70,7 @@
   border-radius:50%;
   width:20%;
   height:20%;
-  background:white;
+  background:#0b5a8a;
   position:absolute;
   opacity:0;
   animation:flicker 4s linear 0s infinite;

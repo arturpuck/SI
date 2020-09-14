@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\SendPasswordResetLink;
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Request;
 
 class User extends Authenticatable
 {
@@ -41,5 +43,21 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
       $this->notify(new SendPasswordResetLink($token));
+    }
+
+    public function modifyBasicData(Request $request) : Response
+    {
+        $input = $request->only(['email', 'user_type_id', 'sexual_orientation_id']);
+        try{
+            $this::update($input);
+            return response('success', 200)->header('Content-Type', 'text/plain');
+        }
+        catch(\Exception $exception){
+            return response($exception->getMessage(), 500)->header('Content-Type', 'text/plain');
+        }
+    }
+
+    public function getHasAvatarAttribute(){
+        
     }
 }
