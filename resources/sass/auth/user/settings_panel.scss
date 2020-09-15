@@ -22,7 +22,7 @@ $imageFolder : user-settings;
     overflow:hidden;
     border-radius:8px;
     box-shadow: 2px 2px 2px 2px black;
-    min-width: 320px;
+    min-width: 300px;
     width:30%;
     margin: calc(40px + 5vw) auto;
 }
@@ -87,3 +87,68 @@ $imageFolder : user-settings;
 .settings-controls-container{
     position: relative;
 }
+
+.avatar-settings{
+    text-align: center;
+}
+
+.undefined-avatar-frame{
+    background:#b1b1ca;
+    border-radius:8px;
+    border:2px solid black;
+    display:block;
+    margin:10px auto;
+    text-align: center;
+    width:128px;
+    height:128px;
+    padding:7px;
+    background-size: cover;
+    background-position: center;
+}
+
+.undefined-avatar{
+   font-size:100px;
+}
+
+.avatar-notification{
+    text-align:center;
+    @include responsive-font();
+    color:white;
+    padding:2px;
+}
+
+.no-avatar-notification{
+    background:#242229;
+}
+
+.choose-avatar-button{
+    display:block;
+    width:95%;
+    text-align:center;
+    @include responsive-font();
+    border-radius:5px;
+    cursor:pointer;
+    color:white;
+    padding:4px;
+    margin:0 auto;
+    background:linear-gradient(#0fe00b, #054004);
+    &:hover{
+        background:#ef0244;
+    }
+}
+
+.avatar-file{
+    position:absolute;
+    top:-9999px;
+    left:0;
+}
+
+.avatar-file-name{
+    text-align:center;
+    padding:2px;
+    @include responsive-font(1.1vw,13px);
+    height:1.5em;
+    line-height:1.5em;
+    color:white;
+}
+

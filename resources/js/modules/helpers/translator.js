@@ -45,6 +45,11 @@ export default{
     this_input_must_not_be_changed : "Tego pola nie można edytować",
     you_have_to_choose_one_option : "Należy wybrać jedną opcję",
     information : "Informacja",
-    error : "Błąd"
+    error : "Błąd",
+    incorrect_image_dimensions : "Szerokość lub wysokość obrazu przekracza 128px",
+    invalid_file_extension : "Niewłaściwe rozszerzenie pliku. Dozwolone rozszerzenia to : jpg, jpeg, svg, bmp, png, gif, webp",
+    url_address : "Adres URL",
+    incorrect_extension : "Niewłaściwe rozszerzenie pliku",
+    fetch_error : "Podczas pobierania avataru wystąpił błąd. Nie wszystkie witryny umożliwiają pobieranie obrazów pomiędzy domenami, co za tym idzie przeglądarka mogła zablokować rządanie. Upewnij się, że wprowadzony adres jest poprawny. Jeżeli problem nadal się pojawia sugerujemy wybrać inny obraz lub pobrać na dysk i wtedy wczytać."
    }
 }

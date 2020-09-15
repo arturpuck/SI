@@ -37,13 +37,92 @@ new Vue({
           user_type_id : {
              initialValue : undefined
           }
-       }
+       },
+       avatarFileName : "",
+       avatarFile : null,
+       showUndefinedAvatar : true,
+       allowedExtensions : ['jpg', 'jpeg', 'bmp', 'gif', 'png', 'svg', 'webp']
+       
     },
    
     methods : {
         notifyUserAboutLockedInput(){
            this.showNotification('this_input_must_not_be_changed');
         },
+
+        fileHasAllowedExtension(fileName){
+           const fileExtension = fileName.split('.').pop().toLowerCase();
+           return this.allowedExtensions.includes(fileExtension);
+        },
+
+        showAvatarPreview(fileDescription, image){
+          this.avatarFileName = fileDescription;
+          this.avatarFile = image;
+          this.showUndefinedAvatar = false;
+        },
+
+        processImage(file, fileDescription){
+         const reader = new FileReader();
+         const root = this.$root;
+         reader.onloadend = () => {
+           
+           let image = new Image();
+
+            image.onload = function() {
+               if((this.width > 128) && (this.height > 128)){
+                  root.showNotification('incorrect_image_dimensions', 'error');
+               }
+               else{
+                  root.showAvatarPreview(fileDescription,reader.result);
+               }
+            }
+            image.src = reader.result;
+         };
+
+         if(file){
+            reader.readAsDataURL(file);
+         }
+        },
+
+        processImageFromHardDrive(event){
+           const file = event.target.files[0];
+
+           if(this.fileHasAllowedExtension(file.name)){
+              this.processImage(file, file.name);
+         }
+         else{
+            this.showNotification('invalid_file_extension', 'error')
+         }  
+      },
+
+      fileURLhasCorrectExtension(type){
+          const fileExtension = type.split('/').pop().split('\\').pop().toLowerCase();
+          return this.allowedExtensions.includes(fileExtension);
+      },
+
+     async processImageByURL(sender){
+          const imageURL = sender.inputValue;
+          const root = this.$root;
+          
+          try{
+            const response = await fetch(imageURL);
+            const fileBlob = await response.blob();
+
+            if((response.status >= 200) && (response.status < 227)){
+               if(root.fileURLhasCorrectExtension(fileBlob.type)){
+                  root.processImage(fileBlob, imageURL);
+               }
+            }
+            else{
+               throw 'fetch_error';
+            }
+            
+          }
+          catch(error){
+              root.showNotification('fetch_error', 'error');
+          }
+          
+      },
 
         showApropriateContent(event){
             this.selectedTab = event.target.id;
@@ -186,7 +265,7 @@ new Vue({
                };
 
                this.$root.$emit('awaitingResponse');
-               const response = await fetch('/user/profile',requestData);
+               const response = await fetch('/user/profile/settings/basic',requestData);
                 
                switch(response.status){
                   case 200:
@@ -240,6 +319,10 @@ new Vue({
 
        avatarTabIsActive(){
            return this.selectedTab === 'avatarTab';
+       },
+
+       avatarFileBackgroundImageAdress(){
+          return `url('${this.avatarFile}')`;
        }
    },
 

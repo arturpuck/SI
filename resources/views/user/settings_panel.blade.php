@@ -85,8 +85,33 @@
                 </text-input-combo>
                 <accept-button v-on:click.native="tryToEditUserData">{{__('save_data')}}</accept-button>
             </form>
-            <form v-show="avatarTabIsActive" class="avatar-settings user-settings">
-                
+            <form  action="{{route('auth.user.upload.avatar')}}" method="POST" v-show="avatarTabIsActive" class="avatar-settings user-settings">
+                @method('PUT')    
+                @csrf
+                <div class="avatar-notification">
+                    {{__('avatar_requirements_information')}}
+                </div>
+                @if(Auth::user()->has_avatar)
+
+                @else
+                    <div class="avatar-notification no-avatar-notification">{{__('no_avatar_has_been_choosen')}}</div>
+                    <div v-bind:style="{backgroundImage : avatarFileBackgroundImageAdress}" class="undefined-avatar-frame avatar">
+                        <span v-bind:class="{'fas' : showUndefinedAvatar, 'fa-user' : showUndefinedAvatar}" class="undefined-avatar"></span>
+                    </div>
+                @endif
+                <label class="choose-avatar-button">
+                    {{__('choose_avatar')}}
+                    <input type="file" v-on:change="processImageFromHardDrive" class="avatar-file">
+                </label>
+                <text-input-combo
+                    v-bind:complete-validation-display-available="true"
+                    name="image_url"
+                    input-type="text"
+                    v-bind:on-blur-callback="processImageByURL"
+                    v-bind:error-message-box-available="true">
+                    {{ucfirst(__('url_address'))}} : 
+                </text-input-combo>
+                <div v-text="avatarFileName" class="avatar-file-name"></div>  
             </form>
        </div>
     </main>

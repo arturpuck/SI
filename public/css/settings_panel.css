@@ -270,7 +270,7 @@
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 2px 2px 2px 2px black;
-  min-width: 320px;
+  min-width: 300px;
   width: 30%;
   margin: calc(40px + 5vw) auto;
 }
@@ -352,4 +352,91 @@
 
 .settings-controls-container {
   position: relative;
+}
+
+.avatar-settings {
+  text-align: center;
+}
+
+.undefined-avatar-frame {
+  background: #b1b1ca;
+  border-radius: 8px;
+  border: 2px solid black;
+  display: block;
+  margin: 10px auto;
+  text-align: center;
+  width: 128px;
+  height: 128px;
+  padding: 7px;
+  background-size: cover;
+  background-position: center;
+}
+
+.undefined-avatar {
+  font-size: 100px;
+}
+
+.avatar-notification {
+  text-align: center;
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
+  color: white;
+  padding: 2px;
+}
+
+@media (max-width: 1200px) {
+  .avatar-notification {
+    font-size: 16px;
+  }
+}
+
+.no-avatar-notification {
+  background: #242229;
+}
+
+.choose-avatar-button {
+  display: block;
+  width: 95%;
+  text-align: center;
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  padding: 4px;
+  margin: 0 auto;
+  background: -webkit-gradient(linear, left top, left bottom, from(#0fe00b), to(#054004));
+  background: linear-gradient(#0fe00b, #054004);
+}
+
+@media (max-width: 1200px) {
+  .choose-avatar-button {
+    font-size: 16px;
+  }
+}
+
+.choose-avatar-button:hover {
+  background: #ef0244;
+}
+
+.avatar-file {
+  position: absolute;
+  top: -9999px;
+  left: 0;
+}
+
+.avatar-file-name {
+  text-align: center;
+  padding: 2px;
+  font-size: 1.1vw;
+  font-family: "Exo 2", sans-serif;
+  height: 1.5em;
+  line-height: 1.5em;
+  color: white;
+}
+
+@media (max-width: 1200px) {
+  .avatar-file-name {
+    font-size: 13px;
+  }
 }

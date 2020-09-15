@@ -58,6 +58,6 @@ class User extends Authenticatable
     }
 
     public function getHasAvatarAttribute(){
-        
+        return \Storage::disk('public')->exists('images/decoration/users/avatars'.$this->login.'*');
     }
 }

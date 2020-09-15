@@ -1633,7 +1633,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".notification-pseudo-footer[data-v-4285bea4] {\n  padding: 2px;\n  text-align: center;\n}\n.icon-information[data-v-4285bea4] {\n  color: green;\n}\n.icon-information[data-v-4285bea4], .icon-error[data-v-4285bea4] {\n  font-size: 1.5vw;\n}\n@media (max-width: 1200px) {\n.icon-information[data-v-4285bea4], .icon-error[data-v-4285bea4] {\n    font-size: 21px;\n}\n}\n.user-notification-container[data-v-4285bea4] {\n  position: fixed;\n  z-index: 5;\n  right: 1%;\n  bottom: 0;\n  -webkit-transform: translateY(100%);\n          transform: translateY(100%);\n  -webkit-transition: -webkit-transform 1.5s;\n  transition: -webkit-transform 1.5s;\n  transition: transform 1.5s;\n  transition: transform 1.5s, -webkit-transform 1.5s;\n  width: 20%;\n  min-width: 180px;\n  overflow: hidden;\n  border-radius: 8px 8px 0 0;\n  box-shadow: 2px 2px 2px 2px black;\n  background: #b1b1ca;\n  color: black;\n}\n.visible-user-notification-container[data-v-4285bea4] {\n  -webkit-transform: translateY(0);\n          transform: translateY(0);\n}\n.notification-bar[data-v-4285bea4] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 0 8px;\n  line-height: 2.2em;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.notification-bar[data-v-4285bea4] {\n    font-size: 16px;\n}\n}\n.no-error-notification-bar[data-v-4285bea4] {\n  background: -webkit-gradient(linear, left top, left bottom, from(#0fe00b), to(#054004));\n  background: linear-gradient(#0fe00b, #054004);\n  color: white;\n}\n.error-notification-bar[data-v-4285bea4] {\n  background: #ca1a1a;\n  color: black;\n}\n.notification-header[data-v-4285bea4] {\n  font-size: 1.4vw;\n  font-family: \"Exo 2\", sans-serif;\n  margin: 0;\n  padding: 0;\n}\n@media (max-width: 1200px) {\n.notification-header[data-v-4285bea4] {\n    font-size: 21px;\n}\n}\n.notification-content[data-v-4285bea4] {\n  margin: 0;\n  padding: 4px;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.notification-content[data-v-4285bea4] {\n    font-size: 15px;\n}\n}\n.flickering-background[data-v-4285bea4] {\n  background: #ca1a1a;\n  color: white;\n}\n.icon-error[data-v-4285bea4] {\n  color: #ca1a1a;\n}", ""]);
+exports.push([module.i, ".notification-pseudo-footer[data-v-4285bea4] {\n  padding: 2px;\n  text-align: center;\n}\n.icon-information[data-v-4285bea4] {\n  color: green;\n}\n.icon-information[data-v-4285bea4], .icon-error[data-v-4285bea4] {\n  font-size: 1.5vw;\n}\n@media (max-width: 1200px) {\n.icon-information[data-v-4285bea4], .icon-error[data-v-4285bea4] {\n    font-size: 21px;\n}\n}\n.user-notification-container[data-v-4285bea4] {\n  position: fixed;\n  z-index: 5;\n  right: 1%;\n  bottom: 0;\n  -webkit-transform: translateY(100%);\n          transform: translateY(100%);\n  -webkit-transition: -webkit-transform 1.5s;\n  transition: -webkit-transform 1.5s;\n  transition: transform 1.5s;\n  transition: transform 1.5s, -webkit-transform 1.5s;\n  width: 20%;\n  min-width: 250px;\n  overflow: hidden;\n  border-radius: 8px 8px 0 0;\n  box-shadow: 2px 2px 2px 2px black;\n  background: #b1b1ca;\n  color: black;\n}\n.visible-user-notification-container[data-v-4285bea4] {\n  -webkit-transform: translateY(0);\n          transform: translateY(0);\n}\n.notification-bar[data-v-4285bea4] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 0 8px;\n  line-height: 2.2em;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.notification-bar[data-v-4285bea4] {\n    font-size: 16px;\n}\n}\n.no-error-notification-bar[data-v-4285bea4] {\n  background: -webkit-gradient(linear, left top, left bottom, from(#0fe00b), to(#054004));\n  background: linear-gradient(#0fe00b, #054004);\n  color: white;\n}\n.error-notification-bar[data-v-4285bea4] {\n  background: #ca1a1a;\n  color: black;\n}\n.notification-header[data-v-4285bea4] {\n  font-size: 1.4vw;\n  font-family: \"Exo 2\", sans-serif;\n  margin: 0;\n  padding: 0;\n}\n@media (max-width: 1200px) {\n.notification-header[data-v-4285bea4] {\n    font-size: 21px;\n}\n}\n.notification-content[data-v-4285bea4] {\n  margin: 0;\n  padding: 4px;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.notification-content[data-v-4285bea4] {\n    font-size: 15px;\n}\n}\n.flickering-background[data-v-4285bea4] {\n  background: #ca1a1a;\n  color: white;\n}\n.icon-error[data-v-4285bea4] {\n  color: #ca1a1a;\n}", ""]);
 
 // exports
 
@@ -17536,12 +17536,121 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
       user_type_id: {
         initialValue: undefined
       }
-    }
+    },
+    avatarFileName: "",
+    avatarFile: null,
+    showUndefinedAvatar: true,
+    allowedExtensions: ['jpg', 'jpeg', 'bmp', 'gif', 'png', 'svg', 'webp']
   },
   methods: {
     notifyUserAboutLockedInput: function notifyUserAboutLockedInput() {
       this.showNotification('this_input_must_not_be_changed');
     },
+    fileHasAllowedExtension: function fileHasAllowedExtension(fileName) {
+      var fileExtension = fileName.split('.').pop().toLowerCase();
+      return this.allowedExtensions.includes(fileExtension);
+    },
+    showAvatarPreview: function showAvatarPreview(fileDescription, image) {
+      this.avatarFileName = fileDescription;
+      this.avatarFile = image;
+      this.showUndefinedAvatar = false;
+    },
+    processImage: function processImage(file, fileDescription) {
+      var reader = new FileReader();
+      var root = this.$root;
+
+      reader.onloadend = function () {
+        var image = new Image();
+
+        image.onload = function () {
+          if (this.width > 128 && this.height > 128) {
+            root.showNotification('incorrect_image_dimensions', 'error');
+          } else {
+            root.showAvatarPreview(fileDescription, reader.result);
+          }
+        };
+
+        image.src = reader.result;
+      };
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    },
+    processImageFromHardDrive: function processImageFromHardDrive(event) {
+      var file = event.target.files[0];
+
+      if (this.fileHasAllowedExtension(file.name)) {
+        this.processImage(file, file.name);
+      } else {
+        this.showNotification('invalid_file_extension', 'error');
+      }
+    },
+    fileURLhasCorrectExtension: function fileURLhasCorrectExtension(type) {
+      var fileExtension = type.split('/').pop().split('\\').pop().toLowerCase();
+      return this.allowedExtensions.includes(fileExtension);
+    },
+    processImageByURL: function () {
+      var _processImageByURL = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(sender) {
+        var imageURL, root, response, fileBlob;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                imageURL = sender.inputValue;
+                root = this.$root;
+                _context.prev = 2;
+                _context.next = 5;
+                return fetch(imageURL);
+
+              case 5:
+                response = _context.sent;
+                _context.next = 8;
+                return response.blob();
+
+              case 8:
+                fileBlob = _context.sent;
+
+                if (!(response.status >= 200 && response.status < 227)) {
+                  _context.next = 13;
+                  break;
+                }
+
+                if (root.fileURLhasCorrectExtension(fileBlob.type)) {
+                  root.processImage(fileBlob, imageURL);
+                }
+
+                _context.next = 14;
+                break;
+
+              case 13:
+                throw 'fetch_error';
+
+              case 14:
+                _context.next = 19;
+                break;
+
+              case 16:
+                _context.prev = 16;
+                _context.t0 = _context["catch"](2);
+                root.showNotification('fetch_error', 'error');
+
+              case 19:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[2, 16]]);
+      }));
+
+      function processImageByURL(_x) {
+        return _processImageByURL.apply(this, arguments);
+      }
+
+      return processImageByURL;
+    }(),
     showApropriateContent: function showApropriateContent(event) {
       this.selectedTab = event.target.id;
     },
@@ -17580,33 +17689,33 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
       return true;
     },
     validateEmail: function validateEmail(sender) {
-      function checkIfEmailExists(_x) {
+      function checkIfEmailExists(_x2) {
         return _checkIfEmailExists.apply(this, arguments);
       }
 
       function _checkIfEmailExists() {
         _checkIfEmailExists = _asyncToGenerator(
         /*#__PURE__*/
-        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(email) {
+        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(email) {
           var response;
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
             while (1) {
-              switch (_context.prev = _context.next) {
+              switch (_context2.prev = _context2.next) {
                 case 0:
                   email = encodeURI(email);
-                  _context.prev = 1;
-                  _context.next = 4;
+                  _context2.prev = 1;
+                  _context2.next = 4;
                   return fetch("/verify-email/".concat(email));
 
                 case 4:
-                  response = _context.sent;
-                  _context.t0 = response.status;
-                  _context.next = _context.t0 === 200 ? 8 : _context.t0 === 400 ? 10 : _context.t0 === 429 ? 12 : 14;
+                  response = _context2.sent;
+                  _context2.t0 = response.status;
+                  _context2.next = _context2.t0 === 200 ? 8 : _context2.t0 === 400 ? 10 : _context2.t0 === 429 ? 12 : 14;
                   break;
 
                 case 8:
                   sender.showValueIsOK();
-                  return _context.abrupt("break", 16);
+                  return _context2.abrupt("break", 16);
 
                 case 10:
                   throw "email_has_already_been_taken";
@@ -17618,20 +17727,20 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
                   throw "undefined_error";
 
                 case 16:
-                  _context.next = 21;
+                  _context2.next = 21;
                   break;
 
                 case 18:
-                  _context.prev = 18;
-                  _context.t1 = _context["catch"](1);
-                  sender.showError(_modules_helpers_translator_js__WEBPACK_IMPORTED_MODULE_10__["default"].translate(_context.t1));
+                  _context2.prev = 18;
+                  _context2.t1 = _context2["catch"](1);
+                  sender.showError(_modules_helpers_translator_js__WEBPACK_IMPORTED_MODULE_10__["default"].translate(_context2.t1));
 
                 case 21:
                 case "end":
-                  return _context.stop();
+                  return _context2.stop();
               }
             }
-          }, _callee, null, [[1, 18]]);
+          }, _callee2, null, [[1, 18]]);
         }));
         return _checkIfEmailExists.apply(this, arguments);
       }
@@ -17692,13 +17801,13 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
     editUserData: function () {
       var _editUserData = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(userDataThatShouldBeChanged) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(userDataThatShouldBeChanged) {
         var requestData, response, errors;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
-                _context2.prev = 0;
+                _context3.prev = 0;
                 requestData = {
                   method: 'PATCH',
                   body: JSON.stringify(userDataThatShouldBeChanged),
@@ -17708,26 +17817,26 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
                   }
                 };
                 this.$root.$emit('awaitingResponse');
-                _context2.next = 5;
-                return fetch('/user/profile', requestData);
+                _context3.next = 5;
+                return fetch('/user/profile/settings/basic', requestData);
 
               case 5:
-                response = _context2.sent;
-                _context2.t0 = response.status;
-                _context2.next = _context2.t0 === 200 ? 9 : _context2.t0 === 400 ? 12 : _context2.t0 === 429 ? 17 : _context2.t0 === 500 ? 19 : 21;
+                response = _context3.sent;
+                _context3.t0 = response.status;
+                _context3.next = _context3.t0 === 200 ? 9 : _context3.t0 === 400 ? 12 : _context3.t0 === 429 ? 17 : _context3.t0 === 500 ? 19 : 21;
                 break;
 
               case 9:
                 this.showNotification('data_has_been_changed_successfully');
                 this.resetInputs();
-                return _context2.abrupt("break", 23);
+                return _context3.abrupt("break", 23);
 
               case 12:
-                _context2.next = 14;
+                _context3.next = 14;
                 return response.json();
 
               case 14:
-                errors = _context2.sent;
+                errors = _context3.sent;
                 throw _modules_helpers_translator_js__WEBPACK_IMPORTED_MODULE_10__["default"].translate('the_following_errors_occured') + _modules_helpers_translator_js__WEBPACK_IMPORTED_MODULE_10__["default"].translate(errors);
 
               case 17:
@@ -17740,28 +17849,28 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
                 throw "undefined_error";
 
               case 23:
-                _context2.next = 28;
+                _context3.next = 28;
                 break;
 
               case 25:
-                _context2.prev = 25;
-                _context2.t1 = _context2["catch"](0);
-                this.showNotification(_context2.t1, 'error');
+                _context3.prev = 25;
+                _context3.t1 = _context3["catch"](0);
+                this.showNotification(_context3.t1, 'error');
 
               case 28:
-                _context2.prev = 28;
+                _context3.prev = 28;
                 this.$root.$emit('responseReceived');
-                return _context2.finish(28);
+                return _context3.finish(28);
 
               case 31:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2, this, [[0, 25, 28, 31]]);
+        }, _callee3, this, [[0, 25, 28, 31]]);
       }));
 
-      function editUserData(_x2) {
+      function editUserData(_x3) {
         return _editUserData.apply(this, arguments);
       }
 
@@ -17802,6 +17911,9 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
     },
     avatarTabIsActive: function avatarTabIsActive() {
       return this.selectedTab === 'avatarTab';
+    },
+    avatarFileBackgroundImageAdress: function avatarFileBackgroundImageAdress() {
+      return "url('".concat(this.avatarFile, "')");
     }
   },
   mounted: function mounted() {
@@ -19053,7 +19165,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     password_is_required: "Należy podać hasło",
     the_given_password_is_incorrect: "Wprowadzone hasło jest nieprawidłowe",
     the_following_errors_occured: "Wykryto następujące błędy : "
-  }, _defineProperty(_pl, "password_must_contain_at_least_3_characters", "Hasło musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "password_must_not_exceed_20_characters", "Hasło nie może przekraczać 20 znaków"), _defineProperty(_pl, "data_has_been_changed_successfully", "Pomyślnie zmieniono dane użytkownika."), _defineProperty(_pl, "the_requested_data_is_ok_but_a_server_error_occured", "Wprowadzone dane są poprawne jednak serwer napotkał nieoczekiwany błąd. Prosimy spróbować później lub skontaktować się z obsługą"), _defineProperty(_pl, "please_type_in_a_valid_password", "Proszę wprowadzić swoje hasło o długości od 3 do 20 znaków"), _defineProperty(_pl, "no_data_has_been_changed", "Żadne pole nie zostało zmienione."), _defineProperty(_pl, "this_input_must_not_be_changed", "Tego pola nie można edytować"), _defineProperty(_pl, "you_have_to_choose_one_option", "Należy wybrać jedną opcję"), _defineProperty(_pl, "information", "Informacja"), _defineProperty(_pl, "error", "Błąd"), _pl)
+  }, _defineProperty(_pl, "password_must_contain_at_least_3_characters", "Hasło musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "password_must_not_exceed_20_characters", "Hasło nie może przekraczać 20 znaków"), _defineProperty(_pl, "data_has_been_changed_successfully", "Pomyślnie zmieniono dane użytkownika."), _defineProperty(_pl, "the_requested_data_is_ok_but_a_server_error_occured", "Wprowadzone dane są poprawne jednak serwer napotkał nieoczekiwany błąd. Prosimy spróbować później lub skontaktować się z obsługą"), _defineProperty(_pl, "please_type_in_a_valid_password", "Proszę wprowadzić swoje hasło o długości od 3 do 20 znaków"), _defineProperty(_pl, "no_data_has_been_changed", "Żadne pole nie zostało zmienione."), _defineProperty(_pl, "this_input_must_not_be_changed", "Tego pola nie można edytować"), _defineProperty(_pl, "you_have_to_choose_one_option", "Należy wybrać jedną opcję"), _defineProperty(_pl, "information", "Informacja"), _defineProperty(_pl, "error", "Błąd"), _defineProperty(_pl, "incorrect_image_dimensions", "Szerokość lub wysokość obrazu przekracza 128px"), _defineProperty(_pl, "invalid_file_extension", "Niewłaściwe rozszerzenie pliku. Dozwolone rozszerzenia to : jpg, jpeg, svg, bmp, png, gif, webp"), _defineProperty(_pl, "url_address", "Adres URL"), _defineProperty(_pl, "incorrect_extension", "Niewłaściwe rozszerzenie pliku"), _defineProperty(_pl, "fetch_error", "Podczas pobierania avataru wystąpił błąd. Nie wszystkie witryny umożliwiają pobieranie obrazów pomiędzy domenami, co za tym idzie przeglądarka mogła zablokować rządanie. Upewnij się, że wprowadzony adres jest poprawny. Jeżeli problem nadal się pojawia sugerujemy wybrać inny obraz lub pobrać na dysk i wtedy wczytać."), _pl)
 });
 
 /***/ }),

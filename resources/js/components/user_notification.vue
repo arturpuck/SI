@@ -107,7 +107,7 @@ import IconClose from './form_controls/icon_close.vue';
       transform: translateY(100%);
       transition: transform 1.5s;
       width:20%;
-      min-width:180px;
+      min-width:250px;
       overflow:hidden;
       border-radius:8px 8px 0 0;
       box-shadow: 2px 2px 2px 2px black;
