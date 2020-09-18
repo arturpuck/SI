@@ -50,6 +50,13 @@ export default{
     invalid_file_extension : "Niewłaściwe rozszerzenie pliku. Dozwolone rozszerzenia to : jpg, jpeg, svg, bmp, png, gif, webp",
     url_address : "Adres URL",
     incorrect_extension : "Niewłaściwe rozszerzenie pliku",
-    fetch_error : "Podczas pobierania avataru wystąpił błąd. Nie wszystkie witryny umożliwiają pobieranie obrazów pomiędzy domenami, co za tym idzie przeglądarka mogła zablokować rządanie. Upewnij się, że wprowadzony adres jest poprawny. Jeżeli problem nadal się pojawia sugerujemy wybrać inny obraz lub pobrać na dysk i wtedy wczytać."
+    invalid_image_url : "Wygląda na to, że podany adres URL obrazu jest nieprawidłowy. Jeżeli jesteś przekonany, że jest inaczej zawsze możesz pobrać obraz na dysk i stamtąd wczytać",
+    invalid_image_extension : "Wygląda na to, że plik ma niewłaściwe rozszerzenie",
+    invalid_image_dimensions : "Wprowadzony adres odnosi się do obrazu z właściwym rozszerzeniem jednak szerokość lub wysokość przekracza 128px",
+    operation_in_progress : "Operacja w toku",
+    checking_image : "Sprawdzam obraz",
+    checking_the_email : "Sprawdzam email",
+    changing_user_data : "Pracuję nad zmianą danych",
+    invalid_image_url_or_another_error : "Prawdopodobnie adres URL jest nieprawidłowy lub wystąpił inny bliżej niezidentyfikowany problem"
    }
 }

@@ -151,21 +151,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'expect-circle',
-  data: function data() {
-    return {
-      hide: true
-    };
-  },
   props: {
     label: {
       required: false,
       type: String,
       "default": null
-    }
-  },
-  methods: {
-    showBar: function showBar() {
-      this.hide = false;
     }
   }
 });
@@ -17488,6 +17478,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_form_controls_accept_button_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/form_controls/accept_button.vue */ "./resources/js/components/form_controls/accept_button.vue");
 /* harmony import */ var _components_user_notification_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/user_notification.vue */ "./resources/js/components/user_notification.vue");
 /* harmony import */ var _modules_helpers_translator_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../modules/helpers/translator.js */ "./resources/js/modules/helpers/translator.js");
+/* harmony import */ var _components_form_controls_submit_button_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/form_controls/submit_button.vue */ "./resources/js/components/form_controls/submit_button.vue");
 
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -17512,6 +17503,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('navbar', _components_navbar_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('click-detector', _components_click_detector_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('text-input-combo', _components_form_controls_text_input_combo_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
@@ -17520,6 +17512,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('date-picker', _components_
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('expect-circle', _components_decoration_expect_circle_vue__WEBPACK_IMPORTED_MODULE_7__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('accept-button', _components_form_controls_accept_button_vue__WEBPACK_IMPORTED_MODULE_8__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('user-notification', _components_user_notification_vue__WEBPACK_IMPORTED_MODULE_9__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('submit-button', _components_form_controls_submit_button_vue__WEBPACK_IMPORTED_MODULE_11__["default"]);
 new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
   el: '#app',
   data: {
@@ -17540,11 +17533,20 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
     avatarFileName: "",
     avatarFile: null,
     showUndefinedAvatar: true,
-    allowedExtensions: ['jpg', 'jpeg', 'bmp', 'gif', 'png', 'svg', 'webp']
+    allowedExtensions: ['jpg', 'jpeg', 'bmp', 'gif', 'png', 'svg', 'webp'],
+    currentExpectDecorationLabel: undefined,
+    validImageURL: ""
   },
   methods: {
     notifyUserAboutLockedInput: function notifyUserAboutLockedInput() {
       this.showNotification('this_input_must_not_be_changed');
+    },
+    showExpectationDecoration: function showExpectationDecoration(label) {
+      this.currentExpectDecorationLabel = _modules_helpers_translator_js__WEBPACK_IMPORTED_MODULE_10__["default"].translate(label);
+      this.verificationInProgress = true;
+    },
+    hideExpectationDecoration: function hideExpectationDecoration() {
+      this.verificationInProgress = false;
     },
     fileHasAllowedExtension: function fileHasAllowedExtension(fileName) {
       var fileExtension = fileName.split('.').pop().toLowerCase();
@@ -17567,6 +17569,7 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
             root.showNotification('incorrect_image_dimensions', 'error');
           } else {
             root.showAvatarPreview(fileDescription, reader.result);
+            root.validImageURL = "";
           }
         };
 
@@ -17586,63 +17589,89 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
         this.showNotification('invalid_file_extension', 'error');
       }
     },
-    fileURLhasCorrectExtension: function fileURLhasCorrectExtension(type) {
-      var fileExtension = type.split('/').pop().split('\\').pop().toLowerCase();
-      return this.allowedExtensions.includes(fileExtension);
+    processValidImageURL: function processValidImageURL(sender, imageURL) {
+      sender.showValueIsOK();
+      this.showAvatarPreview(imageURL, imageURL);
+      this.validImageURL = imageURL;
     },
     processImageByURL: function () {
       var _processImageByURL = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(sender) {
-        var imageURL, root, response, fileBlob;
+        var imageURL, root, response, error;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 imageURL = sender.inputValue;
                 root = this.$root;
-                _context.prev = 2;
-                _context.next = 5;
-                return fetch(imageURL);
 
-              case 5:
-                response = _context.sent;
-                _context.next = 8;
-                return response.blob();
-
-              case 8:
-                fileBlob = _context.sent;
-
-                if (!(response.status >= 200 && response.status < 227)) {
-                  _context.next = 13;
+                if (!imageURL) {
+                  _context.next = 35;
                   break;
                 }
 
-                if (root.fileURLhasCorrectExtension(fileBlob.type)) {
-                  root.processImage(fileBlob, imageURL);
-                }
+                root.showExpectationDecoration('checking_image');
+                _context.next = 6;
+                return fetch("/validate/avatar?URL=".concat(imageURL));
 
-                _context.next = 14;
+              case 6:
+                response = _context.sent;
+                _context.prev = 7;
+                _context.t0 = response.status;
+                _context.next = _context.t0 === 200 ? 11 : _context.t0 === 400 ? 13 : _context.t0 === 429 ? 19 : _context.t0 === 500 ? 21 : 23;
                 break;
+
+              case 11:
+                root.processValidImageURL(sender, imageURL);
+                return _context.abrupt("break", 25);
 
               case 13:
-                throw 'fetch_error';
+                _context.next = 15;
+                return response.json();
 
-              case 14:
-                _context.next = 19;
-                break;
-
-              case 16:
-                _context.prev = 16;
-                _context.t0 = _context["catch"](2);
-                root.showNotification('fetch_error', 'error');
+              case 15:
+                error = _context.sent;
+                sender.showError();
+                throw error;
 
               case 19:
+                throw "to_many_user_settings_change_attempts";
+
+              case 21:
+                throw "the_requested_data_is_ok_but_a_server_error_occured";
+
+              case 23:
+                throw "undefined_error";
+
+              case 25:
+                _context.next = 30;
+                break;
+
+              case 27:
+                _context.prev = 27;
+                _context.t1 = _context["catch"](7);
+                this.showNotification(_context.t1, 'error');
+
+              case 30:
+                _context.prev = 30;
+                root.hideExpectationDecoration();
+                return _context.finish(30);
+
+              case 33:
+                _context.next = 37;
+                break;
+
+              case 35:
+                sender.resetValidation();
+                root.avatarFileName = "";
+
+              case 37:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[2, 16]]);
+        }, _callee, this, [[7, 27, 30, 33]]);
       }));
 
       function processImageByURL(_x) {
@@ -17756,17 +17785,19 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
         return;
       }
 
+      var root = this.$root;
+
       try {
         if (!emailhasCorrectFormat(email)) {
           throw "email_is_invalid";
         }
 
-        this.$root.$emit('awaitingResponse');
+        root.showExpectationDecoration('checking_the_email');
         checkIfEmailExists.call(this, email);
       } catch (error) {
         sender.showError(_modules_helpers_translator_js__WEBPACK_IMPORTED_MODULE_10__["default"].translate(error));
       } finally {
-        this.$root.$emit('responseReceived');
+        root.hideExpectationDecoration();
       }
     },
     tryToEditUserData: function tryToEditUserData() {
@@ -17802,12 +17833,13 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
       var _editUserData = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(userDataThatShouldBeChanged) {
-        var requestData, response, errors;
+        var root, requestData, response, errors;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _context3.prev = 0;
+                root = this.$root;
+                _context3.prev = 1;
                 requestData = {
                   method: 'PATCH',
                   body: JSON.stringify(userDataThatShouldBeChanged),
@@ -17816,58 +17848,58 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
                     'Content-type': 'application/json; charset=UTF-8'
                   }
                 };
-                this.$root.$emit('awaitingResponse');
-                _context3.next = 5;
+                root.showExpectationDecoration('changing_user_data');
+                _context3.next = 6;
                 return fetch('/user/profile/settings/basic', requestData);
 
-              case 5:
+              case 6:
                 response = _context3.sent;
                 _context3.t0 = response.status;
-                _context3.next = _context3.t0 === 200 ? 9 : _context3.t0 === 400 ? 12 : _context3.t0 === 429 ? 17 : _context3.t0 === 500 ? 19 : 21;
+                _context3.next = _context3.t0 === 200 ? 10 : _context3.t0 === 400 ? 13 : _context3.t0 === 429 ? 18 : _context3.t0 === 500 ? 20 : 22;
                 break;
 
-              case 9:
+              case 10:
                 this.showNotification('data_has_been_changed_successfully');
                 this.resetInputs();
-                return _context3.abrupt("break", 23);
+                return _context3.abrupt("break", 24);
 
-              case 12:
-                _context3.next = 14;
+              case 13:
+                _context3.next = 15;
                 return response.json();
 
-              case 14:
+              case 15:
                 errors = _context3.sent;
                 throw _modules_helpers_translator_js__WEBPACK_IMPORTED_MODULE_10__["default"].translate('the_following_errors_occured') + _modules_helpers_translator_js__WEBPACK_IMPORTED_MODULE_10__["default"].translate(errors);
 
-              case 17:
+              case 18:
                 throw "to_many_user_settings_change_attempts";
 
-              case 19:
+              case 20:
                 throw "the_requested_data_is_ok_but_a_server_error_occured";
 
-              case 21:
+              case 22:
                 throw "undefined_error";
 
-              case 23:
-                _context3.next = 28;
+              case 24:
+                _context3.next = 29;
                 break;
 
-              case 25:
-                _context3.prev = 25;
-                _context3.t1 = _context3["catch"](0);
+              case 26:
+                _context3.prev = 26;
+                _context3.t1 = _context3["catch"](1);
                 this.showNotification(_context3.t1, 'error');
 
-              case 28:
-                _context3.prev = 28;
-                this.$root.$emit('responseReceived');
-                return _context3.finish(28);
+              case 29:
+                _context3.prev = 29;
+                root.hideExpectationDecoration();
+                return _context3.finish(29);
 
-              case 31:
+              case 32:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, this, [[0, 25, 28, 31]]);
+        }, _callee3, this, [[1, 26, 29, 32]]);
       }));
 
       function editUserData(_x3) {
@@ -17913,18 +17945,12 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
       return this.selectedTab === 'avatarTab';
     },
     avatarFileBackgroundImageAdress: function avatarFileBackgroundImageAdress() {
-      return "url('".concat(this.avatarFile, "')");
+      return this.avatarFile ? "url('".concat(this.avatarFile, "')") : 'none';
     }
   },
   mounted: function mounted() {
     var _this3 = this;
 
-    this.$root.$on('awaitingResponse', function () {
-      return _this3.verificationInProgress = true;
-    });
-    this.$root.$on('responseReceived', function () {
-      return _this3.verificationInProgress = false;
-    });
     _modules_helpers_translator_js__WEBPACK_IMPORTED_MODULE_10__["default"].initiate();
     this.csrfToken = document.getElementById("csrf-token").content;
     Object.entries(this.basicUserDataEditableFields).forEach(function (_ref7) {
@@ -17934,6 +17960,12 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
 
       return _this3.basicUserDataEditableFields[key].initialValue = _this3.$refs[key].initialValue;
     });
+    var avatarFrame = this.$refs.avatar_frame;
+
+    if (avatarFrame.hasAttribute('data-initial-image')) {
+      this.avatarFile = avatarFrame.getAttribute('data-initial-image');
+      this.showUndefinedAvatar = false;
+    }
   }
 });
 
@@ -19165,7 +19197,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     password_is_required: "Należy podać hasło",
     the_given_password_is_incorrect: "Wprowadzone hasło jest nieprawidłowe",
     the_following_errors_occured: "Wykryto następujące błędy : "
-  }, _defineProperty(_pl, "password_must_contain_at_least_3_characters", "Hasło musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "password_must_not_exceed_20_characters", "Hasło nie może przekraczać 20 znaków"), _defineProperty(_pl, "data_has_been_changed_successfully", "Pomyślnie zmieniono dane użytkownika."), _defineProperty(_pl, "the_requested_data_is_ok_but_a_server_error_occured", "Wprowadzone dane są poprawne jednak serwer napotkał nieoczekiwany błąd. Prosimy spróbować później lub skontaktować się z obsługą"), _defineProperty(_pl, "please_type_in_a_valid_password", "Proszę wprowadzić swoje hasło o długości od 3 do 20 znaków"), _defineProperty(_pl, "no_data_has_been_changed", "Żadne pole nie zostało zmienione."), _defineProperty(_pl, "this_input_must_not_be_changed", "Tego pola nie można edytować"), _defineProperty(_pl, "you_have_to_choose_one_option", "Należy wybrać jedną opcję"), _defineProperty(_pl, "information", "Informacja"), _defineProperty(_pl, "error", "Błąd"), _defineProperty(_pl, "incorrect_image_dimensions", "Szerokość lub wysokość obrazu przekracza 128px"), _defineProperty(_pl, "invalid_file_extension", "Niewłaściwe rozszerzenie pliku. Dozwolone rozszerzenia to : jpg, jpeg, svg, bmp, png, gif, webp"), _defineProperty(_pl, "url_address", "Adres URL"), _defineProperty(_pl, "incorrect_extension", "Niewłaściwe rozszerzenie pliku"), _defineProperty(_pl, "fetch_error", "Podczas pobierania avataru wystąpił błąd. Nie wszystkie witryny umożliwiają pobieranie obrazów pomiędzy domenami, co za tym idzie przeglądarka mogła zablokować rządanie. Upewnij się, że wprowadzony adres jest poprawny. Jeżeli problem nadal się pojawia sugerujemy wybrać inny obraz lub pobrać na dysk i wtedy wczytać."), _pl)
+  }, _defineProperty(_pl, "password_must_contain_at_least_3_characters", "Hasło musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "password_must_not_exceed_20_characters", "Hasło nie może przekraczać 20 znaków"), _defineProperty(_pl, "data_has_been_changed_successfully", "Pomyślnie zmieniono dane użytkownika."), _defineProperty(_pl, "the_requested_data_is_ok_but_a_server_error_occured", "Wprowadzone dane są poprawne jednak serwer napotkał nieoczekiwany błąd. Prosimy spróbować później lub skontaktować się z obsługą"), _defineProperty(_pl, "please_type_in_a_valid_password", "Proszę wprowadzić swoje hasło o długości od 3 do 20 znaków"), _defineProperty(_pl, "no_data_has_been_changed", "Żadne pole nie zostało zmienione."), _defineProperty(_pl, "this_input_must_not_be_changed", "Tego pola nie można edytować"), _defineProperty(_pl, "you_have_to_choose_one_option", "Należy wybrać jedną opcję"), _defineProperty(_pl, "information", "Informacja"), _defineProperty(_pl, "error", "Błąd"), _defineProperty(_pl, "incorrect_image_dimensions", "Szerokość lub wysokość obrazu przekracza 128px"), _defineProperty(_pl, "invalid_file_extension", "Niewłaściwe rozszerzenie pliku. Dozwolone rozszerzenia to : jpg, jpeg, svg, bmp, png, gif, webp"), _defineProperty(_pl, "url_address", "Adres URL"), _defineProperty(_pl, "incorrect_extension", "Niewłaściwe rozszerzenie pliku"), _defineProperty(_pl, "invalid_image_url", "Wygląda na to, że podany adres URL obrazu jest nieprawidłowy. Jeżeli jesteś przekonany, że jest inaczej zawsze możesz pobrać obraz na dysk i stamtąd wczytać"), _defineProperty(_pl, "invalid_image_extension", "Wygląda na to, że plik ma niewłaściwe rozszerzenie"), _defineProperty(_pl, "invalid_image_dimensions", "Wprowadzony adres odnosi się do obrazu z właściwym rozszerzeniem jednak szerokość lub wysokość przekracza 128px"), _defineProperty(_pl, "operation_in_progress", "Operacja w toku"), _defineProperty(_pl, "checking_image", "Sprawdzam obraz"), _defineProperty(_pl, "checking_the_email", "Sprawdzam email"), _defineProperty(_pl, "changing_user_data", "Pracuję nad zmianą danych"), _defineProperty(_pl, "invalid_image_url_or_another_error", "Prawdopodobnie adres URL jest nieprawidłowy lub wystąpił inny bliżej niezidentyfikowany problem"), _pl)
 });
 
 /***/ }),

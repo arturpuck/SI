@@ -17,11 +17,6 @@
 <script>
 	export default {
         name: 'expect-circle',
-        data(){
-            return{
-                hide : true
-            }
-        },
 
         props : {
             label : {
@@ -30,14 +25,6 @@
                 default : null
             }
         },
-
-
-        methods : {
-            showBar(){
-                this.hide = false;
-            }
-        }
-
 
     }
 </script>

@@ -5,21 +5,13 @@
 $imageFolder : user-settings;
 @include background-image(chick-in-bar,1);
 
-.password-reminder{
-    padding:5px;
-    color:white;
-    text-align: center;
-    @include responsive-font();
-}
-
-.password-reminder-icon{
+.information-icon{
     color:#ef0244;
     @include responsive-font(1.7vw,24px,"");
 }
 
 .user-settings-panel{
     background: rgba(0,0,0,0.9);
-    overflow:hidden;
     border-radius:8px;
     box-shadow: 2px 2px 2px 2px black;
     min-width: 300px;
@@ -110,14 +102,14 @@ $imageFolder : user-settings;
    font-size:100px;
 }
 
-.avatar-notification{
-    text-align:center;
-    @include responsive-font();
+.information-for-user{
+    padding:5px;
     color:white;
-    padding:2px;
+    text-align: center;
+    @include responsive-font();
 }
 
-.no-avatar-notification{
+.avatar-notification{
     background:#242229;
 }
 
@@ -128,12 +120,13 @@ $imageFolder : user-settings;
     @include responsive-font();
     border-radius:5px;
     cursor:pointer;
-    color:white;
+    color:black;
     padding:4px;
-    margin:0 auto;
-    background:linear-gradient(#0fe00b, #054004);
+    margin:0 auto 5px auto;
+    background:#f5c50c;
     &:hover{
         background:#ef0244;
+        color:white;
     }
 }
 
@@ -147,8 +140,15 @@ $imageFolder : user-settings;
     text-align:center;
     padding:2px;
     @include responsive-font(1.1vw,13px);
-    height:1.5em;
+    min-height:1.5em;
+    max-height: 4.5em;
     line-height:1.5em;
+    overflow:hidden;
+    word-wrap: break-word;
     color:white;
+}
+
+.disc-icon{
+    float:right;
 }
 

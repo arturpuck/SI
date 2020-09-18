@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\UserType;
 use App\SexualOrientation;
 use App\Http\Requests\User\EditUserDataRequest;
+use App\Http\Requests\User\AvatarValidationRequest;
+use App\Http\Requests\User\ChangeAvatarRequest;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserSettingsController extends Controller
@@ -21,5 +23,13 @@ class UserSettingsController extends Controller
 
     public function updateBasicSettings(EditUserDataRequest $request){
          return auth()->user()->modifyBasicData($request);
+    }
+
+    public function validateAvatar(AvatarValidationRequest $request){
+        return response('success', 200)->header('Content-Type', 'text/plain');
+    }
+
+    public function changeAvatar(ChangeAvatarRequest $request){
+        return auth()->user()->changeAvatar($request);
     }
 }

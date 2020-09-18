@@ -103,8 +103,11 @@
     "data" : "Dane",
     "save_data" : "Zapisz dane",
     "password_is_required_for_any_changes" : "Aby wprowadzić zmiany należy podać hasło",
-    "no_avatar_has_been_choosen" : "Nie wybrano jeszcze avataru",
+    "no_avatar_has_been_choosen" : "Nie zatwierdzono jeszcze avataru",
+    "current_avatar" : "Aktualny avatar",
     "choose_avatar" : "Wybierz plik z dysku",
-    "avatar_requirements_information" : "Można dodać obraz znajdujący się na dysku komputera lub podać adres URL obrazu znajdującego się w sieci. Maksymalne rozmiary avataru to 128 x 128 pikseli. Dozwolone rozszerzenia : jpg, jpeg, png, bmp, svg, gif, webp",
-    "url_address" : "Adres URL"
+    "avatar_requirements_information" : "Można dodać obraz znajdujący się na dysku komputera lub podać adres URL obrazu znajdującego się w sieci(jeżeli link przestanie odnosić się do obrazu avatar zostanie utracony). Maksymalne rozmiary avataru to 128 x 128 pikseli. Dozwolone rozszerzenia : jpg, jpeg, png, bmp, svg, gif, webp",
+    "url_address" : "Adres URL",
+    "accept_avatar" : "Zatwierdź",
+    "avatar_changed_successfully" : "Pomyślnie zmieniono avatar"
 }

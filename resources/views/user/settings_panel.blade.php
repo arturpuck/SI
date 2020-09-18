@@ -18,14 +18,12 @@
        </nav>
        <div class="settings-controls-container">
             <div v-show="verificationInProgress" class="shadow-container">
-                <expect-circle
-                  label="{{__('data_is_beeing_saved')}}">
-                </expect-circle>
+                <expect-circle v-bind:label="currentExpectDecorationLabel"></expect-circle>
             </div>
             <form v-show="basicUserDataTabIsActive" class="basic-user-data-settings user-settings">
-                <div class="password-reminder">
+                <div class="information-for-user">
                     <div>
-                       <span class="fas fa-info-circle password-reminder-icon"></span>
+                       <span class="fas fa-info-circle information-icon"></span>
                     </div>
                     {{__('password_is_required_for_any_changes')}}
                 </div>
@@ -85,33 +83,42 @@
                 </text-input-combo>
                 <accept-button v-on:click.native="tryToEditUserData">{{__('save_data')}}</accept-button>
             </form>
-            <form  action="{{route('auth.user.upload.avatar')}}" method="POST" v-show="avatarTabIsActive" class="avatar-settings user-settings">
+            <form action="{{route('auth.user.upload.avatar')}}" method="POST" v-show="avatarTabIsActive" enctype="multipart/form-data" class="avatar-settings user-settings">
                 @method('PUT')    
                 @csrf
-                <div class="avatar-notification">
+                <div class="information-for-user">
+                    <div>
+                       <span class="fas fa-info-circle information-icon"></span>
+                    </div>
                     {{__('avatar_requirements_information')}}
                 </div>
-                @if(Auth::user()->has_avatar)
-
-                @else
-                    <div class="avatar-notification no-avatar-notification">{{__('no_avatar_has_been_choosen')}}</div>
-                    <div v-bind:style="{backgroundImage : avatarFileBackgroundImageAdress}" class="undefined-avatar-frame avatar">
+               
+                    <div class="information-for-user avatar-notification">
+                        @if(Auth::user()->has_avatar)
+                           {{__('current_avatar')}}
+                        @else
+                           {{__('no_avatar_has_been_choosen')}}
+                        @endif
+                    </div>
+                    <div ref="avatar_frame" @if(Auth::user()->has_avatar) data-initial-image="{{Auth::user()->current_avatar_reference}}" @endif  v-bind:style="{backgroundImage : avatarFileBackgroundImageAdress}" class="undefined-avatar-frame avatar">
                         <span v-bind:class="{'fas' : showUndefinedAvatar, 'fa-user' : showUndefinedAvatar}" class="undefined-avatar"></span>
                     </div>
-                @endif
+                
                 <label class="choose-avatar-button">
                     {{__('choose_avatar')}}
-                    <input type="file" v-on:change="processImageFromHardDrive" class="avatar-file">
+                    <input type="file" v-on:change="processImageFromHardDrive" name="avatar_from_hard_drive" class="avatar-file">
+                    <span class="fas fa-hdd disc-icon"></span>
                 </label>
                 <text-input-combo
                     v-bind:complete-validation-display-available="true"
                     name="image_url"
                     input-type="text"
-                    v-bind:on-blur-callback="processImageByURL"
-                    v-bind:error-message-box-available="true">
+                    v-bind:on-blur-callback="processImageByURL">
                     {{ucfirst(__('url_address'))}} : 
                 </text-input-combo>
-                <div v-text="avatarFileName" class="avatar-file-name"></div>  
+                <input type="hidden" v-bind:value="validImageURL" name="valid_image_url">
+                <div v-text="avatarFileName" class="avatar-file-name"></div>
+                <submit-button>{{__('accept_avatar')}}</submit-button>
             </form>
        </div>
     </main>

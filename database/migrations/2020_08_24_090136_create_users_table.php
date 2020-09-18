@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->foreign('sexual_orientation_id')->references('id')->on('sexual_orientations');
             $table->string('password');
             $table->date('birth_date');
+            $table->string('avatar_url')->nullable();
+            $table->string('avatar_file_name')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->engine = 'InnoDB';

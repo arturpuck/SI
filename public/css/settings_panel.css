@@ -213,7 +213,7 @@
   width: 100%;
   background: rgba(0, 0, 0, 0.95);
   height: 100%;
-  z-index: 2;
+  z-index: 3;
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
@@ -240,34 +240,19 @@
   }
 }
 
-.password-reminder {
-  padding: 5px;
-  color: white;
-  text-align: center;
-  font-size: 1.2vw;
-  font-family: "Exo 2", sans-serif;
-}
-
-@media (max-width: 1200px) {
-  .password-reminder {
-    font-size: 16px;
-  }
-}
-
-.password-reminder-icon {
+.information-icon {
   color: #ef0244;
   font-size: 1.7vw;
 }
 
 @media (max-width: 1200px) {
-  .password-reminder-icon {
+  .information-icon {
     font-size: 24px;
   }
 }
 
 .user-settings-panel {
   background: rgba(0, 0, 0, 0.9);
-  overflow: hidden;
   border-radius: 8px;
   box-shadow: 2px 2px 2px 2px black;
   min-width: 300px;
@@ -376,21 +361,21 @@
   font-size: 100px;
 }
 
-.avatar-notification {
+.information-for-user {
+  padding: 5px;
+  color: white;
   text-align: center;
   font-size: 1.2vw;
   font-family: "Exo 2", sans-serif;
-  color: white;
-  padding: 2px;
 }
 
 @media (max-width: 1200px) {
-  .avatar-notification {
+  .information-for-user {
     font-size: 16px;
   }
 }
 
-.no-avatar-notification {
+.avatar-notification {
   background: #242229;
 }
 
@@ -402,11 +387,10 @@
   font-family: "Exo 2", sans-serif;
   border-radius: 5px;
   cursor: pointer;
-  color: white;
+  color: black;
   padding: 4px;
-  margin: 0 auto;
-  background: -webkit-gradient(linear, left top, left bottom, from(#0fe00b), to(#054004));
-  background: linear-gradient(#0fe00b, #054004);
+  margin: 0 auto 5px auto;
+  background: #f5c50c;
 }
 
 @media (max-width: 1200px) {
@@ -417,6 +401,7 @@
 
 .choose-avatar-button:hover {
   background: #ef0244;
+  color: white;
 }
 
 .avatar-file {
@@ -430,8 +415,11 @@
   padding: 2px;
   font-size: 1.1vw;
   font-family: "Exo 2", sans-serif;
-  height: 1.5em;
+  min-height: 1.5em;
+  max-height: 4.5em;
   line-height: 1.5em;
+  overflow: hidden;
+  word-wrap: break-word;
   color: white;
 }
 
@@ -439,4 +427,8 @@
   .avatar-file-name {
     font-size: 13px;
   }
+}
+
+.disc-icon {
+  float: right;
 }

@@ -54,8 +54,11 @@ Route::middleware(['auth'])->name('auth.user.')->namespace('Auth\User')->group(f
        Route::patch('user/profile/settings/basic', 'UserSettingsController@updateBasicSettings')
               ->name('update.basic.settings')->middleware('api');
 
-       Route::put('user/profile/settings/avatar', 'UserSettingsController@uploadAvatar')
+       Route::put('user/profile/settings/avatar', 'UserSettingsController@changeAvatar')
              ->name('upload.avatar')->middleware('api');
+
+       Route::get('/validate/avatar', 'UserSettingsController@validateAvatar')
+             ->name('validate.avatar')->middleware('api');
 
 });
 

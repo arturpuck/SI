@@ -7,7 +7,8 @@ import DatePicker from '../../components/form_controls/date_picker.vue';
 import ExpectCircle  from '../../components/decoration/expect_circle.vue';
 import AcceptButton from '../../components/form_controls/accept_button.vue';
 import UserNotification from '../../components/user_notification.vue';
-import Translator from '../../modules/helpers/translator.js'
+import Translator from '../../modules/helpers/translator.js';
+import SubmitButton from '../../components/form_controls/submit_button.vue';
 
 Vue.component('navbar', Navbar);
 Vue.component('click-detector', ClickDetector);
@@ -17,6 +18,7 @@ Vue.component('date-picker', DatePicker);
 Vue.component('expect-circle', ExpectCircle);
 Vue.component('accept-button', AcceptButton);
 Vue.component('user-notification', UserNotification);
+Vue.component('submit-button', SubmitButton);
 
 new Vue({
     el: '#app',
@@ -41,13 +43,24 @@ new Vue({
        avatarFileName : "",
        avatarFile : null,
        showUndefinedAvatar : true,
-       allowedExtensions : ['jpg', 'jpeg', 'bmp', 'gif', 'png', 'svg', 'webp']
-       
+       allowedExtensions : ['jpg', 'jpeg', 'bmp', 'gif', 'png', 'svg', 'webp'],
+       currentExpectDecorationLabel : undefined,
+       validImageURL : ""
     },
    
     methods : {
+
         notifyUserAboutLockedInput(){
            this.showNotification('this_input_must_not_be_changed');
+        },
+
+        showExpectationDecoration(label){
+           this.currentExpectDecorationLabel = Translator.translate(label);
+           this.verificationInProgress = true;
+        },
+
+        hideExpectationDecoration(){
+           this.verificationInProgress = false;
         },
 
         fileHasAllowedExtension(fileName){
@@ -74,6 +87,7 @@ new Vue({
                }
                else{
                   root.showAvatarPreview(fileDescription,reader.result);
+                  root.validImageURL = "";
                }
             }
             image.src = reader.result;
@@ -91,37 +105,58 @@ new Vue({
               this.processImage(file, file.name);
          }
          else{
-            this.showNotification('invalid_file_extension', 'error')
+            this.showNotification('invalid_file_extension', 'error');
          }  
       },
 
-      fileURLhasCorrectExtension(type){
-          const fileExtension = type.split('/').pop().split('\\').pop().toLowerCase();
-          return this.allowedExtensions.includes(fileExtension);
+      processValidImageURL(sender, imageURL){
+         sender.showValueIsOK();
+         this.showAvatarPreview(imageURL,imageURL);
+         this.validImageURL = imageURL;
       },
 
      async processImageByURL(sender){
           const imageURL = sender.inputValue;
           const root = this.$root;
-          
-          try{
-            const response = await fetch(imageURL);
-            const fileBlob = await response.blob();
 
-            if((response.status >= 200) && (response.status < 227)){
-               if(root.fileURLhasCorrectExtension(fileBlob.type)){
-                  root.processImage(fileBlob, imageURL);
+          if(imageURL){
+               root.showExpectationDecoration('checking_image');
+               const response = await fetch(`/validate/avatar?URL=${imageURL}`);
+            try{
+                  switch(response.status){
+                     case 200:
+                        root.processValidImageURL(sender,imageURL);
+                     break;
+                     
+                     case 400:
+                        const error = await response.json();
+                        sender.showError();
+                        throw error;
+                     break;
+
+                     case 429:
+                        throw "to_many_user_settings_change_attempts";
+                     break;
+
+                     case 500:
+                        throw "the_requested_data_is_ok_but_a_server_error_occured"
+                     break;
+
+                     default:
+                        throw "undefined_error";
+                     break;
+                  }
+               }catch(error){
+                  this.showNotification(error, 'error');
                }
-            }
-            else{
-               throw 'fetch_error';
-            }
-            
-          }
-          catch(error){
-              root.showNotification('fetch_error', 'error');
-          }
-          
+               finally{
+                  root.hideExpectationDecoration();
+               }
+         }
+         else{
+            sender.resetValidation();
+            root.avatarFileName = "";
+         }
       },
 
         showApropriateContent(event){
@@ -206,19 +241,19 @@ new Vue({
                  sender.resetValidation();
                  return;
               }
-              
+              const root = this.$root;
               try{
                  if(!emailhasCorrectFormat(email)){
                     throw "email_is_invalid";
                   }
-                  this.$root.$emit('awaitingResponse');
+                  root.showExpectationDecoration('checking_the_email')
                   checkIfEmailExists.call(this,email);
               }
               catch(error){
                  sender.showError(Translator.translate(error));
               }
               finally{
-                 this.$root.$emit('responseReceived');
+                root.hideExpectationDecoration();
               }
            },
 
@@ -235,7 +270,7 @@ new Vue({
                   if(this.basicUserDataEditableFields[key].initialValue != input.inputValue){
                      userDataThatShouldBeChanged[key] = input.inputValue;
                   }
-
+                  
                });
                
                if(Object.keys(userDataThatShouldBeChanged).length > 0){
@@ -254,7 +289,9 @@ new Vue({
 
         editUserData : async function(userDataThatShouldBeChanged){
           
+         const root = this.$root;
          try{
+         
                const requestData = {
                   method : 'PATCH',
                   body : JSON.stringify(userDataThatShouldBeChanged),
@@ -263,10 +300,9 @@ new Vue({
                      'Content-type': 'application/json; charset=UTF-8'
                   }
                };
-
-               this.$root.$emit('awaitingResponse');
+               root.showExpectationDecoration('changing_user_data')
                const response = await fetch('/user/profile/settings/basic',requestData);
-                
+          
                switch(response.status){
                   case 200:
                      this.showNotification('data_has_been_changed_successfully');
@@ -295,7 +331,7 @@ new Vue({
              this.showNotification(error, 'error');
           }
           finally{
-            this.$root.$emit('responseReceived');
+            root.hideExpectationDecoration();
           }
             
         },
@@ -322,16 +358,20 @@ new Vue({
        },
 
        avatarFileBackgroundImageAdress(){
-          return `url('${this.avatarFile}')`;
+          return this.avatarFile ? `url('${this.avatarFile}')` : 'none';
        }
    },
 
    mounted(){
-    this.$root.$on('awaitingResponse', ()=> this.verificationInProgress = true);
-    this.$root.$on('responseReceived', ()=> this.verificationInProgress = false);
     Translator.initiate();
     this.csrfToken = document.getElementById("csrf-token").content;
     Object.entries(this.basicUserDataEditableFields).forEach(([key, value]) => this.basicUserDataEditableFields[key].initialValue = this.$refs[key].initialValue);
+    const avatarFrame = this.$refs.avatar_frame;
+
+   if(avatarFrame.hasAttribute('data-initial-image')){
+       this.avatarFile = avatarFrame.getAttribute('data-initial-image');
+       this.showUndefinedAvatar = false;
+   }
  }
    
 });

@@ -1,0 +1,159 @@
+Sex - Imperium rozpoczyna swoją działalność w sieci. W dniu rozpoczęcia udostępniamy użytkownikom filmy pornograficzne wraz ze standardowymi udogodnieniami takimi jak kategorie i profile gwiazd branży. Oprócz tego wprowadziliśmy pewne innowacje - precyzyjną wyszukiwarkę oraz filmy z polskim tłumaczeniem. Plany na najbliższą przyszłość to : zdjęcia porno, wyszukiwanie słowne, więcej filmów, i gwiazd oraz więcej opcji dla wyszukiwania zaawansowanego. Plany na dalszą przyszłość : dział ogłoszeń dla osób zajmujących się prostytucją oraz sex-randki. Liczymy na to, że zostaniecie z nami. Bardzo chętnie poznamy wasze uwagi na temat funkcjonowania portalu - wasza opinia ma dla nas duże znaczenie! Wystarczy skorzystać z formularza kontaktowego - link znajduje się na dole strony, w stopce. Życzymy miłego pobytu.
+
+<div ref="container" v-bind:title="title" v-bind:aria-label="ariaLabel" class="close-icon-container">
+ <svg ref="icon"  class="icon-close" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="69.6577" y1="448.2119" x2="416.14" y2="101.7296" gradientTransform="matrix(1.0449 0 0 -1.0449 2.1991 543.3086)">
+	<stop  offset="0" style="stop-color:#FF597A"/>
+	<stop  offset="1" style="stop-color:#BD0019"/>
+</linearGradient>
+<circle style="fill:url(#SVGID_1_);" cx="256" cy="255.996" r="255.996"/>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="242.3488" y1="30.2208" x2="242.8488" y2="29.7208" gradientTransform="matrix(1.0449 0 0 -1.0449 2.1991 543.3086)">
+	<stop  offset="0" style="stop-color:#FF597A"/>
+	<stop  offset="1" style="stop-color:#BD0019"/>
+</linearGradient>
+<path style="fill:url(#SVGID_2_);" d="M256.003,512c0.067,0,0.133-0.002,0.2-0.002c-0.344,0-0.686-0.006-1.03-0.008
+	C255.45,511.991,255.726,512,256.003,512z"/>
+<path style="fill:#C2001B;" d="M255.173,511.99c-1.293-0.004-2.582-0.026-3.87-0.049
+	C252.591,511.967,253.881,511.983,255.173,511.99z"/>
+<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="49.8988" y1="274.9707" x2="435.8988" y2="274.9707" gradientTransform="matrix(1.0449 0 0 -1.0449 2.1991 543.3086)">
+	<stop  offset="0" style="stop-color:#FFFFFF"/>
+	<stop  offset="0.31" style="stop-color:#FCFCFC"/>
+	<stop  offset="0.573" style="stop-color:#F2F1F3"/>
+	<stop  offset="0.818" style="stop-color:#E1E0E3"/>
+	<stop  offset="1" style="stop-color:#CFCDD3"/>
+</linearGradient>
+<circle style="fill:url(#SVGID_3_);" cx="256" cy="255.996" r="201.662"/>
+<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="142.9783" y1="374.8842" x2="342.8123" y2="175.0502" gradientTransform="matrix(1.0449 0 0 -1.0449 2.1991 543.3086)">
+	<stop  offset="0" style="stop-color:#FF597A"/>
+	<stop  offset="1" style="stop-color:#BD0019"/>
+</linearGradient>
+<polygon style="fill:url(#SVGID_4_);" points="383.301,174.502 337.494,128.695 255.997,210.193 174.499,128.695 128.691,174.502 
+	210.189,255.999 128.691,337.498 174.499,383.305 255.997,301.807 337.494,383.305 383.301,337.498 301.805,255.999 "/>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+</div>
+
+
+
+private $rules = [
+            'registration_login' => ['required', 'string', 'max:20', 'min:3', 'unique:users,login'],
+            'registration_email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'registration_password' => ['required', 'min:3', 'max:20'],
+            'user_type' => 
+            ['required','in:mężczyzną,kobietą,parą,hermafrodytą,transseksualistą,nie chcę podać'],
+            'sexual_orientation' => 
+            ['required', 'in:heteroseksualna,homoseksualna,biseksualna,autoseksualna,aseksualna,nie chcę podać'],
+            'birth_date' => ['required', 'date']
+        ];
+    private $errorMessages = [
+        'registration_login.required' => 'Nie podano loginu',
+        'registration_login.string' => 'Login nie może składać się z samych liczb',
+        'registration_login.max' => 'Login nie może przekraczać 20 znaków',
+        'registration_login.min' => 'Login nie może mieć mniej niż 3 znaki',
+        'registration_login.unique' => 'Login jest już zajęty przez innego użytkownika',
+        'registration_email.required' => 'Nie podano adresu email',
+        'registration_email.string' => 'Login nie może składać się z samych liczb',
+        'registration_email.email' => 'Wartość podana jako adres email nie jest prawidłowym adresem email',
+        'registration_email.max' => 'Długość adresu email nie może przekraczać 255 znaków',
+        'registration_email.unique' => 'Adres email jest już wykorzystany przez innego użytkownika',
+        'registration_password.required' => 'Nie podano hasła',
+        'registration_password.min' => 'Hasło nie może mieć mniej niż 3 znaki',
+        'registration_password.max' => "hasło nie może mieć więcej niż 20 znaków",
+        'user_type.required' => 'Nie wybrano typu użytkownika',
+        'user_type.in' => "Typ użytkownika może przyjmować jedynie te wartości zdefiniowane na rozwijanej liście",
+        'sexual_orientation.required' => 'Nie podano orientacji',
+        'sexual_orientation.in' => 'Orientacja seksualna może przyjmować jedynie te wartości zdefiniowane na rozwijanej liście',
+        'birth_date.required' => 'Nie podano daty urodzenia',
+        'birth_date.date' => 'Wartośc podana jako data urodzenia nie jest prawidłową datą',
+        'birth_date.date_format' => 'Nieprawidłowy format daty urodzenia',
+        'birth_date.after' => 'Nieprawidłowa data urodzenia - ludzie nie żyją dłużej niż 120 lat',
+        'birth_date.before' => 'Nieprawidłowa data urodzenia - osoby niepełnoletnie nie mogą korzystać z serwisu'
+
+    ];
+
+    private $preparedData;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+    public function showRegistrationForm()
+    {
+        return view('auth.register')->with([
+          'specificImageClass' => 'register-background-image-'.rand(1,3),
+        ]);
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+
+    private function calculateDateYearsBeforeCurrentDay(int $offset)
+    {
+       $currentDay = date('d');
+       $currentMonth = date('m');
+       $currentYear = intval(date('Y'));
+       $yearBeforeOffset = $currentYear - $offset;
+       return "$yearBeforeOffset-$currentMonth-$currentDay";
+    }
+
+
+
+
+
+
+xhr.addEventListener('load', () => {
+             alert('onload');
+             if(xhr.status >= 200 && xhr.status < 227){
+                const contentType = xhr.getResponseHeader("Content-Type");
+
+                if(root.httpHeaderContainsAllowedExtensions(contentType)){
+                   root.showAvatarPreview(imageURL,imageURL);
+                }
+                else{
+                   root.showNotification('request_header_contains_invalid_extension','error');
+                }
+             }
+             else{
+                root.showNotification('fetch_error', 'error');
+             }
+          });
