@@ -6,8 +6,8 @@
         <span v-if="isDisabled" class="fas fa-lock disabled-input-icon"></span>
   	</div>
   	<div v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" class="date-picker-flex-container">
-     <icon-stop v-if="iconErrorCanBeDisplayed" v-show="displayIconError"/>
-     <icon-confirm v-if="iconConfirmationCanBeDisplayed" v-show="displayIconConfirmation"/>
+     <icon-stop v-bind:attached-icon="true" v-if="iconErrorCanBeDisplayed" v-show="displayIconError"/>
+     <icon-confirm v-bind:attached-icon="true" v-if="iconConfirmationCanBeDisplayed" v-show="displayIconConfirmation"/>
   	<div class="time-span-container">
   		<label for="date-picker-day" class="time-span-label">{{descriptions['day']}}</label>
  	 	<select v-bind:disabled="isDisabled" ref="day_select" v-model="selectedDay" id="date-picker-day" class="time-span-select">
@@ -37,17 +37,10 @@
 </template>
 
 <script>
-import IconStop from '../decoration/icon_stop.vue';
-import IconConfirm from '../decoration/icon_confirm.vue';
-import MonthsInDifferentLanguages from '../../modules/helpers/months_in_different_languages.js'
+import MonthsInDifferentLanguages from '@jsmodules/helpers/months_in_different_languages.js'
 
 	export default {
         name : 'date-picker',
-
-        components : {
-            IconStop,
-            IconConfirm
-        },
 
         methods : {
            adjustDays(){
@@ -81,8 +74,9 @@ import MonthsInDifferentLanguages from '../../modules/helpers/months_in_differen
            },
 
            showError(errorMessage = ""){
+                const root = this.$root;
                 this.valueOK = false;
-                this.errorMessage = errorMessage;
+                this.errorMessage = root.translator.translate(errorMessage);
              },
 
              showValueIsOK(){
@@ -271,8 +265,8 @@ import MonthsInDifferentLanguages from '../../modules/helpers/months_in_differen
 
 <style lang="scss" scoped>
 
-   @import'../../../sass/fonts';
-   @import'../../../sass/error_message_box';
+   @import '~sass/fonts';
+   @import '~sass/error_message_box';
 
    .date-picker-container{
 		color:white;
@@ -286,13 +280,6 @@ import MonthsInDifferentLanguages from '../../modules/helpers/months_in_differen
         color:red;
          @include responsive-font(1.3vw,18px,"");
     }
-    
-    .icon-container{
-        top: 0;
-        right:0;
-        transform:translate(50%,-50%);
-        position:absolute;
-}
 
 	.date-picker-description{
         text-align: center;

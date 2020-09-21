@@ -134,23 +134,23 @@
 				<div v-show="verificationInProgress" class="shadow-container">
 			   		<expect-circle label="{{__('verification_in_progress')}}" v-bind:hidden="false"></expect-circle>
 				</div>
-			   <div ref="registration_information">
-				<strong>Rejestracja i korzystanie z serwisu tylko dla osób pełnoletnich.</strong> Podczas przechodzenia na inne pole wprowadzone informacje zostaną automatycznie sprawdzone. Informacje muszą spełniać wymienione poniżej kryteria. <strong>Zmiana daty urodzenia nie będzie możliwa po zarejestrowaniu</strong>
-				<dl class="input-list">
-					<dt class="input-name">{{ucfirst(__('login'))}}</dt>
-					<dd class="input-description">Od 3 do 20 znaków. Login nie może być wykorzystany przez innego użytkownika.</dd>
-					<dt class="input-name">{{ucfirst(__('email'))}}</dt>
-					<dd class="input-description">Należy podać poprawny adres email, ponadto nie może on być wykorzystany przez innego użytkownika.</dd>
-					<dt class="input-name">Hasło</dt>
-					<dd class="input-description">Od 3 do 20 znaków. Im więcej symboli tym lepsze zabezpieczenie</dd>
-					<dt class="input-name">Kim jesteś</dt>
-					<dd class="input-description">Chodzi o płeć/typ użytkownika. Pole jest opcjonalne i w sytuacji gdy ktoś nie chce udzielać informacji na ten temat może zaznaczyć opcję "nie chcę podać".</dd>
-					<dt class="input-name">Orientacja</dt>
-					<dd class="input-description">Orientacja seksualna. Pole jest opcjonalne i w sytuacji gdy ktoś nie chce udzielać informacji na ten temat może zaznaczyć opcję "nie chcę podać".</dd>
-					<dt class="input-name">Data urodzenia</dt>
-					<dd class="input-description">Należy podać datę urodzenia. Korzystanie z serwisu jest dozwolone tylko dla osób pełnoletnich</dd>
-				</dl>
-			   </div>
+			   <p class="registration-requirements">
+					<strong>{{__('registration_and_usage_only_for_adaults')}}.</strong> {{__('the_data_must_meet_the_following_requirements')}}. <strong>{{__('it_is_impossible_to_modify_a_birth_date_and_a_login')}}</strong>
+					<dl class="input-list">
+						<dt class="input-name">{{__('login')}}</dt>
+						<dd class="input-description">{{__('login_requirements')}}</dd>
+						<dt class="input-name">{{__('email')}}</dt>
+						<dd class="input-description">{{__('email_requirements')}}</dd>
+						<dt class="input-name">{{__('password')}}</dt>
+						<dd class="input-description">{{__('password_requirements')}}</dd>
+						<dt class="input-name">{{__('who_you_are')}}</dt>
+						<dd class="input-description">{{__('it_is_about_user_sex')}} {{__('the_field_is_optional')}}.</dd>
+						<dt class="input-name">{{__('orientation')}}</dt>
+						<dd class="input-description">{{__('sexual_orientation')}} {{__('the_field_is_optional')}}.</dd>
+						<dt class="input-name">{{__('birth_date')}}</dt>
+						<dd class="input-description">{{__('birth_date_requirements')}}</dd>
+					</dl>
+			   </p>
 			</section>
 		</main>
 </x-base>

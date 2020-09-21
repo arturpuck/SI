@@ -1,16 +1,12 @@
+import VueConstructor from '@jsmodules/basic.js';
+import TextareaCombo from '@jscomponents/form_controls/textarea_combo.vue';
+import IconStop from '@jscomponents/decoration/icon_stop.vue';
+import IconConfirm from '@jscomponents/decoration/icon_confirm.vue';
+const Vue = VueConstructor.build();
 
-import Vue from 'vue';
-import Navbar  from './components/navbar.vue';
-import SubmitButton from "./components/form_controls/submit_button.vue";
-import TextInputCombo  from './components/form_controls/text_input_combo.vue';
-import TextareaCombo from './components/form_controls/textarea_combo.vue';
-import ClickDetector from './components/click_detector.vue';
-
-Vue.component('navbar', Navbar);
-Vue.component('submit-button', SubmitButton);
-Vue.component('text-input-combo', TextInputCombo);
 Vue.component('textarea-combo', TextareaCombo);
-Vue.component('click-detector', ClickDetector);
+Vue.component('icon-stop', IconStop);
+Vue.component('icon-confirm', IconConfirm);
 
   new Vue({
  el: '#app',
@@ -26,7 +22,7 @@ Vue.component('click-detector', ClickDetector);
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
     }
 
-    const email  = sender.textInputValue;
+    const email  = sender.inputValue;
 
     if(!email || emailhasCorrectFormat(email)){
       sender.resetValidation();
@@ -39,7 +35,7 @@ Vue.component('click-detector', ClickDetector);
 
    validateSubject(sender){
 
-    const subject  = sender.textInputValue;
+    const subject  = sender.inputValue;
 
     if(subject.length > 40){
       sender.showError("Temat przekracza 40 znaków");
@@ -52,7 +48,7 @@ Vue.component('click-detector', ClickDetector);
 
    validateMessage(sender){
 
-      const message  = sender.textInputValue;
+      const message  = sender.inputValue;
 
       if(!message){
         sender.resetValidation();

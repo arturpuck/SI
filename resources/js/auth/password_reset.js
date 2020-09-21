@@ -1,16 +1,10 @@
+import VueConstructor from '@jsmodules/basic.js';
+import IconStop from '@jscomponents/decoration/icon_stop.vue';
+import IconConfirm from '@jscomponents/decoration/icon_confirm.vue';
+const Vue = VueConstructor.build();
 
-import Vue from 'vue';
-import Navbar  from '../components/navbar.vue';
-import SubmitButton from "../components/form_controls/submit_button.vue";
-import TextInputCombo from "../components/form_controls/text_input_combo.vue";
-import LabeledCheckbox from "../components/form_controls/labeled_checkbox.vue";
-import ClickDetector from '../components/click_detector.vue';
-
-Vue.component('navbar', Navbar);
-Vue.component('submit-button', SubmitButton);
-Vue.component('text-input-combo', TextInputCombo);
-Vue.component('labeled-checkbox',LabeledCheckbox);
-Vue.component('click-detector', ClickDetector);
+Vue.component('icon-stop', IconStop);
+Vue.component('icon-confirm', IconConfirm);
 
   new Vue({
  el: '#app',
@@ -18,7 +12,7 @@ Vue.component('click-detector', ClickDetector);
  methods : {
     
  checkPassword(sender){
-    const textInputValue  = sender.textInputValue;
+    const textInputValue  = sender.inputValue;
     const validationResult = this.passwordIsValid(textInputValue);
 
       switch(validationResult){
@@ -44,11 +38,11 @@ Vue.component('click-detector', ClickDetector);
         }
 
         if(password.length < 3){
-           return "Hasło ma mniej niż 3 znaki";
+           return "password_has_less_then_3_characters";
         }
 
         if(password.length > 20){
-           return "Hasło ma więcej niż 20 znaków";
+           return "password_has_more_then_20_characters";
         }
         
         return true;
@@ -58,14 +52,14 @@ comparePasswords(sender){
    const password = this.$refs.password;
    const passwordConfirmation = this.$refs.password_confirmation;
 
-   if(password.textInputValue && passwordConfirmation.textInputValue){
+   if(password.inputValue && passwordConfirmation.inputValue){
 
-      if(password.textInputValue === passwordConfirmation.textInputValue){
+      if(password.inputValue === passwordConfirmation.inputValue){
          password.showValueIsOK();
          passwordConfirmation.showValueIsOK();
       }
       else{
-         sender.showError("Hasła nie pokrywają się");
+         sender.showError("passwords_do_not_match");
       } 
    }
    else{

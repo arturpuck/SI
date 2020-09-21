@@ -1,18 +1,24 @@
 <template>
-  <div ref="container" class="icon-container icon-correct-value">
+  <div ref="container" v-bind:class="{'attached-icon' : attachedIcon}" class="icon-container icon-correct-value">
     <div class="confirmation-icon-bird"></div>
   </div>
 </template>
 
 <script>
 	export default {
-        name: 'icon-ok',
+        name: 'icon-confirm',
 
         props : {
             aditionalClasses : {
                 required : false,
                 type : Object,
                 default : undefined 
+             },
+
+             attachedIcon : {
+                required : false,
+                type : Boolean,
+                default : false
              }
         },
 
@@ -26,6 +32,13 @@
 
 <style lang="scss" scoped>
 
-@import '../../../sass/components/icons/icon_confirmation';
+@import '~sasscomponent/icons/icon_confirmation';
+
+.attached-icon{
+    position:absolute;
+    top:0;
+    right:0;
+    transform:translate(50%,-50%);
+}
 
 </style>

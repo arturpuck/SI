@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Http\Requests\User\ChangeUserPasswordRequest;
 
 class User extends Authenticatable
 {
@@ -127,5 +128,22 @@ class User extends Authenticatable
           return back()->withErrors(['message' => 'the_data_looks_ok_but_an_unexpected_error_occured']);
        }
         
+    }
+
+    public function deleteAvatar() : Response{
+        if($this->has_avatar){
+            $this->deleteCurrentAvatarFileFromStorage();
+            $this->redefineAvatarSettings();
+            return response('success', 200);
+        }
+        else{
+            return response(['the_user_has_no_avatar'],400);
+        }
+    }
+
+    public function changePassword(ChangeUserPasswordRequest $request) : Response{
+        $this->password = \Hash::make($request->new_password);
+        $this->save();
+        return response('success', 200)->header('Content-Type', 'text/plain');    
     }
 }

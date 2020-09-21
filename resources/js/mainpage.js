@@ -1,10 +1,6 @@
 
-import Vue from 'vue';
-import Navbar  from './components/navbar.vue';
-import ClickDetector from './components/click_detector.vue';
-
-Vue.component('navbar', Navbar);
-Vue.component('click-detector', ClickDetector);
+import VueConstructor from '@jsmodules/basic.js';
+const Vue = VueConstructor.build();
 
   new Vue({
  el: '#app',

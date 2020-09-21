@@ -2,25 +2,33 @@
     <main class="user-settings-panel">
        <nav class="user-setting-tabs">
            <ul role="tabpanel" class="user-settings-tab-list">
-               <li role="tab" id="basicUserDataTab" v-on:click="showApropriateContent" v-bind:class="{'active-tab' : basicUserDataTabIsActive}" class="user-settings-tab first-tab">
+               <li role="tab" v-bind:aria-selected="basicUserDataTabIsActive" aria-controls="basic-data-panel" id="basicUserDataTab" v-on:click="showApropriateContent" v-bind:class="{'active-tab' : basicUserDataTabIsActive}" class="user-settings-tab first-tab">
                    <span class="fas fa-user-edit tab-icon"></span>
                    {{__('data')}}
                 </li>
-               <li role="tab" id="avatarTab" v-on:click="showApropriateContent" v-bind:class="{'active-tab' : avatarTabIsActive}" class="user-settings-tab">
+               <li role="tab" v-bind:aria-selected="avatarTabIsActive" aria-controls="avatar-panel" id="avatarTab" v-on:click="showApropriateContent" v-bind:class="{'active-tab' : avatarTabIsActive}" class="user-settings-tab">
                   <span class="fas fa-image tab-icon"></span>
                   {{__('avatar')}}
                 </li>
+                <li role="tab" v-bind:aria-selected="passwordTabIsActive" aria-controls="password-panel" id="passwordTab" v-on:click="showApropriateContent" v-bind:class="{'active-tab' : passwordTabIsActive}" class="user-settings-tab">
+                  <span class="fas fa-key tab-icon"></span>
+                  {{__('password')}}
+                </li>
            </ul>
            <div class="arrows-container">
-              <span role="button" class="fas fa-arrow-left arrow-icon"></span>
-              <span role="button" class="fas fa-arrow-right arrow-icon"></span>
+               <phantom-button v-on:click.native="previousTab" label="{{__('previous_tab')}}">
+                  <span class="fas fa-arrow-left arrow-icon"></span>
+               </phantom-button>
+               <phantom-button v-on:click.native="nextTab" label="{{__('next_tab')}}">
+                  <span class="fas fa-arrow-right arrow-icon"></span>
+               </phantom-button>
            </div>
        </nav>
        <div class="settings-controls-container">
             <div v-show="verificationInProgress" class="shadow-container">
                 <expect-circle v-bind:label="currentExpectDecorationLabel"></expect-circle>
             </div>
-            <form v-show="basicUserDataTabIsActive" class="basic-user-data-settings user-settings">
+            <form id="basic-data-panel" v-show="basicUserDataTabIsActive" class="basic-user-data-settings user-settings">
                 <div class="information-for-user">
                     <div>
                        <span class="fas fa-info-circle information-icon"></span>
@@ -83,27 +91,30 @@
                 </text-input-combo>
                 <accept-button v-on:click.native="tryToEditUserData">{{__('save_data')}}</accept-button>
             </form>
-            <form action="{{route('auth.user.upload.avatar')}}" method="POST" v-show="avatarTabIsActive" enctype="multipart/form-data" class="avatar-settings user-settings">
+            <form id="avatar-panel" action="{{route('auth.user.upload.avatar')}}" method="POST" v-show="avatarTabIsActive" enctype="multipart/form-data" class="avatar-settings user-settings">
                 @method('PUT')    
                 @csrf
-                <div class="information-for-user">
-                    <div>
-                       <span class="fas fa-info-circle information-icon"></span>
-                    </div>
-                    {{__('avatar_requirements_information')}}
+                <div class="icon-information-container">
+                    <span class="fas fa-info-circle information-icon"></span>
                 </div>
+                <p class="information-for-user">
+                    {{__('avatar_requirements_information')}}
+                </p>
                
-                    <div class="information-for-user avatar-notification">
-                        @if(Auth::user()->has_avatar)
-                           {{__('current_avatar')}}
-                        @else
-                           {{__('no_avatar_has_been_choosen')}}
-                        @endif
-                    </div>
+                <div class="information-for-user avatar-notification">
+                    @if(Auth::user()->has_avatar)
+                        {{__('current_avatar')}}
+                    @else
+                        {{__('no_avatar_has_been_choosen')}}
+                    @endif
+                </div>
                     <div ref="avatar_frame" @if(Auth::user()->has_avatar) data-initial-image="{{Auth::user()->current_avatar_reference}}" @endif  v-bind:style="{backgroundImage : avatarFileBackgroundImageAdress}" class="undefined-avatar-frame avatar">
-                        <span v-bind:class="{'fas' : showUndefinedAvatar, 'fa-user' : showUndefinedAvatar}" class="undefined-avatar"></span>
+                        <span v-bind:class="{'fas' : !avatarFile, 'fa-user' : !avatarFile}" class="undefined-avatar"></span>
                     </div>
-                
+                <button v-on:click="deleteAvatar" class="delete-avatar-button" type="button">
+                    {{__('delete_my_avatar')}}
+                    <span class="fas fa-trash-alt trash-icon"></span>
+                </button>
                 <label class="choose-avatar-button">
                     {{__('choose_avatar')}}
                     <input type="file" v-on:change="processImageFromHardDrive" name="avatar_from_hard_drive" class="avatar-file">
@@ -119,6 +130,39 @@
                 <input type="hidden" v-bind:value="validImageURL" name="valid_image_url">
                 <div v-text="avatarFileName" class="avatar-file-name"></div>
                 <submit-button>{{__('accept_avatar')}}</submit-button>
+            </form>
+            <form id="password-panel" v-show="passwordTabIsActive" class="user-settings">
+                <div class="icon-information-container">
+                   <span class="fas fa-info-circle information-icon"></span>
+                </div>
+                <p class="information-for-user">
+                    {{__('edit_password_notification')}}
+               </p>
+               <text-input-combo ref="current_password"
+                 v-bind:complete-error-display-available="true"
+                 name="password"
+                 v-bind:error-message-box-available="true"
+                 input-type="password"
+                 v-bind:on-blur-callback="validatePassword">
+                 {{ucfirst(__('current_password'))}} : 
+                </text-input-combo>
+                <text-input-combo ref="new_password"
+                 v-bind:complete-error-display-available="true"
+                 name="new_password"
+                 v-bind:error-message-box-available="true"
+                 input-type="password"
+                 v-bind:on-blur-callback="validatePassword">
+                 {{ucfirst(__('new_password'))}} : 
+                </text-input-combo>
+                <text-input-combo ref="new_password_confirmation"
+                 v-bind:complete-error-display-available="true"
+                 name="new_password_confirmation"
+                 input-type="password"
+                 v-bind:error-message-box-available="true"
+                 v-bind:on-blur-callback="validatePassword">
+                 {{ucfirst(__('new_password_confirmation'))}} : 
+                </text-input-combo>
+                <accept-button v-on:click.native="tryToChangeUserPassword">{{__('change_password')}}</accept-button>
             </form>
        </div>
     </main>

@@ -1,16 +1,14 @@
 
-import Vue from 'vue';
-import Navbar  from '../components/navbar.vue';
-import SubmitButton from "../components/form_controls/submit_button.vue";
-import TextInputCombo from "../components/form_controls/text_input_combo.vue";
-import ExpectBar from "../components/decoration/expect_bar.vue";
-import ClickDetector from '../components/click_detector.vue';
+import VueConstructor from '@jsmodules/basic.js';
+import IconStop from '@jscomponents/decoration/icon_stop.vue';
+import IconConfirm from '@jscomponents/decoration/icon_confirm.vue';
+import ExpectBar from '@jscomponents/decoration/expect_bar.vue';
 
-Vue.component('navbar', Navbar);
-Vue.component('submit-button', SubmitButton);
-Vue.component('text-input-combo', TextInputCombo);
+const Vue = VueConstructor.build();
+
+Vue.component('icon-stop', IconStop);
+Vue.component('icon-confirm', IconConfirm);
 Vue.component('expect-bar', ExpectBar);
-Vue.component('click-detector', ClickDetector);
 
   new Vue({
  el: '#app',
@@ -33,7 +31,7 @@ Vue.component('click-detector', ClickDetector);
 
               switch(response.status){
                  case 200:
-                  throw "Taki adres email nie istnieje";
+                  throw "this_email_address_does_not_exist";
                  break;
  
                  case 400:
@@ -41,11 +39,11 @@ Vue.component('click-detector', ClickDetector);
                  break;
 
                  case 429:
-                   throw "Za dużo prób w ciągu 1 minuty";
+                   throw "to_many_attemts_during_one_minute";
                  break;
  
                  default:
-                    throw "Bliżej niezidentyfikowany błąd";
+                    throw "undefined_error";
                  break;
               }
        }
@@ -54,23 +52,19 @@ Vue.component('click-detector', ClickDetector);
        } 
     }
  
-      const email  = sender.textInputValue;
- 
+      const email  = sender.inputValue;
+      const root = this.$root;
+
       if(!email){
          sender.resetValidation();
       }
       else{
-        this.$root.$emit('awaitingResponse');
+        root.verificationInProgress = true;
         checkIfEmailExists(email);
-        this.$root.$emit('responseReceived');
+        root.verificationInProgress = false;
       }
    }
  	
-},
-
-mounted(){
-  this.$root.$on('awaitingResponse', ()=> this.verificationInProgress = true);
-  this.$root.$on('responseReceived', ()=> this.verificationInProgress = false);
 }
 
 });

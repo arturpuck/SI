@@ -11,7 +11,9 @@
 		<li v-on:click="togglePornSubMenu" v-on:mouseenter="showPornSubMenu"  class="navigation-element-main">
 			<span v-show="!pornSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-camera-retro"></span>
 			<span v-show="pornSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-arrow-up"></span>
-            	Porno
+			   <phantom-button>
+                 Porno
+			   </phantom-button>
 		</li>
 		<li v-if="!userIsAuthenticated" class="navigation-element-main register-selection ">
 			<a class="navbar-link-main-manu" v-bind:href="registerRoute">
@@ -21,28 +23,33 @@
 		</li>
 		<li v-if="!userIsAuthenticated" class="navigation-element-main">
 			<div v-on:click="toggleLoginPanel" class="login-button-container">
-              <span class="fas navbar-icon navbar-icon-outer fa-sign-in-alt"></span>
-			  Loguj
+				<phantom-button>
+                  <span class="fas navbar-icon navbar-icon-outer fa-sign-in-alt"></span>
+			       Loguj
+				</phantom-button>
 			</div>
 		</li>
-		<li v-if="userIsAuthenticated" v-on:click="showSideBar" class="navigation-element-main navbar-element-user">
+		<li v-bind:aria-hidden="!userSideBarIsVisible" v-if="userIsAuthenticated" v-on:click="showSideBar" class="navigation-element-main navbar-element-user">
 			<span class="fas navbar-icon navbar-icon-outer fa-user"></span>
             <span v-text="userName" class="user-nick"></span>
 			<button title="rozwiń menu użytkownika" v-bind:class="{'visible-sidebar-button' : !userSideBarIsVisible}" class="show-sidebar-button">
 				<span class="fas fa-angle-down show-sidebar-button-decoration show-sidebar-button-element"></span>
+				<span class="phantom-text">rozwiń menu użytkownika</span>
 			</button>
 		</li>
 	</ul>
-	<ul v-bind:class="{'visible-sub-menu' : pornSubMenuIsVisible , 'hidden-sub-menu' : !pornSubMenuIsVisible}" class="sub-menu-list porn-sub-menu-list">
+	<ul v-bind:aria-hidden="!pornSubMenuIsVisible" v-bind:class="{'visible-sub-menu' : pornSubMenuIsVisible , 'hidden-sub-menu' : !pornSubMenuIsVisible}" class="sub-menu-list porn-sub-menu-list">
 		<li class="sub-menu-list-element intendation-first-level">
 			<div v-on:click="toggleMoviesSubMenu" class="sub-menu-level-one-item">
 				<span v-show="!moviesSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-film"></span>
 				<span v-show="moviesSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-arrow-up"></span>
-				     Filmy
+				<phantom-button>
+                  Filmy
+				</phantom-button>   
 			</div>
 		</li>
 		<li>
-			<ul class="sub-menu-list-nested-level-two" :class="moviesSubMenuIsVisible && pornSubMenuIsVisible ? 'visible-movies-sub-menu' : 'hidden-movies-sub-menu'">
+			<ul v-bind:aria-hidden="!moviesSubMenuIsVisible" class="sub-menu-list-nested-level-two" v-bind:class="{'visible-movies-sub-menu' : moviesSubMenuIsVisible , 'hidden-movies-sub-menu' : !moviesSubMenuIsVisible}">
 					<li class="sub-menu-list-element-intendation-second-level">
 						<span class="fas navbar-icon navbar-icon-second-level fa-images"></span>
 						Kategorie
@@ -69,11 +76,13 @@
 			    </li>
 		</ul>
 	</nav>
-	<nav v-if="userIsAuthenticated" v-bind:class="{'visible-sidebar' : userSideBarIsVisible, 'hidden-sidebar' : !userSideBarIsVisible}" class="user-sidebar">
+	<nav v-if="userIsAuthenticated" v-bind:aria-hidden="!userSideBarIsVisible" v-bind:class="{'visible-sidebar' : userSideBarIsVisible, 'hidden-sidebar' : !userSideBarIsVisible}" class="user-sidebar">
        <ul class="user-sidebar-list">
 		   <li v-on:click="hideSideBar" title="schowaj boczny pasek" class="user-sidebar-element">
-			   <span class="fas fa-angle-up sidebar-icon"></span>
-			   <span class="sidebar-item-description">schowaj</span>
+			   <phantom-button>
+                 <span class="fas fa-angle-up sidebar-icon"></span>
+			     <span class="sidebar-item-description">schowaj</span>
+			   </phantom-button>
 		   </li>
 		   <li title="ustawienia profilu" class="user-sidebar-element">
 			  <a v-bind:href="userSettingsRoute" class="sub-menu-link">
@@ -94,9 +103,11 @@
 			   <span class="sidebar-item-description">znajomi</span>
 		   </li>
 		   <li v-on:click="logout" class="user-sidebar-element">
-			   <span class="fas fa-sign-out-alt sidebar-icon"></span>
-			   <span class="sidebar-item-description">wyloguj</span>
-			   <form ref="logoutForm" class="logout-form" method="POST" v-bind:action="logoutRoute">
+			   <phantom-button>
+                 <span class="fas fa-sign-out-alt sidebar-icon"></span>
+			     <span class="sidebar-item-description">wyloguj</span>
+			   </phantom-button>
+			   <form aria-hidden="true" ref="logoutForm" class="logout-form" method="POST" v-bind:action="logoutRoute">
 				  <input type="hidden" v-bind:value="csrfToken" name="_token">
 			   </form>
 		   </li>
@@ -136,20 +147,10 @@
 </template>
 
 <script>
-import LabeledCheckbox from "./form_controls/labeled_checkbox.vue";
-import SubmitButton from "./form_controls/submit_button.vue";
-import TextInputCombo from "./form_controls/text_input_combo.vue";
-import IconClose from "./form_controls/icon_close.vue";
 
 	export default {
 		name: 'navbar',
 		
-		components :{
-		  LabeledCheckbox,
-		  SubmitButton,
-		  TextInputCombo,
-		  IconClose
-		},
         props: {
 
         	userId : {
@@ -311,6 +312,12 @@ import IconClose from "./form_controls/icon_close.vue";
 	text-decoration: none;
 	display:flex;
 	align-items: baseline;
+}
+
+.phantom-text{
+	position: absolute;
+	top: -9999px;
+	left:0;
 }
 
 .logo-link{

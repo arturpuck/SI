@@ -1,3 +1,4 @@
+
 export default{
     currentLanguage : undefined,
 
@@ -6,7 +7,14 @@ export default{
    },
 
    getSentence(text){
-      return this[this.currentLanguage][text] ? this[this.currentLanguage][text] : text;
+      
+      if(this[this.currentLanguage].hasOwnProperty(text)){
+         return this[this.currentLanguage][text];
+      }
+      else{
+         
+         return text;
+      }
    },
 
    translate(text, delimiter = '.'){
@@ -35,7 +43,7 @@ export default{
     password_is_missing : "Nie podano hasła",
     password_is_required : "Należy podać hasło",
     the_given_password_is_incorrect : "Wprowadzone hasło jest nieprawidłowe",
-    the_following_errors_occured : "Wykryto następujące błędy : ",
+    the_following_errors_occured : "Wykryto następujące problemy : ",
     password_must_contain_at_least_3_characters : "Hasło musi zawierać co najmniej 3 znaki",
     password_must_not_exceed_20_characters : "Hasło nie może przekraczać 20 znaków",
     data_has_been_changed_successfully : "Pomyślnie zmieniono dane użytkownika.",
@@ -57,6 +65,24 @@ export default{
     checking_image : "Sprawdzam obraz",
     checking_the_email : "Sprawdzam email",
     changing_user_data : "Pracuję nad zmianą danych",
-    invalid_image_url_or_another_error : "Prawdopodobnie adres URL jest nieprawidłowy lub wystąpił inny bliżej niezidentyfikowany problem"
+    invalid_image_url_or_another_error : "Prawdopodobnie adres URL jest nieprawidłowy lub wystąpił inny bliżej niezidentyfikowany problem",
+    deleting_the_avatar : "Usuwam avatar",
+    this_email_address_does_not_exist : "Taki adres email nie istnieje",
+    to_many_attemts_during_one_minute : "Za dużo prób w ciągu 1 minuty",
+    password_has_less_then_3_characters : "Hasło ma mniej niż 3 znaki",
+    password_has_more_then_20_characters : "Hasło ma więcej niż 20 znaków",
+    passwords_do_not_match : "Hasła nie pokrywają się",
+    login_has_already_been_taken : "Login jest już zajęty",
+    login_contains_less_then_3_characters : "Login ma mniej niż 3 znaki",
+    login_contains_more_then_20_characters : "Login ma więcej niż 20 znaków",
+    email_has_already_been_taken : "Email jest już zajęty",
+    email_seems_to_be_incorrect : "Email wygląda na nieprawidłowy",
+    you_are_under_18 : "Nie ukończyłeś 18 lat",
+    avatar_has_been_deleted_successfully : "Pomyślnie usunięto avatar",
+    the_user_has_no_avatar : "Użytkownik nie posiada avataru",
+    password_change_attempt : "Próba zmiany hasła",
+    password_changed_successfully : "Pomyślnie zmieniono hasło",
+    please_type_in_new_valid_password_as_described : "Proszę wprowadzić nowe hasło zgodnie z wytycznymi",
+    new_password_does_not_match : "Wprowadzone hasło nie pokrywa się z potwierdzeniem"
    }
 }

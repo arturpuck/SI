@@ -40,13 +40,14 @@ import IconClose from './form_controls/icon_close.vue';
                 
                 const currentType = this.type;
                 const currentNotificationText = this.notificationText;
+                const translator = this.$root.translator;
 
                 if(content['headerText']){
-                  this.headerText = content['headerText'];
+                  this.headerText = translator.translate(content['headerText']);
                 }
 
                 if(content['notificationText']){
-                   this.notificationText = content['notificationText'];
+                   this.notificationText = translator.translate(content['notificationText']);
                 }
 
                 if(content['notificationType']){

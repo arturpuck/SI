@@ -58,66 +58,6 @@
   display: inline-block;
 }
 
-.icon-correct-value {
-  background: green;
-  display: inline-block;
-}
-
-.confirmation-icon-bird {
-  width: 30%;
-  height: 50%;
-  position: relative;
-  left: 35%;
-  top: 15%;
-  border-right: 2px solid white;
-  border-bottom: 2px solid white;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-}
-
-.icon-container {
-  border-radius: 50%;
-  z-index: 2;
-  width: 2.1vw;
-  height: 2.1vw;
-  min-width: 25px;
-  min-height: 25px;
-  font-size: 0;
-}
-
-.success-information {
-  margin: calc(30px + 3vw) auto;
-  text-align: center;
-  font-family: 'Exo 2', sans-serif;
-  border-radius: 6px;
-  color: white;
-  display: table;
-  position: relative;
-  box-shadow: 2px 2px 3px 2px black;
-  overflow: hidden;
-}
-
-.icon-background {
-  background: rgba(0, 0, 0, 0.9);
-  padding: 7px;
-}
-
-.icon-confirmation-center {
-  display: block;
-  margin: 0 auto;
-  width: 3vw;
-  height: 3vw;
-  min-width: 35px;
-  min-height: 35px;
-}
-
-.confirmation-text {
-  text-align: center;
-  padding: 10px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#16d012), to(#021502));
-  background: linear-gradient(#16d012, #021502);
-}
-
 .error-information-container {
   border-radius: 9px;
   overflow: hidden;
@@ -326,7 +266,7 @@
 
 .arrow-icon {
   border-radius: 50%;
-  padding: 5px;
+  padding: 7px;
   color: white;
   cursor: pointer;
 }
@@ -364,6 +304,7 @@
 .information-for-user {
   padding: 5px;
   color: white;
+  margin: 0;
   text-align: center;
   font-size: 1.2vw;
   font-family: "Exo 2", sans-serif;
@@ -373,6 +314,11 @@
   .information-for-user {
     font-size: 16px;
   }
+}
+
+.icon-information-container {
+  padding: 5px;
+  text-align: center;
 }
 
 .avatar-notification {
@@ -390,7 +336,8 @@
   color: black;
   padding: 4px;
   margin: 0 auto 5px auto;
-  background: #f5c50c;
+  background: -webkit-gradient(linear, left top, left bottom, from(#e7ec07), to(#8e7109));
+  background: linear-gradient(#e7ec07, #8e7109);
 }
 
 @media (max-width: 1200px) {
@@ -429,6 +376,33 @@
   }
 }
 
-.disc-icon {
+.disc-icon, .trash-icon {
   float: right;
+}
+
+.delete-avatar-button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#ff0707), to(#520d02));
+  background: linear-gradient(#ff0707, #520d02);
+  color: white;
+  display: block;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 0 auto 5px auto;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 95%;
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
+}
+
+.delete-avatar-button:hover {
+  background: red;
+}
+
+@media (max-width: 1200px) {
+  .delete-avatar-button {
+    font-size: 16px;
+  }
 }

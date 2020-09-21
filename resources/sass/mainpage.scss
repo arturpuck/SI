@@ -12,9 +12,9 @@
     margin:0 7px;
 }
 
-@import 'basic';
-@import 'background_images';
-@import 'news/default_news';
+@import '~sass/basic';
+@import '~sass/background_images';
+@import '~sass/news/default_news';
 $imageFolder : mainpage;
 
 @include background-image(japanese-schoolgirl,1,right);

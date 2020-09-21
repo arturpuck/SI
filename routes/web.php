@@ -60,5 +60,11 @@ Route::middleware(['auth'])->name('auth.user.')->namespace('Auth\User')->group(f
        Route::get('/validate/avatar', 'UserSettingsController@validateAvatar')
              ->name('validate.avatar')->middleware('api');
 
+       Route::delete('user/profile/settings/avatar/delete', 'UserSettingsController@deleteAvatar')
+             ->name('delete.avatar')->middleware('api');
+       
+       Route::patch('user/profile/settings/password/change', 'UserSettingsController@changePassword')
+             ->name('change.password')->middleware('api');
+
 });
 

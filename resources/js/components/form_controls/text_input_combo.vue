@@ -5,8 +5,8 @@
   </div>
   <label ref="label" v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" class="text-input-combo-value-label">
      <span v-if="isDisabled" class="fas fa-lock disabled-input-icon"></span>
-     <icon-stop v-if="iconErrorCanBeDisplayed" v-show="displayIconError"/>
-     <icon-confirm v-if="iconConfirmationCanBeDisplayed" v-show="displayIconConfirmation"/>
+     <icon-stop v-bind:attached-icon="true" v-if="iconErrorCanBeDisplayed" v-show="displayIconError"/>
+     <icon-confirm v-bind:attached-icon="true" v-if="iconConfirmationCanBeDisplayed" v-show="displayIconConfirmation"/>
      <span class="text-input-description"><slot></slot></span>
      <input v-bind:disabled="isDisabled" ref="text_input" v-bind:name="name" :required="inputIsRequired" v-bind:placeholder="placeholderText" class="text-input-combo-value" v-model="inputValue" v-bind:type="inputType">
   </label>
@@ -14,8 +14,6 @@
 </template>
 
 <script>
-import IconStop from '../decoration/icon_stop.vue';
-import IconConfirm from '../decoration/icon_confirm.vue';
 
 	export default {
         name: 'text-input-combo',
@@ -54,8 +52,9 @@ import IconConfirm from '../decoration/icon_confirm.vue';
          methods : {
 
              showError(errorMessage = ""){
+                const root = this.$root;
                 this.valueOK = false;
-                this.errorMessage = errorMessage;
+                this.errorMessage = root.translator.translate(errorMessage);
              },
 
              showValueIsOK(){
@@ -212,17 +211,13 @@ import IconConfirm from '../decoration/icon_confirm.vue';
 
          },
 
-        components : {
-            IconConfirm,
-            IconStop
-        }
     }
 </script>
 
 <style lang="scss" scoped>
 
-@import '../../../sass/error_message_box';
-@import'../../../sass/fonts';
+@import '~sass/error_message_box';
+@import '~sass/fonts';
 
 .icon-container{
     top: 0;

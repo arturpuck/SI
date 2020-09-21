@@ -1,5 +1,5 @@
-@import 'basic';
-@import 'background_images';
+@import '~sass/basic';
+@import '~sass/background_images';
 
 $imageFolder : contact;
 
@@ -19,4 +19,4 @@ $imageFolder : contact;
 	@include responsive-font(1.2vw,15px);
 }
 
-@include background-image(chick-on-piano,1);
+@include background-image(chicks,1);

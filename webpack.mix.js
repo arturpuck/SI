@@ -24,4 +24,15 @@ mix.js('resources/js/mainpage.js', 'public/js')
     .sass('resources/sass/auth/register.scss', 'public/css')
     .sass('resources/sass/auth/password_reset_confirmation.scss', 'public/css')
     .sass('resources/sass/auth/user/settings_panel.scss', 'public/css')
-    .options({processCssUrls: false});
+    .options({processCssUrls: false})
+    .webpackConfig({
+        resolve: {
+            alias: {
+                '@js' : path.resolve('resources/js'),
+                '@jscomponents' : path.resolve('resources/js/components'),
+                '@jsmodules' : path.resolve('resources/js/modules'),
+                'sass' : path.resolve('resources/sass'),
+                'sasscomponent' : path.resolve('resources/sass/components')
+            }
+        }
+    })

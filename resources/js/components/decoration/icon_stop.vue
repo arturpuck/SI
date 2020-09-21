@@ -1,5 +1,5 @@
 <template>
-  <div ref="container" class="icon-container icon-incorrect-value">
+  <div ref="container" v-bind:class="{'attached-icon' : attachedIcon}" class="icon-container icon-incorrect-value">
     <div  class="white-bar"></div>
  </div>
 </template>
@@ -13,6 +13,12 @@
                 required : false,
                 type : Object,
                 default : undefined 
+             },
+
+             attachedIcon : {
+                required : false,
+                type : Boolean,
+                default : false
              }
         },
 
@@ -46,6 +52,13 @@
     background:white;
     height: 100%;
     clip-path: polygon(13% 34%, 87% 34%, 87% 64%, 13% 64%);
+}
+
+.attached-icon{
+    position:absolute;
+    top:0;
+    right:0;
+    transform:translate(50%,-50%);
 }
 
 </style>

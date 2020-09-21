@@ -2,17 +2,15 @@
    <div class="textarea-combo-container">
         <label for="textarea-combo-message" class="message-label"><slot></slot></label>
         <div class="textarea-wrapper">
-            <icon-stop v-if="iconErrorCanBeDisplayed" v-show="displayIconError"/>
-            <icon-confirm v-if="iconConfirmationCanBeDisplayed" v-show="displayIconConfirmation"/>
-		    <textarea ref="text_input" v-model="textInputValue" v-bind:max="maxCharacters" v-bind:placeholder="placeholderText" :required="inputIsRequired" id="textarea-combo-message" v-bind:name="textareaName" v-bind:rows="rowsNumber" v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" class="textarea-combo-message"></textarea>
+            <icon-stop v-bind:attached-icon="true"  v-if="iconErrorCanBeDisplayed" v-show="displayIconError"/>
+            <icon-confirm v-bind:attached-icon="true" v-if="iconConfirmationCanBeDisplayed" v-show="displayIconConfirmation"/>
+		    <textarea ref="text_input" v-model="inputValue" v-bind:max="maxCharacters" v-bind:placeholder="placeholderText" :required="inputIsRequired" id="textarea-combo-message" v-bind:name="textareaName" v-bind:rows="rowsNumber" v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" class="textarea-combo-message"></textarea>
             <div v-if="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box"></div>
 	    </div>
     </div>
 </template>
 
 <script>
-import IconStop from '../decoration/icon_stop.vue';
-import IconConfirm from '../decoration/icon_confirm.vue';
 
 	export default {
         name: 'textarea-combo',
@@ -21,7 +19,7 @@ import IconConfirm from '../decoration/icon_confirm.vue';
 		 	return {
                  valueOK : undefined,
                  errorMessage : undefined,
-                 textInputValue : undefined,
+                 inputValue : undefined,
                  iconErrorCanBeDisplayed : undefined,
                  iconConfirmationCanBeDisplayed : undefined,
                  redBorderCanBeDisplayed : undefined,
@@ -52,8 +50,9 @@ import IconConfirm from '../decoration/icon_confirm.vue';
          methods : {
 
              showError(errorMessage = ""){
+                const root = this.$root;
                 this.valueOK = false;
-                this.errorMessage = errorMessage;
+                this.errorMessage = root.translator.translate(errorMessage);
              },
 
              showValueIsOK(){
@@ -69,7 +68,7 @@ import IconConfirm from '../decoration/icon_confirm.vue';
          },
 
          created(){
-             this.textInputValue = this.initialValue;
+             this.inputValue = this.initialValue;
              this.errorMessage = this.initialErrorText;
              this.iconErrorCanBeDisplayed = (this.errorIconAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
              this.iconConfirmationCanBeDisplayed = (this.confirmationIconAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
@@ -188,19 +187,14 @@ import IconConfirm from '../decoration/icon_confirm.vue';
              }
 
 
-         },
-
-        components : {
-            IconConfirm,
-            IconStop
-        }
+         }
     }
 </script>
 
 <style lang="scss">
 
-@import '../../../sass/error_message_box';
-@import'../../../sass/fonts';
+@import '~sass/error_message_box';
+@import'~sass/fonts';
 
 .textarea-wrapper{
 	position:relative;
