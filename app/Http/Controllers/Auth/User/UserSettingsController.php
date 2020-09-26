@@ -10,6 +10,7 @@ use App\Http\Requests\User\EditUserDataRequest;
 use App\Http\Requests\User\AvatarValidationRequest;
 use App\Http\Requests\User\ChangeAvatarRequest;
 use App\Http\Requests\User\ChangeUserPasswordRequest;
+use App\Http\Requests\User\ChangeOtherUserSettingsRequest;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserSettingsController extends Controller
@@ -40,5 +41,9 @@ class UserSettingsController extends Controller
 
     public function changePassword(ChangeUserPasswordRequest $request){
         return auth()->user()->changePassword($request);
+    }
+
+    public function changeOtherSettings(ChangeOtherUserSettingsRequest $request){
+         return auth()->user()->changeOtherSettings($request);
     }
 }

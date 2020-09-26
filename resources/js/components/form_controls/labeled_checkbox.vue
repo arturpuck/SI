@@ -1,6 +1,6 @@
 <template>
    <div ref="container" class="labeled-checkbox-container">
-     <input ref="checkbox" type="checkbox" class="labeled-checkbox" v-bind:name="name" v-bind:id="name">
+     <input v-model="checked" ref="checkbox" type="checkbox" class="labeled-checkbox" v-bind:name="name" v-bind:id="name">
         <label ref="label" v-bind:for="name" class="labeled-checkbox-description"><slot></slot></label>	
     </div>
 </template>
@@ -22,10 +22,15 @@
           },
 
           checkedAtStart:{
-            type: Boolean,
             required: false,
             default: false
           }
+        },
+
+        data(){
+           return {
+             checked : undefined
+           }
         },
         
         mounted(){
@@ -33,14 +38,12 @@
                 Object.keys(this.aditionalClasses).forEach((key) => this.$refs[key].classList.add(this.aditionalClasses[key]));
           }
 
-          if(this.checkedAtStart){
-            this.$refs.checkbox.checked = true;
-          }
+          this.checked = this.checkedAtStart;
         }
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .labeled-checkbox
 {
@@ -54,7 +57,7 @@
     content: "";
     display: inline-block;
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: -1.2vw;
     width: 1.2vw;
     height: 1.2vw;
@@ -69,7 +72,7 @@
     content: "";
     display: inline-block;
     position: absolute;
-    bottom: 0.2vw;
+    top: 0;
     left: -0.8vw;
     width: 0.3vw;
     height: 0.8vw;
@@ -91,7 +94,6 @@
   }
 
   .labeled-checkbox-description:after{
-    top: 2px;
     left: -11px;
     width: 5px;
     height: 12px;

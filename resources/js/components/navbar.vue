@@ -21,8 +21,8 @@
 			  Rejestruj
 			</a> 
 		</li>
-		<li v-if="!userIsAuthenticated" class="navigation-element-main">
-			<div v-on:click="toggleLoginPanel" class="login-button-container">
+		<li v-if="!userIsAuthenticated" v-on:click="toggleLoginPanel" class="navigation-element-main">
+			<div class="login-button-container">
 				<phantom-button>
                   <span class="fas navbar-icon navbar-icon-outer fa-sign-in-alt"></span>
 			       Loguj
@@ -55,8 +55,10 @@
 						Kategorie
 					</li>
 					<li class="sub-menu-list-element-intendation-second-level">
-						<span class="fas navbar-icon navbar-icon-second-level fa-folder-plus"></span>
-						Najnowsze
+						<a class="navbar-link-main-manu" v-bind:href="newMoviesRoute">
+						  <span class="fas navbar-icon navbar-icon-second-level fa-folder-plus"></span>
+						  Najnowsze
+						</a>
 					</li>
 					<li class="sub-menu-list-element-intendation-second-level">
 						<span class="fas navbar-icon navbar-icon-second-level fa-grin"></span>
@@ -168,28 +170,29 @@
         	registerRoute : {
         		required: false,
         		type: String,
-				default : ""
 			},
 
 			forgotPasswordRoute : {
 				required: false,
 				type: String,
-				default : ""
 			},
 
 			loginRoute : {
 				required : false,
 				type: String,
-				default : ""
 			},
 
 			logoutRoute : {
 				required : false,
 				type: String,
-				default : ""
 			},
 
 			userSettingsRoute : {
+				required : false,
+				type: String,
+			},
+
+			newMoviesRoute : {
 				required : false,
 				type: String,
 				default : ""

@@ -25,10 +25,11 @@ class ChangeUserPasswordRequest extends FormRequest
      */
     public function rules()
     {
+        
         return [
             'password' => ['required', 'current_password', 'min:3', 'max:20'],
             'new_password' => ['required', 'min:3', 'max:20', 'confirmed'],
-            'new_password_confirmation' => ['required', 'min:3', 'max:20', 'confirmed']
+            'new_password_confirmation' => ['required', 'min:3', 'max:20']
         ];
     }
 
@@ -43,6 +44,7 @@ class ChangeUserPasswordRequest extends FormRequest
            'new_password.min' => 'new_password_must_contain_at_least_3_characters',
            'new_password.max' => 'new_password_must_not_exceed_20_characters',
            'new_password.confirmed' => 'the_given_new_passwords_do_not_match',
+           'new_password_confirmation.confirmed' => 'the_given_new_passwords_do_not_match',
            'new_password_confirmation.required' => 'new_password_confirmation_is_required',
            'new_password_confirmation.min' => 'new_password__confirmation_must_contain_at_least_3_characters',
            'new_password_confirmation.max' => 'new_password__confirmation_must_not_exceed_20_characters',

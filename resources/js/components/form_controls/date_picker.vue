@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import MonthsInDifferentLanguages from '@jsmodules/helpers/months_in_different_languages.js'
+import MonthsInDifferentLanguages from '@jsmodules/months_in_different_languages.js'
 
 	export default {
         name : 'date-picker',

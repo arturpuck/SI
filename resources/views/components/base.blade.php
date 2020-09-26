@@ -44,6 +44,7 @@
 			forgot-password-route="{{route('auth.request.password.reset.link.form')}}"
 			login-route="{{route('auth.login')}}"
 		@endguest
+		new-movies-route="{{route('movies.new', ['pageNumber' => 1])}}"
 		>
 		</navbar>
 		<click-detector>

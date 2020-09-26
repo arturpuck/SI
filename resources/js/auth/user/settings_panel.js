@@ -8,7 +8,7 @@ import ExpectCircle  from '@jscomponents/decoration/expect_circle.vue';
 import AcceptButton from '@jscomponents/form_controls/accept_button.vue';
 import UserNotification from '@jscomponents/user_notification.vue';
 import SuccessInformation from '@jscomponents/decoration/success_information.vue';
-import EmailValidator from '@jsmodules/helpers/validators/email_validator.js';
+import EmailValidator from '@jsmodules/validators/email_validator.js';
 const Vue = VueConstructor.build();
 
 Vue.component('textarea-combo', TextareaCombo);
@@ -46,9 +46,9 @@ new Vue({
        avatarFileName : "",
        avatarFile : null,
        allowedExtensions : ['jpg', 'jpeg', 'bmp', 'gif', 'png', 'svg', 'webp'],
-       availableTabs : ['basicUserDataTab', 'avatarTab', 'passwordTab'],
+       availableTabs : ['basicUserDataTab', 'avatarTab', 'passwordTab', 'otherTab'],
        currentExpectDecorationLabel : undefined,
-       validImageURL : "",
+       imageURL : "",
        hiddenIcon : false
     },
    
@@ -102,7 +102,7 @@ new Vue({
                }
                else{
                   root.showAvatarPreview(fileDescription,reader.result);
-                  root.validImageURL = "";
+                  root.imageURL = "";
                }
             }
             image.src = reader.result;
@@ -127,7 +127,6 @@ new Vue({
       processValidImageURL(sender, imageURL){
          sender.showValueIsOK();
          this.showAvatarPreview(imageURL,imageURL);
-         this.validImageURL = imageURL;
       },
 
      async processImageByURL(sender){
@@ -136,6 +135,7 @@ new Vue({
 
           if(imageURL){
                root.showExpectationDecoration('checking_image');
+               root.imageURL = imageURL;
                const response = await fetch(`/validate/avatar?URL=${imageURL}`);
             try{
                   switch(response.status){
@@ -144,25 +144,25 @@ new Vue({
                      break;
                      
                      case 400:
-                        const error = await response.json();
+                        const errorMessage = await response.json();
                         sender.showError();
-                        throw error;
+                        throw new Error(errorMessage);
                      break;
 
                      case 429:
-                        throw "to_many_user_settings_change_attempts";
+                        throw new Error("to_many_user_settings_change_attempts");
                      break;
 
                      case 500:
-                        throw "the_requested_data_is_ok_but_a_server_error_occured"
+                        throw new Error("the_requested_data_is_ok_but_a_server_error_occured");
                      break;
 
                      default:
-                        throw "undefined_error";
+                        throw new Error("undefined_error");
                      break;
                   }
                }catch(error){
-                  this.showNotification(error, 'error');
+                  this.showNotification(error.message, 'error');
                }
                finally{
                   root.hideExpectationDecoration();
@@ -175,7 +175,7 @@ new Vue({
       },
 
         showApropriateContent(event){
-            this.selectedTab = event.target.id;
+            this.selectedTab = event.target.id || event.target.parentElement.id;
         },
 
         validateSelect(sender){
@@ -228,7 +228,7 @@ new Vue({
 
               try{
                  if(!this.emailhasCorrectFormat(email)){
-                    throw "email_is_invalid";
+                    throw new Error("email_is_invalid");
                   }
                   root.showExpectationDecoration('checking_the_email');
                   const emailStatus = await this.emailExists(email);
@@ -242,7 +242,7 @@ new Vue({
                   
               }
               catch(error){
-                 sender.showError(error);
+                 sender.showError(error.message);
               }
               finally{
                 root.hideExpectationDecoration();
@@ -303,24 +303,24 @@ new Vue({
 
                   case 400:
                      let errors = await response.json();
-                     throw this.translator.translate('the_following_errors_occured') + this.translator.translate(errors);
+                     throw new Error(this.translator.translate('the_following_errors_occured') + this.translator.translate(errors));
                   break;
 
                   case 429:
-                     throw "to_many_user_settings_change_attempts";
+                     throw new Error("to_many_user_settings_change_attempts");
                   break;
 
                   case 500:
-                    throw "the_requested_data_is_ok_but_a_server_error_occured"
+                    throw new Error("the_requested_data_is_ok_but_a_server_error_occured");
                   break;
 
                   default:
-                     throw "undefined_error";
+                     throw new Error("undefined_error");
                   break;
                }
           }
           catch(error){
-             this.showNotification(error, 'error');
+             this.showNotification(error.message, 'error');
           }
           finally{
             root.hideExpectationDecoration();
@@ -350,30 +350,36 @@ new Vue({
 
                   case 400:
                      let errors = await response.json();
-                     
-                     throw this.translator.translate('the_following_errors_occured') + this.translator.translate(errors);
+                     throw new Error(this.translator.translate('the_following_errors_occured') + this.translator.translate(errors));
                   break;
 
                   case 429:
-                     throw "to_many_user_settings_change_attempts";
+                     throw new Error("to_many_user_settings_change_attempts");
                   break;
 
                   case 500:
-                    throw "the_requested_data_is_ok_but_a_server_error_occured"
+                    throw new Error("the_requested_data_is_probably_ok_but_a_server_error_occured");
                   break;
 
                   default:
-                     throw "undefined_error";
+                     throw new Error("undefined_error");
                   break;
                }
           }
           catch(error){
-             this.showNotification(error, 'error');
+             this.showNotification(error.message, 'error');
           }
           finally{
             root.hideExpectationDecoration();
           }
 
+        },
+
+        resetPasswordFields(){
+          this.$refs.current_password.inputValue = "";
+          this.$refs.new_password.inputValue = "";
+          this.$refs.new_password_confirmation.inputValue = "";
+          this.$refs.current_password_other_settings.inputValue = "";
         },
 
        async tryToChangeUserPassword(){
@@ -404,17 +410,19 @@ new Vue({
              const requestData = {
                   method : 'PATCH',
                   headers : {
-                     'X-CSRF-TOKEN' : this.csrfToken
+                     'X-CSRF-TOKEN' : this.csrfToken,
+                     'Content-type': 'application/json; charset=UTF-8'
                   },
                   body : JSON.stringify(passwords)
                   
                };
-               root.showExpectationDecoration('password_change_attempt')
+               root.showExpectationDecoration('password_change_attempt');
                const response = await fetch('/user/profile/settings/password/change',requestData);
 
                switch(response.status){
                   case 200:
                      this.showNotification('password_changed_successfully');
+                     this.resetPasswordFields();
                   break;
 
                   case 400:
@@ -444,6 +452,64 @@ new Vue({
           }
        },
 
+      async tryToChangeOtherSettings(){
+           const passwordInput = this.$refs.current_password_other_settings;
+
+           try{
+                if(!this.validatePassword(passwordInput)){
+                   throw new Error('please_type_in_current_password_as_described');
+                }
+                const otherSettings = {
+                   shows_birthday : this.$refs.show_my_age_setting.checked,
+                   password : passwordInput.inputValue
+               };
+                const requestData = {
+                  method : 'PATCH',
+                  headers : {
+                     'X-CSRF-TOKEN' : this.csrfToken,
+                     'Content-type': 'application/json; charset=UTF-8'
+                  },
+                  body : JSON.stringify(otherSettings)
+                  
+               };
+
+                this.showExpectationDecoration('settings_change_attempt');
+                const response = await fetch('/user/profile/settings/other/change', requestData);
+
+                switch(response.status){
+                  case 200:
+                     this.showNotification('settings_changed_successfully');
+                     this.resetPasswordFields();
+                  break;
+
+                  case 400:
+                     let errors = await response.json();
+                     const errorMessage = this.translator.translate('the_following_errors_occured') + this.translator.translate(errors);
+                     throw new Error(errorMessage);
+                  break;
+
+                  case 429:
+                     throw new Error("to_many_user_settings_change_attempts");
+                  break;
+
+                  case 500:
+                    throw new Error("the_requested_data_is_ok_but_a_server_error_occured")
+                  break;
+
+                  default:
+                     throw new Error("undefined_error");
+                  break;
+               }
+           }
+           catch(error){
+              this.showNotification(error.message, 'error');
+           }
+           finally{
+            this.hideExpectationDecoration();
+          }
+           
+       },
+
         resetInputs(){
          Object.entries(this.basicUserDataEditableFields).forEach(([key, value]) => this.basicUserDataEditableFields[key].initialValue = this.$refs[key].inputValue);
          this.$refs.password.inputValue = "";
@@ -469,6 +535,10 @@ new Vue({
          return this.selectedTab === 'passwordTab';
        },
 
+       otherTabIsActive(){
+           return this.selectedTab === 'otherTab'
+       },
+
        avatarFileBackgroundImageAdress(){
           return this.avatarFile ? `url('${this.avatarFile}')` : 'none';
        },
@@ -483,7 +553,8 @@ new Vue({
              const tabIndexes = {
                 basicUserDataTab : 0,
                 avatarTab : 1,
-                passwordTab : 2
+                passwordTab : 2,
+                otherTab : 3
              };
 
              this.tabIndex = tabIndexes[selectedTab];

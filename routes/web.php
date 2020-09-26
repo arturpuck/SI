@@ -18,6 +18,14 @@ Route::get('/kontakt', 'ContactFormController@showContactForm')
 Route::post('/contact/send-message', 'ContactFormController@sendMessageFromUser')
        ->name('contact.send.message');
 
+
+Route::namespace('Movies')->name('movies.')->group(function(){
+
+       Route::get('/filmy/najnowsze/strona/{pageNumber}', 'MoviesController@getLatestMoviesPage')
+             ->name('new');
+
+});
+
 Route::namespace('Auth')->name('auth.')->group(function(){
        Route::post('/rejestruj', 'RegisterController@register')
              ->name('register.create');
@@ -64,6 +72,9 @@ Route::middleware(['auth'])->name('auth.user.')->namespace('Auth\User')->group(f
              ->name('delete.avatar')->middleware('api');
        
        Route::patch('user/profile/settings/password/change', 'UserSettingsController@changePassword')
+             ->name('change.password')->middleware('api');
+       
+       Route::patch('user/profile/settings/other/change', 'UserSettingsController@changeOtherSettings')
              ->name('change.password')->middleware('api');
 
 });

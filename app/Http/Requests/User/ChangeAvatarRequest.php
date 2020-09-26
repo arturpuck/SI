@@ -33,12 +33,13 @@ class ChangeAvatarRequest extends FormRequest
     }
 
     public function messages(){
+        
         return [
-            'avatar_from_hard_drive.required' => 'no_image_has_been_selected',
+            'avatar_from_hard_drive.required_without' => 'no_image_has_been_selected',
             'avatar_from_hard_drive.mimes' => 'invalid_image_extension',
             'avatar_from_hard_drive.dimensions' => 'invalid_image_dimensions',
             'avatar_from_hard_drive.image' => 'the_file_selected_from_hard_drive_is_not_an_image',
-            'valid_image_url.required' => 'no_image_has_been_selected'
+            'valid_image_url.required_without' => 'no_image_has_been_selected'
         ];
     }
 }

@@ -195,9 +195,9 @@
   background: rgba(0, 0, 0, 0.9);
   border-radius: 8px;
   box-shadow: 2px 2px 2px 2px black;
-  min-width: 300px;
+  min-width: 320px;
   width: 30%;
-  margin: calc(40px + 5vw) auto;
+  margin: calc(20px + 5vw) auto;
 }
 
 .user-settings-tab-list {
@@ -212,7 +212,7 @@
 
 .user-settings-tab {
   text-align: center;
-  font-size: 1.6vw;
+  font-size: 1.3vw;
   font-family: "Exo 2", sans-serif;
   line-height: 180%;
   margin: 0;
@@ -228,7 +228,7 @@
 
 @media (max-width: 1200px) {
   .user-settings-tab {
-    font-size: 18px;
+    font-size: 14px;
   }
 }
 
@@ -238,7 +238,7 @@
 }
 
 .tab-icon {
-  margin: 0 5px;
+  margin: 0 2px;
 }
 
 .first-tab {
@@ -403,6 +403,17 @@
 
 @media (max-width: 1200px) {
   .delete-avatar-button {
+    font-size: 16px;
+  }
+}
+
+.other-settings {
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
+}
+
+@media (max-width: 1200px) {
+  .other-settings {
     font-size: 16px;
   }
 }

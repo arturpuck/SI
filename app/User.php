@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Http\Requests\User\ChangeUserPasswordRequest;
+use App\Http\Requests\User\ChangeOtherUserSettingsRequest;
 
 class User extends Authenticatable
 {
@@ -22,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'password', 'login', 'birth_date', 'user_type_id', 'sexual_orientation_id', 'avatar_url'
+        'email', 'password', 'login', 'birth_date', 'user_type_id', 'sexual_orientation_id', 'avatar_url', 'shows_birthday'
     ];
 
     /**
@@ -41,6 +42,10 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+
+    protected const SETTINGS_COLUMNS = [
+        'shows_birthday'
     ];
 
     public function sendPasswordResetNotification($token)
@@ -106,7 +111,7 @@ class User extends Authenticatable
     }
 
     public function changeAvatar(Request $request) : Response{
-        $avatarURL = $request->get('valid_image_url');
+        $avatarURL = $request->get('image_url');
        try{
             if(empty($avatarURL)){
                 $file = $request->file('avatar_from_hard_drive');
@@ -145,5 +150,11 @@ class User extends Authenticatable
         $this->password = \Hash::make($request->new_password);
         $this->save();
         return response('success', 200)->header('Content-Type', 'text/plain');    
+    }
+
+    public function changeOtherSettings(ChangeOtherUserSettingsRequest $request) : Response{
+          $data = $request->only(self::SETTINGS_COLUMNS);
+          $this->update($data);
+          return response('success', 200)->header('Content-Type', 'text/plain');
     }
 }

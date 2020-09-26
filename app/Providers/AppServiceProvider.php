@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     {
         \Blade::component('components.decoration.icon_error_cross', 'icon-error-cross');
         \Blade::component('components.decoration.icon_confirmation', 'icon-confirmation');
-        
+        \Blade::component('components.movies_set', 'movies-set');
         
     }
 

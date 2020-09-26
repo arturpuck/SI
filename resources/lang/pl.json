@@ -129,5 +129,13 @@
     "new_password" : "Nowe hasło",
     "new_password_confirmation" : "Potwierdź",
     "change_password" : "Zmień hasło",
-    "edit_password_notification" : "Zmiana hasła wymaga podania bieżącego. Nowe hasło należy wpisać dwukrotnie. Ilość znaków musi być pomiędzy 3 a 20"
+    "edit_password_notification" : "Zmiana hasła wymaga podania bieżącego. Nowe hasło należy wpisać dwukrotnie. Ilość znaków musi być pomiędzy 3 a 20",
+    "other" : "Inne",
+    "show_my_age_to_other_users" : "Pokaż mój wiek/datę urodzenia innym użytkownikom",
+    "invalid_image_url_or_another_error" : "Najprawdopodobniej nieprawidłowy adres URL lub inny błąd",
+    "invalid_image_dimensions" : "Niewłaściwe wymiary obrazu. Wysokość lub szerokość przekracza 128px",
+    "invalid_image_extension" : "Niewłaściwe rozszerzenie obrazu",
+    "other_settings_information" : "Zmiana ustawień może ujawniać poufne dane dlatego aby edytować profil należy podać hasło",
+    "the_latest_movies" : "Najnowsze filmy porno",
+    "the_latest_movies_page_description" : "Lista najnowszych filmów porno dodanych do kolekcji. Starannie dobrane egzemplarze w ciekawej formie"
 }

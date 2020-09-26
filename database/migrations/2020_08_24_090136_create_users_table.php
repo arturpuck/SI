@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->date('birth_date');
             $table->string('avatar_url')->nullable();
             $table->string('avatar_file_name')->nullable();
+            $table->boolean('shows_birthday')->default(true);
             $table->rememberToken();
             $table->timestamps();
             $table->engine = 'InnoDB';

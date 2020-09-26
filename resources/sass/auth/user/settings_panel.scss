@@ -14,9 +14,9 @@ $imageFolder : user-settings;
     background: rgba(0,0,0,0.9);
     border-radius:8px;
     box-shadow: 2px 2px 2px 2px black;
-    min-width: 300px;
+    min-width: 320px;
     width:30%;
-    margin: calc(40px + 5vw) auto;
+    margin: calc(20px + 5vw) auto;
 }
 
 .user-settings-tab-list{
@@ -29,7 +29,7 @@ $imageFolder : user-settings;
 
 .user-settings-tab{
     text-align: center;
-    @include responsive-font(1.6vw,18px);
+    @include responsive-font(1.3vw,14px);
     line-height: 180%;
     margin:0;
     color:white;
@@ -47,7 +47,7 @@ $imageFolder : user-settings;
 }
 
 .tab-icon{
-    margin:0 5px;
+    margin:0 2px;
 }
 
 .first-tab{
@@ -174,6 +174,10 @@ $imageFolder : user-settings;
         background:red;
     }
     width:95%;
+    @include responsive-font();
+}
+
+.other-settings{
     @include responsive-font();
 }
 

@@ -14,6 +14,10 @@
                   <span class="fas fa-key tab-icon"></span>
                   {{__('password')}}
                 </li>
+                <li role="tab" v-bind:aria-selected="otherTabIsActive" aria-controls="other-panel" id="otherTab" v-on:click="showApropriateContent" v-bind:class="{'active-tab' : otherTabIsActive}" class="user-settings-tab">
+                  <span class="fas fa-cogs tab-icon"></span>
+                  {{__('other')}}
+                </li>
            </ul>
            <div class="arrows-container">
                <phantom-button v-on:click.native="previousTab" label="{{__('previous_tab')}}">
@@ -108,13 +112,15 @@
                         {{__('no_avatar_has_been_choosen')}}
                     @endif
                 </div>
-                    <div ref="avatar_frame" @if(Auth::user()->has_avatar) data-initial-image="{{Auth::user()->current_avatar_reference}}" @endif  v-bind:style="{backgroundImage : avatarFileBackgroundImageAdress}" class="undefined-avatar-frame avatar">
-                        <span v-bind:class="{'fas' : !avatarFile, 'fa-user' : !avatarFile}" class="undefined-avatar"></span>
-                    </div>
+                <div ref="avatar_frame" @if(Auth::user()->has_avatar) data-initial-image="{{Auth::user()->current_avatar_reference}}" @endif  v-bind:style="{backgroundImage : avatarFileBackgroundImageAdress}" class="undefined-avatar-frame avatar">
+                    <span v-bind:class="{'fas' : !avatarFile, 'fa-user' : !avatarFile}" class="undefined-avatar"></span>
+                </div>
+                @if(Auth::user()->has_avatar)
                 <button v-on:click="deleteAvatar" class="delete-avatar-button" type="button">
                     {{__('delete_my_avatar')}}
                     <span class="fas fa-trash-alt trash-icon"></span>
                 </button>
+                @endif
                 <label class="choose-avatar-button">
                     {{__('choose_avatar')}}
                     <input type="file" v-on:change="processImageFromHardDrive" name="avatar_from_hard_drive" class="avatar-file">
@@ -127,7 +133,7 @@
                     v-bind:on-blur-callback="processImageByURL">
                     {{ucfirst(__('url_address'))}} : 
                 </text-input-combo>
-                <input type="hidden" v-bind:value="validImageURL" name="valid_image_url">
+                <input type="hidden" v-bind:value="imageURL" name="image_url">
                 <div v-text="avatarFileName" class="avatar-file-name"></div>
                 <submit-button>{{__('accept_avatar')}}</submit-button>
             </form>
@@ -160,9 +166,31 @@
                  input-type="password"
                  v-bind:error-message-box-available="true"
                  v-bind:on-blur-callback="validatePassword">
-                 {{ucfirst(__('new_password_confirmation'))}} : 
+                 {{__('new_password_confirmation')}} : 
                 </text-input-combo>
                 <accept-button v-on:click.native="tryToChangeUserPassword">{{__('change_password')}}</accept-button>
+            </form>
+            <form id="other-panel" v-show="otherTabIsActive" class="user-settings other-settings">
+               <div class="icon-information-container">
+                   <span class="fas fa-info-circle information-icon"></span>
+               </div>
+               <p class="information-for-user">
+                    {{__('other_settings_information')}}
+               </p>
+               <labeled-checkbox ref="show_my_age_setting"
+                name="shows_birthday"
+                v-bind:checked-at-start="{{Auth::user()->shows_birthday}}">
+                  {{__('show_my_age_to_other_users')}}
+                </labeled-checkbox>
+                <text-input-combo ref="current_password_other_settings"
+                 v-bind:complete-error-display-available="true"
+                 name="password"
+                 v-bind:error-message-box-available="true"
+                 input-type="password"
+                 v-bind:on-blur-callback="validatePassword">
+                 {{__('password')}} : 
+                </text-input-combo>
+                <accept-button v-on:click.native="tryToChangeOtherSettings">{{__('save_data')}}</accept-button>
             </form>
        </div>
     </main>

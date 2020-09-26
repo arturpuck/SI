@@ -3,15 +3,15 @@
 namespace App\Repositories;
 
 use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 Abstract Class BaseRepository{
 
-    protected Builder  $query;
-    public String $modelName;
+    protected  $query;
 
     public function __construct(){
-       $this->modelName = static::MODEL_NAME;
-       $this->query = \DB::table($this->modelName);
+       $model = static::MODEL_NAME;
+       $this->query = $model::query();
     }
 
     public function get(){

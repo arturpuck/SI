@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Repositories;
+use App\News;
 
 Class NewsRepository extends BaseRepository{
 
-    public const MODEL_NAME = 'news';
+    public const MODEL_NAME = News::class;
 
-    public function filterByPage(int $page, $newsPerPage = 10) : NewsRepository{
+    public function filterByPage(int $page, $perPage = 10) : NewsRepository{
        $this->query = $this->query
-            ->offset(($page - 1) * $newsPerPage)
-            ->limit($newsPerPage);
+            ->offset(($page - 1) * $perPage)
+            ->limit($perPage);
        return $this;
     }
 

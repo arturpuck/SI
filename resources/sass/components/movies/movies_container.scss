@@ -1,0 +1,14 @@
+.movies-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 280px);
+    justify-content: space-evenly;
+    grid-column-gap: 8px;
+    grid-row-gap: 10px;
+    margin-top: calc(20px + 3vw);
+}
+
+@media(max-width: 870px){
+    .movies-container{
+        grid-template-columns: repeat(auto-fit, 232px);
+    }
+}

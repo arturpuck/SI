@@ -25,5 +25,5 @@
 </script>
 
 <style lang="scss">
-@import '../../../sass/components/icons/icon_error_cross';
+@import '~sasscomponent/icons/icon_error_cross';
 </style>
