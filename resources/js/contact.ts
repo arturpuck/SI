@@ -1,7 +1,8 @@
 import VueConstructor from '@jsmodules/basic.js';
-import TextareaCombo from '@jscomponents/form_controls/textarea_combo.vue';
-import IconStop from '@jscomponents/decoration/icon_stop.vue';
-import IconConfirm from '@jscomponents/decoration/icon_confirm.vue';
+import TextareaCombo from '@jscomponents-form-controls/textarea_combo.vue';
+import IconStop from '@jscomponents-decoration/icon_stop.vue';
+import IconConfirm from '@jscomponents-decoration/icon_confirm.vue';
+
 const Vue = VueConstructor.build();
 
 Vue.component('textarea-combo', TextareaCombo);

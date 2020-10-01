@@ -5,14 +5,14 @@
         <time v-text="duration" class="movie-duration"></time>
     </a>
     <div class="movie-data">
-      <a v-bind:href="movieURL" v-text="description" class="movie-description"></a>
+      <a v-bind:href="movieURL" v-text="title" class="movie-description"></a>
       <div class="movie-details-and-controls">
          <span>
              <span class="fas fa-play-circle play-icon"></span>
              <span v-text="viewsTranslated"></span>
              <span v-text="views"></span>
          </span>
-         <span class="preview-control">
+         <span v-on:click="showPreview" class="preview-control">
              <span class="fas fa-search-plus magnifier-icon"></span>
              <span v-text="preViewTranslated"></span>
          </span>
@@ -38,7 +38,9 @@
         },
 
         methods : {
-            
+            showPreview(event){
+               this.$root.$emit('showPreview' ,{id:this.id, title:this.title});
+           }
         },
 
         computed : {
@@ -66,7 +68,9 @@
                let pornstars = '';
                this.pornstars.forEach((pornstarNickName)=> pornstars += `${pornstarNickName}, `);
                return pornstars.slice(0,-2);
-           }
+           },
+
+           
         },
 
         props : {
@@ -75,7 +79,7 @@
               type : String,
             },
 
-            description : {
+            title : {
               required : true,
               type : String,
             },

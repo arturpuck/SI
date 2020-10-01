@@ -1,8 +1,12 @@
+<fixed-shadow-container v-show="showsPreview">
+  <movie-preview/>
+</fixed-shadow-container>
+
 <div class="movies-container">
     @foreach($movies as $movie)
         <movie-box
             duration="{{$movie->duration}}"
-            description="{{$movie->description}}"
+            title="{{$movie->title}}"
             v-bind:views="{{$movie->views}}"
             @if(!$movie->pornstars->isEmpty())
               v-bind:pornstars="{{json_encode($movie->pornstars_names)}}"
@@ -14,3 +18,7 @@
         </movie-box>
     @endforeach
 </div>
+
+@if($movies->hasPages())
+   {{$movies->links('components.links_box', ['movies' => $movies])}}
+@endif

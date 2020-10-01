@@ -11,7 +11,7 @@ class MoviesController extends Controller
     public function getLatestMoviesPage(MoviesRepository $moviesRepository){
 
         $movies = $moviesRepository
-                  ->select(['id', 'duration', 'description', 'views', 'is_translated_to_polish'])
+                  ->select(['id', 'duration', 'title', 'views', 'is_translated_to_polish'])
                   ->chronological()
                   ->paginate();
 

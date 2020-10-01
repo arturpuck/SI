@@ -39,8 +39,7 @@
   font-size: 0;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   -webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
           clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
 }
@@ -81,12 +80,9 @@
 }
 
 .error-header {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-          align-items: center;
+  justify-content: space-evenly;
+  align-items: center;
   flex-wrap: nowrap;
   background: rgba(0, 0, 0, 0.9);
   padding: 7px;
@@ -154,12 +150,9 @@
   background: rgba(0, 0, 0, 0.95);
   height: 100%;
   z-index: 3;
-  display: -webkit-box;
   display: flex;
-  -webkit-box-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (min-width: 2000px) {
@@ -204,10 +197,8 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: baseline;
-          align-items: baseline;
+  align-items: baseline;
 }
 
 .user-settings-tab {
@@ -218,7 +209,6 @@
   margin: 0;
   color: white;
   background: black;
-  -webkit-transition: background 1s;
   transition: background 1s;
   cursor: pointer;
   padding: 0 8px;
@@ -336,7 +326,6 @@
   color: black;
   padding: 4px;
   margin: 0 auto 5px auto;
-  background: -webkit-gradient(linear, left top, left bottom, from(#e7ec07), to(#8e7109));
   background: linear-gradient(#e7ec07, #8e7109);
 }
 
@@ -381,7 +370,6 @@
 }
 
 .delete-avatar-button {
-  background: -webkit-gradient(linear, left top, left bottom, from(#ff0707), to(#520d02));
   background: linear-gradient(#ff0707, #520d02);
   color: white;
   display: block;
