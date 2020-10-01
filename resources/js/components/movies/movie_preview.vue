@@ -34,7 +34,6 @@ import {EmitedMovieData} from '@interfaces/movies/EmitedMovieData';
             this.currentFrame = 1;
             this.movieTitle = movie['title'];
             this.movieID = movie['id'];
-            alert(this.movieTitle);
           },
 
           hidePreview(){

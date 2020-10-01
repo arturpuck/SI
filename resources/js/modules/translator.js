@@ -100,6 +100,8 @@ export default{
     fetching_movies : "Pobieram filmy",
     views : "Wyświetleń",
     preview : "Podgląd",
-    pornstars : "Gwiazdy"
+    pornstars : "Gwiazdy",
+    scroll_previous_links : "Przewijaj listę linków do tyłu",
+    movie_frame : "Kadr z filmu : "
    }
 }
