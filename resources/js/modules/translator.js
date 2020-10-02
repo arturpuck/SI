@@ -102,6 +102,9 @@ export default{
     preview : "Podgląd",
     pornstars : "Gwiazdy",
     scroll_previous_links : "Przewijaj listę linków do tyłu",
-    movie_frame : "Kadr z filmu : "
+    movie_frame : "Kadr z filmu : ",
+    close_movie_preview : "Zamknij podgląd filmu",
+    play_movie_preview : "Uruchom podgląd filmu",
+    sex_empire : "Sex-Imperium"
    }
 }

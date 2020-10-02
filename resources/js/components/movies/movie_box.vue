@@ -39,7 +39,7 @@
 
         methods : {
             showPreview(event){
-               this.$root.$emit('showPreview' ,{id:this.id, title:this.title});
+               this.$root.$emit('showPreview' ,{id:this.id});
            }
         },
 

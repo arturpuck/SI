@@ -304,11 +304,11 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
-@import '../../sass/fonts';
-@import '../../sass/components/login_panel';
-@import '../../sass/components/side_bar';
+@import '~sass/fonts';
+@import '~sass/components/login_panel';
+@import '~sass/components/side_bar';
 
 @mixin navbar-link{
 	color:white;

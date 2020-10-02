@@ -1,17 +1,17 @@
 <template>
   <div class="movie-preview-container">
-    <div class="movie-preview-bar">
-       <span class="fas fa-video movie-icon"></span>
-       <span v-text="movieTitle" class="movie-title"></span>
-    </div>
     <img v-bind:src="currentFramePath" v-bind:alt="movieAlt" class="movie-preview-frame">
     <div class="movie-preview-controls-and-decoration">
-      <div class="television-decoration red-light"></div>
-      <div class="television-decoration green-light"></div>
-      <icon-close class="preview-close-icon" title="close_movie_preview" description="close_movie_preview" v-on:click.native="hidePreview"></icon-close>
+      <div aria-hidden="true" class="television-decoration green-light preview-control-element"></div>
+      <button v-bind:title="playButtonCaption" class="preview-control-element play-button">
+          <span v-text="playButtonCaption" class="play-button-description"></span>
+      </button>
+      <input v-model="currentFrame" min=1 max=100 type="range" class="movie-frame-selection preview-control-element" name="movie-frame-selection" id="movie-frame-selection">
+      <icon-close class="preview-close-icon" title="close_movie_preview" description="close_movie_preview" v-on:click.native="hidePreview"/>
     </div>
-    <input v-model="currentFrame" min=1 max=100 type="range" class="movie-frame-selection" name="movie-frame-selection" id="movie-frame-selection">
-    
+    <div aria-hidden="true" class="trapeze-decoration">
+      <empire-logo class="empire-logo" />
+    </div>
   </div>  
 </template>
 
@@ -24,7 +24,6 @@ import {EmitedMovieData} from '@interfaces/movies/EmitedMovieData';
        {
           return  {
             movieID : 0,
-            movieTitle : "",
             currentFrame : 1
           }
        },
@@ -32,7 +31,6 @@ import {EmitedMovieData} from '@interfaces/movies/EmitedMovieData';
        methods : {
            showMoviePreview(movie:EmitedMovieData){
             this.currentFrame = 1;
-            this.movieTitle = movie['title'];
             this.movieID = movie['id'];
           },
 
@@ -48,7 +46,11 @@ import {EmitedMovieData} from '@interfaces/movies/EmitedMovieData';
 
           currentFramePath():string{
             return `/images/movies/preview/${this.movieID}/${this.movieID} ${String(this.currentFrame).padStart(3,'0')}.jpg`;
-        }
+          },
+
+          playButtonCaption():string{
+            return this.translator.translate('play_movie_preview');
+          }
        },
         
         mounted(){
@@ -60,7 +62,77 @@ import {EmitedMovieData} from '@interfaces/movies/EmitedMovieData';
 </script>
 
 <style lang="scss" scoped>
+
 @import '~sass/fonts';
+@mixin television-decoration{
+   margin-left:5px;
+   min-width: 20px;
+   min-height: 20px;
+   width: 2vw;
+   height: 2vw;
+}
+
+$transparent-border-width : 3vw;
+$borders-difference : 0.8vw;
+
+@mixin trapeze-creator-borders($color, $gap:0px){
+   border-left: calc(#{$transparent-border-width} + #{$gap}) solid transparent;
+    border-right: calc(#{$transparent-border-width} + #{$gap}) solid transparent;
+    border-top: calc(#{$transparent-border-width} - #{$borders-difference} - #{$gap}) solid $color;
+    @media(max-width:450px){
+      border-top-width: calc(#{$transparent-border-width} + 5px);
+    }
+}
+
+.trapeze-decoration{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%);
+    @include trapeze-creator-borders(#2b2929);
+    
+    width: 70%;
+}
+
+.trapeze-decoration::after{
+    content: "";
+    width: calc(100% - 2px);
+    display: block;
+    position: absolute;
+    @include trapeze-creator-borders(#0e0e0e,1px);
+    top: -2px;
+    left: -3vw;
+    transform: translateY(-100%);
+}
+
+.empire-logo{
+  @include responsive-font(1.5vw,13px, "", 780px);
+  position: absolute;
+  transform: translate(-50%,calc(-100% - 1vw));
+  z-index: 1;
+  left: 50%;
+  white-space: nowrap;
+}
+
+.play-button{
+  display:inline-block;
+  border:none;
+  background: linear-gradient(#2af92a, #054006);
+  clip-path: polygon(0 0, 0 100%, 100% 50%);
+  @include television-decoration();
+  outline:none;
+  cursor:pointer;
+}
+
+.play-button-description{
+  position:absolute;
+  top:-9999px;
+  left:0;
+}
+
+.preview-control-element{
+  margin-right:7px;
+}
 
  .movie-preview-container{
      position:absolute;
@@ -70,18 +142,17 @@ import {EmitedMovieData} from '@interfaces/movies/EmitedMovieData';
      transform:translate(-50%,-50%);
      max-width: 90%;
      box-shadow: 2px 2px 2px 2px black;
-     background: linear-gradient(#080808, #0e0e0e);
-     border-radius: 1vw;
-     overflow: hidden;
-     padding:0 2vw 1vw;
+     background: #0e0e0e;
      border: 1px solid #2b2929;
+     min-width: 300px;
+     padding: 3vw 3vw 1vw;
  }
 
  .movie-preview-frame{
    display:block;
    width:100%;
    height:auto;
-   border-radius: 1vw
+   box-shadow: 2px 2px 2px 2px black;
  }
 
  .movie-title{
@@ -96,11 +167,8 @@ import {EmitedMovieData} from '@interfaces/movies/EmitedMovieData';
  }
 
 .television-decoration{
-   margin-left:5px;
-   min-width: 20px;
-   min-height: 20px;
-   width: 2vw;
-   height: 2vw;
+   @include television-decoration();
+   border-radius:50%;
  }
 
  .preview-close-icon{
@@ -110,20 +178,12 @@ import {EmitedMovieData} from '@interfaces/movies/EmitedMovieData';
    height: 2.1vw;
  }
 
- .television-decoration{
-   border-radius:50%;
- }
-
- .red-light{
-   background:linear-gradient(red, crimson);
- }
-
  .green-light{
     background: linear-gradient(#2af92a, #054006);
  }
 
  .preview-close-icon{
-   margin-left:auto;
+   margin-left:7px;
  }
 
  .movie-icon{
@@ -132,8 +192,7 @@ import {EmitedMovieData} from '@interfaces/movies/EmitedMovieData';
  }
 
  .movie-frame-selection{
-   display: block;
-   width:100%;
+   flex-grow:100;
    margin: 0 auto;
    -webkit-appearance: none;
    outline: none;

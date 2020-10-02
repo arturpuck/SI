@@ -13,12 +13,12 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/mainpage.js', 'public/js')
 .js('resources/js/auth/register.js', 'public/js')
-.js('resources/js/contact.js', 'public/js')
+.js('resources/js/contact.ts', 'public/js')
 .js('resources/js/auth/request_password_reset_link.js', 'public/js')
 .js('resources/js/auth/password_reset.js', 'public/js')
 .js('resources/js/auth/password_reset_confirmation.js', 'public/js')
 .js('resources/js/auth/user/settings_panel.js', 'public/js')
-.js('resources/js/movies/movies_set_complete.js', 'public/js')
+.js('resources/js/movies/movies_set_complete.ts', 'public/js')
     .sass('resources/sass/mainpage.scss', 'public/css')
     .sass('resources/sass/movies_set_complete.scss', 'public/css')
     .sass('resources/sass/contact.scss', 'public/css')
@@ -34,7 +34,22 @@ mix.js('resources/js/mainpage.js', 'public/js')
                 '@jscomponents' : path.resolve('resources/js/components'),
                 '@jsmodules' : path.resolve('resources/js/modules'),
                 'sass' : path.resolve('resources/sass'),
-                'sasscomponent' : path.resolve('resources/sass/components')
-            }
-        }
+                'sasscomponent' : path.resolve('resources/sass/components'),
+                '@jscomponents-decoration' : path.resolve("resources/js/components/decoration"),
+                '@jscomponents-form-controls' : path.resolve('resources/js/components/form_controls'),
+                '@interfaces' : path.resolve('resources/js/interfaces')
+            },
+            extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx"]
+        },
+
+        module: {
+            rules: [
+              {
+                test: /\.tsx?$/,
+                loader: "ts-loader",
+                options: { appendTsSuffixTo: [/\.vue$/] },
+                exclude: /node_modules/
+              }
+            ]
+          }
     })
