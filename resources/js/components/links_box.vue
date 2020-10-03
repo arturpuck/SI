@@ -1,16 +1,15 @@
 <template>
   <nav class="links-box">
     <div class="scrollable-controls">
-        <button v-bind:title="previousLinksDescription" class="scroll-links-button">
+        <button v-on:click="scrollLinks(leftScrollDirection)" v-on:mousedown="scrollLinksByMouseDown(leftScrollDirection)" v-on:mouseup="stopScrollingFromMouseDown" v-bind:title="previousLinksDescription" class="scroll-links-button scroll-previous-links-button-decoration">
             <span v-text="previousLinksDescription"  class="links-button-description"></span>
-            <span class="scroll-previous-links-button-decoration"></span>
         </button>
         <div class="links-container-outer">
-            <ul class="content-container-slider">
+            <ul v-bind:style="{ left : leftOffsetStyle}" ref="slider_container" class="content-container-slider">
                <slot name="pages-list"></slot>
             </ul>
         </div>
-        <button v-bind:title="nextLinksDescription" class="scroll-links-button">
+        <button v-on:click="scrollLinks(rightScrollDirection)" v-on:mousedown="scrollLinksByMouseDown(rightScrollDirection)" v-on:mouseup="stopScrollingFromMouseDown" v-bind:title="nextLinksDescription" class="scroll-links-button scroll-next-links-button-decoration">
             <span v-text="nextLinksDescription" class="links-button-description"></span>
         </button>
     </div>
@@ -27,14 +26,60 @@
 
 <script lang="ts">
 
-import {Vue, Component} from 'vue-property-decorator';
-import Translator from '@jsmodules/translator.js'
+import {Vue, Component, Prop} from 'vue-property-decorator';
+import Translator from '@jsmodules/translator.js';
+import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
 
 @Component
 	export default class LinksBox extends Vue{
+        @Prop({
+            type: Number,
+            required: true,
+        }) readonly maxOffset: number;
 
         previousLinksDescription :string = Translator.translate('scroll_previous_links');
         nextLinksDescription :string = Translator.translate('scroll_next_links');
+        scrollOffset : number = 0;
+        leftScrollDirection = LinkListScrollDirection.Left;
+        rightScrollDirection = LinkListScrollDirection.Right;
+        mouseDown : boolean = false;
+        interval = null;
+
+        get leftOffsetStyle(): string {
+            const linksInBox = this.getAmmountOfVisibleLinksInBox();
+            const unit = (linksInBox === 5) ? "px" : "vw";
+            const offsetBase = (linksInBox === 5) ? 48 : 5;
+            return `calc(${-1*this.scrollOffset*offsetBase}${unit})`;
+        }
+
+        getAmmountOfVisibleLinksInBox(): number {
+            return (window.innerWidth <= 830) ? 5 : 10;
+        }
+
+        scrollLinks(direction:LinkListScrollDirection){
+
+            switch(direction){
+                case LinkListScrollDirection.Left:
+                   this.scrollOffset = (this.scrollOffset <= 0) ? 0 : (this.scrollOffset - 1);
+                break;
+
+                case LinkListScrollDirection.Right:
+                   this.scrollOffset = (this.scrollOffset >= this.maxOffset) ? this.maxOffset : (this.scrollOffset + 1);
+                break;
+            }
+        }
+
+        scrollLinksByMouseDown(direction:LinkListScrollDirection){
+            this.interval = setInterval(() => this.scrollLinks(direction),300)
+        }
+
+        stopScrollingFromMouseDown(){
+            if(this.interval){
+              clearInterval(this.interval);
+              this.interval = null;
+            }
+            
+        }
 
     }
         
@@ -45,26 +90,29 @@ import Translator from '@jsmodules/translator.js'
 @import '~sass/fonts';
 
 .scroll-previous-links-button-decoration{
-    clip-path: polygon(40% 10%, 40% 34%, 100% 34%, 100% 67%, 40% 66%, 40% 90%, 0% 50%);
-    background:white;
-    width:100%
+    clip-path: polygon(40% 0%, 40% 25%, 100% 25%, 100% 75%, 40% 75%, 40% 100%, 0% 50%);
+}
+
+.scroll-next-links-button-decoration{
+    clip-path: polygon(0% 25%, 60% 25%, 60% 0%, 100% 50%, 60% 100%, 60% 75%, 0% 75%);
 }
 
 .links-button-description{
     position: absolute;
     left:0;
     top:-9999px;
+    display: inline-block;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
 }
 
 .links-box{
-    min-width:300px;
-    width:20vw;
     display:block;
     margin:10px auto;
 }
 
 .links-container-outer{
-    flex-grow:100;
     overflow:hidden;
     margin: 0 5px;
 }
@@ -73,11 +121,16 @@ import Translator from '@jsmodules/translator.js'
     position: relative;
     left:0;
     top:0;
+    transition: left 0.3s;
     padding:0;
     margin:0;
     display:flex;
     flex-wrap:nowrap;
     list-style-type: none;
+    width:50vw;
+    @media(max-width:830px){
+        width:240px;
+    }
 }
 
 .next-previous-links{
@@ -85,6 +138,7 @@ import Translator from '@jsmodules/translator.js'
     padding:0;
     display:flex;
     flex-wrap:nowrap;
+    list-style-type: none;
 }
 
 .scrollable-controls{
@@ -99,29 +153,43 @@ import Translator from '@jsmodules/translator.js'
 .pagination-link{
     color:white;
     text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    line-height:3.5vw;
+    @media(max-screen:830px){
+        line-height: 40px;
+    }
 }
 
 .pagination-link-list-element{
-  margin:0 5px;
+  flex-basis: 3.5vw;
+  height: 3.5vw;
   display: inline-block;
   border-radius:5px;
   text-align: center;
   flex-grow: 0;
   flex-shrink: 0;
-  flex-basis: 10%;
+  margin: 0.75vw;
   background:linear-gradient(to bottom, #e60f0f, #540505);
+  @media(max-width:830px){
+        flex-basis:40px;
+        margin:0 4px;
+        height:40px;
+        line-height: 40px;
+  }
 }
 
 .scroll-links-button{
     cursor: pointer;
-    background: black;
     border:none;
     outline:none;
     border-radius: 5px;
-    @include responsive-font(1.7vw,22px);
-    color:white;
-    display:flex;
-    align-items:stretch;
+    flex-basis: 4%;
+    min-width: 30px;
+    background: linear-gradient(#17f117, #09501b);
+    &:active{
+        transform: scale(1.2);
+    }
 }
 
 </style>

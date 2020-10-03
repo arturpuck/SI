@@ -101,10 +101,12 @@ export default{
     views : "Wyświetleń",
     preview : "Podgląd",
     pornstars : "Gwiazdy",
-    scroll_previous_links : "Przewijaj listę linków do tyłu",
-    movie_frame : "Kadr z filmu : ",
+    scroll_previous_links : "Przewijaj listę podstron do tyłu",
+    movie_frame : "Kadr z filmu",
     close_movie_preview : "Zamknij podgląd filmu",
     play_movie_preview : "Uruchom podgląd filmu",
-    sex_empire : "Sex-Imperium"
+    sex_empire : "Sex-Imperium",
+    movie_translated_to_polish : "Film przetłumaczony na język polski",
+    scroll_next_links : "Przewijaj listę podstron do przodu"
    }
 }

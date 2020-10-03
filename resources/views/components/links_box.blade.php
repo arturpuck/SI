@@ -1,4 +1,4 @@
-<links-box>
+<links-box v-bind:max-offset="{{$movies->lastPage() - 1}}">
    <template v-slot:previous-page>
       @if(!$movies->onFirstPage())
          <a href="{{$movies->previousPageUrl()}}" class="previous-next-link">{{__('previous_page')}}</a>

@@ -24,7 +24,8 @@ import {EmitedMovieData} from '@interfaces/movies/EmitedMovieData';
        {
           return  {
             movieID : 0,
-            currentFrame : 1
+            currentFrame : 1,
+            title : ""
           }
        },
 
@@ -32,6 +33,7 @@ import {EmitedMovieData} from '@interfaces/movies/EmitedMovieData';
            showMoviePreview(movie:EmitedMovieData){
             this.currentFrame = 1;
             this.movieID = movie['id'];
+            this.title = movie['title'];
           },
 
           hidePreview(){
@@ -41,7 +43,7 @@ import {EmitedMovieData} from '@interfaces/movies/EmitedMovieData';
 
         computed : {
             movieAlt():string{
-                return `${this.translator.translate('movie_frame')} : ${this.movieTitle}`;
+                return `${this.translator.translate('movie_frame')} : ${this.title}`;
           } ,
 
           currentFramePath():string{

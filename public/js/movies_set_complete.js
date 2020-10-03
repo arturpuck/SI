@@ -159,7 +159,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'icon-polish-flag'
+  name: 'icon-polish-flag',
+  props: {
+    title: {
+      required: false,
+      "default": "",
+      type: String
+    }
+  },
+  mounted: function mounted() {
+    if (this.title) {
+      this.$refs.icon.setAttribute('title', this.title);
+    }
+  }
 });
 
 /***/ }),
@@ -575,7 +587,8 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     showPreview: function showPreview(event) {
       this.$root.$emit('showPreview', {
-        id: this.id
+        id: this.id,
+        title: this.title
       });
     }
   },
@@ -601,6 +614,9 @@ __webpack_require__.r(__webpack_exports__);
         return pornstars += "".concat(pornstarNickName, ", ");
       });
       return pornstars.slice(0, -2);
+    },
+    iconDecription: function iconDecription() {
+      return this.translator.translate('movie_translated_to_polish');
     }
   },
   props: {
@@ -1110,7 +1126,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".scroll-previous-links-button-decoration {\n  -webkit-clip-path: polygon(40% 10%, 40% 34%, 100% 34%, 100% 67%, 40% 66%, 40% 90%, 0% 50%);\n          clip-path: polygon(40% 10%, 40% 34%, 100% 34%, 100% 67%, 40% 66%, 40% 90%, 0% 50%);\n  background: white;\n  width: 100%;\n}\n.links-button-description {\n  position: absolute;\n  left: 0;\n  top: -9999px;\n}\n.links-box {\n  min-width: 300px;\n  width: 20vw;\n  display: block;\n  margin: 10px auto;\n}\n.links-container-outer {\n  -webkit-box-flex: 100;\n          flex-grow: 100;\n  overflow: hidden;\n  margin: 0 5px;\n}\n.content-container-slider {\n  position: relative;\n  left: 0;\n  top: 0;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: nowrap;\n  list-style-type: none;\n}\n.next-previous-links {\n  margin: 0;\n  padding: 0;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: nowrap;\n}\n.scrollable-controls {\n  width: 100%;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: nowrap;\n  -webkit-box-pack: center;\n          justify-content: center;\n  font-size: 1.5vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.scrollable-controls {\n    font-size: 20px;\n}\n}\n.pagination-link {\n  color: white;\n  text-decoration: none;\n}\n.pagination-link-list-element {\n  margin: 0 5px;\n  display: inline-block;\n  border-radius: 5px;\n  text-align: center;\n  -webkit-box-flex: 0;\n          flex-grow: 0;\n  flex-shrink: 0;\n  flex-basis: 10%;\n  background: -webkit-gradient(linear, left top, left bottom, from(#e60f0f), to(#540505));\n  background: linear-gradient(to bottom, #e60f0f, #540505);\n}\n.scroll-links-button {\n  cursor: pointer;\n  background: black;\n  border: none;\n  outline: none;\n  border-radius: 5px;\n  font-size: 1.7vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n}\n@media (max-width: 1200px) {\n.scroll-links-button {\n    font-size: 22px;\n}\n}", ""]);
+exports.push([module.i, ".scroll-previous-links-button-decoration {\n  -webkit-clip-path: polygon(40% 0%, 40% 25%, 100% 25%, 100% 75%, 40% 75%, 40% 100%, 0% 50%);\n          clip-path: polygon(40% 0%, 40% 25%, 100% 25%, 100% 75%, 40% 75%, 40% 100%, 0% 50%);\n}\n.scroll-next-links-button-decoration {\n  -webkit-clip-path: polygon(0% 25%, 60% 25%, 60% 0%, 100% 50%, 60% 100%, 60% 75%, 0% 75%);\n          clip-path: polygon(0% 25%, 60% 25%, 60% 0%, 100% 50%, 60% 100%, 60% 75%, 0% 75%);\n}\n.links-button-description {\n  position: absolute;\n  left: 0;\n  top: -9999px;\n  display: inline-block;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n}\n.links-box {\n  display: block;\n  margin: 10px auto;\n}\n.links-container-outer {\n  overflow: hidden;\n  margin: 0 5px;\n}\n.content-container-slider {\n  position: relative;\n  left: 0;\n  top: 0;\n  -webkit-transition: left 0.3s;\n  transition: left 0.3s;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: nowrap;\n  list-style-type: none;\n  width: 50vw;\n}\n@media (max-width: 830px) {\n.content-container-slider {\n    width: 240px;\n}\n}\n.next-previous-links {\n  margin: 0;\n  padding: 0;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: nowrap;\n  list-style-type: none;\n}\n.scrollable-controls {\n  width: 100%;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: nowrap;\n  -webkit-box-pack: center;\n          justify-content: center;\n  font-size: 1.5vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.scrollable-controls {\n    font-size: 20px;\n}\n}\n.pagination-link {\n  color: white;\n  text-decoration: none;\n  display: inline-block;\n  width: 100%;\n  line-height: 3.5vw;\n}\n@media (max-screen: 830px) {\n.pagination-link {\n    line-height: 40px;\n}\n}\n.pagination-link-list-element {\n  flex-basis: 3.5vw;\n  height: 3.5vw;\n  display: inline-block;\n  border-radius: 5px;\n  text-align: center;\n  -webkit-box-flex: 0;\n          flex-grow: 0;\n  flex-shrink: 0;\n  margin: 0.75vw;\n  background: -webkit-gradient(linear, left top, left bottom, from(#e60f0f), to(#540505));\n  background: linear-gradient(to bottom, #e60f0f, #540505);\n}\n@media (max-width: 830px) {\n.pagination-link-list-element {\n    flex-basis: 40px;\n    margin: 0 4px;\n    height: 40px;\n    line-height: 40px;\n}\n}\n.scroll-links-button {\n  cursor: pointer;\n  border: none;\n  outline: none;\n  border-radius: 5px;\n  flex-basis: 4%;\n  min-width: 30px;\n  background: -webkit-gradient(linear, left top, left bottom, from(#17f117), to(#09501b));\n  background: linear-gradient(#17f117, #09501b);\n}\n.scroll-links-button:active {\n  -webkit-transform: scale(1.2);\n          transform: scale(1.2);\n}", ""]);
 
 // exports
 
@@ -1129,7 +1145,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".movie-main-image[data-v-4e10eebb] {\n  width: 280px;\n  display: block;\n  height: 158px;\n  text-decoration: none;\n  border-radius: 3px;\n  position: relative;\n  background-size: cover;\n}\n.movie-main-image[data-v-4e10eebb]:hover {\n  box-shadow: 2px 2px 2px 2px black;\n}\n.movie-duration[data-v-4e10eebb] {\n  display: inline-block;\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  color: white;\n  padding: 2px;\n  font-family: Aldrich;\n  background: #0000005c;\n}\n.movie-description[data-v-4e10eebb] {\n  display: block;\n  padding-top: 2px;\n  color: white;\n  text-decoration: none;\n}\n.movie-description[data-v-4e10eebb]:hover {\n  text-decoration: underline;\n}\n.movie-box[data-v-4e10eebb] {\n  color: white;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.movie-box[data-v-4e10eebb] {\n    font-size: 14px;\n}\n}\n.movie-translation-notification[data-v-4e10eebb] {\n  top: 0;\n  right: 0;\n  position: absolute;\n}\n.movie-details-and-controls[data-v-4e10eebb] {\n  padding-top: 5px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.play-icon[data-v-4e10eebb], .magnifier-icon[data-v-4e10eebb] {\n  color: #960b2e;\n}\n.star-icon[data-v-4e10eebb] {\n  color: gold;\n}\n.preview-control[data-v-4e10eebb] {\n  cursor: pointer;\n}\n@media (max-width: 870px) {\n.movie-main-image[data-v-4e10eebb] {\n    width: 232px;\n    height: 120px;\n}\n}", ""]);
+exports.push([module.i, ".movie-main-image[data-v-4e10eebb] {\n  width: 280px;\n  display: block;\n  height: 158px;\n  text-decoration: none;\n  border-radius: 3px;\n  position: relative;\n  background-size: cover;\n}\n.movie-main-image[data-v-4e10eebb]:hover {\n  box-shadow: 2px 2px 2px 2px black;\n}\n.movie-duration[data-v-4e10eebb] {\n  display: inline-block;\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  color: white;\n  padding: 2px;\n  font-family: Aldrich;\n  background: #0000005c;\n}\n.movie-description[data-v-4e10eebb] {\n  display: block;\n  padding-top: 2px;\n  color: white;\n  text-decoration: none;\n}\n.movie-description[data-v-4e10eebb]:hover {\n  text-decoration: underline;\n}\n.movie-box[data-v-4e10eebb] {\n  color: white;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.movie-box[data-v-4e10eebb] {\n    font-size: 14px;\n}\n}\n.movie-details-and-controls[data-v-4e10eebb] {\n  padding-top: 5px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.play-icon[data-v-4e10eebb], .magnifier-icon[data-v-4e10eebb] {\n  color: #960b2e;\n}\n.star-icon[data-v-4e10eebb] {\n  color: gold;\n}\n.preview-control[data-v-4e10eebb] {\n  cursor: pointer;\n}\n@media (max-width: 870px) {\n.movie-main-image[data-v-4e10eebb] {\n    width: 232px;\n    height: 120px;\n}\n}", ""]);
 
 // exports
 
@@ -2676,14 +2692,59 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
 var translator_js_1 = __webpack_require__(/*! @jsmodules/translator.js */ "./resources/js/modules/translator.js");
+var scroll_types_1 = __webpack_require__(/*! @js/enum/movies/scroll_types */ "./resources/js/enum/movies/scroll_types.ts");
 var LinksBox = /** @class */ (function (_super) {
     __extends(LinksBox, _super);
     function LinksBox() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.previousLinksDescription = translator_js_1.default.translate('scroll_previous_links');
         _this.nextLinksDescription = translator_js_1.default.translate('scroll_next_links');
+        _this.scrollOffset = 0;
+        _this.leftScrollDirection = scroll_types_1.LinkListScrollDirection.Left;
+        _this.rightScrollDirection = scroll_types_1.LinkListScrollDirection.Right;
+        _this.mouseDown = false;
+        _this.interval = null;
         return _this;
     }
+    Object.defineProperty(LinksBox.prototype, "leftOffsetStyle", {
+        get: function () {
+            var linksInBox = this.getAmmountOfVisibleLinksInBox();
+            var unit = (linksInBox === 5) ? "px" : "vw";
+            var offsetBase = (linksInBox === 5) ? 48 : 5;
+            return "calc(" + -1 * this.scrollOffset * offsetBase + unit + ")";
+        },
+        enumerable: false,
+        configurable: true
+    });
+    LinksBox.prototype.getAmmountOfVisibleLinksInBox = function () {
+        return (window.innerWidth <= 830) ? 5 : 10;
+    };
+    LinksBox.prototype.scrollLinks = function (direction) {
+        switch (direction) {
+            case scroll_types_1.LinkListScrollDirection.Left:
+                this.scrollOffset = (this.scrollOffset <= 0) ? 0 : (this.scrollOffset - 1);
+                break;
+            case scroll_types_1.LinkListScrollDirection.Right:
+                this.scrollOffset = (this.scrollOffset >= this.maxOffset) ? this.maxOffset : (this.scrollOffset + 1);
+                break;
+        }
+    };
+    LinksBox.prototype.scrollLinksByMouseDown = function (direction) {
+        var _this = this;
+        this.interval = setInterval(function () { return _this.scrollLinks(direction); }, 300);
+    };
+    LinksBox.prototype.stopScrollingFromMouseDown = function () {
+        if (this.interval) {
+            clearInterval(this.interval);
+            this.interval = null;
+        }
+    };
+    __decorate([
+        vue_property_decorator_1.Prop({
+            type: Number,
+            required: true,
+        })
+    ], LinksBox.prototype, "maxOffset", void 0);
     LinksBox = __decorate([
         vue_property_decorator_1.Component
     ], LinksBox);
@@ -2708,13 +2769,15 @@ exports.default = {
     data: function () {
         return {
             movieID: 0,
-            currentFrame: 1
+            currentFrame: 1,
+            title: ""
         };
     },
     methods: {
         showMoviePreview: function (movie) {
             this.currentFrame = 1;
             this.movieID = movie['id'];
+            this.title = movie['title'];
         },
         hidePreview: function () {
             this.$root.$emit('closePreview');
@@ -2722,7 +2785,7 @@ exports.default = {
     },
     computed: {
         movieAlt: function () {
-            return this.translator.translate('movie_frame') + " : " + this.movieTitle;
+            return this.translator.translate('movie_frame') + " : " + this.title;
         },
         currentFramePath: function () {
             return "/images/movies/preview/" + this.movieID + "/" + this.movieID + " " + String(this.currentFrame).padStart(3, '0') + ".jpg";
@@ -3185,7 +3248,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "icon-polish-flag" })
+  return _c("div", { ref: "icon", staticClass: "icon-polish-flag" })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -3578,23 +3641,35 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "scroll-links-button",
-          attrs: { title: _vm.previousLinksDescription }
+          staticClass:
+            "scroll-links-button scroll-previous-links-button-decoration",
+          attrs: { title: _vm.previousLinksDescription },
+          on: {
+            click: function($event) {
+              return _vm.scrollLinks(_vm.leftScrollDirection)
+            },
+            mousedown: function($event) {
+              return _vm.scrollLinksByMouseDown(_vm.leftScrollDirection)
+            },
+            mouseup: _vm.stopScrollingFromMouseDown
+          }
         },
         [
           _c("span", {
             staticClass: "links-button-description",
             domProps: { textContent: _vm._s(_vm.previousLinksDescription) }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "scroll-previous-links-button-decoration" })
+          })
         ]
       ),
       _vm._v(" "),
       _c("div", { staticClass: "links-container-outer" }, [
         _c(
           "ul",
-          { staticClass: "content-container-slider" },
+          {
+            ref: "slider_container",
+            staticClass: "content-container-slider",
+            style: { left: _vm.leftOffsetStyle }
+          },
           [_vm._t("pages-list")],
           2
         )
@@ -3603,8 +3678,18 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "scroll-links-button",
-          attrs: { title: _vm.nextLinksDescription }
+          staticClass:
+            "scroll-links-button scroll-next-links-button-decoration",
+          attrs: { title: _vm.nextLinksDescription },
+          on: {
+            click: function($event) {
+              return _vm.scrollLinks(_vm.rightScrollDirection)
+            },
+            mousedown: function($event) {
+              return _vm.scrollLinksByMouseDown(_vm.rightScrollDirection)
+            },
+            mouseup: _vm.stopScrollingFromMouseDown
+          }
         },
         [
           _c("span", {
@@ -3653,18 +3738,11 @@ var render = function() {
         attrs: { href: _vm.movieURL }
       },
       [
-        _vm.isTranslatedToPolish
-          ? _c("icon-polish-flag", {
-              staticClass: "movie-translation-notification"
-            })
-          : _vm._e(),
-        _vm._v(" "),
         _c("time", {
           staticClass: "movie-duration",
           domProps: { textContent: _vm._s(_vm.duration) }
         })
-      ],
-      1
+      ]
     ),
     _vm._v(" "),
     _c("div", { staticClass: "movie-data" }, [
@@ -3699,19 +3777,30 @@ var render = function() {
       ]),
       _vm._v(" "),
       _vm.aditionalInformation
-        ? _c("div", { staticClass: "movie-details-and-controls" }, [
-            _vm.pornstars
-              ? _c("span", [
-                  _c("span", { staticClass: "fas fa-star star-icon" }),
-                  _vm._v(" "),
-                  _c("span", {
-                    domProps: {
-                      textContent: _vm._s(_vm.pornstarsListTranslated)
-                    }
+        ? _c(
+            "div",
+            { staticClass: "movie-details-and-controls" },
+            [
+              _vm.pornstars
+                ? _c("span", [
+                    _c("span", { staticClass: "fas fa-star star-icon" }),
+                    _vm._v(" "),
+                    _c("span", {
+                      domProps: {
+                        textContent: _vm._s(_vm.pornstarsListTranslated)
+                      }
+                    })
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.isTranslatedToPolish
+                ? _c("icon-polish-flag", {
+                    attrs: { title: _vm.iconDecription }
                   })
-                ])
-              : _vm._e()
-          ])
+                : _vm._e()
+            ],
+            1
+          )
         : _vm._e()
     ])
   ])
@@ -18020,6 +18109,26 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/enum/movies/scroll_types.ts":
+/*!**************************************************!*\
+  !*** ./resources/js/enum/movies/scroll_types.ts ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.LinkListScrollDirection = void 0;
+var LinkListScrollDirection;
+(function (LinkListScrollDirection) {
+    LinkListScrollDirection[LinkListScrollDirection["Left"] = 0] = "Left";
+    LinkListScrollDirection[LinkListScrollDirection["Right"] = 1] = "Right";
+})(LinkListScrollDirection = exports.LinkListScrollDirection || (exports.LinkListScrollDirection = {}));
+
+
+/***/ }),
+
 /***/ "./resources/js/modules/basic.js":
 /*!***************************************!*\
   !*** ./resources/js/modules/basic.js ***!
@@ -18164,7 +18273,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     login_has_already_been_taken: "Login jest już zajęty",
     login_contains_less_then_3_characters: "Login ma mniej niż 3 znaki",
     login_contains_more_then_20_characters: "Login ma więcej niż 20 znaków"
-  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "avatar_has_been_deleted_successfully", "Pomyślnie usunięto avatar"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "views", "Wyświetleń"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę linków do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu : "), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _pl)
+  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "avatar_has_been_deleted_successfully", "Pomyślnie usunięto avatar"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "views", "Wyświetleń"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _pl)
 });
 
 /***/ }),

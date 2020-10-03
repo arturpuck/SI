@@ -1,7 +1,6 @@
 <template>
 <div class="movie-box">
     <a v-bind:href="movieURL" v-bind:style="{backgroundImage : mainImageURL}" class="movie-main-image">
-        <icon-polish-flag v-if="isTranslatedToPolish" class="movie-translation-notification"></icon-polish-flag>
         <time v-text="duration" class="movie-duration"></time>
     </a>
     <div class="movie-data">
@@ -22,6 +21,7 @@
             <span class="fas fa-star star-icon"></span>
             <span v-text="pornstarsListTranslated"></span>
          </span>
+         <icon-polish-flag v-bind:title="iconDecription" v-if="isTranslatedToPolish"/>
       </div>
     </div>
 </div>
@@ -39,7 +39,7 @@
 
         methods : {
             showPreview(event){
-               this.$root.$emit('showPreview' ,{id:this.id});
+               this.$root.$emit('showPreview' ,{id:this.id, title:this.title});
            }
         },
 
@@ -69,6 +69,10 @@
                this.pornstars.forEach((pornstarNickName)=> pornstars += `${pornstarNickName}, `);
                return pornstars.slice(0,-2);
            },
+
+           iconDecription(){
+               return this.translator.translate('movie_translated_to_polish');
+           }
 
            
         },
@@ -155,12 +159,6 @@
 .movie-box{
     color:white;
     @include responsive-font(1.2vw,14px);
-}
-
-.movie-translation-notification{
-    top:0;
-    right:0;
-    position:absolute;
 }
 
 .movie-details-and-controls{

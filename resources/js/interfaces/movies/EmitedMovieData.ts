@@ -1,3 +1,4 @@
 export  interface EmitedMovieData {
-    movieID : number
+    movieID : number,
+    title : string
 }

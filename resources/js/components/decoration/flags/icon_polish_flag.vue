@@ -1,5 +1,5 @@
 <template>
-<div class="icon-polish-flag">
+<div ref="icon" class="icon-polish-flag">
     
 </div>
 </template>
@@ -7,6 +7,22 @@
 <script>
 	export default {
         name: 'icon-polish-flag',
+
+        props : {
+            title : {
+                required : false,
+                default : "",
+                type : String
+            }
+        },
+
+        mounted(){
+            if(this.title){
+                this.$refs.icon.setAttribute('title', this.title);
+            }
+        }
+
+
 
     }
 </script>

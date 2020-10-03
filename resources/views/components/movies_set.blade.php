@@ -20,5 +20,5 @@
 </div>
 
 @if($movies->hasPages())
-   {{$movies->links('components.links_box', ['movies' => $movies])}}
+   {{$movies->onEachSide($movies->lastPage())->links('components.links_box', ['movies' => $movies])}}
 @endif
