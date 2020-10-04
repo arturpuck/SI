@@ -733,29 +733,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'icon-close',
   props: {
-    aditionalClasses: {
-      required: false,
-      type: Object,
-      "default": undefined
-    },
     title: {
       required: false,
       type: String,
-      "default": "Zamknij"
-    },
-    ariaLabel: {
-      required: false,
-      type: String,
-      "default": "Zamknij"
+      "default": ""
     }
   },
   mounted: function mounted() {
-    var _this = this;
-
-    if (this.aditionalClasses) {
-      Object.keys(this.aditionalClasses).forEach(function (key) {
-        return _this.$refs[key].classList.add(_this.aditionalClasses[key]);
-      });
+    if (this.title) {
+      this.$refs.container.setAttribute('title', this.$root.translator.translate(this.title));
     }
   }
 });
@@ -4840,15 +4826,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      ref: "container",
-      staticClass: "icon-close-container",
-      attrs: { title: _vm.title, "aria-label": _vm.ariaLabel }
-    },
-    [_c("div", { staticClass: "icon-close" })]
-  )
+  return _c("div", { ref: "container", staticClass: "icon-close-container" }, [
+    _c("div", { staticClass: "icon-close" })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

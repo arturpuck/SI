@@ -1,5 +1,5 @@
 <template>
-<div ref="container" v-bind:title="title" v-bind:aria-label="ariaLabel" class="icon-close-container">
+<div ref="container" class="icon-close-container">
     <div class="icon-close"></div>
 </div>
 </template>
@@ -9,28 +9,18 @@
         name: 'icon-close',
 
         props : {
-            aditionalClasses : {
-                required : false,
-                type : Object,
-                default : undefined 
-             },
 
              title : {
                 required : false,
                 type : String,
-                default : "Zamknij"
-             },
-
-             ariaLabel : {
-                required : false,
-                type : String,
-                default : "Zamknij"
+                default : ""
              }
         },
 
+
          mounted(){
-            if(this.aditionalClasses){
-                Object.keys(this.aditionalClasses).forEach((key) => this.$refs[key].classList.add(this.aditionalClasses[key]));
+            if(this.title){
+                this.$refs.container.setAttribute('title', this.$root.translator.translate(this.title));
             }
         }
     }

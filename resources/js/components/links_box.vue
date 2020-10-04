@@ -14,12 +14,8 @@
         </button>
     </div>
     <ul class="next-previous-links">
-         <li>
-           <slot name="previous-page"></slot>
-         </li>
-         <li>
-           <slot name="next-page"></slot>
-         </li>
+        <slot name="previous-page"></slot>
+        <slot name="next-page"></slot>
     </ul>
  </nav>
 </template>
@@ -35,7 +31,7 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
         @Prop({
             type: Number,
             required: true,
-        }) readonly maxOffset: number;
+        }) readonly linksAmount: number;
 
         previousLinksDescription :string = Translator.translate('scroll_previous_links');
         nextLinksDescription :string = Translator.translate('scroll_next_links');
@@ -64,7 +60,8 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
                 break;
 
                 case LinkListScrollDirection.Right:
-                   this.scrollOffset = (this.scrollOffset >= this.maxOffset) ? this.maxOffset : (this.scrollOffset + 1);
+                   const maxOffset = this.linksAmount - this.getAmmountOfVisibleLinksInBox();
+                   this.scrollOffset = (this.scrollOffset >= maxOffset) ? maxOffset : (this.scrollOffset + 1);
                 break;
             }
         }
@@ -95,6 +92,27 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
 
 .scroll-next-links-button-decoration{
     clip-path: polygon(0% 25%, 60% 25%, 60% 0%, 100% 50%, 60% 100%, 60% 75%, 0% 75%);
+}
+
+.next-previous-list-element{
+    margin:0 4px;
+    background: linear-gradient(to bottom, #1d1c1c, #0e0e0e);
+    border-radius: 3px;
+    border: 1px solid black;
+    padding:0 4px;
+    &:hover:not(.disabled-list-element){
+        box-shadow: 1px 1px 3px 1px black;
+    }
+}
+
+.disabled-previous-next-link{
+    cursor: not-allowed;
+}
+
+.disabled-list-element{
+    &:hover{
+        background:red;
+    }
 }
 
 .links-button-description{
@@ -134,12 +152,23 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
 }
 
 .next-previous-links{
-    margin:0;
+    margin: 5px 0;
     padding:0;
     display:flex;
     flex-wrap:nowrap;
     list-style-type: none;
+    @include responsive-font();
+    color:white;
+    justify-content: center;
 }
+
+.previous-next-link{
+    color:white;
+    text-decoration: none;
+    padding: 4px;
+    display: inline-block;
+}
+
 
 .scrollable-controls{
     width:100%;
@@ -156,21 +185,28 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
     display: inline-block;
     width: 100%;
     line-height:3.5vw;
-    @media(max-screen:830px){
+    background:linear-gradient(to bottom, #e60f0f, #540505);
+    &:hover{
+       background: linear-gradient(#17f117, #09501b); 
+    }
+    border-radius:5px;
+    @media(max-width:830px){
         line-height: 40px;
     }
+}
+
+.current-page-link{
+   background: linear-gradient(#17f117, #09501b); 
 }
 
 .pagination-link-list-element{
   flex-basis: 3.5vw;
   height: 3.5vw;
   display: inline-block;
-  border-radius:5px;
   text-align: center;
   flex-grow: 0;
   flex-shrink: 0;
   margin: 0.75vw;
-  background:linear-gradient(to bottom, #e60f0f, #540505);
   @media(max-width:830px){
         flex-basis:40px;
         margin:0 4px;
@@ -185,7 +221,7 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
     outline:none;
     border-radius: 5px;
     flex-basis: 4%;
-    min-width: 30px;
+    min-width: 35px;
     background: linear-gradient(#17f117, #09501b);
     &:active{
         transform: scale(1.2);

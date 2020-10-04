@@ -194,29 +194,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'icon-close',
   props: {
-    aditionalClasses: {
-      required: false,
-      type: Object,
-      "default": undefined
-    },
     title: {
       required: false,
       type: String,
-      "default": "Zamknij"
-    },
-    ariaLabel: {
-      required: false,
-      type: String,
-      "default": "Zamknij"
+      "default": ""
     }
   },
   mounted: function mounted() {
-    var _this = this;
-
-    if (this.aditionalClasses) {
-      Object.keys(this.aditionalClasses).forEach(function (key) {
-        return _this.$refs[key].classList.add(_this.aditionalClasses[key]);
-      });
+    if (this.title) {
+      this.$refs.container.setAttribute('title', this.$root.translator.translate(this.title));
     }
   }
 });
@@ -1126,7 +1112,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".scroll-previous-links-button-decoration {\n  -webkit-clip-path: polygon(40% 0%, 40% 25%, 100% 25%, 100% 75%, 40% 75%, 40% 100%, 0% 50%);\n          clip-path: polygon(40% 0%, 40% 25%, 100% 25%, 100% 75%, 40% 75%, 40% 100%, 0% 50%);\n}\n.scroll-next-links-button-decoration {\n  -webkit-clip-path: polygon(0% 25%, 60% 25%, 60% 0%, 100% 50%, 60% 100%, 60% 75%, 0% 75%);\n          clip-path: polygon(0% 25%, 60% 25%, 60% 0%, 100% 50%, 60% 100%, 60% 75%, 0% 75%);\n}\n.links-button-description {\n  position: absolute;\n  left: 0;\n  top: -9999px;\n  display: inline-block;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n}\n.links-box {\n  display: block;\n  margin: 10px auto;\n}\n.links-container-outer {\n  overflow: hidden;\n  margin: 0 5px;\n}\n.content-container-slider {\n  position: relative;\n  left: 0;\n  top: 0;\n  -webkit-transition: left 0.3s;\n  transition: left 0.3s;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: nowrap;\n  list-style-type: none;\n  width: 50vw;\n}\n@media (max-width: 830px) {\n.content-container-slider {\n    width: 240px;\n}\n}\n.next-previous-links {\n  margin: 0;\n  padding: 0;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: nowrap;\n  list-style-type: none;\n}\n.scrollable-controls {\n  width: 100%;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: nowrap;\n  -webkit-box-pack: center;\n          justify-content: center;\n  font-size: 1.5vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.scrollable-controls {\n    font-size: 20px;\n}\n}\n.pagination-link {\n  color: white;\n  text-decoration: none;\n  display: inline-block;\n  width: 100%;\n  line-height: 3.5vw;\n}\n@media (max-screen: 830px) {\n.pagination-link {\n    line-height: 40px;\n}\n}\n.pagination-link-list-element {\n  flex-basis: 3.5vw;\n  height: 3.5vw;\n  display: inline-block;\n  border-radius: 5px;\n  text-align: center;\n  -webkit-box-flex: 0;\n          flex-grow: 0;\n  flex-shrink: 0;\n  margin: 0.75vw;\n  background: -webkit-gradient(linear, left top, left bottom, from(#e60f0f), to(#540505));\n  background: linear-gradient(to bottom, #e60f0f, #540505);\n}\n@media (max-width: 830px) {\n.pagination-link-list-element {\n    flex-basis: 40px;\n    margin: 0 4px;\n    height: 40px;\n    line-height: 40px;\n}\n}\n.scroll-links-button {\n  cursor: pointer;\n  border: none;\n  outline: none;\n  border-radius: 5px;\n  flex-basis: 4%;\n  min-width: 30px;\n  background: -webkit-gradient(linear, left top, left bottom, from(#17f117), to(#09501b));\n  background: linear-gradient(#17f117, #09501b);\n}\n.scroll-links-button:active {\n  -webkit-transform: scale(1.2);\n          transform: scale(1.2);\n}", ""]);
+exports.push([module.i, ".scroll-previous-links-button-decoration {\n  -webkit-clip-path: polygon(40% 0%, 40% 25%, 100% 25%, 100% 75%, 40% 75%, 40% 100%, 0% 50%);\n          clip-path: polygon(40% 0%, 40% 25%, 100% 25%, 100% 75%, 40% 75%, 40% 100%, 0% 50%);\n}\n.scroll-next-links-button-decoration {\n  -webkit-clip-path: polygon(0% 25%, 60% 25%, 60% 0%, 100% 50%, 60% 100%, 60% 75%, 0% 75%);\n          clip-path: polygon(0% 25%, 60% 25%, 60% 0%, 100% 50%, 60% 100%, 60% 75%, 0% 75%);\n}\n.next-previous-list-element {\n  margin: 0 4px;\n  background: -webkit-gradient(linear, left top, left bottom, from(#1d1c1c), to(#0e0e0e));\n  background: linear-gradient(to bottom, #1d1c1c, #0e0e0e);\n  border-radius: 3px;\n  border: 1px solid black;\n  padding: 0 4px;\n}\n.next-previous-list-element:hover:not(.disabled-list-element) {\n  box-shadow: 1px 1px 3px 1px black;\n}\n.disabled-previous-next-link {\n  cursor: not-allowed;\n}\n.disabled-list-element:hover {\n  background: red;\n}\n.links-button-description {\n  position: absolute;\n  left: 0;\n  top: -9999px;\n  display: inline-block;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n}\n.links-box {\n  display: block;\n  margin: 10px auto;\n}\n.links-container-outer {\n  overflow: hidden;\n  margin: 0 5px;\n}\n.content-container-slider {\n  position: relative;\n  left: 0;\n  top: 0;\n  -webkit-transition: left 0.3s;\n  transition: left 0.3s;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: nowrap;\n  list-style-type: none;\n  width: 50vw;\n}\n@media (max-width: 830px) {\n.content-container-slider {\n    width: 240px;\n}\n}\n.next-previous-links {\n  margin: 5px 0;\n  padding: 0;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: nowrap;\n  list-style-type: none;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n@media (max-width: 1200px) {\n.next-previous-links {\n    font-size: 16px;\n}\n}\n.previous-next-link {\n  color: white;\n  text-decoration: none;\n  padding: 4px;\n  display: inline-block;\n}\n.scrollable-controls {\n  width: 100%;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: nowrap;\n  -webkit-box-pack: center;\n          justify-content: center;\n  font-size: 1.5vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.scrollable-controls {\n    font-size: 20px;\n}\n}\n.pagination-link {\n  color: white;\n  text-decoration: none;\n  display: inline-block;\n  width: 100%;\n  line-height: 3.5vw;\n  background: -webkit-gradient(linear, left top, left bottom, from(#e60f0f), to(#540505));\n  background: linear-gradient(to bottom, #e60f0f, #540505);\n  border-radius: 5px;\n}\n.pagination-link:hover {\n  background: -webkit-gradient(linear, left top, left bottom, from(#17f117), to(#09501b));\n  background: linear-gradient(#17f117, #09501b);\n}\n@media (max-width: 830px) {\n.pagination-link {\n    line-height: 40px;\n}\n}\n.current-page-link {\n  background: -webkit-gradient(linear, left top, left bottom, from(#17f117), to(#09501b));\n  background: linear-gradient(#17f117, #09501b);\n}\n.pagination-link-list-element {\n  flex-basis: 3.5vw;\n  height: 3.5vw;\n  display: inline-block;\n  text-align: center;\n  -webkit-box-flex: 0;\n          flex-grow: 0;\n  flex-shrink: 0;\n  margin: 0.75vw;\n}\n@media (max-width: 830px) {\n.pagination-link-list-element {\n    flex-basis: 40px;\n    margin: 0 4px;\n    height: 40px;\n    line-height: 40px;\n}\n}\n.scroll-links-button {\n  cursor: pointer;\n  border: none;\n  outline: none;\n  border-radius: 5px;\n  flex-basis: 4%;\n  min-width: 35px;\n  background: -webkit-gradient(linear, left top, left bottom, from(#17f117), to(#09501b));\n  background: linear-gradient(#17f117, #09501b);\n}\n.scroll-links-button:active {\n  -webkit-transform: scale(1.2);\n          transform: scale(1.2);\n}", ""]);
 
 // exports
 
@@ -2725,7 +2711,8 @@ var LinksBox = /** @class */ (function (_super) {
                 this.scrollOffset = (this.scrollOffset <= 0) ? 0 : (this.scrollOffset - 1);
                 break;
             case scroll_types_1.LinkListScrollDirection.Right:
-                this.scrollOffset = (this.scrollOffset >= this.maxOffset) ? this.maxOffset : (this.scrollOffset + 1);
+                var maxOffset = this.linksAmount - this.getAmmountOfVisibleLinksInBox();
+                this.scrollOffset = (this.scrollOffset >= maxOffset) ? maxOffset : (this.scrollOffset + 1);
                 break;
         }
     };
@@ -2744,7 +2731,7 @@ var LinksBox = /** @class */ (function (_super) {
             type: Number,
             required: true,
         })
-    ], LinksBox.prototype, "maxOffset", void 0);
+    ], LinksBox.prototype, "linksAmount", void 0);
     LinksBox = __decorate([
         vue_property_decorator_1.Component
     ], LinksBox);
@@ -3272,15 +3259,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      ref: "container",
-      staticClass: "icon-close-container",
-      attrs: { title: _vm.title, "aria-label": _vm.ariaLabel }
-    },
-    [_c("div", { staticClass: "icon-close" })]
-  )
+  return _c("div", { ref: "container", staticClass: "icon-close-container" }, [
+    _c("div", { staticClass: "icon-close" })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -3700,11 +3681,12 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("ul", { staticClass: "next-previous-links" }, [
-      _c("li", [_vm._t("previous-page")], 2),
-      _vm._v(" "),
-      _c("li", [_vm._t("next-page")], 2)
-    ])
+    _c(
+      "ul",
+      { staticClass: "next-previous-links" },
+      [_vm._t("previous-page"), _vm._v(" "), _vm._t("next-page")],
+      2
+    )
   ])
 }
 var staticRenderFns = []
@@ -3884,10 +3866,7 @@ var render = function() {
         _vm._v(" "),
         _c("icon-close", {
           staticClass: "preview-close-icon",
-          attrs: {
-            title: "close_movie_preview",
-            description: "close_movie_preview"
-          },
+          attrs: { title: "close_movie_preview" },
           nativeOn: {
             click: function($event) {
               return _vm.hidePreview($event)
