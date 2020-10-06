@@ -13,9 +13,8 @@
             <span v-text="nextLinksDescription" class="links-button-description"></span>
         </button>
     </div>
-    <ul class="next-previous-links">
-        <slot name="previous-page"></slot>
-        <slot name="next-page"></slot>
+    <ul class="aditional-links">
+       <slot name="aditional-links"></slot>
     </ul>
  </nav>
 </template>
@@ -32,6 +31,11 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
             type: Number,
             required: true,
         }) readonly linksAmount: number;
+
+        @Prop({
+            type: Number,
+            required: true,
+        }) readonly currentPage: number;
 
         previousLinksDescription :string = Translator.translate('scroll_previous_links');
         nextLinksDescription :string = Translator.translate('scroll_next_links');
@@ -52,16 +56,21 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
             return (window.innerWidth <= 830) ? 5 : 10;
         }
 
+        getMaxOffset(): number{
+           return  this.linksAmount - this.getAmmountOfVisibleLinksInBox();
+        }
+
         scrollLinks(direction:LinkListScrollDirection){
+          const linksToSkip = this.getAmmountOfVisibleLinksInBox();
 
             switch(direction){
                 case LinkListScrollDirection.Left:
-                   this.scrollOffset = (this.scrollOffset <= 0) ? 0 : (this.scrollOffset - 1);
+                   this.scrollOffset = (this.scrollOffset - linksToSkip <= 0) ? 0 : (this.scrollOffset - linksToSkip);
                 break;
 
                 case LinkListScrollDirection.Right:
-                   const maxOffset = this.linksAmount - this.getAmmountOfVisibleLinksInBox();
-                   this.scrollOffset = (this.scrollOffset >= maxOffset) ? maxOffset : (this.scrollOffset + 1);
+                   const maxOffset = this.getMaxOffset();
+                   this.scrollOffset = (this.scrollOffset + linksToSkip >= maxOffset) ? maxOffset : (this.scrollOffset + linksToSkip);
                 break;
             }
         }
@@ -76,6 +85,11 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
               this.interval = null;
             }
             
+        }
+
+        mounted(){
+            const maxOffset = this.getMaxOffset();
+            this.scrollOffset = (this.currentPage -1 >= maxOffset) ? maxOffset : this.currentPage -1;
         }
 
     }
@@ -94,24 +108,14 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
     clip-path: polygon(0% 25%, 60% 25%, 60% 0%, 100% 50%, 60% 100%, 60% 75%, 0% 75%);
 }
 
-.next-previous-list-element{
+.aditional-link-list-element{
     margin:0 4px;
     background: linear-gradient(to bottom, #1d1c1c, #0e0e0e);
     border-radius: 3px;
     border: 1px solid black;
     padding:0 4px;
-    &:hover:not(.disabled-list-element){
-        box-shadow: 1px 1px 3px 1px black;
-    }
-}
-
-.disabled-previous-next-link{
-    cursor: not-allowed;
-}
-
-.disabled-list-element{
     &:hover{
-        background:red;
+        box-shadow: 1px 1px 3px 1px black;
     }
 }
 
@@ -139,7 +143,7 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
     position: relative;
     left:0;
     top:0;
-    transition: left 0.3s;
+    transition: left 0.8s;
     padding:0;
     margin:0;
     display:flex;
@@ -151,7 +155,7 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
     }
 }
 
-.next-previous-links{
+.aditional-links{
     margin: 5px 0;
     padding:0;
     display:flex;
@@ -162,7 +166,7 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
     justify-content: center;
 }
 
-.previous-next-link{
+.aditional-link{
     color:white;
     text-decoration: none;
     padding: 4px;

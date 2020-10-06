@@ -1,0 +1,196 @@
+@import '~sass/fonts';
+$border-color: black;
+@mixin navbar-link{
+	color:white;
+	text-decoration: none;
+	display:flex;
+	align-items: baseline;
+}
+
+.logo-link{
+	@include navbar-link();
+}
+
+.sub-menu-link{
+	text-decoration: none;
+	color:inherit;
+	display: block;
+}
+
+.logo-description::after{
+	content: "Sex-Imperium";
+}
+
+.navbar-element-user{
+	margin-left: auto;
+	position:relative;
+}
+
+.navigation-list{
+	list-style-type: none;
+	padding:0;
+	margin:0;
+	display:flex;
+	background: #0d0c0d;
+	align-items: stretch;
+	position:relative;
+	z-index:3;
+	box-shadow: 2px 2px 2px 2px black;
+}
+
+.register-selection{
+	margin-left: auto;
+}
+
+.navigation-element-main{
+	transition: background 2s;
+	&:hover{
+		background: #2d2d30;
+	}
+	&:hover{
+      cursor:pointer;
+	}
+	color:white;
+	display: inline-block;
+	line-height: 100%;
+	@include responsive-font(1.5vw, 18px, 'Aldrich');
+	display: flex;
+    flex-direction: row;
+	align-items: baseline;
+	padding:6px;
+}
+
+.page-navigation{
+    position: fixed;
+    width: 100%;
+    top:0;
+    z-index:10;
+    font-size:0;
+    &:focus{
+    	outline:none;
+    };
+}
+
+.sub-menu-list{
+	position:absolute;
+	overflow:hidden;
+	display:inline-block;
+	top:100%;
+	max-height:0;
+	padding: 0;
+    list-style-type: none;
+    margin: 0;
+	@include responsive-font(1.5vw, 18px, 'Aldrich');
+	color:white;
+	min-width:140px;
+	z-index:1;
+    border-radius: 0 0 8px 8px;
+}
+
+.porn-sub-menu-list{
+	left:13vw;
+}
+
+.hidden-sub-menu{
+	max-height:0;
+	transition:none;
+}
+
+.visible-sub-menu{
+	transition: max-height 1.5s;
+	max-height:1500px;
+	box-shadow: 2px 2px 4px 3px black;
+}
+
+.sub-menu-list-element
+{
+  background:linear-gradient(to right,#0a0a0a, #2e2e2d);
+  border-bottom: 1px solid $border-color;
+  cursor:pointer;
+}
+
+.sub-menu-list-nested-level-two{
+	list-style-type: none;
+	overflow:hidden;
+	padding:0;
+	transition: max-height 0.7s;
+}
+
+.navbar-icon-second-level{
+	color: #bbb606;
+}
+
+.sub-menu-list-element-intendation-second-level{
+	padding:5px 2px 5px 2vw;
+	border-bottom:1px solid black;
+	white-space: nowrap;
+	background:linear-gradient(to right,#0a0a0a, #2e2e2d);
+	&:hover{
+		background:black;
+		cursor:pointer;
+	}
+}
+
+.visible-movies-sub-menu{
+	max-height: 500px;
+}
+
+.hidden-movies-sub-menu{
+	max-height:0;
+}
+
+.sub-menu-level-one-item{
+	&:hover{
+		background:black;
+	}
+	padding: 5px 2px 5px 1vw;
+}
+
+.sum-menu-list-element:last-child{
+	border-radius: 0 0 8px 8px;
+}
+
+.navbar-icon{
+	margin:0 5px;
+	
+}
+
+.navbar-icon-outer{
+	color:#eb091c
+}
+
+.navbar-link-main-manu{
+	@include navbar-link();
+}
+
+@media(max-width: 400px){
+	.navigation-element-main{
+		padding:3px 1px;
+		font-size:16px;
+	}
+
+	.sub-menu-list{
+		font-size:16px;
+	}
+
+	.navbar-icon{
+		margin:0 3px;
+	}
+}
+
+@media(min-width:520px) and (max-width: 1200px){
+	.porn-sub-menu-list{
+       left:150px;
+	}
+}
+
+@media(max-width: 520px){
+	.logo-description::after{
+		content: "SI";
+	}
+
+	.porn-sub-menu-list{
+       left:50px;
+	}
+
+}

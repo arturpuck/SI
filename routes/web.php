@@ -21,7 +21,7 @@ Route::post('/contact/send-message', 'ContactFormController@sendMessageFromUser'
 
 Route::namespace('Movies')->name('movies.')->group(function(){
 
-       Route::get('/filmy/najnowsze/strona/{pageNumber}', 'MoviesController@getLatestMoviesPage')
+       Route::get('/filmy/najnowsze/strona/{pageNumber?}', 'MoviesController@getLatestMoviesPage')
              ->name('new');
 
 });

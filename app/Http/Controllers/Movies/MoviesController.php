@@ -8,12 +8,12 @@ use App\Http\Controllers\Controller;
 
 class MoviesController extends Controller
 {
-    public function getLatestMoviesPage(MoviesRepository $moviesRepository){
-
+    public function getLatestMoviesPage(Request $request, MoviesRepository $moviesRepository){
+      
         $movies = $moviesRepository
                   ->select(['id', 'duration', 'title', 'views', 'is_translated_to_polish'])
                   ->chronological()
-                  ->paginate();
+                  ->paginate(intval($request->pageNumber), route('movies.new'));
 
         return view('movies.movies_set_complete')->with([
             'title' => 'the_latest_movies',

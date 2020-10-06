@@ -417,3 +417,7 @@
     font-size: 16px;
   }
 }
+
+.settings-panel-checkbox {
+  color: white;
+}

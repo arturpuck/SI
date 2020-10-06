@@ -3,7 +3,7 @@
 </fixed-shadow-container>
 
 <div class="movies-container">
-    @foreach($movies as $movie)
+    @foreach($movies->items() as $movie)
         <movie-box
             duration="{{$movie->duration}}"
             title="{{$movie->title}}"
@@ -20,5 +20,5 @@
 </div>
 
 @if($movies->hasPages())
-   {{$movies->onEachSide($movies->lastPage())->links('components.links_box', ['movies' => $movies])}}
+   <x-links-container :elements="$movies"/></links-container>
 @endif

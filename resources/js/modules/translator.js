@@ -107,6 +107,16 @@ export default{
     play_movie_preview : "Uruchom podgląd filmu",
     sex_empire : "Sex-Imperium",
     movie_translated_to_polish : "Film przetłumaczony na język polski",
-    scroll_next_links : "Przewijaj listę podstron do przodu"
+    scroll_next_links : "Przewijaj listę podstron do przodu",
+    hide_side_bar : "Schowaj boczny pasek",
+    hide : "Schowaj",
+    profile : "Profil",
+    profile_settings : "Ustawienia profilu",
+    messages : "Wiadomości",
+    favourites : "Ulubione",
+    your_favourite_movies_etc : "Twoje ulubione filmy, gwiazdy itp",
+    friends : "Znajomi",
+    logout : "Wyloguj",
+    user_settings : "Ustawienia profilu : hasło, avatar, dane personalne"
    }
 }
