@@ -1861,7 +1861,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".user-sidebar[data-v-a04b05d0] {\n  position: fixed;\n  right: 0;\n  top: 0;\n  width: 4vw;\n  min-width: 55px;\n  z-index: 3;\n  background: #0d0c0d;\n  box-shadow: -1px -1px 2px 2px black;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-transition: height 1s;\n  transition: height 1s;\n  overflow: hidden;\n}\n.visible-sidebar[data-v-a04b05d0] {\n  height: 100vh;\n}\n.hidden-sidebar[data-v-a04b05d0] {\n  height: 0;\n}\n.user-sidebar-list[data-v-a04b05d0] {\n  padding: calc(25px + 2vw) 0 0 0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  margin: 0;\n  list-style-type: none;\n}\n.user-sidebar-element[data-v-a04b05d0] {\n  padding: 4px 0;\n  margin-top: 6px;\n  border-radius: 3px;\n  text-align: center;\n  cursor: pointer;\n}\n.user-sidebar-element[data-v-a04b05d0]:hover {\n  background: #211e1e;\n}\n.sidebar-icon[data-v-a04b05d0], .sidebar-item-description[data-v-a04b05d0], .show-sidebar-button-element[data-v-a04b05d0] {\n  display: block;\n  text-align: center;\n}\n.sidebar-item-description[data-v-a04b05d0] {\n  font-size: 0.9vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.sidebar-item-description[data-v-a04b05d0] {\n    font-size: 10px;\n}\n}\n.sidebar-icon[data-v-a04b05d0] {\n  color: red;\n  font-size: 1.4vw;\n  font-family: initial, sans-serif;\n}\n@media (max-width: 1200px) {\n.sidebar-icon[data-v-a04b05d0] {\n    font-size: 16px;\n}\n}\n.logout-form[data-v-a04b05d0] {\n  display: none;\n}", ""]);
+exports.push([module.i, ".user-sidebar[data-v-a04b05d0] {\n  position: fixed;\n  right: 0;\n  top: 0;\n  width: 4vw;\n  min-width: 55px;\n  z-index: 3;\n  background: #0d0c0d;\n  box-shadow: -1px -1px 2px 2px black;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-transition: height 1s;\n  transition: height 1s;\n  overflow: hidden;\n}\n.visible-sidebar[data-v-a04b05d0] {\n  height: 100vh;\n}\n.hidden-sidebar[data-v-a04b05d0] {\n  height: 0;\n}\n.user-sidebar-list[data-v-a04b05d0] {\n  padding: calc(25px + 2vw) 0 0 0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  margin: 0;\n  list-style-type: none;\n}\n.user-sidebar-element[data-v-a04b05d0] {\n  padding: 4px 0;\n  margin-top: 6px;\n  border-radius: 3px;\n  text-align: center;\n  cursor: pointer;\n}\n.user-sidebar-element[data-v-a04b05d0]:hover {\n  background: #211e1e;\n}\n.sidebar-icon[data-v-a04b05d0], .sidebar-item-description[data-v-a04b05d0], .show-sidebar-button-element[data-v-a04b05d0] {\n  display: block;\n  text-align: center;\n}\n.sidebar-item-description[data-v-a04b05d0] {\n  font-size: 0.9vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.sidebar-item-description[data-v-a04b05d0] {\n    font-size: 10px;\n}\n}\n.sidebar-icon[data-v-a04b05d0] {\n  color: red;\n  font-size: 1.4vw;\n  font-family: initial, sans-serif;\n}\n@media (max-width: 1200px) {\n.sidebar-icon[data-v-a04b05d0] {\n    font-size: 16px;\n}\n}\n.logout-form[data-v-a04b05d0] {\n  display: none;\n}\n.sub-menu-link[data-v-a04b05d0] {\n  text-decoration: none;\n  color: white;\n}", ""]);
 
 // exports
 
@@ -19007,7 +19007,8 @@ new Vue({
     availableTabs: ['basicUserDataTab', 'avatarTab', 'passwordTab', 'otherTab'],
     currentExpectDecorationLabel: undefined,
     imageURL: "",
-    hiddenIcon: false
+    hiddenIcon: false,
+    showDeleteAvatarButton: true
   },
   methods: {
     emailExists: _jsmodules_validators_email_validator_js__WEBPACK_IMPORTED_MODULE_11__["default"].emailExists,
@@ -19069,97 +19070,6 @@ new Vue({
         this.showNotification('invalid_file_extension', 'error');
       }
     },
-    processValidImageURL: function processValidImageURL(sender, imageURL) {
-      sender.showValueIsOK();
-      this.showAvatarPreview(imageURL, imageURL);
-    },
-    processImageByURL: function () {
-      var _processImageByURL = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(sender) {
-        var imageURL, root, response, errorMessage;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                imageURL = sender.inputValue;
-                root = this.$root;
-
-                if (!imageURL) {
-                  _context.next = 36;
-                  break;
-                }
-
-                root.showExpectationDecoration('checking_image');
-                root.imageURL = imageURL;
-                _context.next = 7;
-                return fetch("/validate/avatar?URL=".concat(imageURL));
-
-              case 7:
-                response = _context.sent;
-                _context.prev = 8;
-                _context.t0 = response.status;
-                _context.next = _context.t0 === 200 ? 12 : _context.t0 === 400 ? 14 : _context.t0 === 429 ? 20 : _context.t0 === 500 ? 22 : 24;
-                break;
-
-              case 12:
-                root.processValidImageURL(sender, imageURL);
-                return _context.abrupt("break", 26);
-
-              case 14:
-                _context.next = 16;
-                return response.json();
-
-              case 16:
-                errorMessage = _context.sent;
-                sender.showError();
-                throw new Error(errorMessage);
-
-              case 20:
-                throw new Error("to_many_user_settings_change_attempts");
-
-              case 22:
-                throw new Error("the_requested_data_is_ok_but_a_server_error_occured");
-
-              case 24:
-                throw new Error("undefined_error");
-
-              case 26:
-                _context.next = 31;
-                break;
-
-              case 28:
-                _context.prev = 28;
-                _context.t1 = _context["catch"](8);
-                this.showNotification(_context.t1.message, 'error');
-
-              case 31:
-                _context.prev = 31;
-                root.hideExpectationDecoration();
-                return _context.finish(31);
-
-              case 34:
-                _context.next = 38;
-                break;
-
-              case 36:
-                sender.resetValidation();
-                root.avatarFileName = "";
-
-              case 38:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this, [[8, 28, 31, 34]]);
-      }));
-
-      function processImageByURL(_x) {
-        return _processImageByURL.apply(this, arguments);
-      }
-
-      return processImageByURL;
-    }(),
     showApropriateContent: function showApropriateContent(event) {
       this.selectedTab = event.target.id || event.target.parentElement.id;
     },
@@ -19200,28 +19110,28 @@ new Vue({
     validateEmail: function () {
       var _validateEmail = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(sender) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(sender) {
         var email, root, emailStatus;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context.prev = _context.next) {
               case 0:
                 email = sender.inputValue;
 
                 if (!(email === sender.initialValue)) {
-                  _context2.next = 4;
+                  _context.next = 4;
                   break;
                 }
 
                 sender.resetValidation();
-                return _context2.abrupt("return");
+                return _context.abrupt("return");
 
               case 4:
                 root = this.$root;
-                _context2.prev = 5;
+                _context.prev = 5;
 
                 if (this.emailhasCorrectFormat(email)) {
-                  _context2.next = 8;
+                  _context.next = 8;
                   break;
                 }
 
@@ -19229,11 +19139,11 @@ new Vue({
 
               case 8:
                 root.showExpectationDecoration('checking_the_email');
-                _context2.next = 11;
+                _context.next = 11;
                 return this.emailExists(email);
 
               case 11:
-                emailStatus = _context2.sent;
+                emailStatus = _context.sent;
 
                 if (emailStatus) {
                   sender.showError(emailStatus);
@@ -19241,28 +19151,28 @@ new Vue({
                   sender.showValueIsOK();
                 }
 
-                _context2.next = 18;
+                _context.next = 18;
                 break;
 
               case 15:
-                _context2.prev = 15;
-                _context2.t0 = _context2["catch"](5);
-                sender.showError(_context2.t0.message);
+                _context.prev = 15;
+                _context.t0 = _context["catch"](5);
+                sender.showError(_context.t0.message);
 
               case 18:
-                _context2.prev = 18;
+                _context.prev = 18;
                 root.hideExpectationDecoration();
-                return _context2.finish(18);
+                return _context.finish(18);
 
               case 21:
               case "end":
-                return _context2.stop();
+                return _context.stop();
             }
           }
-        }, _callee2, this, [[5, 15, 18, 21]]);
+        }, _callee, this, [[5, 15, 18, 21]]);
       }));
 
-      function validateEmail(_x2) {
+      function validateEmail(_x) {
         return _validateEmail.apply(this, arguments);
       }
 
@@ -19300,14 +19210,14 @@ new Vue({
     editUserData: function () {
       var _editUserData = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(userDataThatShouldBeChanged) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(userDataThatShouldBeChanged) {
         var root, requestData, response, errors;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
                 root = this.$root;
-                _context3.prev = 1;
+                _context2.prev = 1;
                 requestData = {
                   method: 'PATCH',
                   body: JSON.stringify(userDataThatShouldBeChanged),
@@ -19317,26 +19227,26 @@ new Vue({
                   }
                 };
                 root.showExpectationDecoration('changing_user_data');
-                _context3.next = 6;
+                _context2.next = 6;
                 return fetch('/user/profile/settings/basic', requestData);
 
               case 6:
-                response = _context3.sent;
-                _context3.t0 = response.status;
-                _context3.next = _context3.t0 === 200 ? 10 : _context3.t0 === 400 ? 13 : _context3.t0 === 429 ? 18 : _context3.t0 === 500 ? 20 : 22;
+                response = _context2.sent;
+                _context2.t0 = response.status;
+                _context2.next = _context2.t0 === 200 ? 10 : _context2.t0 === 400 ? 13 : _context2.t0 === 429 ? 18 : _context2.t0 === 500 ? 20 : 22;
                 break;
 
               case 10:
                 this.showNotification('data_has_been_changed_successfully');
                 this.resetInputs();
-                return _context3.abrupt("break", 24);
+                return _context2.abrupt("break", 24);
 
               case 13:
-                _context3.next = 15;
+                _context2.next = 15;
                 return response.json();
 
               case 15:
-                errors = _context3.sent;
+                errors = _context2.sent;
                 throw new Error(this.translator.translate('the_following_errors_occured') + this.translator.translate(errors));
 
               case 18:
@@ -19349,28 +19259,28 @@ new Vue({
                 throw new Error("undefined_error");
 
               case 24:
-                _context3.next = 29;
+                _context2.next = 29;
                 break;
 
               case 26:
-                _context3.prev = 26;
-                _context3.t1 = _context3["catch"](1);
-                this.showNotification(_context3.t1.message, 'error');
+                _context2.prev = 26;
+                _context2.t1 = _context2["catch"](1);
+                this.showNotification(_context2.t1.message, 'error');
 
               case 29:
-                _context3.prev = 29;
+                _context2.prev = 29;
                 root.hideExpectationDecoration();
-                return _context3.finish(29);
+                return _context2.finish(29);
 
               case 32:
               case "end":
-                return _context3.stop();
+                return _context2.stop();
             }
           }
-        }, _callee3, this, [[1, 26, 29, 32]]);
+        }, _callee2, this, [[1, 26, 29, 32]]);
       }));
 
-      function editUserData(_x3) {
+      function editUserData(_x2) {
         return _editUserData.apply(this, arguments);
       }
 
@@ -19379,14 +19289,14 @@ new Vue({
     deleteAvatar: function () {
       var _deleteAvatar = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
         var root, requestData, response, errors;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
                 root = this.$root;
-                _context4.prev = 1;
+                _context3.prev = 1;
                 requestData = {
                   method: 'DELETE',
                   headers: {
@@ -19394,57 +19304,58 @@ new Vue({
                   }
                 };
                 root.showExpectationDecoration('deleting_the_avatar');
-                _context4.next = 6;
+                _context3.next = 6;
                 return fetch('/user/profile/settings/avatar/delete', requestData);
 
               case 6:
-                response = _context4.sent;
-                _context4.t0 = response.status;
-                _context4.next = _context4.t0 === 200 ? 10 : _context4.t0 === 400 ? 13 : _context4.t0 === 429 ? 18 : _context4.t0 === 500 ? 20 : 22;
+                response = _context3.sent;
+                _context3.t0 = response.status;
+                _context3.next = _context3.t0 === 200 ? 10 : _context3.t0 === 400 ? 14 : _context3.t0 === 429 ? 19 : _context3.t0 === 500 ? 21 : 23;
                 break;
 
               case 10:
                 this.showNotification('avatar_has_been_deleted_successfully');
                 this.avatarFile = null;
-                return _context4.abrupt("break", 24);
+                this.showDeleteAvatarButton = false;
+                return _context3.abrupt("break", 25);
 
-              case 13:
-                _context4.next = 15;
+              case 14:
+                _context3.next = 16;
                 return response.json();
 
-              case 15:
-                errors = _context4.sent;
+              case 16:
+                errors = _context3.sent;
                 throw new Error(this.translator.translate('the_following_errors_occured') + this.translator.translate(errors));
 
-              case 18:
+              case 19:
                 throw new Error("to_many_user_settings_change_attempts");
 
-              case 20:
+              case 21:
                 throw new Error("the_requested_data_is_probably_ok_but_a_server_error_occured");
 
-              case 22:
+              case 23:
                 throw new Error("undefined_error");
 
-              case 24:
-                _context4.next = 29;
+              case 25:
+                _context3.next = 30;
                 break;
 
-              case 26:
-                _context4.prev = 26;
-                _context4.t1 = _context4["catch"](1);
-                this.showNotification(_context4.t1.message, 'error');
+              case 27:
+                _context3.prev = 27;
+                _context3.t1 = _context3["catch"](1);
+                this.showNotification(_context3.t1.message, 'error');
 
-              case 29:
-                _context4.prev = 29;
+              case 30:
+                _context3.prev = 30;
                 root.hideExpectationDecoration();
-                return _context4.finish(29);
+                return _context3.finish(30);
 
-              case 32:
+              case 33:
               case "end":
-                return _context4.stop();
+                return _context3.stop();
             }
           }
-        }, _callee4, this, [[1, 26, 29, 32]]);
+        }, _callee3, this, [[1, 27, 30, 33]]);
       }));
 
       function deleteAvatar() {
@@ -19462,20 +19373,20 @@ new Vue({
     tryToChangeUserPassword: function () {
       var _tryToChangeUserPassword = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
         var root, currentPasswordInput, newPasswordInput, newPasswordConfirmationInput, passwords, requestData, response, errors, errorMessage;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
                 root = this.$root;
                 currentPasswordInput = this.$refs.current_password;
                 newPasswordInput = this.$refs.new_password;
                 newPasswordConfirmationInput = this.$refs.new_password_confirmation;
-                _context5.prev = 4;
+                _context4.prev = 4;
 
                 if (this.validatePassword(currentPasswordInput)) {
-                  _context5.next = 7;
+                  _context4.next = 7;
                   break;
                 }
 
@@ -19483,7 +19394,7 @@ new Vue({
 
               case 7:
                 if (!(!this.validatePassword(newPasswordInput) || !this.validatePassword(newPasswordConfirmationInput))) {
-                  _context5.next = 9;
+                  _context4.next = 9;
                   break;
                 }
 
@@ -19491,7 +19402,7 @@ new Vue({
 
               case 9:
                 if (!(newPasswordInput.inputValue != newPasswordConfirmationInput.inputValue)) {
-                  _context5.next = 11;
+                  _context4.next = 11;
                   break;
                 }
 
@@ -19512,26 +19423,26 @@ new Vue({
                   body: JSON.stringify(passwords)
                 };
                 root.showExpectationDecoration('password_change_attempt');
-                _context5.next = 16;
+                _context4.next = 16;
                 return fetch('/user/profile/settings/password/change', requestData);
 
               case 16:
-                response = _context5.sent;
-                _context5.t0 = response.status;
-                _context5.next = _context5.t0 === 200 ? 20 : _context5.t0 === 400 ? 23 : _context5.t0 === 429 ? 29 : _context5.t0 === 500 ? 31 : 33;
+                response = _context4.sent;
+                _context4.t0 = response.status;
+                _context4.next = _context4.t0 === 200 ? 20 : _context4.t0 === 400 ? 23 : _context4.t0 === 429 ? 29 : _context4.t0 === 500 ? 31 : 33;
                 break;
 
               case 20:
                 this.showNotification('password_changed_successfully');
                 this.resetPasswordFields();
-                return _context5.abrupt("break", 35);
+                return _context4.abrupt("break", 35);
 
               case 23:
-                _context5.next = 25;
+                _context4.next = 25;
                 return response.json();
 
               case 25:
-                errors = _context5.sent;
+                errors = _context4.sent;
                 errorMessage = this.translator.translate('the_following_errors_occured') + this.translator.translate(errors);
                 throw new Error(errorMessage);
 
@@ -19545,25 +19456,25 @@ new Vue({
                 throw new Error("undefined_error");
 
               case 35:
-                _context5.next = 40;
+                _context4.next = 40;
                 break;
 
               case 37:
-                _context5.prev = 37;
-                _context5.t1 = _context5["catch"](4);
-                this.showNotification(_context5.t1.message, 'error');
+                _context4.prev = 37;
+                _context4.t1 = _context4["catch"](4);
+                this.showNotification(_context4.t1.message, 'error');
 
               case 40:
-                _context5.prev = 40;
+                _context4.prev = 40;
                 root.hideExpectationDecoration();
-                return _context5.finish(40);
+                return _context4.finish(40);
 
               case 43:
               case "end":
-                return _context5.stop();
+                return _context4.stop();
             }
           }
-        }, _callee5, this, [[4, 37, 40, 43]]);
+        }, _callee4, this, [[4, 37, 40, 43]]);
       }));
 
       function tryToChangeUserPassword() {
@@ -19575,17 +19486,17 @@ new Vue({
     tryToChangeOtherSettings: function () {
       var _tryToChangeOtherSettings = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
         var passwordInput, otherSettings, requestData, response, errors, errorMessage;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context6.prev = _context6.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
                 passwordInput = this.$refs.current_password_other_settings;
-                _context6.prev = 1;
+                _context5.prev = 1;
 
                 if (this.validatePassword(passwordInput)) {
-                  _context6.next = 4;
+                  _context5.next = 4;
                   break;
                 }
 
@@ -19605,26 +19516,26 @@ new Vue({
                   body: JSON.stringify(otherSettings)
                 };
                 this.showExpectationDecoration('settings_change_attempt');
-                _context6.next = 9;
+                _context5.next = 9;
                 return fetch('/user/profile/settings/other/change', requestData);
 
               case 9:
-                response = _context6.sent;
-                _context6.t0 = response.status;
-                _context6.next = _context6.t0 === 200 ? 13 : _context6.t0 === 400 ? 16 : _context6.t0 === 429 ? 22 : _context6.t0 === 500 ? 24 : 26;
+                response = _context5.sent;
+                _context5.t0 = response.status;
+                _context5.next = _context5.t0 === 200 ? 13 : _context5.t0 === 400 ? 16 : _context5.t0 === 429 ? 22 : _context5.t0 === 500 ? 24 : 26;
                 break;
 
               case 13:
                 this.showNotification('settings_changed_successfully');
                 this.resetPasswordFields();
-                return _context6.abrupt("break", 28);
+                return _context5.abrupt("break", 28);
 
               case 16:
-                _context6.next = 18;
+                _context5.next = 18;
                 return response.json();
 
               case 18:
-                errors = _context6.sent;
+                errors = _context5.sent;
                 errorMessage = this.translator.translate('the_following_errors_occured') + this.translator.translate(errors);
                 throw new Error(errorMessage);
 
@@ -19638,25 +19549,25 @@ new Vue({
                 throw new Error("undefined_error");
 
               case 28:
-                _context6.next = 33;
+                _context5.next = 33;
                 break;
 
               case 30:
-                _context6.prev = 30;
-                _context6.t1 = _context6["catch"](1);
-                this.showNotification(_context6.t1.message, 'error');
+                _context5.prev = 30;
+                _context5.t1 = _context5["catch"](1);
+                this.showNotification(_context5.t1.message, 'error');
 
               case 33:
-                _context6.prev = 33;
+                _context5.prev = 33;
                 this.hideExpectationDecoration();
-                return _context6.finish(33);
+                return _context5.finish(33);
 
               case 36:
               case "end":
-                return _context6.stop();
+                return _context5.stop();
             }
           }
-        }, _callee6, this, [[1, 30, 33, 36]]);
+        }, _callee5, this, [[1, 30, 33, 36]]);
       }));
 
       function tryToChangeOtherSettings() {

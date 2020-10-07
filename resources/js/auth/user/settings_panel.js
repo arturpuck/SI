@@ -49,7 +49,8 @@ new Vue({
        availableTabs : ['basicUserDataTab', 'avatarTab', 'passwordTab', 'otherTab'],
        currentExpectDecorationLabel : undefined,
        imageURL : "",
-       hiddenIcon : false
+       hiddenIcon : false,
+       showDeleteAvatarButton : true
     },
    
     methods : {
@@ -122,56 +123,6 @@ new Vue({
          else{
             this.showNotification('invalid_file_extension', 'error');
          }  
-      },
-
-      processValidImageURL(sender, imageURL){
-         sender.showValueIsOK();
-         this.showAvatarPreview(imageURL,imageURL);
-      },
-
-     async processImageByURL(sender){
-          const imageURL = sender.inputValue;
-          const root = this.$root;
-
-          if(imageURL){
-               root.showExpectationDecoration('checking_image');
-               root.imageURL = imageURL;
-               const response = await fetch(`/validate/avatar?URL=${imageURL}`);
-            try{
-                  switch(response.status){
-                     case 200:
-                        root.processValidImageURL(sender,imageURL);
-                     break;
-                     
-                     case 400:
-                        const errorMessage = await response.json();
-                        sender.showError();
-                        throw new Error(errorMessage);
-                     break;
-
-                     case 429:
-                        throw new Error("to_many_user_settings_change_attempts");
-                     break;
-
-                     case 500:
-                        throw new Error("the_requested_data_is_ok_but_a_server_error_occured");
-                     break;
-
-                     default:
-                        throw new Error("undefined_error");
-                     break;
-                  }
-               }catch(error){
-                  this.showNotification(error.message, 'error');
-               }
-               finally{
-                  root.hideExpectationDecoration();
-               }
-         }
-         else{
-            sender.resetValidation();
-            root.avatarFileName = "";
-         }
       },
 
         showApropriateContent(event){
@@ -346,6 +297,7 @@ new Vue({
                   case 200:
                      this.showNotification('avatar_has_been_deleted_successfully');
                      this.avatarFile = null;
+                     this.showDeleteAvatarButton = false;
                   break;
 
                   case 400:

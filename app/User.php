@@ -23,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'password', 'login', 'birth_date', 'user_type_id', 'sexual_orientation_id', 'avatar_url', 'shows_birthday'
+        'email', 'password', 'login', 'birth_date', 'user_type_id', 'sexual_orientation_id', 'shows_birthday'
     ];
 
     /**
@@ -66,35 +66,24 @@ class User extends Authenticatable
     }
 
     public function getHasAvatarFileStoredAttribute(){
-        return \Storage::disk('public')->exists($this->current_avatar_file_path);
+        return \Storage::disk('public')->exists($this->avatar_file_path);
     }
 
-    public function getCurrentAvatarReferenceAttribute(){
-        if(isset($this->avatar_file_name)){
-            return $this->current_avatar_file_path;
-        }
 
-        if(isset($this->avatar_url)){
-            return $this->avatar_url;
-        }
-
-        return null;
-    }
-
-    public function getCurrentAvatarFilePathAttribute(){
+    public function getAvatarFilePathAttribute(){
         $avatarsDirectory = env('AVATARS_DIRECTORY');
         return isset($this->avatar_file_name) ? $avatarsDirectory.$this->avatar_file_name : null;
     }
 
     public function getHasAvatarAttribute(){
-        return isset($this->avatar_url) or isset($this->avatar_file_name);
+        return isset($this->avatar_file_name) and $this->has_avatar_file_stored;
     }
 
-    public function deleteCurrentAvatarFileFromStorage(){
+    private function deletePreviousAvatarFileFromStorage(){
 
         try{
-              if($this->has_avatar_file_stored){
-                Storage::disk('public')->delete($this->current_avatar_file_path);
+              if($this->has_avatar){
+                Storage::disk('public')->delete($this->avatar_file_path);
                 return true;
               }else{
                   return false;
@@ -104,29 +93,16 @@ class User extends Authenticatable
         }
     }
 
-    public function redefineAvatarSettings($fileName = null, $URL = null){
-       $this->avatar_file_name = $fileName;
-       $this->avatar_url = $URL;
-       $this->save();
-    }
-
     public function changeAvatar(Request $request) : Response{
-        $avatarURL = $request->get('image_url');
        try{
-            if(empty($avatarURL)){
-                $file = $request->file('avatar_from_hard_drive');
-                $extension = $file->getClientOriginalExtension();
-                $fileName = Str::random(20).'.'.$extension;
-                $avatarsDirectory = env('AVATARS_DIRECTORY');
-                $filePath = $avatarsDirectory.$fileName;
-                $file->storeAs($avatarsDirectory, $fileName, 'public');
-                $this->deleteCurrentAvatarFileFromStorage();
-                $this->redefineAvatarSettings($fileName);
-            }else{
-                $this->deleteCurrentAvatarFileFromStorage();
-                $this->redefineAvatarSettings(null, $avatarURL);
-            }
-
+            $file = $request->file('avatar_from_hard_drive');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = Str::random(20).'.'.$extension;
+            $avatarsDirectory = env('AVATARS_DIRECTORY');
+            $filePath = $avatarsDirectory.$fileName;
+            $file->storeAs($avatarsDirectory, $fileName, 'public');
+            $this->deletePreviousAvatarFileFromStorage();
+            $this->changeAvatarFileNameSetting($fileName);
             return back()->with('success', 'avatar_changed_successfully');
 
        }catch(\Exception $exception){
@@ -137,13 +113,23 @@ class User extends Authenticatable
 
     public function deleteAvatar() : Response{
         if($this->has_avatar){
-            $this->deleteCurrentAvatarFileFromStorage();
-            $this->redefineAvatarSettings();
+            $this->deletePreviousAvatarFileFromStorage();
+            $this->unsetAvatarFileNameSetting();
             return response('success', 200);
         }
         else{
             return response(['the_user_has_no_avatar'],400);
         }
+    }
+
+    private function unsetAvatarFileNameSetting(){
+        $this->avatar_file_name = null;
+        $this->save();
+    }
+
+    private function changeAvatarFileNameSetting($name){
+        $this->avatar_file_name = $name;
+        $this->save();
     }
 
     public function changePassword(ChangeUserPasswordRequest $request) : Response{

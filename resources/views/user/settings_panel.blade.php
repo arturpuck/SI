@@ -112,28 +112,20 @@
                         {{__('no_avatar_has_been_choosen')}}
                     @endif
                 </div>
-                <div ref="avatar_frame" @if(Auth::user()->has_avatar) data-initial-image="{{Auth::user()->current_avatar_reference}}" @endif  v-bind:style="{backgroundImage : avatarFileBackgroundImageAdress}" class="undefined-avatar-frame avatar">
+                <div ref="avatar_frame" @if(Auth::user()->has_avatar) data-initial-image="{{Auth::user()->avatar_file_path}}" @endif  v-bind:style="{backgroundImage : avatarFileBackgroundImageAdress}" class="undefined-avatar-frame avatar">
                     <span v-bind:class="{'fas' : !avatarFile, 'fa-user' : !avatarFile}" class="undefined-avatar"></span>
                 </div>
                 @if(Auth::user()->has_avatar)
-                <button v-on:click="deleteAvatar" class="delete-avatar-button" type="button">
+                <button v-on:click="deleteAvatar" v-show="showDeleteAvatarButton" class="delete-avatar-button" type="button">
                     {{__('delete_my_avatar')}}
                     <span class="fas fa-trash-alt trash-icon"></span>
                 </button>
                 @endif
-                <label class="choose-avatar-button">
+                <label  class="choose-avatar-button">
                     {{__('choose_avatar')}}
                     <input type="file" v-on:change="processImageFromHardDrive" name="avatar_from_hard_drive" class="avatar-file">
                     <span class="fas fa-hdd disc-icon"></span>
                 </label>
-                <text-input-combo
-                    v-bind:complete-validation-display-available="true"
-                    name="image_url"
-                    input-type="text"
-                    v-bind:on-blur-callback="processImageByURL">
-                    {{ucfirst(__('url_address'))}} : 
-                </text-input-combo>
-                <input type="hidden" v-bind:value="imageURL" name="image_url">
                 <div v-text="avatarFileName" class="avatar-file-name"></div>
                 <submit-button>{{__('accept_avatar')}}</submit-button>
             </form>
