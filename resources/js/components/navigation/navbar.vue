@@ -2,13 +2,18 @@
 <div>
 <nav class="page-navigation">
 	<ul class="navigation-list">
+		<li v-bind:aria-hidden="!contentSideBarIsVisible" v-on:click="showContentSideBar" class="navigation-element-main contenerized-navbar-element">
+			<button title="rozwiń menu użytkownika" v-bind:class="{'visible-sidebar-button' : !contentSideBarIsVisible}" class="show-sidebar-button show-content-side-bar-button">
+				<span class="fas fa-angle-down show-sidebar-button-decoration show-sidebar-button-element"></span>
+				<span class="phantom-text">rozwiń menu użytkownika</span>
+			</button>
+		</li>
 		<li class="navigation-element-main">
 			<a title="Strona główna" href="/" class="logo-link">
-			   <span class="fas navbar-icon navbar-icon-outer fa-heartbeat"></span>
-			   <span class="logo-description"></span>
+			   <empire-logo/>
 			</a>
 		</li>
-		<li v-on:click="togglePornSubMenu" v-on:mouseenter="showPornSubMenu"  class="navigation-element-main">
+		<li v-on:click="togglePornSubMenu" v-on:mouseenter="showPornSubMenu"  class="navigation-element-main navigation-element-main-has-content">
 			<span v-show="!pornSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-camera-retro"></span>
 			<span v-show="pornSubMenuIsVisible" class="fas navbar-icon navbar-icon-outer fa-arrow-up"></span>
 			   <phantom-button>
@@ -29,10 +34,11 @@
 				</phantom-button>
 			</div>
 		</li>
-		<li v-bind:aria-hidden="!userSideBarIsVisible" v-if="userIsAuthenticated" v-on:click="showSideBar" class="navigation-element-main navbar-element-user">
-			<span class="fas navbar-icon navbar-icon-outer fa-user"></span>
+		<li v-bind:aria-hidden="!authenticatedUserSideBarIsVisible" v-if="userIsAuthenticated" v-on:click="showAuthenticatedUserSideBar" class="navigation-element-main navbar-element-user">
+			<span v-if="!avatarFileName" class="fas navbar-icon navbar-icon-outer fa-user"></span>
+			<img v-if="avatarFileName" v-bind:src="avatarFilePath" v-bind:alt="userAvatarDescription" class="user-avatar">
             <span v-text="userName" class="user-nick"></span>
-			<button title="rozwiń menu użytkownika" v-bind:class="{'visible-sidebar-button' : !userSideBarIsVisible}" class="show-sidebar-button">
+			<button title="rozwiń menu użytkownika" v-bind:class="{'visible-sidebar-button' : !authenticatedUserSideBarIsVisible}" class="show-sidebar-button show-authenticated-user-side-bar-button">
 				<span class="fas fa-angle-down show-sidebar-button-decoration show-sidebar-button-element"></span>
 				<span class="phantom-text">rozwiń menu użytkownika</span>
 			</button>
@@ -80,12 +86,15 @@
 	</nav>
 	<authenticated-user-sidebar 
 	  v-if="userIsAuthenticated"
-	  v-bind:aria-hidden="!userSideBarIsVisible" 
-	  v-bind:class="{'visible-sidebar' : userSideBarIsVisible, 'hidden-sidebar' : !userSideBarIsVisible}"
+	  v-bind:aria-hidden="!authenticatedUserSideBarIsVisible" 
+	  v-bind:class="{'visible-sidebar' : authenticatedUserSideBarIsVisible, 'hidden-sidebar' : !authenticatedUserSideBarIsVisible}"
 	  v-bind:user-settings-route="userSettingsRoute"
 	  v-bind:logout-route="logoutRoute"
 	  v-bind:csrf-token="csrfToken"/>
-
+	  <content-sidebar 
+	  v-bind:class="{'visible-sidebar' : contentSideBarIsVisible, 'hidden-sidebar' : !contentSideBarIsVisible}" 
+	  v-bind:new-movies-route="newMoviesRoute"
+	  />
 	<div v-if="!userIsAuthenticated" v-show="loginPanelIsVisible" class="login-form-container">
 	            <form v-bind:action="loginRoute" method="POST" id="login-form" v-bind:class="{'visible-login-form' : animatePanel}" class="login-form">
 					<header class="login-panel-toolbar">
@@ -167,6 +176,12 @@
 				required : false,
 				type: String,
 				default : ""
+			},
+
+			avatarFileName : {
+				required : false,
+				type: String,
+				default : ""
 			}
 
         },
@@ -178,25 +193,41 @@
 				csrfToken : "",
 				animatePanel : false,
 				userIsAuthenticated : undefined,
-				userSideBarIsVisible : true
+				authenticatedUserSideBarIsVisible : true,
+				contentSideBarIsVisible : true
 		 	};
  		},
 
         methods: {
 
-            hideSideBar(){
-			   this.userSideBarIsVisible = false;
-			   this.storeSideBarInformation('hidden');
+			showContentSideBar(){
+				this.contentSideBarIsVisible = true;
+				this.setSideBarVisibilityInformation(true, 'contentSideBar');
+			},
+
+            hideAuthenticatedUserSideBar(){
+			   this.authenticatedUserSideBarIsVisible = false;
+			   this.setSideBarVisibilityInformation(false, 'authenticatedUserSideBar');
 		   },
 
-		   showSideBar(){
-			   this.userSideBarIsVisible = true;
-			   this.storeSideBarInformation('visible');
+		   hideContentSideBar(){
+			  this.contentSideBarIsVisible = false;
+			  this.setSideBarVisibilityInformation(false, 'contentSideBar');
+		   },
+
+		   showAuthenticatedUserSideBar(){
+			   this.authenticatedUserSideBarIsVisible = true;
+			   this.setSideBarVisibilityInformation(true, 'authenticatedUserSideBar');
            },
            
-           storeSideBarInformation(visible){
-                localStorage.setItem('sideBar',visible);
-           },
+           setSideBarVisibilityInformation(hidden, sideBarType){
+			    const visible = hidden ? 'visible' : 'hidden';
+                localStorage.setItem(sideBarType,visible);
+		   },
+		   
+		   isSideBarVisible(sideBarType){
+			   return localStorage.getItem(sideBarType) !== 'hidden';
+		   },
 
         	hideAllSecondLevelSubMenus(){
 		      this.moviesSubMenuIsVisible = false;
@@ -252,6 +283,14 @@
 
             anySubMenuIsVisible(){
 				return this.pornSubMenuIsVisible;
+			},
+
+			avatarFilePath(){
+				return `/images/decoration/users/avatars/${this.avatarFileName}`;
+			},
+
+			userAvatarDescription(){
+				return `${this.translator.translate('user_avatar_description')} : ${this.userName}`;
 			}
 		},
 
@@ -259,15 +298,16 @@
 			this.userIsAuthenticated = Boolean(this.userId);
 
 			if(this.userIsAuthenticated){
-			   const sideBarInfo = localStorage.getItem('sideBar');
-               this.userSideBarIsVisible = (sideBarInfo == 'hidden') ? false : true;
+			   this.authenticatedUserSideBarIsVisible = this.isSideBarVisible('authenticatedUserSideBar');
 			}
+			this.contentSideBarIsVisible = this.isSideBarVisible('contentSideBar');
 		},
 		
 		mounted(){
 		   this.csrfToken = document.getElementById("csrf-token").content;
 		   this.$root.$on('clickOutsideNavbar',this.handleClickoutsideNavbar);
-		   this.$root.$on('hide-side-bar',this.hideSideBar);
+		   this.$root.$on('hide-side-bar',this.hideAuthenticatedUserSideBar);
+		   this.$root.$on('hide-content-bar',this.hideContentSideBar);
 		}
     }
 </script>
@@ -278,6 +318,16 @@
 @import '~sass/components/login_panel';
 @import '~sass/components/navbar/show_side_bar_button';
 @import '~sass/components/navbar/top_menu';
+
+.user-avatar{
+	width:1.5vw;
+	height:1.5vw;
+	border-radius:2px;
+	@media(max-width:1200px){
+		width:16px;
+		height:16px;
+	}
+}
 
 .remember-me-checkbox{
 	color:white;
@@ -329,6 +379,12 @@
 
 .login-button-container{
     height: 100%;
+}
+
+@media(max-width: 540px){
+	.navigation-element-main-has-content{
+		display:none;
+	}
 }
 
 </style>

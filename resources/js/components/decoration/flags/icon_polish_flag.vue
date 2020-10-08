@@ -21,9 +21,6 @@
                 this.$refs.icon.setAttribute('title', this.title);
             }
         }
-
-
-
     }
 </script>
 

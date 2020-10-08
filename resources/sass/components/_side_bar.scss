@@ -1,12 +1,10 @@
-.user-sidebar{
+.fixed-sidebar{
     position:fixed;
-    right:0;
     top:0;
     width:4vw;
     min-width:55px;
     z-index:3;
     background:#0d0c0d;
-    box-shadow: -1px -1px 2px 2px black;
     align-items: center;
     transition: height 1s;
     overflow:hidden;
@@ -28,7 +26,7 @@
     list-style-type: none;
 }
 
-.user-sidebar-element{
+.side-bar-list-element{
     padding: 4px 0;
     margin-top:6px;
     border-radius:3px;

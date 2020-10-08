@@ -1,31 +1,31 @@
 <template>
-  <nav class="user-sidebar">
+  <nav class="fixed-sidebar authenticated-user-side-bar">
        <ul class="user-sidebar-list">
-		   <li v-on:click="hideSideBar" v-bind:title="hideSideBarTitle" class="user-sidebar-element">
+		   <li v-on:click="hideSideBar" v-bind:title="hideSideBarTitle" class="side-bar-list-element">
 			   <phantom-button>
                  <span class="fas fa-angle-up sidebar-icon"></span>
 			     <span v-text="hideCaption" class="sidebar-item-description"></span>
 			   </phantom-button>
 		   </li>
-		   <li v-bind:title="profileTitle" class="user-sidebar-element">
+		   <li v-bind:title="profileTitle" class="side-bar-list-element">
 			  <a v-bind:href="userSettingsRoute" class="sub-menu-link">
 				<span class="fas fa-cogs sidebar-icon"></span>
 				<span v-text="profileCaption" class="sidebar-item-description"></span>
 			  </a>
 		   </li>
-		   <li class="user-sidebar-element">
+		   <li class="side-bar-list-element">
 			   <span class="fas fa-envelope sidebar-icon"></span>
 			   <span v-text="mailBoxCaption" class="sidebar-item-description"></span>
 		   </li>
-		   <li v-bind:title="favouritesTitle" class="user-sidebar-element">
+		   <li v-bind:title="favouritesTitle" class="side-bar-list-element">
 			   <span class="fas fa-thumbs-up sidebar-icon"></span>
 			   <span v-text="favouritesCaption" class="sidebar-item-description"></span>
 		   </li>
-		   <li class="user-sidebar-element">
+		   <li class="side-bar-list-element">
 			   <span class="fas fa-user-friends sidebar-icon"></span>
 			   <span v-text="friendsCaption" class="sidebar-item-description"></span>
 		   </li>
-		   <li v-on:click="logout" class="user-sidebar-element">
+		   <li v-on:click="logout" class="side-bar-list-element">
 			   <phantom-button>
                  <span class="fas fa-sign-out-alt sidebar-icon"></span>
 			     <span v-text="logoutCaption" class="sidebar-item-description"></span>
@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts">
-  import {Vue, Component, Emit, Prop} from 'vue-property-decorator';
+  import {Vue, Component, Prop} from 'vue-property-decorator';
   import Translator from '@jsmodules/translator.js';
 
 @Component
@@ -116,4 +116,9 @@
 <style lang="scss" scoped>
   @import '~sass/fonts';
   @import '~sass/components/side_bar';
+
+  .authenticated-user-side-bar{
+	right:0;
+	box-shadow: -1px -1px 2px 2px black;
+}
 </style>

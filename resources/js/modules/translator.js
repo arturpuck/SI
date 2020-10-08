@@ -117,6 +117,12 @@ export default{
     your_favourite_movies_etc : "Twoje ulubione filmy, gwiazdy itp",
     friends : "Znajomi",
     logout : "Wyloguj",
-    user_settings : "Ustawienia profilu : hasło, avatar, dane personalne"
+    user_settings : "Ustawienia profilu : hasło, avatar, dane personalne",
+    porn : "Porno",
+    movie_categories_title : "Zobacz dostępne kategorie filmów porno",
+    movie_categories_label : "Kategorie",
+    latest_porn_movies_title : "Najnowsze filmy porno",
+    latest_porn_movies_caption : "Najnowsze",
+    user_avatar_description : "Avatar użytkownika o nicku"
    }
 }

@@ -8,6 +8,8 @@ import IconClose from '@jscomponents/form_controls/icon_close.vue';
 import PhantomButton from '@jscomponents/form_controls/phantom_button.vue';
 import LabeledCheckbox from '@jscomponents/form_controls/labeled_checkbox.vue';
 import AuthenticatedUserSidebar from '@jscomponents/navigation/authenticated_user_sidebar.vue';
+import EmpireLogo from '@jscomponents/decoration/empire_logo.vue';
+import ContentSidebar from '@jscomponents/navigation/content_sidebar.vue';
 
 export default {
      build(){
@@ -19,6 +21,8 @@ export default {
         Vue.component('phantom-button', PhantomButton);
         Vue.component('labeled-checkbox', LabeledCheckbox);
         Vue.component('icon-close', IconClose);
+        Vue.component('empire-logo', EmpireLogo);
+        Vue.component('content-sidebar', ContentSidebar);
         Vue.prototype.translator = Translator;
         Vue.prototype.translator.initiate();
         return Vue;

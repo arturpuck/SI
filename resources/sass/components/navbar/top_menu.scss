@@ -159,23 +159,12 @@ $border-color: black;
 	color:#eb091c
 }
 
-.navbar-link-main-manu{
-	@include navbar-link();
+.contenerized-navbar-element{
+	position:relative;
 }
 
-@media(max-width: 400px){
-	.navigation-element-main{
-		padding:3px 1px;
-		font-size:16px;
-	}
-
-	.sub-menu-list{
-		font-size:16px;
-	}
-
-	.navbar-icon{
-		margin:0 3px;
-	}
+.navbar-link-main-manu{
+	@include navbar-link();
 }
 
 @media(min-width:520px) and (max-width: 1200px){
