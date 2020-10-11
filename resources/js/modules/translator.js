@@ -29,6 +29,10 @@ export default{
       
    },
 
+   getPackage(packageName){
+      return this[this.currentLanguage]['packages'][packageName];
+   },
+
    pl : {
     email_has_already_been_taken : "Adres email jest już zajęty",
     email_is_invalid : "Adres email jest nieprawidłowy",
@@ -109,20 +113,43 @@ export default{
     movie_translated_to_polish : "Film przetłumaczony na język polski",
     scroll_next_links : "Przewijaj listę podstron do przodu",
     hide_side_bar : "Schowaj boczny pasek",
-    hide : "Schowaj",
     profile : "Profil",
     profile_settings : "Ustawienia profilu",
     messages : "Wiadomości",
     favourites : "Ulubione",
-    your_favourite_movies_etc : "Twoje ulubione filmy, gwiazdy itp",
     friends : "Znajomi",
     logout : "Wyloguj",
-    user_settings : "Ustawienia profilu : hasło, avatar, dane personalne",
     porn : "Porno",
-    movie_categories_title : "Zobacz dostępne kategorie filmów porno",
-    movie_categories_label : "Kategorie",
-    latest_porn_movies_title : "Najnowsze filmy porno",
-    latest_porn_movies_caption : "Najnowsze",
-    user_avatar_description : "Avatar użytkownika o nicku"
+    user_avatar_description : "Avatar użytkownika o nicku",
+    hide : "Schowaj",
+    packages : {
+        content_sidebar : {
+          hide_side_bar_title : "Schowaj boczne menu",
+          hide_side_bar_caption : "Schowaj",
+          porn_caption : "Porno",
+          movie_categories_title : "Zobacz dostępne kategorie filmów porno",
+          movie_categories_label : "Kategorie",
+          latest_porn_movies_title : "Najnowsze filmy porno",
+          latest_porn_movies_caption : "Najnowsze",
+          the_most_popular_porn_movies_title : "Najpopularniejsze filmy porno",
+          the_most_popular_porn_movies_caption: "Najpopularniejsze",
+          advanced_search_caption : "Szukanie zaawansowane",
+          advanced_search_title : "Użyj wyszukiwarki do precyzyjnego odnajdywania filmów porno",
+          movies_caption : "Filmy",
+          pornstars : "Gwiazdy porno"
+        },
+
+        authenticated_user_sidebar : {
+         hide_side_bar_title : "Schowaj menu użytkownika",
+         hide_authenticated_user_sidebar_caption : "Schowaj",
+         show_user_profile_settings_title : "Ustawienia profilu : hasło, avatar, dane personalne",
+         show_user_profile_settings_caption : "Profil",
+         mailbox_caption : "Wiadomości",
+         favourites_title : "Twoje ulubione filmy, gwiazdy itp",
+         favourites_caption : "Ulubione",
+         friends_caption : "Znajomi",
+         logout_caption : "Wyloguj"
+        }
+    }
    }
 }

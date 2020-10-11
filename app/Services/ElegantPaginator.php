@@ -36,7 +36,7 @@ Class ElegantPaginator {
     public function links(){
         $links = [];
 
-        for($i = 1; $i <= $this->items->count(); ++$i){
+        for($i = 1; $i <= $this->numberOfPages; ++$i){
             $links[$i] = $this->baseURL.'/'.$i;
         }
         

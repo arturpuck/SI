@@ -2,7 +2,6 @@
     position:fixed;
     top:0;
     width:4vw;
-    min-width:55px;
     z-index:3;
     background:#0d0c0d;
     align-items: center;
@@ -26,15 +25,11 @@
     list-style-type: none;
 }
 
-.side-bar-list-element{
-    padding: 4px 0;
+@mixin sidebar-list-element{
     margin-top:6px;
     border-radius:3px;
     text-align: center;
     cursor:pointer;
-    &:hover{
-        background:#211e1e;
-    }
 }
 
 .sidebar-icon, .sidebar-item-description, .show-sidebar-button-element {
@@ -45,11 +40,6 @@
 .sidebar-item-description{
     @include responsive-font(0.9vw,10px);
     color:white;
-}
-
-.sidebar-icon{
-    color:red;
-    @include responsive-font(1.4vw,16px, initial);
 }
 
 .logout-form{

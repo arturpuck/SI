@@ -3,9 +3,9 @@
 <nav class="page-navigation">
 	<ul class="navigation-list">
 		<li v-bind:aria-hidden="!contentSideBarIsVisible" v-on:click="showContentSideBar" class="navigation-element-main contenerized-navbar-element">
-			<button title="rozwiń menu użytkownika" v-bind:class="{'visible-sidebar-button' : !contentSideBarIsVisible}" class="show-sidebar-button show-content-side-bar-button">
+			<button title="rozwiń menu boczne" v-bind:class="{'visible-sidebar-button' : !contentSideBarIsVisible}" class="show-sidebar-button show-content-side-bar-button">
 				<span class="fas fa-angle-down show-sidebar-button-decoration show-sidebar-button-element"></span>
-				<span class="phantom-text">rozwiń menu użytkownika</span>
+				<span class="phantom-text">rozwiń menu boczne</span>
 			</button>
 		</li>
 		<li class="navigation-element-main">
@@ -36,8 +36,8 @@
 		</li>
 		<li v-bind:aria-hidden="!authenticatedUserSideBarIsVisible" v-if="userIsAuthenticated" v-on:click="showAuthenticatedUserSideBar" class="navigation-element-main navbar-element-user">
 			<span v-if="!avatarFileName" class="fas navbar-icon navbar-icon-outer fa-user"></span>
+			<span v-text="userName" class="user-nick"></span>
 			<img v-if="avatarFileName" v-bind:src="avatarFilePath" v-bind:alt="userAvatarDescription" class="user-avatar">
-            <span v-text="userName" class="user-nick"></span>
 			<button title="rozwiń menu użytkownika" v-bind:class="{'visible-sidebar-button' : !authenticatedUserSideBarIsVisible}" class="show-sidebar-button show-authenticated-user-side-bar-button">
 				<span class="fas fa-angle-down show-sidebar-button-decoration show-sidebar-button-element"></span>
 				<span class="phantom-text">rozwiń menu użytkownika</span>
@@ -319,16 +319,6 @@
 @import '~sass/components/navbar/show_side_bar_button';
 @import '~sass/components/navbar/top_menu';
 
-.user-avatar{
-	width:1.5vw;
-	height:1.5vw;
-	border-radius:2px;
-	@media(max-width:1200px){
-		width:16px;
-		height:16px;
-	}
-}
-
 .remember-me-checkbox{
 	color:white;
 }
@@ -383,6 +373,13 @@
 
 @media(max-width: 540px){
 	.navigation-element-main-has-content{
+		display:none;
+	}
+
+}
+
+@media(min-width:541px){
+   .show-content-side-bar-button{
 		display:none;
 	}
 }

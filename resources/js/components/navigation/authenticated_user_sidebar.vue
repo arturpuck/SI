@@ -1,34 +1,34 @@
 <template>
   <nav class="fixed-sidebar authenticated-user-side-bar">
        <ul class="user-sidebar-list">
-		   <li v-on:click="hideSideBar" v-bind:title="hideSideBarTitle" class="side-bar-list-element">
+		   <li v-on:click="hideSideBar" v-bind:title="translations['hide_side_bar_title']" class="authenticated-user-sidebar-list-element">
 			   <phantom-button>
-                 <span class="fas fa-angle-up sidebar-icon"></span>
-			     <span v-text="hideCaption" class="sidebar-item-description"></span>
+                 <span class="fas fa-angle-up authenticated-user-sidebar-icon"></span>
+			     <span v-text="translations['hide_authenticated_user_sidebar_caption']" class="sidebar-item-description"></span>
 			   </phantom-button>
 		   </li>
-		   <li v-bind:title="profileTitle" class="side-bar-list-element">
+		   <li v-bind:title="translations['show_user_profile_settings_title']" class="authenticated-user-sidebar-list-element">
 			  <a v-bind:href="userSettingsRoute" class="sub-menu-link">
-				<span class="fas fa-cogs sidebar-icon"></span>
-				<span v-text="profileCaption" class="sidebar-item-description"></span>
+				<span class="fas fa-cogs authenticated-user-sidebar-icon"></span>
+				<span v-text="translations['show_user_profile_settings_caption']" class="sidebar-item-description"></span>
 			  </a>
 		   </li>
-		   <li class="side-bar-list-element">
-			   <span class="fas fa-envelope sidebar-icon"></span>
-			   <span v-text="mailBoxCaption" class="sidebar-item-description"></span>
+		   <li class="authenticated-user-sidebar-list-element">
+			   <span class="fas fa-envelope authenticated-user-sidebar-icon"></span>
+			   <span v-text="translations['mailbox_caption']" class="sidebar-item-description"></span>
 		   </li>
-		   <li v-bind:title="favouritesTitle" class="side-bar-list-element">
-			   <span class="fas fa-thumbs-up sidebar-icon"></span>
-			   <span v-text="favouritesCaption" class="sidebar-item-description"></span>
+		   <li v-bind:title="translations['favourites_title']" class="authenticated-user-sidebar-list-element">
+			   <span class="fas fa-thumbs-up authenticated-user-sidebar-icon"></span>
+			   <span v-text="translations['favourites_caption']" class="sidebar-item-description"></span>
 		   </li>
-		   <li class="side-bar-list-element">
-			   <span class="fas fa-user-friends sidebar-icon"></span>
-			   <span v-text="friendsCaption" class="sidebar-item-description"></span>
+		   <li class="authenticated-user-sidebar-list-element">
+			   <span class="fas fa-user-friends authenticated-user-sidebar-icon"></span>
+			   <span v-text="translations['friends_caption']" class="sidebar-item-description"></span>
 		   </li>
-		   <li v-on:click="logout" class="side-bar-list-element">
+		   <li v-on:click="logout" class="authenticated-user-sidebar-list-element">
 			   <phantom-button>
-                 <span class="fas fa-sign-out-alt sidebar-icon"></span>
-			     <span v-text="logoutCaption" class="sidebar-item-description"></span>
+                 <span class="fas fa-sign-out-alt authenticated-user-sidebar-icon"></span>
+			     <span v-text="translations['logout_caption']" class="sidebar-item-description"></span>
 			   </phantom-button>
 			   <form aria-hidden="true" id="logoutForm" class="logout-form" method="POST" v-bind:action="logoutRoute">
 				  <input type="hidden" v-bind:value="csrfToken" name="_token">
@@ -62,7 +62,7 @@
             required: true,
         }) readonly csrfToken: String;
 
-		private translator = Translator;
+		private translations = Translator.getPackage('authenticated_user_sidebar');
 
            logout(){
 			 (<HTMLFormElement>document.getElementById('logoutForm')).submit()
@@ -70,42 +70,6 @@
 
 		   hideSideBar(){
 			   this.$root.$emit('hide-side-bar');
-		   }
-
-		   get hideSideBarTitle(){
-			   return this.translator.translate('hide_side_bar');
-		   }
-
-		   get hideCaption(){
-			  return this.translator.translate('hide'); 
-		   }
-
-		   get profileCaption(){
-			  return this.translator.translate('profile'); 
-		   }
-
-		   get profileTitle(){
-			   return this.translator.translate('user_settings');
-		   }
-
-		    get mailBoxCaption(){
-			  return this.translator.translate('messages'); 
-		   }
-
-		   get favouritesCaption(){
-			  return this.translator.translate('favourites'); 
-		   }
-
-		   get favouritesTitle(){
-			   return this.translator.translate('your_favourite_movies_etc');
-		   }
-
-		   get friendsCaption(){
-			  return this.translator.translate('friends'); 
-		   }
-
-		   get logoutCaption(){
-			   return this.translator.translate('logout');
 		   }
 
     }
@@ -120,5 +84,19 @@
   .authenticated-user-side-bar{
 	right:0;
 	box-shadow: -1px -1px 2px 2px black;
+	min-width:65px;
+}
+
+.authenticated-user-sidebar-list-element{
+	@include sidebar-list-element();
+	padding: 4px 0;
+	&:hover{
+        background:#211e1e;
+    }
+}
+
+.authenticated-user-sidebar-icon{
+	@include responsive-font(1.4vw,16px, initial);
+	color:red;
 }
 </style>

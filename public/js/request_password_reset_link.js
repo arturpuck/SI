@@ -1152,7 +1152,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".fixed-sidebar[data-v-a04b05d0] {\n  position: fixed;\n  top: 0;\n  width: 4vw;\n  min-width: 55px;\n  z-index: 3;\n  background: #0d0c0d;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-transition: height 1s;\n  transition: height 1s;\n  overflow: hidden;\n}\n.visible-sidebar[data-v-a04b05d0] {\n  height: 100vh;\n}\n.hidden-sidebar[data-v-a04b05d0] {\n  height: 0;\n}\n.user-sidebar-list[data-v-a04b05d0] {\n  padding: calc(25px + 2vw) 0 0 0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  margin: 0;\n  list-style-type: none;\n}\n.side-bar-list-element[data-v-a04b05d0] {\n  padding: 4px 0;\n  margin-top: 6px;\n  border-radius: 3px;\n  text-align: center;\n  cursor: pointer;\n}\n.side-bar-list-element[data-v-a04b05d0]:hover {\n  background: #211e1e;\n}\n.sidebar-icon[data-v-a04b05d0], .sidebar-item-description[data-v-a04b05d0], .show-sidebar-button-element[data-v-a04b05d0] {\n  display: block;\n  text-align: center;\n}\n.sidebar-item-description[data-v-a04b05d0] {\n  font-size: 0.9vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.sidebar-item-description[data-v-a04b05d0] {\n    font-size: 10px;\n}\n}\n.sidebar-icon[data-v-a04b05d0] {\n  color: red;\n  font-size: 1.4vw;\n  font-family: initial, sans-serif;\n}\n@media (max-width: 1200px) {\n.sidebar-icon[data-v-a04b05d0] {\n    font-size: 16px;\n}\n}\n.logout-form[data-v-a04b05d0] {\n  display: none;\n}\n.sub-menu-link[data-v-a04b05d0] {\n  text-decoration: none;\n  color: white;\n}\n.authenticated-user-side-bar[data-v-a04b05d0] {\n  right: 0;\n  box-shadow: -1px -1px 2px 2px black;\n}", ""]);
+exports.push([module.i, ".fixed-sidebar[data-v-a04b05d0] {\n  position: fixed;\n  top: 0;\n  width: 4vw;\n  z-index: 3;\n  background: #0d0c0d;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-transition: height 1s;\n  transition: height 1s;\n  overflow: hidden;\n}\n.visible-sidebar[data-v-a04b05d0] {\n  height: 100vh;\n}\n.hidden-sidebar[data-v-a04b05d0] {\n  height: 0;\n}\n.user-sidebar-list[data-v-a04b05d0] {\n  padding: calc(25px + 2vw) 0 0 0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  margin: 0;\n  list-style-type: none;\n}\n.sidebar-icon[data-v-a04b05d0], .sidebar-item-description[data-v-a04b05d0], .show-sidebar-button-element[data-v-a04b05d0] {\n  display: block;\n  text-align: center;\n}\n.sidebar-item-description[data-v-a04b05d0] {\n  font-size: 0.9vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.sidebar-item-description[data-v-a04b05d0] {\n    font-size: 10px;\n}\n}\n.logout-form[data-v-a04b05d0] {\n  display: none;\n}\n.sub-menu-link[data-v-a04b05d0] {\n  text-decoration: none;\n  color: white;\n}\n.authenticated-user-side-bar[data-v-a04b05d0] {\n  right: 0;\n  box-shadow: -1px -1px 2px 2px black;\n  min-width: 65px;\n}\n.authenticated-user-sidebar-list-element[data-v-a04b05d0] {\n  margin-top: 6px;\n  border-radius: 3px;\n  text-align: center;\n  cursor: pointer;\n  padding: 4px 0;\n}\n.authenticated-user-sidebar-list-element[data-v-a04b05d0]:hover {\n  background: #211e1e;\n}\n.authenticated-user-sidebar-icon[data-v-a04b05d0] {\n  font-size: 1.4vw;\n  font-family: initial, sans-serif;\n  color: red;\n}\n@media (max-width: 1200px) {\n.authenticated-user-sidebar-icon[data-v-a04b05d0] {\n    font-size: 16px;\n}\n}", ""]);
 
 // exports
 
@@ -1171,7 +1171,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".fixed-sidebar {\n  position: fixed;\n  top: 0;\n  width: 4vw;\n  min-width: 55px;\n  z-index: 3;\n  background: #0d0c0d;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-transition: height 1s;\n  transition: height 1s;\n  overflow: hidden;\n}\n.visible-sidebar {\n  height: 100vh;\n}\n.hidden-sidebar {\n  height: 0;\n}\n.user-sidebar-list {\n  padding: calc(25px + 2vw) 0 0 0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  margin: 0;\n  list-style-type: none;\n}\n.side-bar-list-element {\n  padding: 4px 0;\n  margin-top: 6px;\n  border-radius: 3px;\n  text-align: center;\n  cursor: pointer;\n}\n.side-bar-list-element:hover {\n  background: #211e1e;\n}\n.sidebar-icon, .sidebar-item-description, .show-sidebar-button-element {\n  display: block;\n  text-align: center;\n}\n.sidebar-item-description {\n  font-size: 0.9vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.sidebar-item-description {\n    font-size: 10px;\n}\n}\n.sidebar-icon {\n  color: red;\n  font-size: 1.4vw;\n  font-family: initial, sans-serif;\n}\n@media (max-width: 1200px) {\n.sidebar-icon {\n    font-size: 16px;\n}\n}\n.logout-form {\n  display: none;\n}\n.sub-menu-link {\n  text-decoration: none;\n  color: white;\n}\n.content-side-bar {\n  left: 0;\n  display: none;\n  box-shadow: 1px 1px 2px 2px black;\n}\n@media (max-width: 540px) {\n.content-side-bar {\n    display: block;\n}\n}", ""]);
+exports.push([module.i, ".fixed-sidebar {\n  position: fixed;\n  top: 0;\n  width: 4vw;\n  z-index: 3;\n  background: #0d0c0d;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-transition: height 1s;\n  transition: height 1s;\n  overflow: hidden;\n}\n.visible-sidebar {\n  height: 100vh;\n}\n.hidden-sidebar {\n  height: 0;\n}\n.user-sidebar-list {\n  padding: calc(25px + 2vw) 0 0 0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  margin: 0;\n  list-style-type: none;\n}\n.sidebar-icon, .sidebar-item-description, .show-sidebar-button-element {\n  display: block;\n  text-align: center;\n}\n.sidebar-item-description {\n  font-size: 0.9vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.sidebar-item-description {\n    font-size: 10px;\n}\n}\n.logout-form {\n  display: none;\n}\n.sub-menu-link {\n  text-decoration: none;\n  color: white;\n}\n.enlighted-list-content {\n  display: block;\n  padding: 3px 0;\n}\n.enlighted-list-content:hover {\n  background: #211e1e;\n}\n.visible-sidebar-menu {\n  max-height: 2000px;\n}\n.hidden-sidebar-menu {\n  max-height: 0;\n}\n.content-side-bar {\n  left: 0;\n  display: none;\n  box-shadow: 1px 1px 2px 2px black;\n  min-width: 85px;\n}\n.nested-user-sidebar-list {\n  overflow: hidden;\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n  margin: 0;\n  padding: 0;\n  list-style-type: none;\n}\n.content-sidebar-list-element {\n  margin-top: 6px;\n  border-radius: 3px;\n  text-align: center;\n  cursor: pointer;\n}\n.content-sidebar-icon {\n  font-size: 1.4vw;\n  font-family: initial, sans-serif;\n  color: red;\n}\n@media (max-width: 1200px) {\n.content-sidebar-icon {\n    font-size: 20px;\n}\n}\n.content-sidebar-icon-nested {\n  font-size: 1.4vw;\n  font-family: initial, sans-serif;\n  color: #e0c814;\n}\n@media (max-width: 1200px) {\n.content-sidebar-icon-nested {\n    font-size: 20px;\n}\n}\n@media (max-width: 540px) {\n.content-side-bar {\n    display: block;\n}\n}", ""]);
 
 // exports
 
@@ -1190,7 +1190,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".login-info[data-v-5b8f8430] {\n  font-size: 1.5vw;\n  font-family: Play, sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.login-info[data-v-5b8f8430] {\n    font-size: 19px;\n}\n}\n.login-form-container[data-v-5b8f8430] {\n  position: fixed;\n  background: rgba(0, 0, 0, 0.75);\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  z-index: 999;\n}\n.login-panel-toolbar[data-v-5b8f8430] {\n  border-radius: 5px 5px 0 0;\n  background: #242229;\n  padding: 5px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.login-form[data-v-5b8f8430] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  background: black;\n  border-radius: 8px;\n  box-shadow: 3px 3px 3px 3px black;\n  min-width: 320px;\n  width: 25%;\n  font-family: \"Exo 2\", sans-serif;\n  border: 2px solid #242229;\n  opacity: 0;\n  -webkit-transition: opacity 1.5s;\n  transition: opacity 1.5s;\n}\n.visible-login-form[data-v-5b8f8430] {\n  opacity: 1;\n}\n.show-sidebar-button[data-v-5b8f8430] {\n  position: absolute;\n  top: 100%;\n  width: 5vw;\n  min-width: 30px;\n  text-align: center;\n  color: white;\n  border-radius: 0 0 5px 5px;\n  border-left: 1px solid black;\n  border-right: 1px solid black;\n  border-bottom: 1px solid black;\n  border-top: none;\n  background: #0d0c0d;\n  opacity: 0;\n  cursor: pointer;\n  -webkit-transition: opacity 1s, background 2s;\n  transition: opacity 1s, background 2s;\n  box-shadow: -1px 2px 2px 1px black;\n}\n.show-sidebar-button[data-v-5b8f8430]:hover {\n  background: #2d2d30;\n}\n.show-authenticated-user-side-bar-button[data-v-5b8f8430] {\n  right: 0;\n}\n.show-content-side-bar-button[data-v-5b8f8430] {\n  left: 0;\n}\n.visible-sidebar-button[data-v-5b8f8430] {\n  opacity: 1;\n}\n.show-sidebar-button-decoration[data-v-5b8f8430] {\n  font-size: 1.5vw;\n}\n@media (max-width: 1200px) {\n.show-sidebar-button-decoration[data-v-5b8f8430] {\n    font-size: 18px;\n}\n}\n.logo-link[data-v-5b8f8430] {\n  color: white;\n  text-decoration: none;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n}\n.sub-menu-link[data-v-5b8f8430] {\n  text-decoration: none;\n  color: inherit;\n  display: block;\n}\n.logo-description[data-v-5b8f8430]::after {\n  content: \"Sex-Imperium\";\n}\n.navbar-element-user[data-v-5b8f8430] {\n  margin-left: auto;\n  position: relative;\n}\n.navigation-list[data-v-5b8f8430] {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  background: #0d0c0d;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  position: relative;\n  z-index: 3;\n  box-shadow: 2px 2px 2px 2px black;\n}\n.register-selection[data-v-5b8f8430] {\n  margin-left: auto;\n}\n.navigation-element-main[data-v-5b8f8430] {\n  -webkit-transition: background 2s;\n  transition: background 2s;\n  color: white;\n  display: inline-block;\n  line-height: 100%;\n  font-size: 1.5vw;\n  font-family: \"Aldrich\", sans-serif;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n  padding: 6px;\n}\n.navigation-element-main[data-v-5b8f8430]:hover {\n  background: #2d2d30;\n}\n.navigation-element-main[data-v-5b8f8430]:hover {\n  cursor: pointer;\n}\n@media (max-width: 1200px) {\n.navigation-element-main[data-v-5b8f8430] {\n    font-size: 18px;\n}\n}\n.page-navigation[data-v-5b8f8430] {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 10;\n  font-size: 0;\n}\n.page-navigation[data-v-5b8f8430]:focus {\n  outline: none;\n}\n.sub-menu-list[data-v-5b8f8430] {\n  position: absolute;\n  overflow: hidden;\n  display: inline-block;\n  top: 100%;\n  max-height: 0;\n  padding: 0;\n  list-style-type: none;\n  margin: 0;\n  font-size: 1.5vw;\n  font-family: \"Aldrich\", sans-serif;\n  color: white;\n  min-width: 140px;\n  z-index: 1;\n  border-radius: 0 0 8px 8px;\n}\n@media (max-width: 1200px) {\n.sub-menu-list[data-v-5b8f8430] {\n    font-size: 18px;\n}\n}\n.porn-sub-menu-list[data-v-5b8f8430] {\n  left: 13vw;\n}\n.hidden-sub-menu[data-v-5b8f8430] {\n  max-height: 0;\n  -webkit-transition: none;\n  transition: none;\n}\n.visible-sub-menu[data-v-5b8f8430] {\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n  max-height: 1500px;\n  box-shadow: 2px 2px 4px 3px black;\n}\n.sub-menu-list-element[data-v-5b8f8430] {\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n  border-bottom: 1px solid black;\n  cursor: pointer;\n}\n.sub-menu-list-nested-level-two[data-v-5b8f8430] {\n  list-style-type: none;\n  overflow: hidden;\n  padding: 0;\n  -webkit-transition: max-height 0.7s;\n  transition: max-height 0.7s;\n}\n.navbar-icon-second-level[data-v-5b8f8430] {\n  color: #bbb606;\n}\n.sub-menu-list-element-intendation-second-level[data-v-5b8f8430] {\n  padding: 5px 2px 5px 2vw;\n  border-bottom: 1px solid black;\n  white-space: nowrap;\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n}\n.sub-menu-list-element-intendation-second-level[data-v-5b8f8430]:hover {\n  background: black;\n  cursor: pointer;\n}\n.visible-movies-sub-menu[data-v-5b8f8430] {\n  max-height: 500px;\n}\n.hidden-movies-sub-menu[data-v-5b8f8430] {\n  max-height: 0;\n}\n.sub-menu-level-one-item[data-v-5b8f8430] {\n  padding: 5px 2px 5px 1vw;\n}\n.sub-menu-level-one-item[data-v-5b8f8430]:hover {\n  background: black;\n}\n.sum-menu-list-element[data-v-5b8f8430]:last-child {\n  border-radius: 0 0 8px 8px;\n}\n.navbar-icon[data-v-5b8f8430] {\n  margin: 0 5px;\n}\n.navbar-icon-outer[data-v-5b8f8430] {\n  color: #eb091c;\n}\n.contenerized-navbar-element[data-v-5b8f8430] {\n  position: relative;\n}\n.navbar-link-main-manu[data-v-5b8f8430] {\n  color: white;\n  text-decoration: none;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n}\n@media (min-width: 520px) and (max-width: 1200px) {\n.porn-sub-menu-list[data-v-5b8f8430] {\n    left: 150px;\n}\n}\n@media (max-width: 520px) {\n.logo-description[data-v-5b8f8430]::after {\n    content: \"SI\";\n}\n.porn-sub-menu-list[data-v-5b8f8430] {\n    left: 50px;\n}\n}\n.user-avatar[data-v-5b8f8430] {\n  width: 1.5vw;\n  height: 1.5vw;\n  border-radius: 2px;\n}\n@media (max-width: 1200px) {\n.user-avatar[data-v-5b8f8430] {\n    width: 16px;\n    height: 16px;\n}\n}\n.remember-me-checkbox[data-v-5b8f8430] {\n  color: white;\n}\n.phantom-text[data-v-5b8f8430] {\n  position: absolute;\n  top: -9999px;\n  left: 0;\n}\n.remember-me-description[data-v-5b8f8430] {\n  color: white;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.remember-me-description[data-v-5b8f8430] {\n    font-size: 16px;\n}\n}\n.labeled-checkbox-container[data-v-5b8f8430] {\n  display: block;\n  width: 95%;\n  margin: 4px auto 1px auto;\n}\n.labeled-checkbox-description[data-v-5b8f8430] {\n  color: white;\n}\n.main-panel-label[data-v-5b8f8430] {\n  display: block;\n  text-align: center;\n  padding: 4px;\n  font-size: 1.3vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.main-panel-label[data-v-5b8f8430] {\n    font-size: 18px;\n}\n}\n.forgot-password-link[data-v-5b8f8430] {\n  display: block;\n  padding: 4px;\n  text-align: center;\n  color: white;\n  text-decoration: none;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  border-radius: 0 0 7px 7px;\n  background: #242229;\n}\n@media (max-width: 1200px) {\n.forgot-password-link[data-v-5b8f8430] {\n    font-size: 17px;\n}\n}\n.forgot-password-link[data-v-5b8f8430]:hover {\n  text-decoration: underline;\n}\n.login-button-container[data-v-5b8f8430] {\n  height: 100%;\n}\n@media (max-width: 540px) {\n.navigation-element-main-has-content[data-v-5b8f8430] {\n    display: none;\n}\n}", ""]);
+exports.push([module.i, ".login-info[data-v-5b8f8430] {\n  font-size: 1.5vw;\n  font-family: Play, sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.login-info[data-v-5b8f8430] {\n    font-size: 19px;\n}\n}\n.login-form-container[data-v-5b8f8430] {\n  position: fixed;\n  background: rgba(0, 0, 0, 0.75);\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  z-index: 999;\n}\n.login-panel-toolbar[data-v-5b8f8430] {\n  border-radius: 5px 5px 0 0;\n  background: #242229;\n  padding: 5px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.login-form[data-v-5b8f8430] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  background: black;\n  border-radius: 8px;\n  box-shadow: 3px 3px 3px 3px black;\n  min-width: 320px;\n  width: 25%;\n  font-family: \"Exo 2\", sans-serif;\n  border: 2px solid #242229;\n  opacity: 0;\n  -webkit-transition: opacity 1.5s;\n  transition: opacity 1.5s;\n}\n.visible-login-form[data-v-5b8f8430] {\n  opacity: 1;\n}\n.show-sidebar-button[data-v-5b8f8430] {\n  position: absolute;\n  padding: 4px 2px;\n  top: 100%;\n  width: 5vw;\n  min-width: 35px;\n  text-align: center;\n  color: white;\n  border-radius: 0 0 5px 5px;\n  border-left: 1px solid black;\n  border-right: 1px solid black;\n  border-bottom: 1px solid black;\n  border-top: none;\n  background: #0d0c0d;\n  opacity: 0;\n  cursor: pointer;\n  -webkit-transition: opacity 1s, background 2s;\n  transition: opacity 1s, background 2s;\n  box-shadow: -1px 2px 2px 1px black;\n}\n.show-sidebar-button[data-v-5b8f8430]:hover {\n  background: #2d2d30;\n}\n.show-authenticated-user-side-bar-button[data-v-5b8f8430] {\n  right: 0;\n}\n.show-content-side-bar-button[data-v-5b8f8430] {\n  left: 0;\n}\n.visible-sidebar-button[data-v-5b8f8430] {\n  opacity: 1;\n}\n.show-sidebar-button-decoration[data-v-5b8f8430] {\n  font-size: 1.5vw;\n}\n@media (max-width: 1200px) {\n.show-sidebar-button-decoration[data-v-5b8f8430] {\n    font-size: 18px;\n}\n}\n.logo-link[data-v-5b8f8430] {\n  color: white;\n  text-decoration: none;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n}\n.sub-menu-link[data-v-5b8f8430] {\n  text-decoration: none;\n  color: inherit;\n  display: block;\n}\n.logo-description[data-v-5b8f8430]::after {\n  content: \"Sex-Imperium\";\n}\n.navigation-list[data-v-5b8f8430] {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: flex;\n  background: #0d0c0d;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n  position: relative;\n  z-index: 3;\n  box-shadow: 2px 2px 2px 2px black;\n}\n.register-selection[data-v-5b8f8430] {\n  margin-left: auto;\n}\n.navigation-element-main[data-v-5b8f8430] {\n  -webkit-transition: background 2s;\n  transition: background 2s;\n  color: white;\n  display: inline-block;\n  line-height: 100%;\n  font-size: 1.5vw;\n  font-family: \"Aldrich\", sans-serif;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n  padding: 6px;\n}\n.navigation-element-main[data-v-5b8f8430]:hover {\n  background: #2d2d30;\n}\n.navigation-element-main[data-v-5b8f8430]:hover {\n  cursor: pointer;\n}\n@media (max-width: 1200px) {\n.navigation-element-main[data-v-5b8f8430] {\n    font-size: 18px;\n}\n}\n.navbar-element-user[data-v-5b8f8430] {\n  margin-left: auto;\n  position: relative;\n  padding: 0 4px;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.page-navigation[data-v-5b8f8430] {\n  position: fixed;\n  width: 100%;\n  top: 0;\n  z-index: 10;\n  font-size: 0;\n}\n.page-navigation[data-v-5b8f8430]:focus {\n  outline: none;\n}\n.sub-menu-list[data-v-5b8f8430] {\n  position: absolute;\n  overflow: hidden;\n  display: inline-block;\n  top: 100%;\n  max-height: 0;\n  padding: 0;\n  list-style-type: none;\n  margin: 0;\n  font-size: 1.5vw;\n  font-family: \"Aldrich\", sans-serif;\n  color: white;\n  min-width: 140px;\n  z-index: 1;\n  border-radius: 0 0 8px 8px;\n}\n@media (max-width: 1200px) {\n.sub-menu-list[data-v-5b8f8430] {\n    font-size: 18px;\n}\n}\n.porn-sub-menu-list[data-v-5b8f8430] {\n  left: 13vw;\n}\n.hidden-sub-menu[data-v-5b8f8430] {\n  max-height: 0;\n  -webkit-transition: none;\n  transition: none;\n}\n.visible-sub-menu[data-v-5b8f8430] {\n  -webkit-transition: max-height 1.5s;\n  transition: max-height 1.5s;\n  max-height: 1500px;\n  box-shadow: 2px 2px 4px 3px black;\n}\n.sub-menu-list-element[data-v-5b8f8430] {\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n  border-bottom: 1px solid black;\n  cursor: pointer;\n}\n.sub-menu-list-nested-level-two[data-v-5b8f8430] {\n  list-style-type: none;\n  overflow: hidden;\n  padding: 0;\n  -webkit-transition: max-height 0.7s;\n  transition: max-height 0.7s;\n}\n.navbar-icon-second-level[data-v-5b8f8430] {\n  color: #bbb606;\n}\n.sub-menu-list-element-intendation-second-level[data-v-5b8f8430] {\n  padding: 5px 2px 5px 2vw;\n  border-bottom: 1px solid black;\n  white-space: nowrap;\n  background: -webkit-gradient(linear, left top, right top, from(#0a0a0a), to(#2e2e2d));\n  background: linear-gradient(to right, #0a0a0a, #2e2e2d);\n}\n.sub-menu-list-element-intendation-second-level[data-v-5b8f8430]:hover {\n  background: black;\n  cursor: pointer;\n}\n.visible-movies-sub-menu[data-v-5b8f8430] {\n  max-height: 500px;\n}\n.hidden-movies-sub-menu[data-v-5b8f8430] {\n  max-height: 0;\n}\n.sub-menu-level-one-item[data-v-5b8f8430] {\n  padding: 5px 2px 5px 1vw;\n}\n.sub-menu-level-one-item[data-v-5b8f8430]:hover {\n  background: black;\n}\n.sum-menu-list-element[data-v-5b8f8430]:last-child {\n  border-radius: 0 0 8px 8px;\n}\n.navbar-icon[data-v-5b8f8430] {\n  margin: 0 5px;\n}\n.navbar-icon-outer[data-v-5b8f8430] {\n  color: #eb091c;\n}\n.contenerized-navbar-element[data-v-5b8f8430] {\n  position: relative;\n  padding: 0;\n}\n.user-avatar[data-v-5b8f8430] {\n  width: 1.8vw;\n  height: 1.8vw;\n  margin: 0 4px;\n  border-radius: 2px;\n  border-radius: 30%;\n}\n@media (max-width: 1200px) {\n.user-avatar[data-v-5b8f8430] {\n    width: 30px;\n    height: 30px;\n}\n}\n.navbar-link-main-manu[data-v-5b8f8430] {\n  color: white;\n  text-decoration: none;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n}\n.remember-me-checkbox[data-v-5b8f8430] {\n  color: white;\n}\n.phantom-text[data-v-5b8f8430] {\n  position: absolute;\n  top: -9999px;\n  left: 0;\n}\n.remember-me-description[data-v-5b8f8430] {\n  color: white;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.remember-me-description[data-v-5b8f8430] {\n    font-size: 16px;\n}\n}\n.labeled-checkbox-container[data-v-5b8f8430] {\n  display: block;\n  width: 95%;\n  margin: 4px auto 1px auto;\n}\n.labeled-checkbox-description[data-v-5b8f8430] {\n  color: white;\n}\n.main-panel-label[data-v-5b8f8430] {\n  display: block;\n  text-align: center;\n  padding: 4px;\n  font-size: 1.3vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.main-panel-label[data-v-5b8f8430] {\n    font-size: 18px;\n}\n}\n.forgot-password-link[data-v-5b8f8430] {\n  display: block;\n  padding: 4px;\n  text-align: center;\n  color: white;\n  text-decoration: none;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  border-radius: 0 0 7px 7px;\n  background: #242229;\n}\n@media (max-width: 1200px) {\n.forgot-password-link[data-v-5b8f8430] {\n    font-size: 17px;\n}\n}\n.forgot-password-link[data-v-5b8f8430]:hover {\n  text-decoration: underline;\n}\n.login-button-container[data-v-5b8f8430] {\n  height: 100%;\n}\n@media (max-width: 540px) {\n.navigation-element-main-has-content[data-v-5b8f8430] {\n    display: none;\n}\n}\n@media (min-width: 541px) {\n.show-content-side-bar-button[data-v-5b8f8430] {\n    display: none;\n}\n}", ""]);
 
 // exports
 
@@ -3423,7 +3423,7 @@ var AuthenticatedUserSidebar = /** @class */ (function (_super) {
     __extends(AuthenticatedUserSidebar, _super);
     function AuthenticatedUserSidebar() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.translator = translator_js_1.default;
+        _this.translations = translator_js_1.default.getPackage('authenticated_user_sidebar');
         return _this;
     }
     AuthenticatedUserSidebar.prototype.logout = function () {
@@ -3432,69 +3432,6 @@ var AuthenticatedUserSidebar = /** @class */ (function (_super) {
     AuthenticatedUserSidebar.prototype.hideSideBar = function () {
         this.$root.$emit('hide-side-bar');
     };
-    Object.defineProperty(AuthenticatedUserSidebar.prototype, "hideSideBarTitle", {
-        get: function () {
-            return this.translator.translate('hide_side_bar');
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(AuthenticatedUserSidebar.prototype, "hideCaption", {
-        get: function () {
-            return this.translator.translate('hide');
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(AuthenticatedUserSidebar.prototype, "profileCaption", {
-        get: function () {
-            return this.translator.translate('profile');
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(AuthenticatedUserSidebar.prototype, "profileTitle", {
-        get: function () {
-            return this.translator.translate('user_settings');
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(AuthenticatedUserSidebar.prototype, "mailBoxCaption", {
-        get: function () {
-            return this.translator.translate('messages');
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(AuthenticatedUserSidebar.prototype, "favouritesCaption", {
-        get: function () {
-            return this.translator.translate('favourites');
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(AuthenticatedUserSidebar.prototype, "favouritesTitle", {
-        get: function () {
-            return this.translator.translate('your_favourite_movies_etc');
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(AuthenticatedUserSidebar.prototype, "friendsCaption", {
-        get: function () {
-            return this.translator.translate('friends');
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(AuthenticatedUserSidebar.prototype, "logoutCaption", {
-        get: function () {
-            return this.translator.translate('logout');
-        },
-        enumerable: false,
-        configurable: true
-    });
     __decorate([
         vue_property_decorator_1.Prop({
             type: String,
@@ -3559,60 +3496,17 @@ var translator_js_1 = __webpack_require__(/*! @jsmodules/translator.js */ "./res
 var ContentSideBar = /** @class */ (function (_super) {
     __extends(ContentSideBar, _super);
     function ContentSideBar() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.translations = translator_js_1.default.getPackage('content_sidebar');
+        _this.moviesSubMenuIsVisible = false;
+        return _this;
     }
     ContentSideBar.prototype.hideSideBar = function () {
         this.$root.$emit('hide-content-bar');
     };
-    Object.defineProperty(ContentSideBar.prototype, "hideSideBarTitle", {
-        get: function () {
-            return translator_js_1.default.translate('hide_side_bar');
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(ContentSideBar.prototype, "hideCaption", {
-        get: function () {
-            return translator_js_1.default.translate('hide');
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(ContentSideBar.prototype, "pornDescription", {
-        get: function () {
-            return translator_js_1.default.translate('porn');
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(ContentSideBar.prototype, "movieCategoriesTitle", {
-        get: function () {
-            return translator_js_1.default.translate('movie_categories_title');
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(ContentSideBar.prototype, "movieCategoriesLabel", {
-        get: function () {
-            return translator_js_1.default.translate('movie_categories_label');
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(ContentSideBar.prototype, "latestPornMoviesTitle", {
-        get: function () {
-            return translator_js_1.default.translate('latest_porn_movies_title');
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(ContentSideBar.prototype, "latestPornMoviesCaption", {
-        get: function () {
-            return translator_js_1.default.translate('latest_porn_movies_caption');
-        },
-        enumerable: false,
-        configurable: true
-    });
+    ContentSideBar.prototype.toggleMoviesMenu = function () {
+        this.moviesSubMenuIsVisible = !this.moviesSubMenuIsVisible;
+    };
     __decorate([
         vue_property_decorator_1.Prop({
             type: String,
@@ -4559,17 +4453,23 @@ var render = function() {
         _c(
           "li",
           {
-            staticClass: "side-bar-list-element",
-            attrs: { title: _vm.hideSideBarTitle },
+            staticClass: "authenticated-user-sidebar-list-element",
+            attrs: { title: _vm.translations["hide_side_bar_title"] },
             on: { click: _vm.hideSideBar }
           },
           [
             _c("phantom-button", [
-              _c("span", { staticClass: "fas fa-angle-up sidebar-icon" }),
+              _c("span", {
+                staticClass: "fas fa-angle-up authenticated-user-sidebar-icon"
+              }),
               _vm._v(" "),
               _c("span", {
                 staticClass: "sidebar-item-description",
-                domProps: { textContent: _vm._s(_vm.hideCaption) }
+                domProps: {
+                  textContent: _vm._s(
+                    _vm.translations["hide_authenticated_user_sidebar_caption"]
+                  )
+                }
               })
             ])
           ],
@@ -4579,8 +4479,10 @@ var render = function() {
         _c(
           "li",
           {
-            staticClass: "side-bar-list-element",
-            attrs: { title: _vm.profileTitle }
+            staticClass: "authenticated-user-sidebar-list-element",
+            attrs: {
+              title: _vm.translations["show_user_profile_settings_title"]
+            }
           },
           [
             _c(
@@ -4590,61 +4492,87 @@ var render = function() {
                 attrs: { href: _vm.userSettingsRoute }
               },
               [
-                _c("span", { staticClass: "fas fa-cogs sidebar-icon" }),
+                _c("span", {
+                  staticClass: "fas fa-cogs authenticated-user-sidebar-icon"
+                }),
                 _vm._v(" "),
                 _c("span", {
                   staticClass: "sidebar-item-description",
-                  domProps: { textContent: _vm._s(_vm.profileCaption) }
+                  domProps: {
+                    textContent: _vm._s(
+                      _vm.translations["show_user_profile_settings_caption"]
+                    )
+                  }
                 })
               ]
             )
           ]
         ),
         _vm._v(" "),
-        _c("li", { staticClass: "side-bar-list-element" }, [
-          _c("span", { staticClass: "fas fa-envelope sidebar-icon" }),
+        _c("li", { staticClass: "authenticated-user-sidebar-list-element" }, [
+          _c("span", {
+            staticClass: "fas fa-envelope authenticated-user-sidebar-icon"
+          }),
           _vm._v(" "),
           _c("span", {
             staticClass: "sidebar-item-description",
-            domProps: { textContent: _vm._s(_vm.mailBoxCaption) }
+            domProps: {
+              textContent: _vm._s(_vm.translations["mailbox_caption"])
+            }
           })
         ]),
         _vm._v(" "),
         _c(
           "li",
           {
-            staticClass: "side-bar-list-element",
-            attrs: { title: _vm.favouritesTitle }
+            staticClass: "authenticated-user-sidebar-list-element",
+            attrs: { title: _vm.translations["favourites_title"] }
           },
           [
-            _c("span", { staticClass: "fas fa-thumbs-up sidebar-icon" }),
+            _c("span", {
+              staticClass: "fas fa-thumbs-up authenticated-user-sidebar-icon"
+            }),
             _vm._v(" "),
             _c("span", {
               staticClass: "sidebar-item-description",
-              domProps: { textContent: _vm._s(_vm.favouritesCaption) }
+              domProps: {
+                textContent: _vm._s(_vm.translations["favourites_caption"])
+              }
             })
           ]
         ),
         _vm._v(" "),
-        _c("li", { staticClass: "side-bar-list-element" }, [
-          _c("span", { staticClass: "fas fa-user-friends sidebar-icon" }),
+        _c("li", { staticClass: "authenticated-user-sidebar-list-element" }, [
+          _c("span", {
+            staticClass: "fas fa-user-friends authenticated-user-sidebar-icon"
+          }),
           _vm._v(" "),
           _c("span", {
             staticClass: "sidebar-item-description",
-            domProps: { textContent: _vm._s(_vm.friendsCaption) }
+            domProps: {
+              textContent: _vm._s(_vm.translations["friends_caption"])
+            }
           })
         ]),
         _vm._v(" "),
         _c(
           "li",
-          { staticClass: "side-bar-list-element", on: { click: _vm.logout } },
+          {
+            staticClass: "authenticated-user-sidebar-list-element",
+            on: { click: _vm.logout }
+          },
           [
             _c("phantom-button", [
-              _c("span", { staticClass: "fas fa-sign-out-alt sidebar-icon" }),
+              _c("span", {
+                staticClass:
+                  "fas fa-sign-out-alt authenticated-user-sidebar-icon"
+              }),
               _vm._v(" "),
               _c("span", {
                 staticClass: "sidebar-item-description",
-                domProps: { textContent: _vm._s(_vm.logoutCaption) }
+                domProps: {
+                  textContent: _vm._s(_vm.translations["logout_caption"])
+                }
               })
             ]),
             _vm._v(" "),
@@ -4700,70 +4628,178 @@ var render = function() {
       _c(
         "li",
         {
-          staticClass: "side-bar-list-element",
-          attrs: { title: _vm.hideSideBarTitle },
+          staticClass: "content-sidebar-list-element enlighted-list-content",
+          attrs: { title: _vm.translations["hide_side_bar_title"] },
           on: { click: _vm.hideSideBar }
         },
         [
           _c("phantom-button", [
-            _c("span", { staticClass: "fas fa-angle-up sidebar-icon" }),
+            _c("span", { staticClass: "fas fa-angle-up content-sidebar-icon" }),
             _vm._v(" "),
             _c("span", {
               staticClass: "sidebar-item-description",
-              domProps: { textContent: _vm._s(_vm.hideCaption) }
+              domProps: {
+                textContent: _vm._s(_vm.translations["hide_side_bar_caption"])
+              }
             })
           ])
         ],
         1
       ),
       _vm._v(" "),
-      _c("li", { staticClass: "side-bar-list-element" }, [
-        _c("span", {
-          staticClass: "sidebar-item-description",
-          domProps: { textContent: _vm._s(_vm.pornDescription) }
-        }),
+      _c("li", { staticClass: "content-sidebar-list-element" }, [
+        _c(
+          "span",
+          {
+            staticClass: "enlighted-list-content",
+            on: { click: _vm.toggleMoviesMenu }
+          },
+          [
+            _c("span", {
+              staticClass: "fas content-sidebar-icon",
+              class: {
+                "fa-film": !_vm.moviesSubMenuIsVisible,
+                "fa-angle-up": _vm.moviesSubMenuIsVisible
+              }
+            }),
+            _vm._v(" "),
+            _c("span", {
+              staticClass: "sidebar-item-description",
+              domProps: {
+                textContent: _vm._s(_vm.translations["movies_caption"])
+              }
+            })
+          ]
+        ),
         _vm._v(" "),
-        _c("span", { staticClass: "fas fa-angle-down sidebar-icon" })
+        _c(
+          "ul",
+          {
+            staticClass: "nested-user-sidebar-list",
+            class: {
+              "visible-sidebar-menu": _vm.moviesSubMenuIsVisible,
+              "hidden-sidebar-menu": !_vm.moviesSubMenuIsVisible
+            },
+            attrs: { "aria-hidden": !_vm.moviesSubMenuIsVisible }
+          },
+          [
+            _c(
+              "li",
+              {
+                staticClass:
+                  "content-sidebar-list-element enlighted-list-content",
+                attrs: { title: _vm.translations["movie_categories_title"] }
+              },
+              [
+                _c("span", {
+                  staticClass: "fas fa-images content-sidebar-icon-nested"
+                }),
+                _vm._v(" "),
+                _c("span", {
+                  staticClass: "sidebar-item-description",
+                  domProps: {
+                    textContent: _vm._s(
+                      _vm.translations["movie_categories_label"]
+                    )
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass:
+                  "content-sidebar-list-element enlighted-list-content",
+                attrs: { title: _vm.translations["latest_porn_movies_title"] }
+              },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "sub-menu-link",
+                    attrs: { href: _vm.newMoviesRoute }
+                  },
+                  [
+                    _c("span", {
+                      staticClass:
+                        "fas fa-folder-plus content-sidebar-icon-nested"
+                    }),
+                    _vm._v(" "),
+                    _c("span", {
+                      staticClass: "sidebar-item-description",
+                      domProps: {
+                        textContent: _vm._s(
+                          _vm.translations["latest_porn_movies_caption"]
+                        )
+                      }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass:
+                  "content-sidebar-list-element enlighted-list-content",
+                attrs: {
+                  title: _vm.translations["the_most_popular_porn_movies_title"]
+                }
+              },
+              [
+                _c("span", {
+                  staticClass: "fas content-sidebar-icon-nested fa-grin"
+                }),
+                _vm._v(" "),
+                _c("span", {
+                  staticClass: "sidebar-item-description",
+                  domProps: {
+                    textContent: _vm._s(
+                      _vm.translations["the_most_popular_porn_movies_caption"]
+                    )
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass:
+                  "content-sidebar-list-element enlighted-list-content",
+                attrs: { title: _vm.translations["advanced_search_title"] }
+              },
+              [
+                _c("span", {
+                  staticClass: "fas content-sidebar-icon-nested fa-search"
+                }),
+                _vm._v(" "),
+                _c("span", {
+                  staticClass: "sidebar-item-description",
+                  domProps: {
+                    textContent: _vm._s(
+                      _vm.translations["advanced_search_caption"]
+                    )
+                  }
+                })
+              ]
+            )
+          ]
+        )
       ]),
       _vm._v(" "),
       _c(
         "li",
-        {
-          staticClass: "side-bar-list-element",
-          attrs: { title: _vm.movieCategoriesTitle }
-        },
+        { staticClass: "content-sidebar-list-element enlighted-list-content" },
         [
-          _c("span", { staticClass: "fas fa-images sidebar-icon" }),
+          _c("span", { staticClass: "fas fa-star content-sidebar-icon" }),
           _vm._v(" "),
           _c("span", {
             staticClass: "sidebar-item-description",
-            domProps: { textContent: _vm._s(_vm.movieCategoriesLabel) }
+            domProps: { textContent: _vm._s(_vm.translations["pornstars"]) }
           })
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "li",
-        {
-          staticClass: "side-bar-list-element",
-          attrs: { title: _vm.latestPornMoviesTitle }
-        },
-        [
-          _c(
-            "a",
-            {
-              staticClass: "sub-menu-link",
-              attrs: { href: _vm.newMoviesRoute }
-            },
-            [
-              _c("span", { staticClass: "fas fa-folder-plus sidebar-icon" }),
-              _vm._v(" "),
-              _c("span", {
-                staticClass: "sidebar-item-description",
-                domProps: { textContent: _vm._s(_vm.latestPornMoviesCaption) }
-              })
-            ]
-          )
         ]
       )
     ])
@@ -4813,7 +4849,7 @@ var render = function() {
                   class: {
                     "visible-sidebar-button": !_vm.contentSideBarIsVisible
                   },
-                  attrs: { title: "rozwiń menu użytkownika" }
+                  attrs: { title: "rozwiń menu boczne" }
                 },
                 [
                   _c("span", {
@@ -4822,7 +4858,7 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("span", { staticClass: "phantom-text" }, [
-                    _vm._v("rozwiń menu użytkownika")
+                    _vm._v("rozwiń menu boczne")
                   ])
                 ]
               )
@@ -4949,6 +4985,11 @@ var render = function() {
                       })
                     : _vm._e(),
                   _vm._v(" "),
+                  _c("span", {
+                    staticClass: "user-nick",
+                    domProps: { textContent: _vm._s(_vm.userName) }
+                  }),
+                  _vm._v(" "),
                   _vm.avatarFileName
                     ? _c("img", {
                         staticClass: "user-avatar",
@@ -4958,11 +4999,6 @@ var render = function() {
                         }
                       })
                     : _vm._e(),
-                  _vm._v(" "),
-                  _c("span", {
-                    staticClass: "user-nick",
-                    domProps: { textContent: _vm._s(_vm.userName) }
-                  }),
                   _vm._v(" "),
                   _c(
                     "button",
@@ -19099,6 +19135,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       return this.getSentence(text);
     }
   },
+  getPackage: function getPackage(packageName) {
+    return this[this.currentLanguage]['packages'][packageName];
+  },
   pl: (_pl = {
     email_has_already_been_taken: "Adres email jest już zajęty",
     email_is_invalid: "Adres email jest nieprawidłowy",
@@ -19144,7 +19183,34 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     login_has_already_been_taken: "Login jest już zajęty",
     login_contains_less_then_3_characters: "Login ma mniej niż 3 znaki",
     login_contains_more_then_20_characters: "Login ma więcej niż 20 znaków"
-  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "avatar_has_been_deleted_successfully", "Pomyślnie usunięto avatar"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "views", "Wyświetleń"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "your_favourite_movies_etc", "Twoje ulubione filmy, gwiazdy itp"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "user_settings", "Ustawienia profilu : hasło, avatar, dane personalne"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "movie_categories_title", "Zobacz dostępne kategorie filmów porno"), _defineProperty(_pl, "movie_categories_label", "Kategorie"), _defineProperty(_pl, "latest_porn_movies_title", "Najnowsze filmy porno"), _defineProperty(_pl, "latest_porn_movies_caption", "Najnowsze"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _pl)
+  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "avatar_has_been_deleted_successfully", "Pomyślnie usunięto avatar"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "views", "Wyświetleń"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "packages", {
+    content_sidebar: {
+      hide_side_bar_title: "Schowaj boczne menu",
+      hide_side_bar_caption: "Schowaj",
+      porn_caption: "Porno",
+      movie_categories_title: "Zobacz dostępne kategorie filmów porno",
+      movie_categories_label: "Kategorie",
+      latest_porn_movies_title: "Najnowsze filmy porno",
+      latest_porn_movies_caption: "Najnowsze",
+      the_most_popular_porn_movies_title: "Najpopularniejsze filmy porno",
+      the_most_popular_porn_movies_caption: "Najpopularniejsze",
+      advanced_search_caption: "Szukanie zaawansowane",
+      advanced_search_title: "Użyj wyszukiwarki do precyzyjnego odnajdywania filmów porno",
+      movies_caption: "Filmy",
+      pornstars: "Gwiazdy porno"
+    },
+    authenticated_user_sidebar: {
+      hide_side_bar_title: "Schowaj menu użytkownika",
+      hide_authenticated_user_sidebar_caption: "Schowaj",
+      show_user_profile_settings_title: "Ustawienia profilu : hasło, avatar, dane personalne",
+      show_user_profile_settings_caption: "Profil",
+      mailbox_caption: "Wiadomości",
+      favourites_title: "Twoje ulubione filmy, gwiazdy itp",
+      favourites_caption: "Ulubione",
+      friends_caption: "Znajomi",
+      logout_caption: "Wyloguj"
+    }
+  }), _pl)
 });
 
 /***/ }),
