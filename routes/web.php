@@ -26,6 +26,13 @@ Route::namespace('Movies')->name('movies.')->group(function(){
 
 });
 
+Route::namespace('Pornstars')->name('pornstars.')->group(function(){
+       
+       Route::get('/gwiazdy-porno/lista', 'PornstarsController@getPornstarsList')
+             ->name('list');
+
+});
+
 Route::namespace('Auth')->name('auth.')->group(function(){
        Route::post('/rejestruj', 'RegisterController@register')
              ->name('register.create');

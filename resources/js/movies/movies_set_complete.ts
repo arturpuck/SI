@@ -4,7 +4,6 @@ import IconPolishFlag from '@jscomponents/decoration/flags/icon_polish_flag.vue'
 import MoviePreview from '@jscomponents/movies/movie_preview.vue';
 import FixedShadowContainer from '@jscomponents/decoration/fixed_shadow_container.vue';
 import LinksBox from '@jscomponents/links_box.vue';
-import EmpireLogo from '@jscomponents/decoration/empire_logo.vue';
 
 const Vue = VueConstructor.build();
 Vue.component('movie-box', MovieBox);
@@ -12,7 +11,6 @@ Vue.component('icon-polish-flag', IconPolishFlag);
 Vue.component('movie-preview', MoviePreview);
 Vue.component('fixed-shadow-container', FixedShadowContainer);
 Vue.component('links-box', LinksBox);
-Vue.component('empire-logo', EmpireLogo);
 
   new Vue({
  el: '#app',

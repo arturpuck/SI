@@ -20,11 +20,4 @@ Class MoviesRepository extends BaseRepository{
         return $this->paginateElegantly($this->query,$pageNumber, $baseURL, 'movies', $elementsPerPage);
     }
 
-    public function select(array $columnNames): MoviesRepository{
-    foreach($columnNames as $columnName){
-            $this->query = $this->query->addSelect($columnName);
-    }
-
-        return $this;
-    }
 }

@@ -34,8 +34,10 @@
           </ul>
 		  </li>
       <li class="content-sidebar-list-element enlighted-list-content">
-          <span class="fas fa-star content-sidebar-icon"></span>
-			    <span v-text="translations['pornstars']" class="sidebar-item-description"></span>
+         <a v-bind:href="pornstarsListRoute" class="sub-menu-link">
+           <span class="fas fa-star content-sidebar-icon"></span>
+			     <span v-text="translations['pornstars']" class="sidebar-item-description"></span>
+          </a>
 		  </li>
       
     </ul>
@@ -54,6 +56,11 @@
             required: false,
             default: '/filmy/najnowsze/strona/1'
     }) readonly newMoviesRoute: String;
+
+    @Prop({
+            type: String,
+            required: true,
+    }) readonly pornstarsListRoute: String;
     
     private translations: Object = Translator.getPackage('content_sidebar');
     moviesSubMenuIsVisible: Boolean = false;

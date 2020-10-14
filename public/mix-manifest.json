@@ -8,9 +8,11 @@
     "/css/register.css": "/css/register.css",
     "/css/password_reset_confirmation.css": "/css/password_reset_confirmation.css",
     "/css/settings_panel.css": "/css/settings_panel.css",
+    "/css/pornstars_list.css": "/css/pornstars_list.css",
     "/js/movies_set_complete.js": "/js/movies_set_complete.js",
     "/js/password_reset.js": "/js/password_reset.js",
     "/js/password_reset_confirmation.js": "/js/password_reset_confirmation.js",
+    "/js/pornstars_list.js": "/js/pornstars_list.js",
     "/js/register.js": "/js/register.js",
     "/js/request_password_reset_link.js": "/js/request_password_reset_link.js",
     "/js/settings_panel.js": "/js/settings_panel.js"

@@ -1,0 +1,30 @@
+@import '~sass/basic';
+
+.full-body{
+    background: #1f1d1d;
+}
+
+.pornstars-list-content-all{
+    display:block;
+    margin: calc(35px + 2vw) auto;
+    border-radius:2vw;
+    width:80%;
+    min-width:300px;
+    box-shadow: 2px 2px 2px 3px black;
+    border: 1px solid #d21437;
+    overflow: hidden;
+}
+
+.pornstars-list-main-header{
+  @include responsive-font(1.5vw,14px);
+  margin:0;
+  padding:2vw;
+  text-align:center;
+  color:white;
+  background:black;
+}
+
+.header-icon{
+    color:crimson;
+    margin:0 4px;
+}

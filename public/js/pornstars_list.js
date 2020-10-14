@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -16597,24 +16597,6 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./resources/js/auth/password_reset_confirmation.js":
-/*!**********************************************************!*\
-  !*** ./resources/js/auth/password_reset_confirmation.js ***!
-  \**********************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _jsmodules_basic_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @jsmodules/basic.js */ "./resources/js/modules/basic.js");
-
-var Vue = _jsmodules_basic_js__WEBPACK_IMPORTED_MODULE_0__["default"].build();
-new Vue({
-  el: '#app'
-});
-
-/***/ }),
-
 /***/ "./resources/js/components/click_detector.vue":
 /*!****************************************************!*\
   !*** ./resources/js/components/click_detector.vue ***!
@@ -17679,14 +17661,34 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 /***/ }),
 
-/***/ 5:
-/*!****************************************************************!*\
-  !*** multi ./resources/js/auth/password_reset_confirmation.js ***!
-  \****************************************************************/
+/***/ "./resources/js/pornstars/pornstars_list.ts":
+/*!**************************************************!*\
+  !*** ./resources/js/pornstars/pornstars_list.ts ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/html/sex-imperium/resources/js/auth/password_reset_confirmation.js */"./resources/js/auth/password_reset_confirmation.js");
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var basic_js_1 = __webpack_require__(/*! @jsmodules/basic.js */ "./resources/js/modules/basic.js");
+var Vue = basic_js_1.default.build();
+new Vue({
+    el: '#app',
+    methods: {}
+});
+
+
+/***/ }),
+
+/***/ 8:
+/*!********************************************************!*\
+  !*** multi ./resources/js/pornstars/pornstars_list.ts ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! /var/www/html/sex-imperium/resources/js/pornstars/pornstars_list.ts */"./resources/js/pornstars/pornstars_list.ts");
 
 
 /***/ })

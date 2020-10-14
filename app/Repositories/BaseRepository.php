@@ -17,4 +17,13 @@ Abstract Class BaseRepository{
     public function get(){
       return $this->query->get();
     }
+
+    public function select(array $columnNames): self{
+        
+        foreach($columnNames as $columnName){
+              $this->query = $this->query->addSelect($columnName);
+        }
+  
+      return $this;
+  }
 }

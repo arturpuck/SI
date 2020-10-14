@@ -58,7 +58,6 @@ $border-color: black;
 
 .navbar-element-user{
 	margin-left: auto;
-	position:relative;
 	padding: 0 4px;
 	align-items: center;
 }
@@ -165,6 +164,15 @@ $border-color: black;
 .contenerized-navbar-element{
 	position:relative;
 	padding:0;
+}
+
+.show-user-sidebar-button{
+	display: flex;
+    align-items: center;
+}
+
+.user-nick{
+	margin:0 4px;
 }
 
 .user-avatar{

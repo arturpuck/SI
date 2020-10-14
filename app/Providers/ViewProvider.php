@@ -26,7 +26,8 @@ class ViewProvider extends ServiceProvider
                 "request_password_reset_link",
                 "password_reset_confirmation",
                 "settings_panel",
-                "movies_set_complete"
+                "movies_set_complete",
+                'pornstars_list'
             ];
 
             $viewName = Str::afterLast($view->getName(), ".");

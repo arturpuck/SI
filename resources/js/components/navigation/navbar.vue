@@ -34,14 +34,12 @@
 				</phantom-button>
 			</div>
 		</li>
-		<li v-bind:aria-hidden="!authenticatedUserSideBarIsVisible" v-if="userIsAuthenticated" v-on:click="showAuthenticatedUserSideBar" class="navigation-element-main navbar-element-user">
-			<span v-if="!avatarFileName" class="fas navbar-icon navbar-icon-outer fa-user"></span>
-			<span v-text="userName" class="user-nick"></span>
-			<img v-if="avatarFileName" v-bind:src="avatarFilePath" v-bind:alt="userAvatarDescription" class="user-avatar">
-			<button title="rozwiń menu użytkownika" v-bind:class="{'visible-sidebar-button' : !authenticatedUserSideBarIsVisible}" class="show-sidebar-button show-authenticated-user-side-bar-button">
-				<span class="fas fa-angle-down show-sidebar-button-decoration show-sidebar-button-element"></span>
-				<span class="phantom-text">rozwiń menu użytkownika</span>
-			</button>
+		<li v-if="userIsAuthenticated" v-on:click="toggleAuthenticatedUserSideBar" class="navigation-element-main navbar-element-user">
+			<phantom-button class="show-user-sidebar-button" label="rozwiń menu użytkownika">
+               <span v-if="!avatarFileName" class="fas navbar-icon navbar-icon-outer fa-user"></span>
+			   <span v-text="userName" class="user-nick"></span>
+			   <img v-if="avatarFileName" v-bind:src="avatarFilePath" v-bind:alt="userAvatarDescription" class="user-avatar">
+			</phantom-button>
 		</li>
 	</ul>
 	<ul v-bind:aria-hidden="!pornSubMenuIsVisible" v-bind:class="{'visible-sub-menu' : pornSubMenuIsVisible , 'hidden-sub-menu' : !pornSubMenuIsVisible}" class="sub-menu-list porn-sub-menu-list">
@@ -78,8 +76,10 @@
 			  </li>
 			  <li class="sub-menu-list-element intendation-first-level">
 					<div class="sub-menu-level-one-item">
+					  <a class="navbar-link-main-manu" v-bind:href="pornstarsListRoute">
 						<span class="fas navbar-icon navbar-icon-outer fa-star"></span>
-					 Gwiazdy porno
+					    Gwiazdy porno
+					  </a>
 					</div>
 			    </li>
 		</ul>
@@ -94,6 +94,7 @@
 	  <content-sidebar 
 	  v-bind:class="{'visible-sidebar' : contentSideBarIsVisible, 'hidden-sidebar' : !contentSideBarIsVisible}" 
 	  v-bind:new-movies-route="newMoviesRoute"
+	  v-bind:pornstars-list-route="pornstarsListRoute"
 	  />
 	<div v-if="!userIsAuthenticated" v-show="loginPanelIsVisible" class="login-form-container">
 	            <form v-bind:action="loginRoute" method="POST" id="login-form" v-bind:class="{'visible-login-form' : animatePanel}" class="login-form">
@@ -149,6 +150,11 @@
 
         	registerRoute : {
         		required: false,
+        		type: String,
+			},
+
+			pornstarsListRoute : {
+        		required: true,
         		type: String,
 			},
 
@@ -215,9 +221,9 @@
 			  this.setSideBarVisibilityInformation(false, 'contentSideBar');
 		   },
 
-		   showAuthenticatedUserSideBar(){
-			   this.authenticatedUserSideBarIsVisible = true;
-			   this.setSideBarVisibilityInformation(true, 'authenticatedUserSideBar');
+		   toggleAuthenticatedUserSideBar(){
+			   this.authenticatedUserSideBarIsVisible = !this.authenticatedUserSideBarIsVisible;
+			   this.setSideBarVisibilityInformation(this.authenticatedUserSideBarIsVisible, 'authenticatedUserSideBar');
            },
            
            setSideBarVisibilityInformation(hidden, sideBarType){
@@ -318,6 +324,8 @@
 @import '~sass/components/login_panel';
 @import '~sass/components/navbar/show_side_bar_button';
 @import '~sass/components/navbar/top_menu';
+
+
 
 .remember-me-checkbox{
 	color:white;
