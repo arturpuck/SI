@@ -37,12 +37,13 @@
 			user-name="{{Auth::user()->login}}"
 			logout-route="{{route('auth.logout')}}"
 			user-settings-route="{{route('auth.user.settings.show.panel')}}"
-			pornstars-list-route="{{route('pornstars.list')}}"
 			@if(Auth::user()->has_avatar)
               avatar-file-name="{{Auth::user()->avatar_file_name}}"
 			@endif
 		@endauth
 
+        pornstars-list-route="{{route('pornstars.list')}}"
+		
 		@guest
 			register-route="{{route('auth.register.form')}}"
 			forgot-password-route="{{route('auth.request.password.reset.link.form')}}"

@@ -149,7 +149,13 @@ export default{
          favourites_caption : "Ulubione",
          friends_caption : "Znajomi",
          logout_caption : "Wyloguj"
-        }
+        },
+
+        pornstars_list : {
+           search_field_description : "Wpisz pseudonim gwiazdy porno aby wyszukać odpowiedni profil",
+           search_field_placeholder : "Wyszukaj po pseudonimie"
+        },
+
     }
    }
 }

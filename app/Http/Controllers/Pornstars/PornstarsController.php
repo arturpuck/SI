@@ -18,6 +18,6 @@ class PornstarsController extends Controller
                      ->get();
 
         return view('pornstars.pornstars_list')
-               ->with(['pornstars' => $pornstars]);
+               ->with(['pornstarsNickNames' => $pornstars->pluck('nickname')->toArray()]);
     }
 }
