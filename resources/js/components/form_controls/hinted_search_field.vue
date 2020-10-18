@@ -1,12 +1,15 @@
 <template>
-<label class="search-field-container">
-   <span class="fas fa-search"></span>
-   <input type="search" class="search-value"/>
-   <span v-text="description" class="search-field-description"></span>
+<div class="search-field-container" v-bind:class="{'focused-input-container' : focus}">
+   <label v-text="description" for="hinted-search-text" class="search-field-description"></label>
+   <div class="icon-container">
+      <span class="fas fa-search magnifier-icon"></span>
+   </div>
+   <input v-bind:placeholder="placeholderText" v-model="value" v-on:input="emitValue" v-on:focusout="toggleFocus" v-on:focus="toggleFocus" id="hinted-search-text" type="search" class="search-value"/>
+   <button v-text="translations['search']" class="search-button"></button>
    <ul class="hints-list">
 
    </ul>
-</label>
+</div>
 </template>
 
 <script lang="ts">
@@ -29,9 +32,26 @@
     }) readonly placeholderText: string;
 
     @Prop({
+            type: Array,
+            required: false,
+            default: [],
+    }) readonly hints: Array<string>;
+
+    @Prop({
             type: String,
             required: true,
     }) readonly description: string;
+
+    private translations = Translator.getPackage('hinted_search_field');
+    private focus = false;
+
+    toggleFocus(){
+       this.focus = !this.focus;
+    }
+
+    emitValue(event){
+        this.$emit('input', event.target.value);
+    }
  
   }
 </script>
@@ -39,23 +59,53 @@
 <style lang="scss">
    @import '~sass/fonts';
 
+   .magnifier-icon{
+        color:white;
+        margin: 0 5px;
+   }
+
+   .icon-container{
+       background:linear-gradient(#f1165d, #7b0e1d);
+       display:inline-flex;
+       align-items: center;
+   }
+
+   .search-button{
+       cursor:pointer;
+       background:linear-gradient(#f1165d, #7b0e1d);
+       border: none;
+       outline: none;
+       color: #f1d6d6;
+       padding:5px;
+       @include responsive-font(1.5vw, 18px, Aldrich);
+   }
+
    .search-field-container{
        position: relative;
-       @include responsive-font();
-       background:black;
-       border-radius:10%;
-       border:1px solid silver;
-       display:flex;
-       align-items: baseline;
+       @include responsive-font(1.5vw, 18px);
+       background:#312d3c;
+       border:2px solid #670815;
+       background: #201c29;
+       border-radius: 10px;
+       border: 2px solid #312d3c;
+       overflow:hidden;
+       display: inline-flex;
+       align-items: stretch;
+   }
+
+   .focused-input-container{
+       border:2px solid white;
    }
 
    .search-value{
        background:transparent;
-       border:none;
+       min-width:150px;
+       width:20vw;
        outline:none;
-       &:focus{
-           border-bottom:1px solid white;
-       }
+       border:none;
+       @include responsive-font(1.4vw,17px);
+       color:white;
+       padding-left: 5px;
    }
 
    .hints-list{

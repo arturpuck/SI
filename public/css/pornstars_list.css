@@ -147,37 +147,41 @@
 }
 
 .full-body {
-  background: #1f1d1d;
+  background: #151313;
 }
 
 .pornstars-list-content-all {
   display: block;
   margin: calc(35px + 2vw) auto;
-  border-radius: 2vw;
-  width: 80%;
-  min-width: 300px;
-  box-shadow: 2px 2px 2px 3px black;
-  border: 1px solid #d21437;
-  overflow: hidden;
 }
 
 .pornstars-list-main-header {
   font-size: 1.5vw;
   font-family: "Exo 2", sans-serif;
-  margin: 0;
+  width: 80%;
+  min-width: 300px;
+  margin: 0 auto;
   padding: 2vw;
   text-align: center;
   color: white;
-  background: black;
+  background-image: url("/images/decoration/pornstars/pornstars-profiles/dupeczki.jpg");
+  background-size: cover;
 }
 
 @media (max-width: 1200px) {
   .pornstars-list-main-header {
-    font-size: 14px;
+    font-size: 17px;
   }
 }
 
 .header-icon {
-  color: crimson;
+  color: gold;
   margin: 0 4px;
+  font-size: 1.7vw;
+}
+
+@media (max-width: 1200px) {
+  .header-icon {
+    font-size: 19px;
+  }
 }

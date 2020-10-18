@@ -153,8 +153,12 @@ export default{
 
         pornstars_list : {
            search_field_description : "Wpisz pseudonim gwiazdy porno aby wyszukać odpowiedni profil",
-           search_field_placeholder : "Wyszukaj po pseudonimie"
+           search_field_placeholder : "pseudonim"
         },
+
+        hinted_search_field : {
+           search : "szukaj"
+        }
 
     }
    }

@@ -841,7 +841,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".search-field-container {\n  position: relative;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  background: black;\n  border-radius: 10%;\n  border: 1px solid silver;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: baseline;\n          align-items: baseline;\n}\n@media (max-width: 1200px) {\n.search-field-container {\n    font-size: 16px;\n}\n}\n.search-value {\n  background: transparent;\n  border: none;\n  outline: none;\n}\n.search-value:focus {\n  border-bottom: 1px solid white;\n}\n.hints-list {\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  left: 0;\n}\n.search-field-description {\n  position: absolute;\n  left: 0;\n  top: -9999px;\n}", ""]);
+exports.push([module.i, ".magnifier-icon {\n  color: white;\n  margin: 0 5px;\n}\n.icon-container {\n  background: -webkit-gradient(linear, left top, left bottom, from(#f1165d), to(#7b0e1d));\n  background: linear-gradient(#f1165d, #7b0e1d);\n  display: -webkit-inline-box;\n  display: inline-flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.search-button {\n  cursor: pointer;\n  background: -webkit-gradient(linear, left top, left bottom, from(#f1165d), to(#7b0e1d));\n  background: linear-gradient(#f1165d, #7b0e1d);\n  border: none;\n  outline: none;\n  color: #f1d6d6;\n  padding: 5px;\n  font-size: 1.5vw;\n  font-family: Aldrich, sans-serif;\n}\n@media (max-width: 1200px) {\n.search-button {\n    font-size: 18px;\n}\n}\n.search-field-container {\n  position: relative;\n  font-size: 1.5vw;\n  font-family: \"Exo 2\", sans-serif;\n  background: #312d3c;\n  border: 2px solid #670815;\n  background: #201c29;\n  border-radius: 10px;\n  border: 2px solid #312d3c;\n  overflow: hidden;\n  display: -webkit-inline-box;\n  display: inline-flex;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n}\n@media (max-width: 1200px) {\n.search-field-container {\n    font-size: 18px;\n}\n}\n.focused-input-container {\n  border: 2px solid white;\n}\n.search-value {\n  background: transparent;\n  min-width: 150px;\n  width: 20vw;\n  outline: none;\n  border: none;\n  font-size: 1.4vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n  padding-left: 5px;\n}\n@media (max-width: 1200px) {\n.search-value {\n    font-size: 17px;\n}\n}\n.hints-list {\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  left: 0;\n}\n.search-field-description {\n  position: absolute;\n  left: 0;\n  top: -9999px;\n}", ""]);
 
 // exports
 
@@ -1012,7 +1012,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".pornstar-profile-link {\n  text-decoration: none;\n}\n.pornstars-list {\n  list-style-type: none;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  -webkit-box-pack: space-evenly;\n          justify-content: space-evenly;\n}", ""]);
+exports.push([module.i, ".pornstar-nick-name {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  padding: 6px 0;\n  text-align: center;\n  color: white;\n  background: #ef0244bf;\n  font-size: 16px;\n  font-family: Aldrich;\n}\n.pornstar-profile-link {\n  text-decoration: none;\n  display: block;\n  font-size: 0;\n  position: relative;\n}\n.pornstars-list {\n  list-style-type: none;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  -webkit-box-pack: space-evenly;\n          justify-content: space-evenly;\n  margin: 0;\n  padding: 5px 0;\n}\n.pornstar-preview {\n  overflow: hidden;\n  border-radius: 7px;\n  margin: 6px;\n  box-shadow: 2px 2px 2px 2px black;\n  border: 2px solid #b52913;\n}\n.pornstar-preview:hover {\n  -webkit-filter: contrast(130%);\n          filter: contrast(130%);\n}\n.pornstar-preview-image {\n  width: 240px;\n  height: 360px;\n}\n.input-search-container {\n  text-align: center;\n}", ""]);
 
 // exports
 
@@ -2473,11 +2473,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
+var translator_js_1 = __webpack_require__(/*! @jsmodules/translator.js */ "./resources/js/modules/translator.js");
 var HintedSearchField = /** @class */ (function (_super) {
     __extends(HintedSearchField, _super);
     function HintedSearchField() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.translations = translator_js_1.default.getPackage('hinted_search_field');
+        _this.focus = false;
+        return _this;
     }
+    HintedSearchField.prototype.toggleFocus = function () {
+        this.focus = !this.focus;
+    };
+    HintedSearchField.prototype.emitValue = function (event) {
+        this.$emit('input', event.target.value);
+    };
     __decorate([
         vue_property_decorator_1.Prop({
             type: String,
@@ -2491,6 +2501,13 @@ var HintedSearchField = /** @class */ (function (_super) {
             default: '',
         })
     ], HintedSearchField.prototype, "placeholderText", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop({
+            type: Array,
+            required: false,
+            default: [],
+        })
+    ], HintedSearchField.prototype, "hints", void 0);
     __decorate([
         vue_property_decorator_1.Prop({
             type: String,
@@ -2690,7 +2707,7 @@ var PornstarsList = /** @class */ (function (_super) {
         return _this;
     }
     PornstarsList.prototype.getPornstarImageFilePath = function (pornstarNickname) {
-        var pornstarFileName = pornstarNickname.replace(' ', '_');
+        var pornstarFileName = pornstarNickname.replace(/ /g, '_');
         return "/images/decoration/pornstars/profile-small/" + pornstarFileName + ".jpg";
     };
     __decorate([
@@ -3127,20 +3144,71 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("label", { staticClass: "search-field-container" }, [
-    _c("span", { staticClass: "fas fa-search" }),
-    _vm._v(" "),
-    _c("input", { staticClass: "search-value", attrs: { type: "search" } }),
-    _vm._v(" "),
-    _c("span", {
-      staticClass: "search-field-description",
-      domProps: { textContent: _vm._s(_vm.description) }
-    }),
-    _vm._v(" "),
-    _c("ul", { staticClass: "hints-list" })
-  ])
+  return _c(
+    "div",
+    {
+      staticClass: "search-field-container",
+      class: { "focused-input-container": _vm.focus }
+    },
+    [
+      _c("label", {
+        staticClass: "search-field-description",
+        attrs: { for: "hinted-search-text" },
+        domProps: { textContent: _vm._s(_vm.description) }
+      }),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.value,
+            expression: "value"
+          }
+        ],
+        staticClass: "search-value",
+        attrs: {
+          placeholder: _vm.placeholderText,
+          id: "hinted-search-text",
+          type: "search"
+        },
+        domProps: { value: _vm.value },
+        on: {
+          input: [
+            function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.value = $event.target.value
+            },
+            _vm.emitValue
+          ],
+          focusout: _vm.toggleFocus,
+          focus: _vm.toggleFocus
+        }
+      }),
+      _vm._v(" "),
+      _c("button", {
+        staticClass: "search-button",
+        domProps: { textContent: _vm._s(_vm.translations["search"]) }
+      }),
+      _vm._v(" "),
+      _c("ul", { staticClass: "hints-list" })
+    ]
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "icon-container" }, [
+      _c("span", { staticClass: "fas fa-search magnifier-icon" })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -4436,41 +4504,49 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "pornstars-list-container" },
-    [
-      _c("hinted-search-field", {
-        attrs: {
-          description: _vm.translations["search_field_description"],
-          "placeholder-text": _vm.translations["search_field_placeholder"]
-        },
-        model: {
-          value: _vm.requestedText,
-          callback: function($$v) {
-            _vm.requestedText = $$v
+  return _c("div", { staticClass: "pornstars-list-container" }, [
+    _c(
+      "div",
+      { staticClass: "input-search-container" },
+      [
+        _c("hinted-search-field", {
+          attrs: {
+            description: _vm.translations["search_field_description"],
+            "placeholder-text": _vm.translations["search_field_placeholder"]
           },
-          expression: "requestedText"
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "ul",
-        { staticClass: "pornstars-list" },
-        _vm._l(_vm.pornstarsNickNames, function(pornstarNickname) {
-          return _c("li", { staticClass: "pornstar-preview" }, [
-            _c("a", { staticClass: "pornstar-profile-link" }, [
-              _c("img", {
-                attrs: { src: _vm.getPornstarImageFilePath(pornstarNickname) }
-              })
-            ])
+          model: {
+            value: _vm.requestedText,
+            callback: function($$v) {
+              _vm.requestedText = $$v
+            },
+            expression: "requestedText"
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "ul",
+      { staticClass: "pornstars-list" },
+      _vm._l(_vm.pornstarsNickNames, function(pornstarNickname) {
+        return _c("li", { staticClass: "pornstar-preview" }, [
+          _c("a", { staticClass: "pornstar-profile-link" }, [
+            _c("img", {
+              staticClass: "pornstar-preview-image",
+              attrs: { src: _vm.getPornstarImageFilePath(pornstarNickname) }
+            }),
+            _vm._v(" "),
+            _c("span", {
+              staticClass: "pornstar-nick-name",
+              domProps: { textContent: _vm._s(pornstarNickname) }
+            })
           ])
-        }),
-        0
-      )
-    ],
-    1
-  )
+        ])
+      }),
+      0
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -18155,7 +18231,10 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     },
     pornstars_list: {
       search_field_description: "Wpisz pseudonim gwiazdy porno aby wyszukać odpowiedni profil",
-      search_field_placeholder: "Wyszukaj po pseudonimie"
+      search_field_placeholder: "pseudonim"
+    },
+    hinted_search_field: {
+      search: "szukaj"
     }
   }), _pl)
 });
