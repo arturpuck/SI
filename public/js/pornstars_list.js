@@ -841,7 +841,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".magnifier-icon {\n  color: white;\n  margin: 0 5px;\n}\n.icon-container {\n  background: -webkit-gradient(linear, left top, left bottom, from(#f1165d), to(#7b0e1d));\n  background: linear-gradient(#f1165d, #7b0e1d);\n  display: -webkit-inline-box;\n  display: inline-flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.search-button {\n  cursor: pointer;\n  background: -webkit-gradient(linear, left top, left bottom, from(#f1165d), to(#7b0e1d));\n  background: linear-gradient(#f1165d, #7b0e1d);\n  border: none;\n  outline: none;\n  color: #f1d6d6;\n  padding: 5px;\n  font-size: 1.5vw;\n  font-family: Aldrich, sans-serif;\n}\n@media (max-width: 1200px) {\n.search-button {\n    font-size: 18px;\n}\n}\n.search-field-container {\n  position: relative;\n  font-size: 1.5vw;\n  font-family: \"Exo 2\", sans-serif;\n  background: #312d3c;\n  border: 2px solid #670815;\n  background: #201c29;\n  border-radius: 10px;\n  border: 2px solid #312d3c;\n  overflow: hidden;\n  display: -webkit-inline-box;\n  display: inline-flex;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n}\n@media (max-width: 1200px) {\n.search-field-container {\n    font-size: 18px;\n}\n}\n.focused-input-container {\n  border: 2px solid white;\n}\n.search-value {\n  background: transparent;\n  min-width: 150px;\n  width: 20vw;\n  outline: none;\n  border: none;\n  font-size: 1.4vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n  padding-left: 5px;\n}\n@media (max-width: 1200px) {\n.search-value {\n    font-size: 17px;\n}\n}\n.hints-list {\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  left: 0;\n}\n.search-field-description {\n  position: absolute;\n  left: 0;\n  top: -9999px;\n}", ""]);
+exports.push([module.i, ".hint {\n  padding: 4px 0;\n  border-top: 1px solid #312d3c;\n  font-size: 1.3vw;\n  font-family: Aldrich, sans-serif;\n  color: white;\n  cursor: pointer;\n}\n@media (max-width: 1200px) {\n.hint {\n    font-size: 18px;\n}\n}\n.hint:hover {\n  background: #a00b41;\n}\n.magnifier-icon {\n  color: white;\n  margin: 0 5px;\n}\n.icon-container {\n  background: -webkit-gradient(linear, left top, left bottom, from(#f1165d), to(#7b0e1d));\n  background: linear-gradient(#f1165d, #7b0e1d);\n  display: -webkit-inline-box;\n  display: inline-flex;\n  -webkit-box-align: center;\n          align-items: center;\n  border-radius: 10px 0 0 10px;\n}\n.search-button {\n  cursor: pointer;\n  background: -webkit-gradient(linear, left top, left bottom, from(#f1165d), to(#7b0e1d));\n  background: linear-gradient(#f1165d, #7b0e1d);\n  border-radius: 0 10px 10px 0;\n  border: none;\n  outline: none;\n  color: #f1d6d6;\n  padding: 5px;\n  font-size: 1.5vw;\n  font-family: Aldrich, sans-serif;\n}\n@media (max-width: 1200px) {\n.search-button {\n    font-size: 18px;\n}\n}\n.search-field-container {\n  position: relative;\n  font-size: 1.5vw;\n  font-family: \"Exo 2\", sans-serif;\n  background: #312d3c;\n  border: 2px solid #670815;\n  background: #201c29;\n  border-radius: 10px;\n  border: 2px solid #312d3c;\n  display: -webkit-inline-box;\n  display: inline-flex;\n  -webkit-box-align: stretch;\n          align-items: stretch;\n}\n@media (max-width: 1200px) {\n.search-field-container {\n    font-size: 18px;\n}\n}\n.top-corners-rounded-container {\n  border-radius: 10px 10px 0 0;\n}\n.top-left-corner-rounded {\n  border-radius: 10px 0 0 0;\n}\n.top-right-corner-rounded {\n  border-radius: 0 10px 0 0;\n}\n.focused-input-container {\n  border: 2px solid white;\n}\n.search-value {\n  background: transparent;\n  min-width: 150px;\n  width: 20vw;\n  outline: none;\n  border: none;\n  font-size: 1.4vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n  padding-left: 5px;\n}\n@media (max-width: 1200px) {\n.search-value {\n    font-size: 17px;\n}\n}\n.hints-list {\n  position: absolute;\n  top: 100%;\n  width: calc(100% + 4px);\n  left: -2px;\n  list-style-type: none;\n  margin: 0;\n  padding: 0;\n  z-index: 2;\n  background: #201c29;\n  border-radius: 0 0 10px 10px;\n  overflow: hidden;\n  display: none;\n}\n.visible-hints-list {\n  border-left: 2px solid white;\n  border-right: 2px solid white;\n  border-bottom: 2px solid white;\n  display: block;\n}\n.search-field-description {\n  position: absolute;\n  left: 0;\n  top: -9999px;\n}", ""]);
 
 // exports
 
@@ -1012,7 +1012,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".pornstar-nick-name {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  padding: 6px 0;\n  text-align: center;\n  color: white;\n  background: #ef0244bf;\n  font-size: 16px;\n  font-family: Aldrich;\n}\n.pornstar-profile-link {\n  text-decoration: none;\n  display: block;\n  font-size: 0;\n  position: relative;\n}\n.pornstars-list {\n  list-style-type: none;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  -webkit-box-pack: space-evenly;\n          justify-content: space-evenly;\n  margin: 0;\n  padding: 5px 0;\n}\n.pornstar-preview {\n  overflow: hidden;\n  border-radius: 7px;\n  margin: 6px;\n  box-shadow: 2px 2px 2px 2px black;\n  border: 2px solid #b52913;\n}\n.pornstar-preview:hover {\n  -webkit-filter: contrast(130%);\n          filter: contrast(130%);\n}\n.pornstar-preview-image {\n  width: 240px;\n  height: 360px;\n}\n.input-search-container {\n  text-align: center;\n}", ""]);
+exports.push([module.i, ".pornstar-nick-name {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  padding: 6px 0;\n  text-align: center;\n  color: white;\n  background: #ef0244bf;\n  font-size: 16px;\n  font-family: Aldrich;\n}\n.pornstar-profile-link {\n  text-decoration: none;\n  display: block;\n  font-size: 0;\n  position: relative;\n}\n.pornstars-list {\n  list-style-type: none;\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  -webkit-box-pack: space-evenly;\n          justify-content: space-evenly;\n  margin: 0;\n  padding: 5px 0;\n}\n.pornstar-preview {\n  overflow: hidden;\n  border-radius: 7px;\n  margin: 6px;\n  box-shadow: 2px 2px 2px 2px black;\n  border: 2px solid silver;\n}\n.pornstar-preview:hover {\n  -webkit-filter: contrast(130%);\n          filter: contrast(130%);\n}\n.pornstar-preview-image {\n  width: 240px;\n  height: 360px;\n}\n.input-search-container {\n  text-align: center;\n}", ""]);
 
 // exports
 
@@ -2482,11 +2482,36 @@ var HintedSearchField = /** @class */ (function (_super) {
         _this.focus = false;
         return _this;
     }
-    HintedSearchField.prototype.toggleFocus = function () {
-        this.focus = !this.focus;
+    Object.defineProperty(HintedSearchField.prototype, "hintsAreDisplayed", {
+        get: function () {
+            return (this.hints.length > 0) && this.focus;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    HintedSearchField.prototype.toggleFocus = function (delayed) {
+        var _this = this;
+        if (delayed === void 0) { delayed = false; }
+        var toggle = function () { return _this.focus = !_this.focus; };
+        if (delayed) {
+            setTimeout(toggle, 500);
+        }
+        else {
+            toggle();
+        }
     };
-    HintedSearchField.prototype.emitValue = function (event) {
-        this.$emit('input', event.target.value);
+    HintedSearchField.prototype.emitTypedInValue = function (event) {
+        this.emitUserTypesTextInSearchFiled(event.target.value);
+    };
+    HintedSearchField.prototype.selectHintFromList = function (hint) {
+        this.emitUserTypesTextInSearchFiled(hint);
+        this.emitValueHasBeenChosen(hint);
+    };
+    HintedSearchField.prototype.emitValueHasBeenChosen = function (value) {
+        this.$emit('valueInHintedSearchFieldHasBeenChosen', value);
+    };
+    HintedSearchField.prototype.emitUserTypesTextInSearchFiled = function (value) {
+        this.$emit('input', value);
     };
     __decorate([
         vue_property_decorator_1.Prop({
@@ -2704,18 +2729,54 @@ var PornstarsList = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.translations = translator_js_1.default.getPackage('pornstars_list');
         _this.requestedText = '';
+        _this.displayedPornstars = {};
         return _this;
     }
+    PornstarsList.prototype.created = function () {
+        this.displayedPornstars = this.allPornstarsNickNames;
+    };
+    PornstarsList.prototype.findPornstar = function (nicknameSelectedByUser) {
+        alert("odpaliłem to co chcesz");
+        nicknameSelectedByUser = nicknameSelectedByUser.toLowerCase();
+        var results = this.allPornstarsNickNames.filter(function filterPornstarList(nickname) {
+            nickname = nickname.toLowerCase();
+            return nickname.includes(nicknameSelectedByUser);
+        });
+        this.displayedPornstars = results;
+    };
     PornstarsList.prototype.getPornstarImageFilePath = function (pornstarNickname) {
         var pornstarFileName = pornstarNickname.replace(/ /g, '_');
         return "/images/decoration/pornstars/profile-small/" + pornstarFileName + ".jpg";
     };
+    Object.defineProperty(PornstarsList.prototype, "hintsList", {
+        get: function () {
+            if (!this.requestedText) {
+                return [];
+            }
+            var keyword = this.requestedText.toLowerCase();
+            var numberOfAcceptedResults = 0;
+            var hints = [];
+            for (var _i = 0, _a = this.allPornstarsNickNames; _i < _a.length; _i++) {
+                var nickname = _a[_i];
+                if (nickname.toLowerCase().includes(keyword)) {
+                    ++numberOfAcceptedResults;
+                    hints.push(nickname);
+                    if (numberOfAcceptedResults === 10) {
+                        break;
+                    }
+                }
+            }
+            return hints;
+        },
+        enumerable: false,
+        configurable: true
+    });
     __decorate([
         vue_property_decorator_1.Prop({
             type: Array,
             required: true,
         })
-    ], PornstarsList.prototype, "pornstarsNickNames", void 0);
+    ], PornstarsList.prototype, "allPornstarsNickNames", void 0);
     PornstarsList = __decorate([
         vue_property_decorator_1.Component({ components: {
                 HintedSearchField: hinted_search_field_vue_1.default
@@ -3148,7 +3209,10 @@ var render = function() {
     "div",
     {
       staticClass: "search-field-container",
-      class: { "focused-input-container": _vm.focus }
+      class: {
+        "focused-input-container": _vm.focus,
+        "top-corners-rounded-container": _vm.hintsAreDisplayed
+      }
     },
     [
       _c("label", {
@@ -3157,17 +3221,16 @@ var render = function() {
         domProps: { textContent: _vm._s(_vm.description) }
       }),
       _vm._v(" "),
-      _vm._m(0),
+      _c(
+        "div",
+        {
+          staticClass: "icon-container",
+          class: { "top-left-corner-rounded": _vm.hintsAreDisplayed }
+        },
+        [_c("span", { staticClass: "fas fa-search magnifier-icon" })]
+      ),
       _vm._v(" "),
       _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.value,
-            expression: "value"
-          }
-        ],
         staticClass: "search-value",
         attrs: {
           placeholder: _vm.placeholderText,
@@ -3176,39 +3239,43 @@ var render = function() {
         },
         domProps: { value: _vm.value },
         on: {
-          input: [
-            function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.value = $event.target.value
-            },
-            _vm.emitValue
-          ],
-          focusout: _vm.toggleFocus,
-          focus: _vm.toggleFocus
+          focus: _vm.toggleFocus,
+          focusout: function($event) {
+            return _vm.toggleFocus(true)
+          },
+          input: _vm.emitTypedInValue
         }
       }),
       _vm._v(" "),
       _c("button", {
         staticClass: "search-button",
+        class: { "top-right-corner-rounded": _vm.hintsAreDisplayed },
         domProps: { textContent: _vm._s(_vm.translations["search"]) }
       }),
       _vm._v(" "),
-      _c("ul", { staticClass: "hints-list" })
+      _c(
+        "ul",
+        {
+          staticClass: "hints-list",
+          class: { "visible-hints-list": _vm.hintsAreDisplayed }
+        },
+        _vm._l(_vm.hints, function(hint) {
+          return _c("li", {
+            staticClass: "hint",
+            domProps: { textContent: _vm._s(hint) },
+            on: {
+              click: function($event) {
+                return _vm.selectHintFromList(hint)
+              }
+            }
+          })
+        }),
+        0
+      )
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon-container" }, [
-      _c("span", { staticClass: "fas fa-search magnifier-icon" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -4512,8 +4579,10 @@ var render = function() {
         _c("hinted-search-field", {
           attrs: {
             description: _vm.translations["search_field_description"],
+            hints: _vm.hintsList,
             "placeholder-text": _vm.translations["search_field_placeholder"]
           },
+          on: { valueInHintedSearchFieldHasBeenChosen: _vm.findPornstar },
           model: {
             value: _vm.requestedText,
             callback: function($$v) {
@@ -4529,7 +4598,7 @@ var render = function() {
     _c(
       "ul",
       { staticClass: "pornstars-list" },
-      _vm._l(_vm.pornstarsNickNames, function(pornstarNickname) {
+      _vm._l(_vm.displayedPornstars, function(pornstarNickname) {
         return _c("li", { staticClass: "pornstar-preview" }, [
           _c("a", { staticClass: "pornstar-profile-link" }, [
             _c("img", {

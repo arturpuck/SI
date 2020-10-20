@@ -158,14 +158,10 @@
 .pornstars-list-main-header {
   font-size: 1.5vw;
   font-family: "Exo 2", sans-serif;
-  width: 80%;
   min-width: 300px;
-  margin: 0 auto;
   padding: 2vw;
   text-align: center;
   color: white;
-  background-image: url("/images/decoration/pornstars/pornstars-profiles/dupeczki.jpg");
-  background-size: cover;
 }
 
 @media (max-width: 1200px) {

@@ -11,14 +11,10 @@
 
 .pornstars-list-main-header{
   @include responsive-font(1.5vw,17px);
-  width: 80%;
   min-width:300px;
-  margin: 0 auto;
   padding:2vw;
   text-align:center;
   color:white;
-  background-image: url('/images/decoration/pornstars/pornstars-profiles/dupeczki.jpg');
-  background-size:cover;
 }
 
 .header-icon{

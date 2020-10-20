@@ -4,10 +4,12 @@
      <hinted-search-field
     v-model="requestedText"
     v-bind:description="translations['search_field_description']"
+    v-bind:hints="hintsList"
+    v-on:valueInHintedSearchFieldHasBeenChosen="findPornstar"
     v-bind:placeholder-text="translations['search_field_placeholder']"/>
   </div>
     <ul class="pornstars-list">
-      <li v-for="pornstarNickname in pornstarsNickNames" class="pornstar-preview">
+      <li v-for="pornstarNickname in displayedPornstars" class="pornstar-preview">
          <a class="pornstar-profile-link">
            <img class="pornstar-preview-image" v-bind:src="getPornstarImageFilePath(pornstarNickname)"/>
            <span v-text="pornstarNickname" class="pornstar-nick-name"></span>
@@ -30,14 +32,53 @@
     @Prop({
             type: Array,
             required: true,
-        }) readonly pornstarsNickNames: object;
+        }) readonly allPornstarsNickNames: Array<string>;
 
     private translations: Object = Translator.getPackage('pornstars_list');
     private requestedText: string = '';
+    private displayedPornstars: Object = {};
+
+    created(){
+       this.displayedPornstars = this.allPornstarsNickNames;
+    }
+
+    findPornstar(nicknameSelectedByUser:string){
+      alert("odpaliłem to co chcesz");
+       nicknameSelectedByUser = nicknameSelectedByUser.toLowerCase();
+
+        const results = this.allPornstarsNickNames.filter(function filterPornstarList(nickname){
+             nickname = nickname.toLowerCase();
+             return nickname.includes(nicknameSelectedByUser);
+        });
+        this.displayedPornstars = results;
+    }
 
     getPornstarImageFilePath(pornstarNickname:string) : string{
       const pornstarFileName = pornstarNickname.replace(/ /g, '_');
       return `/images/decoration/pornstars/profile-small/${pornstarFileName}.jpg`;
+    }
+
+    get hintsList() : Array<string> {
+      
+         if(!this.requestedText){
+            return [];
+         }
+         const keyword = this.requestedText.toLowerCase();
+         let numberOfAcceptedResults = 0;
+         let hints = [];
+
+         for(const nickname of this.allPornstarsNickNames){
+
+             if(nickname.toLowerCase().includes(keyword)){
+                  ++numberOfAcceptedResults;
+                  hints.push(nickname);
+                  if(numberOfAcceptedResults === 10){
+                    break;
+                  }
+              }
+         }
+      
+         return hints;
     }
  
   }
@@ -82,7 +123,7 @@
      border-radius: 7px;
      margin:6px;
      box-shadow: 2px 2px 2px 2px black;
-     border: 2px solid #b52913;
+     border: 2px solid silver;
      &:hover{
         filter: contrast(130%)
      }
