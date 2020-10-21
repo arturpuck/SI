@@ -11,4 +11,9 @@ Class PornstarsRepository extends BaseRepository{
         $this->query = $this->query->orderBy('nickname', $direction);
         return $this;
     }
+
+    public function filterByNickName(string $nickname) : PornstarsRepository{
+        $this->query = $this->query->where('nickname', $nickname);
+        return $this;
+    }
 }

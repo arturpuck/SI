@@ -5,9 +5,9 @@
       <span class="fas fa-search magnifier-icon"></span>
    </div>
    <input v-bind:placeholder="placeholderText" v-on:focus="toggleFocus" v-on:focusout="toggleFocus(true)" v-bind:value="value" v-on:input="emitTypedInValue"  id="hinted-search-text" type="search" class="search-value"/>
-   <button v-text="translations['search']" v-bind:class="{'top-right-corner-rounded' : hintsAreDisplayed}" class="search-button"></button>
+   <button v-text="translations['search']" v-bind:class="{'top-right-corner-rounded' : hintsAreDisplayed}" v-on:click="startSearching(value)" class="search-button"></button>
    <ul v-bind:class="{'visible-hints-list' : hintsAreDisplayed}" class="hints-list">
-      <li v-for="hint in hints" v-text="hint" v-on:click="selectHintFromList(hint)" class="hint"></li>
+      <li v-for="hint in hints" v-text="hint" v-on:click="startSearching(hint)" class="hint"></li>
    </ul>
 </div>
 </template>
@@ -65,7 +65,7 @@
         this.emitUserTypesTextInSearchFiled(event.target.value);
     }
 
-    selectHintFromList(hint:string){
+    startSearching(hint:string){
         this.emitUserTypesTextInSearchFiled(hint);
         this.emitValueHasBeenChosen(hint);
     }

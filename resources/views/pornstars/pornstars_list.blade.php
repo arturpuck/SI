@@ -5,7 +5,10 @@
          {{__('pornstars_list_header')}}
         <span class="fas fa-star header-icon"></span>
     </h1>
-     <pornstars-list v-bind:all-pornstars-nick-names="{{json_encode($pornstarsNickNames,true)}}">
+     <pornstars-list 
+        v-bind:all-pornstars-nick-names="{{json_encode($pornstarsNickNames,true)}}"
+        pornstar-profile-route="{{route('pornstars.profile')}}"
+      >
      </pornstars-list>
  </main>
 </x-base>

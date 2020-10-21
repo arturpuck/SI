@@ -30,6 +30,9 @@ Route::namespace('Pornstars')->name('pornstars.')->group(function(){
        
        Route::get('/gwiazdy-porno/lista', 'PornstarsController@getPornstarsList')
              ->name('list');
+       
+       Route::get('/gwiazda-porno/profil/{nickname?}', 'PornstarsController@showPornstarProfile')
+              ->name('profile');
 
 });
 
