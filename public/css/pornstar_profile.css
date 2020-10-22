@@ -145,3 +145,91 @@
   background-position: center;
   background-attachment: fixed;
 }
+
+.full-body {
+  background: #0c0c0c;
+}
+
+.pornstar-profile-container {
+  display: block;
+  margin: calc(30px + 2vw) auto 5px;
+  width: 80%;
+  min-width: 300px;
+  background: black;
+  border-radius: 10px 0 10px 10px;
+  overflow: hidden;
+}
+
+.pornstar-profile-image {
+  width: 240px;
+  height: 360px;
+  border-radius: 10px;
+  border: 2px solid silver;
+  box-shadow: 2px 2px 2px 2px black;
+  margin: 10px;
+}
+
+.pornstar-personal-data-container {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 10px 0 0 10px;
+}
+
+.pornstar-personal-data {
+  -webkit-box-flex: 100;
+          flex-grow: 100;
+  min-width: 150px;
+}
+
+.pornstar-nickname-header {
+  color: white;
+  font-size: 2vw;
+  font-family: Aldrich, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 7px 0;
+  background: #2f2d2d;
+}
+
+@media (max-width: 1200px) {
+  .pornstar-nickname-header {
+    font-size: 23px;
+  }
+}
+
+.pornstar-data-list-element {
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
+@media (max-width: 1200px) {
+  .pornstar-data-list-element {
+    font-size: 16px;
+  }
+}
+
+.pornstar-basic-data-list {
+  margin: 0;
+  padding: 5px;
+}
+
+.pornstar-data-key {
+  color: white;
+  font-weight: bold;
+}
+
+.pornstar-data-value {
+  color: white;
+}
+
+.pornstar-data-key-value-pair {
+  padding: 1px 0;
+}
+
+.pornstar-current-age {
+  margin: 0 5px;
+}

@@ -148,5 +148,10 @@
     "search_field_description" : "Wpisz pseudonim gwiazdy porno aby wyszukać odpowiedni profil",
     "search_field_placeholder" : "Wyszukaj po pseudonimie",
     "pornstar_profile_page_title" : "Profil gwiazdy porno o pseudonimie :",
-    "pornstar_profile_description" : "Poznaj bliżej historię gwiazdy porno - :nickname . Dowiesz się jak przebiegała jej kariera, ile ma lat i czy ma w cyckach sylikon. Możesz zostawić komentarz bez logowania się lub jeśli jesteś zalogowany ocenić całokształt"
+    "pornstar_profile_description" : "Poznaj bliżej historię gwiazdy porno - :nickname . Dowiesz się jak przebiegała jej kariera, ile ma lat i czy ma w cyckach sylikon. Możesz zostawić komentarz bez logowania się lub jeśli jesteś zalogowany ocenić całokształt",
+    "pornstar_profile_image_description" : "Gwiazda porno, kryjąca się pod pseudonimem - :nickname",
+    "true_name" : "Prawdziwe imię",
+    "pornstar_born_at" : "Data urodzenia",
+    "pornstar_current_age" : "Lat",
+    "pornstar_birth_place" : "Miejsce narodzin"
 }
