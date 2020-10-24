@@ -146,16 +146,26 @@
   background-attachment: fixed;
 }
 
+.neutral-link {
+  color: inherit;
+  text-decoration: none;
+  font: inherit;
+}
+
+.neutral-link:hover {
+  text-decoration: underline;
+}
+
 .full-body {
   background: #0c0c0c;
 }
 
 .pornstar-profile-container {
   display: block;
-  margin: calc(30px + 2vw) auto 5px;
-  width: 80%;
+  margin: calc(40px + 2vw) auto 5px;
+  width: 90%;
   min-width: 300px;
-  background: black;
+  background: #2f2d2d;
   border-radius: 10px 0 10px 10px;
   overflow: hidden;
 }
@@ -172,14 +182,54 @@
 .pornstar-personal-data-container {
   display: -webkit-box;
   display: flex;
-  flex-wrap: wrap;
   border-radius: 10px 0 0 10px;
+}
+
+@media (max-width: 750px) {
+  .pornstar-personal-data-container {
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+            justify-content: center;
+  }
 }
 
 .pornstar-personal-data {
   -webkit-box-flex: 100;
           flex-grow: 100;
   min-width: 150px;
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.pornstar-personal-data::-webkit-scrollbar {
+  width: 1.1vw;
+}
+
+@media (max-width: 1200px) {
+  .pornstar-personal-data::-webkit-scrollbar {
+    width: 15px;
+  }
+}
+
+.pornstar-personal-data::-webkit-scrollbar-track {
+  background: #131212;
+}
+
+.pornstar-personal-data::-webkit-scrollbar-thumb {
+  background: -webkit-gradient(linear, left top, left bottom, from(#942a08), to(#480404));
+  background: linear-gradient(#942a08, #480404);
+  border-radius: 0 0 5px 5px;
+}
+
+.pornstar-personal-data {
+  scrollbar-color: linear-gradient(#942a08, #480404) #131212;
+  scrollbar-width: 1.1vw;
+}
+
+@media (max-width: 1200px) {
+  .pornstar-personal-data {
+    scrollbar-width: 15px;
+  }
 }
 
 .pornstar-nickname-header {
@@ -189,7 +239,7 @@
   text-align: center;
   margin: 0;
   padding: 7px 0;
-  background: #2f2d2d;
+  background: black;
 }
 
 @media (max-width: 1200px) {
@@ -232,4 +282,53 @@
 
 .pornstar-current-age {
   margin: 0 5px;
+}
+
+.pornstar-data-icon {
+  color: #ef1854;
+}
+
+.pornstar-description {
+  padding: 5px;
+  margin: 0;
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
+  color: white;
+}
+
+@media (max-width: 1200px) {
+  .pornstar-description {
+    font-size: 16px;
+  }
+}
+
+.pornstar-profile-tabpanel {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 4px;
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: nowrap;
+  background: #131313;
+}
+
+.pornstar-profile-tab {
+  font-size: 1.4vw;
+  font-family: Aldrich, sans-serif;
+  padding: 1vw;
+  color: white;
+  text-align: center;
+  border-radius: 7px 7px 0 0;
+  cursor: pointer;
+  background: black;
+}
+
+@media (max-width: 1200px) {
+  .pornstar-profile-tab {
+    font-size: 19px;
+  }
+}
+
+.action-section {
+  background: #242229;
 }

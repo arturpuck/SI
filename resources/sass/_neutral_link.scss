@@ -1,0 +1,8 @@
+.neutral-link{
+    color: inherit;
+    text-decoration: none;
+    font: inherit;
+    &:hover{
+        text-decoration:underline;
+    }
+}

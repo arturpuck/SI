@@ -1,5 +1,5 @@
 <template>
-<div class="movie-box">
+<li class="movie-box">
     <a v-bind:href="movieURL" v-bind:style="{backgroundImage : mainImageURL}" class="movie-main-image">
         <time v-text="duration" class="movie-duration"></time>
     </a>
@@ -24,7 +24,7 @@
          <icon-polish-flag v-bind:title="iconDecription" v-if="isTranslatedToPolish"/>
       </div>
     </div>
-</div>
+</li>
 </template>
 
 <script>

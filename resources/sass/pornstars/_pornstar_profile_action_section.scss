@@ -1,0 +1,22 @@
+.pornstar-profile-tabpanel{
+    list-style-type: none;
+    margin:0;
+    padding:0 4px;
+    display:flex;
+    flex-wrap:nowrap;
+    background:#131313;
+}
+
+.pornstar-profile-tab{
+    @include responsive-font(1.4vw,19px, Aldrich);
+    padding:1vw;
+    color:white;
+    text-align: center;
+    border-radius:7px 7px 0 0;
+    cursor:pointer;
+    background:black;
+}
+
+.action-section{
+    background:#242229;
+}

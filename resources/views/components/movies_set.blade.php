@@ -2,7 +2,7 @@
   <movie-preview/>
 </fixed-shadow-container>
 
-<div class="movies-container">
+<ul class="movies-container">
     @foreach($movies->items() as $movie)
         <movie-box
             duration="{{$movie->duration}}"
@@ -17,7 +17,7 @@
             v-bind:id="{{$movie->id}}">
         </movie-box>
     @endforeach
-</div>
+</ul>
 
 @if($movies->hasPages())
    <x-links-container :elements="$movies"/></links-container>

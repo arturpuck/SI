@@ -12,10 +12,6 @@ class Movie extends Model
 {
     use HasFactory;
 
-    public $with = [
-      'pornstars'
-    ];
-
 
     public function getDurationAttribute($value){
         return Str::startsWith($value, "00") ? Str::substr($value,3,5) : $value;

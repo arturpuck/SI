@@ -160,6 +160,10 @@ export default{
 
         hinted_search_field : {
            search : "szukaj"
+        },
+
+        pornstar_action_section : {
+           
         }
 
     }

@@ -1,0 +1,94 @@
+@import '~sass/neutral_link';
+@import '~sass/nice_scrollbar';
+
+.full-body{
+    background: #0c0c0c;
+}
+
+.pornstar-profile-container{
+    display:block;
+    margin:calc(40px + 2vw) auto 5px;
+    width:90%;
+    min-width:300px;
+    background:#2f2d2d;
+    border-radius: 10px 0 10px 10px;
+    overflow: hidden;
+}
+
+.pornstar-profile-image{
+    width:240px;
+    height:360px;
+    border-radius:10px;
+    border: 2px solid silver;
+    box-shadow:2px 2px 2px 2px black;
+    margin:10px;
+  }
+
+  .pornstar-personal-data-container{
+      display:flex;
+      border-radius: 10px 0 0 10px;
+      @media(max-width:750px){
+          flex-wrap:wrap;
+          justify-content:center;
+      }
+
+  }
+
+  .pornstar-personal-data{
+      flex-grow:100;
+      min-width:150px;
+      max-height:380px;
+      overflow-y:auto;
+  }
+
+  @include nice-scrollbar('.pornstar-personal-data');
+
+  .pornstar-nickname-header{
+      color:white;
+      @include responsive-font(2vw,23px, Aldrich);
+      text-align: center;
+      margin:0;
+      padding:7px 0;
+      background: black;
+  }
+
+  .pornstar-data-list-element{
+      @include responsive-font();
+      margin:0;
+      padding:0;
+      display:inline;
+  }
+
+  .pornstar-basic-data-list{
+    margin:0;
+    padding:5px;
+  }
+
+  .pornstar-data-key{
+      color:white;
+      font-weight:bold;
+  }
+
+  .pornstar-data-value{
+      color:white;
+  }
+
+  .pornstar-data-key-value-pair{
+      padding:1px 0;
+  }
+
+  .pornstar-current-age{
+      margin:0 5px;
+  }
+
+  .pornstar-data-icon{
+      color:#ef1854;
+  }
+
+.pornstar-description{
+    padding:5px;
+    margin:0;
+    @include responsive-font();
+    color:white;
+}
+
