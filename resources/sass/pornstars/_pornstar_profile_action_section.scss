@@ -1,7 +1,9 @@
+@import '~sasscomponent/movies/movies_container';
+
 .pornstar-profile-tabpanel{
     list-style-type: none;
     margin:0;
-    padding:0 4px;
+    padding: 9px 0 0 12px;
     display:flex;
     flex-wrap:nowrap;
     background:#131313;
@@ -18,5 +20,22 @@
 }
 
 .action-section{
-    background:#242229;
+    border-top: 1px solid transparent;
+}
+
+.movies-container{
+    margin-top:15px;
+}
+
+.active-tab{
+   background: #2f2d2d;
+}
+
+.rank-section{
+    padding:5px;
+}
+
+.pornstar-votes-count{
+    @include responsive-font();
+    color:white;
 }

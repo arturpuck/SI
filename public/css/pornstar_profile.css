@@ -197,37 +197,40 @@
   -webkit-box-flex: 100;
           flex-grow: 100;
   min-width: 150px;
-  max-height: 380px;
+}
+
+.pornstar-scrollable-content {
+  max-height: 360px;
   overflow-y: auto;
 }
 
-.pornstar-personal-data::-webkit-scrollbar {
+.pornstar-scrollable-content::-webkit-scrollbar {
   width: 1.1vw;
 }
 
 @media (max-width: 1200px) {
-  .pornstar-personal-data::-webkit-scrollbar {
+  .pornstar-scrollable-content::-webkit-scrollbar {
     width: 15px;
   }
 }
 
-.pornstar-personal-data::-webkit-scrollbar-track {
+.pornstar-scrollable-content::-webkit-scrollbar-track {
   background: #131212;
 }
 
-.pornstar-personal-data::-webkit-scrollbar-thumb {
+.pornstar-scrollable-content::-webkit-scrollbar-thumb {
   background: -webkit-gradient(linear, left top, left bottom, from(#942a08), to(#480404));
   background: linear-gradient(#942a08, #480404);
   border-radius: 0 0 5px 5px;
 }
 
-.pornstar-personal-data {
+.pornstar-scrollable-content {
   scrollbar-color: linear-gradient(#942a08, #480404) #131212;
   scrollbar-width: 1.1vw;
 }
 
 @media (max-width: 1200px) {
-  .pornstar-personal-data {
+  .pornstar-scrollable-content {
     scrollbar-width: 15px;
   }
 }
@@ -302,10 +305,28 @@
   }
 }
 
+.movies-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 280px);
+  -webkit-box-pack: space-evenly;
+          justify-content: space-evenly;
+  grid-column-gap: 8px;
+  grid-row-gap: 10px;
+  margin-top: calc(20px + 3vw);
+  padding: 0;
+  list-style-type: none;
+}
+
+@media (max-width: 870px) {
+  .movies-container {
+    grid-template-columns: repeat(auto-fit, 232px);
+  }
+}
+
 .pornstar-profile-tabpanel {
   list-style-type: none;
   margin: 0;
-  padding: 0 4px;
+  padding: 9px 0 0 12px;
   display: -webkit-box;
   display: flex;
   flex-wrap: nowrap;
@@ -330,5 +351,29 @@
 }
 
 .action-section {
-  background: #242229;
+  border-top: 1px solid transparent;
+}
+
+.movies-container {
+  margin-top: 15px;
+}
+
+.active-tab {
+  background: #2f2d2d;
+}
+
+.rank-section {
+  padding: 5px;
+}
+
+.pornstar-votes-count {
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
+  color: white;
+}
+
+@media (max-width: 1200px) {
+  .pornstar-votes-count {
+    font-size: 16px;
+  }
 }

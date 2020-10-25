@@ -37,11 +37,16 @@
   .pornstar-personal-data{
       flex-grow:100;
       min-width:150px;
-      max-height:380px;
-      overflow-y:auto;
   }
 
-  @include nice-scrollbar('.pornstar-personal-data');
+  .pornstar-scrollable-content{
+    max-height:360px;
+    overflow-y:auto;
+  }
+
+  @include nice-scrollbar('.pornstar-scrollable-content');
+
+
 
   .pornstar-nickname-header{
       color:white;
