@@ -31,11 +31,26 @@
    background: #2f2d2d;
 }
 
-.rank-section{
-    padding:5px;
+.pornstar-votes-data{
+    @include responsive-font(1.7vw,22px);
+    color:white;
 }
 
-.pornstar-votes-count{
+.pornstar-current-rating{
+    padding:5px;
+    text-align: center;
+}
+
+.rate-container{
+    text-align: center;
+    padding:0.8vw;
+    background:black;
+}
+
+.no-votes-info{
+    background:black;
     @include responsive-font();
+    text-align:center;
     color:white;
+    padding:5px;
 }

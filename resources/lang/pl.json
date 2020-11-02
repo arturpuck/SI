@@ -163,5 +163,7 @@
     "movies" : "Filmy",
     "comments" : "Komentarze",
     "ranking" : "Ranking",
-    "current_number_of_votes" : "Liczba oddanych głosów"
+    "current_number_of_votes" : "Liczba oddanych głosów",
+    "votes_average" : "Średnia głosów",
+    "this_pornstar_has_no_votes" : "Na tę gwiazdę nikt jeszcze nie zagłosował"
 }

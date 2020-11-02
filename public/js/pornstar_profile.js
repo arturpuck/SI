@@ -1164,7 +1164,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".star-rate-container {\n  padding: 1vw;\n  display: -webkit-inline-box;\n  display: inline-flex;\n  flex-wrap: nowrap;\n}\n.star-rate {\n  width: 2vw;\n  height: 2vw;\n  background: white;\n  -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);\n          clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);\n}\n@media (max-width: 1200px) {\n.star-rate {\n    width: 20px;\n    height: 20px;\n}\n}\n.selected-star-rate {\n  background: gold;\n}", ""]);
+exports.push([module.i, ".rate-value {\n  padding: 0 5px 5px;\n  text-align: center;\n  color: white;\n  font-size: 1.8vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.rate-value {\n    font-size: 24px;\n}\n}\n.star-rate-all {\n  display: inline-block;\n}\n.star-rate-container {\n  padding: 1vw;\n  display: -webkit-inline-box;\n  display: inline-flex;\n  flex-wrap: nowrap;\n}\n.star-rate {\n  width: 2.2vw;\n  height: 2.2vw;\n  margin: 0 8px;\n  min-width: 20px;\n  min-height: 20px;\n  background: white;\n  -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);\n          clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);\n}\n@media (max-width: 500px) {\n.star-rate {\n    margin: 0 3px;\n}\n}\n.completly-gold-star-rate {\n  background: gold;\n}\n.half-gold-star-rate {\n  background: -webkit-gradient(linear, left top, right top, from(gold), color-stop(50%, gold), color-stop(50%, white), to(white));\n  background: linear-gradient(to right, gold 0%, gold 50%, white 50%, white 100%);\n}", ""]);
 
 // exports
 
@@ -2900,8 +2900,23 @@ var StarRating = /** @class */ (function (_super) {
         return _this;
     }
     StarRating.prototype.valueHasBeenSelected = function (starNumber) {
-        this.selectedValue = starNumber;
-        this.$emit('starRateHasBeenSelected', starNumber);
+        if (!this.fixedValue) {
+            this.selectedValue = starNumber;
+            this.$emit('starRateHasBeenSelected', starNumber);
+        }
+    };
+    StarRating.prototype.getStarColorClassName = function (starNumber) {
+        var differenceBetweenSelectedValueAndStarIndex = this.selectedValue - starNumber;
+        if (differenceBetweenSelectedValueAndStarIndex >= 0) {
+            return 'completly-gold-star-rate';
+        }
+        if ((differenceBetweenSelectedValueAndStarIndex < 0) && (differenceBetweenSelectedValueAndStarIndex >= -0.5)) {
+            return 'completly-gold-star-rate';
+        }
+        if ((differenceBetweenSelectedValueAndStarIndex < -0.5) && (differenceBetweenSelectedValueAndStarIndex > -1)) {
+            return 'half-gold-star-rate';
+        }
+        return '';
     };
     StarRating.prototype.mounted = function () {
         this.selectedValue = this.initialValue;
@@ -2920,6 +2935,13 @@ var StarRating = /** @class */ (function (_super) {
             default: 0
         })
     ], StarRating.prototype, "initialValue", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop({
+            type: Boolean,
+            required: false,
+            default: false
+        })
+    ], StarRating.prototype, "fixedValue", void 0);
     StarRating = __decorate([
         vue_property_decorator_1.Component
     ], StarRating);
@@ -4845,23 +4867,38 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "star-rate-container" },
-    _vm._l(10, function(starNumber) {
-      return _c("div", {
-        key: starNumber,
-        staticClass: "star-rate",
-        class: { "selected-star-rate": starNumber <= _vm.selectedValue },
-        on: {
-          click: function($event) {
-            return _vm.valueHasBeenSelected(starNumber)
+  return _c("div", { staticClass: "star-rate-all" }, [
+    _c(
+      "div",
+      { staticClass: "star-rate-container" },
+      _vm._l(_vm.starCount, function(starNumber) {
+        return _c("div", {
+          key: starNumber,
+          staticClass: "star-rate",
+          class: [_vm.getStarColorClassName(starNumber)],
+          on: {
+            click: function($event) {
+              return _vm.valueHasBeenSelected(starNumber)
+            }
           }
+        })
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _c("div", {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: _vm.selectedValue,
+          expression: "selectedValue"
         }
-      })
-    }),
-    0
-  )
+      ],
+      staticClass: "rate-value",
+      domProps: { textContent: _vm._s(_vm.selectedValue) }
+    })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

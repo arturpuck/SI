@@ -87,11 +87,22 @@
        </ul>
      </section>
      <section id="rank-tab" v-show="pornstarRankingTabIsActive" class="action-section rank-section">
-      <div class="current-rating">
-         <span class="pornstar-votes-count">{{__('current_number_of_votes')}} : </span>
-         <span class="pornstar-votes-count">{{$pornstar->votes_number}}</span>
-         <star-rating></star-rating>
-      </div>
+     @if($pornstar->votes_number > 0)
+         <div class="current-rating">
+           <div class="pornstar-current-rating">
+               <span class="pornstar-votes-data">{{__('current_number_of_votes')}} : </span>
+               <span class="pornstar-votes-data">{{$pornstar->votes_number}}</span>
+            </div>
+            <div class="rate-container">
+                <div class="pornstar-votes-data">{{__('votes_average')}}</div>
+                <star-rating v-bind:initial-value="{{$pornstar->votes_average}}" v-bind:fixed-value="true"></star-rating>
+            </div>  
+         </div>
+      @else
+        <div class="no-votes-info">
+           {{__('this_pornstar_has_no_votes')}}
+        </div>
+      @endif
      </section>
    </main>
 </x-base>

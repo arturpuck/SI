@@ -27,4 +27,8 @@ class Pornstar extends Model
     public function movies(){
         return $this->belongsToMany(Movie::class, 'movie_has_pornstar');
     }
+
+    public function getVotesAverageAttribute():float{
+        return round(($this->votes_summary / $this->votes_number),2);
+    }
 }

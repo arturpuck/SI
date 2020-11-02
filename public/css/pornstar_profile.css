@@ -362,18 +362,40 @@
   background: #2f2d2d;
 }
 
-.rank-section {
-  padding: 5px;
-}
-
-.pornstar-votes-count {
-  font-size: 1.2vw;
+.pornstar-votes-data {
+  font-size: 1.7vw;
   font-family: "Exo 2", sans-serif;
   color: white;
 }
 
 @media (max-width: 1200px) {
-  .pornstar-votes-count {
+  .pornstar-votes-data {
+    font-size: 22px;
+  }
+}
+
+.pornstar-current-rating {
+  padding: 5px;
+  text-align: center;
+}
+
+.rate-container {
+  text-align: center;
+  padding: 0.8vw;
+  background: black;
+}
+
+.no-votes-info {
+  background: black;
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
+  text-align: center;
+  color: white;
+  padding: 5px;
+}
+
+@media (max-width: 1200px) {
+  .no-votes-info {
     font-size: 16px;
   }
 }
