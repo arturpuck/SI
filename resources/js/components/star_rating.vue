@@ -3,7 +3,7 @@
   <div class="star-rate-container">
     <div v-for="starNumber in starCount" v-bind:key="starNumber" v-bind:class="[getStarColorClassName(starNumber)]" v-on:click="valueHasBeenSelected(starNumber)" class="star-rate"></div>
   </div>
-  <div v-show="selectedValue" v-text="selectedValue" class="rate-value"></div>
+  <div v-if="showNumber" v-text="selectedValue" class="rate-value"></div>
 </div>
 </template>
 
@@ -32,6 +32,12 @@
             required: false,
             default:false
         }) readonly fixedValue: boolean;
+
+    @Prop({
+            type: Boolean,
+            required: false,
+            default:false
+        }) readonly showNumber: boolean;
     
     valueHasBeenSelected(starNumber){
 
@@ -76,7 +82,7 @@
   padding:0 5px 5px;
   text-align:center;
   color:white;
-  @include responsive-font(1.8vw,24px);
+  @include responsive-font(1.4vw,20px);
 }
 
 .star-rate-all{

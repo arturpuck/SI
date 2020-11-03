@@ -32,8 +32,9 @@
 }
 
 .pornstar-votes-data{
-    @include responsive-font(1.7vw,22px);
+    @include responsive-font(1.4vw,20px);
     color:white;
+    text-align: center;
 }
 
 .pornstar-current-rating{
@@ -43,7 +44,7 @@
 
 .rate-container{
     text-align: center;
-    padding:0.8vw;
+    padding:4px;
     background:black;
 }
 
@@ -53,4 +54,29 @@
     text-align:center;
     color:white;
     padding:5px;
+}
+
+.unauthenticated-users-info{
+    padding:5px;
+    text-align: center;
+    color:white;
+    @include responsive-font(1.5vw,21px);
+    background: linear-gradient(#ea1313, #520202);
+}
+
+.voter-icon{
+    color:white;
+    margin:0 5px;
+}
+
+.user-vote-element{
+    min-width:100px;
+}
+
+.user-vote-container{
+    background:#9c1a31;
+    display:flex;
+    align-items: center;
+    padding: 5px;
+    justify-content: center;
 }

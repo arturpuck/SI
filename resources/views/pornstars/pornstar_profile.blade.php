@@ -92,9 +92,10 @@
            <div class="pornstar-current-rating">
                <span class="pornstar-votes-data">{{__('current_number_of_votes')}} : </span>
                <span class="pornstar-votes-data">{{$pornstar->votes_number}}</span>
+               <span class="fas fa-vote-yea voter-icon"></span>
             </div>
             <div class="rate-container">
-                <div class="pornstar-votes-data">{{__('votes_average')}}</div>
+                <div class="pornstar-votes-data">{{__('votes_average')}} : {{$pornstar->votes_average}}</div>
                 <star-rating v-bind:initial-value="{{$pornstar->votes_average}}" v-bind:fixed-value="true"></star-rating>
             </div>  
          </div>
@@ -102,6 +103,18 @@
         <div class="no-votes-info">
            {{__('this_pornstar_has_no_votes')}}
         </div>
+      @endif
+      @if(Auth::check())
+         <div class="user-vote-container">
+            <div class="pornstar-votes-data">{{__('your_rate')}} : </div>
+            <div class="user-vote-element">
+               <described-select name="pornstar_rate" initial-value="1" v-bind:visible-options-list="[1,2,3,4,5,6,7,8,9,10]"></described-select>
+            </div>
+         </div>
+      @else
+         <div class="unauthenticated-users-info">
+             {{__('you_have_to_be_loged_in_to_vote')}} <span class="fas fa-user-lock"></span>
+         </div>
       @endif
      </section>
    </main>

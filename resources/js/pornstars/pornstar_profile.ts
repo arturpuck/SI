@@ -5,12 +5,14 @@ import MovieBox from '@jscomponents/movies/movie_box.vue';
 import MoviePreview from '@jscomponents/movies/movie_preview.vue';
 import StarRating from '@jscomponents/star_rating.vue';
 import {PornstarProfileTab}  from '@js/enum/pornstar_profile_tab';
+import DescribedSelect from '@jscomponents/form_controls/described_select.vue';
 
 const Vue = VueConstructor.build();
 Vue.component('fixed-shadow-container', FixedShadowContainer);
 Vue.component('movie-box', MovieBox);
 Vue.component('movie-preview', MoviePreview);
 Vue.component('star-rating', StarRating);
+Vue.component('described-select', DescribedSelect);
 
 new Vue({
     el: '#app',

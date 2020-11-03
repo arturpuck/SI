@@ -12,7 +12,7 @@
 
 <style lang="scss" scoped>
 
-@import'../../../sass/fonts';
+@import '~sass/fonts';
 
 .accept-button
 {
