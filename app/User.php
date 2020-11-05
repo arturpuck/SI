@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Http\Requests\User\ChangeUserPasswordRequest;
 use App\Http\Requests\User\ChangeOtherUserSettingsRequest;
+use App\Http\Requests\Pornstars\RatePornstarRequest;
+use App\PornstarRate;
 
 class User extends Authenticatable
 {
@@ -142,5 +144,26 @@ class User extends Authenticatable
           $data = $request->only(self::SETTINGS_COLUMNS);
           $this->update($data);
           return response('success', 200)->header('Content-Type', 'text/plain');
+    }
+
+    public function ratePornstar(RatePornstarRequest $request) : Response{
+
+        try{
+            PornstarRate::updateOrCreate([
+                'user_id' => $this->id,
+                'pornstar_id' => $request->get('pornstar_id')
+            ],
+            [
+              'rate' => $request->get('rate')
+            ]);
+
+            return response('success', 200)->header('Content-Type', 'text/plain');
+        }
+        catch(\Exception $exception){
+            return response($exception->getMessage(), 500)->header('Content-Type', 'text/plain');
+            return response('the_data_looks_ok_but_an_unexpected_server_error_occured', 500)->header('Content-Type', 'text/plain');
+        }
+
+        
     }
 }

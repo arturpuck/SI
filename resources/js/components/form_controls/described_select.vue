@@ -8,16 +8,23 @@
     <icon-confirm v-bind:attached-icon="true" v-if="iconConfirmationCanBeDisplayed" v-show="displayIconConfirmation"/>
 	<span class="select-description"><slot></slot></span>
 	<select v-bind:name="name" ref="select_value" v-model="inputValue" class="described-select">
-            <option v-for="(option, index) in visibleOptionsList" v-bind:value="optionValues[index]">{{option}}</option>
+            <option v-for="(option, index) in visibleOptionsList" v-bind:value="optionsValuesInternal[index]">{{option}}</option>
 	</select>
 </label>
 </div>
 </template>
 
 <script>
+import IconStop from '@jscomponents-decoration/icon_stop.vue';
+import IconConfirm from  '@jscomponents-decoration/icon_confirm.vue';
 
 	export default {
         name: 'described-select',
+
+        components: {
+            IconStop,
+            IconConfirm
+        },
 
         data() {
 		 	return {
@@ -27,7 +34,8 @@
                  iconErrorCanBeDisplayed : undefined,
                  iconConfirmationCanBeDisplayed : undefined,
                  redBorderCanBeDisplayed : undefined,
-                 greenBorderCanBeDisplayed : undefined
+                 greenBorderCanBeDisplayed : undefined,
+                 optionsValuesInternal : undefined
              };
              
          },
@@ -58,7 +66,7 @@
              this.iconConfirmationCanBeDisplayed = (this.confirmationIconAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
              this.redBorderCanBeDisplayed = (this.redBorderAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
              this.greenBorderCanBeDisplayed = (this.greenBorderAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
-             this.optionValues = (this.optionValues === undefined) ? this.visibleOptionsList : this.optionValues;
+             this.optionsValuesInternal = (this.optionValues === undefined) ? this.visibleOptionsList : this.optionValues;
              this.valueOK = this.initialOk;   
         },
         

@@ -163,7 +163,7 @@ export default{
         },
 
         pornstar_action_section : {
-           
+           must_choose_integer_between_1_and_10 : "Wybierz wartość między 1 a 10"
         }
 
     }

@@ -33,6 +33,8 @@ Route::namespace('Pornstars')->name('pornstars.')->group(function(){
        
        Route::get('/gwiazda-porno/profil/{nickname?}', 'PornstarsController@showPornstarProfile')
               ->name('profile');
+       
+       Route::put('/rate/pornstar', 'PornstarsController@ratePornstar')->middleware('auth');
 
 });
 

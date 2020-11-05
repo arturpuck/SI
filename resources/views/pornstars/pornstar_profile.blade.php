@@ -105,12 +105,21 @@
         </div>
       @endif
       @if(Auth::check())
+      <div class="voting-all">
+         <span class="fas fa-person-booth voting-person-icon"></span>
          <div class="user-vote-container">
             <div class="pornstar-votes-data">{{__('your_rate')}} : </div>
             <div class="user-vote-element">
-               <described-select name="pornstar_rate" initial-value="1" v-bind:visible-options-list="[1,2,3,4,5,6,7,8,9,10]"></described-select>
+               <described-select data-pornstar-id="{{$pornstar->id}}"
+                  name="pornstar_rate"
+                  v-bind:complete-confirmation-display-available="true"
+                  v-bind:on-change-callback="ratePornstar"
+                  initial-value="-wybierz-"
+                  v-bind:option-values="['-wybierz-',1,2,3,4,5,6,7,8,9,10]"
+                  v-bind:visible-options-list="['-wybierz-',1,2,3,4,5,6,7,8,9,10]"></described-select>
             </div>
          </div>
+      </div>
       @else
          <div class="unauthenticated-users-info">
              {{__('you_have_to_be_loged_in_to_vote')}} <span class="fas fa-user-lock"></span>

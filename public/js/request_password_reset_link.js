@@ -19231,7 +19231,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     hinted_search_field: {
       search: "szukaj"
     },
-    pornstar_action_section: {}
+    pornstar_action_section: {
+      must_choose_integer_between_1_and_10: "Wybierz wartość między 1 a 10"
+    }
   }), _pl)
 });
 

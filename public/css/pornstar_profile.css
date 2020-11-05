@@ -363,7 +363,7 @@
 }
 
 .pornstar-votes-data {
-  font-size: 1.4vw;
+  font-size: 1.8vw;
   font-family: "Exo 2", sans-serif;
   color: white;
   text-align: center;
@@ -371,7 +371,7 @@
 
 @media (max-width: 1200px) {
   .pornstar-votes-data {
-    font-size: 20px;
+    font-size: 25px;
   }
 }
 
@@ -427,12 +427,30 @@
 }
 
 .user-vote-container {
-  background: #9c1a31;
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
           align-items: center;
-  padding: 5px;
   -webkit-box-pack: center;
           justify-content: center;
+}
+
+.voting-person-icon {
+  color: white;
+  font-size: 5.5vw;
+  font-family: "Exo 2", sans-serif;
+  display: block;
+  padding: 6px;
+}
+
+@media (max-width: 1200px) {
+  .voting-person-icon {
+    font-size: 45px;
+  }
+}
+
+.voting-all {
+  text-align: center;
+  background: #9c1a31;
+  padding: 5px;
 }

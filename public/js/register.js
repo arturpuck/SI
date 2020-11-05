@@ -525,6 +525,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _jscomponents_decoration_icon_stop_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @jscomponents-decoration/icon_stop.vue */ "./resources/js/components/decoration/icon_stop.vue");
+/* harmony import */ var _jscomponents_decoration_icon_confirm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @jscomponents-decoration/icon_confirm.vue */ "./resources/js/components/decoration/icon_confirm.vue");
 //
 //
 //
@@ -541,8 +543,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'described-select',
+  components: {
+    IconStop: _jscomponents_decoration_icon_stop_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    IconConfirm: _jscomponents_decoration_icon_confirm_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
   data: function data() {
     return {
       valueOK: undefined,
@@ -551,7 +559,8 @@ __webpack_require__.r(__webpack_exports__);
       iconErrorCanBeDisplayed: undefined,
       iconConfirmationCanBeDisplayed: undefined,
       redBorderCanBeDisplayed: undefined,
-      greenBorderCanBeDisplayed: undefined
+      greenBorderCanBeDisplayed: undefined,
+      optionsValuesInternal: undefined
     };
   },
   computed: {
@@ -575,7 +584,7 @@ __webpack_require__.r(__webpack_exports__);
     this.iconConfirmationCanBeDisplayed = this.confirmationIconAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable;
     this.redBorderCanBeDisplayed = this.redBorderAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable;
     this.greenBorderCanBeDisplayed = this.greenBorderAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable;
-    this.optionValues = this.optionValues === undefined ? this.visibleOptionsList : this.optionValues;
+    this.optionsValuesInternal = this.optionValues === undefined ? this.visibleOptionsList : this.optionValues;
     this.valueOK = this.initialOk;
   },
   mounted: function mounted() {
@@ -5114,7 +5123,7 @@ var render = function() {
           _vm._l(_vm.visibleOptionsList, function(option, index) {
             return _c(
               "option",
-              { domProps: { value: _vm.optionValues[index] } },
+              { domProps: { value: _vm.optionsValuesInternal[index] } },
               [_vm._v(_vm._s(option))]
             )
           }),
@@ -20835,7 +20844,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     hinted_search_field: {
       search: "szukaj"
     },
-    pornstar_action_section: {}
+    pornstar_action_section: {
+      must_choose_integer_between_1_and_10: "Wybierz wartość między 1 a 10"
+    }
   }), _pl)
 });
 

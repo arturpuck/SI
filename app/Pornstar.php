@@ -31,4 +31,5 @@ class Pornstar extends Model
     public function getVotesAverageAttribute():float{
         return round(($this->votes_summary / $this->votes_number),2);
     }
+
 }

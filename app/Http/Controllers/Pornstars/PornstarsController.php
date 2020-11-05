@@ -7,6 +7,7 @@ use App\Pornstar;
 use App\Handlers\Pornstars\PornstarProfileHandler;
 use App\Repositories\PornstarsRepository;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Pornstars\RatePornstarRequest;
 
 
 class PornstarsController extends Controller
@@ -26,5 +27,9 @@ class PornstarsController extends Controller
 
         return view('pornstars.pornstar_profile')
                    ->with(['pornstar' => $pornstarProfileHandler->handle($request)]);
+    }
+
+    public function ratePornstar(RatePornstarRequest $request){
+        return \Auth::user()->ratePornstar($request);
     }
 }
