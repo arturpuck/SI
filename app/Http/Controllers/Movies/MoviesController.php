@@ -12,7 +12,7 @@ class MoviesController extends Controller
       
         $movies = $moviesRepository
                   ->select(['id', 'duration', 'title', 'views', 'is_translated_to_polish'])
-                  ->with('pornstars')
+                  ->with(['pornstars'])
                   ->chronological()
                   ->paginate(intval($request->pageNumber), route('movies.new'));
 

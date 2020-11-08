@@ -54,20 +54,20 @@
         </article>
      </section>
      <ul class="pornstar-profile-tabpanel" role="tabpanel">
-         <li class="pornstar-profile-tab" id="movies-tab" v-bind:class="{'active-tab' : pornstarMoviesTabIsActive}" v-on:click="changeTab" v-bind:aria-selected="pornstarMoviesTabIsActive" aria-controls="movies-tab">
+         <li class="pornstar-profile-tab" id="movies-tab" v-bind:class="{'active-tab' : pornstarMoviesTabIsActive}" v-on:click="changeTab" v-bind:aria-selected="pornstarMoviesTabIsActive" aria-controls="movies-section">
             <span class="fas fa-video"></span>
             {{__('movies')}}
          </li>
-         <li class="pornstar-profile-tab" id="comments-tab" v-bind:class="{'active-tab' : pornstarCommentsTabIsActive}" v-on:click="changeTab" v-bind:aria-selected="pornstarCommentsTabIsActive" aria-controls="comments-tab">
+         <li class="pornstar-profile-tab" id="comments-tab" v-bind:class="{'active-tab' : pornstarCommentsTabIsActive}" v-on:click="changeTab" v-bind:aria-selected="pornstarCommentsTabIsActive" aria-controls="comments-section">
             <span class="fas fa-comments"></span>
             {{__('comments')}}
          </li>
-         <li class="pornstar-profile-tab" id="rank-tab" v-bind:class="{'active-tab' : pornstarRankingTabIsActive}" v-on:click="changeTab" v-bind:aria-selected="pornstarRankingTabIsActive" aria-controls="ranking-tab">
+         <li class="pornstar-profile-tab" id="rank-tab" v-bind:class="{'active-tab' : pornstarRankingTabIsActive}" v-on:click="changeTab" v-bind:aria-selected="pornstarRankingTabIsActive" aria-controls="ranking-section">
             <span class="fas fa-level-up-alt"></span>
             {{__('ranking')}}
          </li>
       </ul>
-     <section id="movies-tab" v-show="pornstarMoviesTabIsActive" class="action-section">
+     <section id="movies-section" v-show="pornstarMoviesTabIsActive" class="action-section">
        <fixed-shadow-container v-show="showsPreview">
           <movie-preview/>
        </fixed-shadow-container>
@@ -86,12 +86,12 @@
          @endforeach
        </ul>
      </section>
-     <section id="rank-tab" v-show="pornstarRankingTabIsActive" class="action-section rank-section">
-     @if($pornstar->votes_number > 0)
+     <section id="ranking-section" v-show="pornstarRankingTabIsActive" class="action-section rank-section">
+     @if($pornstar->has_any_votes)
          <div class="current-rating">
            <div class="pornstar-current-rating">
                <span class="pornstar-votes-data">{{__('current_number_of_votes')}} : </span>
-               <span class="pornstar-votes-data">{{$pornstar->votes_number}}</span>
+               <span class="pornstar-votes-data">{{$pornstar->ammount_of_votes}}</span>
                <span class="fas fa-vote-yea voter-icon"></span>
             </div>
             <div class="rate-container">
@@ -100,25 +100,24 @@
             </div>  
          </div>
       @else
-        <div class="no-votes-info">
+        <div class="no-data-info">
            {{__('this_pornstar_has_no_votes')}}
         </div>
       @endif
       @if(Auth::check())
       <div class="voting-all">
          <span class="fas fa-person-booth voting-person-icon"></span>
-         <div class="user-vote-container">
-            <div class="pornstar-votes-data">{{__('your_rate')}} : </div>
+            <div class="pornstar-votes-data">{{__('your_rate')}}</div>
             <div class="user-vote-element">
-               <described-select data-pornstar-id="{{$pornstar->id}}"
-                  name="pornstar_rate"
-                  v-bind:complete-confirmation-display-available="true"
-                  v-bind:on-change-callback="ratePornstar"
-                  initial-value="-wybierz-"
-                  v-bind:option-values="['-wybierz-',1,2,3,4,5,6,7,8,9,10]"
-                  v-bind:visible-options-list="['-wybierz-',1,2,3,4,5,6,7,8,9,10]"></described-select>
+               <star-rating 
+                  v-bind:rated-element-id="{{$pornstar->id}}" 
+                  v-on:selected="ratePornstar"
+                     @if($pornstar->has_been_rated_by_current_user)
+                        v-bind:initial-value="{{$pornstar->current_user_rate}}"
+                     @endif 
+                  v-bind:show-number="true">
+               </star-rating>
             </div>
-         </div>
       </div>
       @else
          <div class="unauthenticated-users-info">
@@ -126,5 +125,21 @@
          </div>
       @endif
      </section>
+     <section id="comments-section" v-show="pornstarCommentsTabIsActive" class="action-section">
+       @if($pornstar->has_any_comments)
+
+       @else
+         <div class="no-data-info">
+            {{__('this_pornstar_has_no_comments')}}
+         </div>
+       @endif
+       <textarea-combo
+         v-bind:complete-validation-display-available="true"
+         v-bind:error-message-box-available="true"
+         v-bind:placeholder-text="translations['comment_text']">
+       </textarea-combo>
+       <accept-button>{{__('add_comment')}}</accept-button>
+     </section>
    </main>
+   <user-notification></user-notification>
 </x-base>

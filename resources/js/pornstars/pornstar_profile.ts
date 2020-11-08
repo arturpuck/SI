@@ -5,15 +5,19 @@ import MovieBox from '@jscomponents/movies/movie_box.vue';
 import MoviePreview from '@jscomponents/movies/movie_preview.vue';
 import StarRating from '@jscomponents/star_rating.vue';
 import {PornstarProfileTab}  from '@js/enum/pornstar_profile_tab';
-import DescribedSelect from '@jscomponents/form_controls/described_select.vue';
 import Translator from '@jsmodules/translator.js';
+import UserNotification from '@jscomponents/user_notification.vue'
+import TextAreaCombo from '@jscomponents-form-controls/textarea_combo.vue';
+import AcceptButton from '@jscomponents-form-controls/accept_button.vue';
 
 const Vue = VueConstructor.build();
 Vue.component('fixed-shadow-container', FixedShadowContainer);
 Vue.component('movie-box', MovieBox);
 Vue.component('movie-preview', MoviePreview);
 Vue.component('star-rating', StarRating);
-Vue.component('described-select', DescribedSelect);
+Vue.component('user-notification', UserNotification);
+Vue.component('textarea-combo', TextAreaCombo);
+Vue.component('accept-button', AcceptButton);
 
 new Vue({
     el: '#app',
@@ -29,25 +33,21 @@ new Vue({
    
    
     methods : {
-        changeTab(event){
+
+      changeTab(event){
            this.activeTab = event.target.id || event.target.parentElement.id;
-        },
+      },
 
-      async  ratePornstar(sender){
-          const rate = Number(sender.inputValue);
-          
-          try{
-            
+      showNotification(text, type="no-error"){
+        const header = type === "no-error" ? "information" : "error";
+        this.$root.$emit('showNotification', {notificationText : text, notificationType : type, headerText : header});
+     },
 
-            if(isNaN(rate) || rate < 1 || rate > 10  || !Number.isInteger(rate)){
-                 throw new Error('must_choose_integer_between_1_and_10');
-            }
-
-            const pornstarID = sender.$attrs['data-pornstar-id'];
-            
-            const data = {
-                pornstar_id : pornstarID,
-                rate : rate
+      async ratePornstar(data){
+          console.log(data);
+            const rateData = {
+                pornstar_id : data['pornstarID'],
+                rate : data['rate']
             };
 
             const requestData = {
@@ -56,28 +56,31 @@ new Vue({
                  'X-CSRF-TOKEN' : this.csrfToken,
                  'Content-type': 'application/json; charset=UTF-8'
               },
-              body : JSON.stringify(data)
+              body : JSON.stringify(rateData)
            };
 
+        try{
            const response = await fetch('/rate/pornstar', requestData);
 
               switch(response.status){
                 case 200:
-                  sender.showValueIsOK();
+                  this.showNotification('pornstar_has_been_rated')
+                break;
+
+                case 400:
+                  throw new Error('pornstar_rate_data_is_invalid');
                 break;
 
                 default:
-                  let errors = await response.json();
-                  console.log(errors);
+                  throw new Error('undefined_error');
                 break;
 
              }
 
           }
           catch(exception){
-            console.log(exception.message);
+            this.showNotification(exception.message, 'error');
           }
-          
       }
     },
 

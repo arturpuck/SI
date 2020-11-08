@@ -386,7 +386,7 @@
   background: black;
 }
 
-.no-votes-info {
+.no-data-info {
   background: black;
   font-size: 1.2vw;
   font-family: "Exo 2", sans-serif;
@@ -396,7 +396,7 @@
 }
 
 @media (max-width: 1200px) {
-  .no-votes-info {
+  .no-data-info {
     font-size: 16px;
   }
 }

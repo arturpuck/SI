@@ -27,8 +27,8 @@ Abstract Class BaseRepository{
       return $this;
   }
 
-  public function with(string $relation) : self{
-    $this->query->with($relation);
+  public function with(array $relations) : self{
+    $this->query = $this->query->with($relations);
     return $this;
 }
 }

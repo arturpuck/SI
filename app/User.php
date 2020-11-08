@@ -160,10 +160,9 @@ class User extends Authenticatable
             return response('success', 200)->header('Content-Type', 'text/plain');
         }
         catch(\Exception $exception){
-            return response($exception->getMessage(), 500)->header('Content-Type', 'text/plain');
             return response('the_data_looks_ok_but_an_unexpected_server_error_occured', 500)->header('Content-Type', 'text/plain');
         }
-
-        
+ 
     }
+
 }

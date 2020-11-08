@@ -122,6 +122,8 @@ export default{
     porn : "Porno",
     user_avatar_description : "Avatar użytkownika o nicku",
     hide : "Schowaj",
+    pornstar_has_been_rated : "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie.",
+    pornstar_rate_data_is_invalid : "Niepoprawne dane oceny lub gwiazdy",
     packages : {
         content_sidebar : {
           hide_side_bar_title : "Schowaj boczne menu",
@@ -148,7 +150,8 @@ export default{
          favourites_title : "Twoje ulubione filmy, gwiazdy itp",
          favourites_caption : "Ulubione",
          friends_caption : "Znajomi",
-         logout_caption : "Wyloguj"
+         logout_caption : "Wyloguj",
+         must_choose_integer_between_1_and_10 : "Należy wbrać wartość pomiędzy 1 a 10"
         },
 
         pornstars_list : {
@@ -158,12 +161,20 @@ export default{
            reset_search_button_caption : "Resetuj wyszukiwanie"
         },
 
+        pornstar_action_section : {
+           comment_text : "Treść komentarza"
+        },
+
         hinted_search_field : {
            search : "szukaj"
         },
 
-        pornstar_action_section : {
-           must_choose_integer_between_1_and_10 : "Wybierz wartość między 1 a 10"
+        star_rating : {
+           no_selected_value : "Nie wybrano oceny"
+        },
+
+        comment_component : {
+
         }
 
     }

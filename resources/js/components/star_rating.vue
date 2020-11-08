@@ -1,25 +1,34 @@
 <template>
 <div class="star-rate-all">
-  <div class="star-rate-container">
-    <div v-for="starNumber in starCount" v-bind:key="starNumber" v-bind:class="[getStarColorClassName(starNumber)]" v-on:click="valueHasBeenSelected(starNumber)" class="star-rate"></div>
+  <div v-on:mouseout="unsetHoverValue" class="star-rate-container">
+    <div v-for="starNumber in starCount"   v-bind:key="starNumber" v-on:mouseover="setHoverValue(starNumber)" v-bind:class="[getStarColorClassName(starNumber)]" v-on:click="valueHasBeenSelected(starNumber)" class="star-rate"></div>
   </div>
-  <div v-if="showNumber" v-text="selectedValue" class="rate-value"></div>
+  <div v-if="showNumber" v-text="displayedValue" class="rate-value"></div>
 </div>
 </template>
 
 <script lang="ts">
   import {Vue, Component, Prop} from 'vue-property-decorator';
+  import Translator from '@jsmodules/translator';
   
 @Component
   export default class StarRating extends Vue {
 
-    private selectedValue = 0;
+    private selectedValue:number = 0;
+    private valueOnHover:number = 0;
+    private translations = Translator.getPackage('star_rating');
 
     @Prop({
             type: Number,
             required: false,
             default:10
         }) readonly starCount: number;
+
+     @Prop({
+            type: Number,
+            required: false,
+            default:undefined
+        }) readonly ratedElementId: number;
 
     @Prop({
             type: Number,
@@ -38,18 +47,41 @@
             required: false,
             default:false
         }) readonly showNumber: boolean;
+
+    setHoverValue(starNumber:number){
+
+          if(!this.fixedValue){
+             this.valueOnHover = starNumber;
+          }  
+    }
+
+    unsetHoverValue(){
+      this.valueOnHover = 0;
+    }
+
+    get displayedValue():string | number{
+
+         if(!this.valueOnHover && !this.selectedValue){
+            return this.translations['no_selected_value'];
+         }
+       
+         return (this.valueOnHover == 0) ? this.selectedValue : this.valueOnHover;
+         
+    }
     
     valueHasBeenSelected(starNumber){
 
       if(!this.fixedValue){
          this.selectedValue = starNumber;
-         this.$emit('starRateHasBeenSelected', starNumber);
+         this.valueOnHover = starNumber;
+         this.$emit('selected', {rate: starNumber, pornstarID: this.ratedElementId});
       }
 
     }
 
     getStarColorClassName(starNumber:number):string{
-       const differenceBetweenSelectedValueAndStarIndex = this.selectedValue - starNumber;
+       const primaryValue = this.valueOnHover || this.selectedValue;
+       const differenceBetweenSelectedValueAndStarIndex = primaryValue - starNumber;
 
        if(differenceBetweenSelectedValueAndStarIndex >= 0){
          return 'completly-gold-star-rate';
@@ -82,7 +114,7 @@
   padding:0 5px 5px;
   text-align:center;
   color:white;
-  @include responsive-font(1.4vw,20px);
+  @include responsive-font(1.6vw,22px);
 }
 
 .star-rate-all{

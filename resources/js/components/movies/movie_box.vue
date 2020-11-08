@@ -28,8 +28,14 @@
 </template>
 
 <script>
+import IconPolishFlag from '@jscomponents-decoration/flags/icon_polish_flag.vue';
+
 	export default {
         name: 'movie-box',
+
+        components : {
+            IconPolishFlag
+        },
 
         data(){
             return {
