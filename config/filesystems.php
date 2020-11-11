@@ -15,6 +15,8 @@ return [
 
     'default' => env('FILESYSTEM_DRIVER', 'local'),
 
+    'avatar_directory' => env('AVATARS_DIRECTORY', '/images/decoration/users/avatars/'),
+
     /*
     |--------------------------------------------------------------------------
     | Default Cloud Filesystem Disk

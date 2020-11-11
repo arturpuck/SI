@@ -1,6 +1,6 @@
 <template>
    <div class="textarea-combo-container">
-        <label for="textarea-combo-message" class="message-label"><slot></slot></label>
+        <label for="textarea-combo-message" v-bind:class="{'phantom-label' : phantomLabel}" class="message-label"><slot></slot></label>
         <div class="textarea-wrapper">
             <icon-stop v-bind:attached-icon="true"  v-if="iconErrorCanBeDisplayed" v-show="displayIconError"/>
             <icon-confirm v-bind:attached-icon="true" v-if="iconConfirmationCanBeDisplayed" v-show="displayIconConfirmation"/>
@@ -184,6 +184,12 @@
                  required : false,
                  type : Number,
                  default : 6
+             },
+
+             phantomLabel : {
+                 required : false,
+                 type : Boolean,
+                 default : false
              }
 
 
@@ -206,6 +212,12 @@
     display: block;
     padding:3px 0px;
     @include responsive-font(1.4vw, 20px);
+}
+
+.phantom-label{
+    position:absolute;
+    top:-9999px;
+    left:0;
 }
 
 .textarea-combo-container{

@@ -17,6 +17,7 @@
 
 	export default {
         name: 'text-input-combo',
+
         data() {
 		 	return {
                  valueOK : undefined,
@@ -207,7 +208,6 @@
                  type : Boolean,
                  default : false
              }
-
 
          },
 

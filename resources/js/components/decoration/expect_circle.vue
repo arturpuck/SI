@@ -31,7 +31,7 @@
 
 <style lang="scss" scoped>
 
-@import'../../../sass/fonts';
+@import'~sass/fonts';
 
 .expect-circles-outer-container{
     display:inline-block;

@@ -9,6 +9,10 @@ import Translator from '@jsmodules/translator.js';
 import UserNotification from '@jscomponents/user_notification.vue'
 import TextAreaCombo from '@jscomponents-form-controls/textarea_combo.vue';
 import AcceptButton from '@jscomponents-form-controls/accept_button.vue';
+import RelativeShadowContainer from '@jscomponents/decoration/relative_shadow_container.vue';
+import ExpectCircle from '@jscomponents/decoration/expect_circle.vue';
+import IconStop from '@jscomponents-decoration/icon_stop.vue';
+import IconConfirm from '@jscomponents-decoration/icon_confirm.vue';
 
 const Vue = VueConstructor.build();
 Vue.component('fixed-shadow-container', FixedShadowContainer);
@@ -18,6 +22,10 @@ Vue.component('star-rating', StarRating);
 Vue.component('user-notification', UserNotification);
 Vue.component('textarea-combo', TextAreaCombo);
 Vue.component('accept-button', AcceptButton);
+Vue.component('relative-shadow-container', RelativeShadowContainer);
+Vue.component('expect-circle', ExpectCircle);
+Vue.component('icon-stop', IconStop);
+Vue.component('icon-confirm', IconConfirm);
 
 new Vue({
     el: '#app',
@@ -27,7 +35,8 @@ new Vue({
             showsPreview:false,
             activeTab : PornstarProfileTab.Movies,
             translations : null,
-            csrfToken:null
+            csrfToken:null,
+            addingCommentInProgress:false
         }
     },
    
@@ -81,6 +90,32 @@ new Vue({
           catch(exception){
             this.showNotification(exception.message, 'error');
           }
+      },
+
+      async addComment(){
+           this.addingCommentInProgress = true;
+      },
+
+      validateUnauthenticatedUserNickname(sender){
+         const value = sender.inputValue.trim();
+         
+         try{
+
+            if(value.length == 0){
+              throw new Error('the_nickname_is_missing');
+            }
+
+            if(value.length > 20){
+              throw new Error('the_nickname_exceeds_20_characters');
+            }
+         }
+         catch(error){
+            sender.showError(error.message);
+            return;
+         }
+
+         sender.resetValidation();
+         
       }
     },
 

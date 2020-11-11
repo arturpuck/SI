@@ -124,6 +124,8 @@ export default{
     hide : "Schowaj",
     pornstar_has_been_rated : "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie.",
     pornstar_rate_data_is_invalid : "Niepoprawne dane oceny lub gwiazdy",
+    the_nickname_is_missing : "Nie podano pseudonimu",
+    the_nickname_exceeds_20_characters : "Długość pseudonimu przekracza 20 znaków",
     packages : {
         content_sidebar : {
           hide_side_bar_title : "Schowaj boczne menu",
@@ -162,7 +164,8 @@ export default{
         },
 
         pornstar_action_section : {
-           comment_text : "Treść komentarza"
+           comment_text : "Treść komentarza",
+           adding_comment : "Dodaję komentarz"
         },
 
         hinted_search_field : {

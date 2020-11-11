@@ -18,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
         \Blade::component('components.decoration.icon_confirmation', 'icon-confirmation');
         \Blade::component('components.movies_set', 'movies-set');
         \Blade::component('components.links_container', 'links-container');
+        \Blade::component('components.decoration.authenticated_user_preview', 'authenticated-user-preview');
     }
 
     /**

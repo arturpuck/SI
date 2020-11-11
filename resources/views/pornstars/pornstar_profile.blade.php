@@ -133,12 +133,28 @@
             {{__('this_pornstar_has_no_comments')}}
          </div>
        @endif
-       <textarea-combo
-         v-bind:complete-validation-display-available="true"
-         v-bind:error-message-box-available="true"
-         v-bind:placeholder-text="translations['comment_text']">
-       </textarea-combo>
-       <accept-button>{{__('add_comment')}}</accept-button>
+         <div class="comment-container">
+            <relative-shadow-container v-show="addingCommentInProgress">
+               <expect-circle label="{{__('adding_comment')}}"></expect-circle>
+            </relative-shadow-container>
+            @if(Auth::check())
+               <x-authenticated-user-preview></x-authenticated-user-preview>
+            @else
+               <text-input-combo 
+               v-bind:complete-error-display-available="true"
+               v-bind:error-message-box-available="true"
+               v-bind:on-blur-callback="validateUnauthenticatedUserNickname"
+               name="unauthenticated_user_nickname">
+                  {{__('your_nickname')}} : 
+               </text-input-combo>
+            @endif
+            <textarea-combo placeholder-text="{{__('comment_text')}}" v-bind:phantom-label="true">
+               {{ __('comment_text')}}
+            </textarea-combo>
+            <div class="button-container">
+               <accept-button v-on:click.native="addComment">{{__('add_comment')}}</accept-button>
+            </div>
+         </div>
      </section>
    </main>
    <user-notification></user-notification>

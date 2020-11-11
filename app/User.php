@@ -73,7 +73,7 @@ class User extends Authenticatable
 
 
     public function getAvatarFilePathAttribute(){
-        $avatarsDirectory = env('AVATARS_DIRECTORY');
+        $avatarsDirectory = config('filesystems.avatar_directory');
         return isset($this->avatar_file_name) ? $avatarsDirectory.$this->avatar_file_name : null;
     }
 
@@ -100,7 +100,7 @@ class User extends Authenticatable
             $file = $request->file('avatar_from_hard_drive');
             $extension = $file->getClientOriginalExtension();
             $fileName = Str::random(20).'.'.$extension;
-            $avatarsDirectory = env('AVATARS_DIRECTORY');
+            $avatarsDirectory = config('filesystems.avatar_directory');
             $filePath = $avatarsDirectory.$fileName;
             $file->storeAs($avatarsDirectory, $fileName, 'public');
             $this->deletePreviousAvatarFileFromStorage();
