@@ -513,3 +513,7 @@
 .button-container {
   padding: 4px;
 }
+
+.comments-section {
+  min-height: 200px;
+}

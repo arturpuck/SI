@@ -58,7 +58,7 @@
             <span class="fas fa-video"></span>
             {{__('movies')}}
          </li>
-         <li class="pornstar-profile-tab" id="comments-tab" v-bind:class="{'active-tab' : pornstarCommentsTabIsActive}" v-on:click="changeTab" v-bind:aria-selected="pornstarCommentsTabIsActive" aria-controls="comments-section">
+         <li class="pornstar-profile-tab" id="comments-tab" v-bind:class="{'active-tab' : pornstarCommentsTabIsActive}" v-on:click="showComments({{$pornstar->id}})" v-bind:aria-selected="pornstarCommentsTabIsActive" aria-controls="comments-section">
             <span class="fas fa-comments"></span>
             {{__('comments')}}
          </li>
@@ -125,18 +125,16 @@
          </div>
       @endif
      </section>
-     <section id="comments-section" v-show="pornstarCommentsTabIsActive" class="action-section">
-       @if($pornstar->has_any_comments)
-
-       @else
-         <div class="no-data-info">
-            {{__('this_pornstar_has_no_comments')}}
-         </div>
-       @endif
+     <section id="comments-section" v-show="pornstarCommentsTabIsActive" class="action-section comments-section">
+      
          <div class="comment-container">
-            <relative-shadow-container v-show="addingCommentInProgress">
-               <expect-circle label="{{__('adding_comment')}}"></expect-circle>
+            <div v-show="showNoCommentsInfo" class="no-data-info">
+               {{__('this_pornstar_has_no_comments')}}
+            </div>
+            <relative-shadow-container v-show="processingCommentsInProgress">
+               <expect-circle v-bind:label="expectCircleLabel"></expect-circle>
             </relative-shadow-container>
+            
             @if(Auth::check())
                <x-authenticated-user-preview></x-authenticated-user-preview>
             @else

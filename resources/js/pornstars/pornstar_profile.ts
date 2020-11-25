@@ -36,7 +36,12 @@ new Vue({
             activeTab : PornstarProfileTab.Movies,
             translations : null,
             csrfToken:null,
-            addingCommentInProgress:false
+            processingCommentsInProgress:false,
+            pornstarCommentsHaveBeenFetched : false,
+            expectCircleLabel : 'fetching_comments',
+            showNoCommentsInfo : false,
+            commentsPerPage : 5,
+            pornstarComments : {}
         }
     },
    
@@ -45,6 +50,51 @@ new Vue({
 
       changeTab(event){
            this.activeTab = event.target.id || event.target.parentElement.id;
+      },
+
+      loadCommentsData(data){
+
+      },
+
+      async fetchPornstarComments(pornstarID:number, page:number, getPagesNumber = false){
+
+        const requestData = {
+            method : 'GET',
+            headers : {
+              'X-CSRF-TOKEN' : this.csrfToken,
+              'Content-type': 'application/json; charset=UTF-8'
+            }
+         };
+         let pagesNumberQueryParam = '';
+
+         if(getPagesNumber){
+           pagesNumberQueryParam = '&get_pages_number=1';
+         }
+
+        const response = await fetch(`/pornstar/comments?id=${pornstarID}&page=${page}&comments_per_page=${this.commentsPerPage}${pagesNumberQueryParam}`, requestData);
+
+          switch(response.status){
+
+              case 200:
+                let responseBody = await response.json();
+                console.log(responseBody);
+                this.loadCommentsData(responseBody);
+              break;
+
+              default:
+                this.showNotification('unexpected_error_occured_while_fetching_comments')
+              break;
+          }
+      },
+
+      showComments(pornstarID:number){
+        this.activeTab = "comments-tab";
+
+        if(!this.pornstarCommentsHaveBeenFetched){
+            this.expectCircleLabel = this.translations['fetching_comments'];
+            this.processingCommentsInProgress = true;
+            this.fetchPornstarComments(pornstarID,1,true);
+        }
       },
 
       showNotification(text, type="no-error"){

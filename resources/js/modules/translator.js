@@ -126,6 +126,7 @@ export default{
     pornstar_rate_data_is_invalid : "Niepoprawne dane oceny lub gwiazdy",
     the_nickname_is_missing : "Nie podano pseudonimu",
     the_nickname_exceeds_20_characters : "Długość pseudonimu przekracza 20 znaków",
+    unexpected_error_occured_while_fetching_comments : "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy",
     packages : {
         content_sidebar : {
           hide_side_bar_title : "Schowaj boczne menu",
@@ -165,7 +166,8 @@ export default{
 
         pornstar_action_section : {
            comment_text : "Treść komentarza",
-           adding_comment : "Dodaję komentarz"
+           adding_comment : "Dodaję komentarz",
+           fetching_comments : "Pobieram komentarze"
         },
 
         hinted_search_field : {

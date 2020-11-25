@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserCommentedPornstarTable extends Migration
+class CreatePornstarCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUserCommentedPornstarTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_commented_pornstar', function (Blueprint $table) {
+        Schema::create('pornstar_comments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
@@ -21,8 +21,6 @@ class CreateUserCommentedPornstarTable extends Migration
             $table->foreign('pornstar_id')->references('id')->on('pornstars');
             $table->string('comment',1000);
             $table->string('nickname',1000)->nullable();
-            $table->unsignedBigInteger('parent_comment_id')->nullable();
-            $table->foreign('parent_comment_id')->references('id')->on('user_commented_pornstar');
             $table->timestamps();
         });
     }

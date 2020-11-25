@@ -9,7 +9,6 @@ class PornstarComment extends Model
 {
     use HasFactory;
 
-    protected $table = 'user_commented_pornstar';
     protected $fillable = [
         'pornstar_id',
         'user_id',

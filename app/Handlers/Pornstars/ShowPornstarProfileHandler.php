@@ -5,10 +5,10 @@ namespace App\Handlers\Pornstars;
 use App\Handlers\Handler;
 use Illuminate\Http\Request;
 use App\Pornstar;
-use App\Handlers\Pornstars\PornstarProfileHandler;
+use App\Handlers\Pornstars\ShowPornstarProfileHandler;
 use App\Repositories\PornstarsRepository;
 
-Class PornstarProfileHandler extends Handler {
+Class ShowPornstarProfileHandler extends Handler {
 
    private PornstarsRepository $pornstarsRepository;
 
