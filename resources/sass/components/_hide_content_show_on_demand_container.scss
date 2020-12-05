@@ -1,0 +1,9 @@
+.hide-content-show-on-demand-container{
+    overflow:hidden;
+    max-height:0;
+    transition:max-height 2s;
+}
+
+.opened-show-on-demand-container{
+    max-height:1000px;
+}

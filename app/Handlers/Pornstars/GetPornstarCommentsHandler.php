@@ -15,17 +15,20 @@ Class GetPornstarCommentsHandler  {
         $pornstarID = $request->get('id');
         $commentsLimit = $request->get('comments_per_page');
         $pageNumber = $request->get('page');
-        $offset = ($pageNumber - 1) * $commentsLimit;
+        $result = [];
 
        $pornstarComments = PornstarComment::where('pornstar_id', $pornstarID)
                                             ->orderBy('created_at', 'desc')
-                                            ->skip($offset)
-                                            ->take($commentsLimit)
                                             ->get();
 
-        $totalComments = PornstarComment::count();
+        
+        $totalComments = $pornstarComments->count();
+        $result['total_comments'] = $totalComments;
+        
+        $pornstarComments = $pornstarComments->forPage($pageNumber,$commentsLimit);
+        $result['comments'] = $pornstarComments->toArray();
 
-        return response()->json($pornstarComments->toArray());             
+        return response()->json($result);             
         
     }
 }

@@ -182,6 +182,7 @@
 .pornstar-personal-data-container {
   display: -webkit-box;
   display: flex;
+  background: black;
   border-radius: 10px 0 0 10px;
 }
 
@@ -219,13 +220,13 @@
 }
 
 .pornstar-scrollable-content::-webkit-scrollbar-thumb {
-  background: -webkit-gradient(linear, left top, left bottom, from(#942a08), to(#480404));
-  background: linear-gradient(#942a08, #480404);
+  background: -webkit-gradient(linear, left top, left bottom, from(#bdb7b5), to(#585454)) #131212;
+  background: linear-gradient(#bdb7b5, #585454) #131212;
   border-radius: 0 0 5px 5px;
 }
 
 .pornstar-scrollable-content {
-  scrollbar-color: linear-gradient(#942a08, #480404) #131212;
+  scrollbar-color: linear-gradient(#bdb7b5, #585454) #131212;
   scrollbar-width: 1.1vw;
 }
 
@@ -242,7 +243,8 @@
   text-align: center;
   margin: 0;
   padding: 7px 0;
-  background: black;
+  background: -webkit-gradient(linear, left top, left bottom, from(#da3232), to(#3e0606));
+  background: linear-gradient(#da3232, #3e0606);
 }
 
 @media (max-width: 1200px) {
@@ -367,6 +369,17 @@
   .authenticated-user-undefined-avatar {
     font-size: 14px;
   }
+}
+
+.hide-content-show-on-demand-container {
+  overflow: hidden;
+  max-height: 0;
+  -webkit-transition: max-height 2s;
+  transition: max-height 2s;
+}
+
+.opened-show-on-demand-container {
+  max-height: 1000px;
 }
 
 .pornstar-profile-tabpanel {
@@ -502,8 +515,8 @@
 
 #app .accept-button {
   width: 25%;
-  min-width: 200px;
   margin: 0 auto;
+  min-width: 270px;
 }
 
 .comment-container {
@@ -515,5 +528,9 @@
 }
 
 .comments-section {
-  min-height: 200px;
+  min-height: 250px;
+}
+
+.comment-icon {
+  margin: 0 5px;
 }

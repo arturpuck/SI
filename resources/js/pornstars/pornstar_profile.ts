@@ -13,6 +13,7 @@ import RelativeShadowContainer from '@jscomponents/decoration/relative_shadow_co
 import ExpectCircle from '@jscomponents/decoration/expect_circle.vue';
 import IconStop from '@jscomponents-decoration/icon_stop.vue';
 import IconConfirm from '@jscomponents-decoration/icon_confirm.vue';
+import CommentBox from '@jscomponents-form-controls/comment_box.vue';
 
 const Vue = VueConstructor.build();
 Vue.component('fixed-shadow-container', FixedShadowContainer);
@@ -26,6 +27,8 @@ Vue.component('relative-shadow-container', RelativeShadowContainer);
 Vue.component('expect-circle', ExpectCircle);
 Vue.component('icon-stop', IconStop);
 Vue.component('icon-confirm', IconConfirm);
+Vue.component('comment-box', CommentBox);
+
 
 new Vue({
     el: '#app',
@@ -41,22 +44,52 @@ new Vue({
             expectCircleLabel : 'fetching_comments',
             showNoCommentsInfo : false,
             commentsPerPage : 5,
-            pornstarComments : {}
+            pornstarComments : {},
+            pagesNumber : 0,
+            currentPage : null,
+            showCommentPanel:false
         }
     },
    
    
     methods : {
 
+      showCommentsExpectationDecoration(label:string){
+         this.expectCircleLabel = label;
+         this.processingCommentsInProgress = true;
+      },
+
+      hideCommentsExpectationDecoration(){
+        this.processingCommentsInProgress = false;
+      },
+
+      showCommentForm(){
+          this.showCommentPanel = true;
+      },
+
       changeTab(event){
            this.activeTab = event.target.id || event.target.parentElement.id;
       },
 
-      loadCommentsData(data){
+      loadCommentsData(data, pageNumber){
 
+            let totalComments = data['total_comments'];
+
+            if(totalComments == 0){
+              this.showNoCommentsInfo = true;
+              this.currentPage = null;
+              this.pornstarComments = {};
+            }
+            else{
+              this.showNoCommentsInfo = false;
+              this.pagesNumber = Math.ceil(this.totalComments / this.commentsPerPage);
+              this.pornstarComments = data['comments'];
+              this.currentPage = pageNumber;
+            }
+           
       },
 
-      async fetchPornstarComments(pornstarID:number, page:number, getPagesNumber = false){
+      async fetchPornstarComments(pornstarID:number, pageNumber:number){
 
         const requestData = {
             method : 'GET',
@@ -67,33 +100,30 @@ new Vue({
          };
          let pagesNumberQueryParam = '';
 
-         if(getPagesNumber){
-           pagesNumberQueryParam = '&get_pages_number=1';
-         }
-
-        const response = await fetch(`/pornstar/comments?id=${pornstarID}&page=${page}&comments_per_page=${this.commentsPerPage}${pagesNumberQueryParam}`, requestData);
+        const response = await fetch(`/pornstar/comments?id=${pornstarID}&page=${pageNumber}&comments_per_page=${this.commentsPerPage}`, requestData);
 
           switch(response.status){
 
               case 200:
                 let responseBody = await response.json();
                 console.log(responseBody);
-                this.loadCommentsData(responseBody);
+                this.loadCommentsData(responseBody, pageNumber);
               break;
 
               default:
                 this.showNotification('unexpected_error_occured_while_fetching_comments')
               break;
           }
+
+          this.hideCommentsExpectationDecoration();
       },
 
       showComments(pornstarID:number){
         this.activeTab = "comments-tab";
 
         if(!this.pornstarCommentsHaveBeenFetched){
-            this.expectCircleLabel = this.translations['fetching_comments'];
-            this.processingCommentsInProgress = true;
-            this.fetchPornstarComments(pornstarID,1,true);
+            this.showCommentsExpectationDecoration(this.translations['fetching_comments']);
+            this.fetchPornstarComments(pornstarID,1);
         }
       },
 
@@ -103,7 +133,7 @@ new Vue({
      },
 
       async ratePornstar(data){
-          console.log(data);
+          
             const rateData = {
                 pornstar_id : data['pornstarID'],
                 rate : data['rate']
@@ -143,29 +173,36 @@ new Vue({
       },
 
       async addComment(){
-           this.addingCommentInProgress = true;
+           this.showCommentsExpectationDecoration(this.translations['adding_comment']);
+
+           const commentData = {
+
+           };
+
+           const requestData = {
+            method : 'PUT',
+            headers : {
+               'X-CSRF-TOKEN' : this.csrfToken,
+               'Content-type': 'application/json; charset=UTF-8'
+            },
+            body : JSON.stringify(commentData)
+         };
+
       },
 
       validateUnauthenticatedUserNickname(sender){
+
          const value = sender.inputValue.trim();
+
+         if(value.length == 0){
+          sender.resetValidation();
+          return;
+        }
          
-         try{
-
-            if(value.length == 0){
-              throw new Error('the_nickname_is_missing');
-            }
-
-            if(value.length > 20){
-              throw new Error('the_nickname_exceeds_20_characters');
-            }
-         }
-         catch(error){
-            sender.showError(error.message);
-            return;
-         }
-
-         sender.resetValidation();
-         
+        if(value.length > 20){
+            sender.showError('the_nickname_exceeds_20_characters');
+        }
+ 
       }
     },
 

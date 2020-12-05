@@ -29,7 +29,6 @@ class GetPornstarCommentsRequest extends FormRequest
             'id' => ['required', 'exists:pornstars,id'],
             'page' => ['required', 'integer', 'min:1'],
             'comments_per_page' => ['required', 'integer', 'min:1'],
-            'get_pages_number' => ['nullable', 'min:0', 'max:1']
         ];
     }
 

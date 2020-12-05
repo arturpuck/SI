@@ -128,30 +128,32 @@
      <section id="comments-section" v-show="pornstarCommentsTabIsActive" class="action-section comments-section">
       
          <div class="comment-container">
-            <div v-show="showNoCommentsInfo" class="no-data-info">
-               {{__('this_pornstar_has_no_comments')}}
-            </div>
             <relative-shadow-container v-show="processingCommentsInProgress">
                <expect-circle v-bind:label="expectCircleLabel"></expect-circle>
             </relative-shadow-container>
-            
-            @if(Auth::check())
-               <x-authenticated-user-preview></x-authenticated-user-preview>
-            @else
-               <text-input-combo 
-               v-bind:complete-error-display-available="true"
-               v-bind:error-message-box-available="true"
-               v-bind:on-blur-callback="validateUnauthenticatedUserNickname"
-               name="unauthenticated_user_nickname">
-                  {{__('your_nickname')}} : 
-               </text-input-combo>
-            @endif
-            <textarea-combo placeholder-text="{{__('comment_text')}}" v-bind:phantom-label="true">
-               {{ __('comment_text')}}
-            </textarea-combo>
-            <div class="button-container">
-               <accept-button v-on:click.native="addComment">{{__('add_comment')}}</accept-button>
+            <div v-show="showNoCommentsInfo" class="no-data-info">
+               {{__('this_pornstar_has_no_comments')}}
             </div>
+            <accept-button  v-show="!showCommentPanel" v-on:click.native="showCommentForm">
+               {{__('publish_comment')}}
+               <span class="fas fa-comment comment-icon"></span>
+            </accept-button>
+           
+            <div v-bind:class="{'opened-show-on-demand-container' : showCommentPanel}" class="hide-content-show-on-demand-container">
+               @if(Auth::check())
+                  <x-authenticated-user-preview></x-authenticated-user-preview>
+               @else
+                 <comment-box v-bind:authenticated-user="false"></comment-box>
+               @endif
+               
+               <div class="button-container">
+                  <accept-button v-on:click.native="addComment">
+                    {{__('add_comment')}}
+                    <span class="fas fa-plus-circle comment-icon"></span>
+                  </accept-button>
+               </div>
+            </div>
+            
          </div>
      </section>
    </main>

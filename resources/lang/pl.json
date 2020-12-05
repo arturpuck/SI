@@ -174,5 +174,6 @@
     "comment_text" : "Treść komentarza",
     "adding_comment" : "Dodaję komentarz",
     "avatar_belongs_to_user_with_nickname" : "Avatar użytkownika o loginie",
-    "your_nickname" : "Twój pseudonim"
+    "your_nickname" : "Twój pseudonim",
+    "publish_comment" : "Opublikuj komentarz"
 }

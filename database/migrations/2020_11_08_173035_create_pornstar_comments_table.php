@@ -19,6 +19,8 @@ class CreatePornstarCommentsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('pornstar_id');
             $table->foreign('pornstar_id')->references('id')->on('pornstars');
+            $table->unsignedBigInteger('parent_comment_id')->nullable();
+            $table->foreign('parent_comment_id')->references('id')->on('pornstar_comments');
             $table->string('comment',1000);
             $table->string('nickname',1000)->nullable();
             $table->timestamps();

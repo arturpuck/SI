@@ -1,5 +1,6 @@
 @import '~sasscomponent/movies/movies_container';
 @import '~sasscomponent/user/authenticated_user_preview';
+@import '~sasscomponent/hide_content_show_on_demand_container';
 
 .pornstar-profile-tabpanel{
     list-style-type: none;
@@ -94,8 +95,8 @@
 
 #app .accept-button{
     width: 25%;
-    min-width:200px;
     margin:0 auto;
+    min-width: 270px
 }
 
 .comment-container{
@@ -107,5 +108,9 @@
 }
 
 .comments-section{
-    min-height:200px;
+    min-height:250px;
+}
+
+.comment-icon{
+    margin: 0 5px;
 }
