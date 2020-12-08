@@ -129,6 +129,7 @@ export default{
     unexpected_error_occured_while_fetching_comments : "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy",
     nickname : "Pseudonim",
     comment_text : "Treść komentarza",
+    add_comment: "Dodaj komentarz",
     packages : {
         content_sidebar : {
           hide_side_bar_title : "Schowaj boczne menu",

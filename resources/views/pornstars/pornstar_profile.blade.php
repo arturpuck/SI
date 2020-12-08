@@ -140,20 +140,16 @@
             </accept-button>
            
             <div v-bind:class="{'opened-show-on-demand-container' : showCommentPanel}" class="hide-content-show-on-demand-container">
-               @if(Auth::check())
-                  <x-authenticated-user-preview></x-authenticated-user-preview>
-               @else
-                 <comment-box v-bind:authenticated-user="false"></comment-box>
-               @endif
-               
-               <div class="button-container">
-                  <accept-button v-on:click.native="addComment">
-                    {{__('add_comment')}}
-                    <span class="fas fa-plus-circle comment-icon"></span>
-                  </accept-button>
-               </div>
+                 <comment-box 
+                     @if(Auth::check())
+                        v-bind:authenticated-user="true"
+                        authenticated-user-nickname="{{Auth::user()->login}}"
+                        @if(Auth::user()->has_avatar)
+                           avatar-file-path="{{Auth::user()->avatar_file_path}}"
+                        @endif
+                     @endif>
+                 </comment-box>
             </div>
-            
          </div>
      </section>
    </main>

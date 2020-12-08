@@ -1534,7 +1534,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".blank-label {\n  border: none;\n  outline: none;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n}\n.comment-description {\n  position: absolute;\n  top: -9999px;\n  left: 0;\n  font-size: 2px;\n}\n.comment-background {\n  padding: 1vw;\n  background: black;\n  border-radius: 0 0 1vw 1vw;\n}\n.unauthenticated-user-nickname {\n  font-size: 1.3vw;\n  font-family: \"Exo 2\", sans-serif;\n  background: #212120;\n  border-radius: 0.5vw;\n  border: 1px solid transparent;\n  color: white;\n  -webkit-box-flex: 100;\n          flex-grow: 100;\n  outline: none;\n  min-width: 0;\n}\n@media (max-width: 1200px) {\n.unauthenticated-user-nickname {\n    font-size: 16px;\n}\n}\n.unauthenticated-user-nickname:focus {\n  border: 1px solid #cb425f;\n}\n.unauthenticated-user-nickname-description {\n  font-size: 1.3vw;\n  font-family: \"Exo 2\", sans-serif;\n  line-height: 1.5em;\n  padding-right: 7px;\n  white-space: nowrap;\n}\n@media (max-width: 1200px) {\n.unauthenticated-user-nickname-description {\n    font-size: 16px;\n}\n}\n.comment-container {\n  font-size: 0;\n  width: 40vw;\n  min-width: 320px;\n}\n.unauthenticated-user-nickname-label {\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: nowrap;\n  -webkit-box-align: center;\n          align-items: center;\n  background: black;\n  color: white;\n  border-radius: 1vw 1vw 0 0;\n  padding: 1vw 1vw 0;\n}\n.nickname-decoration {\n  font-size: 1.4vw;\n  color: #cb425f;\n  margin: 0 5px;\n}\n@media (max-width: 1200px) {\n.nickname-decoration {\n    font-size: 18px;\n}\n}\n.comment-body {\n  width: 100%;\n  background: #212120;\n  border-radius: 0.5vw;\n  line-height: 1.4em;\n  border: 1px solid transparent;\n  outline: none;\n  resize: none;\n  overflow: hidden;\n  color: white;\n  font-size: 1.3vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.comment-body {\n    font-size: 16px;\n}\n}\n.comment-body:focus {\n  border: 1px solid #cb425f;\n}", ""]);
+exports.push([module.i, ".empty-avatar-decoration {\n  font-size: 1.3vw;\n  color: crimson;\n  margin: 0 5px;\n}\n@media (max-width: 1200px) {\n.empty-avatar-decoration {\n    font-size: 16px;\n}\n}\n.authenticated-user-nickname {\n  white-space: nowrap;\n  overflow: hidden;\n  -webkit-box-flex: 100;\n          flex-grow: 100;\n  font-size: 1.3vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.authenticated-user-nickname {\n    font-size: 16px;\n}\n}\n.user-avatar {\n  width: 1.8vw;\n  height: 1.8vw;\n  margin: 0 4px;\n  border-radius: 2px;\n  border-radius: 30%;\n}\n@media (max-width: 1200px) {\n.user-avatar {\n    width: 30px;\n    height: 30px;\n}\n}\n.add-comment-decoration {\n  margin: 0 4px;\n}\n.add-button {\n  background: -webkit-gradient(linear, left top, left bottom, from(#11ea11), to(#205a07));\n  background: linear-gradient(#11ea11, #205a07);\n  border-radius: 0.7vw;\n  border: none;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  flex-wrap: nowrap;\n  margin: 5px auto 0;\n  padding: 0.3vw;\n  color: white;\n  outline: none;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  cursor: pointer;\n}\n@media (max-width: 1200px) {\n.add-button {\n    font-size: 16px;\n}\n}\n.add-button:active {\n  -webkit-transform: scale(1.05);\n          transform: scale(1.05);\n}\n.add-button:hover {\n  background: -webkit-gradient(linear, left top, left bottom, from(#da3232), to(#3e0606));\n  background: linear-gradient(#da3232, #3e0606);\n}\n.blank-label {\n  border: none;\n  outline: none;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n}\n.comment-description {\n  position: absolute;\n  top: -9999px;\n  left: 0;\n  font-size: 2px;\n}\n.comment-background {\n  padding: 1vw;\n  background: black;\n  border-radius: 0 0 1vw 1vw;\n}\n.unauthenticated-user-nickname {\n  font-size: 1.3vw;\n  font-family: \"Exo 2\", sans-serif;\n  background: #212120;\n  border-radius: 0.5vw;\n  border: 1px solid transparent;\n  color: white;\n  -webkit-box-flex: 100;\n          flex-grow: 100;\n  outline: none;\n  min-width: 0;\n}\n@media (max-width: 1200px) {\n.unauthenticated-user-nickname {\n    font-size: 16px;\n}\n}\n.unauthenticated-user-nickname:focus {\n  border: 1px solid #cb425f;\n}\n.unauthenticated-user-nickname-description {\n  font-size: 1.3vw;\n  font-family: \"Exo 2\", sans-serif;\n  line-height: 1.5em;\n  padding-right: 7px;\n  white-space: nowrap;\n}\n@media (max-width: 1200px) {\n.unauthenticated-user-nickname-description {\n    font-size: 16px;\n}\n}\n.comment-container {\n  font-size: 0;\n  width: 40vw;\n  min-width: 320px;\n}\n.user-nickname-label {\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: nowrap;\n  -webkit-box-align: center;\n          align-items: center;\n  background: black;\n  color: white;\n  border-radius: 1vw 1vw 0 0;\n  padding: 1vw 1vw 0;\n}\n.nickname-decoration {\n  font-size: 1.4vw;\n  color: #cb425f;\n  margin: 0 5px;\n}\n@media (max-width: 1200px) {\n.nickname-decoration {\n    font-size: 18px;\n}\n}\n.comment-body {\n  width: 100%;\n  background: #212120;\n  border-radius: 0.5vw;\n  line-height: 1.4em;\n  border: 1px solid transparent;\n  outline: none;\n  resize: none;\n  overflow: hidden;\n  color: white;\n  font-size: 1.3vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.comment-body {\n    font-size: 16px;\n}\n}\n.comment-body:focus {\n  border: 1px solid #cb425f;\n}", ""]);
 
 // exports
 
@@ -3614,17 +3614,25 @@ var CommentBox = /** @class */ (function (_super) {
         _this.translator = null;
         _this.unauthenticatedUserNickName = '';
         _this.userComment = '';
-        _this.commentHeight = null;
+        _this.textAreaHeightCSS = null;
+        _this.paddingCSS = '2px';
         return _this;
     }
     CommentBox.prototype.emitUserNickName = function () {
         this.$emit('nicknameInput', this.unauthenticatedUserNickName);
     };
+    CommentBox.prototype.getCommentContentHeight = function () {
+        return this.$refs.comment_textarea.scrollHeight;
+    };
     CommentBox.prototype.processUserComment = function () {
+        var _this = this;
         this.$emit('commentInput', this.userComment);
-        var commentTextarea = this.$refs.comment_textarea;
-        console.log(commentTextarea.scrollHeight);
-        this.commentHeight = commentTextarea.scrollHeight + 2 + "px";
+        setTimeout(function () {
+            _this.textAreaHeightCSS = 'auto';
+            _this.paddingCSS = '0';
+            _this.paddingCSS = '2px';
+            _this.textAreaHeightCSS = _this.getCommentContentHeight() + "px";
+        }, 0);
     };
     CommentBox.prototype.emitCommentText = function () {
         this.$emit('commentInput', this.userComment);
@@ -3643,19 +3651,34 @@ var CommentBox = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    CommentBox.prototype.onEnter = function () {
+        this.$emit('onenter', this.userComment);
+    };
     CommentBox.prototype.created = function () {
         this.translator = translator_js_1.default;
     };
     CommentBox.prototype.mounted = function () {
-        var commentTextarea = this.$refs.comment_textarea;
-        this.commentHeight = 'calc(1.4em +2px)';
+        this.textAreaHeightCSS = 'calc(1.4em + 6px)';
     };
     __decorate([
         vue_property_decorator_1.Prop({
             type: Boolean,
-            required: true,
+            default: false
         })
     ], CommentBox.prototype, "authenticatedUser", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop({
+            type: String,
+            required: false,
+            default: ''
+        })
+    ], CommentBox.prototype, "avatarFilePath", void 0);
+    __decorate([
+        vue_property_decorator_1.Prop({
+            type: String,
+            required: false,
+        })
+    ], CommentBox.prototype, "authenticatedUserNickname", void 0);
     CommentBox = __decorate([
         vue_property_decorator_1.Component
     ], CommentBox);
@@ -4631,8 +4654,28 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "comment-container" }, [
+    _vm.authenticatedUser
+      ? _c("div", { staticClass: "user-nickname-label" }, [
+          _vm.avatarFilePath
+            ? _c("img", {
+                staticClass: "user-avatar",
+                attrs: { src: _vm.avatarFilePath, alt: "" }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          !_vm.avatarFilePath
+            ? _c("span", { staticClass: "fas fa-user empty-avatar-decoration" })
+            : _vm._e(),
+          _vm._v(" "),
+          _c("span", {
+            staticClass: "authenticated-user-nickname",
+            domProps: { textContent: _vm._s(_vm.authenticatedUserNickname) }
+          })
+        ])
+      : _vm._e(),
+    _vm._v(" "),
     !_vm.authenticatedUser
-      ? _c("label", { staticClass: "unauthenticated-user-nickname-label" }, [
+      ? _c("label", { staticClass: "user-nickname-label" }, [
           _c("span", { staticClass: "fas fa-user-tag nickname-decoration" }),
           _vm._v(" "),
           _c("span", {
@@ -4688,10 +4731,20 @@ var render = function() {
           ],
           ref: "comment_textarea",
           staticClass: "comment-body",
-          style: { height: _vm.commentHeight },
+          style: { height: _vm.textAreaHeightCSS, padding: _vm.paddingCSS },
           attrs: { placeholder: _vm.placeholderText, rows: "1" },
           domProps: { value: _vm.userComment },
           on: {
+            paste: _vm.processUserComment,
+            keyup: function($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              return _vm.onEnter($event)
+            },
             input: [
               function($event) {
                 if ($event.target.composing) {
@@ -4703,7 +4756,20 @@ var render = function() {
             ],
             blur: _vm.emitCommentText
           }
-        })
+        }),
+        _vm._v(" "),
+        _c("button", { staticClass: "add-button" }, [
+          _c("span", {
+            staticClass: "add-button-description",
+            domProps: {
+              textContent: _vm._s(_vm.translator.translate("add_comment"))
+            }
+          }),
+          _vm._v(" "),
+          _c("span", {
+            staticClass: "fas add-comment-decoration fa-plus-circle"
+          })
+        ])
       ])
     ])
   ])
@@ -21077,7 +21143,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     login_has_already_been_taken: "Login jest już zajęty",
     login_contains_less_then_3_characters: "Login ma mniej niż 3 znaki",
     login_contains_more_then_20_characters: "Login ma więcej niż 20 znaków"
-  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "avatar_has_been_deleted_successfully", "Pomyślnie usunięto avatar"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "views", "Wyświetleń"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "pornstar_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "the_nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "the_nickname_exceeds_20_characters", "Długość pseudonimu przekracza 20 znaków"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "packages", {
+  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "avatar_has_been_deleted_successfully", "Pomyślnie usunięto avatar"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "views", "Wyświetleń"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "pornstar_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "the_nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "the_nickname_exceeds_20_characters", "Długość pseudonimu przekracza 20 znaków"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "add_comment", "Dodaj komentarz"), _defineProperty(_pl, "packages", {
     content_sidebar: {
       hide_side_bar_title: "Schowaj boczne menu",
       hide_side_bar_caption: "Schowaj",

@@ -1,16 +1,24 @@
 <template>
 <div class="comment-container">
-    <label v-if="!authenticatedUser" class="unauthenticated-user-nickname-label">
+    <div v-if="authenticatedUser" class="user-nickname-label">
+      <img v-bind:src="avatarFilePath" alt="" v-if="avatarFilePath" class="user-avatar">
+      <span v-if="!avatarFilePath" class="fas fa-user empty-avatar-decoration"></span>
+      <span v-text="authenticatedUserNickname" class="authenticated-user-nickname"></span>
+    </div>
+    <label v-if="!authenticatedUser" class="user-nickname-label">
         <span class="fas fa-user-tag nickname-decoration"></span>
         <span v-text="unauthenticatedUserNicknameDescription" class="unauthenticated-user-nickname-description"></span>
         <input v-on:input="emitUserNickName" v-on:blur="emitUserNickName" v-model="unauthenticatedUserNickName" type="text" class="unauthenticated-user-nickname">
     </label>
     <div class="comment-background">
        <label class="blank-label">
-         <span v-text="placeholderText" class="comment-description"></span>
-         <textarea v-bind:style="{'height' : commentHeight}" v-bind:placeholder="placeholderText" ref="comment_textarea" v-on:input="processUserComment" v-on:blur="emitCommentText" v-model="userComment" class="comment-body" rows="1"></textarea>
+          <span v-text="placeholderText" class="comment-description"></span>
+          <textarea v-on:paste="processUserComment" v-on:keyup.enter="onEnter" v-bind:style="{'height' : textAreaHeightCSS, 'padding' : paddingCSS}" v-bind:placeholder="placeholderText" ref="comment_textarea" v-on:input="processUserComment" v-on:blur="emitCommentText" v-model="userComment" class="comment-body" rows="1"></textarea>
+          <button class="add-button">
+             <span v-text="translator.translate('add_comment')" class="add-button-description"></span>
+             <span class="fas add-comment-decoration fa-plus-circle"></span>
+          </button>
        </label>
-       
     </div>
 </div>
 </template>
@@ -24,24 +32,45 @@
 
     @Prop({
             type: Boolean,
-            required: true,
+            default: false
     }) readonly authenticatedUser: Boolean;
+
+    @Prop({
+            type: String,
+            required: false,
+            default: ''
+    }) readonly avatarFilePath: String;
+
+    @Prop({
+            type: String,
+            required: false,
+    }) readonly authenticatedUserNickname: String;
 
 
     private translator = null;
     private unauthenticatedUserNickName:string = '';
     private userComment:string = '';
-    private commentHeight = null;
+    private textAreaHeightCSS:string = null;
+    private paddingCSS:string = '2px';
 
     emitUserNickName(){
       this.$emit('nicknameInput', this.unauthenticatedUserNickName);
     }
 
+    getCommentContentHeight():number{
+        return (<HTMLElement>this.$refs.comment_textarea).scrollHeight;
+    }
+
     processUserComment(){
       this.$emit('commentInput', this.userComment);
-      const commentTextarea = this.$refs.comment_textarea;
-      console.log((<HTMLTextAreaElement>commentTextarea).scrollHeight);
-      this.commentHeight = `${(<HTMLTextAreaElement>commentTextarea).scrollHeight + 2}px`;
+
+        setTimeout(() => {
+          this.textAreaHeightCSS = 'auto';
+          this.paddingCSS = '0';
+          this.paddingCSS = '2px';
+          this.textAreaHeightCSS = `${this.getCommentContentHeight()}px`;
+        },0);
+      
     }
 
     emitCommentText(){
@@ -56,13 +85,16 @@
       return this.translator.translate('comment_text');
     }
 
+    onEnter(){
+      this.$emit('onenter', this.userComment);
+    }
+
     created(){
         this.translator = Translator;
     }
 
     mounted(){
-       const commentTextarea = this.$refs.comment_textarea;
-       this.commentHeight = 'calc(1.4em +2px)';
+      this.textAreaHeightCSS = 'calc(1.4em + 6px)';
     }
  
   }
@@ -70,6 +102,57 @@
 
 <style lang="scss">
    @import '~sass/fonts';
+
+   .empty-avatar-decoration{
+     @include responsive-font(1.3vw,16px,"");
+     color:crimson;
+     margin:0 5px;
+   }
+
+   .authenticated-user-nickname{
+     white-space: nowrap;
+     overflow:hidden;
+     flex-grow:100;
+     @include responsive-font(1.3vw,16px);
+     color:white;
+   }
+
+.user-avatar{
+	width:1.8vw;
+	height:1.8vw;
+	margin:0 4px;
+	border-radius:2px;
+	border-radius: 30%;
+    @media(max-width:1200px){
+      width:30px;
+      height:30px;
+    }
+ }
+
+   .add-comment-decoration{
+     margin:0 4px;
+   }
+
+   .add-button{
+    background: linear-gradient(#11ea11, #205a07);
+    border-radius: 0.7vw;
+    border: none;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin: 5px auto 0;
+    padding: 0.3vw;
+    color: white;
+    outline: none;
+    @include responsive-font();
+    cursor:pointer;
+    &:active{
+      transform: scale(1.05);
+    }
+    &:hover{
+      background: linear-gradient(#da3232, #3e0606);
+    }
+   }
 
    .blank-label{
      border:none;
@@ -120,7 +203,7 @@
       min-width: 320px;
    }
 
-   .unauthenticated-user-nickname-label{
+   .user-nickname-label{
        display:flex;
        flex-wrap:nowrap;
        align-items: center;
