@@ -1,23 +1,29 @@
 <template>
 <div class="comment-container">
     <div v-if="authenticatedUser" class="user-nickname-label">
-      <img v-bind:src="avatarFilePath" alt="" v-if="avatarFilePath" class="user-avatar">
-      <span v-if="!avatarFilePath" class="fas fa-user empty-avatar-decoration"></span>
-      <span v-text="authenticatedUserNickname" class="authenticated-user-nickname"></span>
+      <user-preview 
+      v-bind:user-nickname="authenticatedUserNickname"
+      v-bind:authenticated-user="true"
+      v-bind:avatar-file-path="avatarFilePath">
+      </user-preview>
+      <button v-on:click="send" class="add-button">
+          <span v-text="translator.translate('add')" class="add-button-description"></span>
+          <span class="fas add-comment-decoration fa-plus-circle"></span>
+      </button>
     </div>
     <label v-if="!authenticatedUser" class="user-nickname-label">
         <span class="fas fa-user-tag nickname-decoration"></span>
         <span v-text="unauthenticatedUserNicknameDescription" class="unauthenticated-user-nickname-description"></span>
         <input v-on:input="emitUserNickName" v-on:blur="emitUserNickName" v-model="unauthenticatedUserNickName" type="text" class="unauthenticated-user-nickname">
+        <button v-on:click="send" class="add-button">
+          <span v-text="translator.translate('add')" class="add-button-description"></span>
+          <span class="fas add-comment-decoration fa-plus-circle"></span>
+        </button>
     </label>
     <div class="comment-background">
        <label class="blank-label">
           <span v-text="placeholderText" class="comment-description"></span>
-          <textarea v-on:paste="processUserComment" v-on:keyup.enter="onEnter" v-bind:style="{'height' : textAreaHeightCSS, 'padding' : paddingCSS}" v-bind:placeholder="placeholderText" ref="comment_textarea" v-on:input="processUserComment" v-on:blur="emitCommentText" v-model="userComment" class="comment-body" rows="1"></textarea>
-          <button class="add-button">
-             <span v-text="translator.translate('add_comment')" class="add-button-description"></span>
-             <span class="fas add-comment-decoration fa-plus-circle"></span>
-          </button>
+          <textarea v-on:paste="processUserComment" v-on:keyup.enter="send" v-bind:style="{'height' : textAreaHeightCSS, 'padding' : paddingCSS}" v-bind:placeholder="placeholderText" ref="comment_textarea" v-on:input="processUserComment" v-on:blur="emitCommentText" v-model="userComment" class="comment-body" rows="1"></textarea>
        </label>
     </div>
 </div>
@@ -26,8 +32,10 @@
 <script lang="ts">
   import {Vue, Component, Prop} from 'vue-property-decorator';
   import Translator from '@jsmodules/translator.js';
+  import UserPreview from '@jscomponents/user/user_preview.vue';
 
- @Component
+ @Component({components : {UserPreview}})
+
   export default class CommentBox extends Vue {
 
     @Prop({
@@ -85,8 +93,12 @@
       return this.translator.translate('comment_text');
     }
 
-    onEnter(){
-      this.$emit('onenter', this.userComment);
+    send(){
+      const commentData = this.authenticatedUser ? {comment_text : this.userComment} : 
+                                                   {comment_text : this.userComment, nickname : this.unauthenticatedUserNickName};
+      this.$emit('send', commentData);
+      this.userComment = '';
+
     }
 
     created(){
@@ -100,7 +112,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
    @import '~sass/fonts';
 
    .empty-avatar-decoration{
@@ -140,7 +152,7 @@
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
-    margin: 5px auto 0;
+    margin: 0 5px;
     padding: 0.3vw;
     color: white;
     outline: none;
@@ -170,7 +182,7 @@
    }
 
    .comment-background{
-      padding:1vw;
+      padding:7px;
       background: black;
       border-radius: 0 0 1vw 1vw;
    }
@@ -178,6 +190,7 @@
 
    .unauthenticated-user-nickname{
       @include responsive-font(1.3vw,16px);
+      flex-basis:1%;
       background: #212120;
       border-radius: 0.5vw;
       border:1px solid transparent;
@@ -201,16 +214,21 @@
       font-size:0;
       width: 40vw;
       min-width: 320px;
+      margin:10px auto;
+      border: 1px solid gray;
+      border-radius: 1vw;
+      box-shadow: 2px 2px 2px 2px black;
    }
 
    .user-nickname-label{
        display:flex;
        flex-wrap:nowrap;
        align-items: center;
+       justify-content: space-between;
        background: black;
        color: white;
        border-radius: 1vw 1vw 0 0;
-       padding: 1vw 1vw 0;
+       padding: 8px 5px 0;
    }
 
    .nickname-decoration{

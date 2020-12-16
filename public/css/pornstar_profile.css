@@ -163,9 +163,8 @@
 .pornstar-profile-container {
   display: block;
   margin: calc(40px + 2vw) auto 5px;
-  width: 90%;
   min-width: 300px;
-  background: #2f2d2d;
+  background: #0e0e0e;
   border-radius: 10px 0 10px 10px;
   overflow: hidden;
 }
@@ -389,7 +388,7 @@
   display: -webkit-box;
   display: flex;
   flex-wrap: nowrap;
-  background: #131313;
+  background: #3e3e3e;
 }
 
 .pornstar-profile-tab {
@@ -414,7 +413,7 @@
 }
 
 .active-tab {
-  background: #2f2d2d;
+  background: #0e0e0e;
 }
 
 .pornstar-votes-data {
@@ -515,7 +514,7 @@
 
 #app .accept-button {
   width: 25%;
-  margin: 0 auto;
+  margin: 10px auto;
   min-width: 270px;
 }
 
@@ -529,8 +528,15 @@
 
 .comments-section {
   min-height: 250px;
+  position: relative;
 }
 
 .comment-icon {
   margin: 0 5px;
+}
+
+.comments-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
 }

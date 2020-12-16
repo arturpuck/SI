@@ -14,6 +14,7 @@ import ExpectCircle from '@jscomponents/decoration/expect_circle.vue';
 import IconStop from '@jscomponents-decoration/icon_stop.vue';
 import IconConfirm from '@jscomponents-decoration/icon_confirm.vue';
 import CommentBox from '@jscomponents-form-controls/comment_box.vue';
+import CommentBody from '@jscomponents/form_controls/comment_body.vue'
 
 const Vue = VueConstructor.build();
 Vue.component('fixed-shadow-container', FixedShadowContainer);
@@ -28,6 +29,7 @@ Vue.component('expect-circle', ExpectCircle);
 Vue.component('icon-stop', IconStop);
 Vue.component('icon-confirm', IconConfirm);
 Vue.component('comment-box', CommentBox);
+Vue.component('comment-body', CommentBody);
 
 
 new Vue({
@@ -43,16 +45,95 @@ new Vue({
             pornstarCommentsHaveBeenFetched : false,
             expectCircleLabel : 'fetching_comments',
             showNoCommentsInfo : false,
-            commentsPerPage : 5,
+            commentsPerPage : 10,
             pornstarComments : {},
             pagesNumber : 0,
             currentPage : null,
-            showCommentPanel:false
+            showCommentPanel:false,
+            pornstarID : undefined
         }
     },
    
    
     methods : {
+
+    validateComment(commentData:object):object{
+
+      try{
+
+        if(!commentData['comment_text']){
+          throw new Error('comment_text_is_missing');
+        }
+
+        if(commentData['comment_text'].length > 1000){
+          throw new Error('comment_text_exceeds_1000_characters');
+        }
+
+        if(commentData.hasOwnProperty('nickname')){
+
+          if(!commentData['nickname']){
+           throw new Error('nickname_is_missing');
+          }
+ 
+          if(commentData['nickname'].length > 50){
+            throw new Error('nickname_exceeds_50_characters');
+          }
+         
+        }
+
+      }
+      catch(error){
+          return {success : false, message : error.message};
+      }
+
+       return {success : true};
+    },
+
+    async  saveComment(commentData:object){
+
+       try{
+          
+          const validationResult = this.validateComment(commentData);
+
+          if(!validationResult['success']){
+            throw new Error(validationResult['message']);
+          }
+          this.showCommentsExpectationDecoration(this.translations['adding_comment']);
+
+          commentData['pornstar_id'] = this.pornstarID;
+
+            const requestData = {
+              method : 'POST',
+              body : JSON.stringify(commentData),
+              headers : {
+                'X-CSRF-TOKEN' : this.csrfToken,
+                'Content-type': 'application/json; charset=UTF-8'
+              }
+          };
+
+          const response = await fetch(`/pornstar/comments/add`, requestData);
+
+          switch(response.status){
+
+            case 200:
+              let responseBody = await response.json();
+              this.loadCommentsData(responseBody,1);
+            break;
+
+            default:
+              throw new Error('unexpected_error_occured_while_fetching_comments');
+            break;
+
+          }
+      }
+      catch(error){
+        this.showNotification(this.translations[error.message], 'error');
+      }
+      finally{
+        this.hideCommentsExpectationDecoration();
+      }
+
+      },
 
       showCommentsExpectationDecoration(label:string){
          this.expectCircleLabel = label;
@@ -83,7 +164,7 @@ new Vue({
             else{
               this.showNoCommentsInfo = false;
               this.pagesNumber = Math.ceil(this.totalComments / this.commentsPerPage);
-              this.pornstarComments = data['comments'];
+              this.pornstarComments[pageNumber] = data['comments'];
               this.currentPage = pageNumber;
             }
            
@@ -120,6 +201,7 @@ new Vue({
 
       showComments(pornstarID:number){
         this.activeTab = "comments-tab";
+        this.pornstarID = pornstarID;
 
         if(!this.pornstarCommentsHaveBeenFetched){
             this.showCommentsExpectationDecoration(this.translations['fetching_comments']);
@@ -170,24 +252,6 @@ new Vue({
           catch(exception){
             this.showNotification(exception.message, 'error');
           }
-      },
-
-      async addComment(){
-           this.showCommentsExpectationDecoration(this.translations['adding_comment']);
-
-           const commentData = {
-
-           };
-
-           const requestData = {
-            method : 'PUT',
-            headers : {
-               'X-CSRF-TOKEN' : this.csrfToken,
-               'Content-type': 'application/json; charset=UTF-8'
-            },
-            body : JSON.stringify(commentData)
-         };
-
       },
 
       validateUnauthenticatedUserNickname(sender){

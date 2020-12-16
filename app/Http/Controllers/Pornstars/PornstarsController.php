@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Pornstar;
 use App\Handlers\Pornstars\ShowPornstarProfileHandler;
 use App\Handlers\Pornstars\GetPornstarCommentsHandler;
+use App\Handlers\Pornstars\AddPornstarCommentHandler;
 use App\Repositories\PornstarsRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Pornstars\RatePornstarRequest;
 use App\Http\Requests\Pornstars\GetPornstarCommentsRequest;
+use App\Http\Requests\Pornstars\AddPornstarCommentRequest;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -38,5 +40,9 @@ class PornstarsController extends Controller
 
     public function getPornstarComments(GetPornstarCommentsRequest $request,GetPornstarCommentsHandler $getPornstarCommentsHandler) : Response{
         return $getPornstarCommentsHandler->handle($request);
+    }
+
+    public function addPornstarComment(AddPornstarCommentRequest $request, AddPornstarCommentHandler $pornstarCommentHandler){
+        return $pornstarCommentHandler->handle($request);
     }
 }

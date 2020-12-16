@@ -37,6 +37,7 @@ Route::namespace('Pornstars')->name('pornstars.')->group(function(){
        Route::put('/rate/pornstar', 'PornstarsController@ratePornstar')->middleware('auth');
 
        Route::get('/pornstar/comments', 'PornstarsController@getPornstarComments');
+       Route::post('/pornstar/comments/add', 'PornstarsController@addPornstarComment');
 
 });
 

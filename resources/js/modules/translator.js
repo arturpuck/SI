@@ -130,6 +130,8 @@ export default{
     nickname : "Pseudonim",
     comment_text : "Treść komentarza",
     add_comment: "Dodaj komentarz",
+    add : "dodaj",
+    unregistered_user : "Niezarejestrowany",
     packages : {
         content_sidebar : {
           hide_side_bar_title : "Schowaj boczne menu",
@@ -171,7 +173,10 @@ export default{
            comment_text : "Treść komentarza",
            adding_comment : "Dodaję komentarz",
            fetching_comments : "Pobieram komentarze",
-           adding_comment : "Dodaję komentarz"
+           comment_text_is_missing : "Nie podano treści komentarza",
+           comment_text_exceeds_1000_characters : "Treść komentarza przekracza 1000 znaków",
+           nickname_is_missing : "Nie podano pseudonimu",
+           nickname_exceeds_50_characters : "Pseudonim przekracza 50 znaków"
         },
 
         hinted_search_field : {

@@ -126,21 +126,16 @@
       @endif
      </section>
      <section id="comments-section" v-show="pornstarCommentsTabIsActive" class="action-section comments-section">
-      
-         <div class="comment-container">
-            <relative-shadow-container v-show="processingCommentsInProgress">
-               <expect-circle v-bind:label="expectCircleLabel"></expect-circle>
-            </relative-shadow-container>
-            <div v-show="showNoCommentsInfo" class="no-data-info">
-               {{__('this_pornstar_has_no_comments')}}
-            </div>
-            <accept-button  v-show="!showCommentPanel" v-on:click.native="showCommentForm">
-               {{__('publish_comment')}}
-               <span class="fas fa-comment comment-icon"></span>
-            </accept-button>
-           
-            <div v-bind:class="{'opened-show-on-demand-container' : showCommentPanel}" class="hide-content-show-on-demand-container">
+         <relative-shadow-container v-show="processingCommentsInProgress">
+            <expect-circle v-bind:label="expectCircleLabel"></expect-circle>
+         </relative-shadow-container>
+         <accept-button  v-show="!showCommentPanel" v-on:click.native="showCommentForm">
+            {{__('publish_comment')}}
+            <span class="fas fa-comment comment-icon"></span>
+         </accept-button>
+         <div v-bind:class="{'opened-show-on-demand-container' : showCommentPanel}" class="hide-content-show-on-demand-container">
                  <comment-box 
+                     v-on:send="saveComment"
                      @if(Auth::check())
                         v-bind:authenticated-user="true"
                         authenticated-user-nickname="{{Auth::user()->login}}"
@@ -149,7 +144,18 @@
                         @endif
                      @endif>
                  </comment-box>
-            </div>
+         </div>
+         <ul class="comments-list">
+            <comment-body v-for="comment in pornstarComments[currentPage]"
+               v-bind:comment-body="comment.comment"
+               v-bind:authenticated-user="comment.added_by_authenticated_user"
+               v-bind:avatar-file-path="comment.avatar_file_path"
+               v-bind:added-ago="comment.added_ago"
+               v-bind:user-nickname="comment.user_nickname">
+            </comment-body>
+         </ul>
+         <div v-show="showNoCommentsInfo" class="no-data-info">
+               {{__('this_pornstar_has_no_comments')}}
          </div>
      </section>
    </main>

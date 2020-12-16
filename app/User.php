@@ -50,6 +50,8 @@ class User extends Authenticatable
         'shows_birthday'
     ];
 
+    protected $appends = ['avatar_file_path'];
+
     public function sendPasswordResetNotification($token)
     {
       $this->notify(new SendPasswordResetLink($token));

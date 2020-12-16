@@ -10,8 +10,7 @@ Abstract Class BaseRepository{
     protected  $query;
 
     public function __construct(){
-       $model = static::MODEL_NAME;
-       $this->query = $model::query();
+       $this->resetQuery();
     }
 
     public function get(){
@@ -30,5 +29,10 @@ Abstract Class BaseRepository{
   public function with(array $relations) : self{
     $this->query = $this->query->with($relations);
     return $this;
-}
+  }
+
+  public function resetQuery(){
+    $model = static::MODEL_NAME;
+    $this->query = $model::query();
+  }
 }
