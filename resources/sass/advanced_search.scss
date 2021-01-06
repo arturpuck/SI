@@ -1,0 +1,58 @@
+@import '~sass/basic';
+@import '~sass/fonts';
+@import '~sass/responsive_icon';
+
+.full-body{
+    background: #0e0e0e;
+}
+
+.advanced-search-panel{
+   display:grid;
+   padding: 5px;
+   margin-top: calc(35px + 1vw);
+   grid-template-columns: repeat(4,23%);
+   justify-content: space-evenly;
+   @media(max-width:541){
+    margin-top: 70px;
+   }
+}
+
+.information-content{
+  @include responsive-font();
+  color:white;
+  margin:0;
+  padding:0;
+  text-align: center;
+}
+
+.panel-group{
+    border-radius: 1vw;
+    padding: 1vw;
+    border: 2px solid black;
+}
+
+.panel-group-legend{
+    @include responsive-font(1.8vw, 25px);
+    color:silver;
+}
+
+.decoration-icon{
+    @include responsive-icon();
+    vertical-align: middle;
+}
+
+#app .select_container{
+    display: flex;
+}
+
+#app .select-container{
+    display: flex;
+}
+
+#app .select-container__select{
+    flex-grow:10;
+}
+
+.select-container{
+    margin:4px 0;
+}

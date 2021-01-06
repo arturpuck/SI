@@ -22,13 +22,10 @@ Class PornstarCommentsRepository extends BaseRepository{
         return $this;
     }
 
-    public function getTotalCommentsAndSelectByPage(int $pageNumber, int $perPage = 10): array{
-        $totalComments = PornstarComment::count();
-        $howManyToSkip = ($pageNumber - 1) * $perPage;
-        $comments = $this->query
-                         ->skip($howManyToSkip)
-                         ->take($perPage)
-                         ->get();
+    public function countSelectedCommentsAndFilterByPage(int $pageNumber, int $perPage = 10): array{
+        $comments = $this->query->get();
+        $totalComments = $comments->count();
+        $comments = $comments->forPage($pageNumber, $perPage);
 
         return ['comments' => $comments, 'total_comments' => $totalComments];
     }

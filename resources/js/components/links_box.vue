@@ -1,15 +1,15 @@
 <template>
   <nav class="links-box">
     <div class="scrollable-controls">
-        <button v-on:click="scrollLinks(leftScrollDirection)" v-on:mousedown="scrollLinksByMouseDown(leftScrollDirection)" v-on:mouseup="stopScrollingFromMouseDown" v-bind:title="previousLinksDescription" class="scroll-links-button scroll-previous-links-button-decoration">
+        <button v-if="arrowsShouldBeDisplayed" v-on:click="scrollLinks(leftScrollDirection)" v-on:mousedown="scrollLinksByMouseDown(leftScrollDirection)" v-on:mouseup="stopScrollingFromMouseDown" v-bind:title="previousLinksDescription" class="scroll-links-button scroll-previous-links-button-decoration">
             <span v-text="previousLinksDescription"  class="links-button-description"></span>
         </button>
         <div class="links-container-outer">
-            <ul v-bind:style="{ left : leftOffsetStyle}" ref="slider_container" class="content-container-slider">
+            <ul v-bind:style="{ left : leftOffsetStyle}" ref="slider_container" v-bind:class="{'content-in-center' : !arrowsShouldBeDisplayed}" class="content-container-slider">
                <slot name="pages-list"></slot>
             </ul>
         </div>
-        <button v-on:click="scrollLinks(rightScrollDirection)" v-on:mousedown="scrollLinksByMouseDown(rightScrollDirection)" v-on:mouseup="stopScrollingFromMouseDown" v-bind:title="nextLinksDescription" class="scroll-links-button scroll-next-links-button-decoration">
+        <button v-if="arrowsShouldBeDisplayed" v-on:click="scrollLinks(rightScrollDirection)" v-on:mousedown="scrollLinksByMouseDown(rightScrollDirection)" v-on:mouseup="stopScrollingFromMouseDown" v-bind:title="nextLinksDescription" class="scroll-links-button scroll-next-links-button-decoration">
             <span v-text="nextLinksDescription" class="links-button-description"></span>
         </button>
     </div>
@@ -27,23 +27,31 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
 
 @Component
 	export default class LinksBox extends Vue{
-        @Prop({
-            type: Number,
-            required: true,
-        }) readonly linksAmount: number;
 
         @Prop({
             type: Number,
-            required: true,
-        }) readonly currentPage: number;
+            required: false,
+            default : null
+        }) readonly initialCurrentPage: number;
 
-        previousLinksDescription :string = Translator.translate('scroll_previous_links');
-        nextLinksDescription :string = Translator.translate('scroll_next_links');
-        scrollOffset : number = 0;
-        leftScrollDirection = LinkListScrollDirection.Left;
-        rightScrollDirection = LinkListScrollDirection.Right;
-        mouseDown : boolean = false;
-        interval = null;
+        private previousLinksDescription :string = Translator.translate('scroll_previous_links');
+        private nextLinksDescription :string = Translator.translate('scroll_next_links');
+        private scrollOffset : number = 0;
+        private leftScrollDirection = LinkListScrollDirection.Left;
+        private rightScrollDirection = LinkListScrollDirection.Right;
+        private mouseDown : boolean = false;
+        private interval = null;
+        private linksAmount: number = undefined;
+        private arrowsShouldBeDisplayed:boolean = false;
+        private currentPage : number = null;
+
+        getAmmountOfElementsInBox():number{
+            return document.querySelectorAll(".pagination-link-list-element").length;
+        }
+
+        chechIfArrowsShouldBeDisplayed(){
+            this.arrowsShouldBeDisplayed = (this.getAmmountOfElementsInBox() > this.getAmmountOfVisibleLinksInBox());
+        }
 
         get leftOffsetStyle(): string {
             const linksInBox = this.getAmmountOfVisibleLinksInBox();
@@ -57,7 +65,7 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
         }
 
         getMaxOffset(): number{
-           return  this.linksAmount - this.getAmmountOfVisibleLinksInBox();
+           return (this.linksAmount > this.getAmmountOfVisibleLinksInBox()) ?   this.linksAmount - this.getAmmountOfVisibleLinksInBox() : 0;
         }
 
         scrollLinks(direction:LinkListScrollDirection){
@@ -88,8 +96,17 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
         }
 
         mounted(){
+            this.currentPage = this.initialCurrentPage ? this.initialCurrentPage  : 1;
+            this.linksAmount = this.getAmmountOfElementsInBox();
             const maxOffset = this.getMaxOffset();
             this.scrollOffset = (this.currentPage -1 >= maxOffset) ? maxOffset : this.currentPage -1;
+            this.chechIfArrowsShouldBeDisplayed();
+            window.addEventListener('resize', () => this.chechIfArrowsShouldBeDisplayed());
+        }
+
+        updated(){
+            this.linksAmount = this.getAmmountOfElementsInBox();
+            this.chechIfArrowsShouldBeDisplayed();
         }
 
     }
@@ -99,6 +116,10 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
 <style lang="scss">
 
 @import '~sass/fonts';
+
+.content-in-center{
+    justify-content: center;
+}
 
 .scroll-previous-links-button-decoration{
     clip-path: polygon(40% 0%, 40% 25%, 100% 25%, 100% 75%, 40% 75%, 40% 100%, 0% 50%);
@@ -113,7 +134,9 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
     background: linear-gradient(to bottom, #1d1c1c, #0e0e0e);
     border-radius: 3px;
     border: 1px solid black;
-    padding:0 4px;
+    padding:4px;
+    text-align: center;
+    font-size: 0;
     &:hover{
         box-shadow: 1px 1px 3px 1px black;
     }
@@ -171,6 +194,7 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
     text-decoration: none;
     padding: 4px;
     display: inline-block;
+    @include responsive-font(1.3vw, 13px);
 }
 
 
@@ -189,6 +213,7 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
     display: inline-block;
     width: 100%;
     line-height:3.5vw;
+    padding: 0;
     background:linear-gradient(to bottom, #e60f0f, #540505);
     &:hover{
        background: linear-gradient(#17f117, #09501b); 
@@ -207,6 +232,7 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
   flex-basis: 3.5vw;
   height: 3.5vw;
   display: inline-block;
+  cursor:pointer;
   text-align: center;
   flex-grow: 0;
   flex-shrink: 0;
@@ -215,7 +241,6 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
         flex-basis:40px;
         margin:0 4px;
         height:40px;
-        line-height: 40px;
   }
 }
 
@@ -230,6 +255,10 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
     &:active{
         transform: scale(1.2);
     }
+}
+
+.aditional-link-icon{
+   @include responsive-font(1.3vw, 13px,""); 
 }
 
 </style>

@@ -18,7 +18,7 @@
 			         <span v-text="translations['movie_categories_label']" class="sidebar-item-description"></span>
 		         </li>
              <li v-bind:title="translations['latest_porn_movies_title']" class="content-sidebar-list-element enlighted-list-content">
-               <a v-bind:href="newMoviesRoute" class="sub-menu-link">
+               <a href="/filmy/najnowsze/strona/1" class="sub-menu-link">
                   <span class="fas fa-folder-plus content-sidebar-icon-nested"></span>
                   <span v-text="translations['latest_porn_movies_caption']" class="sidebar-item-description"></span>
                </a>
@@ -34,7 +34,7 @@
           </ul>
 		  </li>
       <li class="content-sidebar-list-element enlighted-list-content">
-         <a v-bind:href="pornstarsListRoute" class="sub-menu-link">
+         <a href="/gwiazdy-porno/lista" class="sub-menu-link">
            <span class="fas fa-star content-sidebar-icon"></span>
 			     <span v-text="translations['pornstars']" class="sidebar-item-description"></span>
           </a>
@@ -50,17 +50,6 @@
 
  @Component 
   export default class ContentSideBar extends Vue {
-
-     @Prop({
-            type: String,
-            required: false,
-            default: '/filmy/najnowsze/strona/1'
-    }) readonly newMoviesRoute: String;
-
-    @Prop({
-            type: String,
-            required: true,
-    }) readonly pornstarsListRoute: String;
     
     private translations: Object = Translator.getPackage('content_sidebar');
     moviesSubMenuIsVisible: Boolean = false;

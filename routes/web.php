@@ -24,6 +24,9 @@ Route::namespace('Movies')->name('movies.')->group(function(){
        Route::get('/filmy/najnowsze/strona/{pageNumber?}', 'MoviesController@getLatestMoviesPage')
              ->name('new');
 
+       Route::get('/filmy/wyszukiwanie-zaawansowane', 'MoviesController@getAdvancedSearchPage')
+             ->name('advanced.search');
+
 });
 
 Route::namespace('Pornstars')->name('pornstars.')->group(function(){
@@ -37,7 +40,7 @@ Route::namespace('Pornstars')->name('pornstars.')->group(function(){
        Route::put('/rate/pornstar', 'PornstarsController@ratePornstar')->middleware('auth');
 
        Route::get('/pornstar/comments', 'PornstarsController@getPornstarComments');
-       Route::post('/pornstar/comments/add', 'PornstarsController@addPornstarComment');
+       Route::post('/pornstar/comments/add', 'PornstarsController@addPornstarComment')->middleware('throttle:2,1');
 
 });
 

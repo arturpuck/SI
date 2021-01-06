@@ -20,7 +20,7 @@
 
 <style lang="scss">
 
-@import'../../../sass/fonts';
+@import '~sass/fonts';
 
 .submit-button
 {

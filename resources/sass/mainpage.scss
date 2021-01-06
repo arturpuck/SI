@@ -15,12 +15,14 @@
 @import '~sass/basic';
 @import '~sass/background_images';
 @import '~sass/news/default_news';
+@import '~sass/nice_scrollbar';
 $imageFolder : mainpage;
 
 @include background-image(japanese-schoolgirl,1,right);
 @include background-image(cute-girl,2);
 @include background-image(car-date,3,left);
 @include background-image(japanese-chick-in-lambo,4);
+@include nice-scrollbar('.news-container');
 
 .news-introduction{
     padding:3px 5px;
@@ -125,7 +127,10 @@ $imageFolder : mainpage;
     height: calc(100% - 14px - 1.4vw);
 }
 
-
+.quickstart-link{
+    display: block;
+    text-decoration: none;
+}
 
 @media(max-width:1200px){
     .news-container{

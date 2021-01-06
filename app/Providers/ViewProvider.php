@@ -28,7 +28,8 @@ class ViewProvider extends ServiceProvider
                 "settings_panel",
                 "movies_set_complete",
                 'pornstars_list',
-                'pornstar_profile'
+                'pornstar_profile',
+                'advanced_search'
             ];
 
             $viewName = Str::afterLast($view->getName(), ".");

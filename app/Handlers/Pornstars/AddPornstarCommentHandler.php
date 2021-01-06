@@ -25,7 +25,7 @@ Class AddPornstarCommentHandler  {
        $lastComments = $this->pornstarCommentsRepository
                             ->filterByPornstarId($request->get('pornstar_id'))
                             ->orderByAddDate()
-                            ->getTotalCommentsAndSelectByPage(1);
+                            ->countSelectedCommentsAndFilterByPage(1);
 
        return response()->json($lastComments,200);
     }

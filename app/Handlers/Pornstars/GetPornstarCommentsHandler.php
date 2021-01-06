@@ -23,7 +23,7 @@ Class GetPornstarCommentsHandler  {
         $comments = $this->pornstarCommentsRepository
                             ->filterByPornstarId($request->get('id'))
                             ->orderByAddDate()
-                            ->getTotalCommentsAndSelectByPage($request->get('page'), $request->get('comments_per_page'));
+                            ->countSelectedCommentsAndFilterByPage($request->get('page'), $request->get('comments_per_page'));
 
        return response()->json($comments,200);
         

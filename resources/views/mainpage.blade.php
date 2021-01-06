@@ -6,8 +6,10 @@
          <h2 class="quick-start-header">{{__('quick_start')}}<span class="fas quick-start-icon fa-play-circle"></span></h2>
          <ul class="quickstart-options-list">
              <li class="quickstart-option">
-                <span class="quickstart-option-description">{{__('pornstars')}}</span>
-                <span class="fas quickstart-option-icon fa-star"></span>
+                 <a href="{{route('pornstars.list')}}" class="quickstart-link">
+                    <span class="quickstart-option-description">{{__('pornstars')}}</span>
+                    <span class="fas quickstart-option-icon fa-star"></span>
+                </a>
             </li>
             <li class="quickstart-option">
                 <span class="quickstart-option-description">{{__('categories')}}</span>

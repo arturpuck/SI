@@ -22,4 +22,12 @@ class MoviesController extends Controller
             'movies' => $movies
         ]);
     }
+
+    public function getAdvancedSearchPage(){
+
+        return view('movies.advanced_search')->with([
+            'title' => 'porn_movies_advanced_search',
+            'description' => 'advanced_search_description'
+        ]);
+    }
 }

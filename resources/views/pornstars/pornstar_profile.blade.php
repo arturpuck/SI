@@ -145,8 +145,9 @@
                      @endif>
                  </comment-box>
          </div>
+         <div v-if="anyCommentsAvailable" v-text="ammountOfCommentsCaption" class="ammount-of-comments-info"></div>
          <ul class="comments-list">
-            <comment-body v-for="comment in pornstarComments[currentPage]"
+            <comment-body v-for="comment in pornstarComments[currentCommentsPage]"
                v-bind:comment-body="comment.comment"
                v-bind:authenticated-user="comment.added_by_authenticated_user"
                v-bind:avatar-file-path="comment.avatar_file_path"
@@ -154,7 +155,40 @@
                v-bind:user-nickname="comment.user_nickname">
             </comment-body>
          </ul>
-         <div v-show="showNoCommentsInfo" class="no-data-info">
+         <links-box v-bind:initial-current-page="1" v-if="linksBoxShouldBeDisplayed">
+             <template v-slot:pages-list>
+                <li v-for="pageNumber in pagesNumber" v-on:click="fetchPornstarComments(pageNumber)"  class="pagination-link-list-element">
+                   <button v-bind:aria-label="getAriaLabelAttributeValueForSubPageButton(pageNumber)" v-text="pageNumber" v-bind:class="{'current-page-link' : checkCurrentPage(pageNumber)}" class="pagination-link"></button>
+               </li>
+             </template>
+             <template v-slot:aditional-links>
+                <li v-show="currentCommentsPageIsNotFirst" class="aditional-link-list-element">
+                   <button v-on:click="fetchPornstarComments(currentCommentsPage - 1)" class="aditional-link-button">
+                       <span class="fas fa-angle-left" aria-hidden="true"></span> 
+                       {{__('previous_page')}}
+                   </button>
+               </li>
+               <li v-show="currentCommentsPageIsNotFirst" class="aditional-link-list-element">
+                   <button v-on:click="fetchPornstarComments(1)" class="aditional-link-button">
+                       <span class="fas fa-fast-backward" aria-hidden="true"></span> 
+                       {{__('first_page')}}
+                   </button>
+               </li>
+               <li v-show="currentCommentsPageIsNotLast" class="aditional-link-list-element">
+                   <button v-on:click="fetchPornstarComments(pagesNumber)" class="aditional-link-button"> 
+                       {{__('last_page')}}
+                       <span class="fas fas fa-fast-forward" aria-hidden="true"></span>
+                   </button>
+               </li>
+               <li v-show="currentCommentsPageIsNotLast" class="aditional-link-list-element">
+                   <button v-on:click="fetchPornstarComments(currentCommentsPage + 1)" class="aditional-link-button">
+                       {{__('next_page')}}
+                       <span class="fas fa-angle-right" aria-hidden="true"></span> 
+                   </button>
+               </li> 
+             </template>
+         </links-box>
+         <div v-if="!anyCommentsAvailable" class="no-data-info">
                {{__('this_pornstar_has_no_comments')}}
          </div>
      </section>

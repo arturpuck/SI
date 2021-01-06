@@ -35,21 +35,10 @@
 		@auth
 			v-bind:user-id="{{Auth::user()->id}}"
 			user-name="{{Auth::user()->login}}"
-			logout-route="{{route('auth.logout')}}"
-			user-settings-route="{{route('auth.user.settings.show.panel')}}"
 			@if(Auth::user()->has_avatar)
               avatar-file-name="{{Auth::user()->avatar_file_name}}"
 			@endif
 		@endauth
-
-        pornstars-list-route="{{route('pornstars.list')}}"
-		
-		@guest
-			register-route="{{route('auth.register.form')}}"
-			forgot-password-route="{{route('auth.request.password.reset.link.form')}}"
-			login-route="{{route('auth.login')}}"
-		@endguest
-		new-movies-route="{{route('movies.new', ['pageNumber' => 1])}}"
 		>
 		</navbar>
 		<click-detector>

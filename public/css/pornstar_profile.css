@@ -162,7 +162,7 @@
 
 .pornstar-profile-container {
   display: block;
-  margin: calc(40px + 2vw) auto 5px;
+  margin: calc(30px + 1vw) auto 0;
   min-width: 300px;
   background: #0e0e0e;
   border-radius: 10px 0 10px 10px;
@@ -242,8 +242,7 @@
   text-align: center;
   margin: 0;
   padding: 7px 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(#da3232), to(#3e0606));
-  background: linear-gradient(#da3232, #3e0606);
+  background: black;
 }
 
 @media (max-width: 1200px) {
@@ -437,7 +436,7 @@
 .rate-container {
   text-align: center;
   padding: 4px;
-  background: black;
+  background: #0e0e0e;
 }
 
 .no-data-info {
@@ -460,8 +459,7 @@
   color: white;
   font-size: 1.5vw;
   font-family: "Exo 2", sans-serif;
-  background: -webkit-gradient(linear, left top, left bottom, from(#ea1313), to(#520202));
-  background: linear-gradient(#ea1313, #520202);
+  background: #0e0e0e;
 }
 
 @media (max-width: 1200px) {
@@ -539,4 +537,56 @@
   padding: 0;
   margin: 0;
   list-style-type: none;
+}
+
+.ammount-of-comments-info {
+  text-align: center;
+  color: white;
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
+}
+
+@media (max-width: 1200px) {
+  .ammount-of-comments-info {
+    font-size: 16px;
+  }
+}
+
+.pagination-link {
+  border: none;
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
+  cursor: pointer;
+  outline: none;
+}
+
+@media (max-width: 1200px) {
+  .pagination-link {
+    font-size: 16px;
+  }
+}
+
+.aditional-link {
+  background: -webkit-gradient(linear, left top, left bottom, from(#1d1c1c), to(#0e0e0e));
+  background: linear-gradient(to bottom, #1d1c1c, #0e0e0e);
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.aditional-link-button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#1d1c1c), to(#0e0e0e));
+  background: linear-gradient(to bottom, #1d1c1c, #0e0e0e);
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 1.3vw;
+  font-family: "Exo 2", sans-serif;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .aditional-link-button {
+    font-size: 13px;
+  }
 }

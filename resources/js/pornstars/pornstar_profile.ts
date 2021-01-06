@@ -14,7 +14,8 @@ import ExpectCircle from '@jscomponents/decoration/expect_circle.vue';
 import IconStop from '@jscomponents-decoration/icon_stop.vue';
 import IconConfirm from '@jscomponents-decoration/icon_confirm.vue';
 import CommentBox from '@jscomponents-form-controls/comment_box.vue';
-import CommentBody from '@jscomponents/form_controls/comment_body.vue'
+import CommentBody from '@jscomponents/form_controls/comment_body.vue';
+import LinksBox from '@jscomponents/links_box.vue'
 
 const Vue = VueConstructor.build();
 Vue.component('fixed-shadow-container', FixedShadowContainer);
@@ -30,6 +31,7 @@ Vue.component('icon-stop', IconStop);
 Vue.component('icon-confirm', IconConfirm);
 Vue.component('comment-box', CommentBox);
 Vue.component('comment-body', CommentBody);
+Vue.component('links-box', LinksBox);
 
 
 new Vue({
@@ -44,18 +46,26 @@ new Vue({
             processingCommentsInProgress:false,
             pornstarCommentsHaveBeenFetched : false,
             expectCircleLabel : 'fetching_comments',
-            showNoCommentsInfo : false,
-            commentsPerPage : 10,
+            commentsPerPage : 8,
             pornstarComments : {},
             pagesNumber : 0,
-            currentPage : null,
+            currentCommentsPage : null,
             showCommentPanel:false,
-            pornstarID : undefined
+            pornstarID : undefined,
+            totalComments : 0
         }
     },
    
    
     methods : {
+
+      getAriaLabelAttributeValueForSubPageButton(pageNumber:number):string{
+           return `${this.translator.translate('show_comments_sub_page_with_number')} : ${pageNumber}`;
+      },
+
+      checkCurrentPage(pageNumber:number):boolean{
+         return pageNumber == this.currentCommentsPage;
+      },
 
     validateComment(commentData:object):object{
 
@@ -89,6 +99,10 @@ new Vue({
        return {success : true};
     },
 
+    resetCommentBox(){
+        this.$root.$emit('resetCommentBox');
+    },
+
     async  saveComment(commentData:object){
 
        try{
@@ -98,7 +112,7 @@ new Vue({
           if(!validationResult['success']){
             throw new Error(validationResult['message']);
           }
-          this.showCommentsExpectationDecoration(this.translations['adding_comment']);
+          this.showCommentsExpectationDecoration(this.translator.translate('adding_comment'));
 
           commentData['pornstar_id'] = this.pornstarID;
 
@@ -118,6 +132,11 @@ new Vue({
             case 200:
               let responseBody = await response.json();
               this.loadCommentsData(responseBody,1);
+              this.resetCommentBox();
+            break;
+
+            case 429:
+              throw new Error('because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute');
             break;
 
             default:
@@ -127,7 +146,7 @@ new Vue({
           }
       }
       catch(error){
-        this.showNotification(this.translations[error.message], 'error');
+        this.showNotification(this.translator.translate(error.message), true);
       }
       finally{
         this.hideCommentsExpectationDecoration();
@@ -154,32 +173,36 @@ new Vue({
 
       loadCommentsData(data, pageNumber){
 
-            let totalComments = data['total_comments'];
+            let totalComments = parseInt(data['total_comments']);
 
             if(totalComments == 0){
-              this.showNoCommentsInfo = true;
-              this.currentPage = null;
+              this.anyCommentsAvailable = true;
+              this.currentCommentsPage = null;
               this.pornstarComments = {};
+              this.totalComments = 0;
             }
             else{
-              this.showNoCommentsInfo = false;
-              this.pagesNumber = Math.ceil(this.totalComments / this.commentsPerPage);
+              this.pagesNumber = Math.ceil(totalComments / this.commentsPerPage);
               this.pornstarComments[pageNumber] = data['comments'];
-              this.currentPage = pageNumber;
+              this.currentCommentsPage = pageNumber;
+              this.totalComments = totalComments;
             }
            
       },
 
-      async fetchPornstarComments(pornstarID:number, pageNumber:number){
+      async fetchPornstarComments(pageNumber:number, pornstarID:number = null){
+
+        try{
 
         const requestData = {
             method : 'GET',
             headers : {
-              'X-CSRF-TOKEN' : this.csrfToken,
-              'Content-type': 'application/json; charset=UTF-8'
+              'X-CSRF-TOKEN' : this.csrfToken
             }
          };
          let pagesNumberQueryParam = '';
+         pornstarID = pornstarID ? pornstarID : this.pornstarID;
+         this.showCommentsExpectationDecoration(this.translator.translate('fetching_comments'));
 
         const response = await fetch(`/pornstar/comments?id=${pornstarID}&page=${pageNumber}&comments_per_page=${this.commentsPerPage}`, requestData);
 
@@ -187,16 +210,22 @@ new Vue({
 
               case 200:
                 let responseBody = await response.json();
-                console.log(responseBody);
                 this.loadCommentsData(responseBody, pageNumber);
               break;
 
               default:
-                this.showNotification('unexpected_error_occured_while_fetching_comments')
+                this.showNotification(this.translator.translate('unexpected_error_occured_while_fetching_comments'), true);
               break;
           }
 
+        }catch(error){
+          this.showNotification('unexpected_error_occured_while_fetching_comments', true);
+        }
+        finally{
           this.hideCommentsExpectationDecoration();
+        }
+
+          
       },
 
       showComments(pornstarID:number){
@@ -204,13 +233,14 @@ new Vue({
         this.pornstarID = pornstarID;
 
         if(!this.pornstarCommentsHaveBeenFetched){
-            this.showCommentsExpectationDecoration(this.translations['fetching_comments']);
-            this.fetchPornstarComments(pornstarID,1);
+            this.showCommentsExpectationDecoration(this.translator.translate('fetching_comments'));
+            this.fetchPornstarComments(1,pornstarID);
         }
       },
 
-      showNotification(text, type="no-error"){
-        const header = type === "no-error" ? "information" : "error";
+      showNotification(text, error = false){
+        const header = error ? "error" :  "information";
+        const type = error ? 'error' : 'no-error';
         this.$root.$emit('showNotification', {notificationText : text, notificationType : type, headerText : header});
      },
 
@@ -235,7 +265,7 @@ new Vue({
 
               switch(response.status){
                 case 200:
-                  this.showNotification('pornstar_has_been_rated')
+                  this.showNotification(this.translator.translate('pornstar_has_been_rated'));
                 break;
 
                 case 400:
@@ -250,7 +280,7 @@ new Vue({
 
           }
           catch(exception){
-            this.showNotification(exception.message, 'error');
+            this.showNotification(this.translator.translate(exception.message), true);
           }
       },
 
@@ -281,13 +311,34 @@ new Vue({
 
       pornstarRankingTabIsActive(){
         return this.activeTab == PornstarProfileTab.Rank;
+      },
+
+      linksBoxShouldBeDisplayed():boolean{
+        return this.pagesNumber > 1;
+      },
+
+      ammountOfCommentsCaption():string{
+        return `${this.translator.translate('total_comments')} : ${this.totalComments}`;
+      },
+
+      anyCommentsAvailable():boolean{
+        return this.totalComments > 0;
+      },
+
+      currentCommentsPageIsNotFirst():boolean{
+        return this.currentCommentsPage > 1;
+      },
+
+      currentCommentsPageIsNotLast():boolean{
+        return this.currentCommentsPage < this.pagesNumber;
       }
+
    },
 
     mounted(){
         this.$root.$on('showPreview', ()=> this.showsPreview = true);
         this.$root.$on('closePreview', ()=> this.showsPreview = false);
-        this.translations = Translator.getPackage('pornstar_action_section');
+        this.translator = Translator;
         this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
       },
    

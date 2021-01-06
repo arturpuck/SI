@@ -97,12 +97,17 @@
       const commentData = this.authenticatedUser ? {comment_text : this.userComment} : 
                                                    {comment_text : this.userComment, nickname : this.unauthenticatedUserNickName};
       this.$emit('send', commentData);
-      this.userComment = '';
 
+    }
+
+    resetCommentBox(){
+      this.userComment = '';
+      this.unauthenticatedUserNickName = '';
     }
 
     created(){
         this.translator = Translator;
+        this.$root.$on('resetCommentBox',this.resetCommentBox);
     }
 
     mounted(){

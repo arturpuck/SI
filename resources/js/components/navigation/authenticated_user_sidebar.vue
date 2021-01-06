@@ -8,7 +8,7 @@
 			   </phantom-button>
 		   </li>
 		   <li v-bind:title="translations['show_user_profile_settings_title']" class="authenticated-user-sidebar-list-element">
-			  <a v-bind:href="userSettingsRoute" class="sub-menu-link">
+			  <a href="profil/ustawienia" class="sub-menu-link">
 				<span class="fas fa-cogs authenticated-user-sidebar-icon"></span>
 				<span v-text="translations['show_user_profile_settings_caption']" class="sidebar-item-description"></span>
 			  </a>
@@ -30,7 +30,7 @@
                  <span class="fas fa-sign-out-alt authenticated-user-sidebar-icon"></span>
 			     <span v-text="translations['logout_caption']" class="sidebar-item-description"></span>
 			   </phantom-button>
-			   <form aria-hidden="true" id="logoutForm" class="logout-form" method="POST" v-bind:action="logoutRoute">
+			   <form aria-hidden="true" id="logoutForm" class="logout-form" method="POST" action="/wyloguj">
 				  <input type="hidden" v-bind:value="csrfToken" name="_token">
 			   </form>
 		   </li>
@@ -44,18 +44,6 @@
 
 @Component
     export default class AuthenticatedUserSidebar extends Vue {
-
-		@Prop({
-            type: String,
-            required: false,
-            default: '/profil/ustawienia'
-		}) readonly userSettingsRoute: String;
-		
-		@Prop({
-            type: String,
-            required: false,
-            default: '/wyloguj'
-		}) readonly logoutRoute: String;
 		
 		@Prop({
             type: String,

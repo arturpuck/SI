@@ -21,7 +21,7 @@
 			   </phantom-button>
 		</li>
 		<li v-if="!userIsAuthenticated" class="navigation-element-main register-selection ">
-			<a class="navbar-link-main-manu" v-bind:href="registerRoute">
+			<a class="navbar-link-main-manu" href="/rejestruj">
 			  <span class="fas navbar-icon navbar-icon-outer fa-user-plus"></span> 
 			  Rejestruj
 			</a> 
@@ -59,7 +59,7 @@
 						Kategorie
 					</li>
 					<li class="sub-menu-list-element-intendation-second-level">
-						<a class="navbar-link-main-manu" v-bind:href="newMoviesRoute">
+						<a class="navbar-link-main-manu" href="/filmy/najnowsze/strona/1">
 						  <span class="fas navbar-icon navbar-icon-second-level fa-folder-plus"></span>
 						  Najnowsze
 						</a>
@@ -69,14 +69,16 @@
 						Najpopularniejsze
 					</li>
 					<li class="sub-menu-list-element-intendation-second-level">
-						<span class="fas navbar-icon navbar-icon-second-level fa-search"></span>
-						Szukanie zaawansowane
+						<a class="navbar-link-main-manu" href="/filmy/wyszukiwanie-zaawansowane">
+						  <span class="fas navbar-icon navbar-icon-second-level fa-search"></span>
+						  Szukanie zaawansowane
+						</a>
 					</li>
 			  </ul>
 			  </li>
 			  <li class="sub-menu-list-element intendation-first-level">
 					<div class="sub-menu-level-one-item">
-					  <a class="navbar-link-main-manu" v-bind:href="pornstarsListRoute">
+					  <a class="navbar-link-main-manu" href="/gwiazdy-porno/lista">
 						<span class="fas navbar-icon navbar-icon-outer fa-star"></span>
 					    Gwiazdy porno
 					  </a>
@@ -88,16 +90,12 @@
 	  v-if="userIsAuthenticated"
 	  v-bind:aria-hidden="!authenticatedUserSideBarIsVisible" 
 	  v-bind:class="{'visible-sidebar' : authenticatedUserSideBarIsVisible, 'hidden-sidebar' : !authenticatedUserSideBarIsVisible}"
-	  v-bind:user-settings-route="userSettingsRoute"
-	  v-bind:logout-route="logoutRoute"
 	  v-bind:csrf-token="csrfToken"/>
 	  <content-sidebar 
 	  v-bind:class="{'visible-sidebar' : contentSideBarIsVisible, 'hidden-sidebar' : !contentSideBarIsVisible}" 
-	  v-bind:new-movies-route="newMoviesRoute"
-	  v-bind:pornstars-list-route="pornstarsListRoute"
 	  />
 	<div v-if="!userIsAuthenticated" v-show="loginPanelIsVisible" class="login-form-container">
-	            <form v-bind:action="loginRoute" method="POST" id="login-form" v-bind:class="{'visible-login-form' : animatePanel}" class="login-form">
+	            <form action="/login" method="POST" id="login-form" v-bind:class="{'visible-login-form' : animatePanel}" class="login-form">
 					<header class="login-panel-toolbar">
 						<span class="login-info">Zaloguj się do Sex-Imperium</span>
 						<icon-close v-on:click.native="toggleLoginPanel" title="Zamknij okno logowania" aria-label="Zamknij okno logowania"></icon-close> 
@@ -123,7 +121,7 @@
 						Zapamiętaj mnie
 					</labeled-checkbox>
 					<submit-button>Zaloguj</submit-button>
-					<a v-bind:href="forgotPasswordRoute" class="forgot-password-link">Zapomniałem hasła</a>
+					<a href="/haslo/resetuj/wyslij-link" class="forgot-password-link">Zapomniałem hasła</a>
 				</form>
     </div>
 </div>	
@@ -146,42 +144,6 @@
               required: false,
         	  type: String,
 			  default : ""
-			},
-
-        	registerRoute : {
-        		required: false,
-        		type: String,
-			},
-
-			pornstarsListRoute : {
-        		required: true,
-        		type: String,
-			},
-
-			forgotPasswordRoute : {
-				required: false,
-				type: String,
-			},
-
-			loginRoute : {
-				required : false,
-				type: String,
-			},
-
-			logoutRoute : {
-				required : false,
-				type: String,
-			},
-
-			userSettingsRoute : {
-				required : false,
-				type: String,
-			},
-
-			newMoviesRoute : {
-				required : false,
-				type: String,
-				default : ""
 			},
 
 			avatarFileName : {
