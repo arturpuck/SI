@@ -9,36 +9,79 @@
       </fieldset>
       <fieldset class="panel-group">
          <legend class="panel-group-legend">
-            {{__('body_type')}}
+            {{__('type_and_body')}}
          </legend>
-         <simple-labeled-select name="tits-size" v-bind:options="searchEngineOptions['titsSizes']">
+         <simple-labeled-select  v-bind:options="searchEngineOptions['titsSizes']">
             {{__('tits_size')}} : 
          </simple-labeled-select>
-         <simple-labeled-select name="ass-size" v-bind:options="searchEngineOptions['assSizes']">
+         <simple-labeled-select  v-bind:options="searchEngineOptions['assSizes']">
             {{__('ass_size')}} : 
          </simple-labeled-select>
-         <simple-labeled-select name="thickness" v-bind:options="searchEngineOptions['thicknessSizes']">
+         <simple-labeled-select  v-bind:options="searchEngineOptions['thicknessSizes']">
             {{__('thickness')}} : 
          </simple-labeled-select>
-         <simple-labeled-select name="age" v-bind:options="searchEngineOptions['ageRanges']">
+         <simple-labeled-select  v-bind:options="searchEngineOptions['ageRanges']">
             {{__('age')}} : 
          </simple-labeled-select>
-         <simple-labeled-select name="hair-color" v-bind:options="searchEngineOptions['hairColors']">
+         <simple-labeled-select  v-bind:options="searchEngineOptions['hairColors']">
             {{__('hair_color')}} : 
          </simple-labeled-select>
-         <simple-labeled-select name="race" v-bind:options="searchEngineOptions['races']">
+         <simple-labeled-select  v-bind:options="searchEngineOptions['races']">
             {{__('race')}} : 
          </simple-labeled-select>
-         <simple-labeled-select name="pussy-haircut" v-bind:options="searchEngineOptions['pussyHaircut']">
-            {{__('shaved_pussy')}} : 
+         <simple-labeled-select  v-bind:options="searchEngineOptions['nationalities']">
+            {{__('nationality')}} : 
          </simple-labeled-select>
+         <labeled-checkbox name="shaved-pussy">{{__('shaved_pussy')}}</labeled-checkbox>
       </fieldset>
       <fieldset class="panel-group">
          <legend class="panel-group-legend">
             {{__('sex_type')}}
          </legend>
-         <simple-labeled-select name="tits-size" v-bind:options="searchEngineOptions['abundanceTypes']">
+         <simple-labeled-select  v-bind:options="searchEngineOptions['abundanceTypes']">
             {{__('abundance')}} : 
+         </simple-labeled-select>
+         <simple-labeled-select  v-bind:options="searchEngineOptions['sexAmmounts']">
+            {{__('anal')}} : 
+         </simple-labeled-select>
+         <simple-labeled-select  v-bind:options="searchEngineOptions['sexAmmounts']">
+            {{__('blowjob')}} : 
+         </simple-labeled-select>
+         <simple-labeled-select  v-bind:options="searchEngineOptions['sexAmmounts']">
+            {{__('vaginal')}} : 
+         </simple-labeled-select>
+         <simple-labeled-select v-bind:options="searchEngineOptions['sexAmmounts']">
+            {{__('tittfuck')}} : 
+         </simple-labeled-select>
+         <simple-labeled-select  v-bind:options="searchEngineOptions['sexAmmounts']">
+            {{__('feet')}} : 
+         </simple-labeled-select>
+         <simple-labeled-select  v-bind:options="searchEngineOptions['sexAmmounts']">
+            {{__('double_penetration')}} : 
+         </simple-labeled-select>
+         <simple-labeled-select  v-bind:options="searchEngineOptions['sexAmmounts']">
+            {{__('position_69')}} : 
+         </simple-labeled-select>
+         <simple-labeled-select  v-bind:options="searchEngineOptions['cumshotTypes']">
+            {{__('cumshot')}} : 
+         </simple-labeled-select>
+         <labeled-checkbox name="cumshot-compilation">{{__('cumshot_compilation')}}</labeled-checkbox>
+      </fieldset>
+      <fieldset class="panel-group">
+         <legend class="panel-group-legend">
+            {{__('circumstances_and_style')}}
+         </legend>
+         <simple-labeled-select  v-bind:options="searchEngineOptions['locations']">
+            {{__('location')}} : 
+         </simple-labeled-select>
+         <simple-labeled-select  v-bind:options="searchEngineOptions['cameraStyle']">
+            {{__('camera_style')}} : 
+         </simple-labeled-select>
+         <simple-labeled-select  v-bind:options="searchEngineOptions['storyOrCostume']">
+            {{__('story_or_costume_type')}} : 
+         </simple-labeled-select>
+         <simple-labeled-select  v-bind:options="searchEngineOptions['proffesionalismLevel']">
+            {{__('movie_level')}} : 
          </simple-labeled-select>
       </fieldset>
    </form>

@@ -56,5 +56,92 @@ export default {
           GangBang : Translator.translate('GangBang'),
           one_female_two_males : Translator.translate('one_female_two_males'),
           lesbianGroup : Translator.translate('lesbian_group_sex')
+      },
+
+      sexAmmounts : {
+         only : Translator.translate('only'),
+         maximum : Translator.translate('maximum'),
+         a_lot : Translator.translate('a_lot'),
+         medium : Translator.translate('medium'),
+         a_little : Translator.translate('a_little'),
+         exclude : Translator.translate('exclude')
+      },
+
+      cumshotTypes : {
+         on_face : Translator.translate('on_face'),
+         cum_swallow : Translator.translate('creampie'),
+         creampie : Translator.translate('on_feet'),
+         anal_creampie : Translator.translate('anal_creampie'),
+         on_tits : Translator.translate('on_tits'),
+         on_pussy : Translator.translate('on_pussy'),
+         on_ass : Translator.translate('on_ass'),
+         on_feet : Translator.translate('on_feet'),
+         on_many_places : Translator.translate('on_many_places'),
+         on_other_body_parts : Translator.translate('on_feet'),
+         exclude : Translator.translate('exclude')
+      },
+
+      nationalities : {
+        american : Translator.translate('american_nationality'),
+        japanese : Translator.translate('japanese_nationality'),   	
+        german : 	Translator.translate('german_nationality'),
+        czech : Translator.translate('czech_nationality'),
+        russian : Translator.translate('russian_nationality'),
+        british : Translator.translate('british_nationality'),
+        swedish : Translator.translate('swedish_nationality'),
+        ukrainian : Translator.translate('ukrainian_nationality'),
+        slovac : Translator.translate('slovac_nationality'),
+        hanguarian : Translator.translate('hanguarian_nationality'),
+        polish : Translator.translate('polish_nationality'),
+        dutch : Translator.translate('dutch_nationality'),
+        hindu : Translator.translate('hindu_nationality'),
+        french : Translator.translate('french_nationality'),
+        spanish : Translator.translate('spanish_nationality'),
+        italian : Translator.translate('italian_nationality'),
+        canadian : Translator.translate('canadian_nationality'),
+        argentinian : Translator.translate('argentinian_nationality'),
+      },
+
+      locations : {
+        house : Translator.translate('house'),
+        bathroom : Translator.translate('bathroom'),
+        office : Translator.translate('office'),
+        school : Translator.translate('school'),
+        public_place : Translator.translate('public_place'),
+        car : Translator.translate('car'),
+        nature : Translator.translate('nature'),
+        solarium : Translator.translate('solarium'),
+        elevator : Translator.translate('elevator'),
+        beach : Translator.translate('beach'),
+        gym : Translator.translate('gym'),
+      },
+
+      cameraStyle : {
+        outside : Translator.translate('outside_camera_style'),
+        POV : Translator.translate('POV'),
+        mixed : Translator.translate('mixed_camera_style')
+      },
+
+      storyOrCostume : {
+        female_pupil : Translator.translate('female_pupil'),
+        female_employee : Translator.translate('female_employee'),
+        female_student : Translator.translate('female_student'),
+        wife : Translator.translate('wife'),
+        female_teacher : Translator.translate('female_teacher'),
+        nurse : Translator.translate('nurse'),
+        female_slave : Translator.translate('female_slave'),
+        nun : Translator.translate('nun'),
+        female_police_officer : Translator.translate('female_police_officer'),
+        prostitue : Translator.translate('prostitute'),
+        female_boss : Translator.translate('female_boss'),
+        cleaner : Translator.translate('cleaner'),
+        mommy : Translator.translate('mommy')
+      },
+
+      proffesionalismLevel : {
+        proffesional : Translator.translate("profesjonalny"),
+        amateur : Translator.translate("amateur")
       }
+
+
 }

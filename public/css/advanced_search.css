@@ -226,5 +226,17 @@
 }
 
 .select-container {
-  margin: 4px 0;
+  margin: 10px 0;
+}
+
+.labeled-checkbox-description {
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
+  color: white;
+}
+
+@media (max-width: 1200px) {
+  .labeled-checkbox-description {
+    font-size: 16px;
+  }
 }
