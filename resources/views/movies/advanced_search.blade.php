@@ -32,7 +32,9 @@
          <simple-labeled-select  v-bind:options="searchEngineOptions['nationalities']">
             {{__('nationality')}} : 
          </simple-labeled-select>
-         <labeled-checkbox name="shaved-pussy">{{__('shaved_pussy')}}</labeled-checkbox>
+         <simple-labeled-select  v-bind:options="searchEngineOptions['binaryOptions']">
+            {{__('shaved_pussy')}} : 
+         </simple-labeled-select>
       </fieldset>
       <fieldset class="panel-group">
          <legend class="panel-group-legend">
@@ -49,6 +51,9 @@
          </simple-labeled-select>
          <simple-labeled-select  v-bind:options="searchEngineOptions['sexAmmounts']">
             {{__('vaginal')}} : 
+         </simple-labeled-select>
+         <simple-labeled-select  v-bind:options="searchEngineOptions['sexAmmounts']">
+            {{__('pussy_licking')}} : 
          </simple-labeled-select>
          <simple-labeled-select v-bind:options="searchEngineOptions['sexAmmounts']">
             {{__('tittfuck')}} : 
@@ -83,6 +88,24 @@
          <simple-labeled-select  v-bind:options="searchEngineOptions['proffesionalismLevel']">
             {{__('movie_level')}} : 
          </simple-labeled-select>
+         <simple-labeled-select  v-bind:options="searchEngineOptions['binaryOptions']">
+            {{__('has_story')}} : 
+         </simple-labeled-select>
+         <labeled-checkbox class="labeled_checkbox--aditional-margin" name="recorded-by-spy-camera">{{__('spy_camera')}}</labeled-checkbox>
+         <labeled-checkbox class="labeled_checkbox--aditional-margin" name="sado-maso">{{__('sadistic_or_masochistic')}}</labeled-checkbox>
+         <labeled-checkbox class="labeled_checkbox--aditional-margin" name="female-domination">{{__('female_domination')}}</labeled-checkbox>
+      </fieldset>
+      <fieldset class="panel-group">
+         <legend class="panel-group-legend">
+            {{__('gadgets')}}
+         </legend>
+         <labeled-checkbox class="labeled_checkbox--aditional-margin" name="pantyhose">{{__('pantyhose')}}</labeled-checkbox>
+         <labeled-checkbox class="labeled_checkbox--aditional-margin" name="stockings">{{__('stockings')}}</labeled-checkbox>
+         <labeled-checkbox class="labeled_checkbox--aditional-margin" name="glasses">{{__('glasses')}}</labeled-checkbox>
+         <labeled-checkbox class="labeled_checkbox--aditional-margin" name="high-heels">{{__('high_heels')}}</labeled-checkbox>
+         <labeled-checkbox class="labeled_checkbox--aditional-margin" name="huge-cock">{{__('huge_cock')}}</labeled-checkbox>
+         <labeled-checkbox class="labeled_checkbox--aditional-margin" name="whips">{{__('whips')}}</labeled-checkbox>
+         <labeled-checkbox class="labeled_checkbox--aditional-margin" name="sex-toys">{{__('sex_toys')}}</labeled-checkbox>
       </fieldset>
    </form>
 </x-base>

@@ -41,7 +41,7 @@ export default {
           arabic : Translator.translate('arabic_race')
       },
 
-      pussyHaircut : {
+      binaryOptions : {
           1 : Translator.translate('yes'),
           0 : Translator.translate('no')
       },

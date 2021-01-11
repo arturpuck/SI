@@ -17853,7 +17853,7 @@ __webpack_require__.r(__webpack_exports__);
     latin: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('latin_race'),
     arabic: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('arabic_race')
   },
-  pussyHaircut: {
+  binaryOptions: {
     1: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('yes'),
     0: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('no')
   },
