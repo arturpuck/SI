@@ -139,9 +139,9 @@ export default {
       },
 
       proffesionalismLevel : {
-        proffesional : Translator.translate("profesjonalny"),
+        proffesional : Translator.translate("proffesional"),
         amateur : Translator.translate("amateur")
-      }
+      },
 
 
 }

@@ -18,9 +18,6 @@ class Pornstar extends Model
     public bool $limitComments = true;
     public int $commentsLimit = 20;
 
-    public $with = [
-        'nationality'
-    ];
 
     public function nationality(){
         return $this->belongsTo(Nationality::class);

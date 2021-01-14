@@ -236,6 +236,10 @@ export default{
     cleaner : "sprzątaczka",
     mommy : "mamusia",
     amateur : "amatorski",
+    professional : "profesjonalny",
+    choose_options : "wybierz opcje",
+    search : "szukaj",
+    failed_to_fetch_pornstars_list : "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę",
     packages : {
         content_sidebar : {
           hide_side_bar_title : "Schowaj boczne menu",

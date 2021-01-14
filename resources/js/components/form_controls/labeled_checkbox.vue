@@ -1,6 +1,6 @@
 <template>
    <div ref="container" class="labeled-checkbox-container">
-     <input v-model="checked" ref="checkbox" type="checkbox" class="labeled-checkbox" v-bind:name="name" v-bind:id="name">
+     <input v-bind:checked="value" v-bind:value="checkboxValue"  v-on:input="updateModel" ref="checkbox" type="checkbox" class="labeled-checkbox" v-bind:name="name" v-bind:id="name">
         <label ref="label" v-bind:for="name" class="labeled-checkbox-description"><slot></slot></label>	
     </div>
 </template>
@@ -23,7 +23,18 @@
 
           checkedAtStart:{
             required: false,
+            type:Boolean,
             default: false
+          },
+
+          value:{
+            required: false,
+            default: false,
+          },
+
+         checkboxValue :{
+            required: false,
+            default: 1,
           }
         },
 
@@ -32,21 +43,27 @@
              checked : undefined
            }
         },
+
+        methods : {
+            updateModel(event){
+              this.$emit('input', event.target.checked);
+            }
+        },
         
         mounted(){
           if(this.aditionalClasses){
                 Object.keys(this.aditionalClasses).forEach((key) => this.$refs[key].classList.add(this.aditionalClasses[key]));
           }
 
-          this.checked = this.checkedAtStart;
+          this.$refs.checkbox.checked = this.checkedAtStart;
+          this.$emit('input', this.checkedAtStart);
         }
     }
 </script>
 
 <style lang="scss" scoped>
 
-.labeled-checkbox
-{
+.labeled-checkbox{
    opacity:0;
 }
 

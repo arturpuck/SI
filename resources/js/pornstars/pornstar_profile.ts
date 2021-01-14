@@ -6,7 +6,7 @@ import MoviePreview from '@jscomponents/movies/movie_preview.vue';
 import StarRating from '@jscomponents/star_rating.vue';
 import {PornstarProfileTab}  from '@js/enum/pornstar_profile_tab';
 import Translator from '@jsmodules/translator.js';
-import UserNotification from '@jscomponents/user_notification.vue'
+import UserNotification from '@jscomponents/user_notification.vue';
 import TextAreaCombo from '@jscomponents-form-controls/textarea_combo.vue';
 import AcceptButton from '@jscomponents-form-controls/accept_button.vue';
 import RelativeShadowContainer from '@jscomponents/decoration/relative_shadow_container.vue';

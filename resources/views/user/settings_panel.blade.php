@@ -169,10 +169,11 @@
                <p class="information-for-user">
                     {{__('other_settings_information')}}
                </p>
-               <labeled-checkbox ref="show_my_age_setting"
+               <labeled-checkbox
                 name="shows_birthday"
+                v-model="showMyBirthday"
                 class="settings-panel-checkbox"
-                v-bind:checked-at-start="{{Auth::user()->shows_birthday}}">
+                v-bind:checked-at-start="{{Auth::user()->shows_birthday ? 'true' : 'false'}}">
                   {{__('show_my_age_to_other_users')}}
                 </labeled-checkbox>
                 <text-input-combo ref="current_password_other_settings"

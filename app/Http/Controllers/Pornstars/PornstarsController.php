@@ -45,4 +45,5 @@ class PornstarsController extends Controller
     public function addPornstarComment(AddPornstarCommentRequest $request, AddPornstarCommentHandler $pornstarCommentHandler){
         return $pornstarCommentHandler->handle($request);
     }
+
 }

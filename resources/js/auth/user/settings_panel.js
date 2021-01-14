@@ -29,6 +29,7 @@ new Vue({
     data : {
        tabIndex : 0,
        verificationInProgress : false,
+       showMyBirthday : false,
        csrfToken : undefined,
        basicUserDataEditableFields : {
           email : {
@@ -412,7 +413,7 @@ new Vue({
                    throw new Error('please_type_in_current_password_as_described');
                 }
                 const otherSettings = {
-                   shows_birthday : this.$refs.show_my_age_setting.checked,
+                   shows_birthday : this.showMyBirthday,
                    password : passwordInput.inputValue
                };
                 const requestData = {

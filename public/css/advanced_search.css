@@ -187,6 +187,18 @@
   border: 2px solid black;
 }
 
+.panel-group__pornstars-selection-info {
+  font-size: 1.1vw;
+  font-family: "Exo 2", sans-serif;
+  color: white;
+}
+
+@media (max-width: 1200px) {
+  .panel-group__pornstars-selection-info {
+    font-size: 12px;
+  }
+}
+
 .panel-group-legend {
   font-size: 1.8vw;
   font-family: "Exo 2", sans-serif;

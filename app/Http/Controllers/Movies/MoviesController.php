@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Movies;
 use Illuminate\Http\Request;
 use App\Repositories\MoviesRepository;
 use App\Http\Controllers\Controller;
+use App\Pornstar;
+use App\Handlers\Movies\ShowAdvancedSearchPanelHandler;
 
 class MoviesController extends Controller
 {
@@ -23,11 +25,8 @@ class MoviesController extends Controller
         ]);
     }
 
-    public function getAdvancedSearchPage(){
-
-        return view('movies.advanced_search')->with([
-            'title' => 'porn_movies_advanced_search',
-            'description' => 'advanced_search_description'
-        ]);
+    public function getAdvancedSearchPage(ShowAdvancedSearchPanelHandler $handler){
+        
+         return $handler->handle();
     }
 }

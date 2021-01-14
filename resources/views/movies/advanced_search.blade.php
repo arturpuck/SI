@@ -1,3 +1,5 @@
+
+
 <x-base title="{{__($title)}}" specificImageClass="no-image-background" description="{{__($description)}}">
    <form class="advanced-search-panel">
       <fieldset class="panel-group">
@@ -107,5 +109,18 @@
          <labeled-checkbox class="labeled_checkbox--aditional-margin" name="whips">{{__('whips')}}</labeled-checkbox>
          <labeled-checkbox class="labeled_checkbox--aditional-margin" name="sex-toys">{{__('sex_toys')}}</labeled-checkbox>
       </fieldset>
+      <fieldset class="panel-group">
+         <legend class="panel-group-legend">
+            {{__('stars')}}
+         </legend>
+         <p class="panel-group__pornstars-selection-info">
+            {{__('pornstar_selection_info')}}
+         </p>
+         <multiselect
+         v-model="multiselectValues"
+            v-bind:options="{{json_encode($pornstars->pluck('nickname'),true)}}"
+            main-label="{{__('chose_from_pornstars_list')}}"
+            v-bind:show-search-input="true"
+         ></multiselect>
    </form>
 </x-base>
