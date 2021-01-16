@@ -4,7 +4,7 @@ import Navbar  from '@jscomponents/navigation/navbar.vue';
 import TextInputCombo  from '@jscomponents/form_controls/text_input_combo.vue';
 import Translator from '@js/modules/translator.js';
 import SubmitButton from '@jscomponents/form_controls/submit_button.vue';
-import IconClose from '@jscomponents/form_controls/icon_close.vue';
+import ButtonClose from '@jscomponents/form_controls/button_close.vue';
 import PhantomButton from '@jscomponents/form_controls/phantom_button.vue';
 import LabeledCheckbox from '@jscomponents/form_controls/labeled_checkbox.vue';
 import AuthenticatedUserSidebar from '@jscomponents/navigation/authenticated_user_sidebar.vue';
@@ -20,7 +20,7 @@ export default {
         Vue.component('submit-button', SubmitButton);
         Vue.component('phantom-button', PhantomButton);
         Vue.component('labeled-checkbox', LabeledCheckbox);
-        Vue.component('icon-close', IconClose);
+        Vue.component('button-close', ButtonClose);
         Vue.component('empire-logo', EmpireLogo);
         Vue.component('content-sidebar', ContentSidebar);
         Vue.prototype.translator = Translator;

@@ -7,6 +7,7 @@ use App\Pornstar;
 use App\Handlers\Pornstars\ShowPornstarProfileHandler;
 use App\Handlers\Pornstars\GetPornstarCommentsHandler;
 use App\Handlers\Pornstars\AddPornstarCommentHandler;
+use App\Handlers\Pornstars\GetPornstarListForAdvancedSearchHandler;
 use App\Repositories\PornstarsRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Pornstars\RatePornstarRequest;
@@ -44,6 +45,10 @@ class PornstarsController extends Controller
 
     public function addPornstarComment(AddPornstarCommentRequest $request, AddPornstarCommentHandler $pornstarCommentHandler){
         return $pornstarCommentHandler->handle($request);
+    }
+
+    public function getPornstarListForAdvancedSearch(GetPornstarListForAdvancedSearchHandler $handler){
+         return $handler->handle();
     }
 
 }

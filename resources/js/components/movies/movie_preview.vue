@@ -7,7 +7,7 @@
           <span v-text="playButtonCaption" class="play-button-description"></span>
       </button>
       <input v-model="currentFrame" min=1 max=100 type="range" class="movie-frame-selection preview-control-element" name="movie-frame-selection" id="movie-frame-selection">
-      <icon-close class="preview-close-icon" title="close_movie_preview" v-on:click.native="hidePreview"/>
+      <button-close class="preview-close-icon" title="close_movie_preview" v-on:click.native="hidePreview"/>
     </div>
     <div aria-hidden="true" class="trapeze-decoration">
       <empire-logo class="empire-logo" />

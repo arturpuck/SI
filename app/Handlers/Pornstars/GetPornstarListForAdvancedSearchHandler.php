@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Handlers\Movies;
+namespace App\Handlers\Pornstars;
 
 use App\Repositories\PornstarsRepository;
 use Symfony\Component\HttpFoundation\Response;
 
 
-Class ShowAdvancedSearchPanelHandler  {
+Class GetPornstarListForAdvancedSearchHandler  {
 
     private PornstarsRepository $pornstarsRepository;
 
@@ -22,10 +22,6 @@ Class ShowAdvancedSearchPanelHandler  {
                         ->alphabeticalOrderByNickName()
                         ->get();
 
-    return view('movies.advanced_search')->with([
-                                            'title' => 'porn_movies_advanced_search',
-                                            'description' => 'advanced_search_description',
-                                            'pornstars' => $pornstars
-                                         ]);
+    return response()->json($pornstars->pluck('nickname'),200);
     }
 }

@@ -117,10 +117,10 @@
             {{__('pornstar_selection_info')}}
          </p>
          <multiselect
-         v-model="multiselectValues"
-            v-bind:options="{{json_encode($pornstars->pluck('nickname'),true)}}"
+            v-model="multiselectValues"
             main-label="{{__('chose_from_pornstars_list')}}"
             v-bind:show-search-input="true"
          ></multiselect>
    </form>
+   <user-notification></user-notification>
 </x-base>

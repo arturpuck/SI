@@ -98,7 +98,7 @@
 	            <form action="/login" method="POST" id="login-form" v-bind:class="{'visible-login-form' : animatePanel}" class="login-form">
 					<header class="login-panel-toolbar">
 						<span class="login-info">Zaloguj się do Sex-Imperium</span>
-						<icon-close v-on:click.native="toggleLoginPanel" title="Zamknij okno logowania" aria-label="Zamknij okno logowania"></icon-close> 
+						<button-close v-on:click.native="toggleLoginPanel" title="Zamknij okno logowania" aria-label="Zamknij okno logowania"></button-close> 
 					</header>
 					<input v-bind:value="csrfToken" type="hidden" name="_token">
 					<label for="login" class="main-panel-label">Email lub login</label>

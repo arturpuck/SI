@@ -239,6 +239,8 @@ export default{
     professional : "profesjonalny",
     choose_options : "wybierz opcje",
     search : "szukaj",
+    remove_option: "usuń opcję",
+    close : "zamknij",
     failed_to_fetch_pornstars_list : "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę",
     packages : {
         content_sidebar : {

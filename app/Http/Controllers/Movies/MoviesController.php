@@ -25,8 +25,11 @@ class MoviesController extends Controller
         ]);
     }
 
-    public function getAdvancedSearchPage(ShowAdvancedSearchPanelHandler $handler){
+    public function getAdvancedSearchPage(){
         
-         return $handler->handle();
+         return view('movies.advanced_search')->with([
+            'title' => 'porn_movies_advanced_search',
+            'description' => 'advanced_search_description'
+         ]);
     }
 }
