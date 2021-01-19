@@ -1,6 +1,14 @@
 @import '~sass/basic';
 @import '~sass/fonts';
 @import '~sass/responsive_icon';
+@import '~sasscomponent/controls/slider/standard_slider';
+
+@mixin panel-group{
+    border-radius: 1vw;
+    padding: 6px;
+    margin: 0;
+    border: 2px solid black;
+}
 
 .full-body{
     background: #0e0e0e;
@@ -8,13 +16,22 @@
 
 .advanced-search-panel{
    display:grid;
-   padding: 5px;
+   padding: 0 0 5px 0;
    margin-top: calc(35px + 1vw);
    grid-template-columns: repeat(4,23%);
    grid-template-rows:auto;
    justify-content: space-evenly;
    @media(max-width:541){
     margin-top: 70px;
+   }
+   @media(max-width:1250px){
+    grid-template-columns: repeat(2, 43%);
+   }
+   @media(max-width:700px){
+    grid-template-columns: 65%;
+   }
+   @media(max-width:420px){
+    grid-template-columns: 98%;
    }
 }
 
@@ -27,13 +44,10 @@
 }
 
 .panel-group{
-    border-radius: 1vw;
-    padding: 1vw;
-    border: 2px solid black;
-
-    &__pornstars-selection-info{
-        @include responsive-font(1.1vw, 12px);
-        color:white;
+    @include panel-group();
+    &--relative{
+        @include panel-group();
+        position:relative;
     }
 }
 
@@ -71,3 +85,38 @@
 .labeled_checkbox--aditional-margin{
     margin:8px 0;
 }
+
+#app .relative-shadow-container{
+    top: 5%;
+    height: 95%;
+}
+
+.range-selection{
+
+    &__label{
+        text-align: center;
+        @include responsive-font();
+        color:white;
+        display:block;
+        padding-bottom: 7px;
+    }
+
+    &__value{
+        text-align: center;
+        @include responsive-font(1.1vw,13px);
+        color:#3d9c16;
+    }
+}
+
+@include standard-slider('.range-selection__input');
+
+#app .panel-button--extra-margin{
+    margin:20px auto;
+}
+
+
+
+
+
+
+

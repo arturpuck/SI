@@ -71,12 +71,12 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    function checkIfLoginAlreadyExists(AJAXLoginValidationRequest $request)
+    function checkIfLoginAlreadyExists(AJAXLoginValidationRequest $request, $login)
     {
        return response('valid', 200)->header('Content-Type', 'text/plain');    
     }
 
-    function checkIfEmailAlreadyExists(AJAXEmailValidationRequest $request)
+    function checkIfEmailAlreadyExists(AJAXEmailValidationRequest $request, $email)
     {
       return response('valid', 200)->header('Content-Type', 'text/plain');           
     }

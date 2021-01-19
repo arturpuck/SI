@@ -29,7 +29,7 @@ class PornstarsController extends Controller
                ->with(['pornstarsNickNames' => $pornstars->pluck('nickname')->toArray()]);
     }
 
-    public function showPornstarProfile(Request $request, ShowPornstarProfileHandler $pornstarProfileHandler){
+    public function showPornstarProfile(Request $request, ShowPornstarProfileHandler $pornstarProfileHandler, $nickname){
 
         return view('pornstars.pornstar_profile')
                    ->with(['pornstar' => $pornstarProfileHandler->handle($request)]);

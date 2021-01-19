@@ -143,5 +143,9 @@ export default {
         amateur : Translator.translate("amateur")
       },
 
+      pornstarsFetchingLabel : Translator.translate("fetching_pornstars"),
+      notSelected : Translator.translate("not_selected"),
+      selectedTimeLabel : Translator.translate("minutes_inflected"),
+      selectedViewsLabel : Translator.translate("views_inflected"),
 
 }

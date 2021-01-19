@@ -152,7 +152,7 @@
 
 .advanced-search-panel {
   display: grid;
-  padding: 5px;
+  padding: 0 0 5px 0;
   margin-top: calc(35px + 1vw);
   grid-template-columns: repeat(4, 23%);
   grid-template-rows: auto;
@@ -163,6 +163,24 @@
 @media (max-width: 541) {
   .advanced-search-panel {
     margin-top: 70px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .advanced-search-panel {
+    grid-template-columns: repeat(2, 43%);
+  }
+}
+
+@media (max-width: 700px) {
+  .advanced-search-panel {
+    grid-template-columns: 65%;
+  }
+}
+
+@media (max-width: 420px) {
+  .advanced-search-panel {
+    grid-template-columns: 98%;
   }
 }
 
@@ -183,20 +201,17 @@
 
 .panel-group {
   border-radius: 1vw;
-  padding: 1vw;
+  padding: 6px;
+  margin: 0;
   border: 2px solid black;
 }
 
-.panel-group__pornstars-selection-info {
-  font-size: 1.1vw;
-  font-family: "Exo 2", sans-serif;
-  color: white;
-}
-
-@media (max-width: 1200px) {
-  .panel-group__pornstars-selection-info {
-    font-size: 12px;
-  }
+.panel-group--relative {
+  border-radius: 1vw;
+  padding: 6px;
+  margin: 0;
+  border: 2px solid black;
+  position: relative;
 }
 
 .panel-group-legend {
@@ -256,4 +271,209 @@
 
 .labeled_checkbox--aditional-margin {
   margin: 8px 0;
+}
+
+#app .relative-shadow-container {
+  top: 5%;
+  height: 95%;
+}
+
+.range-selection__label {
+  text-align: center;
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
+  color: white;
+  display: block;
+  padding-bottom: 7px;
+}
+
+@media (max-width: 1200px) {
+  .range-selection__label {
+    font-size: 16px;
+  }
+}
+
+.range-selection__value {
+  text-align: center;
+  font-size: 1.1vw;
+  font-family: "Exo 2", sans-serif;
+  color: #3d9c16;
+}
+
+@media (max-width: 1200px) {
+  .range-selection__value {
+    font-size: 13px;
+  }
+}
+
+.range-selection__input {
+  -webkit-appearance: none;
+  /* Hides the slider so that custom slider can be made */
+  width: 100%;
+  /* Specific width is required for Firefox. */
+  background: transparent;
+  /* Otherwise white in Chrome */
+}
+
+.range-selection__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+.range-selection__input:focus {
+  outline: none;
+  /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+.range-selection__input::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.range-selection__input::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 1vw;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #242229;
+  border-radius: 4px;
+  border: none;
+}
+
+@media (max-width: 1000px) {
+  .range-selection__input::-webkit-slider-runnable-track {
+    height: 10px;
+  }
+}
+
+.range-selection__input::-moz-range-track {
+  width: 100%;
+  height: 1vw;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #242229;
+  border-radius: 4px;
+  border: none;
+}
+
+@media (max-width: 1000px) {
+  .range-selection__input::-moz-range-track {
+    height: 10px;
+  }
+}
+
+.range-selection__input::-ms-track {
+  width: 100%;
+  height: 1vw;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #242229;
+  border-radius: 4px;
+  border: none;
+}
+
+@media (max-width: 1000px) {
+  .range-selection__input::-ms-track {
+    height: 10px;
+  }
+}
+
+.range-selection__input::-ms-fill-upper {
+  width: 100%;
+  height: 1vw;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #242229;
+  border-radius: 4px;
+  border: none;
+}
+
+@media (max-width: 1000px) {
+  .range-selection__input::-ms-fill-upper {
+    height: 10px;
+  }
+}
+
+.range-selection__input::-ms-fill-lower {
+  width: 100%;
+  height: 1vw;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #242229;
+  border-radius: 4px;
+  border: none;
+}
+
+@media (max-width: 1000px) {
+  .range-selection__input::-ms-fill-lower {
+    height: 10px;
+  }
+}
+
+.range-selection__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 1.6vw;
+  width: 1vw;
+  min-width: 10px;
+  border-radius: 4px;
+  background: crimson;
+  cursor: pointer;
+  margin-top: -0.3vw;
+  /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+@media (max-width: 1000px) {
+  .range-selection__input::-webkit-slider-thumb {
+    height: 16px;
+    margin-top: -3px;
+  }
+}
+
+.range-selection__input::-moz-range-thumb {
+  border: none;
+  height: 1.6vw;
+  width: 1vw;
+  min-width: 10px;
+  border-radius: 4px;
+  background: crimson;
+  cursor: pointer;
+  margin-top: -0.3vw;
+  /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+@media (max-width: 1000px) {
+  .range-selection__input::-moz-range-thumb {
+    height: 16px;
+    margin-top: -3px;
+  }
+}
+
+.range-selection__input::-ms-thumb {
+  border: none;
+  height: 1.6vw;
+  width: 1vw;
+  min-width: 10px;
+  border-radius: 4px;
+  background: crimson;
+  cursor: pointer;
+  margin-top: -0.3vw;
+  /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+@media (max-width: 1000px) {
+  .range-selection__input::-ms-thumb {
+    height: 16px;
+    margin-top: -3px;
+  }
+}
+
+#app .panel-button--extra-margin {
+  margin: 20px auto;
 }

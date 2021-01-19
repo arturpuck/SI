@@ -253,7 +253,7 @@
         max-height:0;
 
         &--visible{
-            max-height:20vh;
+            max-height:25vh;
             padding: 0.5vw;
         }
     }

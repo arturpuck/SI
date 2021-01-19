@@ -96,6 +96,7 @@
          <labeled-checkbox class="labeled_checkbox--aditional-margin" name="recorded-by-spy-camera">{{__('spy_camera')}}</labeled-checkbox>
          <labeled-checkbox class="labeled_checkbox--aditional-margin" name="sado-maso">{{__('sadistic_or_masochistic')}}</labeled-checkbox>
          <labeled-checkbox class="labeled_checkbox--aditional-margin" name="female-domination">{{__('female_domination')}}</labeled-checkbox>
+         <labeled-checkbox class="labeled_checkbox--aditional-margin" name="translated-to-polish">{{__('polish_language_version')}}</labeled-checkbox>
       </fieldset>
       <fieldset class="panel-group">
          <legend class="panel-group-legend">
@@ -109,18 +110,59 @@
          <labeled-checkbox class="labeled_checkbox--aditional-margin" name="whips">{{__('whips')}}</labeled-checkbox>
          <labeled-checkbox class="labeled_checkbox--aditional-margin" name="sex-toys">{{__('sex_toys')}}</labeled-checkbox>
       </fieldset>
-      <fieldset class="panel-group">
+      <fieldset class="panel-group--relative">
+         <relative-shadow-container v-show="fetchingPornstarsInProgress">
+            <expect-circle v-bind:label="searchEngineOptions['pornstarsFetchingLabel']"></expect-circle>
+         </relative-shadow-container>
          <legend class="panel-group-legend">
             {{__('stars')}}
          </legend>
-         <p class="panel-group__pornstars-selection-info">
-            {{__('pornstar_selection_info')}}
-         </p>
          <multiselect
             v-model="multiselectValues"
             main-label="{{__('chose_from_pornstars_list')}}"
             v-bind:show-search-input="true"
          ></multiselect>
+      </fieldset>
+      <fieldset class="panel-group">
+         <legend class="panel-group-legend">
+            {{__('time_and_views')}}
+         </legend>
+         <div class="range-selection">
+            <label for="minimum-movie-duration" class="range-selection__label">
+               {{__('min_time_in_minutes')}}
+            </label>
+            <input type="range" v-model="minimumMovieTime" min="0" max="180" step="1" class="range-selection__input" name="minimum-movie-duration" id="minimum-movie-duration"/>
+            <div v-text="minimumMovieTimeLabel" class="range-selection__value"></div>
+         </div>
+         <div class="range-selection">
+            <label for="maximum-movie-duration" class="range-selection__label">
+               {{__('max_time_in_minutes')}}
+            </label>
+            <input type="range" v-model="maximumMovieTime" min="0" max="180" step="1" class="range-selection__input" name="maximum-movie-duration" id="maximum-movie-duration"/>
+            <div v-text="maximumMovieTimeLabel" class="range-selection__value"></div>
+         </div>
+         <div class="range-selection">
+            <label for="min-movie-views" class="range-selection__label">
+               {{__('minimum_views')}}
+            </label>
+            <input type="range" v-model="minimumMovieViews" min="0" max="100000" step="100" class="range-selection__input" name="minimum-movie-views" id="min-movie-views"/>
+            <div v-text="minimumMovieViewsLabel" class="range-selection__value"></div>
+         </div>
+         <div class="range-selection">
+            <label for="max-movie-views" class="range-selection__label">
+               {{__('maximum_views')}}
+            </label>
+            <input type="range" v-model="maximumMovieViews" min="0" max="100000" step="100" class="range-selection__input" name="max-movie-views" id="max-movie-views"/>
+            <div v-text="maximumMovieViewsLabel" class="range-selection__value"></div>
+         </div>
+      </fieldset>
+      <fieldset class="panel-group">
+         <legend class="panel-group-legend">
+            {{__('controls')}}
+         </legend>
+         <accept-button class="panel-button--extra-margin">{{__('search_button_caption')}}</accept-button>
+         <reset-button>{{__('reset_panel')}}</reset-button>
+      </fieldset>
    </form>
    <user-notification></user-notification>
 </x-base>

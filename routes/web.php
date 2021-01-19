@@ -48,23 +48,30 @@ Route::namespace('Pornstars')->name('pornstars.')->group(function(){
 });
 
 Route::namespace('Auth')->name('auth.')->group(function(){
+
        Route::post('/rejestruj', 'RegisterController@register')
              ->name('register.create');
+
        Route::get('/rejestruj', 'RegisterController@showRegistrationForm')
              ->name('register.form');
+
        Route::post('/password/reset/link', 'ForgotPasswordController@sendResetLinkEmail')
               ->name('request.password.reset.link');
        Route::get('/haslo/resetuj/wyslij-link', 'ForgotPasswordController@showLinkRequestForm')
               ->name('request.password.reset.link.form');
+
        Route::get('/haslo/resetuj/{token}', 'ResetPasswordController@showResetForm')
               ->name('password.reset.form');
+
        Route::post('/password/reset', 'ResetPasswordController@reset')
                ->name('password.reset');
+
        Route::post('/login', 'LoginController@login')
               ->name('login');
 
        Route::post('/wyloguj', 'LoginController@logout')
                     ->name('logout');
+                    
        Route::get('/haslo/potwierdzenie-zmiany', 'ResetPasswordController@showConfirmation')
               ->name('password.reset.confirmation');
 

@@ -10,7 +10,7 @@ use App\Handlers\Movies\ShowAdvancedSearchPanelHandler;
 
 class MoviesController extends Controller
 {
-    public function getLatestMoviesPage(Request $request, MoviesRepository $moviesRepository){
+    public function getLatestMoviesPage(Request $request, MoviesRepository $moviesRepository, $pageNumber){
       
         $movies = $moviesRepository
                   ->select(['id', 'duration', 'title', 'views', 'is_translated_to_polish'])

@@ -37,7 +37,6 @@ import ButtonClose from './form_controls/button_close.vue';
             },
 
             showNotification(content){
-                
                 const currentType = this.type;
                 const currentNotificationText = this.notificationText;
                 const translator = this.$root.translator;

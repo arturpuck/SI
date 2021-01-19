@@ -14,8 +14,7 @@
 
 @import '~sass/fonts';
 
-.accept-button
-{
+.accept-button{
 	background: linear-gradient(#0fe00b, #054004);
 	padding:5px;
 	color:white;

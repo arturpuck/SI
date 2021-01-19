@@ -9,6 +9,7 @@ class LaunchMainPageController extends Controller
 {
     public function showMainPage(NewsRepository $newsRepository)
     {
+       
         $news = $newsRepository
                 ->filterByPage(1)
                 ->chronological()
