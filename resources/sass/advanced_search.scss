@@ -10,6 +10,37 @@
     border: 2px solid black;
 }
 
+@mixin control-panel-button-icon{
+    vertical-align:middle;
+    margin-right:5px;
+    min-width:12px;
+}
+
+@mixin fixed-control-control-panel-button{
+    border:none;
+    outline:none;
+    display:block;
+    width: 90%;
+    padding:3px;
+    text-align: center;
+    margin:4px auto;
+    border-radius:4px;
+    cursor:pointer;
+    @include responsive-font(1.1vw, 12px);
+    line-height:1.5em;
+    color:white;
+    &:hover{
+        filter: saturate(1.7);
+    }
+}
+
+@mixin control-panel-button{
+    line-height: 1.5em;
+    &:hover{
+        filter: saturate(1.7);
+    }
+}
+
 .full-body{
     background: #0e0e0e;
 }
@@ -110,8 +141,85 @@
 
 @include standard-slider('.range-selection__input');
 
-#app .panel-button--extra-margin{
-    margin:20px auto;
+#app .control-panel-button{
+
+    &--type-reset{
+        @include control-panel-button();
+        &:hover{
+            background:linear-gradient(#ec1515, #8a240a);
+        }
+    }
+    
+    &--type-submit{
+        margin:20px auto;
+        @include control-panel-button();
+        &:hover{
+            background:linear-gradient(#0fe00b, #054004);
+        }
+    }
+    
+}
+
+.control-panel-button__icon{
+    width:1em;
+    @include control-panel-button-icon();
+
+    &--bigger{
+        width:1.5em;
+        @include control-panel-button-icon();
+    }
+
+    &--arrow-down{
+        @include control-panel-button-icon();
+        width: 15%;
+    }
+}
+
+.aditional-control-panel{
+    position:fixed;
+    right:0;
+    top:calc(35px + 1vw);
+    min-width:80px;
+    padding:0;
+    width:8vw;
+    box-shadow:1px 1px 1px 1px black;
+    z-index: 2;
+    border: 1px solid black;
+    border-radius: 5px 0 0 5px;
+    overflow: hidden;
+    background:#151314;
+    opacity: 1;
+    transition:opacity 1.5s;
+
+    &--hidden{
+        opacity:0;
+    }
+
+    &__description{
+        position:absolute;
+        top:-9999px;
+        left:-9999px;
+    }
+
+    &__button{
+
+        &--green{
+           @include fixed-control-control-panel-button();
+           background:linear-gradient(#0fe00b, #054004);
+           margin-bottom:1px;
+        }
+
+        &--red{
+            @include fixed-control-control-panel-button();
+            background:linear-gradient(#ec1515, #8a240a);
+        }
+
+        &--arrow-down{
+            @include fixed-control-control-panel-button();
+            background:black;
+        }
+
+    }
 }
 
 

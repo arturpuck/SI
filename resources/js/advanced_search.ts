@@ -36,7 +36,8 @@ Vue.component('reset-button',ResetButton);
    minimumMovieTime : 0,
    maximumMovieTime : 0,
    minimumMovieViews : 0,
-   maximumMovieViews : 0
+   maximumMovieViews : 0,
+   showControlsShortcut : undefined
   },
   
   computed : {
@@ -65,6 +66,50 @@ Vue.component('reset-button',ResetButton);
   methods : {
 
         showNotification : NotificationFunction,
+
+        userHasAditionalPanelPreferences():boolean {
+          return localStorage.getItem('showAditionalPanel') !== null;
+        },
+
+        setAditionalPanelPreferences(show:boolean){
+          const value = String(show);
+          localStorage.setItem('showAditionalPanel',value);
+        },
+
+        initiateAditionalPanelSettings(){
+
+           if(this.userHasAditionalPanelPreferences()){
+              this.showControlsShortcut = this.userWantsToDisplayAditionalPanel();
+           }
+           else {
+               this.showControlsShortcut = (window.innerWidth <= 700);
+           }
+
+           window.addEventListener('resize', () => {
+             this.showControlsShortcut = Boolean(!this.userHasAditionalPanelPreferences() && (window.innerWidth <= 700));
+           });
+
+        },
+
+        userWantsToDisplayAditionalPanel():boolean{
+          const setting = localStorage.getItem('showAditionalPanel');
+
+          switch(setting){
+
+            case 'true':
+               return true;
+            break;
+
+            case 'false':
+               return false;
+            break;
+
+            case null:
+              return undefined;
+            break;
+
+          }
+        },
 
         async fetchPornstars(){
 
@@ -98,6 +143,7 @@ Vue.component('reset-button',ResetButton);
     mounted(){
       this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
       this.fetchPornstars();
+      this.initiateAditionalPanelSettings();
     }
 
 });

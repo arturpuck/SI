@@ -230,5 +230,8 @@
     "time_and_views" : "Czas i wyświetlenia",
     "controls" : "Sterowanie",
     "search_button_caption" : "szukaj",
-    "reset_panel" : "resetuj panel"
+    "reset_panel" : "resetuj panel",
+    "show_controls_shortcut" : "Pokazuj przyciski wyszukiwania i reset zawsze na górze ekranu",
+    "fixed_panel_reset_caption" : "reset",
+    "hide_fixed_control_panel_caption" : "chowaj"
 }

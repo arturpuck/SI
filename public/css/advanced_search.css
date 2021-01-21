@@ -474,6 +474,167 @@
   }
 }
 
-#app .panel-button--extra-margin {
+#app .control-panel-button--type-reset {
+  line-height: 1.5em;
+}
+
+#app .control-panel-button--type-reset:hover {
+  -webkit-filter: saturate(1.7);
+          filter: saturate(1.7);
+}
+
+#app .control-panel-button--type-reset:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(#ec1515), to(#8a240a));
+  background: linear-gradient(#ec1515, #8a240a);
+}
+
+#app .control-panel-button--type-submit {
   margin: 20px auto;
+  line-height: 1.5em;
+}
+
+#app .control-panel-button--type-submit:hover {
+  -webkit-filter: saturate(1.7);
+          filter: saturate(1.7);
+}
+
+#app .control-panel-button--type-submit:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(#0fe00b), to(#054004));
+  background: linear-gradient(#0fe00b, #054004);
+}
+
+.control-panel-button__icon {
+  width: 1em;
+  vertical-align: middle;
+  margin-right: 5px;
+  min-width: 12px;
+}
+
+.control-panel-button__icon--bigger {
+  width: 1.5em;
+  vertical-align: middle;
+  margin-right: 5px;
+  min-width: 12px;
+}
+
+.control-panel-button__icon--arrow-down {
+  vertical-align: middle;
+  margin-right: 5px;
+  min-width: 12px;
+  width: 15%;
+}
+
+.aditional-control-panel {
+  position: fixed;
+  right: 0;
+  top: calc(35px + 1vw);
+  min-width: 80px;
+  padding: 0;
+  width: 8vw;
+  box-shadow: 1px 1px 1px 1px black;
+  z-index: 2;
+  border: 1px solid black;
+  border-radius: 5px 0 0 5px;
+  overflow: hidden;
+  background: #151314;
+  opacity: 1;
+  -webkit-transition: opacity 1.5s;
+  transition: opacity 1.5s;
+}
+
+.aditional-control-panel--hidden {
+  opacity: 0;
+}
+
+.aditional-control-panel__description {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+.aditional-control-panel__button--green {
+  border: none;
+  outline: none;
+  display: block;
+  width: 90%;
+  padding: 3px;
+  text-align: center;
+  margin: 4px auto;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1vw;
+  font-family: "Exo 2", sans-serif;
+  line-height: 1.5em;
+  color: white;
+  background: -webkit-gradient(linear, left top, left bottom, from(#0fe00b), to(#054004));
+  background: linear-gradient(#0fe00b, #054004);
+  margin-bottom: 1px;
+}
+
+@media (max-width: 1200px) {
+  .aditional-control-panel__button--green {
+    font-size: 12px;
+  }
+}
+
+.aditional-control-panel__button--green:hover {
+  -webkit-filter: saturate(1.7);
+          filter: saturate(1.7);
+}
+
+.aditional-control-panel__button--red {
+  border: none;
+  outline: none;
+  display: block;
+  width: 90%;
+  padding: 3px;
+  text-align: center;
+  margin: 4px auto;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1vw;
+  font-family: "Exo 2", sans-serif;
+  line-height: 1.5em;
+  color: white;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ec1515), to(#8a240a));
+  background: linear-gradient(#ec1515, #8a240a);
+}
+
+@media (max-width: 1200px) {
+  .aditional-control-panel__button--red {
+    font-size: 12px;
+  }
+}
+
+.aditional-control-panel__button--red:hover {
+  -webkit-filter: saturate(1.7);
+          filter: saturate(1.7);
+}
+
+.aditional-control-panel__button--arrow-down {
+  border: none;
+  outline: none;
+  display: block;
+  width: 90%;
+  padding: 3px;
+  text-align: center;
+  margin: 4px auto;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1vw;
+  font-family: "Exo 2", sans-serif;
+  line-height: 1.5em;
+  color: white;
+  background: black;
+}
+
+@media (max-width: 1200px) {
+  .aditional-control-panel__button--arrow-down {
+    font-size: 12px;
+  }
+}
+
+.aditional-control-panel__button--arrow-down:hover {
+  -webkit-filter: saturate(1.7);
+          filter: saturate(1.7);
 }

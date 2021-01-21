@@ -1,7 +1,20 @@
-
-
 <x-base title="{{__($title)}}" specificImageClass="no-image-background" description="{{__($description)}}">
    <form class="advanced-search-panel">
+      <fieldset v-bind:class="{'aditional-control-panel--hidden' : !showControlsShortcut}" class="aditional-control-panel">
+         <legend class="aditional-control-panel__description">{{__('controls')}}</legend>
+           <button type="button" class="aditional-control-panel__button--green">
+              <img src="/images/decoration/advanced-search/magnifier.svg" alt="" class="control-panel-button__icon">
+              {{__('search_button_caption')}}
+           </button>
+           <button type="reset" class="aditional-control-panel__button--red">
+              <img src="/images/decoration/advanced-search/shutdown.svg" alt="" class="control-panel-button__icon--bigger">
+              {{__('fixed_panel_reset_caption')}}
+            </button>
+            <button type="button" class="aditional-control-panel__button--arrow-down">
+              <img src="/images/decoration/advanced-search/arrow-down.svg" class="control-panel-button__icon--arrow-down"/>
+              {{__('hide_fixed_control_panel_caption')}}
+            </button>
+      </fieldset>
       <fieldset class="panel-group">
          <legend class="panel-group-legend">
             {{__('information')}}
@@ -160,8 +173,15 @@
          <legend class="panel-group-legend">
             {{__('controls')}}
          </legend>
-         <accept-button class="panel-button--extra-margin">{{__('search_button_caption')}}</accept-button>
-         <reset-button>{{__('reset_panel')}}</reset-button>
+         <accept-button class="control-panel-button--type-submit">
+            <img src="/images/decoration/advanced-search/magnifier.svg" alt="" class="control-panel-button__icon">
+            {{__('search_button_caption')}}
+         </accept-button>
+         <reset-button class="control-panel-button--type-reset">
+            <img src="/images/decoration/advanced-search/shutdown.svg" alt="" class="control-panel-button__icon--bigger">
+            {{__('reset_panel')}}
+         </reset-button>
+         <labeled-checkbox v-model="showControlsShortcut" class="labeled_checkbox--aditional-margin" name="show-controls-shortcut">{{__('show_controls_shortcut')}}</labeled-checkbox>
       </fieldset>
    </form>
    <user-notification></user-notification>

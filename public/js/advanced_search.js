@@ -18149,7 +18149,8 @@ new Vue({
         minimumMovieTime: 0,
         maximumMovieTime: 0,
         minimumMovieViews: 0,
-        maximumMovieViews: 0
+        maximumMovieViews: 0,
+        showControlsShortcut: undefined
     },
     computed: {
         minimumMovieTimeLabel: function () {
@@ -18171,6 +18172,39 @@ new Vue({
     },
     methods: {
         showNotification: notification_function_ts_1.default,
+        userHasAditionalPanelPreferences: function () {
+            return localStorage.getItem('showAditionalPanel') !== null;
+        },
+        setAditionalPanelPreferences: function (show) {
+            var value = String(show);
+            localStorage.setItem('showAditionalPanel', value);
+        },
+        initiateAditionalPanelSettings: function () {
+            var _this = this;
+            if (this.userHasAditionalPanelPreferences()) {
+                this.showControlsShortcut = this.userWantsToDisplayAditionalPanel();
+            }
+            else {
+                this.showControlsShortcut = (window.innerWidth <= 700);
+            }
+            window.addEventListener('resize', function () {
+                _this.showControlsShortcut = Boolean(!_this.userHasAditionalPanelPreferences() && (window.innerWidth <= 700));
+            });
+        },
+        userWantsToDisplayAditionalPanel: function () {
+            var setting = localStorage.getItem('showAditionalPanel');
+            switch (setting) {
+                case 'true':
+                    return true;
+                    break;
+                case 'false':
+                    return false;
+                    break;
+                case null:
+                    return undefined;
+                    break;
+            }
+        },
         fetchPornstars: function () {
             return __awaiter(this, void 0, void 0, function () {
                 var requestData, response, pornstars;
@@ -18211,6 +18245,7 @@ new Vue({
     mounted: function () {
         this.csrfToken = document.getElementById("csrf-token").content;
         this.fetchPornstars();
+        this.initiateAditionalPanelSettings();
     }
 });
 
