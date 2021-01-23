@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Movies;
 
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 use App\Repositories\MoviesRepository;
 use App\Http\Controllers\Controller;
 use App\Pornstar;
 use App\Handlers\Movies\ShowAdvancedSearchPanelHandler;
+use App\Handlers\Movies\AdvancedSearchHandler;
 
 class MoviesController extends Controller
 {
@@ -31,5 +33,9 @@ class MoviesController extends Controller
             'title' => 'porn_movies_advanced_search',
             'description' => 'advanced_search_description'
          ]);
+    }
+
+    public function advancedSearch(Request $request, AdvancedSearchHandler $handler):Response{
+       return $handler->handle($request);
     }
 }

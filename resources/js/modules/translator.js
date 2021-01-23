@@ -246,6 +246,7 @@ export default{
     not_selected : "nie wybrano",
     minutes_inflected : "minut(y)",
     views_inflected : "wyświetleń",
+    unexpected_error_occured : "Pojawił się bliżej niezidentyfikowany błąd",
     packages : {
         content_sidebar : {
           hide_side_bar_title : "Schowaj boczne menu",

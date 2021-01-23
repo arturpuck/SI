@@ -25,6 +25,9 @@ Route::namespace('Movies')->name('movies.')->group(function(){
              ->name('new');
 
        Route::get('/filmy/wyszukiwanie-zaawansowane', 'MoviesController@getAdvancedSearchPage')
+             ->name('advanced.search.panel');
+
+      Route::get('/movies/advanced-search', 'MoviesController@advancedSearch')
              ->name('advanced.search');
 
 });
@@ -35,7 +38,7 @@ Route::namespace('Pornstars')->name('pornstars.')->group(function(){
              ->name('list');
 
        Route::get('/pornstars/advanced-search/list', 'PornstarsController@getPornstarListForAdvancedSearch')
-             ->name('all');
+             ->name('all')->middleware('api');
        
        Route::get('/gwiazda-porno/profil/{nickname?}', 'PornstarsController@showPornstarProfile')
               ->name('profile');
@@ -57,6 +60,7 @@ Route::namespace('Auth')->name('auth.')->group(function(){
 
        Route::post('/password/reset/link', 'ForgotPasswordController@sendResetLinkEmail')
               ->name('request.password.reset.link');
+
        Route::get('/haslo/resetuj/wyslij-link', 'ForgotPasswordController@showLinkRequestForm')
               ->name('request.password.reset.link.form');
 

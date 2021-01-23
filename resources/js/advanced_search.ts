@@ -11,9 +11,12 @@ import RelativeShadowContainer from '@jscomponents/decoration/relative_shadow_co
 import ExpectCircle from '@jscomponents/decoration/expect_circle.vue';
 import AcceptButton from '@jscomponents-form-controls/accept_button.vue';
 import ResetButton from '@jscomponents-form-controls/reset_button.vue';
-
+import SearchEngineVariables from '@jsmodules/search_engine_variables.ts';
+import QueryBuilder from '@jsmodules/query_builder.ts';
 import { createTextChangeRange } from 'typescript';
 import { createDecorator } from 'vue-class-component';
+import {XHRRequestData} from '@interfaces/XHRRequestData.ts';
+
 Vue.component('simple-labeled-select',SimpleLabeledSelect);
 Vue.component('labeled-checkbox', LabeledCheckBox);
 Vue.component('user-notification', UserNotification);
@@ -28,16 +31,52 @@ Vue.component('reset-button',ResetButton);
 
   data : {
   
-   searchEngineOptions : SearchEngineAvailableOptions,
-   csrfToken : undefined,
-   multiselectValues : [],
-   translator : Translator,
-   fetchingPornstarsInProgress : true,
-   minimumMovieTime : 0,
-   maximumMovieTime : 0,
-   minimumMovieViews : 0,
-   maximumMovieViews : 0,
-   showControlsShortcut : undefined
+    searchEngineOptions : SearchEngineAvailableOptions,
+    csrfToken : undefined,
+    multiselectValues : [],
+    translator : Translator,
+    fetchingPornstarsInProgress : true,
+    minimumMovieTime : 0,
+    maximumMovieTime : 0,
+    minimumMovieViews : 0,
+    maximumMovieViews : 0,
+    showControlsShortcut : undefined,
+    abundanceType : "",
+    titsSize : "",
+    assSize : "",
+    thicknessSize : "",
+    ageRange : "",
+    hairColor : "",
+    race : "",
+    nationality : "",
+    shavedPussy : "",
+    analAmmount : "",
+    blowjobAmmount : "",
+    vaginalAmmount : "",
+    pussyLickingAmmount : "",
+    tittfuckAmmount : "",
+    feetAmmount : "",
+    position69Ammount : "",
+    doublePenetrationAmmount : "",
+    cumshotType : "",
+    isCumshotCompilation : false,
+    location : "",
+    cameraStyle : "",
+    storyOrCostume : "",
+    proffesionalismLevel : "",
+    hasStory : "",
+    recordedBySpamCamera : false,
+    isSadisticOrMasochistic : false,
+    isFemaleDomination : false,
+    isTranslatedToPolish : false,
+    showPantyhose : false,
+    showStockings : false,
+    showGlasses : false,
+    showHighHeels : false,
+    showHugeCock : false,
+    showWhips : false,
+    showSexToys : false,
+    pornstarsList : []
   },
   
   computed : {
@@ -71,22 +110,43 @@ Vue.component('reset-button',ResetButton);
           return localStorage.getItem('showAditionalPanel') !== null;
         },
 
-        setAditionalPanelPreferences(show:boolean){
+        setAditionalPanelPreferences(show:boolean):void{
           const value = String(show);
           localStorage.setItem('showAditionalPanel',value);
         },
 
-        initiateAditionalPanelSettings(){
+        savePanelSettings(event):void{
+
+          setTimeout(() => {
+             this.setAditionalPanelPreferences(this.showControlsShortcut);
+          },0);
+
+        },
+
+        hideAditionalPanel():void{
+          this.showControlsShortcut = false;
+          this.setAditionalPanelPreferences(false);
+        },
+        
+        windowIsNarrowEnoughToSetDefaultAditionalPanelVisible():boolean{
+            return window.innerWidth <= 700;
+        },
+
+        initiateAditionalPanelSettings():void{
 
            if(this.userHasAditionalPanelPreferences()){
               this.showControlsShortcut = this.userWantsToDisplayAditionalPanel();
            }
            else {
-               this.showControlsShortcut = (window.innerWidth <= 700);
+               this.showControlsShortcut = this.windowIsNarrowEnoughToSetDefaultAditionalPanelVisible();
            }
 
            window.addEventListener('resize', () => {
-             this.showControlsShortcut = Boolean(!this.userHasAditionalPanelPreferences() && (window.innerWidth <= 700));
+
+             if(!this.userHasAditionalPanelPreferences()){
+              this.showControlsShortcut = this.windowIsNarrowEnoughToSetDefaultAditionalPanelVisible();
+             }
+
            });
 
         },
@@ -136,6 +196,74 @@ Vue.component('reset-button',ResetButton);
                 this.fetchingPornstarsInProgress = false;
             }
             
+          },
+
+          getSelectedOptions():object{
+
+              let selectedOptions:object = {};
+
+              SearchEngineVariables.getIgnoreIfFalsy().forEach( propertyName => {
+
+                  if(this[propertyName]){
+                    selectedOptions[propertyName] = this[propertyName];
+                  }
+              });
+
+              if(this.pornstarsList.length > 0){
+                 selectedOptions['pornstars'] = this.pornstarsList;
+              }
+
+              return selectedOptions;
+          },
+
+          async searchMovies(){
+
+              try{
+
+                  const requestData:XHRRequestData = {
+
+                    method : 'GET',
+                    headers : {
+                      'X-CSRF-TOKEN' : this.csrfToken
+                    } 
+                  };
+
+                  const query = QueryBuilder(this.getSelectedOptions());
+                  const response = await fetch(`/movies/advanced-search?${query}`,requestData);
+
+                  if(response.status === 200){
+                    const movies = await response.json();
+                  }
+                  else{
+                      throw new Error('unexpected_error_occured');
+                  }
+
+              }
+              catch(exception){
+                 this.showNotification(this.translator.translate('unexpected_error_occured'), 'error');
+              }
+              finally{
+
+              }
+              console.log(this.getSelectedOptions());
+          },
+
+          resetPanel(event):void{
+            event.preventDefault();
+
+            SearchEngineVariables['initialValueIsEmptyString'].forEach( propertyName => {
+               this[propertyName] = "";
+            });
+
+            SearchEngineVariables['initialValueIsFalse'].forEach( propertyName => {
+              this[propertyName] = false;
+            });
+
+            SearchEngineVariables['initialValueIsZero'].forEach( propertyName => {
+              this[propertyName] = 0;
+            });
+
+            this.pornstarsList = [];
           }
 
     },
@@ -147,3 +275,4 @@ Vue.component('reset-button',ResetButton);
     }
 
 });
+
