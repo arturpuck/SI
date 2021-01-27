@@ -100,7 +100,7 @@
          <simple-labeled-select v-model="storyOrCostume" v-bind:options="searchEngineOptions['storyOrCostume']">
             {{__('story_or_costume_type')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="proffesionalismLevel" v-bind:options="searchEngineOptions['proffesionalismLevel']">
+         <simple-labeled-select v-model="professionalismLevel" v-bind:options="searchEngineOptions['professionalismLevel']">
             {{__('movie_level')}} : 
          </simple-labeled-select>
          <simple-labeled-select v-model="hasStory" v-bind:options="searchEngineOptions['binaryOptions']">

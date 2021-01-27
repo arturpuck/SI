@@ -18175,7 +18175,7 @@ new Vue({
         location: "",
         cameraStyle: "",
         storyOrCostume: "",
-        proffesionalismLevel: "",
+        professionalismLevel: "",
         hasStory: "",
         recordedBySpamCamera: false,
         isSadisticOrMasochistic: false,
@@ -18296,14 +18296,16 @@ new Vue({
         },
         getSelectedOptions: function () {
             var _this = this;
-            var selectedOptions = {};
+            var selectedOptions = { pornstarsList: [], otherParams: {} };
             search_engine_variables_ts_1.default.getIgnoreIfFalsy().forEach(function (propertyName) {
-                if (_this[propertyName]) {
-                    selectedOptions[propertyName] = _this[propertyName];
+                var selectedValue = _this[propertyName];
+                if (selectedValue) {
+                    var parsedValue = (typeof selectedValue == "boolean") ? Number(selectedValue) : selectedValue;
+                    selectedOptions['otherParams'][propertyName] = parsedValue;
                 }
             });
             if (this.pornstarsList.length > 0) {
-                selectedOptions['pornstars'] = this.pornstarsList;
+                selectedOptions['pornstarsList'] = this.pornstarsList;
             }
             return selectedOptions;
         },
@@ -18320,7 +18322,7 @@ new Vue({
                                     'X-CSRF-TOKEN': this.csrfToken
                                 }
                             };
-                            query = query_builder_ts_1.default(this.getSelectedOptions());
+                            query = query_builder_ts_1.QueryBuilder.build(this.getSelectedOptions());
                             return [4 /*yield*/, fetch("/movies/advanced-search?" + query, requestData)];
                         case 1:
                             response = _a.sent();
@@ -20039,14 +20041,21 @@ exports.default = default_1;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-function default_1(queryParams) {
-    var query = '';
-    Object.keys(queryParams).forEach(function (key) {
-        query += key + "=" + queryParams[key] + "&";
-    });
-    return query.slice(0, -1);
-}
-exports.default = default_1;
+exports.QueryBuilder = void 0;
+exports.QueryBuilder = {
+    build: function (queryParams) {
+        var query = '';
+        var otherParams = queryParams['otherParams'];
+        Object.keys(otherParams).forEach(function (key) {
+            query += key + "=" + otherParams[key] + "&";
+        });
+        var pornstarsList = queryParams['pornstarsList'];
+        pornstarsList.forEach(function (pornstarNickname) {
+            query += "pornstarsList[]=" + pornstarNickname + "&";
+        });
+        return query.slice(0, -1);
+    }
+};
 
 
 /***/ }),
@@ -20065,7 +20074,7 @@ var variables = {
     initialValueIsEmptyString: ['abundanceType', 'titsSize', 'assSize', 'thicknessSize', 'ageRange', 'hairColor', 'race',
         'nationality', 'shavedPussy', 'analAmmount', 'blowjobAmmount', 'doublePenetrationAmmount', 'vaginalAmmount', 'pussyLickingAmmount', 'tittfuckAmmount',
         'feetAmmount', 'position69Ammount', 'cumshotType', 'location', 'cameraStyle', 'hasStory', 'storyOrCostume',
-        'proffesionalismLevel'],
+        'professionalismLevel'],
     initialValueIsFalse: ['isCumshotCompilation', 'recordedBySpamCamera', 'isSadisticOrMasochistic', 'isFemaleDomination',
         'isTranslatedToPolish', 'showPantyhose', 'showStockings', 'showGlasses', 'showHighHeels', 'showHugeCock',
         'showWhips', 'showSexToys'
@@ -20234,8 +20243,8 @@ __webpack_require__.r(__webpack_exports__);
     cleaner: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('cleaner'),
     mommy: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('mommy')
   },
-  proffesionalismLevel: {
-    proffesional: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("proffesional"),
+  professionalismLevel: {
+    professional: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("professional"),
     amateur: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("amateur")
   },
   pornstarsFetchingLabel: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("fetching_pornstars"),

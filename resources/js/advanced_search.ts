@@ -12,7 +12,7 @@ import ExpectCircle from '@jscomponents/decoration/expect_circle.vue';
 import AcceptButton from '@jscomponents-form-controls/accept_button.vue';
 import ResetButton from '@jscomponents-form-controls/reset_button.vue';
 import SearchEngineVariables from '@jsmodules/search_engine_variables.ts';
-import QueryBuilder from '@jsmodules/query_builder.ts';
+import {QueryBuilder, QueryParams} from '@jsmodules/query_builder.ts';
 import { createTextChangeRange } from 'typescript';
 import { createDecorator } from 'vue-class-component';
 import {XHRRequestData} from '@interfaces/XHRRequestData.ts';
@@ -63,7 +63,7 @@ Vue.component('reset-button',ResetButton);
     location : "",
     cameraStyle : "",
     storyOrCostume : "",
-    proffesionalismLevel : "",
+    professionalismLevel : "",
     hasStory : "",
     recordedBySpamCamera : false,
     isSadisticOrMasochistic : false,
@@ -198,19 +198,21 @@ Vue.component('reset-button',ResetButton);
             
           },
 
-          getSelectedOptions():object{
+          getSelectedOptions():QueryParams{
 
-              let selectedOptions:object = {};
+              let selectedOptions:QueryParams = {pornstarsList : [], otherParams : {}};
 
               SearchEngineVariables.getIgnoreIfFalsy().forEach( propertyName => {
+                  let selectedValue:any = this[propertyName];
 
-                  if(this[propertyName]){
-                    selectedOptions[propertyName] = this[propertyName];
+                  if(selectedValue){
+                    let parsedValue:any = (typeof selectedValue == "boolean") ? Number(selectedValue) : selectedValue;
+                    selectedOptions['otherParams'][propertyName] = parsedValue;
                   }
               });
 
               if(this.pornstarsList.length > 0){
-                 selectedOptions['pornstars'] = this.pornstarsList;
+                 selectedOptions['pornstarsList'] = this.pornstarsList;
               }
 
               return selectedOptions;
@@ -221,14 +223,13 @@ Vue.component('reset-button',ResetButton);
               try{
 
                   const requestData:XHRRequestData = {
-
-                    method : 'GET',
-                    headers : {
+                      method : 'GET',
+                      headers : {
                       'X-CSRF-TOKEN' : this.csrfToken
                     } 
                   };
 
-                  const query = QueryBuilder(this.getSelectedOptions());
+                  const query = QueryBuilder.build(this.getSelectedOptions());
                   const response = await fetch(`/movies/advanced-search?${query}`,requestData);
 
                   if(response.status === 200){

@@ -138,8 +138,8 @@ export default {
         mommy : Translator.translate('mommy')
       },
 
-      proffesionalismLevel : {
-        proffesional : Translator.translate("proffesional"),
+      professionalismLevel : {
+        professional : Translator.translate("professional"),
         amateur : Translator.translate("amateur")
       },
 

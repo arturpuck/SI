@@ -18,6 +18,7 @@ class Pornstar extends Model
     public bool $limitComments = true;
     public int $commentsLimit = 20;
 
+    protected $hidden = ['pivot'];
 
     public function nationality(){
         return $this->belongsTo(Nationality::class);

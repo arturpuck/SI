@@ -31,8 +31,16 @@ Abstract Class BaseRepository{
     return $this;
   }
 
-  public function resetQuery(){
+  public function resetQuery():void{
     $model = static::MODEL_NAME;
     $this->query = $model::query();
+  }
+
+  protected function multiplyWhere(array $columnNames, $value):void{
+
+      foreach($columnNames as $column){
+         $this->query = $this->query->where($column,$value);
+      }
+  
   }
 }

@@ -13,7 +13,34 @@ Class AdvancedSearchHandler {
     public function __construct(private MoviesRepository $moviesRepository){}
 
     public function handle(Request $request):Response{
-       
+
+        $validationResult = MoviesAdvancedSearchValidator::validate($request);
+
+        if($validationResult === true){
+
+            $this->moviesRepository->select([
+                'movies.id',
+                'title',
+                'views',
+                'created_at',
+                'is_translated_to_polish',
+                'votes_count',
+                'votes_summary',
+                'duration'
+            ])->withBasicPornstarList();
+
+            foreach($request->all() as $fieldName => $value){
+
+                $methodName = "filterBy".ucfirst($fieldName);
+                $this->moviesRepository->$methodName($value);
+            }
+
+            $movies = $this->moviesRepository->get();
+            return response()->json($movies,200);
+        }
+        else{
+            return $validationResult;
+        }
     }
     
 
