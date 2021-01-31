@@ -955,11 +955,7 @@ __webpack_require__.r(__webpack_exports__);
       return this.isTranslatedToPolish || this.pornstars;
     },
     pornstarsListTranslated: function pornstarsListTranslated() {
-      var pornstars = '';
-      this.pornstars.forEach(function (pornstarNickName) {
-        return pornstars += "".concat(pornstarNickName, ", ");
-      });
-      return pornstars.slice(0, -2);
+      return this.pornstars.join(', ');
     },
     iconDecription: function iconDecription() {
       return this.translator.translate('movie_translated_to_polish');
@@ -6078,7 +6074,7 @@ var render = function() {
               "a",
               {
                 staticClass: "sub-menu-link",
-                attrs: { href: "profil/ustawienia" }
+                attrs: { href: "/profil/ustawienia" }
               },
               [
                 _c("span", {

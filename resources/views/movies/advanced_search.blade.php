@@ -193,6 +193,7 @@
          </ul>
          <div v-text="totalMoviesFoundCaption" class="search-results__header"></div>
       </header>
+      <movies-list></movies-list>
    </section>
    <user-notification></user-notification>
    <fixed-shadow-container v-show="fetchingMoviesInProgress">

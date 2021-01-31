@@ -3517,7 +3517,7 @@ var render = function() {
               "a",
               {
                 staticClass: "sub-menu-link",
-                attrs: { href: "profil/ustawienia" }
+                attrs: { href: "/profil/ustawienia" }
               },
               [
                 _c("span", {

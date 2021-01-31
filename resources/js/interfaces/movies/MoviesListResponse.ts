@@ -1,6 +1,6 @@
-import {MovieResponse} from '@interfaces/movies/MovieResponse.ts';
+import {MovieBasicData} from '@interfaces/movies/MovieBasicData';
 
 export interface MoviesListResponse{
     totalMovies : number,
-    movies : MovieResponse[]
+    movies : MovieBasicData[]
 }

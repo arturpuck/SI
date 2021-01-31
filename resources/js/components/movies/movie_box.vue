@@ -71,9 +71,7 @@ import IconPolishFlag from '@jscomponents-decoration/flags/icon_polish_flag.vue'
            },
 
            pornstarsListTranslated(){
-               let pornstars = '';
-               this.pornstars.forEach((pornstarNickName)=> pornstars += `${pornstarNickName}, `);
-               return pornstars.slice(0,-2);
+               return this.pornstars.join(', ');
            },
 
            iconDecription(){
@@ -112,7 +110,7 @@ import IconPolishFlag from '@jscomponents-decoration/flags/icon_polish_flag.vue'
 
             pornstars : {
                 required : false,
-                default : ""
+                default : "",
             }
         },
 

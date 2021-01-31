@@ -18,6 +18,7 @@ import { createTextChangeRange } from 'typescript';
 import { createDecorator } from 'vue-class-component';
 import {XHRRequestData} from '@interfaces/XHRRequestData.ts';
 import FixedShadowContainer from '@jscomponents/decoration/fixed_shadow_container.vue';
+import MoviesList from '@jscomponents/movies/movies_list.vue';
 
 Vue.component('simple-labeled-select',SimpleLabeledSelect);
 Vue.component('labeled-checkbox', LabeledCheckBox);
@@ -28,6 +29,7 @@ Vue.component('expect-circle',ExpectCircle);
 Vue.component('accept-button',AcceptButton);
 Vue.component('reset-button',ResetButton);
 Vue.component('fixed-shadow-container', FixedShadowContainer);
+Vue.component('movies-list', MoviesList);
 
   new Vue({
   el: '#app',
@@ -84,9 +86,7 @@ Vue.component('fixed-shadow-container', FixedShadowContainer);
     fetchingMoviesInProgress : false,
     advancedSearchPanelIsVisible : true,
     selectedOptionsVisibleForUser : [],
-    totalMoviesFound : undefined,
-    numberOfSubPages : undefined,
-    matchingMovies : undefined
+    totalMoviesFound : undefined
   },
   
   computed : {
@@ -274,9 +274,9 @@ Vue.component('fixed-shadow-container', FixedShadowContainer);
             this.totalMoviesFound = moviesData.totalMovies;
 
              if(moviesData.totalMovies > 0){
-               this.numberOfSubPages = Math.ceil(moviesData.totalMovies / 100);
+               this.$root.$emit('updateMoviesList', moviesData);
+               this.totalMoviesFound = moviesData.totalMovies;
                this.advancedSearchPanelIsVisible = false;
-               this.matchingMovies = moviesData.movies;
              }
           },
 

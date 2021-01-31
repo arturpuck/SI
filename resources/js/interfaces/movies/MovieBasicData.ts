@@ -1,16 +1,13 @@
 type numericBoolean = 0 | 1;
 
-interface MovieResponsePornstarData {
-    id : number,
-    nickname : string
-}
+import {BasicPornstarData} from '@interfaces/pornstars/BasicPornstarData.ts';
 
-export interface MovieResponse{
+export interface MovieBasicData{
     created_at : string,
     duration : string,
     id : number,
     is_translated_to_polish : numericBoolean,
-    pornstars? : MovieResponsePornstarData[],
+    pornstars? : BasicPornstarData[],
     title : string,
     views: number,
     votes_count: number,

@@ -8,7 +8,7 @@
 			   </phantom-button>
 		   </li>
 		   <li v-bind:title="translations['show_user_profile_settings_title']" class="authenticated-user-sidebar-list-element">
-			  <a href="profil/ustawienia" class="sub-menu-link">
+			  <a href="/profil/ustawienia" class="sub-menu-link">
 				<span class="fas fa-cogs authenticated-user-sidebar-icon"></span>
 				<span v-text="translations['show_user_profile_settings_caption']" class="sidebar-item-description"></span>
 			  </a>
