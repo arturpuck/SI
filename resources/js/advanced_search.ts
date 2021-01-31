@@ -3,6 +3,7 @@ import SimpleLabeledSelect from '@jscomponents-form-controls/simple_labeled_sele
 import LabeledCheckBox from '@jscomponents-form-controls/labeled_checkbox.vue';
 import UserNotification from '@jscomponents/user_notification.vue';
 import NotificationFunction from '@jsmodules/notification_function.ts';
+import {MoviesListResponse} from '@interfaces/movies/MoviesListResponse.ts';
 const Vue = VueConstructor.build();
 import MultiSelect from '@jscomponents-form-controls/multiselect.vue';
 import Translator from '@jsmodules/translator.js';
@@ -16,6 +17,7 @@ import {QueryBuilder, QueryParams} from '@jsmodules/query_builder.ts';
 import { createTextChangeRange } from 'typescript';
 import { createDecorator } from 'vue-class-component';
 import {XHRRequestData} from '@interfaces/XHRRequestData.ts';
+import FixedShadowContainer from '@jscomponents/decoration/fixed_shadow_container.vue';
 
 Vue.component('simple-labeled-select',SimpleLabeledSelect);
 Vue.component('labeled-checkbox', LabeledCheckBox);
@@ -25,6 +27,7 @@ Vue.component('relative-shadow-container',RelativeShadowContainer);
 Vue.component('expect-circle',ExpectCircle);
 Vue.component('accept-button',AcceptButton);
 Vue.component('reset-button',ResetButton);
+Vue.component('fixed-shadow-container', FixedShadowContainer);
 
   new Vue({
   el: '#app',
@@ -76,7 +79,14 @@ Vue.component('reset-button',ResetButton);
     showHugeCock : false,
     showWhips : false,
     showSexToys : false,
-    pornstarsList : []
+    pornstarsList : [],
+    currentPage : 1,
+    fetchingMoviesInProgress : false,
+    advancedSearchPanelIsVisible : true,
+    selectedOptionsVisibleForUser : [],
+    totalMoviesFound : undefined,
+    numberOfSubPages : undefined,
+    matchingMovies : undefined
   },
   
   computed : {
@@ -99,6 +109,10 @@ Vue.component('reset-button',ResetButton);
       maximumMovieViewsLabel(): string{
         return (this.maximumMovieViews == 0) ? 
         this.searchEngineOptions['notSelected'] : `${this.maximumMovieViews} ${this.searchEngineOptions['selectedViewsLabel']}`;
+      },
+
+      totalMoviesFoundCaption() : string {
+        return `${SearchEngineAvailableOptions['totalMoviesLabel']} : ${this.totalMoviesFound}`;
       }
   },
 
@@ -173,6 +187,7 @@ Vue.component('reset-button',ResetButton);
 
         async fetchPornstars(){
 
+            
             const requestData = {
 
                 method : 'GET',
@@ -198,30 +213,77 @@ Vue.component('reset-button',ResetButton);
             
           },
 
+          pushSelectedOptionListForUser(group:string,propertyName:string,value:any):void{
+
+              const translatedOption:string = this.translator.translate(propertyName);
+              let keyValuePair:string;
+              
+              switch(group){
+
+                  case 'initialValueIsEmptyString':
+                    keyValuePair = `${translatedOption} : ${SearchEngineAvailableOptions[propertyName][value]}`;
+                  break;
+
+                  case 'initialValueIsFalse' :
+                    keyValuePair = translatedOption;
+                  break;
+
+                  case 'movieTimeOptions' :
+                    keyValuePair = `${translatedOption} : ${value} ${this.translator.translate('minutes_inflected')}`;
+                  break;
+
+                  case 'movieViewsOptions':
+                    keyValuePair = `${translatedOption} : ${value} ${this.translator.translate('views_inflected')}`;
+                  break;
+
+                  case 'pornstarsList':
+                     keyValuePair = `${translatedOption} : ${value.join(', ')}`;
+                  break;
+              }
+
+              this.selectedOptionsVisibleForUser.push(keyValuePair);
+          },
+
           getSelectedOptions():QueryParams{
-
-              let selectedOptions:QueryParams = {pornstarsList : [], otherParams : {}};
-
-              SearchEngineVariables.getIgnoreIfFalsy().forEach( propertyName => {
-                  let selectedValue:any = this[propertyName];
-
-                  if(selectedValue){
-                    let parsedValue:any = (typeof selectedValue == "boolean") ? Number(selectedValue) : selectedValue;
-                    selectedOptions['otherParams'][propertyName] = parsedValue;
-                  }
+             
+              const selectedOptions:QueryParams = {pornstarsList : [], otherParams : {}};
+              this.selectedOptionsVisibleForUser = [];
+              SearchEngineVariables.groupNames.forEach(groupName => {
+                SearchEngineVariables[groupName].forEach((propertyName:string):void => {
+                  
+                    let selectedValue:any = this[propertyName];
+ 
+                    if(selectedValue){
+                      selectedOptions['otherParams'][propertyName] = selectedValue;
+                      this.pushSelectedOptionListForUser(groupName,propertyName,selectedValue);
+                    }
+                 });   
               });
+              
 
               if(this.pornstarsList.length > 0){
                  selectedOptions['pornstarsList'] = this.pornstarsList;
+                 this.pushSelectedOptionListForUser('pornstarsList','movie_with_following_pornstar',this.pornstarsList);
               }
+              selectedOptions['otherParams']['page'] = this.currentPage;
 
               return selectedOptions;
+          },
+
+          loadMovies(moviesData : MoviesListResponse):void{
+            this.totalMoviesFound = moviesData.totalMovies;
+
+             if(moviesData.totalMovies > 0){
+               this.numberOfSubPages = Math.ceil(moviesData.totalMovies / 100);
+               this.advancedSearchPanelIsVisible = false;
+               this.matchingMovies = moviesData.movies;
+             }
           },
 
           async searchMovies(){
 
               try{
-
+                  this.fetchingMoviesInProgress = true;
                   const requestData:XHRRequestData = {
                       method : 'GET',
                       headers : {
@@ -233,7 +295,8 @@ Vue.component('reset-button',ResetButton);
                   const response = await fetch(`/movies/advanced-search?${query}`,requestData);
 
                   if(response.status === 200){
-                    const movies = await response.json();
+                    const movies:MoviesListResponse = await response.json();
+                    this.loadMovies(movies);
                   }
                   else{
                       throw new Error('unexpected_error_occured');
@@ -241,12 +304,13 @@ Vue.component('reset-button',ResetButton);
 
               }
               catch(exception){
+                alert(exception.message);
                  this.showNotification(this.translator.translate('unexpected_error_occured'), 'error');
               }
               finally{
-
+                 this.fetchingMoviesInProgress = false;
               }
-              console.log(this.getSelectedOptions());
+              
           },
 
           resetPanel(event):void{

@@ -233,5 +233,8 @@
     "reset_panel" : "resetuj panel",
     "show_controls_shortcut" : "Pokazuj przyciski wyszukiwania i reset zawsze na górze ekranu",
     "fixed_panel_reset_caption" : "reset",
-    "hide_fixed_control_panel_caption" : "chowaj"
+    "hide_fixed_control_panel_caption" : "chowaj",
+    "you_have_selected_the_following_options": "Wybrano następujące opcje",
+    "search_results" : "Wyniki wyszukiwania",
+    "total_movies_found" : "Ilość znalezionych filmów"
 }

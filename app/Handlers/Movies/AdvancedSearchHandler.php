@@ -18,6 +18,9 @@ Class AdvancedSearchHandler {
 
         if($validationResult === true){
 
+            $page = $request->get('page');
+            $request->request->remove('page');
+
             $this->moviesRepository->select([
                 'movies.id',
                 'title',
@@ -34,9 +37,12 @@ Class AdvancedSearchHandler {
                 $methodName = "filterBy".ucfirst($fieldName);
                 $this->moviesRepository->$methodName($value);
             }
-
+           
+            $totalMatchingMovies = $this->moviesRepository->count();
+            
+            $this->moviesRepository->filterByPage($page);
             $movies = $this->moviesRepository->get();
-            return response()->json($movies,200);
+            return response()->json(['totalMovies' => $totalMatchingMovies, 'movies' => $movies],200);
         }
         else{
             return $validationResult;

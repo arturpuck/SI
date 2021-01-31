@@ -997,6 +997,25 @@ exports.push([module.i, ".expect-circles-outer-container[data-v-08c0afbc] {\n  d
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=style&index=0&lang=scss&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--16-2!./node_modules/sass-loader/dist/cjs.js??ref--16-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=style&index=0&lang=scss& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".fixed-shadow-container {\n  position: fixed;\n  width: 100vw;\n  height: 100vh;\n  background: rgba(0, 0, 0, 0.7);\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n  z-index: 1;\n  top: 0;\n  left: 0;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/decoration/icons/icon_add_plus.vue?vue&type=style&index=0&id=421c5975&lang=scss&scoped=true&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--16-2!./node_modules/sass-loader/dist/cjs.js??ref--16-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/decoration/icons/icon_add_plus.vue?vue&type=style&index=0&id=421c5975&lang=scss&scoped=true& ***!
@@ -1831,6 +1850,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--16-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--16-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./expect_circle.vue?vue&type=style&index=0&id=08c0afbc&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&id=08c0afbc&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=style&index=0&lang=scss&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--16-2!./node_modules/sass-loader/dist/cjs.js??ref--16-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=style&index=0&lang=scss& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--16-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--16-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./fixed_shadow_container.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=style&index=0&lang=scss&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -2883,6 +2932,23 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (this && this.clearImmediate);
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=script&lang=ts&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/ts-loader??ref--20!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=script&lang=ts& ***!
+  \************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = {
+    name: 'fixed-shadow-container'
+};
+
 
 /***/ }),
 
@@ -3948,6 +4014,35 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=template&id=3fb90b11&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=template&id=3fb90b11& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "fixed-shadow-container" },
+    [_vm._t("default")],
+    2
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -18132,6 +18227,7 @@ var accept_button_vue_1 = __webpack_require__(/*! @jscomponents-form-controls/ac
 var reset_button_vue_1 = __webpack_require__(/*! @jscomponents-form-controls/reset_button.vue */ "./resources/js/components/form_controls/reset_button.vue");
 var search_engine_variables_ts_1 = __webpack_require__(/*! @jsmodules/search_engine_variables.ts */ "./resources/js/modules/search_engine_variables.ts");
 var query_builder_ts_1 = __webpack_require__(/*! @jsmodules/query_builder.ts */ "./resources/js/modules/query_builder.ts");
+var fixed_shadow_container_vue_1 = __webpack_require__(/*! @jscomponents/decoration/fixed_shadow_container.vue */ "./resources/js/components/decoration/fixed_shadow_container.vue");
 Vue.component('simple-labeled-select', simple_labeled_select_vue_1.default);
 Vue.component('labeled-checkbox', labeled_checkbox_vue_1.default);
 Vue.component('user-notification', user_notification_vue_1.default);
@@ -18140,6 +18236,7 @@ Vue.component('relative-shadow-container', relative_shadow_container_vue_1.defau
 Vue.component('expect-circle', expect_circle_vue_1.default);
 Vue.component('accept-button', accept_button_vue_1.default);
 Vue.component('reset-button', reset_button_vue_1.default);
+Vue.component('fixed-shadow-container', fixed_shadow_container_vue_1.default);
 new Vue({
     el: '#app',
     data: {
@@ -18188,7 +18285,14 @@ new Vue({
         showHugeCock: false,
         showWhips: false,
         showSexToys: false,
-        pornstarsList: []
+        pornstarsList: [],
+        currentPage: 1,
+        fetchingMoviesInProgress: false,
+        advancedSearchPanelIsVisible: true,
+        selectedOptionsVisibleForUser: [],
+        totalMoviesFound: undefined,
+        numberOfSubPages: undefined,
+        matchingMovies: undefined
     },
     computed: {
         minimumMovieTimeLabel: function () {
@@ -18206,6 +18310,9 @@ new Vue({
         maximumMovieViewsLabel: function () {
             return (this.maximumMovieViews == 0) ?
                 this.searchEngineOptions['notSelected'] : this.maximumMovieViews + " " + this.searchEngineOptions['selectedViewsLabel'];
+        },
+        totalMoviesFoundCaption: function () {
+            return search_engine_available_options_js_1.default['totalMoviesLabel'] + " : " + this.totalMoviesFound;
         }
     },
     methods: {
@@ -18294,20 +18401,55 @@ new Vue({
                 });
             });
         },
+        pushSelectedOptionListForUser: function (group, propertyName, value) {
+            var translatedOption = this.translator.translate(propertyName);
+            var keyValuePair;
+            switch (group) {
+                case 'initialValueIsEmptyString':
+                    keyValuePair = translatedOption + " : " + search_engine_available_options_js_1.default[propertyName][value];
+                    break;
+                case 'initialValueIsFalse':
+                    keyValuePair = translatedOption;
+                    break;
+                case 'movieTimeOptions':
+                    keyValuePair = translatedOption + " : " + value + " " + this.translator.translate('minutes_inflected');
+                    break;
+                case 'movieViewsOptions':
+                    keyValuePair = translatedOption + " : " + value + " " + this.translator.translate('views_inflected');
+                    break;
+                case 'pornstarsList':
+                    keyValuePair = translatedOption + " : " + value.join(', ');
+                    break;
+            }
+            this.selectedOptionsVisibleForUser.push(keyValuePair);
+        },
         getSelectedOptions: function () {
             var _this = this;
             var selectedOptions = { pornstarsList: [], otherParams: {} };
-            search_engine_variables_ts_1.default.getIgnoreIfFalsy().forEach(function (propertyName) {
-                var selectedValue = _this[propertyName];
-                if (selectedValue) {
-                    var parsedValue = (typeof selectedValue == "boolean") ? Number(selectedValue) : selectedValue;
-                    selectedOptions['otherParams'][propertyName] = parsedValue;
-                }
+            this.selectedOptionsVisibleForUser = [];
+            search_engine_variables_ts_1.default.groupNames.forEach(function (groupName) {
+                search_engine_variables_ts_1.default[groupName].forEach(function (propertyName) {
+                    var selectedValue = _this[propertyName];
+                    if (selectedValue) {
+                        selectedOptions['otherParams'][propertyName] = selectedValue;
+                        _this.pushSelectedOptionListForUser(groupName, propertyName, selectedValue);
+                    }
+                });
             });
             if (this.pornstarsList.length > 0) {
                 selectedOptions['pornstarsList'] = this.pornstarsList;
+                this.pushSelectedOptionListForUser('pornstarsList', 'movie_with_following_pornstar', this.pornstarsList);
             }
+            selectedOptions['otherParams']['page'] = this.currentPage;
             return selectedOptions;
+        },
+        loadMovies: function (moviesData) {
+            this.totalMoviesFound = moviesData.totalMovies;
+            if (moviesData.totalMovies > 0) {
+                this.numberOfSubPages = Math.ceil(moviesData.totalMovies / 100);
+                this.advancedSearchPanelIsVisible = false;
+                this.matchingMovies = moviesData.movies;
+            }
         },
         searchMovies: function () {
             return __awaiter(this, void 0, void 0, function () {
@@ -18316,6 +18458,7 @@ new Vue({
                     switch (_a.label) {
                         case 0:
                             _a.trys.push([0, 5, 6, 7]);
+                            this.fetchingMoviesInProgress = true;
                             requestData = {
                                 method: 'GET',
                                 headers: {
@@ -18330,17 +18473,19 @@ new Vue({
                             return [4 /*yield*/, response.json()];
                         case 2:
                             movies = _a.sent();
+                            this.loadMovies(movies);
                             return [3 /*break*/, 4];
                         case 3: throw new Error('unexpected_error_occured');
                         case 4: return [3 /*break*/, 7];
                         case 5:
                             exception_1 = _a.sent();
+                            alert(exception_1.message);
                             this.showNotification(this.translator.translate('unexpected_error_occured'), 'error');
                             return [3 /*break*/, 7];
-                        case 6: return [7 /*endfinally*/];
-                        case 7:
-                            console.log(this.getSelectedOptions());
-                            return [2 /*return*/];
+                        case 6:
+                            this.fetchingMoviesInProgress = false;
+                            return [7 /*endfinally*/];
+                        case 7: return [2 /*return*/];
                     }
                 });
             });
@@ -18626,6 +18771,96 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_expect_circle_vue_vue_type_template_id_08c0afbc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_expect_circle_vue_vue_type_template_id_08c0afbc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/decoration/fixed_shadow_container.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/decoration/fixed_shadow_container.vue ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _fixed_shadow_container_vue_vue_type_template_id_3fb90b11___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fixed_shadow_container.vue?vue&type=template&id=3fb90b11& */ "./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=template&id=3fb90b11&");
+/* harmony import */ var _fixed_shadow_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fixed_shadow_container.vue?vue&type=script&lang=ts& */ "./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=script&lang=ts&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _fixed_shadow_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _fixed_shadow_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _fixed_shadow_container_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./fixed_shadow_container.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _fixed_shadow_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _fixed_shadow_container_vue_vue_type_template_id_3fb90b11___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _fixed_shadow_container_vue_vue_type_template_id_3fb90b11___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/decoration/fixed_shadow_container.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=script&lang=ts&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=script&lang=ts& ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_ts_loader_index_js_ref_20_node_modules_vue_loader_lib_index_js_vue_loader_options_fixed_shadow_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/ts-loader??ref--20!../../../../node_modules/vue-loader/lib??vue-loader-options!./fixed_shadow_container.vue?vue&type=script&lang=ts& */ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=script&lang=ts&");
+/* harmony import */ var _node_modules_ts_loader_index_js_ref_20_node_modules_vue_loader_lib_index_js_vue_loader_options_fixed_shadow_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_ts_loader_index_js_ref_20_node_modules_vue_loader_lib_index_js_vue_loader_options_fixed_shadow_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_ts_loader_index_js_ref_20_node_modules_vue_loader_lib_index_js_vue_loader_options_fixed_shadow_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_ts_loader_index_js_ref_20_node_modules_vue_loader_lib_index_js_vue_loader_options_fixed_shadow_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_ts_loader_index_js_ref_20_node_modules_vue_loader_lib_index_js_vue_loader_options_fixed_shadow_container_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=style&index=0&lang=scss&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=style&index=0&lang=scss& ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_16_2_node_modules_sass_loader_dist_cjs_js_ref_16_3_node_modules_vue_loader_lib_index_js_vue_loader_options_fixed_shadow_container_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--16-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--16-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./fixed_shadow_container.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_16_2_node_modules_sass_loader_dist_cjs_js_ref_16_3_node_modules_vue_loader_lib_index_js_vue_loader_options_fixed_shadow_container_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_16_2_node_modules_sass_loader_dist_cjs_js_ref_16_3_node_modules_vue_loader_lib_index_js_vue_loader_options_fixed_shadow_container_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_16_2_node_modules_sass_loader_dist_cjs_js_ref_16_3_node_modules_vue_loader_lib_index_js_vue_loader_options_fixed_shadow_container_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_16_2_node_modules_sass_loader_dist_cjs_js_ref_16_3_node_modules_vue_loader_lib_index_js_vue_loader_options_fixed_shadow_container_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_16_2_node_modules_sass_loader_dist_cjs_js_ref_16_3_node_modules_vue_loader_lib_index_js_vue_loader_options_fixed_shadow_container_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=template&id=3fb90b11&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=template&id=3fb90b11& ***!
+  \******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_fixed_shadow_container_vue_vue_type_template_id_3fb90b11___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./fixed_shadow_container.vue?vue&type=template&id=3fb90b11& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/decoration/fixed_shadow_container.vue?vue&type=template&id=3fb90b11&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_fixed_shadow_container_vue_vue_type_template_id_3fb90b11___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_fixed_shadow_container_vue_vue_type_template_id_3fb90b11___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -20069,7 +20304,20 @@ exports.QueryBuilder = {
 
 "use strict";
 
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+var movieViewsOptions = [
+    'minimumMovieViews', 'maximumMovieViews'
+];
+var movieTimeOptions = [
+    'minimumMovieViews', 'maximumMovieViews'
+];
 var variables = {
     initialValueIsEmptyString: ['abundanceType', 'titsSize', 'assSize', 'thicknessSize', 'ageRange', 'hairColor', 'race',
         'nationality', 'shavedPussy', 'analAmmount', 'blowjobAmmount', 'doublePenetrationAmmount', 'vaginalAmmount', 'pussyLickingAmmount', 'tittfuckAmmount',
@@ -20079,8 +20327,11 @@ var variables = {
         'isTranslatedToPolish', 'showPantyhose', 'showStockings', 'showGlasses', 'showHighHeels', 'showHugeCock',
         'showWhips', 'showSexToys'
     ],
-    initialValueIsZero: ['minimumMovieTime', 'maximumMovieTime', 'minimumMovieViews', 'maximumMovieViews'],
+    initialValueIsZero: __spreadArrays(movieTimeOptions, movieViewsOptions),
+    movieTimeOptions: movieTimeOptions,
+    movieViewsOptions: movieViewsOptions,
     pornstarsList: "pornstarsList",
+    groupNames: ['initialValueIsEmptyString', 'initialValueIsFalse', 'movieTimeOptions', 'movieViewsOptions'],
     getIgnoreIfFalsy: function () {
         return this.initialValueIsEmptyString.concat(this.initialValueIsFalse, this.initialValueIsZero);
     }
@@ -20120,45 +20371,56 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @jsmodules/translator.js */ "./resources/js/modules/translator.js");
 
+var yesNoOptions = {
+  1: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('yes'),
+  0: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('no')
+};
+var sexAmmounts = {
+  only: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('only'),
+  maximum: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('maximum'),
+  a_lot: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('a_lot'),
+  medium: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('medium'),
+  a_little: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('a_little'),
+  exclude: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('exclude')
+};
 /* harmony default export */ __webpack_exports__["default"] = ({
-  titsSizes: {
+  titsSize: {
     small: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('small_tits'),
     medium: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('medium_tits'),
     big: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('big_tits')
   },
-  assSizes: {
+  assSize: {
     small: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('small_ass'),
     medium: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('medium_ass'),
     big: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('big_ass')
   },
-  thicknessSizes: {
+  thicknessSize: {
     skinny: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('skinny_tchickness'),
     medium: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('medium_tchickness'),
     fat: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('fat_tchickness')
   },
-  ageRanges: {
+  ageRange: {
     teenagers: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('teenagers'),
     young: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('age_range_young'),
     mature: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('age_range_mature')
   },
-  hairColors: {
+  hairColor: {
     dark: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('dark_hair'),
     blonde: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('blonde_hair'),
     brown: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('brown_hair'),
     red: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('red_hair')
   },
-  races: {
+  race: {
     white: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('white_race'),
     asian: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('asian_race'),
     ebony: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('ebony_race'),
     latin: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('latin_race'),
     arabic: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('arabic_race')
   },
-  binaryOptions: {
-    1: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('yes'),
-    0: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('no')
-  },
-  abundanceTypes: {
+  binaryOptions: yesNoOptions,
+  shavedPussy: yesNoOptions,
+  hasStory: yesNoOptions,
+  abundanceType: {
     one_male_one_female: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('one_male_one_female'),
     bukkake: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('bukkake'),
     single_female: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('single_female'),
@@ -20169,15 +20431,15 @@ __webpack_require__.r(__webpack_exports__);
     one_female_two_males: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('one_female_two_males'),
     lesbianGroup: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('lesbian_group_sex')
   },
-  sexAmmounts: {
-    only: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('only'),
-    maximum: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('maximum'),
-    a_lot: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('a_lot'),
-    medium: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('medium'),
-    a_little: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('a_little'),
-    exclude: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('exclude')
-  },
-  cumshotTypes: {
+  sexAmmounts: sexAmmounts,
+  analAmmount: sexAmmounts,
+  blowjobAmmount: sexAmmounts,
+  vaginalAmmount: sexAmmounts,
+  pussyLickingAmmount: sexAmmounts,
+  tittfuckAmmount: sexAmmounts,
+  position69Ammount: sexAmmounts,
+  feetAmmount: sexAmmounts,
+  cumshotType: {
     on_face: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('on_face'),
     cum_swallow: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('creampie'),
     creampie: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('on_feet'),
@@ -20190,7 +20452,7 @@ __webpack_require__.r(__webpack_exports__);
     on_other_body_parts: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('on_feet'),
     exclude: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('exclude')
   },
-  nationalities: {
+  nationality: {
     american: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('american_nationality'),
     japanese: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('japanese_nationality'),
     german: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('german_nationality'),
@@ -20210,7 +20472,7 @@ __webpack_require__.r(__webpack_exports__);
     canadian: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('canadian_nationality'),
     argentinian: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('argentinian_nationality')
   },
-  locations: {
+  location: {
     house: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('house'),
     bathroom: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('bathroom'),
     office: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate('office'),
@@ -20250,7 +20512,9 @@ __webpack_require__.r(__webpack_exports__);
   pornstarsFetchingLabel: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("fetching_pornstars"),
   notSelected: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("not_selected"),
   selectedTimeLabel: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("minutes_inflected"),
-  selectedViewsLabel: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("views_inflected")
+  selectedViewsLabel: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("views_inflected"),
+  fetchingMoviesLabel: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("fetching_movies"),
+  totalMoviesLabel: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("total_movies_found")
 });
 
 /***/ }),
@@ -20357,7 +20621,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     login_has_already_been_taken: "Login jest już zajęty",
     login_contains_less_then_3_characters: "Login ma mniej niż 3 znaki",
     login_contains_more_then_20_characters: "Login ma więcej niż 20 znaków"
-  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "avatar_has_been_deleted_successfully", "Pomyślnie usunięto avatar"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "views", "Wyświetleń"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "pornstar_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "the_nickname_exceeds_20_characters", "Długość pseudonimu przekracza 20 znaków"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "add_comment", "Dodaj komentarz"), _defineProperty(_pl, "add", "dodaj"), _defineProperty(_pl, "unregistered_user", "Niezarejestrowany"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "adding_comment", "Dodaję komentarz"), _defineProperty(_pl, "fetching_comments", "Pobieram komentarze"), _defineProperty(_pl, "comment_text_is_missing", "Nie podano treści komentarza"), _defineProperty(_pl, "comment_text_exceeds_1000_characters", "Treść komentarza przekracza 1000 znaków"), _defineProperty(_pl, "nickname_exceeds_50_characters", "Pseudonim przekracza 50 znaków"), _defineProperty(_pl, "because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute", "Z powodów bezpieczeństwa ograniczono liczbę dodawanych komentarzy do 2 na minutę"), _defineProperty(_pl, "total_comments", "Liczba wszystkich komentarzy"), _defineProperty(_pl, "show_comments_sub_page_with_number", "Pokaż podstronę komentarzy o numerze"), _defineProperty(_pl, "sex_empire_short", "SI"), _defineProperty(_pl, "small_ass", "mały"), _defineProperty(_pl, "medium_ass", "średni"), _defineProperty(_pl, "big_ass", "duży"), _defineProperty(_pl, "small_tits", "małe"), _defineProperty(_pl, "medium_tits", "średnie"), _defineProperty(_pl, "big_tits", "duże"), _defineProperty(_pl, "skinny_tchickness", "chuda"), _defineProperty(_pl, "medium_tchickness", "średnia"), _defineProperty(_pl, "fat_tchickness", "gruba"), _defineProperty(_pl, "teenagers", "nastolatki(18 - 19)"), _defineProperty(_pl, "age_range_young", "młode (20 -29)"), _defineProperty(_pl, "age_range_mature", "dojrzałe(30 - 50)"), _defineProperty(_pl, "dark_hair", "czarny"), _defineProperty(_pl, "blonde_hair", "blond"), _defineProperty(_pl, "brown_hair", "brązowy"), _defineProperty(_pl, "red_hair", "rudy"), _defineProperty(_pl, "white_race", "biała"), _defineProperty(_pl, "asian_race", "azjatki"), _defineProperty(_pl, "ebony_race", "murzynki"), _defineProperty(_pl, "latin_race", "latynoski"), _defineProperty(_pl, "arabic_race", "arabki"), _defineProperty(_pl, "yes", "tak"), _defineProperty(_pl, "no", "nie"), _defineProperty(_pl, "one_male_one_female", "facet i kobieta"), _defineProperty(_pl, "bukkake", "bukkake"), _defineProperty(_pl, "single_female", "kobieta solo"), _defineProperty(_pl, "lesbians", "lesbijki"), _defineProperty(_pl, "group_sex", "grupowy"), _defineProperty(_pl, "one_male_many_females", "facet i wiele kobiet"), _defineProperty(_pl, "GangBang", "GangBang"), _defineProperty(_pl, "one_female_two_males", "Na 2 baty"), _defineProperty(_pl, "lesbian_group_sex", "Lesbijki grupowo"), _defineProperty(_pl, "only", "tylko i wyłącznie"), _defineProperty(_pl, "maximum", "maximum"), _defineProperty(_pl, "a_lot", "dużo"), _defineProperty(_pl, "medium", "średnio"), _defineProperty(_pl, "a_little", "trochę"), _defineProperty(_pl, "exclude", "wyklucz"), _defineProperty(_pl, "on_face", "na twarz"), _defineProperty(_pl, "cum_swallow", "z połykiem"), _defineProperty(_pl, "creampie", "w cipkę"), _defineProperty(_pl, "anal_creampie", "w dupkę"), _defineProperty(_pl, "on_tits", "na cycki"), _defineProperty(_pl, "on_pussy", "na cipkę"), _defineProperty(_pl, "on_ass", "na dupkę"), _defineProperty(_pl, "on_feet", "na stopy"), _defineProperty(_pl, "on_many_places", "na wiele miejsc"), _defineProperty(_pl, "on_other_body_parts", "na inne miejsca"), _defineProperty(_pl, "american_nationality", "amerykańska"), _defineProperty(_pl, "japanese_nationality", "japońska"), _defineProperty(_pl, "german_nationality", "niemiecka"), _defineProperty(_pl, "czech_nationality", "czeska"), _defineProperty(_pl, "russian_nationality", "rosyjska"), _defineProperty(_pl, "british_nationality", "brytyjska"), _defineProperty(_pl, "swedish_nationality", "szwedzka"), _defineProperty(_pl, "ukrainian_nationality", "ukraińska"), _defineProperty(_pl, "slovac_nationality", "słowacka"), _defineProperty(_pl, "hanguarian_nationality", "węgierska"), _defineProperty(_pl, "polish_nationality", "polska"), _defineProperty(_pl, "dutch_nationality", "holenderska"), _defineProperty(_pl, "hindu_nationality", "hinduska"), _defineProperty(_pl, "french_nationality", "francuska"), _defineProperty(_pl, "spanish_nationality", "hiszpańska"), _defineProperty(_pl, "italian_nationality", "włoska"), _defineProperty(_pl, "canadian_nationality", "kanadyjska"), _defineProperty(_pl, "argentinian_nationality", "argentyńska"), _defineProperty(_pl, "house", "dom"), _defineProperty(_pl, "bathroom", "łazienka"), _defineProperty(_pl, "office", "biuro"), _defineProperty(_pl, "school", "szkoła"), _defineProperty(_pl, "public_place", "miejsca publiczne"), _defineProperty(_pl, "car", "samochód"), _defineProperty(_pl, "nature", "łono natury"), _defineProperty(_pl, "solarium", "solarium"), _defineProperty(_pl, "elevator", "winda"), _defineProperty(_pl, "beach", "plaża"), _defineProperty(_pl, "gym", "siłownia"), _defineProperty(_pl, "POV", "POV"), _defineProperty(_pl, "outside_camera_style", "z zewnątrz"), _defineProperty(_pl, "mixed_camera_style", "mieszane"), _defineProperty(_pl, "female_pupil", "uczennica"), _defineProperty(_pl, "female_employee", "pracownica"), _defineProperty(_pl, "female_student", "studentka"), _defineProperty(_pl, "wife", "żona"), _defineProperty(_pl, "female_teacher", "nauczycielka"), _defineProperty(_pl, "nurse", "pielęgniarka"), _defineProperty(_pl, "female_slave", "niewolnica"), _defineProperty(_pl, "nun", "zakonnica"), _defineProperty(_pl, "female_police_officer", "policjantka"), _defineProperty(_pl, "prostitute", "prostytutka"), _defineProperty(_pl, "female_boss", "szefowa"), _defineProperty(_pl, "cleaner", "sprzątaczka"), _defineProperty(_pl, "mommy", "mamusia"), _defineProperty(_pl, "amateur", "amatorski"), _defineProperty(_pl, "professional", "profesjonalny"), _defineProperty(_pl, "choose_options", "wybierz opcje"), _defineProperty(_pl, "search", "szukaj"), _defineProperty(_pl, "remove_option", "usuń opcję"), _defineProperty(_pl, "close", "zamknij"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę"), _defineProperty(_pl, "fetching_pornstars", "Pobieram listę gwiazd"), _defineProperty(_pl, "not_selected", "nie wybrano"), _defineProperty(_pl, "minutes_inflected", "minut(y)"), _defineProperty(_pl, "views_inflected", "wyświetleń"), _defineProperty(_pl, "unexpected_error_occured", "Pojawił się bliżej niezidentyfikowany błąd"), _defineProperty(_pl, "packages", {
+  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "avatar_has_been_deleted_successfully", "Pomyślnie usunięto avatar"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "views", "Wyświetleń"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "pornstar_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "the_nickname_exceeds_20_characters", "Długość pseudonimu przekracza 20 znaków"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "add_comment", "Dodaj komentarz"), _defineProperty(_pl, "add", "dodaj"), _defineProperty(_pl, "unregistered_user", "Niezarejestrowany"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "adding_comment", "Dodaję komentarz"), _defineProperty(_pl, "fetching_comments", "Pobieram komentarze"), _defineProperty(_pl, "comment_text_is_missing", "Nie podano treści komentarza"), _defineProperty(_pl, "comment_text_exceeds_1000_characters", "Treść komentarza przekracza 1000 znaków"), _defineProperty(_pl, "nickname_exceeds_50_characters", "Pseudonim przekracza 50 znaków"), _defineProperty(_pl, "because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute", "Z powodów bezpieczeństwa ograniczono liczbę dodawanych komentarzy do 2 na minutę"), _defineProperty(_pl, "total_comments", "Liczba wszystkich komentarzy"), _defineProperty(_pl, "show_comments_sub_page_with_number", "Pokaż podstronę komentarzy o numerze"), _defineProperty(_pl, "sex_empire_short", "SI"), _defineProperty(_pl, "small_ass", "mały"), _defineProperty(_pl, "medium_ass", "średni"), _defineProperty(_pl, "big_ass", "duży"), _defineProperty(_pl, "small_tits", "małe"), _defineProperty(_pl, "medium_tits", "średnie"), _defineProperty(_pl, "big_tits", "duże"), _defineProperty(_pl, "skinny_tchickness", "chuda"), _defineProperty(_pl, "medium_tchickness", "średnia"), _defineProperty(_pl, "fat_tchickness", "gruba"), _defineProperty(_pl, "teenagers", "nastolatki(18 - 19)"), _defineProperty(_pl, "age_range_young", "młode (20 -29)"), _defineProperty(_pl, "age_range_mature", "dojrzałe(30 - 50)"), _defineProperty(_pl, "dark_hair", "czarny"), _defineProperty(_pl, "blonde_hair", "blond"), _defineProperty(_pl, "brown_hair", "brązowy"), _defineProperty(_pl, "red_hair", "rudy"), _defineProperty(_pl, "white_race", "biała"), _defineProperty(_pl, "asian_race", "azjatki"), _defineProperty(_pl, "ebony_race", "murzynki"), _defineProperty(_pl, "latin_race", "latynoski"), _defineProperty(_pl, "arabic_race", "arabki"), _defineProperty(_pl, "yes", "tak"), _defineProperty(_pl, "no", "nie"), _defineProperty(_pl, "one_male_one_female", "facet i kobieta"), _defineProperty(_pl, "bukkake", "bukkake"), _defineProperty(_pl, "single_female", "kobieta solo"), _defineProperty(_pl, "lesbians", "lesbijki"), _defineProperty(_pl, "group_sex", "grupowy"), _defineProperty(_pl, "one_male_many_females", "facet i wiele kobiet"), _defineProperty(_pl, "GangBang", "GangBang"), _defineProperty(_pl, "one_female_two_males", "Na 2 baty"), _defineProperty(_pl, "lesbian_group_sex", "Lesbijki grupowo"), _defineProperty(_pl, "only", "tylko i wyłącznie"), _defineProperty(_pl, "maximum", "maximum"), _defineProperty(_pl, "a_lot", "dużo"), _defineProperty(_pl, "medium", "średnio"), _defineProperty(_pl, "a_little", "trochę"), _defineProperty(_pl, "exclude", "wyklucz"), _defineProperty(_pl, "on_face", "na twarz"), _defineProperty(_pl, "cum_swallow", "z połykiem"), _defineProperty(_pl, "creampie", "w cipkę"), _defineProperty(_pl, "anal_creampie", "w dupkę"), _defineProperty(_pl, "on_tits", "na cycki"), _defineProperty(_pl, "on_pussy", "na cipkę"), _defineProperty(_pl, "on_ass", "na dupkę"), _defineProperty(_pl, "on_feet", "na stopy"), _defineProperty(_pl, "on_many_places", "na wiele miejsc"), _defineProperty(_pl, "on_other_body_parts", "na inne miejsca"), _defineProperty(_pl, "american_nationality", "amerykańska"), _defineProperty(_pl, "japanese_nationality", "japońska"), _defineProperty(_pl, "german_nationality", "niemiecka"), _defineProperty(_pl, "czech_nationality", "czeska"), _defineProperty(_pl, "russian_nationality", "rosyjska"), _defineProperty(_pl, "british_nationality", "brytyjska"), _defineProperty(_pl, "swedish_nationality", "szwedzka"), _defineProperty(_pl, "ukrainian_nationality", "ukraińska"), _defineProperty(_pl, "slovac_nationality", "słowacka"), _defineProperty(_pl, "hanguarian_nationality", "węgierska"), _defineProperty(_pl, "polish_nationality", "polska"), _defineProperty(_pl, "dutch_nationality", "holenderska"), _defineProperty(_pl, "hindu_nationality", "hinduska"), _defineProperty(_pl, "french_nationality", "francuska"), _defineProperty(_pl, "spanish_nationality", "hiszpańska"), _defineProperty(_pl, "italian_nationality", "włoska"), _defineProperty(_pl, "canadian_nationality", "kanadyjska"), _defineProperty(_pl, "argentinian_nationality", "argentyńska"), _defineProperty(_pl, "house", "dom"), _defineProperty(_pl, "bathroom", "łazienka"), _defineProperty(_pl, "office", "biuro"), _defineProperty(_pl, "school", "szkoła"), _defineProperty(_pl, "public_place", "miejsca publiczne"), _defineProperty(_pl, "car", "samochód"), _defineProperty(_pl, "nature", "łono natury"), _defineProperty(_pl, "solarium", "solarium"), _defineProperty(_pl, "elevator", "winda"), _defineProperty(_pl, "beach", "plaża"), _defineProperty(_pl, "gym", "siłownia"), _defineProperty(_pl, "POV", "POV"), _defineProperty(_pl, "outside_camera_style", "z zewnątrz"), _defineProperty(_pl, "mixed_camera_style", "mieszane"), _defineProperty(_pl, "female_pupil", "uczennica"), _defineProperty(_pl, "female_employee", "pracownica"), _defineProperty(_pl, "female_student", "studentka"), _defineProperty(_pl, "wife", "żona"), _defineProperty(_pl, "female_teacher", "nauczycielka"), _defineProperty(_pl, "nurse", "pielęgniarka"), _defineProperty(_pl, "female_slave", "niewolnica"), _defineProperty(_pl, "nun", "zakonnica"), _defineProperty(_pl, "female_police_officer", "policjantka"), _defineProperty(_pl, "prostitute", "prostytutka"), _defineProperty(_pl, "female_boss", "szefowa"), _defineProperty(_pl, "cleaner", "sprzątaczka"), _defineProperty(_pl, "mommy", "mamusia"), _defineProperty(_pl, "amateur", "amatorski"), _defineProperty(_pl, "professional", "profesjonalny"), _defineProperty(_pl, "choose_options", "wybierz opcje"), _defineProperty(_pl, "search", "szukaj"), _defineProperty(_pl, "remove_option", "usuń opcję"), _defineProperty(_pl, "close", "zamknij"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę"), _defineProperty(_pl, "fetching_pornstars", "Pobieram listę gwiazd"), _defineProperty(_pl, "not_selected", "nie wybrano"), _defineProperty(_pl, "minutes_inflected", "minut(y)"), _defineProperty(_pl, "views_inflected", "wyświetleń"), _defineProperty(_pl, "unexpected_error_occured", "Pojawił się bliżej niezidentyfikowany błąd"), _defineProperty(_pl, "titsSize", "rozmiar cycków"), _defineProperty(_pl, "assSize", "rozmiar dupci"), _defineProperty(_pl, "thicknessSize", "tusza"), _defineProperty(_pl, "ageRange", "przedział wiekowy"), _defineProperty(_pl, "hairColor", "kolor włosów"), _defineProperty(_pl, "race", "rasa"), _defineProperty(_pl, "abundanceType", "liczebność"), _defineProperty(_pl, "cumshotType", "typ wytrysku"), _defineProperty(_pl, "nationality", "narodowość"), _defineProperty(_pl, "location", "lokalizacja"), _defineProperty(_pl, "cameraStyle", "ujęcie kamery"), _defineProperty(_pl, "storyOrCostume", "motyw fabularno kostiumowy"), _defineProperty(_pl, "professionalismLevel", "poziom filmu"), _defineProperty(_pl, "shavedPussy", "wygolona cipka"), _defineProperty(_pl, "analAmmount", "anal"), _defineProperty(_pl, "blowjobAmmount", 'obciąganie'), _defineProperty(_pl, "doublePenetrationAmmount", "wtyczka"), _defineProperty(_pl, "vaginalAmmount", "waginalny"), _defineProperty(_pl, "pussyLickingAmmount", 'minetka'), _defineProperty(_pl, "feetAmmount", 'pieszczenie stóp'), _defineProperty(_pl, "position69Ammount", 'pozycja 69'), _defineProperty(_pl, "tittfuckAmmount", "na hiszpana"), _defineProperty(_pl, "isCumshotCompilation", 'kompilacja wytrysków'), _defineProperty(_pl, "recordedBySpamCamera", 'nagrany kamerą szpiegowską'), _defineProperty(_pl, "isSadisticOrMasochistic", 'sado-masochostyczny'), _defineProperty(_pl, "isFemaleDomination", 'kobieca dominacja'), _defineProperty(_pl, "isTranslatedToPolish", 'polska wersja językowa'), _defineProperty(_pl, "showPantyhose", 'rajstopy'), _defineProperty(_pl, "showStockings", 'pończochy'), _defineProperty(_pl, "showGlasses", 'okulary'), _defineProperty(_pl, "showHighHeels", 'szpile'), _defineProperty(_pl, "showHugeCock", 'wielki kutas'), _defineProperty(_pl, "showWhips", 'bicze'), _defineProperty(_pl, "showSexToys", 'sex-zabawki'), _defineProperty(_pl, "minimumMovieTime", "minimalny czas"), _defineProperty(_pl, "maximumMovieTime", "maksymalny czas"), _defineProperty(_pl, "minimumMovieViews", 'minimalna liczba wyświetleń'), _defineProperty(_pl, "maximumMovieViews", 'maksymalna liczba wyświetleń'), _defineProperty(_pl, "hasStory", 'zawiera fabułę'), _defineProperty(_pl, "total_movies_found", "Ilość znalezionych filmów"), _defineProperty(_pl, "movie_with_following_pornstar", "występują jednocześnie następujące gwiazdy"), _defineProperty(_pl, "packages", {
     content_sidebar: {
       hide_side_bar_title: "Schowaj boczne menu",
       hide_side_bar_caption: "Schowaj",

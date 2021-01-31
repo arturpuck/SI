@@ -27,11 +27,13 @@ Abstract Class BaseRepository{
   }
 
   public function with(array $relations) : self{
+    
     $this->query = $this->query->with($relations);
     return $this;
   }
 
   public function resetQuery():void{
+
     $model = static::MODEL_NAME;
     $this->query = $model::query();
   }
@@ -42,5 +44,19 @@ Abstract Class BaseRepository{
          $this->query = $this->query->where($column,$value);
       }
   
+  }
+
+  public function filterByPage(int $page, int $perPage = 100) : self {
+
+     $skip = (intval($page) - 1) * $perPage;
+     $this->query = $this->query
+                        ->skip($skip)
+                        ->take($perPage);
+     return $this;
+  }
+
+  public function count():int{
+   
+     return $this->query->count();
   }
 }

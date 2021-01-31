@@ -1,0 +1,145 @@
+@import '~sass/fonts';
+
+.content-in-center{
+    justify-content: center;
+}
+
+.scroll-previous-links-button-decoration{
+    clip-path: polygon(40% 0%, 40% 25%, 100% 25%, 100% 75%, 40% 75%, 40% 100%, 0% 50%);
+}
+
+.scroll-next-links-button-decoration{
+    clip-path: polygon(0% 25%, 60% 25%, 60% 0%, 100% 50%, 60% 100%, 60% 75%, 0% 75%);
+}
+
+.aditional-link-list-element{
+    margin:0 4px;
+    background: linear-gradient(to bottom, #1d1c1c, #0e0e0e);
+    border-radius: 3px;
+    border: 1px solid black;
+    padding:4px;
+    text-align: center;
+    font-size: 0;
+    &:hover{
+        box-shadow: 1px 1px 3px 1px black;
+    }
+}
+
+.links-button-description{
+    position: absolute;
+    left:0;
+    top:-9999px;
+    display: inline-block;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.links-box{
+    display:block;
+    margin:10px auto;
+}
+
+.links-container-outer{
+    overflow:hidden;
+    margin: 0 5px;
+}
+
+.content-container-slider{
+    position: relative;
+    left:0;
+    top:0;
+    transition: left 0.8s;
+    padding:0;
+    margin:0;
+    display:flex;
+    flex-wrap:nowrap;
+    list-style-type: none;
+    width:50vw;
+    @media(max-width:830px){
+        width:240px;
+    }
+}
+
+.aditional-links{
+    margin: 5px 0;
+    padding:0;
+    display:flex;
+    flex-wrap:nowrap;
+    list-style-type: none;
+    @include responsive-font();
+    color:white;
+    justify-content: center;
+}
+
+.aditional-link{
+    color:white;
+    text-decoration: none;
+    padding: 4px;
+    display: inline-block;
+    @include responsive-font(1.3vw, 13px);
+}
+
+
+.scrollable-controls{
+    width:100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    @include responsive-font(1.5vw,20px);
+    color:white;
+}
+
+.pagination-link{
+    color:white;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    line-height:3.5vw;
+    padding: 0;
+    background:linear-gradient(to bottom, #e60f0f, #540505);
+    &:hover{
+       background: linear-gradient(#17f117, #09501b); 
+    }
+    border-radius:5px;
+    @media(max-width:830px){
+        line-height: 40px;
+    }
+}
+
+.current-page-link{
+   background: linear-gradient(#17f117, #09501b); 
+}
+
+.pagination-link-list-element{
+  flex-basis: 3.5vw;
+  height: 3.5vw;
+  display: inline-block;
+  cursor:pointer;
+  text-align: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin: 0.75vw;
+  @media(max-width:830px){
+        flex-basis:40px;
+        margin:0 4px;
+        height:40px;
+  }
+}
+
+.scroll-links-button{
+    cursor: pointer;
+    border:none;
+    outline:none;
+    border-radius: 5px;
+    flex-basis: 4%;
+    min-width: 35px;
+    background: linear-gradient(#17f117, #09501b);
+    &:active{
+        transform: scale(1.2);
+    }
+}
+
+.aditional-link-icon{
+   @include responsive-font(1.3vw, 13px,""); 
+}

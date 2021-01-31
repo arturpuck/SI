@@ -54,11 +54,6 @@ Class MoviesAdvancedSearchValidator {
           'arabic'
     ];
 
-    private const BINARY_OPTIONS = [
-      '0',
-      '1'
-    ];
-
     private const SEX_TYPE_AMMOUNTS = [
         'only',
         'maximum',
@@ -93,6 +88,31 @@ Class MoviesAdvancedSearchValidator {
         'amateur'
     ];
 
+    private const CAST_STRING_TO_BOOLEAN =[
+        'hasStory',
+        'isCumshotCompilation',
+        'recordedBySpamCamera',
+        'isSadisticOrMasochistic',
+        'isFemaleDomination',
+        'isTranslatedToPolish',
+        'showPantyhose',
+        'showStockings',
+        'showGlasses',
+        'showHighHeels',
+        'showHugeCock',
+        'showWhips',
+        'showSexToys',
+        'shavedPussy'
+    ];
+
+    private const CAST_STRING_TO_INTEGER = [
+        'minimumMovieTime', 
+        'maximumMovieTime',
+        'minimumMovieViews',
+        'maximumMovieViews',
+        'page',
+    ];
+
     private static function getRules():array{
 
         return [
@@ -104,7 +124,7 @@ Class MoviesAdvancedSearchValidator {
             'hairColor' => ['string', 'nullable', Rule::in(self::HAIR_COLORS)],
             'race' => ['string', 'nullable', Rule::in(self::RACES)],
             'nationality' => ['string', 'nullable', 'exists:nationalities,name'],
-            'shavedPussy' => ['string', 'nullable', Rule::in(self::BINARY_OPTIONS)],
+            'shavedPussy' => ['nullable', 'boolean'],
             'analAmmount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_AMMOUNTS)],
             'blowjobAmmount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_AMMOUNTS)],
             'doublePenetrationAmmount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_AMMOUNTS)],
@@ -116,7 +136,7 @@ Class MoviesAdvancedSearchValidator {
             'cumshotType' => ['string', 'nullable', Rule::in(self::CUMSHOT_TYPES)],
             'location' => ['string', 'nullable', 'exists:locations,name'],
             'cameraStyle' => ['string', 'nullable', Rule::in(self::CAMERA_STYLES)],
-            'hasStory' => ['string', 'nullable', Rule::in(self::BINARY_OPTIONS)],
+            'hasStory' => ['nullable', 'boolean'],
             'storyOrCostume' => ['string', 'nullable', 'exists:story_or_costume_types,name'],
             'professionalismLevel' => ['string', 'nullable', Rule::in(self::PROFESSIONALISM_LEVELS)],
 
@@ -133,27 +153,50 @@ Class MoviesAdvancedSearchValidator {
             'showWhips' => ['boolean', 'nullable'],
             'showSexToys' => ['boolean', 'nullable'],
 
-            'minimumMovieTime'  => ['nullable', 'numeric', 'between:0,180'], 
-            'maximumMovieTime'  => ['nullable', 'numeric', 'between:0,180'],
+            'minimumMovieTime'  => ['nullable', 'integer', 'between:0,180'], 
+            'maximumMovieTime'  => ['nullable', 'integer', 'between:0,180'],
             'minimumMovieViews' => ['nullable', 'numeric', 'between:0,100000'],
             'maximumMovieViews' => ['nullable', 'numeric', 'between:0,100000'],
 
             'pornstarsList' => ['nullable', 'array'],
-            'pornstarsList.*' => ['nullable', 'string', 'exists:pornstars,nickname']
+            'pornstarsList.*' => ['nullable', 'string', 'exists:pornstars,nickname'],
+
+            'page' => ['required', 'numeric', 'min:0']
         ];
     } 
 
     //if you wonder why I didn't use a custom request validation, that's because custom requests break
     // when more fields get validated
 
-    public static function validate(Request $request):bool | Response {
-        
-        $validator = Validator::make($request->all(), self::getRules());
+    private static function castTypes(Request $request): void{
 
-        if($validator->fails()){
-            
-            dd($validator->messages());
+        foreach($request->all() as $key => $value){
+
+            if(in_array($key,self::CAST_STRING_TO_BOOLEAN)){
+
+                $casted = match($value){
+                    'true' => true,
+                    'false' => false,
+                    '1' => true,
+                    '0' => false
+                };
+
+                $request->merge([$key => $casted]);
+                
+            } 
+            else if(in_array($key,self::CAST_STRING_TO_INTEGER)){
+
+                $casted = intval($value);
+                $request->merge([$key => $casted]);
+            }
+             
         }
+    }
+
+    public static function validate(Request $request):bool | Response {
+
+        self::castTypes($request);
+        $validator = Validator::make($request->all(), self::getRules());
         return $validator->fails() ? response('Request data is invalid',400) : true;
     }
 

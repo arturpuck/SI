@@ -1,8 +1,19 @@
+const movieViewsOptions = [
+    'minimumMovieViews', 'maximumMovieViews'
+];
+
+const movieTimeOptions = [
+    'minimumMovieViews', 'maximumMovieViews'
+];
+
 const variables : {
     initialValueIsEmptyString : string[],
     initialValueIsFalse : string[],
     pornstarsList : string,
     initialValueIsZero : string[],
+    movieTimeOptions : string[],
+    movieViewsOptions : string[],
+    groupNames : string[]
     getIgnoreIfFalsy() : string[]
 } = {
 
@@ -16,9 +27,11 @@ const variables : {
    'showWhips','showSexToys'
    ],
 
-   initialValueIsZero  : ['minimumMovieTime', 'maximumMovieTime', 'minimumMovieViews', 'maximumMovieViews'],
-
+   initialValueIsZero  : [...movieTimeOptions, ...movieViewsOptions],
+   movieTimeOptions,
+   movieViewsOptions,
    pornstarsList : "pornstarsList",
+   groupNames : ['initialValueIsEmptyString', 'initialValueIsFalse', 'movieTimeOptions', 'movieViewsOptions'],
 
    getIgnoreIfFalsy():string[]{
        return this.initialValueIsEmptyString.concat(this.initialValueIsFalse, this.initialValueIsZero);

@@ -1,39 +1,53 @@
 import Translator from '@jsmodules/translator.js';
 
+const yesNoOptions =  {
+  1 : Translator.translate('yes'),
+  0 : Translator.translate('no')
+};
+
+const sexAmmounts = {
+  only : Translator.translate('only'),
+  maximum : Translator.translate('maximum'),
+  a_lot : Translator.translate('a_lot'),
+  medium : Translator.translate('medium'),
+  a_little : Translator.translate('a_little'),
+  exclude : Translator.translate('exclude')
+};
+
 export default {
 
-    titsSizes : {
+    titsSize : {
         small : Translator.translate('small_tits'),
         medium : Translator.translate('medium_tits'),
         big : Translator.translate('big_tits')
       },
     
-      assSizes : {
+      assSize : {
         small : Translator.translate('small_ass'),
         medium : Translator.translate('medium_ass'),
         big : Translator.translate('big_ass')
       },
     
-      thicknessSizes : {
+      thicknessSize : {
         skinny : Translator.translate('skinny_tchickness'),
         medium : Translator.translate('medium_tchickness'),
         fat : Translator.translate('fat_tchickness')
       },
 
-      ageRanges : {
+      ageRange : {
          teenagers : Translator.translate('teenagers'),
          young : Translator.translate('age_range_young'),
          mature : Translator.translate('age_range_mature')
       },
 
-      hairColors : {
+      hairColor : {
           dark : Translator.translate('dark_hair'),
           blonde : Translator.translate('blonde_hair'),
           brown : Translator.translate('brown_hair'),
           red : Translator.translate('red_hair'),
       },
 
-      races : {
+      race : {
           white : Translator.translate('white_race'),
           asian : Translator.translate('asian_race'),
           ebony : Translator.translate('ebony_race'),
@@ -41,12 +55,11 @@ export default {
           arabic : Translator.translate('arabic_race')
       },
 
-      binaryOptions : {
-          1 : Translator.translate('yes'),
-          0 : Translator.translate('no')
-      },
+      binaryOptions : yesNoOptions,
+      shavedPussy : yesNoOptions,
+      hasStory : yesNoOptions,
 
-      abundanceTypes : {	
+      abundanceType : {	
           one_male_one_female : Translator.translate('one_male_one_female'),
           bukkake : Translator.translate('bukkake'),
           single_female : Translator.translate('single_female'),
@@ -58,16 +71,17 @@ export default {
           lesbianGroup : Translator.translate('lesbian_group_sex')
       },
 
-      sexAmmounts : {
-         only : Translator.translate('only'),
-         maximum : Translator.translate('maximum'),
-         a_lot : Translator.translate('a_lot'),
-         medium : Translator.translate('medium'),
-         a_little : Translator.translate('a_little'),
-         exclude : Translator.translate('exclude')
-      },
+      sexAmmounts,
+      analAmmount : sexAmmounts,
+      blowjobAmmount : sexAmmounts,
+      vaginalAmmount : sexAmmounts,
+      pussyLickingAmmount : sexAmmounts,
+      tittfuckAmmount : sexAmmounts,
+      position69Ammount : sexAmmounts,
+      feetAmmount : sexAmmounts,
 
-      cumshotTypes : {
+
+      cumshotType : {
          on_face : Translator.translate('on_face'),
          cum_swallow : Translator.translate('creampie'),
          creampie : Translator.translate('on_feet'),
@@ -81,7 +95,7 @@ export default {
          exclude : Translator.translate('exclude')
       },
 
-      nationalities : {
+      nationality : {
         american : Translator.translate('american_nationality'),
         japanese : Translator.translate('japanese_nationality'),   	
         german : 	Translator.translate('german_nationality'),
@@ -102,7 +116,7 @@ export default {
         argentinian : Translator.translate('argentinian_nationality'),
       },
 
-      locations : {
+      location : {
         house : Translator.translate('house'),
         bathroom : Translator.translate('bathroom'),
         office : Translator.translate('office'),
@@ -147,5 +161,7 @@ export default {
       notSelected : Translator.translate("not_selected"),
       selectedTimeLabel : Translator.translate("minutes_inflected"),
       selectedViewsLabel : Translator.translate("views_inflected"),
+      fetchingMoviesLabel : Translator.translate("fetching_movies"),
+      totalMoviesLabel : Translator.translate("total_movies_found")
 
 }

@@ -2,6 +2,7 @@
 @import '~sass/fonts';
 @import '~sass/responsive_icon';
 @import '~sasscomponent/controls/slider/standard_slider';
+@import '~sass/advanced_search_results';
 
 @mixin panel-group{
     border-radius: 1vw;
@@ -52,6 +53,9 @@
    grid-template-columns: repeat(4,23%);
    grid-template-rows:auto;
    justify-content: space-evenly;
+   overflow: hidden;
+   max-height: 3000px;
+   transition: max-height 1s;
    @media(max-width:541){
     margin-top: 70px;
    }
@@ -63,6 +67,10 @@
    }
    @media(max-width:420px){
     grid-template-columns: 98%;
+   }
+
+   &--hidden{
+       max-height:0;
    }
 }
 

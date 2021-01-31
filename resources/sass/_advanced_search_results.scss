@@ -1,0 +1,54 @@
+@import '~sass/fonts';
+
+@mixin summary-header{
+    text-align:center;
+    font-weight:bold;
+}
+
+.search-results{
+
+    &__options-list{
+      margin: 0;
+      padding: 0.4vw 0 1vw 6vw;
+      list-style-type:none;
+    }
+
+    &__option{
+        color:white;
+        @include responsive-font();
+        &::before{
+          content: " ";  
+          color: crimson; 
+          background:crimson;
+          display: inline-block; 
+          width: 0.5em; 
+          height:0.5em;
+          margin-right:5px;
+        }
+    }
+
+    &__summary{
+        width: 40%;
+        min-width: 300px;
+        margin: 0 auto;
+        border: 1px solid #d2cacb;
+        box-shadow: 1px 1px 1px 1px black;
+        border-radius: 4px;
+        background: black;
+        padding-bottom: 7px;
+    }
+
+    &__header{
+        @include responsive-font();
+        @include summary-header();
+        color:white;
+        
+
+        &--crimson{
+            @include summary-header();
+            padding:1vw 0;
+            @include responsive-font(1.7vw,22px);
+            color:crimson;
+        }
+    }
+}

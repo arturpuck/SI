@@ -66,7 +66,7 @@ Class MoviesRepository extends BaseRepository{
 
     public function filterByThicknessSize(string $thicknessSize) : MoviesRepository {
 
-        $this->query = $this->query->where('actress_ass_size', $thicknessSize);
+        $this->query = $this->query->where('actress_thickness', $thicknessSize);
         return $this;
     }
 
@@ -226,9 +226,8 @@ Class MoviesRepository extends BaseRepository{
         return $this;
     }
 
-    public function filterByHasStory($hasStory) : MoviesRepository {
+    public function filterByHasStory(bool $hasStory) : MoviesRepository {
 
-        $hasStory = boolval($hasStory);
         $this->query = $this->query->where('has_story', $hasStory);
         return $this;
     }
@@ -244,126 +243,131 @@ Class MoviesRepository extends BaseRepository{
     }
 
     public function filterByProfessionalismLevel(string $professionalismLevel) : MoviesRepository {
-        $professionalismLevel = ($professionalismLevel == 'professional') ? 1 : 0;
+        $professionalismLevel = ($professionalismLevel == 'professional');
         $this->query = $this->query->where('is_professional_production', $professionalismLevel);
         return $this;
     }
 
-    public function filterByIsCumshotCompilation($isCumshotCompilation) : MoviesRepository {
+    public function filterByIsCumshotCompilation(bool $isCumshotCompilation) : MoviesRepository {
 
         $isCumshotCompilation = boolval($isCumshotCompilation);
         $this->query = $this->query->where('is_cumshot_compilation_type', $isCumshotCompilation);
         return $this;
     }
 
-    public function filterByRecordedBySpamCamera($recordedBySpyCamera) : MoviesRepository {
+    public function filterByRecordedBySpamCamera(bool $recordedBySpyCamera) : MoviesRepository {
 
         $recordedBySpyCamera = boolval($recordedBySpyCamera);
         $this->query = $this->query->where('is_cumshot_compilation_type', $recordedBySpyCamera);
         return $this;
     }
 
-    public function filterByIsSadisticOrMasochistic($isSadisticOrMasochistic) : MoviesRepository {
+    public function filterByIsSadisticOrMasochistic(bool $isSadisticOrMasochistic) : MoviesRepository {
 
         $isSadisticOrMasochistic = boolval($isSadisticOrMasochistic);
         $this->query = $this->query->where('is_sadistic_or_masochistic', $isSadisticOrMasochistic);
         return $this;
     }
 
-    public function filterByIsFemaleDomination($isFemaleDomination) : MoviesRepository {
+    public function filterByIsFemaleDomination(bool $isFemaleDomination) : MoviesRepository {
 
-        $isFemaleDomination = boolval($isFemaleDomination);
         $this->query = $this->query->where('is_female_domination_type', $isFemaleDomination);
         return $this;
     }
 
-    public function filterByIsTranslatedToPolish($isTranslatedToPolish) : MoviesRepository {
+    public function filterByIsTranslatedToPolish(bool $isTranslatedToPolish) : MoviesRepository {
 
-        $isTranslatedToPolish = boolval($isTranslatedToPolish);
         $this->query = $this->query->where('is_translated_to_polish', $isTranslatedToPolish);
         return $this;
     }
 
-    public function filterByShowPantyhose($showPantyhose) : MoviesRepository {
+    public function filterByShowPantyhose(bool $showPantyhose) : MoviesRepository {
 
-        $showPantyhose = boolval($showPantyhose);
         $this->query = $this->query->where('actress_has_pantyhose', $showPantyhose);
         return $this;
     }
 
-    public function filterByShowStockings($showStockings) : MoviesRepository {
+    public function filterByShowStockings(bool $showStockings) : MoviesRepository {
 
-        $showStockings = boolval($showStockings);
         $this->query = $this->query->where('actress_has_stockings', $showStockings);
         return $this;
     }
 
-    public function filterByShowGlasses($showGlasses) : MoviesRepository {
+    public function filterByShowGlasses(bool $showGlasses) : MoviesRepository {
 
-        $showGlasses = boolval($showGlasses);
         $this->query = $this->query->where('actress_has_glasses', $showGlasses);
         return $this;
     }
 
-    public function filterByShowHighHeels($showHighHeels) : MoviesRepository {
+    public function filterByShowHighHeels(bool $showHighHeels) : MoviesRepository {
 
-        $showHighHeels = boolval($showHighHeels);
         $this->query = $this->query->where('shows_high_heels', $showHighHeels);
         return $this;
     }
 
-    public function filterByShowHugeCock($showHugeCock) : MoviesRepository {
+    public function filterByShowHugeCock(bool $showHugeCock) : MoviesRepository {
 
-        $showHugeCock = boolval($showHugeCock);
         $this->query = $this->query->where('shows_big_cock', $showHugeCock);
         return $this;
     }
 
-    public function filterByShowWhips($showWhips) : MoviesRepository {
+    public function filterByShowWhips(bool $showWhips) : MoviesRepository {
 
-        $showWhips = boolval($showWhips);
         $this->query = $this->query->where('shows_whips', $showWhips);
         return $this;
     }
 
-    public function filterByShowSexToys($showSexToys) : MoviesRepository {
+    public function filterByShowSexToys(bool $showSexToys) : MoviesRepository {
 
-        $showSexToys = boolval($showSexToys);
         $this->query = $this->query->where('shows_sex_toys', $showSexToys);
         return $this;
     }
 
-    private function translateMinutesToDuration(int | string $minutes):string{
+    private function translateMinutesToDuration(int  $minutes):string{
 
         $duration = Carbon::createFromFormat('H:i:s', '00:00:00');
         $duration->addMinutes($minutes);
         return $duration->toTimeString();
     }
 
-    public function filterByMinimumMovieTime(int | string $minimumMovieTimeinMinutes) : MoviesRepository {
+    public function filterByMinimumMovieTime(int  $minimumMovieTimeinMinutes) : MoviesRepository {
         
         $duration = $this->translateMinutesToDuration($minimumMovieTimeinMinutes);
         $this->query = $this->query->where('duration', '>=', $duration);
         return $this;
     }
 
-    public function filterByMaximumMovieTime(int | string $maximumMovieTimeinMinutes) : MoviesRepository {
+    public function filterByMaximumMovieTime(int  $maximumMovieTimeinMinutes) : MoviesRepository {
         
         $duration = $this->translateMinutesToDuration($maximumMovieTimeinMinutes);
         $this->query = $this->query->where('duration', '<=', $duration);
         return $this;
     }
 
-    public function filterByMinimumMovieViews(int | string $minimumMovieViews) : MoviesRepository {
+    public function filterByMinimumMovieViews(int $minimumMovieViews) : MoviesRepository {
         
         $this->query = $this->query->where('views', '>=', $minimumMovieViews);
         return $this;
     }
 
-    public function filterByMaximumMovieViews(int | string $maximumMovieViews) : MoviesRepository {
+    public function filterByMaximumMovieViews(int $maximumMovieViews) : MoviesRepository {
         
         $this->query = $this->query->where('views', '<=', $maximumMovieViews);
         return $this;
     }
 
+    public function filterByPornstarsList(array $pornstarsList) : MoviesRepository {
+
+       foreach($pornstarsList as $pornstar){
+
+            $this->query = $this->query->whereHas('pornstars', function($query) use ($pornstar){
+
+                $query->where('nickname',$pornstar);
+            });
+       }
+       
+        return $this;
+    }
+
+    
 }

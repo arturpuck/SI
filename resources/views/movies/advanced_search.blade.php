@@ -1,5 +1,5 @@
 <x-base title="{{__($title)}}" specificImageClass="no-image-background" description="{{__($description)}}">
-   <form class="advanced-search-panel">
+   <form class="advanced-search-panel" v-bind:class="{'advanced-search-panel--hidden' : !advancedSearchPanelIsVisible}">
       <fieldset v-bind:class="{'aditional-control-panel--hidden' : !showControlsShortcut}" class="aditional-control-panel">
          <legend class="aditional-control-panel__description">{{__('controls')}}</legend>
            <button type="button" v-on:click="searchMovies" class="aditional-control-panel__button--green">
@@ -26,25 +26,25 @@
          <legend class="panel-group-legend">
             {{__('type_and_body')}}
          </legend>
-         <simple-labeled-select v-model="titsSize"  v-bind:options="searchEngineOptions['titsSizes']">
+         <simple-labeled-select v-model="titsSize"  v-bind:options="searchEngineOptions['titsSize']">
             {{__('tits_size')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="assSize" v-bind:options="searchEngineOptions['assSizes']">
+         <simple-labeled-select v-model="assSize" v-bind:options="searchEngineOptions['assSize']">
             {{__('ass_size')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="thicknessSize"  v-bind:options="searchEngineOptions['thicknessSizes']">
+         <simple-labeled-select v-model="thicknessSize"  v-bind:options="searchEngineOptions['thicknessSize']">
             {{__('thickness')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="ageRange"  v-bind:options="searchEngineOptions['ageRanges']">
+         <simple-labeled-select v-model="ageRange"  v-bind:options="searchEngineOptions['ageRange']">
             {{__('age')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="hairColor"  v-bind:options="searchEngineOptions['hairColors']">
+         <simple-labeled-select v-model="hairColor"  v-bind:options="searchEngineOptions['hairColor']">
             {{__('hair_color')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="race"  v-bind:options="searchEngineOptions['races']">
+         <simple-labeled-select v-model="race"  v-bind:options="searchEngineOptions['race']">
             {{__('race')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="nationality"  v-bind:options="searchEngineOptions['nationalities']">
+         <simple-labeled-select v-model="nationality"  v-bind:options="searchEngineOptions['nationality']">
             {{__('nationality')}} : 
          </simple-labeled-select>
          <simple-labeled-select v-model="shavedPussy"  v-bind:options="searchEngineOptions['binaryOptions']">
@@ -55,7 +55,7 @@
          <legend class="panel-group-legend">
             {{__('sex_type')}}
          </legend>
-         <simple-labeled-select v-model="abundanceType"  v-bind:options="searchEngineOptions['abundanceTypes']">
+         <simple-labeled-select v-model="abundanceType"  v-bind:options="searchEngineOptions['abundanceType']">
             {{__('abundance')}} : 
          </simple-labeled-select>
          <simple-labeled-select v-model="analAmmount"  v-bind:options="searchEngineOptions['sexAmmounts']">
@@ -82,7 +82,7 @@
          <simple-labeled-select v-model="position69Ammount"  v-bind:options="searchEngineOptions['sexAmmounts']">
             {{__('position_69')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="cumshotType" v-bind:options="searchEngineOptions['cumshotTypes']">
+         <simple-labeled-select v-model="cumshotType" v-bind:options="searchEngineOptions['cumshotType']">
             {{__('cumshot')}} : 
          </simple-labeled-select>
          <labeled-checkbox v-model="isCumshotCompilation" name="cumshot-compilation">{{__('cumshot_compilation')}}</labeled-checkbox>
@@ -91,7 +91,7 @@
          <legend class="panel-group-legend">
             {{__('circumstances_and_style')}}
          </legend>
-         <simple-labeled-select v-model="location" v-bind:options="searchEngineOptions['locations']">
+         <simple-labeled-select v-model="location" v-bind:options="searchEngineOptions['location']">
             {{__('location')}} : 
          </simple-labeled-select>
          <simple-labeled-select v-model="cameraStyle" v-bind:options="searchEngineOptions['cameraStyle']">
@@ -184,5 +184,18 @@
          <labeled-checkbox v-on:click.native="savePanelSettings" v-model="showControlsShortcut" class="labeled_checkbox--aditional-margin" name="show-controls-shortcut">{{__('show_controls_shortcut')}}</labeled-checkbox>
       </fieldset>
    </form>
+   <section v-show="!advancedSearchPanelIsVisible" class="search-results">
+      <header class="search-results__summary">
+         <div class="search-results__header--crimson">{{__('search_results')}}</div>
+         <ul class="search-results__options-list">
+            <lh class="search-results__header">{{__('you_have_selected_the_following_options')}}</lh>
+            <li v-for="selectedOption in selectedOptionsVisibleForUser" v-text="selectedOption" class="search-results__option"></li>
+         </ul>
+         <div v-text="totalMoviesFoundCaption" class="search-results__header"></div>
+      </header>
+   </section>
    <user-notification></user-notification>
+   <fixed-shadow-container v-show="fetchingMoviesInProgress">
+       <expect-circle v-bind:label="searchEngineOptions['fetchingMoviesLabel']"></expect-circle>
+   </fixed-shadow-container>
 </x-base>
