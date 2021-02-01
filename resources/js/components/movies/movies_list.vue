@@ -9,6 +9,7 @@
          v-bind:pornstars="extractPornstars(movie.pornstars)"
          v-bind:duration="movie.duration"></movie-box>
       </ul>
+      <pages-list></pages-list>
     </div>
 </template>
 
@@ -17,11 +18,12 @@
 import {Vue, Component, Prop} from 'vue-property-decorator';
 import Translator from '@jsmodules/translator.js';
 import MovieBox from '@jscomponents/movies/movie_box.vue';
+import PagesList from '@jscomponents/pages_list.vue';
 import {MoviesListResponse} from '@interfaces/movies/MoviesListResponse.ts';
 import {MovieBasicData} from '@interfaces/movies/MovieBasicData.ts';
 import {BasicPornstarData} from '@interfaces/pornstars/BasicPornstarData.ts';
 
-@Component({components : {MovieBox}})
+@Component({components : {MovieBox, PagesList}})
 	export default class MoviesList extends Vue{
 
       @Prop({
@@ -44,7 +46,6 @@ import {BasicPornstarData} from '@interfaces/pornstars/BasicPornstarData.ts';
 
         private movies : MovieBasicData[] = [];
         private totalMovies : number = undefined;
-        private ammountOfSubPages : number = 0;
 
         created(){
 
@@ -63,7 +64,13 @@ import {BasicPornstarData} from '@interfaces/pornstars/BasicPornstarData.ts';
         updateMoviesList(moviesData : MoviesListResponse):void{
             this.totalMovies = moviesData.totalMovies;
             this.movies = moviesData.movies;
-            this.ammountOfSubPages = Math.ceil(this.totalMovies / this.moviesPerPage);
+            const ammountOfSubPages : number = Math.ceil(this.totalMovies / this.moviesPerPage);
+            this.updatePagesList(ammountOfSubPages, 1);
+
+        }
+
+        updatePagesList(pagesNumber : number, currentPage : number){
+            this.$root.$emit('updatePagesList', {pagesNumber, currentPage});
         }
 
         extractPornstars(pornstarsList : BasicPornstarData[]) : string[] | string{
