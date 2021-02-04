@@ -82,7 +82,6 @@ Vue.component('movies-list', MoviesList);
     showWhips : false,
     showSexToys : false,
     pornstarsList : [],
-    currentPage : 1,
     fetchingMoviesInProgress : false,
     advancedSearchPanelIsVisible : true,
     selectedOptionsVisibleForUser : [],
@@ -244,7 +243,7 @@ Vue.component('movies-list', MoviesList);
               this.selectedOptionsVisibleForUser.push(keyValuePair);
           },
 
-          getSelectedOptions():QueryParams{
+          getSelectedOptions(currentPage:number = 1):QueryParams{
              
               const selectedOptions:QueryParams = {pornstarsList : [], otherParams : {}};
               this.selectedOptionsVisibleForUser = [];
@@ -265,7 +264,7 @@ Vue.component('movies-list', MoviesList);
                  selectedOptions['pornstarsList'] = this.pornstarsList;
                  this.pushSelectedOptionListForUser('pornstarsList','movie_with_following_pornstar',this.pornstarsList);
               }
-              selectedOptions['otherParams']['page'] = this.currentPage;
+              selectedOptions['otherParams']['page'] = currentPage;
 
               return selectedOptions;
           },
@@ -280,7 +279,7 @@ Vue.component('movies-list', MoviesList);
              }
           },
 
-          async searchMovies(){
+          async searchMovies(currentPage : number = 1){
 
               try{
                   this.fetchingMoviesInProgress = true;
@@ -291,7 +290,7 @@ Vue.component('movies-list', MoviesList);
                     } 
                   };
 
-                  const query = QueryBuilder.build(this.getSelectedOptions());
+                  const query = QueryBuilder.build(this.getSelectedOptions(currentPage));
                   const response = await fetch(`/movies/advanced-search?${query}`,requestData);
 
                   if(response.status === 200){
@@ -333,10 +332,12 @@ Vue.component('movies-list', MoviesList);
 
     },
 
+
     mounted(){
       this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
       this.fetchPornstars();
       this.initiateAditionalPanelSettings();
+      this.$root.$on('pageHasBeenSelected', this.searchMovies);
     }
 
 });

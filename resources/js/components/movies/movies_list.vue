@@ -65,12 +65,12 @@ import {BasicPornstarData} from '@interfaces/pornstars/BasicPornstarData.ts';
             this.totalMovies = moviesData.totalMovies;
             this.movies = moviesData.movies;
             const ammountOfSubPages : number = Math.ceil(this.totalMovies / this.moviesPerPage);
-            this.updatePagesList(ammountOfSubPages, 1);
+            this.updatePagesList(ammountOfSubPages);
 
         }
 
-        updatePagesList(pagesNumber : number, currentPage : number){
-            this.$root.$emit('updatePagesList', {pagesNumber, currentPage});
+        updatePagesList(pagesNumber : number){
+            this.$root.$emit('updatePagesList', pagesNumber);
         }
 
         extractPornstars(pornstarsList : BasicPornstarData[]) : string[] | string{

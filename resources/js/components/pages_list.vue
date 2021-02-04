@@ -7,7 +7,7 @@
         <div class="pages-list__outer-container">
             <ul v-bind:style="{ left : leftOffsetStyle}" v-bind:class="{'pages-list__content-container-slider--content-in-center' : !arrowsShouldBeDisplayed}" class="pages-list__content-container-slider">
                <li v-for="pageNumber in pagesNumber" v-bind:key="pageNumber"  class="pages-list__page">
-                   <button v-text="pageNumber" v-bind:class="{'pages-list__pagination-button--green' : checkCurrentPage(pageNumber)}" class="pages-list__pagination-button"></button>
+                   <button v-text="pageNumber" v-on:click="pageHasBeenSelected(pageNumber)" v-bind:class="{'pages-list__pagination-button--green' : checkCurrentPage(pageNumber)}" class="pages-list__pagination-button"></button>
                </li>
             </ul>
         </div>
@@ -17,25 +17,25 @@
     </div>
     <ul class="pages-list__aditional-controls">
         <li v-show="pageIsNotFirst" class="pages-list__aditional-control">
-            <button class="pages-list__aditional-control-button">
+            <button v-on:click="navigatePageByDirection(pageDirection.previous)" class="pages-list__aditional-control-button">
+                <span class="fas fa-angle-left" aria-hidden="true"></span>
                 <span v-text="descriptions.previous_page" ></span>
-                <span class="fas fa-angle-left" aria-hidden="true"></span> 
             </button>
         </li>
         <li v-show="pageIsNotFirst" class="pages-list__aditional-control">
-            <button class="pages-list__aditional-control-button">
-                <span v-text="descriptions.first_page" ></span>
+            <button v-on:click="navigatePageByDirection(pageDirection.first)" class="pages-list__aditional-control-button">
                 <span class="fas fa-fast-backward" aria-hidden="true"></span> 
+                <span v-text="descriptions.first_page" ></span>
             </button>
         </li>
         <li v-show="pageIsNotLast" class="pages-list__aditional-control">
-            <button class="pages-list__aditional-control-button"> 
+            <button v-on:click="navigatePageByDirection(pageDirection.last)" class="pages-list__aditional-control-button"> 
                 <span v-text="descriptions.last_page" ></span>
                 <span class="fas fas fa-fast-forward" aria-hidden="true"></span>
             </button>
         </li>
         <li v-show="pageIsNotLast" class="pages-list__aditional-control">
-            <button class="pages-list__aditional-control-button">
+            <button v-on:click="navigatePageByDirection(pageDirection.next)" class="pages-list__aditional-control-button">
                 <span v-text="descriptions.next_page"></span>
                 <span class="fas fa-angle-right" aria-hidden="true"></span> 
             </button>
@@ -49,6 +49,7 @@
 import {Vue, Component, Prop} from 'vue-property-decorator';
 import Translator from '@jsmodules/translator.js';
 import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
+import {PageDirection} from '@js/enum/page_direction';
 import Descriptions from '@jsmodules/translations/components/pages_list.ts';
 
 @Component
@@ -75,11 +76,44 @@ import Descriptions from '@jsmodules/translations/components/pages_list.ts';
         private currentPage : number = 0;
         private pagesNumber : number = 0;
         readonly descriptions : object = Descriptions;
+        private pageDirection = {first : PageDirection.First, next : PageDirection.Next, previous : PageDirection.Previous, last : PageDirection.Last};
+
+        pageHasBeenSelected(pageNumber : number):void{
+            this.currentPage = pageNumber;
+            this.$root.$emit('pageHasBeenSelected', pageNumber);
+        }
+
+        navigatePageByDirection(pageDirection : PageDirection):void{
+
+              switch(pageDirection){
+
+                  case PageDirection.First:
+                    this.pageHasBeenSelected(1);
+                  break;
+
+                  case PageDirection.Previous:
+                    this.pageHasBeenSelected(this.currentPage - 1);
+                  break;
+
+                  case PageDirection.Next:
+                    this.pageHasBeenSelected(this.currentPage + 1);
+                  break;
+
+                  case PageDirection.Last:
+                    this.pageHasBeenSelected(this.pagesNumber);
+                  break;
+              }
+        }
 
 
         chechIfArrowsShouldBeDisplayed(){
             this.arrowsShouldBeDisplayed = (this.pagesNumber > this.getAmmountOfVisibleLinksInBox());
         }
+
+        resetScrollOffset():void{
+            this.scrollOffset = 0;
+        }
+
 
         get leftOffsetStyle(): string {
             const linksInBox = this.getAmmountOfVisibleLinksInBox();
@@ -108,7 +142,7 @@ import Descriptions from '@jsmodules/translations/components/pages_list.ts';
            return (this.pagesNumber > this.getAmmountOfVisibleLinksInBox()) ?   this.pagesNumber - this.getAmmountOfVisibleLinksInBox() : 0;
         }
 
-        scrollLinks(direction:LinkListScrollDirection){
+        scrollLinks(direction:LinkListScrollDirection):void{
           const linksToSkip = this.getAmmountOfVisibleLinksInBox();
 
             switch(direction){
@@ -123,7 +157,7 @@ import Descriptions from '@jsmodules/translations/components/pages_list.ts';
             }
         }
 
-        scrollLinksByMouseDown(direction:LinkListScrollDirection){
+        scrollLinksByMouseDown(direction:LinkListScrollDirection):void{
             this.interval = setInterval(() => this.scrollLinks(direction),300)
         }
 
@@ -135,10 +169,26 @@ import Descriptions from '@jsmodules/translations/components/pages_list.ts';
             
         }
 
-        updatePagesList(pageListData : {pagesNumber : number, currentPage : number}){
-            this.pagesNumber = pageListData.pagesNumber;
-            this.currentPage = pageListData.currentPage;
+        updatePagesList(pagesNumber : number):void{
+            this.pagesNumber = pagesNumber;
+            this.controlInterface();
+        }
+
+        controlInterface():void{
+
             this.chechIfArrowsShouldBeDisplayed();
+            if(!this.arrowsShouldBeDisplayed){
+                this.resetScrollOffset();
+            }
+            else{
+               this.recomputeOffset();
+            }
+            
+        }
+
+        recomputeOffset(){
+            const pagesDelta = this.currentPage - this.getAmmountOfVisibleLinksInBox();
+            this.scrollOffset = pagesDelta > 0 ? pagesDelta : 0;
         }
 
         mounted(){
@@ -146,8 +196,8 @@ import Descriptions from '@jsmodules/translations/components/pages_list.ts';
             this.pagesNumber = Number(this.initialPages);
             const maxOffset = this.getMaxOffset();
             this.scrollOffset = (this.currentPage -1 >= maxOffset) ? maxOffset : this.currentPage -1;
-            this.chechIfArrowsShouldBeDisplayed();
-            window.addEventListener('resize', () => this.chechIfArrowsShouldBeDisplayed());
+            this.controlInterface();
+            window.addEventListener('resize', () => this.controlInterface());
             this.$root.$on('updatePagesList', this.updatePagesList);
         }
 

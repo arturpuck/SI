@@ -3744,10 +3744,10 @@ var MoviesList = /** @class */ (function (_super) {
         this.totalMovies = moviesData.totalMovies;
         this.movies = moviesData.movies;
         var ammountOfSubPages = Math.ceil(this.totalMovies / this.moviesPerPage);
-        this.updatePagesList(ammountOfSubPages, 1);
+        this.updatePagesList(ammountOfSubPages);
     };
-    MoviesList.prototype.updatePagesList = function (pagesNumber, currentPage) {
-        this.$root.$emit('updatePagesList', { pagesNumber: pagesNumber, currentPage: currentPage });
+    MoviesList.prototype.updatePagesList = function (pagesNumber) {
+        this.$root.$emit('updatePagesList', pagesNumber);
     };
     MoviesList.prototype.extractPornstars = function (pornstarsList) {
         if (pornstarsList.length > 0) {
@@ -3938,6 +3938,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
 var scroll_types_1 = __webpack_require__(/*! @js/enum/movies/scroll_types */ "./resources/js/enum/movies/scroll_types.ts");
+var page_direction_1 = __webpack_require__(/*! @js/enum/page_direction */ "./resources/js/enum/page_direction.ts");
 var pages_list_ts_1 = __webpack_require__(/*! @jsmodules/translations/components/pages_list.ts */ "./resources/js/modules/translations/components/pages_list.ts");
 var PagesList = /** @class */ (function (_super) {
     __extends(PagesList, _super);
@@ -3952,10 +3953,34 @@ var PagesList = /** @class */ (function (_super) {
         _this.currentPage = 0;
         _this.pagesNumber = 0;
         _this.descriptions = pages_list_ts_1.default;
+        _this.pageDirection = { first: page_direction_1.PageDirection.First, next: page_direction_1.PageDirection.Next, previous: page_direction_1.PageDirection.Previous, last: page_direction_1.PageDirection.Last };
         return _this;
     }
+    PagesList.prototype.pageHasBeenSelected = function (pageNumber) {
+        this.currentPage = pageNumber;
+        this.$root.$emit('pageHasBeenSelected', pageNumber);
+    };
+    PagesList.prototype.navigatePageByDirection = function (pageDirection) {
+        switch (pageDirection) {
+            case page_direction_1.PageDirection.First:
+                this.pageHasBeenSelected(1);
+                break;
+            case page_direction_1.PageDirection.Previous:
+                this.pageHasBeenSelected(this.currentPage - 1);
+                break;
+            case page_direction_1.PageDirection.Next:
+                this.pageHasBeenSelected(this.currentPage + 1);
+                break;
+            case page_direction_1.PageDirection.Last:
+                this.pageHasBeenSelected(this.pagesNumber);
+                break;
+        }
+    };
     PagesList.prototype.chechIfArrowsShouldBeDisplayed = function () {
         this.arrowsShouldBeDisplayed = (this.pagesNumber > this.getAmmountOfVisibleLinksInBox());
+    };
+    PagesList.prototype.resetScrollOffset = function () {
+        this.scrollOffset = 0;
     };
     Object.defineProperty(PagesList.prototype, "leftOffsetStyle", {
         get: function () {
@@ -4012,10 +4037,22 @@ var PagesList = /** @class */ (function (_super) {
             this.interval = null;
         }
     };
-    PagesList.prototype.updatePagesList = function (pageListData) {
-        this.pagesNumber = pageListData.pagesNumber;
-        this.currentPage = pageListData.currentPage;
+    PagesList.prototype.updatePagesList = function (pagesNumber) {
+        this.pagesNumber = pagesNumber;
+        this.controlInterface();
+    };
+    PagesList.prototype.controlInterface = function () {
         this.chechIfArrowsShouldBeDisplayed();
+        if (!this.arrowsShouldBeDisplayed) {
+            this.resetScrollOffset();
+        }
+        else {
+            this.recomputeOffset();
+        }
+    };
+    PagesList.prototype.recomputeOffset = function () {
+        var pagesDelta = this.currentPage - this.getAmmountOfVisibleLinksInBox();
+        this.scrollOffset = pagesDelta > 0 ? pagesDelta : 0;
     };
     PagesList.prototype.mounted = function () {
         var _this = this;
@@ -4023,8 +4060,8 @@ var PagesList = /** @class */ (function (_super) {
         this.pagesNumber = Number(this.initialPages);
         var maxOffset = this.getMaxOffset();
         this.scrollOffset = (this.currentPage - 1 >= maxOffset) ? maxOffset : this.currentPage - 1;
-        this.chechIfArrowsShouldBeDisplayed();
-        window.addEventListener('resize', function () { return _this.chechIfArrowsShouldBeDisplayed(); });
+        this.controlInterface();
+        window.addEventListener('resize', function () { return _this.controlInterface(); });
         this.$root.$on('updatePagesList', this.updatePagesList);
     };
     __decorate([
@@ -6467,7 +6504,12 @@ var render = function() {
                       pageNumber
                     )
                   },
-                  domProps: { textContent: _vm._s(pageNumber) }
+                  domProps: { textContent: _vm._s(pageNumber) },
+                  on: {
+                    click: function($event) {
+                      return _vm.pageHasBeenSelected(pageNumber)
+                    }
+                  }
                 })
               ]
             )
@@ -6521,17 +6563,24 @@ var render = function() {
         [
           _c(
             "button",
-            { staticClass: "pages-list__aditional-control-button" },
+            {
+              staticClass: "pages-list__aditional-control-button",
+              on: {
+                click: function($event) {
+                  return _vm.navigatePageByDirection(_vm.pageDirection.previous)
+                }
+              }
+            },
             [
+              _c("span", {
+                staticClass: "fas fa-angle-left",
+                attrs: { "aria-hidden": "true" }
+              }),
+              _vm._v(" "),
               _c("span", {
                 domProps: {
                   textContent: _vm._s(_vm.descriptions.previous_page)
                 }
-              }),
-              _vm._v(" "),
-              _c("span", {
-                staticClass: "fas fa-angle-left",
-                attrs: { "aria-hidden": "true" }
               })
             ]
           )
@@ -6554,15 +6603,22 @@ var render = function() {
         [
           _c(
             "button",
-            { staticClass: "pages-list__aditional-control-button" },
+            {
+              staticClass: "pages-list__aditional-control-button",
+              on: {
+                click: function($event) {
+                  return _vm.navigatePageByDirection(_vm.pageDirection.first)
+                }
+              }
+            },
             [
-              _c("span", {
-                domProps: { textContent: _vm._s(_vm.descriptions.first_page) }
-              }),
-              _vm._v(" "),
               _c("span", {
                 staticClass: "fas fa-fast-backward",
                 attrs: { "aria-hidden": "true" }
+              }),
+              _vm._v(" "),
+              _c("span", {
+                domProps: { textContent: _vm._s(_vm.descriptions.first_page) }
               })
             ]
           )
@@ -6585,7 +6641,14 @@ var render = function() {
         [
           _c(
             "button",
-            { staticClass: "pages-list__aditional-control-button" },
+            {
+              staticClass: "pages-list__aditional-control-button",
+              on: {
+                click: function($event) {
+                  return _vm.navigatePageByDirection(_vm.pageDirection.last)
+                }
+              }
+            },
             [
               _c("span", {
                 domProps: { textContent: _vm._s(_vm.descriptions.last_page) }
@@ -6616,7 +6679,14 @@ var render = function() {
         [
           _c(
             "button",
-            { staticClass: "pages-list__aditional-control-button" },
+            {
+              staticClass: "pages-list__aditional-control-button",
+              on: {
+                click: function($event) {
+                  return _vm.navigatePageByDirection(_vm.pageDirection.next)
+                }
+              }
+            },
             [
               _c("span", {
                 domProps: { textContent: _vm._s(_vm.descriptions.next_page) }
@@ -19289,7 +19359,6 @@ new Vue({
         showWhips: false,
         showSexToys: false,
         pornstarsList: [],
-        currentPage: 1,
         fetchingMoviesInProgress: false,
         advancedSearchPanelIsVisible: true,
         selectedOptionsVisibleForUser: [],
@@ -19424,8 +19493,9 @@ new Vue({
             }
             this.selectedOptionsVisibleForUser.push(keyValuePair);
         },
-        getSelectedOptions: function () {
+        getSelectedOptions: function (currentPage) {
             var _this = this;
+            if (currentPage === void 0) { currentPage = 1; }
             var selectedOptions = { pornstarsList: [], otherParams: {} };
             this.selectedOptionsVisibleForUser = [];
             search_engine_variables_ts_1.default.groupNames.forEach(function (groupName) {
@@ -19441,7 +19511,7 @@ new Vue({
                 selectedOptions['pornstarsList'] = this.pornstarsList;
                 this.pushSelectedOptionListForUser('pornstarsList', 'movie_with_following_pornstar', this.pornstarsList);
             }
-            selectedOptions['otherParams']['page'] = this.currentPage;
+            selectedOptions['otherParams']['page'] = currentPage;
             return selectedOptions;
         },
         loadMovies: function (moviesData) {
@@ -19452,7 +19522,8 @@ new Vue({
                 this.advancedSearchPanelIsVisible = false;
             }
         },
-        searchMovies: function () {
+        searchMovies: function (currentPage) {
+            if (currentPage === void 0) { currentPage = 1; }
             return __awaiter(this, void 0, void 0, function () {
                 var requestData, query, response, movies, exception_1;
                 return __generator(this, function (_a) {
@@ -19466,7 +19537,7 @@ new Vue({
                                     'X-CSRF-TOKEN': this.csrfToken
                                 }
                             };
-                            query = query_builder_ts_1.QueryBuilder.build(this.getSelectedOptions());
+                            query = query_builder_ts_1.QueryBuilder.build(this.getSelectedOptions(currentPage));
                             return [4 /*yield*/, fetch("/movies/advanced-search?" + query, requestData)];
                         case 1:
                             response = _a.sent();
@@ -19510,6 +19581,7 @@ new Vue({
         this.csrfToken = document.getElementById("csrf-token").content;
         this.fetchPornstars();
         this.initiateAditionalPanelSettings();
+        this.$root.$on('pageHasBeenSelected', this.searchMovies);
     }
 });
 
@@ -21567,6 +21639,28 @@ var LinkListScrollDirection;
 
 /***/ }),
 
+/***/ "./resources/js/enum/page_direction.ts":
+/*!*********************************************!*\
+  !*** ./resources/js/enum/page_direction.ts ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PageDirection = void 0;
+var PageDirection;
+(function (PageDirection) {
+    PageDirection[PageDirection["First"] = 0] = "First";
+    PageDirection[PageDirection["Previous"] = 1] = "Previous";
+    PageDirection[PageDirection["Next"] = 2] = "Next";
+    PageDirection[PageDirection["Last"] = 3] = "Last";
+})(PageDirection = exports.PageDirection || (exports.PageDirection = {}));
+
+
+/***/ }),
+
 /***/ "./resources/js/modules/basic.js":
 /*!***************************************!*\
   !*** ./resources/js/modules/basic.js ***!
@@ -21750,7 +21844,7 @@ var descriptions = {
     previousLinksDescription: translator_js_1.default.translate('scroll_previous_links'),
     nextLinksDescription: translator_js_1.default.translate('scroll_next_links'),
     previous_page: translator_js_1.default.translate('previous_page'),
-    last_page: translator_js_1.default.translate('previous_page'),
+    last_page: translator_js_1.default.translate('last_page'),
     next_page: translator_js_1.default.translate('next_page'),
     first_page: translator_js_1.default.translate('first_page')
 };
