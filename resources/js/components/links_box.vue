@@ -25,6 +25,7 @@ import {Vue, Component, Prop} from 'vue-property-decorator';
 import Translator from '@jsmodules/translator.js';
 import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
 
+
 @Component
 	export default class LinksBox extends Vue{
 
@@ -77,6 +78,7 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
                 break;
 
                 case LinkListScrollDirection.Right:
+                    
                    const maxOffset = this.getMaxOffset();
                    this.scrollOffset = (this.scrollOffset + linksToSkip >= maxOffset) ? maxOffset : (this.scrollOffset + linksToSkip);
                 break;
@@ -100,14 +102,32 @@ import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
             this.linksAmount = this.getAmmountOfElementsInBox();
             const maxOffset = this.getMaxOffset();
             this.scrollOffset = (this.currentPage -1 >= maxOffset) ? maxOffset : this.currentPage -1;
-            this.chechIfArrowsShouldBeDisplayed();
-            window.addEventListener('resize', () => this.chechIfArrowsShouldBeDisplayed());
+            this.controlInterface();
+            window.addEventListener('resize', () => this.controlInterface());
         }
 
-        updated(){
-            this.linksAmount = this.getAmmountOfElementsInBox();
-            this.chechIfArrowsShouldBeDisplayed();
+        recomputeOffset(){
+            const pagesDelta = this.currentPage - this.getAmmountOfVisibleLinksInBox();
+            this.scrollOffset = pagesDelta > 0 ? pagesDelta : 0;
         }
+
+        controlInterface():void{
+
+            this.chechIfArrowsShouldBeDisplayed();
+            if(!this.arrowsShouldBeDisplayed){
+                this.resetScrollOffset();
+            }
+            else{
+               this.recomputeOffset();
+            }
+            
+        }
+
+        resetScrollOffset():void{
+            this.scrollOffset = 0;
+        }
+
+       
 
     }
         

@@ -113,9 +113,9 @@ export default{
     movie_translated_to_polish : "Film przetłumaczony na język polski",
     scroll_next_links : "Przewijaj listę podstron do przodu",
     hide_side_bar : "Schowaj boczny pasek",
-    previous_page : "poprzednia strona",
-    next_page : "następna strona",
-    first_page : "pierwsza strona",
+    previous_page : "poprzednia",
+    next_page : "następna",
+    first_page : "pierwsza",
     profile : "Profil",
     profile_settings : "Ustawienia profilu",
     messages : "Wiadomości",
@@ -291,7 +291,7 @@ export default{
     hasStory : 'zawiera fabułę',
     total_movies_found : "Ilość znalezionych filmów",
     movie_with_following_pornstar : "występują jednocześnie następujące gwiazdy",
-    last_page : "ostatnia strona",
+    last_page : "ostatnia",
     packages : {
         content_sidebar : {
           hide_side_bar_title : "Schowaj boczne menu",

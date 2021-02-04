@@ -43,9 +43,10 @@ mix.js('resources/js/mainpage.js', 'public/js')
                 'sasscomponent' : path.resolve('resources/sass/components'),
                 '@jscomponents-decoration' : path.resolve("resources/js/components/decoration"),
                 '@jscomponents-form-controls' : path.resolve('resources/js/components/form_controls'),
-                '@interfaces' : path.resolve('resources/js/interfaces')
+                '@interfaces' : path.resolve('resources/js/interfaces'),
+                '@svgicon' : path.resolve('resources/images/decoration/icons/svg')
             },
-            extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx"]
+            extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx", ".svg"]
         },
 
         module: {
@@ -55,7 +56,15 @@ mix.js('resources/js/mainpage.js', 'public/js')
                 loader: "ts-loader",
                 options: { appendTsSuffixTo: [/\.vue$/] },
                 exclude: /node_modules/
-              }
+              },
+
+              {
+                test: /\.svg$/,
+                use: [
+                  'babel-loader',
+                  'vue-svg-loader',
+                ],
+              },
             ]
           }
     })

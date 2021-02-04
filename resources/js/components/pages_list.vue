@@ -18,7 +18,7 @@
     <ul class="pages-list__aditional-controls">
         <li v-show="pageIsNotFirst" class="pages-list__aditional-control">
             <button v-on:click="navigatePageByDirection(pageDirection.previous)" class="pages-list__aditional-control-button">
-                <span class="fas fa-angle-left" aria-hidden="true"></span>
+                <icon-arrow-left class="aditional-control-icon"/>
                 <span v-text="descriptions.previous_page" ></span>
             </button>
         </li>
@@ -31,13 +31,13 @@
         <li v-show="pageIsNotLast" class="pages-list__aditional-control">
             <button v-on:click="navigatePageByDirection(pageDirection.last)" class="pages-list__aditional-control-button"> 
                 <span v-text="descriptions.last_page" ></span>
-                <span class="fas fas fa-fast-forward" aria-hidden="true"></span>
+                <icon-fast-forward></icon-fast-forward>
             </button>
         </li>
         <li v-show="pageIsNotLast" class="pages-list__aditional-control">
             <button v-on:click="navigatePageByDirection(pageDirection.next)" class="pages-list__aditional-control-button">
                 <span v-text="descriptions.next_page"></span>
-                <span class="fas fa-angle-right" aria-hidden="true"></span> 
+                <icon-arrow-right class="aditional-control-icon" />
             </button>
         </li> 
     </ul>
@@ -51,8 +51,11 @@ import Translator from '@jsmodules/translator.js';
 import {LinkListScrollDirection}  from '@js/enum/movies/scroll_types';
 import {PageDirection} from '@js/enum/page_direction';
 import Descriptions from '@jsmodules/translations/components/pages_list.ts';
+import IconArrowLeft from '@jscomponents/decoration/icons/icon_arrow_left.vue';
+import IconArrowRight from '@jscomponents/decoration/icons/icon_arrow_right.vue';
+import IconFastForward from '../../images/decoration/icons/svg/fast_forward.svg';
 
-@Component
+@Component({components : {IconArrowLeft, IconArrowRight, IconFastForward}})
 	export default class PagesList extends Vue{
 
         @Prop({
@@ -208,6 +211,10 @@ import Descriptions from '@jsmodules/translations/components/pages_list.ts';
 <style lang="scss">
 
 @import '~sass/fonts';
+
+.aditional-control-icon{
+    vertical-align: middle;
+}
 
 @mixin pages-list-scroll-pages-button{
     cursor: pointer;

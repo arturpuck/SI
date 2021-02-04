@@ -1,6 +1,6 @@
 <template>
   <div aria-hidden="true" class="logo-container">
-      <span class="fas fa-heartbeat decoration-heart" ></span>
+      <span class="fas fa-heartbeat decoration-heart"></span>
       <span aria-hidden="true" v-text="logoDescription" class="logo-description logo-description-long"></span>
       <span aria-hidden="true" v-text="logoDescriptionShort" class="logo-description logo-description-short"></span>
   </div>
