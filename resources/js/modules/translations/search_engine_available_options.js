@@ -79,7 +79,7 @@ export default {
       tittfuckAmmount : sexAmmounts,
       position69Ammount : sexAmmounts,
       feetAmmount : sexAmmounts,
-
+      doublePenetrationAmmount : sexAmmounts,
 
       cumshotType : {
          on_face : Translator.translate('on_face'),

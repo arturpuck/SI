@@ -3,7 +3,8 @@ const movieViewsOptions = [
 ];
 
 const movieTimeOptions = [
-    'minimumMovieViews', 'maximumMovieViews'
+    'minimumMovieTime',
+    'maximumMovieTime'
 ];
 
 const variables : {

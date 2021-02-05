@@ -22,7 +22,6 @@ Class MoviesRepository extends BaseRepository{
         'tittfuck_percentage',
         'pussy_licking_percentage',
         'feet_petting_percentage',
-        'position_69_percentage'
     ];
 
     public function chronological() : MoviesRepository{

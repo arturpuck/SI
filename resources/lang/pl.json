@@ -236,5 +236,7 @@
     "hide_fixed_control_panel_caption" : "chowaj",
     "you_have_selected_the_following_options": "Wybrano następujące opcje",
     "search_results" : "Wyniki wyszukiwania",
-    "total_movies_found" : "Ilość znalezionych filmów"
+    "total_movies_found" : "Ilość znalezionych filmów",
+    "back_to_search_panel" : "Powrót do panelu",
+    "back_to_search_panel_button_caption" : "powrót"
 }

@@ -1,5 +1,5 @@
 <template>
-  <nav class="pages-list">
+  <nav v-show="pagesListShoulBeDisplayed" class="pages-list">
     <div class="pages-list__scrollable-controls">
         <button v-if="arrowsShouldBeDisplayed" v-on:click="scrollLinks(leftScrollDirection)" v-on:mousedown="scrollLinksByMouseDown(leftScrollDirection)" v-on:mouseup="stopScrollingFromMouseDown" v-bind:title="descriptions['previousLinksDescription']" class="pages-list__scroll-pages-button--arrow-left">
             <span v-text="descriptions['previousLinksDescription']"  class="pages-list__button-description"></span>
@@ -18,26 +18,26 @@
     <ul class="pages-list__aditional-controls">
         <li v-show="pageIsNotFirst" class="pages-list__aditional-control">
             <button v-on:click="navigatePageByDirection(pageDirection.previous)" class="pages-list__aditional-control-button">
-                <icon-arrow-left class="aditional-control-icon"/>
+                <icon-arrow-left class="pages-list__aditional-control-icon"/>
                 <span v-text="descriptions.previous_page" ></span>
             </button>
         </li>
         <li v-show="pageIsNotFirst" class="pages-list__aditional-control">
             <button v-on:click="navigatePageByDirection(pageDirection.first)" class="pages-list__aditional-control-button">
-                <span class="fas fa-fast-backward" aria-hidden="true"></span> 
+                <svg-vue icon="fast_backward" class="pages-list__aditional-control-icon" ></svg-vue>
                 <span v-text="descriptions.first_page" ></span>
             </button>
         </li>
         <li v-show="pageIsNotLast" class="pages-list__aditional-control">
             <button v-on:click="navigatePageByDirection(pageDirection.last)" class="pages-list__aditional-control-button"> 
                 <span v-text="descriptions.last_page" ></span>
-                <icon-fast-forward></icon-fast-forward>
+                <svg-vue icon="fast_forward" class="pages-list__aditional-control-icon" ></svg-vue>
             </button>
         </li>
         <li v-show="pageIsNotLast" class="pages-list__aditional-control">
             <button v-on:click="navigatePageByDirection(pageDirection.next)" class="pages-list__aditional-control-button">
                 <span v-text="descriptions.next_page"></span>
-                <icon-arrow-right class="aditional-control-icon" />
+                <icon-arrow-right class="pages-list__aditional-control-icon"/>
             </button>
         </li> 
     </ul>
@@ -53,9 +53,9 @@ import {PageDirection} from '@js/enum/page_direction';
 import Descriptions from '@jsmodules/translations/components/pages_list.ts';
 import IconArrowLeft from '@jscomponents/decoration/icons/icon_arrow_left.vue';
 import IconArrowRight from '@jscomponents/decoration/icons/icon_arrow_right.vue';
-import IconFastForward from '../../images/decoration/icons/svg/fast_forward.svg';
 
-@Component({components : {IconArrowLeft, IconArrowRight, IconFastForward}})
+
+@Component({components : {IconArrowLeft, IconArrowRight}})
 	export default class PagesList extends Vue{
 
         @Prop({
@@ -80,7 +80,11 @@ import IconFastForward from '../../images/decoration/icons/svg/fast_forward.svg'
         private pagesNumber : number = 0;
         readonly descriptions : object = Descriptions;
         private pageDirection = {first : PageDirection.First, next : PageDirection.Next, previous : PageDirection.Previous, last : PageDirection.Last};
-
+        
+        get pagesListShoulBeDisplayed() : boolean {
+            return this.pagesNumber > 1;
+        }
+        
         pageHasBeenSelected(pageNumber : number):void{
             this.currentPage = pageNumber;
             this.$root.$emit('pageHasBeenSelected', pageNumber);
@@ -208,13 +212,9 @@ import IconFastForward from '../../images/decoration/icons/svg/fast_forward.svg'
         
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 @import '~sass/fonts';
-
-.aditional-control-icon{
-    vertical-align: middle;
-}
 
 @mixin pages-list-scroll-pages-button{
     cursor: pointer;
@@ -362,6 +362,15 @@ import IconFastForward from '../../images/decoration/icons/svg/fast_forward.svg'
         &--green{
             background: linear-gradient(#17f117, #09501b);
         }
+    }
+
+    &__aditional-control-icon{
+       vertical-align: middle;
+       width:1.3vw;
+       height:1.3vw;
+       min-width:10px;
+       min-height:10px;
+       fill:white;
     }
 }
 

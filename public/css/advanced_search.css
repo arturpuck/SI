@@ -146,6 +146,61 @@
   background-attachment: fixed;
 }
 
+.search-results__back-to-search-panel-button {
+  min-width: 200px;
+  margin: 10px auto;
+  width: 20%;
+  background: -webkit-gradient(linear, left top, left bottom, from(#0fe00b), to(#054004));
+  background: linear-gradient(#0fe00b, #054004);
+  color: white;
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  padding: 6px;
+  border: none;
+}
+
+@media (max-width: 1200px) {
+  .search-results__back-to-search-panel-button {
+    font-size: 16px;
+  }
+}
+
+.search-results__back-to-search-panel-button:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(#d61436), to(#800c22));
+  background: linear-gradient(#d61436, #800c22);
+}
+
+.search-results__icon--white {
+  fill: white;
+  width: 1.7vw;
+  height: 1.7vw;
+  min-width: 25px;
+  min-height: 25px;
+  vertical-align: bottom;
+}
+
+.search-results__icon--crimson {
+  fill: crimson;
+  width: 1.7vw;
+  height: 1.7vw;
+  min-width: 25px;
+  min-height: 25px;
+  vertical-align: bottom;
+}
+
+.search-results__icon--exit {
+  fill: white;
+  width: 1.2vw;
+  height: 1.2vw;
+  min-width: 17px;
+  min-height: 17px;
+  vertical-align: bottom;
+  margin-right: 5px;
+}
+
 .search-results__options-list {
   margin: 0;
   padding: 0.4vw 0 1vw 6vw;
@@ -584,6 +639,7 @@
   vertical-align: middle;
   margin-right: 5px;
   min-width: 12px;
+  fill: white;
 }
 
 .control-panel-button__icon--bigger {
@@ -591,12 +647,14 @@
   vertical-align: middle;
   margin-right: 5px;
   min-width: 12px;
+  fill: white;
 }
 
 .control-panel-button__icon--arrow-down {
   vertical-align: middle;
   margin-right: 5px;
   min-width: 12px;
+  fill: white;
   width: 15%;
 }
 

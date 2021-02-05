@@ -85,7 +85,7 @@ Vue.component('movies-list', MoviesList);
     fetchingMoviesInProgress : false,
     advancedSearchPanelIsVisible : true,
     selectedOptionsVisibleForUser : [],
-    totalMoviesFound : undefined
+    totalMoviesFound : undefined,
   },
   
   computed : {
@@ -119,6 +119,11 @@ Vue.component('movies-list', MoviesList);
 
         showNotification : NotificationFunction,
 
+        showSearchPanel():void{
+           this.resetPanel();
+           this.advancedSearchPanelIsVisible = true;
+        },
+
         userHasAditionalPanelPreferences():boolean {
           return localStorage.getItem('showAditionalPanel') !== null;
         },
@@ -143,6 +148,10 @@ Vue.component('movies-list', MoviesList);
         
         windowIsNarrowEnoughToSetDefaultAditionalPanelVisible():boolean{
             return window.innerWidth <= 700;
+        },
+
+        firstSearch():void{
+           this.searchMovies();
         },
 
         initiateAditionalPanelSettings():void{
@@ -232,7 +241,7 @@ Vue.component('movies-list', MoviesList);
                   break;
 
                   case 'movieViewsOptions':
-                    keyValuePair = `${translatedOption} : ${value} ${this.translator.translate('views_inflected')}`;
+                    keyValuePair = `${translatedOption} : ${value}`;
                   break;
 
                   case 'pornstarsList':
@@ -279,10 +288,13 @@ Vue.component('movies-list', MoviesList);
              }
           },
 
+
+
           async searchMovies(currentPage : number = 1){
 
               try{
                   this.fetchingMoviesInProgress = true;
+
                   const requestData:XHRRequestData = {
                       method : 'GET',
                       headers : {
@@ -312,9 +324,12 @@ Vue.component('movies-list', MoviesList);
               
           },
 
-          resetPanel(event):void{
-            event.preventDefault();
+          resetPanel(event = undefined):void{
 
+            if(event){
+              event.preventDefault();
+            }
+            
             SearchEngineVariables['initialValueIsEmptyString'].forEach( propertyName => {
                this[propertyName] = "";
             });

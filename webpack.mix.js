@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-
+require('laravel-mix-svg-vue');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -32,6 +32,7 @@ mix.js('resources/js/mainpage.js', 'public/js')
     .sass('resources/sass/pornstars/pornstars_list.scss', 'public/css')
     .sass('resources/sass/pornstars/pornstar_profile.scss', 'public/css')
     .sass('resources/sass/advanced_search.scss', 'public/css')
+    .svgVue()
     .options({processCssUrls: false})
     .webpackConfig({
         resolve: {

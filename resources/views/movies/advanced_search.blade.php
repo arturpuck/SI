@@ -2,16 +2,20 @@
    <form class="advanced-search-panel" v-bind:class="{'advanced-search-panel--hidden' : !advancedSearchPanelIsVisible}">
       <fieldset v-bind:class="{'aditional-control-panel--hidden' : !showControlsShortcut}" class="aditional-control-panel">
          <legend class="aditional-control-panel__description">{{__('controls')}}</legend>
-           <button type="button" v-on:click="searchMovies" class="aditional-control-panel__button--green">
-              <img src="/images/decoration/advanced-search/magnifier.svg" alt="" class="control-panel-button__icon">
+           <button type="button" v-show="advancedSearchPanelIsVisible" v-on:click="firstSearch" class="aditional-control-panel__button--green">
+              <svg-vue icon="magnifier" class="control-panel-button__icon"></svg-vue>
               {{__('search_button_caption')}}
            </button>
-           <button v-on:click="resetPanel" type="reset" class="aditional-control-panel__button--red">
-              <img src="/images/decoration/advanced-search/shutdown.svg" alt="" class="control-panel-button__icon--bigger">
+           <button v-on:click="resetPanel" v-show="advancedSearchPanelIsVisible" type="reset" class="aditional-control-panel__button--red">
+              <svg-vue icon="shutdown" class="control-panel-button__icon--bigger"></svg-vue>
               {{__('fixed_panel_reset_caption')}}
             </button>
+            <button type="button" v-show="!advancedSearchPanelIsVisible" v-on:click="showSearchPanel" class="aditional-control-panel__button--green">
+              <svg-vue icon="exit_arrow" class="control-panel-button__icon"></svg-vue>
+              {{__('back_to_search_panel_button_caption')}}
+           </button>
             <button type="button" v-on:click="hideAditionalPanel" class="aditional-control-panel__button--arrow-down">
-              <img src="/images/decoration/advanced-search/arrow-down.svg" class="control-panel-button__icon--arrow-down"/>
+              <svg-vue icon="arrow_down" class="control-panel-button__icon--arrow-down"></svg-vue>
               {{__('hide_fixed_control_panel_caption')}}
             </button>
       </fieldset>
@@ -173,7 +177,7 @@
          <legend class="panel-group-legend">
             {{__('controls')}}
          </legend>
-         <accept-button v-on:click.native="searchMovies" class="control-panel-button--type-submit">
+         <accept-button v-on:click.native="firstSearch" class="control-panel-button--type-submit">
             <img src="/images/decoration/advanced-search/magnifier.svg" alt="" class="control-panel-button__icon">
             {{__('search_button_caption')}}
          </accept-button>
@@ -186,13 +190,23 @@
    </form>
    <section v-show="!advancedSearchPanelIsVisible" class="search-results">
       <header class="search-results__summary">
-         <div class="search-results__header--crimson">{{__('search_results')}}</div>
+         <div class="search-results__header--crimson">
+            {{__('search_results')}}
+            <svg-vue icon="improvement_performance" class="search-results__icon--crimson"></svg-vue>
+         </div>
+         <div class="search-results__header">
+            <svg-vue icon="finger_point" class="search-results__icon--white"></svg-vue>
+            {{__('you_have_selected_the_following_options')}}  
+         </div>
          <ul class="search-results__options-list">
-            <lh class="search-results__header">{{__('you_have_selected_the_following_options')}}</lh>
             <li v-for="selectedOption in selectedOptionsVisibleForUser" v-text="selectedOption" class="search-results__option"></li>
          </ul>
          <div v-text="totalMoviesFoundCaption" class="search-results__header"></div>
       </header>
+      <button type="button" v-on:click="showSearchPanel" class="search-results__back-to-search-panel-button">
+        <svg-vue icon="exit_arrow" class="search-results__icon--exit"></svg-vue> 
+        {{__('back_to_search_panel')}}
+      </button>
       <movies-list></movies-list>
    </section>
    <user-notification></user-notification>

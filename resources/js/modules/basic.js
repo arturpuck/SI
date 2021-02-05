@@ -10,6 +10,7 @@ import LabeledCheckbox from '@jscomponents/form_controls/labeled_checkbox.vue';
 import AuthenticatedUserSidebar from '@jscomponents/navigation/authenticated_user_sidebar.vue';
 import EmpireLogo from '@jscomponents/decoration/empire_logo.vue';
 import ContentSidebar from '@jscomponents/navigation/content_sidebar.vue';
+import SvgVue from 'svg-vue';
 
 export default {
      build(){
@@ -23,6 +24,7 @@ export default {
         Vue.component('button-close', ButtonClose);
         Vue.component('empire-logo', EmpireLogo);
         Vue.component('content-sidebar', ContentSidebar);
+        Vue.component('svg-vue',SvgVue);
         Vue.prototype.translator = Translator;
         Vue.prototype.translator.initiate();
         return Vue;
