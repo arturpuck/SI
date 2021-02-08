@@ -28,7 +28,7 @@ Route::namespace('Movies')->name('movies.')->group(function(){
              ->name('advanced.search.panel');
 
       Route::get('/movies/advanced-search', 'MoviesController@advancedSearch')
-             ->name('advanced.search');
+             ->name('advanced.search')->middleware('throttle:20,1');
 
 });
 

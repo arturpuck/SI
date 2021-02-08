@@ -162,6 +162,11 @@ export default {
       selectedTimeLabel : Translator.translate("minutes_inflected"),
       selectedViewsLabel : Translator.translate("views_inflected"),
       fetchingMoviesLabel : Translator.translate("fetching_movies"),
-      totalMoviesLabel : Translator.translate("total_movies_found")
+      totalMoviesLabel : Translator.translate("total_movies_found"),
+      noMoviesHaveBeenFound : Translator.translate("no_movies_have_been_found"),
+      noOptionsHaveBeenSelected : Translator.translate("no_options_have_been_selected"),
+      unexpectedError : Translator.translate("unexpected_error_occured"),
+      fetchingPornstarsFailed : Translator.translate("failed_to_fetch_pornstars_list"),
+      searchHasBenStoppedBecauseThereWereToManyRequests : Translator.translate("because_of_security_reasons_search_was_blocked")
 
 }

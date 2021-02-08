@@ -254,10 +254,25 @@
   }
 }
 
+.search-results__header--extra-padding {
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  padding: 6px;
+}
+
+@media (max-width: 1200px) {
+  .search-results__header--extra-padding {
+    font-size: 16px;
+  }
+}
+
 .search-results__header--crimson {
   text-align: center;
   font-weight: bold;
-  padding: 1vw 0;
+  padding: 6px;
   font-size: 1.7vw;
   font-family: "Exo 2", sans-serif;
   color: crimson;
@@ -320,7 +335,7 @@
   font-family: "Exo 2", sans-serif;
   color: white;
   margin: 0;
-  padding: 0;
+  padding: 0 0 7px 0;
   text-align: center;
 }
 

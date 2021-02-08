@@ -290,8 +290,13 @@ export default{
     maximumMovieViews : 'maksymalna liczba wyświetleń',
     hasStory : 'zawiera fabułę',
     total_movies_found : "Ilość znalezionych filmów",
-    movie_with_following_pornstar : "występują jednocześnie następujące gwiazdy",
+    movie_with_following_pornstars : "występują jednocześnie następujące gwiazdy",
     last_page : "ostatnia",
+    movie_with_pornstar : "Film w którym występuje",
+    no_movies_have_been_found : "Nie znaleziono żadnych filmów pasujących do wybranych kryteriów",
+    no_options_have_been_selected : "Nie wybrano żadnych opcji",
+    failed_to_fetch_pornstars_list : "Nie udało się pobrać listy gwiazd",
+    because_of_security_reasons_search_was_blocked : "Ze względów bezpieczeństwa ilość zapytań do wyszukiwarki w ciągu minuty jest ograniczona. Prosimy zaczekać chwilę i spróbować ponownie.",
     packages : {
         content_sidebar : {
           hide_side_bar_title : "Schowaj boczne menu",

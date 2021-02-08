@@ -7,7 +7,7 @@ import {MoviesListResponse} from '@interfaces/movies/MoviesListResponse.ts';
 const Vue = VueConstructor.build();
 import MultiSelect from '@jscomponents-form-controls/multiselect.vue';
 import Translator from '@jsmodules/translator.js';
-import SearchEngineAvailableOptions from '@jsmodules/translations/search_engine_available_options.js';
+import SearchEngineTranslations from '@jsmodules/translations/search_engine_translations.js';
 import RelativeShadowContainer from '@jscomponents/decoration/relative_shadow_container.vue';
 import ExpectCircle from '@jscomponents/decoration/expect_circle.vue';
 import AcceptButton from '@jscomponents-form-controls/accept_button.vue';
@@ -36,7 +36,7 @@ Vue.component('movies-list', MoviesList);
 
   data : {
   
-    searchEngineOptions : SearchEngineAvailableOptions,
+    searchEngineTranslations : SearchEngineTranslations,
     csrfToken : undefined,
     multiselectValues : [],
     translator : Translator,
@@ -92,27 +92,35 @@ Vue.component('movies-list', MoviesList);
 
       minimumMovieTimeLabel(): string{
           return (this.minimumMovieTime == 0) ? 
-          this.searchEngineOptions['notSelected'] : `${this.minimumMovieTime} ${this.searchEngineOptions['selectedTimeLabel']}`;
+          this.searchEngineTranslations['notSelected'] : `${this.minimumMovieTime} ${this.searchEngineTranslations['selectedTimeLabel']}`;
       },
 
       maximumMovieTimeLabel(): string{
         return (this.maximumMovieTime == 0) ? 
-        this.searchEngineOptions['notSelected'] : `${this.maximumMovieTime} ${this.searchEngineOptions['selectedTimeLabel']}`;
+        this.searchEngineTranslations['notSelected'] : `${this.maximumMovieTime} ${this.searchEngineTranslations['selectedTimeLabel']}`;
       },
 
       minimumMovieViewsLabel(): string{
         return (this.minimumMovieViews == 0) ? 
-        this.searchEngineOptions['notSelected'] : `${this.minimumMovieViews} ${this.searchEngineOptions['selectedViewsLabel']}`;
+        this.searchEngineTranslations['notSelected'] : `${this.minimumMovieViews} ${this.searchEngineTranslations['selectedViewsLabel']}`;
       },
 
       maximumMovieViewsLabel(): string{
         return (this.maximumMovieViews == 0) ? 
-        this.searchEngineOptions['notSelected'] : `${this.maximumMovieViews} ${this.searchEngineOptions['selectedViewsLabel']}`;
+        this.searchEngineTranslations['notSelected'] : `${this.maximumMovieViews} ${this.searchEngineTranslations['selectedViewsLabel']}`;
       },
 
       totalMoviesFoundCaption() : string {
-        return `${SearchEngineAvailableOptions['totalMoviesLabel']} : ${this.totalMoviesFound}`;
-      }
+
+        if(this.totalMoviesFound > 0){
+          return `${SearchEngineTranslations['totalMoviesLabel']} : ${this.totalMoviesFound}`;
+        }
+        else{
+           return SearchEngineTranslations['noMoviesHaveBeenFound'];
+        }
+        
+      },
+
   },
 
   methods : {
@@ -195,7 +203,6 @@ Vue.component('movies-list', MoviesList);
 
         async fetchPornstars(){
 
-            
             const requestData = {
 
                 method : 'GET',
@@ -212,7 +219,7 @@ Vue.component('movies-list', MoviesList);
                    this.$root.$emit('replaceAvailableOptionsForMultiselect',pornstars);
                 }
                 else{
-                  this.showNotification(this.translator.translate('failed_to_fetch_pornstars_list'), 'error');
+                  this.showNotification(SearchEngineTranslations['fetchingPornstarsFailed'], 'error');
                 }
             }
             finally{
@@ -221,7 +228,7 @@ Vue.component('movies-list', MoviesList);
             
           },
 
-          pushSelectedOptionListForUser(group:string,propertyName:string,value:any):void{
+          pushSelectedOptionListForUser(group : string, propertyName : string, value : any):void{
 
               const translatedOption:string = this.translator.translate(propertyName);
               let keyValuePair:string;
@@ -229,7 +236,7 @@ Vue.component('movies-list', MoviesList);
               switch(group){
 
                   case 'initialValueIsEmptyString':
-                    keyValuePair = `${translatedOption} : ${SearchEngineAvailableOptions[propertyName][value]}`;
+                    keyValuePair = `${translatedOption} : ${SearchEngineTranslations[propertyName][value]}`;
                   break;
 
                   case 'initialValueIsFalse' :
@@ -256,6 +263,7 @@ Vue.component('movies-list', MoviesList);
              
               const selectedOptions:QueryParams = {pornstarsList : [], otherParams : {}};
               this.selectedOptionsVisibleForUser = [];
+
               SearchEngineVariables.groupNames.forEach(groupName => {
                 SearchEngineVariables[groupName].forEach((propertyName:string):void => {
                   
@@ -267,25 +275,39 @@ Vue.component('movies-list', MoviesList);
                     }
                  });   
               });
-              
 
-              if(this.pornstarsList.length > 0){
+             let numberOfSelectedOptions : number =  Object.keys(selectedOptions['otherParams']).length;
+             let numberOfSelectedPornstars : number = this.pornstarsList.length;
+
+              if(numberOfSelectedPornstars > 0){
                  selectedOptions['pornstarsList'] = this.pornstarsList;
-                 this.pushSelectedOptionListForUser('pornstarsList','movie_with_following_pornstar',this.pornstarsList);
+                 let pornstarListPropertyName : string = (numberOfSelectedPornstars > 1) ? 'movie_with_following_pornstars' : 'movie_with_pornstar'
+                 this.pushSelectedOptionListForUser('pornstarsList', pornstarListPropertyName, this.pornstarsList);
               }
-              selectedOptions['otherParams']['page'] = currentPage;
+             numberOfSelectedOptions += selectedOptions['pornstarsList'].length;
 
+             if(numberOfSelectedOptions === 0){
+                throw new Error('noOptionsHaveBeenSelected');
+             }
+
+             selectedOptions['otherParams']['page'] = currentPage;
               return selectedOptions;
           },
 
-          loadMovies(moviesData : MoviesListResponse):void{
+          loadMovies(moviesData : MoviesListResponse, currentPage : number = 1):void{
             this.totalMoviesFound = moviesData.totalMovies;
 
              if(moviesData.totalMovies > 0){
-               this.$root.$emit('updateMoviesList', moviesData);
-               this.totalMoviesFound = moviesData.totalMovies;
-               this.advancedSearchPanelIsVisible = false;
+
+                if(currentPage === 1){
+                  window.scroll(0,0);
+                }
+               
+               this.$root.$emit('updateMoviesList', {moviesData, currentPage});
              }
+             
+             this.totalMoviesFound = moviesData.totalMovies;
+             this.advancedSearchPanelIsVisible = false;
           },
 
 
@@ -305,18 +327,27 @@ Vue.component('movies-list', MoviesList);
                   const query = QueryBuilder.build(this.getSelectedOptions(currentPage));
                   const response = await fetch(`/movies/advanced-search?${query}`,requestData);
 
-                  if(response.status === 200){
-                    const movies:MoviesListResponse = await response.json();
-                    this.loadMovies(movies);
+                  switch(response.status){
+
+                    case 200 :
+                      const movies:MoviesListResponse = await response.json();
+                      this.loadMovies(movies, currentPage);
+                    break;
+
+                    case 429 : 
+                    throw new Error('searchHasBenStoppedBecauseThereWereToManyRequests');
+                    break;
+
+                    default :
+                       throw new Error('unexpectedError');
+                    break;
                   }
-                  else{
-                      throw new Error('unexpected_error_occured');
-                  }
+
 
               }
               catch(exception){
                 alert(exception.message);
-                 this.showNotification(this.translator.translate('unexpected_error_occured'), 'error');
+                 this.showNotification(SearchEngineTranslations[exception.message], 'error');
               }
               finally{
                  this.fetchingMoviesInProgress = false;

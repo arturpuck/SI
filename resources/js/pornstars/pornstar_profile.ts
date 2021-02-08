@@ -1,8 +1,6 @@
 
 import VueConstructor from '@jsmodules/basic.js';
-import FixedShadowContainer from '@jscomponents/decoration/fixed_shadow_container.vue';
 import MovieBox from '@jscomponents/movies/movie_box.vue';
-import MoviePreview from '@jscomponents/movies/movie_preview.vue';
 import StarRating from '@jscomponents/star_rating.vue';
 import {PornstarProfileTab}  from '@js/enum/pornstar_profile_tab';
 import Translator from '@jsmodules/translator.js';
@@ -15,12 +13,11 @@ import IconStop from '@jscomponents-decoration/icon_stop.vue';
 import IconConfirm from '@jscomponents-decoration/icon_confirm.vue';
 import CommentBox from '@jscomponents-form-controls/comment_box.vue';
 import CommentBody from '@jscomponents/form_controls/comment_body.vue';
-import LinksBox from '@jscomponents/links_box.vue'
+import LinksBox from '@jscomponents/links_box.vue';
+import MoviePreviewComplete from '@jscomponents/movies/movie_preview_complete.vue';
 
 const Vue = VueConstructor.build();
-Vue.component('fixed-shadow-container', FixedShadowContainer);
 Vue.component('movie-box', MovieBox);
-Vue.component('movie-preview', MoviePreview);
 Vue.component('star-rating', StarRating);
 Vue.component('user-notification', UserNotification);
 Vue.component('textarea-combo', TextAreaCombo);
@@ -32,6 +29,7 @@ Vue.component('icon-confirm', IconConfirm);
 Vue.component('comment-box', CommentBox);
 Vue.component('comment-body', CommentBody);
 Vue.component('links-box', LinksBox);
+Vue.component('movie-preview-complete', MoviePreviewComplete);
 
 
 new Vue({

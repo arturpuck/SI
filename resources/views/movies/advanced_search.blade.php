@@ -25,33 +25,34 @@
             <img src="/images/decoration/icons/advanced_search/info-circle.svg" alt="" class="decoration-icon">
          </legend>
          <p class="information-content">{{__('search_panel_information')}}</p>
+         <p class="information-content">{{__('search_panel_information_detailed')}}</p>
       </fieldset>
       <fieldset class="panel-group">
          <legend class="panel-group-legend">
             {{__('type_and_body')}}
          </legend>
-         <simple-labeled-select v-model="titsSize"  v-bind:options="searchEngineOptions['titsSize']">
+         <simple-labeled-select v-model="titsSize"  v-bind:options="searchEngineTranslations['titsSize']">
             {{__('tits_size')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="assSize" v-bind:options="searchEngineOptions['assSize']">
+         <simple-labeled-select v-model="assSize" v-bind:options="searchEngineTranslations['assSize']">
             {{__('ass_size')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="thicknessSize"  v-bind:options="searchEngineOptions['thicknessSize']">
+         <simple-labeled-select v-model="thicknessSize"  v-bind:options="searchEngineTranslations['thicknessSize']">
             {{__('thickness')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="ageRange"  v-bind:options="searchEngineOptions['ageRange']">
+         <simple-labeled-select v-model="ageRange"  v-bind:options="searchEngineTranslations['ageRange']">
             {{__('age')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="hairColor"  v-bind:options="searchEngineOptions['hairColor']">
+         <simple-labeled-select v-model="hairColor"  v-bind:options="searchEngineTranslations['hairColor']">
             {{__('hair_color')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="race"  v-bind:options="searchEngineOptions['race']">
+         <simple-labeled-select v-model="race"  v-bind:options="searchEngineTranslations['race']">
             {{__('race')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="nationality"  v-bind:options="searchEngineOptions['nationality']">
+         <simple-labeled-select v-model="nationality"  v-bind:options="searchEngineTranslations['nationality']">
             {{__('nationality')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="shavedPussy"  v-bind:options="searchEngineOptions['binaryOptions']">
+         <simple-labeled-select v-model="shavedPussy"  v-bind:options="searchEngineTranslations['binaryOptions']">
             {{__('shaved_pussy')}} : 
          </simple-labeled-select>
       </fieldset>
@@ -59,34 +60,34 @@
          <legend class="panel-group-legend">
             {{__('sex_type')}}
          </legend>
-         <simple-labeled-select v-model="abundanceType"  v-bind:options="searchEngineOptions['abundanceType']">
+         <simple-labeled-select v-model="abundanceType"  v-bind:options="searchEngineTranslations['abundanceType']">
             {{__('abundance')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="analAmmount"  v-bind:options="searchEngineOptions['sexAmmounts']">
+         <simple-labeled-select v-model="analAmmount"  v-bind:options="searchEngineTranslations['sexAmmounts']">
             {{__('anal')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="blowjobAmmount"  v-bind:options="searchEngineOptions['sexAmmounts']">
+         <simple-labeled-select v-model="blowjobAmmount"  v-bind:options="searchEngineTranslations['sexAmmounts']">
             {{__('blowjob')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="vaginalAmmount"   v-bind:options="searchEngineOptions['sexAmmounts']">
+         <simple-labeled-select v-model="vaginalAmmount"   v-bind:options="searchEngineTranslations['sexAmmounts']">
             {{__('vaginal')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="pussyLickingAmmount"   v-bind:options="searchEngineOptions['sexAmmounts']">
+         <simple-labeled-select v-model="pussyLickingAmmount"   v-bind:options="searchEngineTranslations['sexAmmounts']">
             {{__('pussy_licking')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="tittfuckAmmount"  v-bind:options="searchEngineOptions['sexAmmounts']">
+         <simple-labeled-select v-model="tittfuckAmmount"  v-bind:options="searchEngineTranslations['sexAmmounts']">
             {{__('tittfuck')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="feetAmmount"  v-bind:options="searchEngineOptions['sexAmmounts']">
+         <simple-labeled-select v-model="feetAmmount"  v-bind:options="searchEngineTranslations['sexAmmounts']">
             {{__('feet')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="doublePenetrationAmmount"  v-bind:options="searchEngineOptions['sexAmmounts']">
+         <simple-labeled-select v-model="doublePenetrationAmmount"  v-bind:options="searchEngineTranslations['sexAmmounts']">
             {{__('double_penetration')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="position69Ammount"  v-bind:options="searchEngineOptions['sexAmmounts']">
+         <simple-labeled-select v-model="position69Ammount"  v-bind:options="searchEngineTranslations['sexAmmounts']">
             {{__('position_69')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="cumshotType" v-bind:options="searchEngineOptions['cumshotType']">
+         <simple-labeled-select v-model="cumshotType" v-bind:options="searchEngineTranslations['cumshotType']">
             {{__('cumshot')}} : 
          </simple-labeled-select>
          <labeled-checkbox v-model="isCumshotCompilation" name="cumshot-compilation">{{__('cumshot_compilation')}}</labeled-checkbox>
@@ -95,19 +96,19 @@
          <legend class="panel-group-legend">
             {{__('circumstances_and_style')}}
          </legend>
-         <simple-labeled-select v-model="location" v-bind:options="searchEngineOptions['location']">
+         <simple-labeled-select v-model="location" v-bind:options="searchEngineTranslations['location']">
             {{__('location')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="cameraStyle" v-bind:options="searchEngineOptions['cameraStyle']">
+         <simple-labeled-select v-model="cameraStyle" v-bind:options="searchEngineTranslations['cameraStyle']">
             {{__('camera_style')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="storyOrCostume" v-bind:options="searchEngineOptions['storyOrCostume']">
+         <simple-labeled-select v-model="storyOrCostume" v-bind:options="searchEngineTranslations['storyOrCostume']">
             {{__('story_or_costume_type')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="professionalismLevel" v-bind:options="searchEngineOptions['professionalismLevel']">
+         <simple-labeled-select v-model="professionalismLevel" v-bind:options="searchEngineTranslations['professionalismLevel']">
             {{__('movie_level')}} : 
          </simple-labeled-select>
-         <simple-labeled-select v-model="hasStory" v-bind:options="searchEngineOptions['binaryOptions']">
+         <simple-labeled-select v-model="hasStory" v-bind:options="searchEngineTranslations['binaryOptions']">
             {{__('has_story')}} : 
          </simple-labeled-select>
          <labeled-checkbox v-model="recordedBySpamCamera" class="labeled_checkbox--aditional-margin" name="recorded-by-spy-camera">{{__('spy_camera')}}</labeled-checkbox>
@@ -129,7 +130,7 @@
       </fieldset>
       <fieldset class="panel-group--relative">
          <relative-shadow-container v-show="fetchingPornstarsInProgress">
-            <expect-circle v-bind:label="searchEngineOptions['pornstarsFetchingLabel']"></expect-circle>
+            <expect-circle v-bind:label="searchEngineTranslations['pornstarsFetchingLabel']"></expect-circle>
          </relative-shadow-container>
          <legend class="panel-group-legend">
             {{__('stars')}}
@@ -194,7 +195,7 @@
             {{__('search_results')}}
             <svg-vue icon="improvement_performance" class="search-results__icon--crimson"></svg-vue>
          </div>
-         <div class="search-results__header">
+         <div class="search-results__header--extra-padding">
             <svg-vue icon="finger_point" class="search-results__icon--white"></svg-vue>
             {{__('you_have_selected_the_following_options')}}  
          </div>
@@ -211,6 +212,6 @@
    </section>
    <user-notification></user-notification>
    <fixed-shadow-container v-show="fetchingMoviesInProgress">
-       <expect-circle v-bind:label="searchEngineOptions['fetchingMoviesLabel']"></expect-circle>
+       <expect-circle v-bind:label="searchEngineTranslations['fetchingMoviesLabel']"></expect-circle>
    </fixed-shadow-container>
 </x-base>

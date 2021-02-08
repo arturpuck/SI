@@ -238,5 +238,6 @@
     "search_results" : "Wyniki wyszukiwania",
     "total_movies_found" : "Ilość znalezionych filmów",
     "back_to_search_panel" : "Powrót do panelu",
-    "back_to_search_panel_button_caption" : "powrót"
+    "back_to_search_panel_button_caption" : "powrót",
+    "search_panel_information_detailed" : "W przypadku filmów z większą ilością kobiet brane są pod uwagę tylko te tytuły w których co najmniej znaczna większość aktorek spełnia podane wymagania. Wybór kilku gwiazd jednocześnie jest interpretowany następująco : znajdź filmy w których dane aktorki występują razem."
 }

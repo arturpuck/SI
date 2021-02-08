@@ -46,6 +46,14 @@ class LoginController extends Controller
         return (User::where("email", $userIdentification)->exists()) ? 'email' : 'login';
     }
 
+    public function redirectTo(){
+        return url()->previous();
+    }
+
+    protected function loggedOut(Request $request){
+        return back();
+    }
+
     protected function validateLogin(Request $request)
     {
         $request->validate([

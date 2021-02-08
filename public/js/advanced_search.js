@@ -1449,6 +1449,25 @@ exports.push([module.i, ".movie-main-image[data-v-4e10eebb] {\n  width: 280px;\n
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/movies/movie_preview.vue?vue&type=style&index=0&id=57e96238&lang=scss&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--16-2!./node_modules/sass-loader/dist/cjs.js??ref--16-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/movies/movie_preview.vue?vue&type=style&index=0&id=57e96238&lang=scss&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".trapeze-decoration[data-v-57e96238] {\n  position: absolute;\n  top: 100%;\n  left: 50%;\n  -webkit-transform: translate(-50%);\n          transform: translate(-50%);\n  border-left: calc(3vw + 0px) solid transparent;\n  border-right: calc(3vw + 0px) solid transparent;\n  border-top: calc(3vw - 0.8vw - 0px) solid #2b2929;\n  width: 70%;\n}\n@media (max-width: 450px) {\n.trapeze-decoration[data-v-57e96238] {\n    border-top-width: calc(3vw + 5px);\n}\n}\n.trapeze-decoration[data-v-57e96238]::after {\n  content: \"\";\n  width: calc(100% - 2px);\n  display: block;\n  position: absolute;\n  border-left: calc(3vw + 1px) solid transparent;\n  border-right: calc(3vw + 1px) solid transparent;\n  border-top: calc(3vw - 0.8vw - 1px) solid #0e0e0e;\n  top: -2px;\n  left: -3vw;\n  -webkit-transform: translateY(-100%);\n          transform: translateY(-100%);\n}\n@media (max-width: 450px) {\n.trapeze-decoration[data-v-57e96238]::after {\n    border-top-width: calc(3vw + 5px);\n}\n}\n.empire-logo[data-v-57e96238] {\n  font-size: 1.5vw;\n  position: absolute;\n  -webkit-transform: translate(-50%, calc(-100% - 1vw));\n          transform: translate(-50%, calc(-100% - 1vw));\n  z-index: 1;\n  left: 50%;\n  white-space: nowrap;\n}\n@media (max-width: 780px) {\n.empire-logo[data-v-57e96238] {\n    font-size: 13px;\n}\n}\n.play-button[data-v-57e96238] {\n  display: inline-block;\n  border: none;\n  background: -webkit-gradient(linear, left top, left bottom, from(#2af92a), to(#054006));\n  background: linear-gradient(#2af92a, #054006);\n  -webkit-clip-path: polygon(0 0, 0 100%, 100% 50%);\n          clip-path: polygon(0 0, 0 100%, 100% 50%);\n  margin-left: 5px;\n  min-width: 20px;\n  min-height: 20px;\n  width: 2vw;\n  height: 2vw;\n  outline: none;\n  cursor: pointer;\n}\n.play-button-description[data-v-57e96238] {\n  position: absolute;\n  top: -9999px;\n  left: 0;\n}\n.preview-control-element[data-v-57e96238] {\n  margin-right: 7px;\n}\n.movie-preview-container[data-v-57e96238] {\n  position: absolute;\n  display: inline-block;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  max-width: 90%;\n  box-shadow: 2px 2px 2px 2px black;\n  background: #0e0e0e;\n  border: 1px solid #2b2929;\n  min-width: 300px;\n  padding: 3vw 3vw 1vw;\n}\n.movie-preview-frame[data-v-57e96238] {\n  display: block;\n  width: 100%;\n  height: auto;\n  box-shadow: 2px 2px 2px 2px black;\n}\n.movie-title[data-v-57e96238] {\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  overflow: hidden;\n  white-space: nowrap;\n  color: white;\n}\n@media (max-width: 1200px) {\n.movie-title[data-v-57e96238] {\n    font-size: 16px;\n}\n}\n.movie-preview-bar[data-v-57e96238] {\n  padding: 0.5vw 0;\n}\n.television-decoration[data-v-57e96238] {\n  margin-left: 5px;\n  min-width: 20px;\n  min-height: 20px;\n  width: 2vw;\n  height: 2vw;\n  border-radius: 50%;\n}\n.preview-close-icon[data-v-57e96238] {\n  min-width: 25px;\n  min-height: 25px;\n  width: 2.1vw;\n  height: 2.1vw;\n}\n.green-light[data-v-57e96238] {\n  background: -webkit-gradient(linear, left top, left bottom, from(#2af92a), to(#054006));\n  background: linear-gradient(#2af92a, #054006);\n}\n.preview-close-icon[data-v-57e96238] {\n  margin-left: 7px;\n}\n.movie-icon[data-v-57e96238] {\n  color: white;\n  margin-right: 8px;\n}\n.movie-frame-selection[data-v-57e96238] {\n  -webkit-box-flex: 100;\n          flex-grow: 100;\n  margin: 0 auto;\n  -webkit-appearance: none;\n  outline: none;\n  height: 2vh;\n}\n.movie-frame-selection[data-v-57e96238]::-webkit-slider-thumb {\n  -webkit-appearance: none;\n  border: 1px solid #000000;\n  height: 3vh;\n  width: 5%;\n  border-radius: 1vh;\n  background: #06a306;\n  cursor: pointer;\n  margin-top: -0.5vh;\n  margin-bottom: -0.5vh;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\n.movie-frame-selection[data-v-57e96238]::-webkit-slider-runnable-track {\n  background: black;\n}\n.movie-preview-controls-and-decoration[data-v-57e96238] {\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: nowrap;\n  -webkit-box-align: center;\n          align-items: center;\n  padding: 1vw 0;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/movies/movies_list.vue?vue&type=style&index=0&lang=scss&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--16-2!./node_modules/sass-loader/dist/cjs.js??ref--16-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/movies/movies_list.vue?vue&type=style&index=0&lang=scss& ***!
@@ -2592,6 +2611,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--16-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--16-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./movie_box.vue?vue&type=style&index=0&id=4e10eebb&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/movies/movie_box.vue?vue&type=style&index=0&id=4e10eebb&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/movies/movie_preview.vue?vue&type=style&index=0&id=57e96238&lang=scss&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--16-2!./node_modules/sass-loader/dist/cjs.js??ref--16-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/movies/movie_preview.vue?vue&type=style&index=0&id=57e96238&lang=scss&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--16-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--16-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./movie_preview.vue?vue&type=style&index=0&id=57e96238&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/movies/movie_preview.vue?vue&type=style&index=0&id=57e96238&lang=scss&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -3894,6 +3943,113 @@ exports.default = SimpleLabeledInput;
 
 /***/ }),
 
+/***/ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/movies/movie_preview.vue?vue&type=script&lang=ts&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/ts-loader??ref--21!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/movies/movie_preview.vue?vue&type=script&lang=ts& ***!
+  \***********************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = {
+    data: function () {
+        return {
+            movieID: 0,
+            currentFrame: 1,
+            title: ""
+        };
+    },
+    methods: {
+        showMoviePreview: function (movie) {
+            this.currentFrame = 1;
+            this.movieID = movie.id;
+            this.title = movie.title;
+        },
+        hidePreview: function () {
+            this.$root.$emit('closePreview');
+        }
+    },
+    computed: {
+        movieAlt: function () {
+            return this.translator.translate('movie_frame') + " : " + this.title;
+        },
+        currentFramePath: function () {
+            return "/images/movies/preview/" + this.movieID + "/" + this.movieID + " " + String(this.currentFrame).padStart(3, '0') + ".jpg";
+        },
+        playButtonCaption: function () {
+            return this.translator.translate('play_movie_preview');
+        }
+    },
+    mounted: function () {
+        this.$root.$on('showPreview', this.showMoviePreview);
+        this.translator = this.$root.translator;
+    }
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/movies/movie_preview_complete.vue?vue&type=script&lang=ts&":
+/*!********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/ts-loader??ref--21!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/movies/movie_preview_complete.vue?vue&type=script&lang=ts& ***!
+  \********************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
+var fixed_shadow_container_vue_1 = __webpack_require__(/*! @jscomponents/decoration/fixed_shadow_container.vue */ "./resources/js/components/decoration/fixed_shadow_container.vue");
+var movie_preview_vue_1 = __webpack_require__(/*! @jscomponents/movies/movie_preview.vue */ "./resources/js/components/movies/movie_preview.vue");
+var MoviePreviewComplete = /** @class */ (function (_super) {
+    __extends(MoviePreviewComplete, _super);
+    function MoviePreviewComplete() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.showPreview = false;
+        return _this;
+    }
+    MoviePreviewComplete.prototype.showMoviePreview = function () {
+        this.showPreview = true;
+    };
+    MoviePreviewComplete.prototype.hideMoviePreview = function () {
+        this.showPreview = false;
+    };
+    MoviePreviewComplete.prototype.created = function () {
+        this.$root.$on('showPreview', this.showMoviePreview);
+        this.$root.$on('closePreview', this.hideMoviePreview);
+    };
+    MoviePreviewComplete = __decorate([
+        vue_property_decorator_1.Component({ components: { FixedShadowContainer: fixed_shadow_container_vue_1.default, MoviePreview: movie_preview_vue_1.default } })
+    ], MoviePreviewComplete);
+    return MoviePreviewComplete;
+}(vue_property_decorator_1.Vue));
+exports.default = MoviePreviewComplete;
+
+
+/***/ }),
+
 /***/ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/movies/movies_list.vue?vue&type=script&lang=ts&":
 /*!*********************************************************************************************************************************************************************!*\
   !*** ./node_modules/ts-loader??ref--21!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/movies/movies_list.vue?vue&type=script&lang=ts& ***!
@@ -3926,6 +4082,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "./node_modules/vue-property-decorator/lib/vue-property-decorator.js");
 var movie_box_vue_1 = __webpack_require__(/*! @jscomponents/movies/movie_box.vue */ "./resources/js/components/movies/movie_box.vue");
 var pages_list_vue_1 = __webpack_require__(/*! @jscomponents/pages_list.vue */ "./resources/js/components/pages_list.vue");
+var movie_preview_complete_vue_1 = __webpack_require__(/*! @jscomponents/movies/movie_preview_complete.vue */ "./resources/js/components/movies/movie_preview_complete.vue");
 var MoviesList = /** @class */ (function (_super) {
     __extends(MoviesList, _super);
     function MoviesList() {
@@ -3943,14 +4100,14 @@ var MoviesList = /** @class */ (function (_super) {
         }
         this.$root.$on('updateMoviesList', this.updateMoviesList);
     };
-    MoviesList.prototype.updateMoviesList = function (moviesData) {
-        this.totalMovies = moviesData.totalMovies;
-        this.movies = moviesData.movies;
+    MoviesList.prototype.updateMoviesList = function (response) {
+        this.totalMovies = response.moviesData.totalMovies;
+        this.movies = response.moviesData.movies;
         var ammountOfSubPages = Math.ceil(this.totalMovies / this.moviesPerPage);
-        this.updatePagesList(ammountOfSubPages);
+        this.updatePagesList({ pagesNumber: ammountOfSubPages, currentPage: response.currentPage });
     };
-    MoviesList.prototype.updatePagesList = function (pagesNumber) {
-        this.$root.$emit('updatePagesList', pagesNumber);
+    MoviesList.prototype.updatePagesList = function (data) {
+        this.$root.$emit('updatePagesList', data);
     };
     MoviesList.prototype.extractPornstars = function (pornstarsList) {
         if (pornstarsList.length > 0) {
@@ -3986,7 +4143,7 @@ var MoviesList = /** @class */ (function (_super) {
         })
     ], MoviesList.prototype, "moviesPerPage", void 0);
     MoviesList = __decorate([
-        vue_property_decorator_1.Component({ components: { MovieBox: movie_box_vue_1.default, PagesList: pages_list_vue_1.default } })
+        vue_property_decorator_1.Component({ components: { MovieBox: movie_box_vue_1.default, PagesList: pages_list_vue_1.default, MoviePreviewComplete: movie_preview_complete_vue_1.default } })
     ], MoviesList);
     return MoviesList;
 }(vue_property_decorator_1.Vue));
@@ -4249,8 +4406,9 @@ var PagesList = /** @class */ (function (_super) {
             this.interval = null;
         }
     };
-    PagesList.prototype.updatePagesList = function (pagesNumber) {
-        this.pagesNumber = pagesNumber;
+    PagesList.prototype.updatePagesList = function (data) {
+        this.pagesNumber = data.pagesNumber;
+        this.currentPage = data.currentPage;
         this.controlInterface();
     };
     PagesList.prototype.controlInterface = function () {
@@ -5729,6 +5887,142 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/movies/movie_preview.vue?vue&type=template&id=57e96238&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/movies/movie_preview.vue?vue&type=template&id=57e96238&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "movie-preview-container" }, [
+    _c("img", {
+      staticClass: "movie-preview-frame",
+      attrs: { src: _vm.currentFramePath, alt: _vm.movieAlt }
+    }),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "movie-preview-controls-and-decoration" },
+      [
+        _c("div", {
+          staticClass:
+            "television-decoration green-light preview-control-element",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "preview-control-element play-button",
+            attrs: { title: _vm.playButtonCaption }
+          },
+          [
+            _c("span", {
+              staticClass: "play-button-description",
+              domProps: { textContent: _vm._s(_vm.playButtonCaption) }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.currentFrame,
+              expression: "currentFrame"
+            }
+          ],
+          staticClass: "movie-frame-selection preview-control-element",
+          attrs: {
+            min: "1",
+            max: "100",
+            type: "range",
+            name: "movie-frame-selection",
+            id: "movie-frame-selection"
+          },
+          domProps: { value: _vm.currentFrame },
+          on: {
+            __r: function($event) {
+              _vm.currentFrame = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("button-close", {
+          staticClass: "preview-close-icon",
+          attrs: { title: "close_movie_preview" },
+          nativeOn: {
+            click: function($event) {
+              return _vm.hidePreview($event)
+            }
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "trapeze-decoration", attrs: { "aria-hidden": "true" } },
+      [_c("empire-logo", { staticClass: "empire-logo" })],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/movies/movie_preview_complete.vue?vue&type=template&id=be7224e0&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/movies/movie_preview_complete.vue?vue&type=template&id=be7224e0& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "fixed-shadow-container",
+    {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: _vm.showPreview,
+          expression: "showPreview"
+        }
+      ]
+    },
+    [_c("movie-preview")],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/movies/movies_list.vue?vue&type=template&id=ea3e1c4e&":
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/movies/movies_list.vue?vue&type=template&id=ea3e1c4e& ***!
@@ -5766,7 +6060,9 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("pages-list")
+      _c("pages-list"),
+      _vm._v(" "),
+      _c("movie-preview-complete")
     ],
     1
   )
@@ -19577,7 +19873,7 @@ var notification_function_ts_1 = __webpack_require__(/*! @jsmodules/notification
 var Vue = basic_js_1.default.build();
 var multiselect_vue_1 = __webpack_require__(/*! @jscomponents-form-controls/multiselect.vue */ "./resources/js/components/form_controls/multiselect.vue");
 var translator_js_1 = __webpack_require__(/*! @jsmodules/translator.js */ "./resources/js/modules/translator.js");
-var search_engine_available_options_js_1 = __webpack_require__(/*! @jsmodules/translations/search_engine_available_options.js */ "./resources/js/modules/translations/search_engine_available_options.js");
+var search_engine_translations_js_1 = __webpack_require__(/*! @jsmodules/translations/search_engine_translations.js */ "./resources/js/modules/translations/search_engine_translations.js");
 var relative_shadow_container_vue_1 = __webpack_require__(/*! @jscomponents/decoration/relative_shadow_container.vue */ "./resources/js/components/decoration/relative_shadow_container.vue");
 var expect_circle_vue_1 = __webpack_require__(/*! @jscomponents/decoration/expect_circle.vue */ "./resources/js/components/decoration/expect_circle.vue");
 var accept_button_vue_1 = __webpack_require__(/*! @jscomponents-form-controls/accept_button.vue */ "./resources/js/components/form_controls/accept_button.vue");
@@ -19599,7 +19895,7 @@ Vue.component('movies-list', movies_list_vue_1.default);
 new Vue({
     el: '#app',
     data: {
-        searchEngineOptions: search_engine_available_options_js_1.default,
+        searchEngineTranslations: search_engine_translations_js_1.default,
         csrfToken: undefined,
         multiselectValues: [],
         translator: translator_js_1.default,
@@ -19653,23 +19949,28 @@ new Vue({
     computed: {
         minimumMovieTimeLabel: function () {
             return (this.minimumMovieTime == 0) ?
-                this.searchEngineOptions['notSelected'] : this.minimumMovieTime + " " + this.searchEngineOptions['selectedTimeLabel'];
+                this.searchEngineTranslations['notSelected'] : this.minimumMovieTime + " " + this.searchEngineTranslations['selectedTimeLabel'];
         },
         maximumMovieTimeLabel: function () {
             return (this.maximumMovieTime == 0) ?
-                this.searchEngineOptions['notSelected'] : this.maximumMovieTime + " " + this.searchEngineOptions['selectedTimeLabel'];
+                this.searchEngineTranslations['notSelected'] : this.maximumMovieTime + " " + this.searchEngineTranslations['selectedTimeLabel'];
         },
         minimumMovieViewsLabel: function () {
             return (this.minimumMovieViews == 0) ?
-                this.searchEngineOptions['notSelected'] : this.minimumMovieViews + " " + this.searchEngineOptions['selectedViewsLabel'];
+                this.searchEngineTranslations['notSelected'] : this.minimumMovieViews + " " + this.searchEngineTranslations['selectedViewsLabel'];
         },
         maximumMovieViewsLabel: function () {
             return (this.maximumMovieViews == 0) ?
-                this.searchEngineOptions['notSelected'] : this.maximumMovieViews + " " + this.searchEngineOptions['selectedViewsLabel'];
+                this.searchEngineTranslations['notSelected'] : this.maximumMovieViews + " " + this.searchEngineTranslations['selectedViewsLabel'];
         },
         totalMoviesFoundCaption: function () {
-            return search_engine_available_options_js_1.default['totalMoviesLabel'] + " : " + this.totalMoviesFound;
-        }
+            if (this.totalMoviesFound > 0) {
+                return search_engine_translations_js_1.default['totalMoviesLabel'] + " : " + this.totalMoviesFound;
+            }
+            else {
+                return search_engine_translations_js_1.default['noMoviesHaveBeenFound'];
+            }
+        },
     },
     methods: {
         showNotification: notification_function_ts_1.default,
@@ -19753,7 +20054,7 @@ new Vue({
                             this.$root.$emit('replaceAvailableOptionsForMultiselect', pornstars);
                             return [3 /*break*/, 5];
                         case 4:
-                            this.showNotification(this.translator.translate('failed_to_fetch_pornstars_list'), 'error');
+                            this.showNotification(search_engine_translations_js_1.default['fetchingPornstarsFailed'], 'error');
                             _a.label = 5;
                         case 5: return [3 /*break*/, 7];
                         case 6:
@@ -19769,7 +20070,7 @@ new Vue({
             var keyValuePair;
             switch (group) {
                 case 'initialValueIsEmptyString':
-                    keyValuePair = translatedOption + " : " + search_engine_available_options_js_1.default[propertyName][value];
+                    keyValuePair = translatedOption + " : " + search_engine_translations_js_1.default[propertyName][value];
                     break;
                 case 'initialValueIsFalse':
                     keyValuePair = translatedOption;
@@ -19800,29 +20101,40 @@ new Vue({
                     }
                 });
             });
-            if (this.pornstarsList.length > 0) {
+            var numberOfSelectedOptions = Object.keys(selectedOptions['otherParams']).length;
+            var numberOfSelectedPornstars = this.pornstarsList.length;
+            if (numberOfSelectedPornstars > 0) {
                 selectedOptions['pornstarsList'] = this.pornstarsList;
-                this.pushSelectedOptionListForUser('pornstarsList', 'movie_with_following_pornstar', this.pornstarsList);
+                var pornstarListPropertyName = (numberOfSelectedPornstars > 1) ? 'movie_with_following_pornstars' : 'movie_with_pornstar';
+                this.pushSelectedOptionListForUser('pornstarsList', pornstarListPropertyName, this.pornstarsList);
+            }
+            numberOfSelectedOptions += selectedOptions['pornstarsList'].length;
+            if (numberOfSelectedOptions === 0) {
+                throw new Error('noOptionsHaveBeenSelected');
             }
             selectedOptions['otherParams']['page'] = currentPage;
             return selectedOptions;
         },
-        loadMovies: function (moviesData) {
+        loadMovies: function (moviesData, currentPage) {
+            if (currentPage === void 0) { currentPage = 1; }
             this.totalMoviesFound = moviesData.totalMovies;
             if (moviesData.totalMovies > 0) {
-                this.$root.$emit('updateMoviesList', moviesData);
-                this.totalMoviesFound = moviesData.totalMovies;
-                this.advancedSearchPanelIsVisible = false;
+                if (currentPage === 1) {
+                    window.scroll(0, 0);
+                }
+                this.$root.$emit('updateMoviesList', { moviesData: moviesData, currentPage: currentPage });
             }
+            this.totalMoviesFound = moviesData.totalMovies;
+            this.advancedSearchPanelIsVisible = false;
         },
         searchMovies: function (currentPage) {
             if (currentPage === void 0) { currentPage = 1; }
             return __awaiter(this, void 0, void 0, function () {
-                var requestData, query, response, movies, exception_1;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
+                var requestData, query, response, _a, movies, exception_1;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
                         case 0:
-                            _a.trys.push([0, 5, 6, 7]);
+                            _b.trys.push([0, 7, 8, 9]);
                             this.fetchingMoviesInProgress = true;
                             requestData = {
                                 method: 'GET',
@@ -19833,24 +20145,30 @@ new Vue({
                             query = query_builder_ts_1.QueryBuilder.build(this.getSelectedOptions(currentPage));
                             return [4 /*yield*/, fetch("/movies/advanced-search?" + query, requestData)];
                         case 1:
-                            response = _a.sent();
-                            if (!(response.status === 200)) return [3 /*break*/, 3];
-                            return [4 /*yield*/, response.json()];
-                        case 2:
-                            movies = _a.sent();
-                            this.loadMovies(movies);
-                            return [3 /*break*/, 4];
-                        case 3: throw new Error('unexpected_error_occured');
-                        case 4: return [3 /*break*/, 7];
-                        case 5:
-                            exception_1 = _a.sent();
+                            response = _b.sent();
+                            _a = response.status;
+                            switch (_a) {
+                                case 200: return [3 /*break*/, 2];
+                                case 429: return [3 /*break*/, 4];
+                            }
+                            return [3 /*break*/, 5];
+                        case 2: return [4 /*yield*/, response.json()];
+                        case 3:
+                            movies = _b.sent();
+                            this.loadMovies(movies, currentPage);
+                            return [3 /*break*/, 6];
+                        case 4: throw new Error('searchHasBenStoppedBecauseThereWereToManyRequests');
+                        case 5: throw new Error('unexpectedError');
+                        case 6: return [3 /*break*/, 9];
+                        case 7:
+                            exception_1 = _b.sent();
                             alert(exception_1.message);
-                            this.showNotification(this.translator.translate('unexpected_error_occured'), 'error');
-                            return [3 /*break*/, 7];
-                        case 6:
+                            this.showNotification(search_engine_translations_js_1.default[exception_1.message], 'error');
+                            return [3 /*break*/, 9];
+                        case 8:
                             this.fetchingMoviesInProgress = false;
                             return [7 /*endfinally*/];
-                        case 7: return [2 /*return*/];
+                        case 9: return [2 /*return*/];
                     }
                 });
             });
@@ -21561,6 +21879,168 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/movies/movie_preview.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/movies/movie_preview.vue ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _movie_preview_vue_vue_type_template_id_57e96238_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./movie_preview.vue?vue&type=template&id=57e96238&scoped=true& */ "./resources/js/components/movies/movie_preview.vue?vue&type=template&id=57e96238&scoped=true&");
+/* harmony import */ var _movie_preview_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./movie_preview.vue?vue&type=script&lang=ts& */ "./resources/js/components/movies/movie_preview.vue?vue&type=script&lang=ts&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _movie_preview_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _movie_preview_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _movie_preview_vue_vue_type_style_index_0_id_57e96238_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./movie_preview.vue?vue&type=style&index=0&id=57e96238&lang=scss&scoped=true& */ "./resources/js/components/movies/movie_preview.vue?vue&type=style&index=0&id=57e96238&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _movie_preview_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _movie_preview_vue_vue_type_template_id_57e96238_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _movie_preview_vue_vue_type_template_id_57e96238_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "57e96238",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/movies/movie_preview.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/movies/movie_preview.vue?vue&type=script&lang=ts&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/movies/movie_preview.vue?vue&type=script&lang=ts& ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_ts_loader_index_js_ref_21_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/ts-loader??ref--21!../../../../node_modules/vue-loader/lib??vue-loader-options!./movie_preview.vue?vue&type=script&lang=ts& */ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/movies/movie_preview.vue?vue&type=script&lang=ts&");
+/* harmony import */ var _node_modules_ts_loader_index_js_ref_21_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_ts_loader_index_js_ref_21_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_ts_loader_index_js_ref_21_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_ts_loader_index_js_ref_21_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_ts_loader_index_js_ref_21_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/movies/movie_preview.vue?vue&type=style&index=0&id=57e96238&lang=scss&scoped=true&":
+/*!********************************************************************************************************************!*\
+  !*** ./resources/js/components/movies/movie_preview.vue?vue&type=style&index=0&id=57e96238&lang=scss&scoped=true& ***!
+  \********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_16_2_node_modules_sass_loader_dist_cjs_js_ref_16_3_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_vue_vue_type_style_index_0_id_57e96238_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--16-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--16-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./movie_preview.vue?vue&type=style&index=0&id=57e96238&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/movies/movie_preview.vue?vue&type=style&index=0&id=57e96238&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_16_2_node_modules_sass_loader_dist_cjs_js_ref_16_3_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_vue_vue_type_style_index_0_id_57e96238_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_16_2_node_modules_sass_loader_dist_cjs_js_ref_16_3_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_vue_vue_type_style_index_0_id_57e96238_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_16_2_node_modules_sass_loader_dist_cjs_js_ref_16_3_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_vue_vue_type_style_index_0_id_57e96238_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_16_2_node_modules_sass_loader_dist_cjs_js_ref_16_3_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_vue_vue_type_style_index_0_id_57e96238_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_16_2_node_modules_sass_loader_dist_cjs_js_ref_16_3_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_vue_vue_type_style_index_0_id_57e96238_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/movies/movie_preview.vue?vue&type=template&id=57e96238&scoped=true&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/movies/movie_preview.vue?vue&type=template&id=57e96238&scoped=true& ***!
+  \*****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_vue_vue_type_template_id_57e96238_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./movie_preview.vue?vue&type=template&id=57e96238&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/movies/movie_preview.vue?vue&type=template&id=57e96238&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_vue_vue_type_template_id_57e96238_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_vue_vue_type_template_id_57e96238_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/movies/movie_preview_complete.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/movies/movie_preview_complete.vue ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _movie_preview_complete_vue_vue_type_template_id_be7224e0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./movie_preview_complete.vue?vue&type=template&id=be7224e0& */ "./resources/js/components/movies/movie_preview_complete.vue?vue&type=template&id=be7224e0&");
+/* harmony import */ var _movie_preview_complete_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./movie_preview_complete.vue?vue&type=script&lang=ts& */ "./resources/js/components/movies/movie_preview_complete.vue?vue&type=script&lang=ts&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _movie_preview_complete_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _movie_preview_complete_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _movie_preview_complete_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _movie_preview_complete_vue_vue_type_template_id_be7224e0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _movie_preview_complete_vue_vue_type_template_id_be7224e0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/movies/movie_preview_complete.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/movies/movie_preview_complete.vue?vue&type=script&lang=ts&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/movies/movie_preview_complete.vue?vue&type=script&lang=ts& ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_ts_loader_index_js_ref_21_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_complete_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/ts-loader??ref--21!../../../../node_modules/vue-loader/lib??vue-loader-options!./movie_preview_complete.vue?vue&type=script&lang=ts& */ "./node_modules/ts-loader/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/movies/movie_preview_complete.vue?vue&type=script&lang=ts&");
+/* harmony import */ var _node_modules_ts_loader_index_js_ref_21_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_complete_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_ts_loader_index_js_ref_21_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_complete_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_ts_loader_index_js_ref_21_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_complete_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_ts_loader_index_js_ref_21_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_complete_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_ts_loader_index_js_ref_21_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_complete_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/movies/movie_preview_complete.vue?vue&type=template&id=be7224e0&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/movies/movie_preview_complete.vue?vue&type=template&id=be7224e0& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_complete_vue_vue_type_template_id_be7224e0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./movie_preview_complete.vue?vue&type=template&id=be7224e0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/movies/movie_preview_complete.vue?vue&type=template&id=be7224e0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_complete_vue_vue_type_template_id_be7224e0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_movie_preview_complete_vue_vue_type_template_id_be7224e0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/movies/movies_list.vue":
 /*!********************************************************!*\
   !*** ./resources/js/components/movies/movies_list.vue ***!
@@ -22333,10 +22813,10 @@ exports.default = descriptions;
 
 /***/ }),
 
-/***/ "./resources/js/modules/translations/search_engine_available_options.js":
-/*!******************************************************************************!*\
-  !*** ./resources/js/modules/translations/search_engine_available_options.js ***!
-  \******************************************************************************/
+/***/ "./resources/js/modules/translations/search_engine_translations.js":
+/*!*************************************************************************!*\
+  !*** ./resources/js/modules/translations/search_engine_translations.js ***!
+  \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -22488,7 +22968,12 @@ var sexAmmounts = {
   selectedTimeLabel: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("minutes_inflected"),
   selectedViewsLabel: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("views_inflected"),
   fetchingMoviesLabel: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("fetching_movies"),
-  totalMoviesLabel: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("total_movies_found")
+  totalMoviesLabel: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("total_movies_found"),
+  noMoviesHaveBeenFound: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("no_movies_have_been_found"),
+  noOptionsHaveBeenSelected: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("no_options_have_been_selected"),
+  unexpectedError: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("unexpected_error_occured"),
+  fetchingPornstarsFailed: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("failed_to_fetch_pornstars_list"),
+  searchHasBenStoppedBecauseThereWereToManyRequests: _jsmodules_translator_js__WEBPACK_IMPORTED_MODULE_0__["default"].translate("because_of_security_reasons_search_was_blocked")
 });
 
 /***/ }),
@@ -22595,7 +23080,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     login_has_already_been_taken: "Login jest już zajęty",
     login_contains_less_then_3_characters: "Login ma mniej niż 3 znaki",
     login_contains_more_then_20_characters: "Login ma więcej niż 20 znaków"
-  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "avatar_has_been_deleted_successfully", "Pomyślnie usunięto avatar"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "views", "Wyświetleń"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "previous_page", "poprzednia"), _defineProperty(_pl, "next_page", "następna"), _defineProperty(_pl, "first_page", "pierwsza"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "pornstar_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "the_nickname_exceeds_20_characters", "Długość pseudonimu przekracza 20 znaków"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "add_comment", "Dodaj komentarz"), _defineProperty(_pl, "add", "dodaj"), _defineProperty(_pl, "unregistered_user", "Niezarejestrowany"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "adding_comment", "Dodaję komentarz"), _defineProperty(_pl, "fetching_comments", "Pobieram komentarze"), _defineProperty(_pl, "comment_text_is_missing", "Nie podano treści komentarza"), _defineProperty(_pl, "comment_text_exceeds_1000_characters", "Treść komentarza przekracza 1000 znaków"), _defineProperty(_pl, "nickname_exceeds_50_characters", "Pseudonim przekracza 50 znaków"), _defineProperty(_pl, "because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute", "Z powodów bezpieczeństwa ograniczono liczbę dodawanych komentarzy do 2 na minutę"), _defineProperty(_pl, "total_comments", "Liczba wszystkich komentarzy"), _defineProperty(_pl, "show_comments_sub_page_with_number", "Pokaż podstronę komentarzy o numerze"), _defineProperty(_pl, "sex_empire_short", "SI"), _defineProperty(_pl, "small_ass", "mały"), _defineProperty(_pl, "medium_ass", "średni"), _defineProperty(_pl, "big_ass", "duży"), _defineProperty(_pl, "small_tits", "małe"), _defineProperty(_pl, "medium_tits", "średnie"), _defineProperty(_pl, "big_tits", "duże"), _defineProperty(_pl, "skinny_tchickness", "chuda"), _defineProperty(_pl, "medium_tchickness", "średnia"), _defineProperty(_pl, "fat_tchickness", "gruba"), _defineProperty(_pl, "teenagers", "nastolatki(18 - 19)"), _defineProperty(_pl, "age_range_young", "młode (20 -29)"), _defineProperty(_pl, "age_range_mature", "dojrzałe(30 - 50)"), _defineProperty(_pl, "dark_hair", "czarny"), _defineProperty(_pl, "blonde_hair", "blond"), _defineProperty(_pl, "brown_hair", "brązowy"), _defineProperty(_pl, "red_hair", "rudy"), _defineProperty(_pl, "white_race", "biała"), _defineProperty(_pl, "asian_race", "azjatki"), _defineProperty(_pl, "ebony_race", "murzynki"), _defineProperty(_pl, "latin_race", "latynoski"), _defineProperty(_pl, "arabic_race", "arabki"), _defineProperty(_pl, "yes", "tak"), _defineProperty(_pl, "no", "nie"), _defineProperty(_pl, "one_male_one_female", "facet i kobieta"), _defineProperty(_pl, "bukkake", "bukkake"), _defineProperty(_pl, "single_female", "kobieta solo"), _defineProperty(_pl, "lesbians", "lesbijki"), _defineProperty(_pl, "group_sex", "grupowy"), _defineProperty(_pl, "one_male_many_females", "facet i wiele kobiet"), _defineProperty(_pl, "GangBang", "GangBang"), _defineProperty(_pl, "one_female_two_males", "Na 2 baty"), _defineProperty(_pl, "lesbian_group_sex", "Lesbijki grupowo"), _defineProperty(_pl, "only", "tylko i wyłącznie"), _defineProperty(_pl, "maximum", "maximum"), _defineProperty(_pl, "a_lot", "dużo"), _defineProperty(_pl, "medium", "średnio"), _defineProperty(_pl, "a_little", "trochę"), _defineProperty(_pl, "exclude", "wyklucz"), _defineProperty(_pl, "on_face", "na twarz"), _defineProperty(_pl, "cum_swallow", "z połykiem"), _defineProperty(_pl, "creampie", "w cipkę"), _defineProperty(_pl, "anal_creampie", "w dupkę"), _defineProperty(_pl, "on_tits", "na cycki"), _defineProperty(_pl, "on_pussy", "na cipkę"), _defineProperty(_pl, "on_ass", "na dupkę"), _defineProperty(_pl, "on_feet", "na stopy"), _defineProperty(_pl, "on_many_places", "na wiele miejsc"), _defineProperty(_pl, "on_other_body_parts", "na inne miejsca"), _defineProperty(_pl, "american_nationality", "amerykańska"), _defineProperty(_pl, "japanese_nationality", "japońska"), _defineProperty(_pl, "german_nationality", "niemiecka"), _defineProperty(_pl, "czech_nationality", "czeska"), _defineProperty(_pl, "russian_nationality", "rosyjska"), _defineProperty(_pl, "british_nationality", "brytyjska"), _defineProperty(_pl, "swedish_nationality", "szwedzka"), _defineProperty(_pl, "ukrainian_nationality", "ukraińska"), _defineProperty(_pl, "slovac_nationality", "słowacka"), _defineProperty(_pl, "hanguarian_nationality", "węgierska"), _defineProperty(_pl, "polish_nationality", "polska"), _defineProperty(_pl, "dutch_nationality", "holenderska"), _defineProperty(_pl, "hindu_nationality", "hinduska"), _defineProperty(_pl, "french_nationality", "francuska"), _defineProperty(_pl, "spanish_nationality", "hiszpańska"), _defineProperty(_pl, "italian_nationality", "włoska"), _defineProperty(_pl, "canadian_nationality", "kanadyjska"), _defineProperty(_pl, "argentinian_nationality", "argentyńska"), _defineProperty(_pl, "house", "dom"), _defineProperty(_pl, "bathroom", "łazienka"), _defineProperty(_pl, "office", "biuro"), _defineProperty(_pl, "school", "szkoła"), _defineProperty(_pl, "public_place", "miejsca publiczne"), _defineProperty(_pl, "car", "samochód"), _defineProperty(_pl, "nature", "łono natury"), _defineProperty(_pl, "solarium", "solarium"), _defineProperty(_pl, "elevator", "winda"), _defineProperty(_pl, "beach", "plaża"), _defineProperty(_pl, "gym", "siłownia"), _defineProperty(_pl, "POV", "POV"), _defineProperty(_pl, "outside_camera_style", "z zewnątrz"), _defineProperty(_pl, "mixed_camera_style", "mieszane"), _defineProperty(_pl, "female_pupil", "uczennica"), _defineProperty(_pl, "female_employee", "pracownica"), _defineProperty(_pl, "female_student", "studentka"), _defineProperty(_pl, "wife", "żona"), _defineProperty(_pl, "female_teacher", "nauczycielka"), _defineProperty(_pl, "nurse", "pielęgniarka"), _defineProperty(_pl, "female_slave", "niewolnica"), _defineProperty(_pl, "nun", "zakonnica"), _defineProperty(_pl, "female_police_officer", "policjantka"), _defineProperty(_pl, "prostitute", "prostytutka"), _defineProperty(_pl, "female_boss", "szefowa"), _defineProperty(_pl, "cleaner", "sprzątaczka"), _defineProperty(_pl, "mommy", "mamusia"), _defineProperty(_pl, "amateur", "amatorski"), _defineProperty(_pl, "professional", "profesjonalny"), _defineProperty(_pl, "choose_options", "wybierz opcje"), _defineProperty(_pl, "search", "szukaj"), _defineProperty(_pl, "remove_option", "usuń opcję"), _defineProperty(_pl, "close", "zamknij"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę"), _defineProperty(_pl, "fetching_pornstars", "Pobieram listę gwiazd"), _defineProperty(_pl, "not_selected", "nie wybrano"), _defineProperty(_pl, "minutes_inflected", "minut(y)"), _defineProperty(_pl, "views_inflected", "wyświetleń"), _defineProperty(_pl, "unexpected_error_occured", "Pojawił się bliżej niezidentyfikowany błąd"), _defineProperty(_pl, "titsSize", "rozmiar cycków"), _defineProperty(_pl, "assSize", "rozmiar dupci"), _defineProperty(_pl, "thicknessSize", "tusza"), _defineProperty(_pl, "ageRange", "przedział wiekowy"), _defineProperty(_pl, "hairColor", "kolor włosów"), _defineProperty(_pl, "race", "rasa"), _defineProperty(_pl, "abundanceType", "liczebność"), _defineProperty(_pl, "cumshotType", "typ wytrysku"), _defineProperty(_pl, "nationality", "narodowość"), _defineProperty(_pl, "location", "lokalizacja"), _defineProperty(_pl, "cameraStyle", "ujęcie kamery"), _defineProperty(_pl, "storyOrCostume", "motyw fabularno kostiumowy"), _defineProperty(_pl, "professionalismLevel", "poziom filmu"), _defineProperty(_pl, "shavedPussy", "wygolona cipka"), _defineProperty(_pl, "analAmmount", "anal"), _defineProperty(_pl, "blowjobAmmount", 'obciąganie'), _defineProperty(_pl, "doublePenetrationAmmount", "wtyczka"), _defineProperty(_pl, "vaginalAmmount", "waginalny"), _defineProperty(_pl, "pussyLickingAmmount", 'minetka'), _defineProperty(_pl, "feetAmmount", 'pieszczenie stóp'), _defineProperty(_pl, "position69Ammount", 'pozycja 69'), _defineProperty(_pl, "tittfuckAmmount", "na hiszpana"), _defineProperty(_pl, "isCumshotCompilation", 'kompilacja wytrysków'), _defineProperty(_pl, "recordedBySpamCamera", 'nagrany kamerą szpiegowską'), _defineProperty(_pl, "isSadisticOrMasochistic", 'sado-masochostyczny'), _defineProperty(_pl, "isFemaleDomination", 'kobieca dominacja'), _defineProperty(_pl, "isTranslatedToPolish", 'polska wersja językowa'), _defineProperty(_pl, "showPantyhose", 'rajstopy'), _defineProperty(_pl, "showStockings", 'pończochy'), _defineProperty(_pl, "showGlasses", 'okulary'), _defineProperty(_pl, "showHighHeels", 'szpile'), _defineProperty(_pl, "showHugeCock", 'wielki kutas'), _defineProperty(_pl, "showWhips", 'bicze'), _defineProperty(_pl, "showSexToys", 'sex-zabawki'), _defineProperty(_pl, "minimumMovieTime", "minimalny czas"), _defineProperty(_pl, "maximumMovieTime", "maksymalny czas"), _defineProperty(_pl, "minimumMovieViews", 'minimalna liczba wyświetleń'), _defineProperty(_pl, "maximumMovieViews", 'maksymalna liczba wyświetleń'), _defineProperty(_pl, "hasStory", 'zawiera fabułę'), _defineProperty(_pl, "total_movies_found", "Ilość znalezionych filmów"), _defineProperty(_pl, "movie_with_following_pornstar", "występują jednocześnie następujące gwiazdy"), _defineProperty(_pl, "last_page", "ostatnia"), _defineProperty(_pl, "packages", {
+  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "avatar_has_been_deleted_successfully", "Pomyślnie usunięto avatar"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "views", "Wyświetleń"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "previous_page", "poprzednia"), _defineProperty(_pl, "next_page", "następna"), _defineProperty(_pl, "first_page", "pierwsza"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "pornstar_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "the_nickname_exceeds_20_characters", "Długość pseudonimu przekracza 20 znaków"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "add_comment", "Dodaj komentarz"), _defineProperty(_pl, "add", "dodaj"), _defineProperty(_pl, "unregistered_user", "Niezarejestrowany"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "adding_comment", "Dodaję komentarz"), _defineProperty(_pl, "fetching_comments", "Pobieram komentarze"), _defineProperty(_pl, "comment_text_is_missing", "Nie podano treści komentarza"), _defineProperty(_pl, "comment_text_exceeds_1000_characters", "Treść komentarza przekracza 1000 znaków"), _defineProperty(_pl, "nickname_exceeds_50_characters", "Pseudonim przekracza 50 znaków"), _defineProperty(_pl, "because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute", "Z powodów bezpieczeństwa ograniczono liczbę dodawanych komentarzy do 2 na minutę"), _defineProperty(_pl, "total_comments", "Liczba wszystkich komentarzy"), _defineProperty(_pl, "show_comments_sub_page_with_number", "Pokaż podstronę komentarzy o numerze"), _defineProperty(_pl, "sex_empire_short", "SI"), _defineProperty(_pl, "small_ass", "mały"), _defineProperty(_pl, "medium_ass", "średni"), _defineProperty(_pl, "big_ass", "duży"), _defineProperty(_pl, "small_tits", "małe"), _defineProperty(_pl, "medium_tits", "średnie"), _defineProperty(_pl, "big_tits", "duże"), _defineProperty(_pl, "skinny_tchickness", "chuda"), _defineProperty(_pl, "medium_tchickness", "średnia"), _defineProperty(_pl, "fat_tchickness", "gruba"), _defineProperty(_pl, "teenagers", "nastolatki(18 - 19)"), _defineProperty(_pl, "age_range_young", "młode (20 -29)"), _defineProperty(_pl, "age_range_mature", "dojrzałe(30 - 50)"), _defineProperty(_pl, "dark_hair", "czarny"), _defineProperty(_pl, "blonde_hair", "blond"), _defineProperty(_pl, "brown_hair", "brązowy"), _defineProperty(_pl, "red_hair", "rudy"), _defineProperty(_pl, "white_race", "biała"), _defineProperty(_pl, "asian_race", "azjatki"), _defineProperty(_pl, "ebony_race", "murzynki"), _defineProperty(_pl, "latin_race", "latynoski"), _defineProperty(_pl, "arabic_race", "arabki"), _defineProperty(_pl, "yes", "tak"), _defineProperty(_pl, "no", "nie"), _defineProperty(_pl, "one_male_one_female", "facet i kobieta"), _defineProperty(_pl, "bukkake", "bukkake"), _defineProperty(_pl, "single_female", "kobieta solo"), _defineProperty(_pl, "lesbians", "lesbijki"), _defineProperty(_pl, "group_sex", "grupowy"), _defineProperty(_pl, "one_male_many_females", "facet i wiele kobiet"), _defineProperty(_pl, "GangBang", "GangBang"), _defineProperty(_pl, "one_female_two_males", "Na 2 baty"), _defineProperty(_pl, "lesbian_group_sex", "Lesbijki grupowo"), _defineProperty(_pl, "only", "tylko i wyłącznie"), _defineProperty(_pl, "maximum", "maximum"), _defineProperty(_pl, "a_lot", "dużo"), _defineProperty(_pl, "medium", "średnio"), _defineProperty(_pl, "a_little", "trochę"), _defineProperty(_pl, "exclude", "wyklucz"), _defineProperty(_pl, "on_face", "na twarz"), _defineProperty(_pl, "cum_swallow", "z połykiem"), _defineProperty(_pl, "creampie", "w cipkę"), _defineProperty(_pl, "anal_creampie", "w dupkę"), _defineProperty(_pl, "on_tits", "na cycki"), _defineProperty(_pl, "on_pussy", "na cipkę"), _defineProperty(_pl, "on_ass", "na dupkę"), _defineProperty(_pl, "on_feet", "na stopy"), _defineProperty(_pl, "on_many_places", "na wiele miejsc"), _defineProperty(_pl, "on_other_body_parts", "na inne miejsca"), _defineProperty(_pl, "american_nationality", "amerykańska"), _defineProperty(_pl, "japanese_nationality", "japońska"), _defineProperty(_pl, "german_nationality", "niemiecka"), _defineProperty(_pl, "czech_nationality", "czeska"), _defineProperty(_pl, "russian_nationality", "rosyjska"), _defineProperty(_pl, "british_nationality", "brytyjska"), _defineProperty(_pl, "swedish_nationality", "szwedzka"), _defineProperty(_pl, "ukrainian_nationality", "ukraińska"), _defineProperty(_pl, "slovac_nationality", "słowacka"), _defineProperty(_pl, "hanguarian_nationality", "węgierska"), _defineProperty(_pl, "polish_nationality", "polska"), _defineProperty(_pl, "dutch_nationality", "holenderska"), _defineProperty(_pl, "hindu_nationality", "hinduska"), _defineProperty(_pl, "french_nationality", "francuska"), _defineProperty(_pl, "spanish_nationality", "hiszpańska"), _defineProperty(_pl, "italian_nationality", "włoska"), _defineProperty(_pl, "canadian_nationality", "kanadyjska"), _defineProperty(_pl, "argentinian_nationality", "argentyńska"), _defineProperty(_pl, "house", "dom"), _defineProperty(_pl, "bathroom", "łazienka"), _defineProperty(_pl, "office", "biuro"), _defineProperty(_pl, "school", "szkoła"), _defineProperty(_pl, "public_place", "miejsca publiczne"), _defineProperty(_pl, "car", "samochód"), _defineProperty(_pl, "nature", "łono natury"), _defineProperty(_pl, "solarium", "solarium"), _defineProperty(_pl, "elevator", "winda"), _defineProperty(_pl, "beach", "plaża"), _defineProperty(_pl, "gym", "siłownia"), _defineProperty(_pl, "POV", "POV"), _defineProperty(_pl, "outside_camera_style", "z zewnątrz"), _defineProperty(_pl, "mixed_camera_style", "mieszane"), _defineProperty(_pl, "female_pupil", "uczennica"), _defineProperty(_pl, "female_employee", "pracownica"), _defineProperty(_pl, "female_student", "studentka"), _defineProperty(_pl, "wife", "żona"), _defineProperty(_pl, "female_teacher", "nauczycielka"), _defineProperty(_pl, "nurse", "pielęgniarka"), _defineProperty(_pl, "female_slave", "niewolnica"), _defineProperty(_pl, "nun", "zakonnica"), _defineProperty(_pl, "female_police_officer", "policjantka"), _defineProperty(_pl, "prostitute", "prostytutka"), _defineProperty(_pl, "female_boss", "szefowa"), _defineProperty(_pl, "cleaner", "sprzątaczka"), _defineProperty(_pl, "mommy", "mamusia"), _defineProperty(_pl, "amateur", "amatorski"), _defineProperty(_pl, "professional", "profesjonalny"), _defineProperty(_pl, "choose_options", "wybierz opcje"), _defineProperty(_pl, "search", "szukaj"), _defineProperty(_pl, "remove_option", "usuń opcję"), _defineProperty(_pl, "close", "zamknij"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę"), _defineProperty(_pl, "fetching_pornstars", "Pobieram listę gwiazd"), _defineProperty(_pl, "not_selected", "nie wybrano"), _defineProperty(_pl, "minutes_inflected", "minut(y)"), _defineProperty(_pl, "views_inflected", "wyświetleń"), _defineProperty(_pl, "unexpected_error_occured", "Pojawił się bliżej niezidentyfikowany błąd"), _defineProperty(_pl, "titsSize", "rozmiar cycków"), _defineProperty(_pl, "assSize", "rozmiar dupci"), _defineProperty(_pl, "thicknessSize", "tusza"), _defineProperty(_pl, "ageRange", "przedział wiekowy"), _defineProperty(_pl, "hairColor", "kolor włosów"), _defineProperty(_pl, "race", "rasa"), _defineProperty(_pl, "abundanceType", "liczebność"), _defineProperty(_pl, "cumshotType", "typ wytrysku"), _defineProperty(_pl, "nationality", "narodowość"), _defineProperty(_pl, "location", "lokalizacja"), _defineProperty(_pl, "cameraStyle", "ujęcie kamery"), _defineProperty(_pl, "storyOrCostume", "motyw fabularno kostiumowy"), _defineProperty(_pl, "professionalismLevel", "poziom filmu"), _defineProperty(_pl, "shavedPussy", "wygolona cipka"), _defineProperty(_pl, "analAmmount", "anal"), _defineProperty(_pl, "blowjobAmmount", 'obciąganie'), _defineProperty(_pl, "doublePenetrationAmmount", "wtyczka"), _defineProperty(_pl, "vaginalAmmount", "waginalny"), _defineProperty(_pl, "pussyLickingAmmount", 'minetka'), _defineProperty(_pl, "feetAmmount", 'pieszczenie stóp'), _defineProperty(_pl, "position69Ammount", 'pozycja 69'), _defineProperty(_pl, "tittfuckAmmount", "na hiszpana"), _defineProperty(_pl, "isCumshotCompilation", 'kompilacja wytrysków'), _defineProperty(_pl, "recordedBySpamCamera", 'nagrany kamerą szpiegowską'), _defineProperty(_pl, "isSadisticOrMasochistic", 'sado-masochostyczny'), _defineProperty(_pl, "isFemaleDomination", 'kobieca dominacja'), _defineProperty(_pl, "isTranslatedToPolish", 'polska wersja językowa'), _defineProperty(_pl, "showPantyhose", 'rajstopy'), _defineProperty(_pl, "showStockings", 'pończochy'), _defineProperty(_pl, "showGlasses", 'okulary'), _defineProperty(_pl, "showHighHeels", 'szpile'), _defineProperty(_pl, "showHugeCock", 'wielki kutas'), _defineProperty(_pl, "showWhips", 'bicze'), _defineProperty(_pl, "showSexToys", 'sex-zabawki'), _defineProperty(_pl, "minimumMovieTime", "minimalny czas"), _defineProperty(_pl, "maximumMovieTime", "maksymalny czas"), _defineProperty(_pl, "minimumMovieViews", 'minimalna liczba wyświetleń'), _defineProperty(_pl, "maximumMovieViews", 'maksymalna liczba wyświetleń'), _defineProperty(_pl, "hasStory", 'zawiera fabułę'), _defineProperty(_pl, "total_movies_found", "Ilość znalezionych filmów"), _defineProperty(_pl, "movie_with_following_pornstars", "występują jednocześnie następujące gwiazdy"), _defineProperty(_pl, "last_page", "ostatnia"), _defineProperty(_pl, "movie_with_pornstar", "Film w którym występuje"), _defineProperty(_pl, "no_movies_have_been_found", "Nie znaleziono żadnych filmów pasujących do wybranych kryteriów"), _defineProperty(_pl, "no_options_have_been_selected", "Nie wybrano żadnych opcji"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd"), _defineProperty(_pl, "because_of_security_reasons_search_was_blocked", "Ze względów bezpieczeństwa ilość zapytań do wyszukiwarki w ciągu minuty jest ograniczona. Prosimy zaczekać chwilę i spróbować ponownie."), _defineProperty(_pl, "packages", {
     content_sidebar: {
       hide_side_bar_title: "Schowaj boczne menu",
       hide_side_bar_caption: "Schowaj",

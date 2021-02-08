@@ -17,7 +17,7 @@
 
 <script lang="ts">
 
-import {EmitedMovieData} from '@interfaces/movies/EmitedMovieData';
+import PreviewMovieData from '@interfaces/movies/preview_movie_data';
 
 	export default {
        data()
@@ -30,13 +30,13 @@ import {EmitedMovieData} from '@interfaces/movies/EmitedMovieData';
        },
 
        methods : {
-           showMoviePreview(movie:EmitedMovieData){
+           showMoviePreview(movie : PreviewMovieData):void{
             this.currentFrame = 1;
-            this.movieID = movie['id'];
-            this.title = movie['title'];
+            this.movieID = movie.id;
+            this.title = movie.title;
           },
 
-          hidePreview(){
+          hidePreview():void{
             this.$root.$emit('closePreview');
           }
        },

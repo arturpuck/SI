@@ -1,6 +1,4 @@
-<fixed-shadow-container v-show="showsPreview">
-  <movie-preview/>
-</fixed-shadow-container>
+<movie-preview-complete></movie-preview-complete>
 
 <ul class="movies-container">
     @foreach($movies->items() as $movie)

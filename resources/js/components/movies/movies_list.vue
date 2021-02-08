@@ -10,6 +10,7 @@
          v-bind:duration="movie.duration"></movie-box>
       </ul>
       <pages-list></pages-list>
+      <movie-preview-complete/>
     </div>
 </template>
 
@@ -22,8 +23,11 @@ import PagesList from '@jscomponents/pages_list.vue';
 import {MoviesListResponse} from '@interfaces/movies/MoviesListResponse.ts';
 import {MovieBasicData} from '@interfaces/movies/MovieBasicData.ts';
 import {BasicPornstarData} from '@interfaces/pornstars/BasicPornstarData.ts';
+import PagesListBasicData from '@interfaces/pages_list_basic_data.ts';
+import MoviePreviewComplete from '@jscomponents/movies/movie_preview_complete.vue';
 
-@Component({components : {MovieBox, PagesList}})
+@Component({components : {MovieBox, PagesList, MoviePreviewComplete}})
+
 	export default class MoviesList extends Vue{
 
       @Prop({
@@ -61,16 +65,16 @@ import {BasicPornstarData} from '@interfaces/pornstars/BasicPornstarData.ts';
             
         }
 
-        updateMoviesList(moviesData : MoviesListResponse):void{
-            this.totalMovies = moviesData.totalMovies;
-            this.movies = moviesData.movies;
+        updateMoviesList( response : {moviesData : MoviesListResponse, currentPage : number}):void{
+            this.totalMovies = response.moviesData.totalMovies;
+            this.movies = response.moviesData.movies;
             const ammountOfSubPages : number = Math.ceil(this.totalMovies / this.moviesPerPage);
-            this.updatePagesList(ammountOfSubPages);
+            this.updatePagesList({pagesNumber : ammountOfSubPages, currentPage : response.currentPage});
 
         }
 
-        updatePagesList(pagesNumber : number){
-            this.$root.$emit('updatePagesList', pagesNumber);
+        updatePagesList(data : PagesListBasicData){
+            this.$root.$emit('updatePagesList', data);
         }
 
         extractPornstars(pornstarsList : BasicPornstarData[]) : string[] | string{
@@ -87,9 +91,7 @@ import {BasicPornstarData} from '@interfaces/pornstars/BasicPornstarData.ts';
             }else{
                 return '';
             }
-             
-
-             
+               
         }
        
     }       

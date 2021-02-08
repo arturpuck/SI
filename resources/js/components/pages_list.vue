@@ -53,6 +53,7 @@ import {PageDirection} from '@js/enum/page_direction';
 import Descriptions from '@jsmodules/translations/components/pages_list.ts';
 import IconArrowLeft from '@jscomponents/decoration/icons/icon_arrow_left.vue';
 import IconArrowRight from '@jscomponents/decoration/icons/icon_arrow_right.vue';
+import PagesListBasicData from '@interfaces/pages_list_basic_data.ts';
 
 
 @Component({components : {IconArrowLeft, IconArrowRight}})
@@ -176,8 +177,9 @@ import IconArrowRight from '@jscomponents/decoration/icons/icon_arrow_right.vue'
             
         }
 
-        updatePagesList(pagesNumber : number):void{
-            this.pagesNumber = pagesNumber;
+        updatePagesList(data : PagesListBasicData):void{
+            this.pagesNumber = data.pagesNumber;
+            this.currentPage = data.currentPage;
             this.controlInterface();
         }
 

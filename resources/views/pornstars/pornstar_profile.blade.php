@@ -68,9 +68,7 @@
          </li>
       </ul>
      <section id="movies-section" v-show="pornstarMoviesTabIsActive" class="action-section">
-       <fixed-shadow-container v-show="showsPreview">
-          <movie-preview/>
-       </fixed-shadow-container>
+      <movie-preview-complete></movie-preview-complete>
        <ul class="movies-container">
          @foreach($pornstar->movies as $movie)
             <movie-box
