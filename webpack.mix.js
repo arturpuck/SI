@@ -1,5 +1,6 @@
 const mix = require('laravel-mix');
 require('laravel-mix-svg-vue');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management

@@ -4,18 +4,19 @@
     display:block;
     margin:0;
     color:white;
-    height: calc(1.1em + 14px);
 }
 
 @mixin news-icon-basic {
-    color:  #ef0244;
-    margin:0 7px;
+    fill:#ef0244;
+    transition:fill 1.5s;
+    @include responsive-icon(2px auto, 1.4vw, 20px);
 }
 
 @import '~sass/basic';
 @import '~sass/background_images';
 @import '~sass/news/default_news';
 @import '~sass/nice_scrollbar';
+@import '~sass/responsive_icon';
 $imageFolder : mainpage;
 
 @include background-image(japanese-schoolgirl,1,right);
@@ -63,11 +64,16 @@ $imageFolder : mainpage;
 }
 
 .introductory-header-icon{
-    @include news-icon-basic();
+    fill:#ef0244;
+    @include responsive-icon(0 5px, 2vw, 25px);
+    vertical-align: middle;
 }
 
 .quick-start-icon{
-    @include news-icon-basic();
+    fill:#ef0244;
+    transition:fill 1.5s;
+    @include responsive-icon(0 3px, 1.6vw, 20px);
+    vertical-align: middle;
 }
 
 .news-container{
@@ -105,7 +111,7 @@ $imageFolder : mainpage;
 }
 
 .quickstart-option:hover .quickstart-option-icon{
-    color:white;
+    fill:white;
 }
 
 .quickstart-option-icon{

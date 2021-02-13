@@ -146,6 +146,12 @@
   background-attachment: fixed;
 }
 
+.aplication-container {
+  min-height: calc(100vh - 40px);
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
 .search-results__back-to-search-panel-button {
   min-width: 200px;
   margin: 10px auto;

@@ -30,7 +30,7 @@
 	<script src="https://kit.fontawesome.com/df4e1e2dba.js" crossorigin="anonymous"></script>
 </head>
 <body  class="full-body @isset($specificImageClass){{$specificImageClass}}@endisset">
-    <div id="app">
+    <div class="aplication-container" id="app">
 		<navbar
 		@auth
 			v-bind:user-id="{{Auth::user()->id}}"
@@ -41,10 +41,9 @@
 		@endauth
 		>
 		</navbar>
-		<click-detector>
 		   <x-report/>
 			{{$slot}}
-		</click-detector>
+		<categories-list></categories-list>
 	</div>
 	<x-footer/>
 	<script src="{{$jsFilePath}}"></script>

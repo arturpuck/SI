@@ -1,6 +1,6 @@
 <template>
 <div>
-<nav class="page-navigation">
+<nav v-on-clickaway="handleClickoutsideNavbar" class="page-navigation">
 	<ul class="navigation-list">
 		<li v-bind:aria-hidden="!contentSideBarIsVisible" v-on:click="showContentSideBar" class="navigation-element-main contenerized-navbar-element">
 			<button title="rozwiń menu boczne" v-bind:class="{'visible-sidebar-button' : !contentSideBarIsVisible}" class="show-sidebar-button show-content-side-bar-button">
@@ -54,7 +54,7 @@
 		</li>
 		<li>
 			<ul v-bind:aria-hidden="!moviesSubMenuIsVisible" class="sub-menu-list-nested-level-two" v-bind:class="{'visible-movies-sub-menu' : moviesSubMenuIsVisible , 'hidden-movies-sub-menu' : !moviesSubMenuIsVisible}">
-					<li class="sub-menu-list-element-intendation-second-level">
+					<li v-on:click="showCategories" class="sub-menu-list-element-intendation-second-level">
 						<span class="fas navbar-icon navbar-icon-second-level fa-images"></span>
 						Kategorie
 					</li>
@@ -129,8 +129,12 @@
 
 <script>
 
+import { directive as onClickaway } from 'vue-clickaway';
+
 	export default {
 		name: 'navbar',
+
+		directives : {onClickaway},
 		
         props: {
 
@@ -167,6 +171,11 @@
  		},
 
         methods: {
+
+			showCategories(){
+			   this.resetNavbar();
+               this.$root.$emit('showCategories');
+			},
 
 			showContentSideBar(){
 				this.contentSideBarIsVisible = true;
@@ -273,7 +282,6 @@
 		
 		mounted(){
 		   this.csrfToken = document.getElementById("csrf-token").content;
-		   this.$root.$on('clickOutsideNavbar',this.handleClickoutsideNavbar);
 		   this.$root.$on('hide-side-bar',this.hideAuthenticatedUserSideBar);
 		   this.$root.$on('hide-content-bar',this.hideContentSideBar);
 		}

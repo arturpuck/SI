@@ -6,10 +6,19 @@ export default{
       this.currentLanguage = document.getElementsByTagName('html')[0].getAttribute('lang');
    },
 
+   get language(){
+
+       if(this.currentLanguage === undefined){
+          this.initiate();
+       }
+
+       return this.currentLanguage;
+   },
+
    getSentence(text){
-      
-      if(this[this.currentLanguage].hasOwnProperty(text)){
-         return this[this.currentLanguage][text];
+     
+      if(this[this.language].hasOwnProperty(text)){
+         return this[this.language][text];
       }
       else{
          
@@ -18,6 +27,7 @@ export default{
    },
 
    translate(text, delimiter = '.'){
+
       if(typeof text === "object"){
          let translatedSentences = "";
          Object.entries(text).forEach( ([key, sentence]) => translatedSentences += `${this.getSentence(sentence)}${delimiter} `);
@@ -30,7 +40,7 @@ export default{
    },
 
    getPackage(packageName){
-      return this[this.currentLanguage]['packages'][packageName];
+      return this[this.language]['packages'][packageName];
    },
 
    pl : {
@@ -297,6 +307,7 @@ export default{
     no_options_have_been_selected : "Nie wybrano żadnych opcji",
     failed_to_fetch_pornstars_list : "Nie udało się pobrać listy gwiazd",
     because_of_security_reasons_search_was_blocked : "Ze względów bezpieczeństwa ilość zapytań do wyszukiwarki w ciągu minuty jest ograniczona. Prosimy zaczekać chwilę i spróbować ponownie.",
+    popular_categories : "Popularne kategorie",
     packages : {
         content_sidebar : {
           hide_side_bar_title : "Schowaj boczne menu",

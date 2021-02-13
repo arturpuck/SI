@@ -146,13 +146,18 @@
   background-attachment: fixed;
 }
 
+.aplication-container {
+  min-height: calc(100vh - 40px);
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
 .default-news-header {
   padding: 7px 3px;
   text-align: center;
   display: block;
   margin: 0;
   color: white;
-  height: calc(1.1em + 14px);
   font-size: 1.2vw;
   font-family: "Exo 2", sans-serif;
   display: -webkit-box;
@@ -361,7 +366,6 @@
   display: block;
   margin: 0;
   color: white;
-  height: calc(1.1em + 14px);
   background: black;
 }
 
@@ -372,13 +376,31 @@
 }
 
 .introductory-header-icon {
-  color: #ef0244;
-  margin: 0 7px;
+  fill: #ef0244;
+  width: 2vw;
+  margin: 0 5px;
+  vertical-align: middle;
+}
+
+@media (max-width: 1200px) {
+  .introductory-header-icon {
+    width: 25px;
+  }
 }
 
 .quick-start-icon {
-  color: #ef0244;
-  margin: 0 7px;
+  fill: #ef0244;
+  -webkit-transition: fill 1.5s;
+  transition: fill 1.5s;
+  width: 1.6vw;
+  margin: 0 3px;
+  vertical-align: middle;
+}
+
+@media (max-width: 1200px) {
+  .quick-start-icon {
+    width: 20px;
+  }
 }
 
 .news-container {
@@ -395,7 +417,6 @@
   display: block;
   margin: 0;
   color: white;
-  height: calc(1.1em + 14px);
   background: #211e1e;
 }
 
@@ -436,14 +457,23 @@
 }
 
 .quickstart-option:hover .quickstart-option-icon {
-  color: white;
+  fill: white;
 }
 
 .quickstart-option-icon {
-  color: #ef0244;
-  margin: 0 7px;
+  fill: #ef0244;
+  -webkit-transition: fill 1.5s;
+  transition: fill 1.5s;
+  width: 1.4vw;
+  margin: 2px auto;
   display: block;
   padding-bottom: 3px;
+}
+
+@media (max-width: 1200px) {
+  .quickstart-option-icon {
+    width: 20px;
+  }
 }
 
 .quickstart-option-description {

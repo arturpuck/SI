@@ -1,23 +1,31 @@
 <x-base title="{{__('sex_empire_main_page')}}" specificImageClass="{{$specificImageClass}}" description="{{__('sex_empire_main_page_description')}}">
    <main class="main-content">
       <header class="introductory-content">
-         <h1 class="introductory-header">{{__('welcome')}}<span class="fas introductory-header-icon fa-grin-hearts"></span></h1>
+         <h1 class="introductory-header">
+             {{__('welcome')}}
+             <svg-vue icon="smile_in_glasses" class="introductory-header-icon"></svg-vue>
+        </h1>
          <p class="news-introduction">{{__('news_introduction')}}</p>
-         <h2 class="quick-start-header">{{__('quick_start')}}<span class="fas quick-start-icon fa-play-circle"></span></h2>
+         <h2 class="quick-start-header">
+             {{__('quick_start')}}
+             <svg-vue class="quick-start-icon" icon="rocket_launch"></svg-vue>
+        </h2>
          <ul class="quickstart-options-list">
              <li class="quickstart-option">
                  <a href="{{route('pornstars.list')}}" class="quickstart-link">
                     <span class="quickstart-option-description">{{__('pornstars')}}</span>
-                    <span class="fas quickstart-option-icon fa-star"></span>
+                    <svg-vue class="quickstart-option-icon" icon="star_full"></svg-vue>
                 </a>
             </li>
             <li class="quickstart-option">
                 <span class="quickstart-option-description">{{__('categories')}}</span>
-                <span class="fas quickstart-option-icon fa-images"></span>
+                <svg-vue class="quickstart-option-icon" icon="video_playlist"></svg-vue>
             </li>
             <li class="quickstart-option">
+              <a href="{{route('movies.advanced.search.panel')}}" class="quickstart-link">
                 <span class="quickstart-option-description">{{__('search_engine')}}</span>
-                <span class="fas quickstart-option-icon  fa-search"></span>
+                <svg-vue class="quickstart-option-icon" icon="search"></svg-vue>
+              </a>
             </li>
           </ul>
       </header>

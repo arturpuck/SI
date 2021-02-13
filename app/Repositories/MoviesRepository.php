@@ -257,7 +257,7 @@ Class MoviesRepository extends BaseRepository{
     public function filterByRecordedBySpamCamera(bool $recordedBySpyCamera) : MoviesRepository {
 
         $recordedBySpyCamera = boolval($recordedBySpyCamera);
-        $this->query = $this->query->where('is_cumshot_compilation_type', $recordedBySpyCamera);
+        $this->query = $this->query->where('recorded_by_spy_camera', $recordedBySpyCamera);
         return $this;
     }
 
