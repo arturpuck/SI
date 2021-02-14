@@ -29,7 +29,7 @@ const categoriesData : {
         'asian',
         'latins',
         'ebony',
-        'gangbang',
+        'GangBang',
         'lesbians',
         'group',
         'cumshot_compilation',

@@ -2,8 +2,8 @@
   <section v-show="showCategories" class="categories-panel">
      <div class="panel-bar">
         <div class="panel-bar__description">
-           <span v-text="translations['the_most_popular_categories']"></span>
-           <svg-vue class="panel-bar__icon" icon="folder"></svg-vue>
+           <span v-text="translations['categories_list']"></span>
+           <svg-vue class="panel-bar__icon" icon="movie_tape"></svg-vue>
         </div>
         <button-close v-on:click.native="hideCategories" class="panel-bar__close-button"></button-close>
      </div>
@@ -53,31 +53,30 @@
 @import '~sass/responsive_icon';
 @import '~sass/nice_scrollbar';
 
-$minimumImageDimension : 100px;
-$maximumImagedimension : 200px;
-$relativeSize : 10vw;
 
 .categories-list{
-    display:flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 140px);
     justify-content: space-evenly;
     list-style-type: none;
+    grid-column-gap: 5px;
+    row-gap: 5px;
     padding: 0;
     margin: calc(40px + 1vw) 0 0 0;
 
     &__element{
         background-size:cover;
         background-position: center;
-        max-width:$maximumImagedimension;
-        max-height:$maximumImagedimension;
-        min-width:$minimumImageDimension;
-        min-height:$minimumImageDimension;
-        width : $relativeSize;
-        height: $relativeSize;
+        width : 140px;
+        height: 140px;
         border-radius:6px;
-        margin:4px;
+        margin:0;
+        padding:0;
         border: 1px solid #981a37;
         overflow: hidden;
+        &:hover{
+            filter: saturate(1.5);
+        }
     }
 
     &__link{
@@ -95,8 +94,8 @@ $relativeSize : 10vw;
         left:0;
         width:100%;
         padding:4px 1px;
-        background: #a52039c4;
-        @include responsive-font(1.1vw,12px);
+        background: #bf0e30db;
+        @include responsive-font(1.1vw,13px);
     }
 }
 
@@ -106,7 +105,7 @@ $relativeSize : 10vw;
     height:100vh;
     top:0;
     left:0;
-    background:rgba(0,0,0,0.8);
+    background:rgba(0,0,0,0.9);
     z-index: 11;
     overflow-y: auto;
 }
