@@ -238,7 +238,7 @@
 
    .nickname-decoration{
      @include responsive-font(1.4vw,18px, "");
-     color:rgb(203 66 95);
+     color:rgb(203, 66, 95);
      margin: 0 5px;
    }
 

@@ -122,7 +122,7 @@
 					</labeled-checkbox>
 					<submit-button>Zaloguj</submit-button>
 					<a href="/haslo/resetuj/wyslij-link" class="forgot-password-link">Zapomniałem hasła</a>
-				</form>
+				</form>  
     </div>
 </div>	
 </template>
