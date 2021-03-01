@@ -9,6 +9,7 @@ Vue.component('textarea-combo', TextareaCombo);
 Vue.component('icon-stop', IconStop);
 Vue.component('icon-confirm', IconConfirm);
 
+
   new Vue({
  el: '#app',
 
@@ -65,6 +66,6 @@ Vue.component('icon-confirm', IconConfirm);
       }
       
    }
- 	
+
 }
 });

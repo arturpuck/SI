@@ -1,4 +1,5 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6[0].rules[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/authenticated_user_sidebar.vue?vue&type=script&lang=ts&":
@@ -7,7 +8,6 @@
   \***********************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-"use strict";
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -95,7 +95,6 @@ exports.default = AuthenticatedUserSidebar;
   \************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-"use strict";
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -179,7 +178,6 @@ exports.default = ContentSideBar;
   \*****************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-"use strict";
 
 
 Object.defineProperty(exports, "__esModule", ({
@@ -223,7 +221,6 @@ exports.default = _default;
   \******************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 
 Object.defineProperty(exports, "__esModule", ({
@@ -270,7 +267,6 @@ exports.default = _default;
   \***************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 
 Object.defineProperty(exports, "__esModule", ({
@@ -317,7 +313,6 @@ exports.default = _default;
   \*********************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 
 Object.defineProperty(exports, "__esModule", ({
@@ -369,7 +364,6 @@ exports.default = _default;
   \*************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 
 Object.defineProperty(exports, "__esModule", ({
@@ -443,7 +437,6 @@ exports.default = _default;
   \***********************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 
 Object.defineProperty(exports, "__esModule", ({
@@ -487,7 +480,6 @@ exports.default = _default;
   \**********************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 
 Object.defineProperty(exports, "__esModule", ({
@@ -519,7 +511,6 @@ exports.default = _default;
   \*************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 
 Object.defineProperty(exports, "__esModule", ({
@@ -720,7 +711,6 @@ exports.default = _default;
   \************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-"use strict";
 
 
 Object.defineProperty(exports, "__esModule", ({
@@ -1002,7 +992,6 @@ exports.default = _default;
   \***************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-"use strict";
 
 
 Object.defineProperty(exports, "__esModule", ({
@@ -1032,8 +1021,6 @@ var _empire_logo = _interopRequireDefault(__webpack_require__(/*! @jscomponents/
 
 var _content_sidebar = _interopRequireDefault(__webpack_require__(/*! @jscomponents/navigation/content_sidebar.vue */ "./resources/js/components/navigation/content_sidebar.vue"));
 
-var _svgVue = _interopRequireDefault(__webpack_require__(/*! svg-vue */ "./node_modules/svg-vue/dist/svg-vue.esm.js"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default = {
@@ -1062,8 +1049,6 @@ var _default = {
       return __webpack_require__.e(/*! import() */ "resources_js_components_categories_list_vue").then(__webpack_require__.bind(__webpack_require__, /*! @jscomponents/categories_list.vue */ "./resources/js/components/categories_list.vue"));
     });
 
-    _vue["default"].component('svg-vue', _svgVue["default"]);
-
     return _vue["default"];
   }
 };
@@ -1077,7 +1062,6 @@ exports.default = _default;
   \********************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 
 
 Object.defineProperty(exports, "__esModule", ({
@@ -1191,7 +1175,7 @@ var _default = {
     login_has_already_been_taken: "Login jest już zajęty",
     login_contains_less_then_3_characters: "Login ma mniej niż 3 znaki",
     login_contains_more_then_20_characters: "Login ma więcej niż 20 znaków"
-  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "avatar_has_been_deleted_successfully", "Pomyślnie usunięto avatar"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "views", "Wyświetleń"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "previous_page", "poprzednia"), _defineProperty(_pl, "next_page", "następna"), _defineProperty(_pl, "first_page", "pierwsza"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "pornstar_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "the_nickname_exceeds_20_characters", "Długość pseudonimu przekracza 20 znaków"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "add_comment", "Dodaj komentarz"), _defineProperty(_pl, "add", "dodaj"), _defineProperty(_pl, "unregistered_user", "Niezarejestrowany"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "adding_comment", "Dodaję komentarz"), _defineProperty(_pl, "fetching_comments", "Pobieram komentarze"), _defineProperty(_pl, "comment_text_is_missing", "Nie podano treści komentarza"), _defineProperty(_pl, "comment_text_exceeds_1000_characters", "Treść komentarza przekracza 1000 znaków"), _defineProperty(_pl, "nickname_exceeds_50_characters", "Pseudonim przekracza 50 znaków"), _defineProperty(_pl, "because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute", "Z powodów bezpieczeństwa ograniczono liczbę dodawanych komentarzy do 2 na minutę"), _defineProperty(_pl, "total_comments", "Liczba wszystkich komentarzy"), _defineProperty(_pl, "show_comments_sub_page_with_number", "Pokaż podstronę komentarzy o numerze"), _defineProperty(_pl, "sex_empire_short", "SI"), _defineProperty(_pl, "small_ass", "mały"), _defineProperty(_pl, "medium_ass", "średni"), _defineProperty(_pl, "big_ass", "duży"), _defineProperty(_pl, "small_tits", "małe"), _defineProperty(_pl, "medium_tits", "średnie"), _defineProperty(_pl, "big_tits", "duże"), _defineProperty(_pl, "skinny_tchickness", "chuda"), _defineProperty(_pl, "medium_tchickness", "średnia"), _defineProperty(_pl, "fat_tchickness", "gruba"), _defineProperty(_pl, "teenagers", "nastolatki(18 - 19)"), _defineProperty(_pl, "age_range_young", "młode (20 -29)"), _defineProperty(_pl, "age_range_mature", "dojrzałe(30 - 50)"), _defineProperty(_pl, "dark_hair", "czarny"), _defineProperty(_pl, "blonde_hair", "blond"), _defineProperty(_pl, "brown_hair", "brązowy"), _defineProperty(_pl, "red_hair", "rudy"), _defineProperty(_pl, "white_race", "biała"), _defineProperty(_pl, "asian_race", "azjatki"), _defineProperty(_pl, "ebony_race", "murzynki"), _defineProperty(_pl, "latin_race", "latynoski"), _defineProperty(_pl, "arabic_race", "arabki"), _defineProperty(_pl, "yes", "tak"), _defineProperty(_pl, "no", "nie"), _defineProperty(_pl, "one_male_one_female", "facet i kobieta"), _defineProperty(_pl, "bukkake", "bukkake"), _defineProperty(_pl, "single_female", "kobieta solo"), _defineProperty(_pl, "lesbians", "lesbijki"), _defineProperty(_pl, "group_sex", "grupowy"), _defineProperty(_pl, "one_male_many_females", "facet i wiele kobiet"), _defineProperty(_pl, "GangBang", "GangBang"), _defineProperty(_pl, "one_female_two_males", "Na 2 baty"), _defineProperty(_pl, "lesbian_group_sex", "Lesbijki grupowo"), _defineProperty(_pl, "only", "tylko i wyłącznie"), _defineProperty(_pl, "maximum", "maximum"), _defineProperty(_pl, "a_lot", "dużo"), _defineProperty(_pl, "medium", "średnio"), _defineProperty(_pl, "a_little", "trochę"), _defineProperty(_pl, "exclude", "wyklucz"), _defineProperty(_pl, "on_face", "na twarz"), _defineProperty(_pl, "cum_swallow", "z połykiem"), _defineProperty(_pl, "creampie", "w cipkę"), _defineProperty(_pl, "anal_creampie", "w dupkę"), _defineProperty(_pl, "on_tits", "na cycki"), _defineProperty(_pl, "on_pussy", "na cipkę"), _defineProperty(_pl, "on_ass", "na dupkę"), _defineProperty(_pl, "on_feet", "na stopy"), _defineProperty(_pl, "on_many_places", "na wiele miejsc"), _defineProperty(_pl, "on_other_body_parts", "na inne miejsca"), _defineProperty(_pl, "american_nationality", "amerykańska"), _defineProperty(_pl, "japanese_nationality", "japońska"), _defineProperty(_pl, "german_nationality", "niemiecka"), _defineProperty(_pl, "czech_nationality", "czeska"), _defineProperty(_pl, "russian_nationality", "rosyjska"), _defineProperty(_pl, "british_nationality", "brytyjska"), _defineProperty(_pl, "swedish_nationality", "szwedzka"), _defineProperty(_pl, "ukrainian_nationality", "ukraińska"), _defineProperty(_pl, "slovac_nationality", "słowacka"), _defineProperty(_pl, "hanguarian_nationality", "węgierska"), _defineProperty(_pl, "polish_nationality", "polska"), _defineProperty(_pl, "dutch_nationality", "holenderska"), _defineProperty(_pl, "hindu_nationality", "hinduska"), _defineProperty(_pl, "french_nationality", "francuska"), _defineProperty(_pl, "spanish_nationality", "hiszpańska"), _defineProperty(_pl, "italian_nationality", "włoska"), _defineProperty(_pl, "canadian_nationality", "kanadyjska"), _defineProperty(_pl, "argentinian_nationality", "argentyńska"), _defineProperty(_pl, "house", "dom"), _defineProperty(_pl, "bathroom", "łazienka"), _defineProperty(_pl, "office", "biuro"), _defineProperty(_pl, "school", "szkoła"), _defineProperty(_pl, "public_place", "miejsca publiczne"), _defineProperty(_pl, "car", "samochód"), _defineProperty(_pl, "nature", "łono natury"), _defineProperty(_pl, "solarium", "solarium"), _defineProperty(_pl, "elevator", "winda"), _defineProperty(_pl, "beach", "plaża"), _defineProperty(_pl, "gym", "siłownia"), _defineProperty(_pl, "POV", "POV"), _defineProperty(_pl, "outside_camera_style", "z zewnątrz"), _defineProperty(_pl, "mixed_camera_style", "mieszane"), _defineProperty(_pl, "female_pupil", "uczennica"), _defineProperty(_pl, "female_employee", "pracownica"), _defineProperty(_pl, "female_student", "studentka"), _defineProperty(_pl, "wife", "żona"), _defineProperty(_pl, "female_teacher", "nauczycielka"), _defineProperty(_pl, "nurse", "pielęgniarka"), _defineProperty(_pl, "female_slave", "niewolnica"), _defineProperty(_pl, "nun", "zakonnica"), _defineProperty(_pl, "female_police_officer", "policjantka"), _defineProperty(_pl, "prostitute", "prostytutka"), _defineProperty(_pl, "female_boss", "szefowa"), _defineProperty(_pl, "cleaner", "sprzątaczka"), _defineProperty(_pl, "mommy", "mamusia"), _defineProperty(_pl, "amateur", "amatorski"), _defineProperty(_pl, "professional", "profesjonalny"), _defineProperty(_pl, "choose_options", "wybierz opcje"), _defineProperty(_pl, "search", "szukaj"), _defineProperty(_pl, "remove_option", "usuń opcję"), _defineProperty(_pl, "close", "zamknij"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę"), _defineProperty(_pl, "fetching_pornstars", "Pobieram listę gwiazd"), _defineProperty(_pl, "not_selected", "nie wybrano"), _defineProperty(_pl, "minutes_inflected", "minut(y)"), _defineProperty(_pl, "views_inflected", "wyświetleń"), _defineProperty(_pl, "unexpected_error_occured", "Pojawił się bliżej niezidentyfikowany błąd"), _defineProperty(_pl, "titsSize", "rozmiar cycków"), _defineProperty(_pl, "assSize", "rozmiar dupci"), _defineProperty(_pl, "thicknessSize", "tusza"), _defineProperty(_pl, "ageRange", "przedział wiekowy"), _defineProperty(_pl, "hairColor", "kolor włosów"), _defineProperty(_pl, "race", "rasa"), _defineProperty(_pl, "abundanceType", "liczebność"), _defineProperty(_pl, "cumshotType", "typ wytrysku"), _defineProperty(_pl, "nationality", "narodowość"), _defineProperty(_pl, "location", "lokalizacja"), _defineProperty(_pl, "cameraStyle", "ujęcie kamery"), _defineProperty(_pl, "storyOrCostume", "motyw fabularno kostiumowy"), _defineProperty(_pl, "professionalismLevel", "poziom filmu"), _defineProperty(_pl, "shavedPussy", "wygolona cipka"), _defineProperty(_pl, "analAmmount", "anal"), _defineProperty(_pl, "blowjob", "obciąganie"), _defineProperty(_pl, "handjob", "walenie konika"), _defineProperty(_pl, "blondes", "blondynki"), _defineProperty(_pl, "tittfuck", "na hiszpana"), _defineProperty(_pl, "pussy_licking", "minetka"), _defineProperty(_pl, "feet", "stopy"), _defineProperty(_pl, "femdom", "kobieca dominacja"), _defineProperty(_pl, "brunettes", "brunetki"), _defineProperty(_pl, "redheads", "rude"), _defineProperty(_pl, "milfs", "dojrzałe"), _defineProperty(_pl, "teens", 'nastolatki'), _defineProperty(_pl, "amateur", "amatorskie"), _defineProperty(_pl, "asian", 'azjatki'), _defineProperty(_pl, "latins", 'latynoski'), _defineProperty(_pl, "ebony", 'murzynki'), _defineProperty(_pl, "lesbians", 'lesbijki'), _defineProperty(_pl, "group", 'grupowy'), _defineProperty(_pl, "cumshot_compilation", 'kompilacja wytrysków'), _defineProperty(_pl, "cum_on_face", 'wytrysk na twarz'), _defineProperty(_pl, "cum_swallow", 'połykanie spermy'), _defineProperty(_pl, "cum_on_feet", 'wytrysk na stopy'), _defineProperty(_pl, "creampie", 'wytrysk w cipkę'), _defineProperty(_pl, "cum_in_ass", 'wytrysk w dupkę'), _defineProperty(_pl, "cum_on_titts", 'wytrysk na cycki'), _defineProperty(_pl, "pantyhose", 'rajstopki'), _defineProperty(_pl, "high_heels", 'szpile'), _defineProperty(_pl, "nurses", 'pielęgniarki'), _defineProperty(_pl, "teachers", 'nauczycielki'), _defineProperty(_pl, "japanese", 'japonki'), _defineProperty(_pl, "russian", 'rosjanki'), _defineProperty(_pl, "pornstars", 'gwiazdy'), _defineProperty(_pl, "blowjobAmmount", 'obciąganie'), _defineProperty(_pl, "doublePenetrationAmmount", "wtyczka"), _defineProperty(_pl, "vaginalAmmount", "waginalny"), _defineProperty(_pl, "pussyLickingAmmount", 'minetka'), _defineProperty(_pl, "feetAmmount", 'pieszczenie stóp'), _defineProperty(_pl, "position69Ammount", 'pozycja 69'), _defineProperty(_pl, "tittfuckAmmount", "na hiszpana"), _defineProperty(_pl, "isCumshotCompilation", 'kompilacja wytrysków'), _defineProperty(_pl, "recordedBySpamCamera", 'nagrany kamerą szpiegowską'), _defineProperty(_pl, "isSadisticOrMasochistic", 'sado-masochostyczny'), _defineProperty(_pl, "isFemaleDomination", 'kobieca dominacja'), _defineProperty(_pl, "isTranslatedToPolish", 'polska wersja językowa'), _defineProperty(_pl, "showPantyhose", 'rajstopy'), _defineProperty(_pl, "showStockings", 'pończochy'), _defineProperty(_pl, "showGlasses", 'okulary'), _defineProperty(_pl, "showHighHeels", 'szpile'), _defineProperty(_pl, "showHugeCock", 'wielki kutas'), _defineProperty(_pl, "showWhips", 'bicze'), _defineProperty(_pl, "showSexToys", 'sex-zabawki'), _defineProperty(_pl, "minimumMovieTime", "minimalny czas"), _defineProperty(_pl, "maximumMovieTime", "maksymalny czas"), _defineProperty(_pl, "minimumMovieViews", 'minimalna liczba wyświetleń'), _defineProperty(_pl, "maximumMovieViews", 'maksymalna liczba wyświetleń'), _defineProperty(_pl, "hasStory", 'zawiera fabułę'), _defineProperty(_pl, "total_movies_found", "Ilość znalezionych filmów"), _defineProperty(_pl, "movie_with_following_pornstars", "występują jednocześnie następujące gwiazdy"), _defineProperty(_pl, "last_page", "ostatnia"), _defineProperty(_pl, "movie_with_pornstar", "Film w którym występuje"), _defineProperty(_pl, "no_movies_have_been_found", "Nie znaleziono żadnych filmów pasujących do wybranych kryteriów"), _defineProperty(_pl, "no_options_have_been_selected", "Nie wybrano żadnych opcji"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd"), _defineProperty(_pl, "because_of_security_reasons_search_was_blocked", "Ze względów bezpieczeństwa ilość zapytań do wyszukiwarki w ciągu minuty jest ograniczona. Prosimy zaczekać chwilę i spróbować ponownie."), _defineProperty(_pl, "popular_categories", "Popularne kategorie"), _defineProperty(_pl, "categories_list", "Lista kategorii"), _defineProperty(_pl, "big_titts", "duże cycki"), _defineProperty(_pl, "packages", {
+  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "avatar_has_been_deleted_successfully", "Pomyślnie usunięto avatar"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "views", "Wyświetleń"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "previous_page", "poprzednia"), _defineProperty(_pl, "next_page", "następna"), _defineProperty(_pl, "first_page", "pierwsza"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "pornstar_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "the_nickname_exceeds_20_characters", "Długość pseudonimu przekracza 20 znaków"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "add_comment", "Dodaj komentarz"), _defineProperty(_pl, "add", "dodaj"), _defineProperty(_pl, "unregistered_user", "Niezarejestrowany"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "adding_comment", "Dodaję komentarz"), _defineProperty(_pl, "fetching_comments", "Pobieram komentarze"), _defineProperty(_pl, "comment_text_is_missing", "Nie podano treści komentarza"), _defineProperty(_pl, "comment_text_exceeds_1000_characters", "Treść komentarza przekracza 1000 znaków"), _defineProperty(_pl, "nickname_exceeds_50_characters", "Pseudonim przekracza 50 znaków"), _defineProperty(_pl, "because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute", "Z powodów bezpieczeństwa ograniczono liczbę dodawanych komentarzy do 2 na minutę"), _defineProperty(_pl, "total_comments", "Liczba wszystkich komentarzy"), _defineProperty(_pl, "show_comments_sub_page_with_number", "Pokaż podstronę komentarzy o numerze"), _defineProperty(_pl, "sex_empire_short", "SI"), _defineProperty(_pl, "small_ass", "mały"), _defineProperty(_pl, "medium_ass", "średni"), _defineProperty(_pl, "big_ass", "duży"), _defineProperty(_pl, "small_tits", "małe"), _defineProperty(_pl, "medium_tits", "średnie"), _defineProperty(_pl, "big_tits", "duże"), _defineProperty(_pl, "skinny_tchickness", "chuda"), _defineProperty(_pl, "medium_tchickness", "średnia"), _defineProperty(_pl, "fat_tchickness", "gruba"), _defineProperty(_pl, "teenagers", "nastolatki(18 - 19)"), _defineProperty(_pl, "age_range_young", "młode (20 -29)"), _defineProperty(_pl, "age_range_mature", "dojrzałe(30 - 50)"), _defineProperty(_pl, "dark_hair", "czarny"), _defineProperty(_pl, "blonde_hair", "blond"), _defineProperty(_pl, "brown_hair", "brązowy"), _defineProperty(_pl, "red_hair", "rudy"), _defineProperty(_pl, "white_race", "biała"), _defineProperty(_pl, "asian_race", "azjatki"), _defineProperty(_pl, "ebony_race", "murzynki"), _defineProperty(_pl, "latin_race", "latynoski"), _defineProperty(_pl, "arabic_race", "arabki"), _defineProperty(_pl, "yes", "tak"), _defineProperty(_pl, "no", "nie"), _defineProperty(_pl, "one_male_one_female", "facet i kobieta"), _defineProperty(_pl, "bukkake", "bukkake"), _defineProperty(_pl, "single_female", "kobieta solo"), _defineProperty(_pl, "lesbians", "lesbijki"), _defineProperty(_pl, "group_sex", "grupowy"), _defineProperty(_pl, "one_male_many_females", "facet i wiele kobiet"), _defineProperty(_pl, "GangBang", "GangBang"), _defineProperty(_pl, "one_female_two_males", "Na 2 baty"), _defineProperty(_pl, "lesbian_group_sex", "Lesbijki grupowo"), _defineProperty(_pl, "only", "tylko i wyłącznie"), _defineProperty(_pl, "maximum", "maximum"), _defineProperty(_pl, "a_lot", "dużo"), _defineProperty(_pl, "medium", "średnio"), _defineProperty(_pl, "a_little", "trochę"), _defineProperty(_pl, "exclude", "wyklucz"), _defineProperty(_pl, "on_face", "na twarz"), _defineProperty(_pl, "cum_swallow", "z połykiem"), _defineProperty(_pl, "creampie", "w cipkę"), _defineProperty(_pl, "anal_creampie", "w dupkę"), _defineProperty(_pl, "on_tits", "na cycki"), _defineProperty(_pl, "on_pussy", "na cipkę"), _defineProperty(_pl, "on_ass", "na dupkę"), _defineProperty(_pl, "on_feet", "na stopy"), _defineProperty(_pl, "on_many_places", "na wiele miejsc"), _defineProperty(_pl, "on_other_body_parts", "na inne miejsca"), _defineProperty(_pl, "american_nationality", "amerykańska"), _defineProperty(_pl, "japanese_nationality", "japońska"), _defineProperty(_pl, "german_nationality", "niemiecka"), _defineProperty(_pl, "czech_nationality", "czeska"), _defineProperty(_pl, "russian_nationality", "rosyjska"), _defineProperty(_pl, "british_nationality", "brytyjska"), _defineProperty(_pl, "swedish_nationality", "szwedzka"), _defineProperty(_pl, "ukrainian_nationality", "ukraińska"), _defineProperty(_pl, "slovac_nationality", "słowacka"), _defineProperty(_pl, "hanguarian_nationality", "węgierska"), _defineProperty(_pl, "polish_nationality", "polska"), _defineProperty(_pl, "dutch_nationality", "holenderska"), _defineProperty(_pl, "hindu_nationality", "hinduska"), _defineProperty(_pl, "french_nationality", "francuska"), _defineProperty(_pl, "spanish_nationality", "hiszpańska"), _defineProperty(_pl, "italian_nationality", "włoska"), _defineProperty(_pl, "canadian_nationality", "kanadyjska"), _defineProperty(_pl, "argentinian_nationality", "argentyńska"), _defineProperty(_pl, "house", "dom"), _defineProperty(_pl, "bathroom", "łazienka"), _defineProperty(_pl, "office", "biuro"), _defineProperty(_pl, "school", "szkoła"), _defineProperty(_pl, "public_place", "miejsca publiczne"), _defineProperty(_pl, "car", "samochód"), _defineProperty(_pl, "nature", "łono natury"), _defineProperty(_pl, "solarium", "solarium"), _defineProperty(_pl, "elevator", "winda"), _defineProperty(_pl, "beach", "plaża"), _defineProperty(_pl, "gym", "siłownia"), _defineProperty(_pl, "POV", "POV"), _defineProperty(_pl, "outside_camera_style", "z zewnątrz"), _defineProperty(_pl, "mixed_camera_style", "mieszane"), _defineProperty(_pl, "female_pupil", "uczennica"), _defineProperty(_pl, "female_employee", "pracownica"), _defineProperty(_pl, "female_student", "studentka"), _defineProperty(_pl, "wife", "żona"), _defineProperty(_pl, "female_teacher", "nauczycielka"), _defineProperty(_pl, "nurse", "pielęgniarka"), _defineProperty(_pl, "female_slave", "niewolnica"), _defineProperty(_pl, "nun", "zakonnica"), _defineProperty(_pl, "female_police_officer", "policjantka"), _defineProperty(_pl, "prostitute", "prostytutka"), _defineProperty(_pl, "female_boss", "szefowa"), _defineProperty(_pl, "cleaner", "sprzątaczka"), _defineProperty(_pl, "mommy", "mamusia"), _defineProperty(_pl, "amateur", "amatorski"), _defineProperty(_pl, "professional", "profesjonalny"), _defineProperty(_pl, "choose_options", "wybierz opcje"), _defineProperty(_pl, "search", "szukaj"), _defineProperty(_pl, "remove_option", "usuń opcję"), _defineProperty(_pl, "close", "zamknij"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę"), _defineProperty(_pl, "fetching_pornstars", "Pobieram listę gwiazd"), _defineProperty(_pl, "not_selected", "nie wybrano"), _defineProperty(_pl, "minutes_inflected", "minut(y)"), _defineProperty(_pl, "views_inflected", "wyświetleń"), _defineProperty(_pl, "unexpected_error_occured", "Pojawił się bliżej niezidentyfikowany błąd"), _defineProperty(_pl, "titsSize", "rozmiar cycków"), _defineProperty(_pl, "assSize", "rozmiar dupci"), _defineProperty(_pl, "thicknessSize", "tusza"), _defineProperty(_pl, "ageRange", "przedział wiekowy"), _defineProperty(_pl, "hairColor", "kolor włosów"), _defineProperty(_pl, "race", "rasa"), _defineProperty(_pl, "abundanceType", "liczebność"), _defineProperty(_pl, "cumshotType", "typ wytrysku"), _defineProperty(_pl, "nationality", "narodowość"), _defineProperty(_pl, "location", "lokalizacja"), _defineProperty(_pl, "cameraStyle", "ujęcie kamery"), _defineProperty(_pl, "storyOrCostume", "motyw fabularno kostiumowy"), _defineProperty(_pl, "professionalismLevel", "poziom filmu"), _defineProperty(_pl, "shavedPussy", "wygolona cipka"), _defineProperty(_pl, "analAmount", "anal"), _defineProperty(_pl, "blowjob", "obciąganie"), _defineProperty(_pl, "handjob", "walenie konika"), _defineProperty(_pl, "blondes", "blondynki"), _defineProperty(_pl, "tittfuck", "na hiszpana"), _defineProperty(_pl, "pussy_licking", "minetka"), _defineProperty(_pl, "feet", "stopy"), _defineProperty(_pl, "femdom", "kobieca dominacja"), _defineProperty(_pl, "brunettes", "brunetki"), _defineProperty(_pl, "redheads", "rude"), _defineProperty(_pl, "milfs", "dojrzałe"), _defineProperty(_pl, "teens", 'nastolatki'), _defineProperty(_pl, "amateur", "amatorskie"), _defineProperty(_pl, "asian", 'azjatki'), _defineProperty(_pl, "latins", 'latynoski'), _defineProperty(_pl, "ebony", 'murzynki'), _defineProperty(_pl, "lesbians", 'lesbijki'), _defineProperty(_pl, "group", 'grupowy'), _defineProperty(_pl, "cumshot_compilation", 'kompilacja wytrysków'), _defineProperty(_pl, "cum_on_face", 'wytrysk na twarz'), _defineProperty(_pl, "cum_swallow", 'połykanie spermy'), _defineProperty(_pl, "cum_on_feet", 'wytrysk na stopy'), _defineProperty(_pl, "creampie", 'wytrysk w cipkę'), _defineProperty(_pl, "cum_in_ass", 'wytrysk w dupkę'), _defineProperty(_pl, "cum_on_titts", 'wytrysk na cycki'), _defineProperty(_pl, "pantyhose", 'rajstopki'), _defineProperty(_pl, "high_heels", 'szpile'), _defineProperty(_pl, "nurses", 'pielęgniarki'), _defineProperty(_pl, "teachers", 'nauczycielki'), _defineProperty(_pl, "japanese", 'japonki'), _defineProperty(_pl, "russian", 'rosjanki'), _defineProperty(_pl, "pornstars", 'gwiazdy'), _defineProperty(_pl, "blowjobAmount", 'obciąganie'), _defineProperty(_pl, "handjobAmount", 'walenie konika'), _defineProperty(_pl, "doublePenetrationamount", "wtyczka"), _defineProperty(_pl, "vaginalamount", "waginalny"), _defineProperty(_pl, "pussyLickingAmount", 'minetka'), _defineProperty(_pl, "feetamount", 'pieszczenie stóp'), _defineProperty(_pl, "position69amount", 'pozycja 69'), _defineProperty(_pl, "titfuckAmount", "na hiszpana"), _defineProperty(_pl, "isCumshotCompilation", 'kompilacja wytrysków'), _defineProperty(_pl, "recordedBySpamCamera", 'nagrany kamerą szpiegowską'), _defineProperty(_pl, "isSadisticOrMasochistic", 'sado-masochostyczny'), _defineProperty(_pl, "isFemaleDomination", 'kobieca dominacja'), _defineProperty(_pl, "isTranslatedToPolish", 'polska wersja językowa'), _defineProperty(_pl, "showPantyhose", 'rajstopy'), _defineProperty(_pl, "showStockings", 'pończochy'), _defineProperty(_pl, "showGlasses", 'okulary'), _defineProperty(_pl, "showHighHeels", 'szpile'), _defineProperty(_pl, "showHugeCock", 'wielki kutas'), _defineProperty(_pl, "showWhips", 'bicze'), _defineProperty(_pl, "showSexToys", 'sex-zabawki'), _defineProperty(_pl, "minimumMovieTime", "minimalny czas"), _defineProperty(_pl, "maximumMovieTime", "maksymalny czas"), _defineProperty(_pl, "minimumMovieViews", 'minimalna liczba wyświetleń'), _defineProperty(_pl, "maximumMovieViews", 'maksymalna liczba wyświetleń'), _defineProperty(_pl, "hasStory", 'zawiera fabułę'), _defineProperty(_pl, "total_movies_found", "Ilość znalezionych filmów"), _defineProperty(_pl, "movie_with_following_pornstars", "występują jednocześnie następujące gwiazdy"), _defineProperty(_pl, "last_page", "ostatnia"), _defineProperty(_pl, "movie_with_pornstar", "Film w którym występuje"), _defineProperty(_pl, "no_movies_have_been_found", "Nie znaleziono żadnych filmów pasujących do wybranych kryteriów"), _defineProperty(_pl, "no_options_have_been_selected", "Nie wybrano żadnych opcji"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd"), _defineProperty(_pl, "because_of_security_reasons_search_was_blocked", "Ze względów bezpieczeństwa ilość zapytań do wyszukiwarki w ciągu minuty jest ograniczona. Prosimy zaczekać chwilę i spróbować ponownie."), _defineProperty(_pl, "popular_categories", "Popularne kategorie"), _defineProperty(_pl, "categories_list", "Lista kategorii"), _defineProperty(_pl, "big_titts", "duże cycki"), _defineProperty(_pl, "packages", {
     content_sidebar: {
       hide_side_bar_title: "Schowaj boczne menu",
       hide_side_bar_caption: "Schowaj",
@@ -1240,13 +1224,12 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/empire_logo.vue?vue&type=style&index=0&id=e62713bc&lang=scss&scoped=true&":
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/empire_logo.vue?vue&type=style&index=0&id=e62713bc&lang=scss&scoped=true&":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/empire_logo.vue?vue&type=style&index=0&id=e62713bc&lang=scss&scoped=true& ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/empire_logo.vue?vue&type=style&index=0&id=e62713bc&lang=scss&scoped=true& ***!
   \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1264,13 +1247,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".logo-description[data-v-e62713bc] {\n
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_confirm.vue?vue&type=style&index=0&id=5787bafe&lang=scss&scoped=true&":
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_confirm.vue?vue&type=style&index=0&id=5787bafe&lang=scss&scoped=true&":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_confirm.vue?vue&type=style&index=0&id=5787bafe&lang=scss&scoped=true& ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_confirm.vue?vue&type=style&index=0&id=5787bafe&lang=scss&scoped=true& ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1288,13 +1270,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".icon-correct-value[data-v-5787bafe] {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_stop.vue?vue&type=style&index=0&id=087d39b4&lang=scss&scoped=true&":
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_stop.vue?vue&type=style&index=0&id=087d39b4&lang=scss&scoped=true&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_stop.vue?vue&type=style&index=0&id=087d39b4&lang=scss&scoped=true& ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_stop.vue?vue&type=style&index=0&id=087d39b4&lang=scss&scoped=true& ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1312,13 +1293,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".icon-container[data-v-087d39b4] {\n  
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/button_close.vue?vue&type=style&index=0&lang=scss&":
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/button_close.vue?vue&type=style&index=0&lang=scss&":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/button_close.vue?vue&type=style&index=0&lang=scss& ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/button_close.vue?vue&type=style&index=0&lang=scss& ***!
   \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1336,13 +1316,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".button-close:hover .button-close__cro
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/labeled_checkbox.vue?vue&type=style&index=0&id=233684f8&lang=scss&scoped=true&":
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/labeled_checkbox.vue?vue&type=style&index=0&id=233684f8&lang=scss&scoped=true&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/labeled_checkbox.vue?vue&type=style&index=0&id=233684f8&lang=scss&scoped=true& ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/labeled_checkbox.vue?vue&type=style&index=0&id=233684f8&lang=scss&scoped=true& ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1360,13 +1339,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".labeled-checkbox[data-v-233684f8] {\n
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/phantom_button.vue?vue&type=style&index=0&lang=scss&":
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/phantom_button.vue?vue&type=style&index=0&lang=scss&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/phantom_button.vue?vue&type=style&index=0&lang=scss& ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/phantom_button.vue?vue&type=style&index=0&lang=scss& ***!
   \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1384,13 +1362,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".phantom-button {\n  background: trans
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/submit_button.vue?vue&type=style&index=0&lang=scss&":
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/submit_button.vue?vue&type=style&index=0&lang=scss&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/submit_button.vue?vue&type=style&index=0&lang=scss& ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/submit_button.vue?vue&type=style&index=0&lang=scss& ***!
   \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1408,13 +1385,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".submit-button {\n  background: linear
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/text_input_combo.vue?vue&type=style&index=0&id=6c07a9d0&lang=scss&scoped=true&":
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/text_input_combo.vue?vue&type=style&index=0&id=6c07a9d0&lang=scss&scoped=true&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/text_input_combo.vue?vue&type=style&index=0&id=6c07a9d0&lang=scss&scoped=true& ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/text_input_combo.vue?vue&type=style&index=0&id=6c07a9d0&lang=scss&scoped=true& ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1432,13 +1408,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".error-message-box[data-v-6c07a9d0] {\
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/authenticated_user_sidebar.vue?vue&type=style&index=0&id=a04b05d0&lang=scss&scoped=true&":
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/authenticated_user_sidebar.vue?vue&type=style&index=0&id=a04b05d0&lang=scss&scoped=true&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/authenticated_user_sidebar.vue?vue&type=style&index=0&id=a04b05d0&lang=scss&scoped=true& ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/authenticated_user_sidebar.vue?vue&type=style&index=0&id=a04b05d0&lang=scss&scoped=true& ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1456,13 +1431,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".fixed-sidebar[data-v-a04b05d0] {\n  p
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/content_sidebar.vue?vue&type=style&index=0&lang=scss&":
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/content_sidebar.vue?vue&type=style&index=0&lang=scss&":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/content_sidebar.vue?vue&type=style&index=0&lang=scss& ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/content_sidebar.vue?vue&type=style&index=0&lang=scss& ***!
   \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1480,13 +1454,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".fixed-sidebar {\n  position: fixed;\n
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/navbar.vue?vue&type=style&index=0&id=5b8f8430&lang=scss&scoped=true&":
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/navbar.vue?vue&type=style&index=0&id=5b8f8430&lang=scss&scoped=true&":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/navbar.vue?vue&type=style&index=0&id=5b8f8430&lang=scss&scoped=true& ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/navbar.vue?vue&type=style&index=0&id=5b8f8430&lang=scss&scoped=true& ***!
   \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1510,7 +1483,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".login-info[data-v-5b8f8430] {\n  font
   \*****************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 /*
@@ -1580,365 +1552,19 @@ module.exports = function (cssWithMappingToString) {
 
 /***/ }),
 
-/***/ "./resources/svg/arrow_down.svg":
-/*!**************************************!*\
-  !*** ./resources/svg/arrow_down.svg ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"width\": \"122.88\",\n        \"height\": \"80.593\",\n        \"xmlns\": \"http://www.w3.org/2000/svg\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"fill\": \"none\",\n        \"d\": \"M-1-1h802v602H-1z\"\n      }\n    }), _c('g', [_c('path', {\n      attrs: {\n        \"fill\": \"#fff\",\n        \"d\": \"M123.88 0v30.82L62.44 80.593 1 30.82V0l61.44 49.772L123.88 0z\"\n      }\n    })])]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/camera.svg":
-/*!**********************************!*\
-  !*** ./resources/svg/camera.svg ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"viewBox\": \"0 0 108.1 122.88\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"d\": \"M17.61 47.71h52.57c4.88 0 8.86 3.99 8.86 8.86v38.52c0 4.87-3.99 8.86-8.86 8.86H53.94l11.79 18.92H54.75l-12.86-17.29-12.99 17.29H17.76l11.72-18.92H17.61c-4.87 0-8.86-3.99-8.86-8.86V56.57c0-4.87 3.98-8.86 8.86-8.86zm.22-38.49c4.92 0 9.38 2 12.61 5.22 3.23 3.23 5.22 7.69 5.22 12.61 0 4.92-2 9.38-5.22 12.61-3.23 3.23-7.69 5.22-12.61 5.22s-9.38-2-12.61-5.22A17.776 17.776 0 010 27.06c0-4.92 2-9.38 5.22-12.61s7.69-5.23 12.61-5.23zm7.1 10.74a10.006 10.006 0 00-7.1-2.94c-2.77 0-5.28 1.12-7.1 2.94a10.006 10.006 0 00-2.94 7.1c0 2.77 1.12 5.28 2.94 7.1s4.33 2.94 7.1 2.94c2.77 0 5.28-1.12 7.1-2.94s2.94-4.33 2.94-7.1a9.948 9.948 0 00-2.94-7.1zM60.62 0c6.2 0 11.81 2.51 15.87 6.57a22.37 22.37 0 016.57 15.87c0 6.2-2.51 11.81-6.57 15.87-4.06 4.06-9.67 6.57-15.87 6.57s-11.81-2.51-15.87-6.57a22.37 22.37 0 01-6.57-15.87c0-6.2 2.51-11.81 6.57-15.87S54.42 0 60.62 0zm10.26 12.19c-2.62-2.62-6.25-4.25-10.26-4.25s-7.63 1.62-10.26 4.25c-2.62 2.62-4.25 6.25-4.25 10.26s1.62 7.63 4.25 10.26c2.62 2.62 6.25 4.25 10.26 4.25s7.63-1.62 10.26-4.25 4.25-6.25 4.25-10.26-1.63-7.64-4.25-10.26zm13.19 77.78V61.52l24.02-14.16v57.15L84.07 89.97z\",\n        \"fill-rule\": \"evenodd\",\n        \"clip-rule\": \"evenodd\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/computer_folder_search.svg":
-/*!**************************************************!*\
-  !*** ./resources/svg/computer_folder_search.svg ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"width\": \"122.879\",\n        \"height\": \"95.205\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"d\": \"M2.476 20.741h4.496v-9.858A2.483 2.483 0 019.455 8.4h4.409V2.482A2.483 2.483 0 0116.347 0h40.26a2.482 2.482 0 012.482 2.482V8.4h54.296a2.482 2.482 0 012.481 2.483v9.858h4.529a2.482 2.482 0 012.426 3.006l-8.68 63.812c-.283 2.081-1.192 4.011-2.588 5.406-1.383 1.382-3.21 2.239-5.36 2.239H14.697c-2.163 0-4.028-.865-5.426-2.264-1.406-1.405-2.314-3.35-2.536-5.464l-6.722-64a2.476 2.476 0 012.462-2.729v-.006h.001zm56.328 16.295c5.385 0 10.271 2.192 13.809 5.716a19.445 19.445 0 015.717 13.81c0 3.939-1.175 7.621-3.181 10.687l8.452 9.212-5.831 5.329-8.151-8.968a19.443 19.443 0 01-10.815 3.266c-5.387 0-10.272-2.191-13.811-5.716a19.443 19.443 0 01-5.716-13.81c0-5.387 2.191-10.271 5.716-13.81a19.447 19.447 0 0113.811-5.716zm11.233 8.292a15.852 15.852 0 00-11.233-4.659 15.85 15.85 0 00-11.234 4.659 15.855 15.855 0 00-4.66 11.234c0 4.383 1.786 8.359 4.66 11.233s6.85 4.659 11.234 4.659c4.382 0 8.359-1.785 11.233-4.659s4.659-6.851 4.659-11.233c0-4.383-1.785-8.359-4.659-11.234zM9.455 25.706H5.227l6.435 61.268c.103.979.497 1.854 1.101 2.457.5.5 1.165.81 1.935.81h91.498c.747 0 1.384-.301 1.869-.785.621-.621 1.033-1.534 1.172-2.555l8.324-61.194H9.455v-.001zm2.483-12.341v7.358l98.965-1.052v-6.307H56.607a2.483 2.483 0 01-2.483-2.482V4.965H18.83v5.918a2.482 2.482 0 01-2.482 2.482h-4.41z\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/control_panel.svg":
-/*!*****************************************!*\
-  !*** ./resources/svg/control_panel.svg ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"width\": \"122.879\",\n        \"height\": \"122.102\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"d\": \"M9.96 0h102.96a9.926 9.926 0 017.035 2.919 9.927 9.927 0 012.924 7.032v102.201a9.93 9.93 0 01-2.924 7.031 9.913 9.913 0 01-7.035 2.918H9.96a9.91 9.91 0 01-7.035-2.918A9.925 9.925 0 010 112.152V9.951a9.922 9.922 0 012.925-7.032A9.922 9.922 0 019.96 0zm70.669 41.732h7.365V17.8a3.715 3.715 0 013.721-3.722c1.029 0 1.961.414 2.631 1.088a3.71 3.71 0 011.092 2.634v23.932h7.359a4.022 4.022 0 014.01 4.009 4.02 4.02 0 01-4.01 4.009h-7.359v36.488a3.699 3.699 0 01-1.092 2.629 3.708 3.708 0 01-2.631 1.092 3.73 3.73 0 01-2.633-1.092 3.703 3.703 0 01-1.088-2.629V49.75h-7.365a4.02 4.02 0 01-4.008-4.009 4.02 4.02 0 014.008-4.009zM50.165 58.956h7.362V17.8a3.71 3.71 0 011.091-2.634 3.701 3.701 0 012.633-1.088c1.022 0 1.956.414 2.628 1.088a3.707 3.707 0 011.088 2.634v41.155h7.365a4.022 4.022 0 014.01 4.009 4.022 4.022 0 01-4.01 4.01h-7.365v19.264a3.695 3.695 0 01-1.088 2.629 3.715 3.715 0 01-5.261 0 3.698 3.698 0 01-1.091-2.629V66.975h-7.362a4.022 4.022 0 01-4.009-4.01 4.019 4.019 0 014.009-4.009zM19.971 41.35h7.194V17.8c0-1.031.419-1.96 1.094-2.634a3.7 3.7 0 012.63-1.088c1.026 0 1.957.414 2.631 1.088a3.707 3.707 0 011.088 2.634v23.55h7.53a4.02 4.02 0 014.009 4.009 4.02 4.02 0 01-4.009 4.009h-7.53v36.871a3.72 3.72 0 01-3.719 3.721 3.71 3.71 0 01-2.63-1.092 3.7 3.7 0 01-1.094-2.629V49.368h-7.194a4.02 4.02 0 01-4.009-4.009 4.02 4.02 0 014.009-4.009zm71.744 53.83c2.205 0 4.203.895 5.658 2.346l.006-.004a7.994 7.994 0 012.346 5.668 7.98 7.98 0 01-2.346 5.652l-.012.018a8.008 8.008 0 01-11.314-.006l-.123-.139a7.993 7.993 0 01.123-11.193 7.987 7.987 0 015.662-2.342zm2.734 5.267a3.848 3.848 0 00-2.734-1.123 3.857 3.857 0 00-2.732 1.131 3.855 3.855 0 00-1.135 2.734c0 1.025.4 1.955 1.043 2.646l.092.084a3.857 3.857 0 002.732 1.131 3.831 3.831 0 002.734-1.123l.008-.008a3.868 3.868 0 00-.008-5.464l.006-.002-.006-.006zm-33.2-5.267a7.98 7.98 0 015.658 2.346l.004-.004a7.989 7.989 0 012.35 5.668 7.973 7.973 0 01-2.354 5.658l.004.006a7.983 7.983 0 01-5.662 2.344 7.997 7.997 0 01-5.655-2.344l-.014-.018a7.968 7.968 0 01-2.339-5.646c0-2.215.897-4.217 2.348-5.668l.132-.123a7.983 7.983 0 015.528-2.219zm2.733 5.267a3.862 3.862 0 00-2.734-1.123 3.852 3.852 0 00-2.648 1.037l-.083.094a3.842 3.842 0 00-1.134 2.734c0 1.068.428 2.035 1.125 2.73l.009.008a3.827 3.827 0 002.73 1.123 3.861 3.861 0 002.734-1.131l.006.002.002-.002a3.848 3.848 0 001.123-2.73 3.844 3.844 0 00-1.131-2.734l.006-.002-.005-.006zM30.89 95.18c2.211 0 4.216.895 5.661 2.342a7.99 7.99 0 01-.003 11.326l.003.006a8.006 8.006 0 01-11.319 0l-.012-.018a7.97 7.97 0 01-2.342-5.646c0-2.215.896-4.217 2.348-5.668l.131-.123a7.995 7.995 0 015.533-2.219zm2.731 5.275a3.847 3.847 0 00-2.731-1.131 3.848 3.848 0 00-2.647 1.037l-.085.094a3.84 3.84 0 00-1.131 2.734c0 1.068.429 2.035 1.123 2.73l.009.008a3.834 3.834 0 002.733 1.123 3.847 3.847 0 002.731-1.131l.006.002.003-.002a3.845 3.845 0 001.125-2.73 3.848 3.848 0 00-1.136-2.734zM112.92 4.981H9.96c-1.369 0-2.611.56-3.51 1.463a4.948 4.948 0 00-1.463 3.507v102.201c0 1.361.56 2.607 1.463 3.506a4.929 4.929 0 003.51 1.461h102.96a4.927 4.927 0 003.51-1.461 4.948 4.948 0 001.463-3.506V9.951a4.95 4.95 0 00-1.463-3.507 4.941 4.941 0 00-3.51-1.463z\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/exit_arrow.svg":
-/*!**************************************!*\
-  !*** ./resources/svg/exit_arrow.svg ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"width\": \"110.395\",\n        \"height\": \"122.88\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"fill-rule\": \"evenodd\",\n        \"clip-rule\": \"evenodd\",\n        \"d\": \"M93.359 17.16L75.68 9.377 75.99 0h34.404V122.879H75.99l-.311-6.835 17.68-10.946V17.16zm-11.33 62.079v-34.54H47.004V13.631L0 61.937l47.004 48.373V79.24h35.025v-.001z\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/fast_backward.svg":
-/*!*****************************************!*\
-  !*** ./resources/svg/fast_backward.svg ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"viewBox\": \"0 0 122.88 99.73\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"fill-rule\": \"evenodd\",\n        \"clip-rule\": \"evenodd\",\n        \"d\": \"M15.71 58.97l52.95 40.76V58l54.22 41.73V5.08L68.66 46.17V5.08L15.71 45.21V0H0v93.23h15.71V58.97z\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/fast_forward.svg":
-/*!****************************************!*\
-  !*** ./resources/svg/fast_forward.svg ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"viewBox\": \"0 0 122.88 96.93\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"fill-rule\": \"evenodd\",\n        \"clip-rule\": \"evenodd\",\n        \"d\": \"M107.61 0h15.27v90.62h-15.27V54.67L52.7 96.93V56.37L0 96.93v-92l52.7 39.94V4.93l54.91 41.62V0z\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/finger_point.svg":
-/*!****************************************!*\
-  !*** ./resources/svg/finger_point.svg ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"viewBox\": \"0 0 104.31 122.88\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"d\": \"M25.85 63.15c-.04-.12-.08-.28-.1-.42-.22-1.89-.43-3.98-.62-5.78-.26-2.64-.55-5.69-.76-7.83-.14-1.45-.6-2.83-1.27-3.86-.45-.66-.95-1.15-1.51-1.39-.45-.18-1-.2-1.57.02-.78.3-1.65.93-2.62 2.03-.86.98-1.53 2.29-2.09 3.68-.79 2.03-1.26 4.19-1.45 5.67-.02.1-.02.18-.06.26L8.42 86.07c-.08.4-.24.76-.48 1.04-1.81 2.33-2.95 4.33-3.28 5.95-.24 1.19 0 2.15.79 2.9l19.8 19.8a8.47 8.47 0 004.47 2.29c1.91.36 4.14.16 6.7-.54.04 0 .1-.02.14-.02.97-.26 2.24-.57 3.46-.88 5.31-1.29 9.94-2.43 14.23-6.33l5.52-5.76c.05-.1.14-.18.22-.26s.62-.62 1.35-1.31c3.78-3.69 8.45-8.25 5.61-12.24l-2.21-2.21c-1.07 1.04-2.21 2.05-3.3 3.02-1 .88-1.93 1.69-2.78 2.55-.91.91-2.38.91-3.3 0-.91-.92-.91-2.38 0-3.3.86-.86 1.91-1.79 3-2.76 3.74-3.3 8.03-7.07 5.73-10.38l-2.19-2.19a2.38 2.38 0 01-.31-.4c-1.26 1.29-2.64 2.52-4 3.72-1 .88-1.93 1.69-2.78 2.55-.91.91-2.38.91-3.3 0s-.91-2.38 0-3.3c.86-.86 1.91-1.79 3-2.76 3.74-3.3 8.03-7.07 5.73-10.38l-2.19-2.19c-.16-.16-.28-.31-.38-.5l-6.42 6.42c-.91.91-2.38.91-3.3 0s-.91-2.38 0-3.3l17.22-17.25c2.88-2.88 3.54-5.88 2.78-8.15-.28-.83-.74-1.57-1.31-2.14s-1.31-1.03-2.14-1.31c-2.24-.74-5.23-.06-8.19 2.9l-30.2 30.2c-.91.91-2.38.91-3.3 0s-.91-2.38 0-3.3l3.07-3.07-.03-.03zm57.38-38.84a3.195 3.195 0 01-4.52.14 3.195 3.195 0 01-.14-4.52l8.82-9.39a3.195 3.195 0 014.52-.14c1.3 1.22 1.34 3.24.14 4.52l-8.82 9.39zm-39.27-.66c1.3 1.22 1.34 3.25.14 4.52a3.195 3.195 0 01-4.52.14l-9.4-8.82a3.214 3.214 0 01-.14-4.52 3.195 3.195 0 014.52-.14l9.4 8.82zm19.73-7.69c.05 1.76-1.34 3.24-3.09 3.3s-3.24-1.34-3.3-3.09L56.91 3.3C56.85 1.55 58.25.06 60 0c1.76-.05 3.24 1.34 3.29 3.09l.4 12.87zm13.19 47.35a3.195 3.195 0 01-.14-4.52 3.195 3.195 0 014.52-.14l9.39 8.82c1.3 1.22 1.34 3.24.14 4.52a3.195 3.195 0 01-4.52.14l-9.39-8.82zm11.48-18.96c-1.75.06-3.24-1.34-3.3-3.09-.05-1.75 1.34-3.24 3.09-3.3l12.86-.43c1.75-.06 3.24 1.34 3.3 3.09s-1.34 3.24-3.09 3.3l-12.86.43zM60.88 58.97c.17.1.34.22.5.38l2.29 2.29c.12.12.24.28.34.42 2.57 3.52 2.17 6.66.42 9.52.31.12.62.29.86.54l2.29 2.29c.12.12.24.28.34.42 2.76 3.8 2.07 7.12 0 10.14.1.05.17.14.28.24l2.29 2.29c.12.12.24.28.34.42 5.31 7.26-1.02 13.42-6.1 18.39l-1.31 1.31-5.67 5.95-.18.17c-5.19 4.71-10.33 5.97-16.28 7.42-1 .24-2 .5-3.4.86-.04 0-.06.02-.1.02-3.22.88-6.14 1.09-8.76.62-2.66-.48-4.97-1.67-6.9-3.56L2.31 99.29c-2-1.93-2.69-4.31-2.12-7.14.43-2.26 1.75-4.77 3.81-7.47l5.3-29.94v-.12c.24-1.71.78-4.24 1.71-6.68.71-1.83 1.67-3.62 2.92-5.07 1.51-1.71 3-2.76 4.47-3.32 1.81-.69 3.54-.6 5.07.06 1.43.6 2.64 1.69 3.56 3.08 1.12 1.67 1.85 3.8 2.05 6.02.16 1.83.48 4.85.78 7.81l.24 2.47L53 36.07c4.4-4.4 9.16-5.27 12.97-4.02 1.53.5 2.88 1.33 4 2.45s1.95 2.47 2.45 4c1.26 3.8.4 8.63-3.92 12.95l-7.59 7.59-.03-.07z\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/folder.svg":
-/*!**********************************!*\
-  !*** ./resources/svg/folder.svg ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"viewBox\": \"0 0 122.88 94.03\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"d\": \"M7.27 8.75h7.18V0H56.4v8.75h59.17v11.71l-108.3-5.2V8.75zM0 21.61h122.88l-9.07 66.7c-.42 3.11-2.59 5.72-5.73 5.72H12.73c-3.14 0-5.4-2.59-5.73-5.73L0 21.61z\",\n        \"fill-rule\": \"evenodd\",\n        \"clip-rule\": \"evenodd\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/folder_search.svg":
-/*!*****************************************!*\
-  !*** ./resources/svg/folder_search.svg ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"width\": \"122.879\",\n        \"height\": \"94.035\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"fill-rule\": \"evenodd\",\n        \"clip-rule\": \"evenodd\",\n        \"d\": \"M7.272 8.754h7.181V0h41.954v8.754h59.167v11.708L7.272 15.257V8.754zm50.469 26.243c5.626 0 10.73 2.289 14.425 5.97a20.313 20.313 0 015.971 14.425c0 4.115-1.227 7.961-3.322 11.164l8.83 9.621-6.092 5.567-8.514-9.368a20.313 20.313 0 01-11.298 3.412c-5.626 0-10.729-2.289-14.426-5.971a20.31 20.31 0 01-5.971-14.426c0-5.626 2.29-10.729 5.971-14.425a20.312 20.312 0 0114.426-5.969zm11.734 8.662a16.555 16.555 0 00-11.734-4.867 16.552 16.552 0 00-11.734 4.867 16.558 16.558 0 00-4.867 11.734c0 4.579 1.865 8.732 4.867 11.734a16.554 16.554 0 0011.734 4.867 16.55 16.55 0 0011.734-4.867 16.557 16.557 0 004.867-11.734c0-4.579-1.865-8.732-4.867-11.734zM0 21.613h122.879l-9.072 66.698c-.424 3.112-2.586 5.724-5.727 5.724H12.735c-3.145 0-5.401-2.594-5.73-5.729L0 21.613z\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/improvement_performance.svg":
-/*!***************************************************!*\
-  !*** ./resources/svg/improvement_performance.svg ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"viewBox\": \"0 0 122.88 97.62\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"d\": \"M90.51 64.82c-.39-.27-.83-.39-1.28-.3-.45.09-.83.33-1.1.71l-1.52 2.14c-.54-.24-1.1-.42-1.7-.57-.6-.15-1.16-.27-1.76-.36l-.48-2.8c-.09-.48-.33-.83-.68-1.1-.39-.27-.8-.36-1.28-.27l-3.51.63c-.45.09-.8.3-1.1.69-.27.39-.39.8-.3 1.28l.45 2.56c-.57.24-1.1.51-1.61.83-.51.3-1.01.66-1.46 1.01l-2.38-1.64c-.39-.27-.8-.39-1.25-.3-.45.09-.83.33-1.1.72l-2.03 2.89c-.27.39-.39.83-.3 1.28.09.48.33.83.72 1.1l2.14 1.52c-.24.54-.42 1.1-.57 1.7-.15.6-.27 1.16-.36 1.76l-2.8.48c-.48.09-.83.33-1.1.68-.27.39-.36.8-.27 1.28l.63 3.51c.09.45.3.8.68 1.1.39.27.8.39 1.28.3l2.56-.45c.24.57.51 1.1.83 1.61.3.51.66 1.01 1.01 1.49l-1.64 2.35c-.27.39-.39.8-.3 1.25.09.45.33.83.71 1.1l2.92 2.05c.39.27.83.36 1.28.27.45-.09.83-.3 1.13-.68l1.52-2.17c.54.24 1.1.42 1.7.57.6.15 1.16.27 1.76.36l.48 2.8c.09.48.33.83.68 1.1.39.27.8.36 1.28.27l3.51-.63c.45-.09.8-.3 1.1-.68.27-.39.39-.8.3-1.28l-.45-2.56c.57-.24 1.1-.51 1.61-.83.51-.3 1.01-.65 1.49-1.01l2.35 1.64c.39.27.8.39 1.28.3.48-.09.83-.33 1.1-.71l2.05-2.92c.27-.39.36-.83.27-1.28-.09-.45-.3-.83-.69-1.13l-2.17-1.49c.24-.54.42-1.1.57-1.7.15-.6.27-1.16.36-1.76l2.8-.48c.48-.09.83-.33 1.1-.69.27-.39.36-.8.27-1.28l-.63-3.51c-.09-.45-.3-.8-.68-1.1-.39-.27-.8-.39-1.28-.3l-2.56.45c-.24-.54-.51-1.07-.83-1.61-.3-.54-.66-1.01-1.01-1.46l1.64-2.38c.27-.39.39-.8.3-1.25-.09-.45-.33-.83-.71-1.1l-2.89-2.03-.08.03zm26.41-9.69l-6.52.06a1.72 1.72 0 01-.03-3.44l10.73-.11h.26l.04.01h.01l.04.01h.01l.04.01h.01l.03.01h.01l.03.01h.01l.03.01h.01l.03.01h.01l.03.01h.01l.03.01h.01l.03.01h.01l.03.01h.01l.03.01h.01l.03.01h.01l.03.02h.01l.03.02h.01l.03.02h.01l.03.02h.01l.03.02h.01l.03.02h.01l.03.02h.01l.03.02h.01l.03.02h.01l.03.02h.01l.03.02h.01l.03.02h.01l.03.02.01.01.02.02.01.01.02.02.02.02v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.01.03v.01l.01.03v.01l.01.03.01.03v.02l.01.03v.01l.01.03v.01l.01.03v.01l.01.03v.01l.01.03V53l.01.04v.01l.01.04v.01l.01.04v.01l.01.04v.2l.05 11.09c0 .95-.76 1.72-1.71 1.73-.95 0-1.72-.76-1.72-1.71l-.03-6.96-6.3 6.3c-.67.67-1.77.67-2.44 0s-.67-1.77 0-2.44l6.18-6.27zM57.64 3.48l-6.52.06c-.95.01-1.72-.76-1.73-1.7A1.72 1.72 0 0151.1.11L61.83 0h.26l.04.01h.01l.04.01h.01l.04.01h.01l.03.01h.01l.03.01h.01l.03.01h.01l.03.01h.01l.03.01h.01l.03.01h.01l.03.01h.01l.03.01h.01l.03.01h.01l.03.01h.01l.03.02h.01l.03.02h.01l.03.02h.01l.03.02h.01l.03.02h.01l.03.02h.01l.03.02h.01l.03.02h.01l.03.02H63l.03.02h.01l.03.02h.01l.03.02h.01l.03.02.01.01.02.02.01.01.02.02v.01l.02.02v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01l.02.03v.01L63.4 1v.01l.01.03v.01l.01.03v.01l.01.03.01.03v.02l.01.03v.01l.01.03v.01l.01.03v.01l.01.03v.01l.01.04v.01l.01.04v.01l.01.04v.01l.01.04v.25l.05 11.09c0 .95-.76 1.72-1.71 1.72s-1.72-.76-1.72-1.71l-.03-6.96-6.3 6.3c-.67.67-1.77.67-2.44 0-.67-.67-.67-1.77 0-2.44l6.27-6.29zm39.85 14.28l-12.13.12a2.57 2.57 0 11-.04-5.14l18.43-.18H104.04l.05.01h.01l.05.01h.01l.05.01h.01l.05.01h.01l.05.01h.01l.05.01h.01l.05.01h.01l.05.01h.01l.05.02h.01l.05.02h.01l.05.02h.01l.05.02h.01l.05.02h.01l.05.02h.01l.05.02h.01l.05.02.01.01.05.02.01.01.04.03.01.01.04.03.01.01.04.03.01.01.04.03.01.01.04.03.01.01.04.03.01.01.04.03.01.01.04.03.01.01.04.03.01.01.04.03.01.01.04.04.01.01.04.04.01.01.04.04.01.01.03.04.01.01.03.04.01.01.03.04.01.01.03.04.01.01.03.04.01.01.03.04.01.01.03.04.01.01.03.04.01.01.03.04v.01l.03.05v.01l.03.05.02.05v.01l.02.05v.01l.02.05v.01l.02.05v.01l.02.05v.01l.02.05v.01l.02.05v.01l.02.05v.01l.01.05v.01l.01.05v.01l.01.05v.01l.01.06.01.05v.01l.01.05v.01l.01.05v.01l.01.06v.22l.08 18.69a2.57 2.57 0 01-2.56 2.58 2.57 2.57 0 01-2.58-2.56l-.05-12.51-17.84 17.81a2.577 2.577 0 01-3.65 0 2.577 2.577 0 010-3.65l17.73-17.73zM80.29 73.1c.92-.15 1.85-.15 2.77.06.89.21 1.7.57 2.44 1.07.71.51 1.34 1.16 1.85 1.94.51.77.83 1.64.98 2.56.15.92.15 1.85-.06 2.77-.21.89-.57 1.7-1.07 2.44-.51.71-1.16 1.34-1.94 1.85-.77.51-1.64.83-2.56.98-.92.15-1.85.15-2.77-.06-.89-.21-1.7-.57-2.44-1.07a7.295 7.295 0 01-1.85-1.94c-.51-.77-.83-1.64-.98-2.56-.15-.92-.15-1.85.06-2.77.21-.89.57-1.7 1.07-2.44.51-.71 1.16-1.34 1.94-1.85.78-.5 1.64-.83 2.56-.98zM53.25 31.35a1.22 1.22 0 00-.42-.3c-.12-.06-.27-.09-.45-.09s-.33.03-.45.09-.27.15-.39.27l-.03.03-3.37 3.37a1.9 1.9 0 01-2.44.21c-.39-.24-.77-.48-1.22-.71-.48-.24-.92-.48-1.34-.69-.45-.21-.92-.42-1.4-.6-.42-.15-.89-.33-1.46-.51-.8-.27-1.31-1.01-1.31-1.82v-5.15c0-.18-.03-.36-.09-.48s-.15-.27-.27-.36a1.41 1.41 0 00-.36-.27c-.12-.06-.3-.09-.48-.09H31.3c-.18 0-.33.03-.45.06-.12.06-.27.15-.42.3-.12.12-.21.24-.24.36-.06.12-.09.3-.09.48v4.74c0 .95-.69 1.73-1.58 1.91-.51.12-.98.24-1.4.36-.48.15-.92.3-1.4.48-.45.18-.92.36-1.37.6-.48.21-.89.45-1.31.66-.77.42-1.67.27-2.26-.33l-3.72-3.69c-.03-.03-.03-.03-.03-.06a1.41 1.41 0 00-.36-.27c-.12-.06-.24-.06-.42-.06s-.33.03-.45.09c-.15.06-.27.15-.42.3l-4.53 4.56c-.15.15-.24.27-.3.42-.06.12-.09.27-.09.45s.03.33.09.45.15.27.27.39v.03l3.37 3.37c.65.65.74 1.7.21 2.44-.24.39-.48.77-.71 1.22-.24.48-.48.92-.69 1.34-.21.45-.42.92-.6 1.4-.15.42-.33.89-.51 1.46-.27.8-1.01 1.31-1.82 1.31H4.94c-.18 0-.36.03-.48.09s-.24.15-.36.24c-.12.12-.21.24-.24.36-.06.12-.09.3-.09.48v6.49c0 .18.03.33.06.45.06.12.15.27.3.42.12.12.24.21.36.24.12.06.3.09.48.09h4.74c.95 0 1.73.68 1.91 1.58.12.51.24.98.36 1.37.15.48.3.95.48 1.43.18.45.36.92.6 1.4.24.51.45.95.66 1.37.39.77.24 1.67-.36 2.23l-3.69 3.66-.05-.02c-.12.12-.21.24-.27.36-.06.12-.06.24-.06.42s.03.33.09.45c.06.15.15.3.3.42l4.5 4.56c.12.12.27.21.42.27.15.06.3.09.48.09s.36-.03.51-.09c.12-.06.27-.15.39-.24l3.34-3.4c.66-.69 1.7-.74 2.44-.24.39.24.77.48 1.22.71.48.24.92.48 1.34.68.45.21.92.42 1.4.6.42.15.89.33 1.46.51.8.27 1.31 1.01 1.31 1.82v5.15c0 .18.03.36.09.48s.15.27.24.36c.24.24.51.33.86.33h6.49c.18 0 .33-.03.45-.06.12-.06.27-.15.42-.3.12-.12.21-.24.24-.36.06-.12.09-.3.09-.48V78.2c0-.95.69-1.73 1.58-1.91.51-.12.98-.24 1.4-.36.48-.15.92-.3 1.4-.48.45-.18.92-.36 1.4-.6.51-.24.95-.45 1.37-.66.77-.39 1.67-.24 2.23.36l3.66 3.69.03.03c.12.12.24.21.36.27.12.06.27.06.45.06s.33-.03.45-.09.24-.15.36-.27c.03-.03.06-.06.09-.06l4.53-4.47c.12-.12.21-.27.27-.42.06-.15.09-.3.09-.48s-.03-.36-.09-.51c-.06-.12-.15-.27-.24-.39l-3.4-3.34c-.69-.65-.74-1.7-.24-2.44.24-.39.48-.77.71-1.22.24-.48.48-.92.69-1.34.21-.45.42-.92.6-1.4.15-.42.33-.89.51-1.46.27-.8 1.01-1.31 1.82-1.31h5.15c.18 0 .36-.03.48-.09s.27-.15.36-.24c.24-.24.33-.51.33-.86v-6.49c0-.18-.03-.33-.06-.45-.06-.12-.15-.27-.3-.42-.12-.12-.24-.21-.36-.24-.12-.06-.3-.09-.48-.09h-4.74c-.95 0-1.76-.71-1.91-1.61-.12-.42-.24-.86-.36-1.31-.15-.45-.3-.92-.51-1.43 0-.03-.03-.06-.03-.09-.18-.48-.36-.89-.54-1.31-.21-.45-.42-.89-.66-1.31-.42-.77-.27-1.67.33-2.26l3.69-3.72c0-.03.03-.03.06-.03.12-.12.21-.24.27-.36.06-.12.06-.24.06-.42s-.03-.33-.09-.45a1.22 1.22 0 00-.3-.42l-4.56-4.53.02.08zm1.07-3.85c.63.27 1.16.63 1.64 1.1l4.56 4.53h.03c.48.48.83 1.01 1.1 1.61.27.63.39 1.25.39 1.94 0 .68-.15 1.34-.39 1.94-.27.6-.63 1.13-1.13 1.58l-2.68 2.71c.03.09.09.18.12.27.24.51.45 1.04.65 1.55 0 .03.03.06.03.09.21.51.39 1.07.57 1.67l.06.21h3.28c.68 0 1.34.12 1.94.39.6.24 1.13.63 1.61 1.1l.03.03c.48.48.83 1.01 1.07 1.61.24.6.39 1.25.39 1.91v6.49c0 1.4-.48 2.59-1.46 3.57-.48.48-1.04.86-1.64 1.1-.6.24-1.25.36-1.94.36h-3.81c-.03.09-.09.21-.12.3-.21.54-.45 1.07-.68 1.61-.27.57-.51 1.1-.77 1.58l-.09.18 2.32 2.29.09.09c.48.48.8 1.04 1.04 1.64.24.6.36 1.22.36 1.91 0 .66-.12 1.28-.36 1.88-.24.6-.57 1.13-1.04 1.64l-.06.06-4.56 4.53c-.48.51-1.01.86-1.61 1.13-.6.27-1.25.39-1.97.39-.68 0-1.34-.15-1.97-.39-.63-.27-1.16-.66-1.61-1.13l-2.65-2.68c-.09.06-.18.09-.3.12-.51.21-1.04.45-1.61.66-.54.21-1.1.39-1.67.57-.09.03-.15.06-.24.06v3.25c0 .68-.12 1.34-.39 1.94-.24.6-.63 1.13-1.1 1.61l-.03.03c-.48.48-1.01.83-1.61 1.07-.6.24-1.25.39-1.91.39h-6.49c-1.4 0-2.59-.48-3.57-1.46-.48-.48-.86-1.04-1.1-1.64-.24-.6-.36-1.25-.36-1.94v-3.81c-.09-.03-.21-.09-.3-.12-.54-.21-1.07-.45-1.61-.69-.57-.27-1.1-.51-1.58-.77l-.18-.09-2.29 2.32-.09.09c-.48.48-1.04.8-1.64 1.04-.6.24-1.22.36-1.91.36-.66 0-1.28-.12-1.88-.36-.6-.24-1.13-.57-1.64-1.04l-.06-.06-4.56-4.62c-.48-.48-.83-1.01-1.1-1.61-.27-.63-.39-1.25-.39-1.94s.15-1.34.39-1.94c.27-.6.66-1.13 1.13-1.61l2.68-2.65a.898.898 0 01-.12-.3c-.21-.51-.45-1.04-.66-1.61-.21-.57-.42-1.1-.57-1.67l-.06-.24H5.03c-.69 0-1.34-.12-1.94-.39-.6-.24-1.13-.63-1.61-1.1l-.03-.03C.97 59.63.62 59.1.38 58.5.15 57.88 0 57.23 0 56.57v-6.49c0-.68.12-1.31.36-1.94.24-.6.63-1.13 1.1-1.64.48-.48 1.04-.86 1.64-1.1.6-.24 1.25-.36 1.94-.36h3.81c.03-.09.09-.21.12-.3.21-.54.45-1.07.68-1.61.27-.57.51-1.1.77-1.58l.09-.18-2.29-2.32c-.48-.48-.86-1.01-1.1-1.64-.27-.63-.39-1.28-.39-1.94 0-.68.12-1.31.39-1.94.27-.63.63-1.16 1.1-1.64l4.53-4.56v-.03c.48-.48 1.01-.83 1.61-1.1.63-.27 1.25-.39 1.94-.39s1.34.15 1.94.39c.6.27 1.13.63 1.58 1.13l2.71 2.68c.09-.03.18-.09.24-.12.51-.24 1.04-.45 1.61-.68.54-.21 1.1-.39 1.67-.57.09-.03.15-.06.24-.06v-3.25c0-.69.12-1.34.39-1.94.24-.6.63-1.13 1.1-1.61l.03-.03c.48-.48 1.01-.83 1.61-1.07.6-.24 1.25-.39 1.91-.39h6.49c.68 0 1.31.12 1.94.36.63.24 1.16.63 1.64 1.1.48.48.86 1.04 1.1 1.64.24.6.36 1.25.36 1.94v3.81c.09.03.21.09.3.12.54.21 1.07.45 1.61.69.57.27 1.1.51 1.58.77l.18.09 2.32-2.29c.48-.48 1.01-.86 1.64-1.1.63-.27 1.28-.39 1.94-.39.69 0 1.31.12 1.94.39v.08h-.05zM33.74 39.57c.98 0 1.97.09 2.92.3.92.18 1.85.48 2.77.86.86.39 1.7.83 2.47 1.34.77.51 1.49 1.1 2.14 1.76.66.66 1.25 1.37 1.76 2.17.54.77.98 1.61 1.34 2.47.03.06.03.12.06.15.36.86.63 1.76.8 2.62.18.95.3 1.94.3 2.92s-.09 1.97-.3 2.92c-.18.92-.48 1.85-.86 2.77-.39.86-.83 1.7-1.34 2.47-.54.77-1.1 1.49-1.76 2.17-.66.66-1.37 1.25-2.17 1.76-.77.54-1.61.98-2.47 1.34-.06.03-.12.03-.15.06-.86.36-1.76.63-2.62.8-.95.18-1.94.3-2.92.3s-1.97-.09-2.92-.3c-.92-.18-1.85-.48-2.77-.86-.86-.39-1.7-.83-2.47-1.34-.77-.51-1.49-1.1-2.14-1.76-.66-.66-1.25-1.37-1.76-2.17-.54-.77-.98-1.61-1.34-2.47-.03-.06-.03-.12-.06-.15-.36-.86-.63-1.76-.8-2.62-.18-.95-.3-1.94-.3-2.92s.09-1.97.3-2.92c.18-.92.48-1.85.86-2.77.39-.86.83-1.7 1.34-2.47.51-.77 1.1-1.49 1.76-2.17.65-.65 1.37-1.25 2.14-1.76.77-.54 1.61-.98 2.47-1.34.06-.03.12-.03.15-.06.86-.36 1.76-.63 2.62-.8.95-.18 1.94-.3 2.92-.3h.03zm2.18 4.05c-.68-.15-1.43-.21-2.17-.21s-1.46.06-2.17.21c-.68.15-1.31.33-1.91.57-.03.03-.06.03-.12.06-.68.3-1.31.63-1.88 1.01-.57.39-1.1.8-1.58 1.28s-.92 1.01-1.28 1.58c-.39.57-.71 1.19-1.01 1.88-.27.63-.48 1.31-.63 2.03-.15.68-.21 1.43-.21 2.17s.06 1.46.21 2.17c.15.68.33 1.31.57 1.91.03.03.03.06.06.12.3.69.63 1.31 1.01 1.88.39.57.8 1.1 1.28 1.58s1.01.92 1.58 1.28c.57.39 1.19.71 1.88 1.01.63.27 1.31.48 2.03.63.68.15 1.43.21 2.17.21s1.46-.06 2.17-.21c.69-.15 1.31-.33 1.91-.57.03-.03.06-.03.12-.06.68-.3 1.31-.63 1.88-1.01.57-.39 1.1-.8 1.58-1.28s.92-1.01 1.28-1.58c.39-.57.71-1.19 1.01-1.88.27-.63.48-1.31.63-2.03.15-.69.21-1.43.21-2.17s-.06-1.46-.21-2.17c-.15-.68-.33-1.31-.57-1.91-.03-.03-.03-.06-.06-.12-.3-.69-.63-1.31-1.01-1.88-.39-.57-.8-1.1-1.28-1.58s-1.01-.92-1.58-1.28c-.57-.39-1.19-.71-1.88-1.01-.63-.28-1.32-.48-2.03-.63z\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/magnifier.svg":
-/*!*************************************!*\
-  !*** ./resources/svg/magnifier.svg ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"width\": \"122.879\",\n        \"height\": \"119.799\",\n        \"xmlns\": \"http://www.w3.org/2000/svg\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"fill\": \"none\",\n        \"d\": \"M-1-1h802v602H-1z\"\n      }\n    }), _c('g', [_c('path', {\n      attrs: {\n        \"fill\": \"#fff\",\n        \"d\": \"M49.988 0h.016v.007C63.803.011 76.298 5.608 85.34 14.652c9.027 9.031 14.619 21.515 14.628 35.303h.007V50.028h-.007a49.932 49.932 0 01-3.471 18.301v.007a50.011 50.011 0 01-5.547 10.307l29.082 26.139.018.016.157.146.011.011a8.602 8.602 0 012.649 5.78 8.611 8.611 0 01-1.979 5.971l-.011.016-.175.203-.035.035-.146.16-.016.021a8.594 8.594 0 01-5.78 2.646 8.602 8.602 0 01-5.971-1.978l-.015-.011-.204-.175-.029-.024-29.745-26.734c-.88.62-1.778 1.209-2.687 1.765a50.063 50.063 0 01-3.813 2.115c-6.699 3.342-14.269 5.222-22.272 5.222v.007h-.016v-.007c-13.799-.004-26.296-5.601-35.338-14.645C5.605 76.291.016 63.805.007 50.021H0v-.049h.007c.004-13.799 5.601-26.296 14.645-35.338C23.683 5.608 36.167.016 49.955.007V0h.033zm.016 11.21v.007h-.049v-.007c-10.686.007-20.372 4.35-27.384 11.359-7.011 7.009-11.358 16.705-11.361 27.404h.007v.049h-.007c.007 10.686 4.347 20.367 11.359 27.381 7.009 7.012 16.705 11.359 27.403 11.361v-.007h.049v.007c10.686-.007 20.368-4.348 27.382-11.359 7.011-7.009 11.358-16.702 11.36-27.4h-.006v-.049h.006c-.006-10.686-4.35-20.372-11.358-27.384-7.009-7.012-16.702-11.359-27.401-11.362z\"\n      }\n    })])]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/movie_tape.svg":
-/*!**************************************!*\
-  !*** ./resources/svg/movie_tape.svg ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"viewBox\": \"0 0 122.88 95.8\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"d\": \"M12.14 0h98.6c3.34 0 6.38 1.37 8.58 3.56 2.2 2.2 3.56 5.24 3.56 8.58v71.47c0 3.34-1.37 6.38-3.56 8.58a12.11 12.11 0 01-8.58 3.56h-19.2c-.16.03-.33.04-.51.04-.17 0-.34-.01-.51-.04H62.74c-.16.03-.33.04-.51.04-.17 0-.34-.01-.51-.04H33.31c-.16.03-.33.04-.51.04-.17 0-.34-.01-.51-.04H12.14c-3.34 0-6.38-1.37-8.58-3.56S0 86.95 0 83.61V12.14C0 8.8 1.37 5.76 3.56 3.56 5.76 1.37 8.8 0 12.14 0zm43.05 31.24l20.53 14.32a2.92 2.92 0 01.1 4.87L55.37 64.57a2.928 2.928 0 01-4.78-2.27V33.63h.01c0-.58.17-1.16.52-1.67a2.93 2.93 0 014.07-.72zm38.76 48.21V89.9h16.78c1.73 0 3.3-.71 4.44-1.85a6.267 6.267 0 001.85-4.44v-4.16H93.95zM88.1 89.9V79.45H65.16V89.9H88.1zm-28.79 0V79.45H35.73V89.9h23.58zm-29.44 0V79.45H5.85v4.16c0 1.73.71 3.3 1.85 4.44a6.267 6.267 0 004.44 1.85h17.73zM5.85 73.6H117.03V22.2H5.85v51.4zM88.1 16.35V5.85H65.16v10.49H88.1v.01zm5.85-10.5v10.49h23.07v-4.2c0-1.73-.71-3.3-1.85-4.44a6.267 6.267 0 00-4.44-1.85H93.95zm-34.64 10.5V5.85H35.73v10.49h23.58v.01zm-29.44 0V5.85H12.14c-1.73 0-3.3.71-4.44 1.85a6.267 6.267 0 00-1.85 4.44v4.2h24.02v.01z\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/photo_gallery.svg":
-/*!*****************************************!*\
-  !*** ./resources/svg/photo_gallery.svg ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"width\": \"122.879\",\n        \"height\": \"96.568\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"d\": \"M5.535 15.447h98.221c1.527 0 2.891.62 3.883 1.611a5.54 5.54 0 011.611 3.882v70.134a5.469 5.469 0 01-1.611 3.883 1.807 1.807 0 01-.289.247c-.951.868-2.23 1.363-3.635 1.363H5.494c-1.528 0-2.892-.619-3.883-1.61S0 92.562 0 91.075V20.941c0-1.528.62-2.891 1.611-3.882s2.396-1.611 3.883-1.611h.041v-.001zm22.683 19.042c4.354 0 7.882 3.528 7.882 7.882a7.882 7.882 0 11-15.764 0 7.88 7.88 0 017.882-7.882zm33.171 33.827l15.766-27.258 16.748 42.363-78.165-.001v-5.254l6.57-.327 6.567-16.093 3.282 11.496h9.855l8.537-22.004 10.84 17.078zM21.891 6.525a3.27 3.27 0 01-3.263-3.263A3.27 3.27 0 0121.891 0h97.726a3.27 3.27 0 013.262 3.263v68.895a3.27 3.27 0 01-3.262 3.264 3.27 3.27 0 01-3.264-3.264V6.567H21.891v-.042zm80.832 15.449H6.567v68.027h96.155V21.974h.001z\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/play_round.svg":
-/*!**************************************!*\
-  !*** ./resources/svg/play_round.svg ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"viewBox\": \"0 0 122.88 122.88\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"d\": \"M61.44 0c33.93 0 61.44 27.51 61.44 61.44s-27.51 61.44-61.44 61.44S0 95.37 0 61.44 27.51 0 61.44 0zm23.47 65.52c3.41-2.2 3.41-4.66 0-6.61L49.63 38.63c-2.78-1.75-5.69-.72-5.61 2.92l.11 40.98c.24 3.94 2.49 5.02 5.8 3.19l34.98-20.2z\",\n        \"fill-rule\": \"evenodd\",\n        \"clip-rule\": \"evenodd\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/rocket_launch.svg":
-/*!*****************************************!*\
-  !*** ./resources/svg/rocket_launch.svg ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"viewBox\": \"0 0 122.88 121.08\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"d\": \"M15.36 86.24c1.14-.89 2.79-.68 3.68.46.89 1.14.68 2.79-.46 3.68L5.35 100.66l-.1 13.85 16.25-.91 8.82-14.02a2.622 2.622 0 013.61-.82c1.22.77 1.59 2.39.82 3.61l-9.5 15.09c-.43.73-1.21 1.24-2.12 1.29L2.76 119.9h-.15a2.614 2.614 0 01-2.6-2.63l.13-17.71c-.06-.85.29-1.71 1.01-2.27l14.21-11.05zm24.73-32.31c6.6-19.73 15.5-33.72 28.02-42.53C81.1 2.25 97.8-1.21 119.68.37a2.89 2.89 0 012.69 2.83c2.12 23.69-2.48 40.49-12.28 53.22-9.43 12.24-23.58 20.52-41.14 27.47v23.13c0 1.13-.65 2.12-1.6 2.59l-17.88 11.05a2.89 2.89 0 01-3.98-.94c-.22-.36-.36-.75-.41-1.14-3.96-30.26-8.17-31.71-32.91-40.27-2.96-1.02-6.15-2.13-8.31-2.89a2.895 2.895 0 01-1.77-3.69c.11-.32.28-.61.48-.87l11.79-16.8c.59-.84 1.55-1.28 2.5-1.23l23.23 1.1zm50.62-22.29a8.78 8.78 0 00-6.24-2.58c-2.43 0-4.64.99-6.24 2.58a8.78 8.78 0 00-2.58 6.24c0 2.43.99 4.64 2.58 6.24a8.78 8.78 0 006.24 2.58c2.43 0 4.64-.99 6.24-2.58a8.78 8.78 0 002.58-6.24c0-2.44-.99-4.64-2.58-6.24z\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/search.svg":
-/*!**********************************!*\
-  !*** ./resources/svg/search.svg ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"width\": \"122.879\",\n        \"height\": \"119.799\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"d\": \"M49.988 0h.016v.007C63.803.011 76.298 5.608 85.34 14.652c9.027 9.031 14.619 21.515 14.628 35.303h.007V50.028h-.007a49.932 49.932 0 01-3.471 18.301v.007a50.011 50.011 0 01-5.547 10.307l29.082 26.139.018.016.157.146.011.011a8.602 8.602 0 012.649 5.78 8.611 8.611 0 01-1.979 5.971l-.011.016-.175.203-.035.035-.146.16-.016.021a8.594 8.594 0 01-5.78 2.646 8.602 8.602 0 01-5.971-1.978l-.015-.011-.204-.175-.029-.024-29.745-26.734c-.88.62-1.778 1.209-2.687 1.765a50.063 50.063 0 01-3.813 2.115c-6.699 3.342-14.269 5.222-22.272 5.222v.007h-.016v-.007c-13.799-.004-26.296-5.601-35.338-14.645C5.605 76.291.016 63.805.007 50.021H0v-.049h.007c.004-13.799 5.601-26.296 14.645-35.338C23.683 5.608 36.167.016 49.955.007V0h.033zm.016 11.21v.007h-.049v-.007c-10.686.007-20.372 4.35-27.384 11.359-7.011 7.009-11.358 16.705-11.361 27.404h.007v.049h-.007c.007 10.686 4.347 20.367 11.359 27.381 7.009 7.012 16.705 11.359 27.403 11.361v-.007h.049v.007c10.686-.007 20.368-4.348 27.382-11.359 7.011-7.009 11.358-16.702 11.36-27.4h-.006v-.049h.006c-.006-10.686-4.35-20.372-11.358-27.384-7.009-7.012-16.702-11.359-27.401-11.362z\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/shutdown.svg":
-/*!************************************!*\
-  !*** ./resources/svg/shutdown.svg ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"version\": \"1.1\",\n        \"id\": \"Layer_1\",\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"x\": \"0\",\n        \"y\": \"0\",\n        \"viewBox\": \"0 0 122.88 122.88\",\n        \"xml:space\": \"preserve\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"d\": \"M61.44 0c33.93 0 61.44 27.51 61.44 61.44 0 33.93-27.51 61.44-61.44 61.44C27.51 122.88 0 95.37 0 61.44 0 27.51 27.51 0 61.44 0z\",\n        \"fill-rule\": \"evenodd\",\n        \"clip-rule\": \"evenodd\",\n        \"fill\": \"transparent\"\n      }\n    }), _c('path', {\n      staticClass: \"st1\",\n      attrs: {\n        \"d\": \"M79.16 46.24c-2.32-2.68-2.03-6.73.65-9.05s6.73-2.03 9.05.65c2.79 3.23 5.01 6.96 6.53 11.04 1.48 3.98 2.29 8.23 2.29 12.62 0 10.01-4.06 19.07-10.62 25.63S71.45 97.75 61.44 97.75c-10.01 0-19.07-4.06-25.63-10.62S25.2 71.51 25.2 61.5c0-4.32.78-8.5 2.2-12.4 1.46-4 3.62-7.69 6.33-10.91a6.406 6.406 0 019.03-.78 6.406 6.406 0 01.78 9.03 23.366 23.366 0 00-4.07 7.04c-.9 2.47-1.39 5.17-1.39 8.02 0 6.45 2.62 12.3 6.84 16.53a23.285 23.285 0 0016.52 6.84c6.45 0 12.3-2.62 16.52-6.84s6.85-10.07 6.85-16.53c0-2.91-.51-5.65-1.43-8.14-.98-2.62-2.41-5.03-4.22-7.12z\"\n      }\n    }), _c('path', {\n      staticClass: \"st1\",\n      attrs: {\n        \"d\": \"M67.88 49.12c0 3.55-2.88 6.44-6.44 6.44-3.55 0-6.44-2.88-6.44-6.44V29.93c0-3.55 2.88-6.44 6.44-6.44 3.55 0 6.44 2.88 6.44 6.44v19.19z\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/smile_in_glasses.svg":
-/*!********************************************!*\
-  !*** ./resources/svg/smile_in_glasses.svg ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"viewBox\": \"0 0 122.88 122.88\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"d\": \"M61.44 0v.01c16.97 0 32.33 6.87 43.44 17.98s17.98 26.47 17.98 43.44h.01v.01h-.01c0 16.97-6.87 32.33-17.98 43.44s-26.47 17.98-43.44 17.98v.01h-.01v-.01c-16.97 0-32.33-6.87-43.44-17.98C6.89 93.77.02 78.41.02 61.44H0v-.01h.02C.02 44.47 6.89 29.11 18 18S44.47.02 61.44.01V0zm26.33 77.33c-15.86 13.2-33.31 14.03-52.67 0 9.54 25.7 45.38 25.3 52.67 0zM52.95 38.32c.71.17 1.29.53 1.77 1.02 2.57-1.44 5.08-2.09 7.52-2.04 2.14.05 4.17.62 6.11 1.67 1.26-1.25 3.38-1.64 6.94-1.57 5.83.12 12.87-.12 17.22.91.55.13 1.02.37 1.42.7l8.58 2.08-6.19 4.93c.05.8.06 1.58.06 2.31 0 8.24-6.68 14.34-14.91 14.34-8.24 0-14.91-6.1-14.91-14.34 0-1.74.03-3.21.14-4.47-1.48-.96-3-1.49-4.55-1.52-1.72-.04-3.57.52-5.56 1.76.2 1.42.24 2.92.24 4.23 0 8.24-6.68 14.34-14.91 14.34-8.24 0-14.91-6.1-14.91-14.34 0-.94.01-1.8.03-2.6l-6.66-5.23 8.92-1.97c1.3-.92 3.31-1.21 6.43-1.14 5.83.13 12.87-.11 17.22.93zm8.49-30.49v.02h-.01l.01-.02c-14.79 0-28.19 6.01-37.9 15.71-9.7 9.71-15.71 23.11-15.71 37.89h.01v.01h-.01c0 14.79 6.01 28.19 15.71 37.89 9.71 9.71 23.11 15.72 37.89 15.72v-.02h.01v.02c14.79 0 28.19-6.01 37.89-15.71 9.71-9.71 15.71-23.11 15.71-37.9h-.01v-.01h.02c0-14.78-6.01-28.18-15.71-37.89-9.71-9.71-23.11-15.71-37.9-15.71z\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/star_full.svg":
-/*!*************************************!*\
-  !*** ./resources/svg/star_full.svg ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"width\": \"122.88\",\n        \"height\": \"116.864\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"fill-rule\": \"evenodd\",\n        \"clip-rule\": \"evenodd\",\n        \"d\": \"M61.44 0l16.911 41.326 44.529 3.312-34.077 28.853 10.609 43.373L61.44 93.371l-37.972 23.493 10.61-43.373L0 44.638l44.529-3.312L61.44 0z\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/star_yellow.svg":
-/*!***************************************!*\
-  !*** ./resources/svg/star_yellow.svg ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"xmlns:xlink\": \"http://www.w3.org/1999/xlink\",\n        \"viewBox\": \"0 0 26.9 25.65\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('defs', [_c('path', {\n      attrs: {\n        \"id\": \"a\",\n        \"d\": \"M14.1.43l3.44 8.05 8.72.78c.39.03.67.37.64.76-.02.19-.1.35-.24.47l-6.6 5.76 1.95 8.54a.699.699 0 01-1.07.74l-7.5-4.48-7.52 4.5a.7.7 0 01-1.04-.76l1.95-8.54-6.6-5.76a.708.708 0 01-.07-.99c.14-.15.32-.22.5-.23l8.7-.78L12.8.43c.15-.36.56-.52.92-.37.18.07.31.21.38.37z\"\n      }\n    })]), _c('clipPath', {\n      attrs: {\n        \"id\": \"b\"\n      }\n    }, [_c('use', {\n      attrs: {\n        \"xlink:href\": \"#a\",\n        \"overflow\": \"visible\"\n      }\n    })]), _c('g', {\n      attrs: {\n        \"clip-path\": \"url(#b)\"\n      }\n    }, [_c('defs', [_c('path', {\n      attrs: {\n        \"id\": \"c\",\n        \"d\": \"M-.08-.1h27.01v25.85H-.08z\"\n      }\n    })]), _c('clipPath', {\n      attrs: {\n        \"id\": \"d\"\n      }\n    }, [_c('use', {\n      attrs: {\n        \"xlink:href\": \"#c\",\n        \"overflow\": \"visible\"\n      }\n    })]), _c('g', {\n      attrs: {\n        \"clip-path\": \"url(#d)\"\n      }\n    }, [_c('image', {\n      attrs: {\n        \"width\": \"64\",\n        \"height\": \"57\",\n        \"xlink:href\": \"data:image/jpeg;base64,/9j/4AAQSkZJRgABAgEAlgCWAAD/7AARRHVja3kAAQAEAAAAHgAA/+4AIUFkb2JlAGTAAAAAAQMA EAMCAwYAAAJIAAACsAAAA4b/2wCEABALCwsMCxAMDBAXDw0PFxsUEBAUGx8XFxcXFx8eFxoaGhoX Hh4jJSclIx4vLzMzLy9AQEBAQEBAQEBAQEBAQEABEQ8PERMRFRISFRQRFBEUGhQWFhQaJhoaHBoa JjAjHh4eHiMwKy4nJycuKzU1MDA1NUBAP0BAQEBAQEBAQEBAQP/CABEIADwAQwMBIgACEQEDEQH/ xACiAAADAQEBAQAAAAAAAAAAAAAABAUCAQMGAQACAwEAAAAAAAAAAAAAAAAAAwQFBgIQAAIABQME AwAAAAAAAAAAAAARAQIDBAUTJBUSIzMlMhQ0EQABAQYGAQUAAAAAAAAAAAABABAgEXGhMrECEkJy AzEhUSITFBIAAgADBAgHAQAAAAAAAAAAAQIAEAMhMaEiUXGBkbHRMtIRYRJykjNzQv/aAAwDAQAC EQMRAAAA+68SfRyaBPIrKBPAoektl3NMDQREp1Cbmp+jJAbruANsptSOKwGsrkJlKXnLHRkgu0ZA 00m2/iyBqqudKto0FikOkNyQ6Ak51h66IGkrP//aAAgBAgABBQC/v7ijccreHK3hbZG6nrmUhu0I s4bkycN2hFnDcmRkljc6chpyFrJLC4P/2gAIAQMAAQUApUpJpNCmaFMnoyQlLeHbQirDtltDtIRW h2y2mjCl1ROqJVmjpn//2gAIAQEAAQUAr14UIcjIcjIcjIcjIcjIcjIUbyWtOZH4MYxjGWH6DJfB jGMYzH/oMp42MYxjMdHcmV8bGMYxmNjujL+NjGMYzGR3RmPExjGMZi/1l/8AV6PUnqT1J6k9SepL L6Guf//aAAgBAgIGPwBqdNgFAX+QbxHWPiI6x8RFNGcFXcA5RcZPqXhOj+iyfUvCdH9FkxNRFsWw +rR5Ax9tPc/bH209z9sUiKiHOtgDdsv/2gAIAQMCBj8ABIti7GLsYJAuEhtm3tMhtm/tMhlJvu8O cdDYc46Gw5w+VhlOjnL/2gAIAQEBBj8ABIJiYeisKsKsKsKsKsK0DKQYRizJMviRZkmcHxIsyTOD 4kWdczg+JFnXyOD44lnXyOD44lmT9MdMfjp91vqt9Vvqt9Vvqt9UPz6vsgfPiDP/2Q==\",\n        \"transform\": \"matrix(.48 0 0 -.48 -1.14 26.747)\",\n        \"overflow\": \"visible\"\n      }\n    })])]), _c('path', {\n      attrs: {\n        \"d\": \"M14.1.43l3.44 8.05 8.72.78c.39.03.67.37.64.76-.02.19-.1.35-.24.47l-1.18 1.03c-3.21 1.11-7.42 1.78-12.03 1.78-4.61 0-8.83-.67-12.03-1.78L.24 10.49a.708.708 0 01-.07-.99c.13-.15.31-.22.49-.23l8.7-.78L12.8.43c.15-.36.56-.52.92-.37.18.07.31.21.38.37z\",\n        \"fill\": \"#ffd401\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/video_playlist.svg":
-/*!******************************************!*\
-  !*** ./resources/svg/video_playlist.svg ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"viewBox\": \"0 0 121.78 122.88\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"d\": \"M30.06 0h61.65c3.43 0 6.23 2.81 6.23 6.23v6.47H23.83V6.23c0-3.43 2.8-6.23 6.23-6.23zM11.23 38.38h99.32c6.18 0 11.23 5.05 11.23 11.23v62.04c0 6.18-5.05 11.23-11.23 11.23H11.23C5.05 122.88 0 117.83 0 111.65V49.61c0-6.18 5.05-11.23 11.23-11.23zm42.88 20L81.4 77.41c.45.29.86.67 1.18 1.13 1.28 1.85.81 4.39-1.04 5.67L54.37 103c-.7.58-1.6.92-2.59.92-2.26 0-4.09-1.83-4.09-4.09V61.72h.02a4.066 4.066 0 016.4-3.34zM18.14 18.81h85.49c3.43 0 6.23 2.81 6.23 6.23v6.72H11.91v-6.72c0-3.43 2.8-6.23 6.23-6.23z\",\n        \"fill-rule\": \"evenodd\",\n        \"clip-rule\": \"evenodd\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./resources/svg/video_setting.svg":
-/*!*****************************************!*\
-  !*** ./resources/svg/video_setting.svg ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("module.exports = {\n  functional: true,\n\n  render(_h, _vm) {\n    const {\n      _c,\n      _v,\n      data,\n      children = []\n    } = _vm;\n    const {\n      class: classNames,\n      staticClass,\n      style,\n      staticStyle,\n      attrs = {},\n      ...rest\n    } = data;\n    return _c('svg', {\n      class: [classNames, staticClass],\n      style: [style, staticStyle],\n      attrs: Object.assign({\n        \"xmlns\": \"http://www.w3.org/2000/svg\",\n        \"viewBox\": \"0 0 122.88 110.35\"\n      }, attrs),\n      ...rest\n    }, children.concat([_c('path', {\n      attrs: {\n        \"d\": \"M73.65 40.96l2.68 2.68c.71.71.71 1.86 0 2.57l-2.16 2.16c.6 1.13 1.05 2.33 1.34 3.57h2.8c1 0 1.81.82 1.81 1.81v3.79c0 1-.82 1.81-1.81 1.81h-3.05c-.37 1.22-.9 2.39-1.58 3.47l1.98 1.98c.71.71.71 1.86 0 2.57l-2.68 2.68c-.71.71-1.86.71-2.57 0l-2.16-2.16c-1.13.6-2.33 1.06-3.57 1.34v2.8c0 1-.82 1.81-1.81 1.81h-3.79c-1 0-1.81-.82-1.81-1.81v-3.05c-1.22-.37-2.39-.9-3.47-1.58l-1.98 1.98c-.71.71-1.86.71-2.57 0l-2.68-2.68c-.71-.71-.71-1.86 0-2.57l2.16-2.16c-.6-1.13-1.06-2.33-1.34-3.57h-2.8c-1 0-1.81-.82-1.81-1.81V52.8c0-1 .82-1.81 1.81-1.81h3.05c.37-1.22.9-2.39 1.58-3.47l-1.98-1.98c-.71-.71-.71-1.86 0-2.57l2.68-2.68c.71-.71 1.86-.71 2.57 0l2.16 2.16c1.11-.6 2.31-1.05 3.57-1.34v-2.8c0-1 .82-1.81 1.81-1.81h3.79c1 0 1.81.82 1.81 1.81v3.05c1.22.37 2.39.9 3.47 1.58l1.98-1.98c.71-.7 1.86-.7 2.57 0zM6.32 0v6.22h12.22V0h6.32v14.88h73.15V0h6.32v6.22h12.22V0h6.32v110.35h-6.32v-7.19h-12.22v7.19h-6.32V94.79H24.87v15.56h-6.32v-7.19H6.32v7.19H0V0h6.32zm91.69 21.2H24.87v67.27h73.15V21.2h-.01zm18.55 75.64v-11.8h-12.22v11.8h12.22zm0-18.12v-11.8h-12.22v11.8h12.22zm0-18.13v-11.8h-12.22v11.8h12.22zm0-18.12v-11.8h-12.22v11.8h12.22zm0-18.12v-11.8h-12.22v11.8h12.22zM18.54 96.84v-11.8H6.32v11.8h12.22zm0-18.12v-11.8H6.32v11.8h12.22zm0-18.13v-11.8H6.32v11.8h12.22zm0-18.12v-11.8H6.32v11.8h12.22zm0-18.12v-11.8H6.32v11.8h12.22zm42.9 23.37a7.45 7.45 0 017.45 7.45 7.45 7.45 0 01-7.45 7.45 7.45 7.45 0 01-7.45-7.45 7.45 7.45 0 017.45-7.45z\",\n        \"fill-rule\": \"evenodd\",\n        \"clip-rule\": \"evenodd\"\n      }\n    })]));\n  }\n\n};");
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/empire_logo.vue?vue&type=style&index=0&id=e62713bc&lang=scss&scoped=true&":
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/empire_logo.vue?vue&type=style&index=0&id=e62713bc&lang=scss&scoped=true&":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/empire_logo.vue?vue&type=style&index=0&id=e62713bc&lang=scss&scoped=true& ***!
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/empire_logo.vue?vue&type=style&index=0&id=e62713bc&lang=scss&scoped=true& ***!
   \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_empire_logo_vue_vue_type_style_index_0_id_e62713bc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./empire_logo.vue?vue&type=style&index=0&id=e62713bc&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/empire_logo.vue?vue&type=style&index=0&id=e62713bc&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_empire_logo_vue_vue_type_style_index_0_id_e62713bc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./empire_logo.vue?vue&type=style&index=0&id=e62713bc&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/empire_logo.vue?vue&type=style&index=0&id=e62713bc&lang=scss&scoped=true&");
 
             
 
@@ -1947,28 +1573,27 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_empire_logo_vue_vue_type_style_index_0_id_e62713bc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_empire_logo_vue_vue_type_style_index_0_id_e62713bc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_empire_logo_vue_vue_type_style_index_0_id_e62713bc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_empire_logo_vue_vue_type_style_index_0_id_e62713bc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_confirm.vue?vue&type=style&index=0&id=5787bafe&lang=scss&scoped=true&":
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_confirm.vue?vue&type=style&index=0&id=5787bafe&lang=scss&scoped=true&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_confirm.vue?vue&type=style&index=0&id=5787bafe&lang=scss&scoped=true& ***!
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_confirm.vue?vue&type=style&index=0&id=5787bafe&lang=scss&scoped=true& ***!
   \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_confirm_vue_vue_type_style_index_0_id_5787bafe_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./icon_confirm.vue?vue&type=style&index=0&id=5787bafe&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_confirm.vue?vue&type=style&index=0&id=5787bafe&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_confirm_vue_vue_type_style_index_0_id_5787bafe_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./icon_confirm.vue?vue&type=style&index=0&id=5787bafe&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_confirm.vue?vue&type=style&index=0&id=5787bafe&lang=scss&scoped=true&");
 
             
 
@@ -1977,28 +1602,27 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_confirm_vue_vue_type_style_index_0_id_5787bafe_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_confirm_vue_vue_type_style_index_0_id_5787bafe_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_confirm_vue_vue_type_style_index_0_id_5787bafe_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_confirm_vue_vue_type_style_index_0_id_5787bafe_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_stop.vue?vue&type=style&index=0&id=087d39b4&lang=scss&scoped=true&":
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_stop.vue?vue&type=style&index=0&id=087d39b4&lang=scss&scoped=true&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_stop.vue?vue&type=style&index=0&id=087d39b4&lang=scss&scoped=true& ***!
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_stop.vue?vue&type=style&index=0&id=087d39b4&lang=scss&scoped=true& ***!
   \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_stop_vue_vue_type_style_index_0_id_087d39b4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./icon_stop.vue?vue&type=style&index=0&id=087d39b4&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_stop.vue?vue&type=style&index=0&id=087d39b4&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_stop_vue_vue_type_style_index_0_id_087d39b4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./icon_stop.vue?vue&type=style&index=0&id=087d39b4&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_stop.vue?vue&type=style&index=0&id=087d39b4&lang=scss&scoped=true&");
 
             
 
@@ -2007,28 +1631,27 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_stop_vue_vue_type_style_index_0_id_087d39b4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_stop_vue_vue_type_style_index_0_id_087d39b4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_stop_vue_vue_type_style_index_0_id_087d39b4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_stop_vue_vue_type_style_index_0_id_087d39b4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/button_close.vue?vue&type=style&index=0&lang=scss&":
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/button_close.vue?vue&type=style&index=0&lang=scss&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/button_close.vue?vue&type=style&index=0&lang=scss& ***!
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/button_close.vue?vue&type=style&index=0&lang=scss& ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_button_close_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./button_close.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/button_close.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_button_close_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./button_close.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/button_close.vue?vue&type=style&index=0&lang=scss&");
 
             
 
@@ -2037,28 +1660,27 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_button_close_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_button_close_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_button_close_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_button_close_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/labeled_checkbox.vue?vue&type=style&index=0&id=233684f8&lang=scss&scoped=true&":
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/labeled_checkbox.vue?vue&type=style&index=0&id=233684f8&lang=scss&scoped=true&":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/labeled_checkbox.vue?vue&type=style&index=0&id=233684f8&lang=scss&scoped=true& ***!
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/labeled_checkbox.vue?vue&type=style&index=0&id=233684f8&lang=scss&scoped=true& ***!
   \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_labeled_checkbox_vue_vue_type_style_index_0_id_233684f8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./labeled_checkbox.vue?vue&type=style&index=0&id=233684f8&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/labeled_checkbox.vue?vue&type=style&index=0&id=233684f8&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_labeled_checkbox_vue_vue_type_style_index_0_id_233684f8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./labeled_checkbox.vue?vue&type=style&index=0&id=233684f8&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/labeled_checkbox.vue?vue&type=style&index=0&id=233684f8&lang=scss&scoped=true&");
 
             
 
@@ -2067,28 +1689,27 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_labeled_checkbox_vue_vue_type_style_index_0_id_233684f8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_labeled_checkbox_vue_vue_type_style_index_0_id_233684f8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_labeled_checkbox_vue_vue_type_style_index_0_id_233684f8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_labeled_checkbox_vue_vue_type_style_index_0_id_233684f8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/phantom_button.vue?vue&type=style&index=0&lang=scss&":
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/phantom_button.vue?vue&type=style&index=0&lang=scss&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/phantom_button.vue?vue&type=style&index=0&lang=scss& ***!
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/phantom_button.vue?vue&type=style&index=0&lang=scss& ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_phantom_button_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./phantom_button.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/phantom_button.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_phantom_button_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./phantom_button.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/phantom_button.vue?vue&type=style&index=0&lang=scss&");
 
             
 
@@ -2097,28 +1718,27 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_phantom_button_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_phantom_button_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_phantom_button_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_phantom_button_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/submit_button.vue?vue&type=style&index=0&lang=scss&":
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/submit_button.vue?vue&type=style&index=0&lang=scss&":
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/submit_button.vue?vue&type=style&index=0&lang=scss& ***!
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/submit_button.vue?vue&type=style&index=0&lang=scss& ***!
   \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_submit_button_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./submit_button.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/submit_button.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_submit_button_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./submit_button.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/submit_button.vue?vue&type=style&index=0&lang=scss&");
 
             
 
@@ -2127,28 +1747,27 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_submit_button_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_submit_button_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_submit_button_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_submit_button_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/text_input_combo.vue?vue&type=style&index=0&id=6c07a9d0&lang=scss&scoped=true&":
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/text_input_combo.vue?vue&type=style&index=0&id=6c07a9d0&lang=scss&scoped=true&":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/text_input_combo.vue?vue&type=style&index=0&id=6c07a9d0&lang=scss&scoped=true& ***!
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/text_input_combo.vue?vue&type=style&index=0&id=6c07a9d0&lang=scss&scoped=true& ***!
   \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_text_input_combo_vue_vue_type_style_index_0_id_6c07a9d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./text_input_combo.vue?vue&type=style&index=0&id=6c07a9d0&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/text_input_combo.vue?vue&type=style&index=0&id=6c07a9d0&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_text_input_combo_vue_vue_type_style_index_0_id_6c07a9d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./text_input_combo.vue?vue&type=style&index=0&id=6c07a9d0&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/text_input_combo.vue?vue&type=style&index=0&id=6c07a9d0&lang=scss&scoped=true&");
 
             
 
@@ -2157,28 +1776,27 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_text_input_combo_vue_vue_type_style_index_0_id_6c07a9d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_text_input_combo_vue_vue_type_style_index_0_id_6c07a9d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_text_input_combo_vue_vue_type_style_index_0_id_6c07a9d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_text_input_combo_vue_vue_type_style_index_0_id_6c07a9d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/authenticated_user_sidebar.vue?vue&type=style&index=0&id=a04b05d0&lang=scss&scoped=true&":
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/authenticated_user_sidebar.vue?vue&type=style&index=0&id=a04b05d0&lang=scss&scoped=true&":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/authenticated_user_sidebar.vue?vue&type=style&index=0&id=a04b05d0&lang=scss&scoped=true& ***!
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/authenticated_user_sidebar.vue?vue&type=style&index=0&id=a04b05d0&lang=scss&scoped=true& ***!
   \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_authenticated_user_sidebar_vue_vue_type_style_index_0_id_a04b05d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./authenticated_user_sidebar.vue?vue&type=style&index=0&id=a04b05d0&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/authenticated_user_sidebar.vue?vue&type=style&index=0&id=a04b05d0&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_authenticated_user_sidebar_vue_vue_type_style_index_0_id_a04b05d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./authenticated_user_sidebar.vue?vue&type=style&index=0&id=a04b05d0&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/authenticated_user_sidebar.vue?vue&type=style&index=0&id=a04b05d0&lang=scss&scoped=true&");
 
             
 
@@ -2187,28 +1805,27 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_authenticated_user_sidebar_vue_vue_type_style_index_0_id_a04b05d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_authenticated_user_sidebar_vue_vue_type_style_index_0_id_a04b05d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_authenticated_user_sidebar_vue_vue_type_style_index_0_id_a04b05d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_authenticated_user_sidebar_vue_vue_type_style_index_0_id_a04b05d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/content_sidebar.vue?vue&type=style&index=0&lang=scss&":
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/content_sidebar.vue?vue&type=style&index=0&lang=scss&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/content_sidebar.vue?vue&type=style&index=0&lang=scss& ***!
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/content_sidebar.vue?vue&type=style&index=0&lang=scss& ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_content_sidebar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./content_sidebar.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/content_sidebar.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_content_sidebar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./content_sidebar.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/content_sidebar.vue?vue&type=style&index=0&lang=scss&");
 
             
 
@@ -2217,28 +1834,27 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_content_sidebar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_content_sidebar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_content_sidebar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_content_sidebar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/navbar.vue?vue&type=style&index=0&id=5b8f8430&lang=scss&scoped=true&":
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/navbar.vue?vue&type=style&index=0&id=5b8f8430&lang=scss&scoped=true&":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/navbar.vue?vue&type=style&index=0&id=5b8f8430&lang=scss&scoped=true& ***!
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/navbar.vue?vue&type=style&index=0&id=5b8f8430&lang=scss&scoped=true& ***!
   \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_navbar_vue_vue_type_style_index_0_id_5b8f8430_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./navbar.vue?vue&type=style&index=0&id=5b8f8430&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/navbar.vue?vue&type=style&index=0&id=5b8f8430&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_navbar_vue_vue_type_style_index_0_id_5b8f8430_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./navbar.vue?vue&type=style&index=0&id=5b8f8430&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/navbar.vue?vue&type=style&index=0&id=5b8f8430&lang=scss&scoped=true&");
 
             
 
@@ -2247,11 +1863,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_navbar_vue_vue_type_style_index_0_id_5b8f8430_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_navbar_vue_vue_type_style_index_0_id_5b8f8430_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_navbar_vue_vue_type_style_index_0_id_5b8f8430_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_navbar_vue_vue_type_style_index_0_id_5b8f8430_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
@@ -2261,7 +1877,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \****************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 
 
 var isOldIE = function isOldIE() {
@@ -2534,29 +2149,12 @@ module.exports = function (list, options) {
 
 /***/ }),
 
-/***/ "./node_modules/svg-vue/dist/svg-vue.esm.js":
-/*!**************************************************!*\
-  !*** ./node_modules/svg-vue/dist/svg-vue.esm.js ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-var e=function(e,t,n,i,o,s,r,a,l,d){"boolean"!=typeof r&&(l=a,a=r,r=!1);var c,u="function"==typeof n?n.options:n;if(e&&e.render&&(u.render=e.render,u.staticRenderFns=e.staticRenderFns,u._compiled=!0,o&&(u.functional=!0)),i&&(u._scopeId=i),s?(c=function(e){(e=e||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(e=__VUE_SSR_CONTEXT__),t&&t.call(this,l(e)),e&&e._registeredComponents&&e._registeredComponents.add(s)},u._ssrRegister=c):t&&(c=r?function(){t.call(this,d(this.$root.$options.shadowRoot))}:function(e){t.call(this,a(e))}),c)if(u.functional){var g=u.render;u.render=function(e,t){return c.call(t),g(e,t)}}else{var v=u.beforeCreate;u.beforeCreate=v?[].concat(v,c):[c]}return n}({render:function(){var e=this.$createElement;return(this._self._c||e)("svg",{attrs:{viewBox:this.svgViewBoxValues,xmlns:"http://www.w3.org/2000/svg"},domProps:{innerHTML:this._s(this.svgContent)}})},staticRenderFns:[]},void 0,{props:{icon:String},data:function(){return{svgString:__webpack_require__("./resources/svg sync recursive ^\\.\\/.*$")("./"+this.iconPath).default}},computed:{iconPath:{cache:!1,get:function(){return this.icon.replace(new RegExp(".".replace(/([.*+?^=!:${}()|\[\]\/\\])/g,"\\$1"),"g"),"/")+".svg"}},svgViewBoxValues:function(){return this.svgString?(/viewBox="([^"]+)"/.exec(this.svgString)||"")[1]:null},svgContent:function(){return this.svgString?this.svgString.replace(/^<svg[^>]*>|<\/svg>$/g,""):null}}},void 0,!1,void 0,void 0,void 0);function t(n){t.installed||(t.installed=!0,n.component("SvgVue",e))}var n={install:t},i=null;"undefined"!=typeof window?i=window.Vue:"undefined"!=typeof __webpack_require__.g&&(i=__webpack_require__.g.Vue),i&&i.use(n),e.install=t;/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (e);
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-class-component/dist/vue-class-component.esm.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/vue-class-component/dist/vue-class-component.esm.js ***!
   \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
@@ -2894,7 +2492,6 @@ Component.registerHooks = function registerHooks(keys) {
   \*****************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-"use strict";
 
 
 var Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
@@ -2987,7 +2584,6 @@ exports.mixin = mixin;
   \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "__esModule": () => (/* reexport safe */ _empire_logo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.__esModule),
@@ -3029,7 +2625,6 @@ component.options.__file = "resources/js/components/decoration/empire_logo.vue"
   \*************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "__esModule": () => (/* reexport safe */ _icon_confirm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.__esModule),
@@ -3071,7 +2666,6 @@ component.options.__file = "resources/js/components/decoration/icon_confirm.vue"
   \**********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "__esModule": () => (/* reexport safe */ _icon_stop_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.__esModule),
@@ -3113,7 +2707,6 @@ component.options.__file = "resources/js/components/decoration/icon_stop.vue"
   \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "__esModule": () => (/* reexport safe */ _button_close_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.__esModule),
@@ -3155,7 +2748,6 @@ component.options.__file = "resources/js/components/form_controls/button_close.v
   \********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "__esModule": () => (/* reexport safe */ _labeled_checkbox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.__esModule),
@@ -3197,7 +2789,6 @@ component.options.__file = "resources/js/components/form_controls/labeled_checkb
   \******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "__esModule": () => (/* reexport safe */ _phantom_button_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.__esModule),
@@ -3239,7 +2830,6 @@ component.options.__file = "resources/js/components/form_controls/phantom_button
   \*****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "__esModule": () => (/* reexport safe */ _submit_button_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.__esModule),
@@ -3281,7 +2871,6 @@ component.options.__file = "resources/js/components/form_controls/submit_button.
   \********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "__esModule": () => (/* reexport safe */ _text_input_combo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.__esModule),
@@ -3323,7 +2912,6 @@ component.options.__file = "resources/js/components/form_controls/text_input_com
   \***************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "__esModule": () => (/* reexport safe */ _authenticated_user_sidebar_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__.__esModule),
@@ -3365,7 +2953,6 @@ component.options.__file = "resources/js/components/navigation/authenticated_use
   \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "__esModule": () => (/* reexport safe */ _content_sidebar_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__.__esModule),
@@ -3407,7 +2994,6 @@ component.options.__file = "resources/js/components/navigation/content_sidebar.v
   \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "__esModule": () => (/* reexport safe */ _navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.__esModule),
@@ -3449,7 +3035,6 @@ component.options.__file = "resources/js/components/navigation/navbar.vue"
   \****************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
@@ -3466,7 +3051,6 @@ __webpack_require__.r(__webpack_exports__);
   \*****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
@@ -3483,7 +3067,6 @@ __webpack_require__.r(__webpack_exports__);
   \*************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
@@ -3500,7 +3083,6 @@ __webpack_require__.r(__webpack_exports__);
   \**************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
@@ -3517,7 +3099,6 @@ __webpack_require__.r(__webpack_exports__);
   \***********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
@@ -3534,7 +3115,6 @@ __webpack_require__.r(__webpack_exports__);
   \*****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
@@ -3551,7 +3131,6 @@ __webpack_require__.r(__webpack_exports__);
   \*********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
@@ -3568,7 +3147,6 @@ __webpack_require__.r(__webpack_exports__);
   \*******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
@@ -3585,7 +3163,6 @@ __webpack_require__.r(__webpack_exports__);
   \******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
@@ -3602,7 +3179,6 @@ __webpack_require__.r(__webpack_exports__);
   \*********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
@@ -3619,7 +3195,6 @@ __webpack_require__.r(__webpack_exports__);
   \********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
@@ -3636,9 +3211,8 @@ __webpack_require__.r(__webpack_exports__);
   \**********************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_empire_logo_vue_vue_type_style_index_0_id_e62713bc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./empire_logo.vue?vue&type=style&index=0&id=e62713bc&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/empire_logo.vue?vue&type=style&index=0&id=e62713bc&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_empire_logo_vue_vue_type_style_index_0_id_e62713bc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./empire_logo.vue?vue&type=style&index=0&id=e62713bc&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/empire_logo.vue?vue&type=style&index=0&id=e62713bc&lang=scss&scoped=true&");
 
 
 /***/ }),
@@ -3649,9 +3223,8 @@ __webpack_require__.r(__webpack_exports__);
   \***********************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_confirm_vue_vue_type_style_index_0_id_5787bafe_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./icon_confirm.vue?vue&type=style&index=0&id=5787bafe&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_confirm.vue?vue&type=style&index=0&id=5787bafe&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_confirm_vue_vue_type_style_index_0_id_5787bafe_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./icon_confirm.vue?vue&type=style&index=0&id=5787bafe&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_confirm.vue?vue&type=style&index=0&id=5787bafe&lang=scss&scoped=true&");
 
 
 /***/ }),
@@ -3662,9 +3235,8 @@ __webpack_require__.r(__webpack_exports__);
   \********************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_stop_vue_vue_type_style_index_0_id_087d39b4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./icon_stop.vue?vue&type=style&index=0&id=087d39b4&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_stop.vue?vue&type=style&index=0&id=087d39b4&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_stop_vue_vue_type_style_index_0_id_087d39b4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./icon_stop.vue?vue&type=style&index=0&id=087d39b4&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/icon_stop.vue?vue&type=style&index=0&id=087d39b4&lang=scss&scoped=true&");
 
 
 /***/ }),
@@ -3675,9 +3247,8 @@ __webpack_require__.r(__webpack_exports__);
   \**************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_button_close_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./button_close.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/button_close.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_button_close_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./button_close.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/button_close.vue?vue&type=style&index=0&lang=scss&");
 
 
 /***/ }),
@@ -3688,9 +3259,8 @@ __webpack_require__.r(__webpack_exports__);
   \******************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_labeled_checkbox_vue_vue_type_style_index_0_id_233684f8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./labeled_checkbox.vue?vue&type=style&index=0&id=233684f8&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/labeled_checkbox.vue?vue&type=style&index=0&id=233684f8&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_labeled_checkbox_vue_vue_type_style_index_0_id_233684f8_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./labeled_checkbox.vue?vue&type=style&index=0&id=233684f8&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/labeled_checkbox.vue?vue&type=style&index=0&id=233684f8&lang=scss&scoped=true&");
 
 
 /***/ }),
@@ -3701,9 +3271,8 @@ __webpack_require__.r(__webpack_exports__);
   \****************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_phantom_button_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./phantom_button.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/phantom_button.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_phantom_button_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./phantom_button.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/phantom_button.vue?vue&type=style&index=0&lang=scss&");
 
 
 /***/ }),
@@ -3714,9 +3283,8 @@ __webpack_require__.r(__webpack_exports__);
   \***************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_submit_button_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./submit_button.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/submit_button.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_submit_button_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./submit_button.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/submit_button.vue?vue&type=style&index=0&lang=scss&");
 
 
 /***/ }),
@@ -3727,9 +3295,8 @@ __webpack_require__.r(__webpack_exports__);
   \******************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_text_input_combo_vue_vue_type_style_index_0_id_6c07a9d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./text_input_combo.vue?vue&type=style&index=0&id=6c07a9d0&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/text_input_combo.vue?vue&type=style&index=0&id=6c07a9d0&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_text_input_combo_vue_vue_type_style_index_0_id_6c07a9d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./text_input_combo.vue?vue&type=style&index=0&id=6c07a9d0&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/form_controls/text_input_combo.vue?vue&type=style&index=0&id=6c07a9d0&lang=scss&scoped=true&");
 
 
 /***/ }),
@@ -3740,9 +3307,8 @@ __webpack_require__.r(__webpack_exports__);
   \*************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_authenticated_user_sidebar_vue_vue_type_style_index_0_id_a04b05d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./authenticated_user_sidebar.vue?vue&type=style&index=0&id=a04b05d0&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/authenticated_user_sidebar.vue?vue&type=style&index=0&id=a04b05d0&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_authenticated_user_sidebar_vue_vue_type_style_index_0_id_a04b05d0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./authenticated_user_sidebar.vue?vue&type=style&index=0&id=a04b05d0&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/authenticated_user_sidebar.vue?vue&type=style&index=0&id=a04b05d0&lang=scss&scoped=true&");
 
 
 /***/ }),
@@ -3753,9 +3319,8 @@ __webpack_require__.r(__webpack_exports__);
   \**************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_content_sidebar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./content_sidebar.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/content_sidebar.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_content_sidebar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./content_sidebar.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/content_sidebar.vue?vue&type=style&index=0&lang=scss&");
 
 
 /***/ }),
@@ -3766,9 +3331,8 @@ __webpack_require__.r(__webpack_exports__);
   \*****************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_navbar_vue_vue_type_style_index_0_id_5b8f8430_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./navbar.vue?vue&type=style&index=0&id=5b8f8430&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/navbar.vue?vue&type=style&index=0&id=5b8f8430&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_23_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_navbar_vue_vue_type_style_index_0_id_5b8f8430_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./navbar.vue?vue&type=style&index=0&id=5b8f8430&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-23[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/navigation/navbar.vue?vue&type=style&index=0&id=5b8f8430&lang=scss&scoped=true&");
 
 
 /***/ }),
@@ -3779,7 +3343,6 @@ __webpack_require__.r(__webpack_exports__);
   \*******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_empire_logo_vue_vue_type_template_id_e62713bc_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
@@ -3796,7 +3359,6 @@ __webpack_require__.r(__webpack_exports__);
   \********************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_confirm_vue_vue_type_template_id_5787bafe_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
@@ -3813,7 +3375,6 @@ __webpack_require__.r(__webpack_exports__);
   \*****************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_icon_stop_vue_vue_type_template_id_087d39b4_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
@@ -3830,7 +3391,6 @@ __webpack_require__.r(__webpack_exports__);
   \***********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_button_close_vue_vue_type_template_id_363bbe34___WEBPACK_IMPORTED_MODULE_0__.render),
@@ -3847,7 +3407,6 @@ __webpack_require__.r(__webpack_exports__);
   \***************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_labeled_checkbox_vue_vue_type_template_id_233684f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
@@ -3864,7 +3423,6 @@ __webpack_require__.r(__webpack_exports__);
   \*************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_phantom_button_vue_vue_type_template_id_99cf0926___WEBPACK_IMPORTED_MODULE_0__.render),
@@ -3881,7 +3439,6 @@ __webpack_require__.r(__webpack_exports__);
   \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_submit_button_vue_vue_type_template_id_d0049200___WEBPACK_IMPORTED_MODULE_0__.render),
@@ -3898,7 +3455,6 @@ __webpack_require__.r(__webpack_exports__);
   \***************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_text_input_combo_vue_vue_type_template_id_6c07a9d0_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
@@ -3915,7 +3471,6 @@ __webpack_require__.r(__webpack_exports__);
   \**********************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_authenticated_user_sidebar_vue_vue_type_template_id_a04b05d0_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
@@ -3932,7 +3487,6 @@ __webpack_require__.r(__webpack_exports__);
   \***********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_content_sidebar_vue_vue_type_template_id_02cdd0a6___WEBPACK_IMPORTED_MODULE_0__.render),
@@ -3949,7 +3503,6 @@ __webpack_require__.r(__webpack_exports__);
   \**************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_navbar_vue_vue_type_template_id_5b8f8430_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
@@ -3966,7 +3519,6 @@ __webpack_require__.r(__webpack_exports__);
   \**********************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* binding */ render),
@@ -4009,7 +3561,6 @@ render._withStripped = true
   \***********************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* binding */ render),
@@ -4042,7 +3593,6 @@ render._withStripped = true
   \********************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* binding */ render),
@@ -4075,7 +3625,6 @@ render._withStripped = true
   \**************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* binding */ render),
@@ -4115,7 +3664,6 @@ render._withStripped = true
   \******************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* binding */ render),
@@ -4163,7 +3711,6 @@ render._withStripped = true
   \****************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* binding */ render),
@@ -4202,7 +3749,6 @@ render._withStripped = true
   \***************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* binding */ render),
@@ -4231,7 +3777,6 @@ render._withStripped = true
   \******************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* binding */ render),
@@ -4421,7 +3966,6 @@ render._withStripped = true
   \*************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* binding */ render),
@@ -4600,7 +4144,6 @@ render._withStripped = true
   \**************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* binding */ render),
@@ -4814,7 +4357,6 @@ render._withStripped = true
   \*****************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* binding */ render),
@@ -5366,7 +4908,6 @@ render._withStripped = true
   \********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ normalizeComponent)
@@ -5479,7 +5020,6 @@ function normalizeComponent (
   \********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Emit": () => (/* binding */ Emit)
@@ -5551,7 +5091,6 @@ function isPromise(obj) {
   \**********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Inject": () => (/* binding */ Inject)
@@ -5583,7 +5122,6 @@ function Inject(options) {
   \******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "InjectReactive": () => (/* binding */ InjectReactive)
@@ -5625,7 +5163,6 @@ function InjectReactive(options) {
   \*********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Model": () => (/* binding */ Model)
@@ -5661,7 +5198,6 @@ function Model(event, options) {
   \*************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ModelSync": () => (/* binding */ ModelSync)
@@ -5707,7 +5243,6 @@ function ModelSync(propName, event, options) {
   \********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Prop": () => (/* binding */ Prop)
@@ -5741,7 +5276,6 @@ function Prop(options) {
   \************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "PropSync": () => (/* binding */ PropSync)
@@ -5784,7 +5318,6 @@ function PropSync(propName, options) {
   \***********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Provide": () => (/* binding */ Provide)
@@ -5818,7 +5351,6 @@ function Provide(key) {
   \*******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ProvideReactive": () => (/* binding */ ProvideReactive)
@@ -5852,7 +5384,6 @@ function ProvideReactive(key) {
   \*******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Ref": () => (/* binding */ Ref)
@@ -5884,7 +5415,6 @@ function Ref(refKey) {
   \**********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "VModel": () => (/* binding */ VModel)
@@ -5921,7 +5451,6 @@ function VModel(options) {
   \*********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Watch": () => (/* binding */ Watch)
@@ -5961,7 +5490,6 @@ function Watch(path, options) {
   \*********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "applyMetadata": () => (/* binding */ applyMetadata)
@@ -5991,7 +5519,6 @@ function applyMetadata(options, target, key) {
   \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "needToProduceProvide": () => (/* binding */ needToProduceProvide),
@@ -6053,7 +5580,6 @@ function inheritInjected(componentOptions) {
   \**********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Component": () => (/* reexport safe */ vue_class_component__WEBPACK_IMPORTED_MODULE_0__.default),
@@ -6113,7 +5639,6 @@ __webpack_require__.r(__webpack_exports__);
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -18100,83 +17625,6 @@ Vue.compile = compileToFunctions;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Vue);
 
 
-/***/ }),
-
-/***/ "./resources/svg sync recursive ^\\.\\/.*$":
-/*!**************************************!*\
-  !*** ./resources/svg/ sync ^\.\/.*$ ***!
-  \**************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var map = {
-	"./arrow_down": "./resources/svg/arrow_down.svg",
-	"./arrow_down.svg": "./resources/svg/arrow_down.svg",
-	"./camera": "./resources/svg/camera.svg",
-	"./camera.svg": "./resources/svg/camera.svg",
-	"./computer_folder_search": "./resources/svg/computer_folder_search.svg",
-	"./computer_folder_search.svg": "./resources/svg/computer_folder_search.svg",
-	"./control_panel": "./resources/svg/control_panel.svg",
-	"./control_panel.svg": "./resources/svg/control_panel.svg",
-	"./exit_arrow": "./resources/svg/exit_arrow.svg",
-	"./exit_arrow.svg": "./resources/svg/exit_arrow.svg",
-	"./fast_backward": "./resources/svg/fast_backward.svg",
-	"./fast_backward.svg": "./resources/svg/fast_backward.svg",
-	"./fast_forward": "./resources/svg/fast_forward.svg",
-	"./fast_forward.svg": "./resources/svg/fast_forward.svg",
-	"./finger_point": "./resources/svg/finger_point.svg",
-	"./finger_point.svg": "./resources/svg/finger_point.svg",
-	"./folder": "./resources/svg/folder.svg",
-	"./folder.svg": "./resources/svg/folder.svg",
-	"./folder_search": "./resources/svg/folder_search.svg",
-	"./folder_search.svg": "./resources/svg/folder_search.svg",
-	"./improvement_performance": "./resources/svg/improvement_performance.svg",
-	"./improvement_performance.svg": "./resources/svg/improvement_performance.svg",
-	"./magnifier": "./resources/svg/magnifier.svg",
-	"./magnifier.svg": "./resources/svg/magnifier.svg",
-	"./movie_tape": "./resources/svg/movie_tape.svg",
-	"./movie_tape.svg": "./resources/svg/movie_tape.svg",
-	"./photo_gallery": "./resources/svg/photo_gallery.svg",
-	"./photo_gallery.svg": "./resources/svg/photo_gallery.svg",
-	"./play_round": "./resources/svg/play_round.svg",
-	"./play_round.svg": "./resources/svg/play_round.svg",
-	"./rocket_launch": "./resources/svg/rocket_launch.svg",
-	"./rocket_launch.svg": "./resources/svg/rocket_launch.svg",
-	"./search": "./resources/svg/search.svg",
-	"./search.svg": "./resources/svg/search.svg",
-	"./shutdown": "./resources/svg/shutdown.svg",
-	"./shutdown.svg": "./resources/svg/shutdown.svg",
-	"./smile_in_glasses": "./resources/svg/smile_in_glasses.svg",
-	"./smile_in_glasses.svg": "./resources/svg/smile_in_glasses.svg",
-	"./star_full": "./resources/svg/star_full.svg",
-	"./star_full.svg": "./resources/svg/star_full.svg",
-	"./star_yellow": "./resources/svg/star_yellow.svg",
-	"./star_yellow.svg": "./resources/svg/star_yellow.svg",
-	"./video_playlist": "./resources/svg/video_playlist.svg",
-	"./video_playlist.svg": "./resources/svg/video_playlist.svg",
-	"./video_setting": "./resources/svg/video_setting.svg",
-	"./video_setting.svg": "./resources/svg/video_setting.svg"
-};
-
-
-function webpackContext(req) {
-	var id = webpackContextResolve(req);
-	return __webpack_require__(id);
-}
-function webpackContextResolve(req) {
-	if(!__webpack_require__.o(map, req)) {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	}
-	return map[req];
-}
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = "./resources/svg sync recursive ^\\.\\/.*$";
-
 /***/ })
 
 /******/ 	});
@@ -18442,9 +17890,8 @@ webpackContext.id = "./resources/svg sync recursive ^\\.\\/.*$";
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-"use strict";
 /*!*********************************************!*\
   !*** ./resources/js/auth/password_reset.js ***!
   \*********************************************/

@@ -17,29 +17,35 @@ class Movie extends Model
 
     protected $hidden = ['pivot'];
 
-    public function getDurationAttribute($value){
-        return Str::startsWith($value, "00") ? Str::substr($value,3,5) : $value;
+
+    public function getDurationAttribute($value)
+    {
+        return Str::startsWith($value, "00") ? Str::substr($value, 3, 5) : $value;
     }
 
-    public function pornstars(){
-        return $this->belongsToMany(Pornstar::class,'movie_has_pornstar');
+    public function pornstars()
+    {
+        return $this->belongsToMany(Pornstar::class, 'movie_has_pornstar');
     }
 
 
-    public function getPornstarsNamesAttribute(){
+    public function getPornstarsNamesAttribute()
+    {
         return $this->pornstars->pluck('nickname')->all();
     }
 
-    public function actressNationality(){
+    public function actressNationality()
+    {
         return $this->belongsTo(Nationality::class, 'actress_nationality_id');
     }
 
-    public function location(){
+    public function location()
+    {
         return $this->belongsTo(Location::class, 'action_location_id');
     }
 
-    public function storyOrCostumeType(){
+    public function storyOrCostumeType()
+    {
         return $this->belongsTo(StoryOrCostumeType::class, 'story_or_costume_type_id');
     }
-
 }

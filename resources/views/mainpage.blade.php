@@ -3,28 +3,28 @@
       <header class="introductory-content">
          <h1 class="introductory-header">
              {{__('welcome')}}
-             <svg-vue icon="smile_in_glasses" class="introductory-header-icon"></svg-vue>
+             <smile-in-glasses-icon class="introductory-header-icon"/>
         </h1>
          <p class="news-introduction">{{__('news_introduction')}}</p>
          <h2 class="quick-start-header">
              {{__('quick_start')}}
-             <svg-vue class="quick-start-icon" icon="rocket_launch"></svg-vue>
+             <rocket-launch-icon class="quick-start-icon"/>
         </h2>
          <ul class="quickstart-options-list">
              <li class="quickstart-option">
                  <a href="{{route('pornstars.list')}}" class="quickstart-link">
                     <span class="quickstart-option-description">{{__('pornstars')}}</span>
-                    <svg-vue class="quickstart-option-icon" icon="star_full"></svg-vue>
+                    <star-full-icon class="quickstart-option-icon" />
                 </a>
             </li>
             <li class="quickstart-option">
                 <span class="quickstart-option-description">{{__('categories')}}</span>
-                <svg-vue class="quickstart-option-icon" icon="video_playlist"></svg-vue>
+                <video-playlist-icon class="quickstart-option-icon" />
             </li>
             <li class="quickstart-option">
               <a href="{{route('movies.advanced.search.panel')}}" class="quickstart-link">
                 <span class="quickstart-option-description">{{__('search_engine')}}</span>
-                <svg-vue class="quickstart-option-icon" icon="search"></svg-vue>
+                <magnifier-icon class="quickstart-option-icon" />
               </a>
             </li>
           </ul>

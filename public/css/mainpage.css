@@ -263,7 +263,8 @@
     .introductory-content {
       font-size: 17px; } }
 
-.introductory-header, .news-header {
+.introductory-header,
+.news-header {
   font-size: 2vw;
   font-family: Aldrich, sans-serif;
   padding: 7px 3px;
@@ -273,7 +274,8 @@
   color: white;
   background: black; }
   @media (max-width: 1200px) {
-    .introductory-header, .news-header {
+    .introductory-header,
+    .news-header {
       font-size: 25px; } }
 
 .introductory-header-icon {
@@ -338,6 +340,7 @@
 .quickstart-option-icon {
   fill: #ef0244;
   transition: fill 1.5s;
+  height: auto;
   width: 1.4vw;
   margin: 2px auto;
   display: block;

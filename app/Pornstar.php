@@ -20,41 +20,49 @@ class Pornstar extends Model
 
     protected $hidden = ['pivot'];
 
-    public function nationality(){
+    public function nationality()
+    {
         return $this->belongsTo(Nationality::class);
     }
 
-    public function getAgeAttribute(){
+    public function getAgeAttribute()
+    {
         return Carbon::parse($this->born)->age;
     }
 
-    public function movies(){
+    public function movies()
+    {
         return $this->belongsToMany(Movie::class, 'movie_has_pornstar');
     }
 
-    public function getVotesAverageAttribute():float{
-        return round(($this->votes->sum('rate') / $this->ammount_of_votes),2);
+    public function getVotesAverageAttribute(): float
+    {
+        return round(($this->votes->sum('rate') / $this->amount_of_votes), 2);
     }
 
-    public function votes(){
+    public function votes()
+    {
         return $this->hasMany(PornstarRate::class);
     }
 
-    public function getAmmountOfVotesAttribute():int{
-         return $this->votes->count();
+    public function getamountOfVotesAttribute(): int
+    {
+        return $this->votes->count();
     }
 
-    public function getHasAnyVotesAttribute():bool{
-        return $this->ammount_of_votes > 0;
+    public function getHasAnyVotesAttribute(): bool
+    {
+        return $this->amount_of_votes > 0;
     }
 
-    public function getHasBeenRatedByCurrentUserAttribute():bool{
+    public function getHasBeenRatedByCurrentUserAttribute(): bool
+    {
 
-        $currentUserRate =  $this->votes->first(function($item,$key){
+        $currentUserRate =  $this->votes->first(function ($item, $key) {
             return $item->user_id == \Auth::user()->id;
         });
-        
-        if($currentUserRate !== null){
+
+        if ($currentUserRate !== null) {
             $this->userRate = $currentUserRate->rate;
             return true;
         }
@@ -62,22 +70,25 @@ class Pornstar extends Model
         return false;
     }
 
-    public function getCurrentUserRateAttribute(){
+    public function getCurrentUserRateAttribute()
+    {
         return $this->userRate;
     }
 
-    public function comments(){
-        return $this->limitComments ? 
-        $this->hasMany(PornstarComment::class)->limit($this->commentsLimit)->orderBy('created_at', 'desc') : 
-        $this->hasMany(PornstarComment::class);
+    public function comments()
+    {
+        return $this->limitComments ?
+            $this->hasMany(PornstarComment::class)->limit($this->commentsLimit)->orderBy('created_at', 'desc') :
+            $this->hasMany(PornstarComment::class);
     }
 
-    public function getAmmountOfCommentsAttribute():int{
+    public function getamountOfCommentsAttribute(): int
+    {
         return $this->comments->count();
     }
 
-    public function getHasAnyCommentsAttribute():bool{
-        return $this->ammount_of_comments > 0;
+    public function getHasAnyCommentsAttribute(): bool
+    {
+        return $this->amount_of_comments > 0;
     }
-
 }

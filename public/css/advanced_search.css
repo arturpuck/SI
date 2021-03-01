@@ -493,18 +493,21 @@
   vertical-align: middle;
   margin-right: 5px;
   min-width: 12px;
-  fill: white; }
+  fill: white;
+  height: auto; }
   .control-panel-button__icon--bigger {
     width: 1.5em;
     vertical-align: middle;
     margin-right: 5px;
     min-width: 12px;
-    fill: white; }
+    fill: white;
+    height: auto; }
   .control-panel-button__icon--arrow-down {
     vertical-align: middle;
     margin-right: 5px;
     min-width: 12px;
     fill: white;
+    height: auto;
     width: 15%; }
 
 .aditional-control-panel {

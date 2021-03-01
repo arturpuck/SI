@@ -4,7 +4,8 @@ namespace App\Services;
 
 use Illuminate\Support\Collection;
 
-Class ElegantPaginator {
+class ElegantPaginator
+{
 
     private $items;
     private $baseURL;
@@ -14,74 +15,82 @@ Class ElegantPaginator {
     private $hasMorePages;
     private $hasPages;
     private $pageNumber;
+    private int $totalRowsNumber;
 
-    public function __construct(Collection $items, $baseURL, $tableName, $pageNumber, $elementsPerPage){
-       $this->items = $items;
-       $this->baseURL = $baseURL;
-       $this->tableName = $tableName;
-       $this->pageNumber = $pageNumber;
-       $this->elementsPerPage = $elementsPerPage;
-       $this->collectMetaData();
+    public function __construct(Collection $items, $baseURL, $tableName, $pageNumber, $elementsPerPage, $totalRowsNumber)
+    {
+        $this->items = $items;
+        $this->baseURL = $baseURL;
+        $this->tableName = $tableName;
+        $this->pageNumber = $pageNumber;
+        $this->elementsPerPage = $elementsPerPage;
+        $this->totalRowsNumber = $totalRowsNumber;
+        $this->collectMetaData();
     }
 
-    private function collectMetaData(){
-        $rowsNumber = $this->countAllRows();
-        $this->numberOfPages = ceil($rowsNumber / $this->elementsPerPage);
+    private function collectMetaData()
+    {
+        $this->numberOfPages = ceil($this->totalRowsNumber / $this->elementsPerPage);
     }
 
-    private function countAllRows(){
-        return \DB::table($this->tableName)->count();
-      }
-
-    public function links(){
+    public function links()
+    {
         $links = [];
 
-        for($i = 1; $i <= $this->numberOfPages; ++$i){
-            $links[$i] = $this->baseURL.'/'.$i;
+        for ($i = 1; $i <= $this->numberOfPages; ++$i) {
+            $links[$i] = $this->baseURL . '/' . $i;
         }
-        
+
         return $links;
     }
 
-    public function firstPageURL(){
-        return $this->baseURL.'/1';
+    public function firstPageURL()
+    {
+        return $this->baseURL . '/1';
     }
 
-    public function lastPageURL(){
-        return $this->baseURL.'/'.$this->numberOfPages;
+    public function lastPageURL()
+    {
+        return $this->baseURL . '/' . $this->numberOfPages;
     }
 
-    public function onFirstPage(){
+    public function onFirstPage()
+    {
         return $this->pageNumber == 1;
     }
 
-    public function previousPageURL(){
-        return $this->baseURL.'/'.($this->pageNumber - 1);
+    public function previousPageURL()
+    {
+        return $this->baseURL . '/' . ($this->pageNumber - 1);
     }
 
-    public function nextPageURL(){
-        return $this->baseURL.'/'.($this->pageNumber + 1);
+    public function nextPageURL()
+    {
+        return $this->baseURL . '/' . ($this->pageNumber + 1);
     }
 
-    public function hasMorePages(){
+    public function hasMorePages()
+    {
         return $this->pageNumber < $this->numberOfPages;
     }
 
-    public function hasPages(){
+    public function hasPages()
+    {
         return $this->numberOfPages > 1;
     }
 
-    public function pageNumber(){
+    public function pageNumber()
+    {
         return $this->pageNumber;
     }
 
-    public function items(){
+    public function items()
+    {
         return $this->items;
     }
 
-    public function numberOfPages(){
+    public function numberOfPages()
+    {
         return $this->numberOfPages;
     }
-
-
 }

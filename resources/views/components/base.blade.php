@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{App::getLocale()}}">
+
 <head>
 	<meta charset="UTF-8">
 	<title>{{$title}}</title>
@@ -17,7 +18,7 @@
 	<link rel="apple-touch-icon" sizes="144x144" href="/images/decoration/icons/favicon/apple-icon-144x144.png">
 	<link rel="apple-touch-icon" sizes="152x152" href="/images/decoration/icons/favicon/apple-icon-152x152.png">
 	<link rel="apple-touch-icon" sizes="180x180" href="/images/decoration/icons/favicon/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="/images/decoration/icons/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="/images/decoration/icons/favicon/android-icon-192x192.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/images/decoration/icons/favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="/images/decoration/icons/favicon/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/images/decoration/icons/favicon/favicon-16x16.png">
@@ -25,27 +26,25 @@
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
-	<link href="https://fonts.googleapis.com/css?family=Exo+2|Aldrich|Oxanium|Play&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Exo+2|Aldrich|Oxanium|Teko|Play&display=swap" rel="stylesheet">
 	@isset($fonts) {{fonts}} @endisset
 	<script src="https://kit.fontawesome.com/df4e1e2dba.js" crossorigin="anonymous"></script>
 </head>
-<body  class="full-body @isset($specificImageClass){{$specificImageClass}}@endisset">
-    <div class="aplication-container" id="app">
-		<navbar
-		@auth
-			v-bind:user-id="{{Auth::user()->id}}"
-			user-name="{{Auth::user()->login}}"
-			@if(Auth::user()->has_avatar)
-              avatar-file-name="{{Auth::user()->avatar_file_name}}"
+
+<body class="full-body @isset($specificImageClass){{$specificImageClass}}@endisset">
+	<div class="aplication-container" id="app">
+		<navbar @auth v-bind:user-id="{{Auth::user()->id}}" user-name="{{Auth::user()->login}}" @if(Auth::user()->has_avatar)
+			avatar-file-name="{{Auth::user()->avatar_file_name}}"
 			@endif
-		@endauth
-		>
+			@endauth
+			>
 		</navbar>
-		   <x-report/>
-			{{$slot}}
+		<x-report />
+		{{$slot}}
 		<categories-list></categories-list>
 	</div>
-	<x-footer/>
+	<x-footer />
 	<script src="{{$jsFilePath}}"></script>
 </body>
+
 </html>

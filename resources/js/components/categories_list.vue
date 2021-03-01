@@ -3,7 +3,7 @@
      <div class="panel-bar">
         <div class="panel-bar__description">
            <span v-text="translations['categories_list']"></span>
-           <svg-vue class="panel-bar__icon" icon="movie_tape"></svg-vue>
+           <movie-tape-icon class="panel-bar__icon" />
         </div>
         <button-close v-on:click.native="hideCategories" class="panel-bar__close-button"></button-close>
      </div>
@@ -22,9 +22,10 @@
   import CategoriesListTranslations from '@jsmodules/translations/categories_list.ts';
   import ButtonClose from '@jscomponents/form_controls/button_close.vue';
   import Categories from '@jsmodules/categories_list';
-  import CategoryData from '@interfaces/movies/category_data'
+  import CategoryData from '@interfaces/movies/category_data';
+  import MovieTapeIcon from '@svgicon/movie_tape_icon.vue';
   
-@Component({components : {ButtonClose}})
+@Component({components : {ButtonClose, MovieTapeIcon}})
   export default class CategoriesList extends Vue {
 
       private showCategories : boolean = false;

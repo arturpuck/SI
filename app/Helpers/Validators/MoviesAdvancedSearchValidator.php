@@ -7,9 +7,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-Class MoviesAdvancedSearchValidator {
+class MoviesAdvancedSearchValidator
+{
 
-      private const ABUNDANCE_TYPES = [
+    private const ABUNDANCE_TYPES = [
         'one_male_one_female',
         'bukkake',
         'single_female',
@@ -34,8 +35,8 @@ Class MoviesAdvancedSearchValidator {
     ];
 
     private const AGE_RANGES = [
-        'teenagers' ,
-        'young' ,
+        'teenagers',
+        'young',
         'mature'
     ];
 
@@ -47,14 +48,14 @@ Class MoviesAdvancedSearchValidator {
     ];
 
     private const RACES = [
-          'white',
-          'asian',
-          'ebony',
-          'latin',
-          'arabic'
+        'white',
+        'asian',
+        'ebony',
+        'latin',
+        'arabic'
     ];
 
-    private const SEX_TYPE_AMMOUNTS = [
+    private const SEX_TYPE_amountS = [
         'only',
         'maximum',
         'a_lot',
@@ -64,17 +65,17 @@ Class MoviesAdvancedSearchValidator {
     ];
 
     private const CUMSHOT_TYPES = [
-         'on_face',
-         'cum_swallow',
-         'creampie',
-         'anal_creampie',
-         'on_tits', 
-         'on_pussy', 
-         'on_ass', 
-         'on_feet', 
-         'on_many_places', 
-         'on_other_body_parts', 
-         'exclude'
+        'on_face',
+        'cum_swallow',
+        'creampie',
+        'anal_creampie',
+        'on_tits',
+        'on_pussy',
+        'on_ass',
+        'on_feet',
+        'on_many_places',
+        'on_other_body_parts',
+        'exclude'
     ];
 
     private const CAMERA_STYLES = [
@@ -88,7 +89,7 @@ Class MoviesAdvancedSearchValidator {
         'amateur'
     ];
 
-    private const CAST_STRING_TO_BOOLEAN =[
+    private const CAST_STRING_TO_BOOLEAN = [
         'hasStory',
         'isCumshotCompilation',
         'recordedBySpamCamera',
@@ -106,14 +107,15 @@ Class MoviesAdvancedSearchValidator {
     ];
 
     private const CAST_STRING_TO_INTEGER = [
-        'minimumMovieTime', 
+        'minimumMovieTime',
         'maximumMovieTime',
         'minimumMovieViews',
         'maximumMovieViews',
         'page',
     ];
 
-    private static function getRules():array{
+    private static function getRules(): array
+    {
 
         return [
             'abundanceType' => ['string', 'nullable', Rule::in(self::ABUNDANCE_TYPES)],
@@ -125,14 +127,14 @@ Class MoviesAdvancedSearchValidator {
             'race' => ['string', 'nullable', Rule::in(self::RACES)],
             'nationality' => ['string', 'nullable', 'exists:nationalities,name'],
             'shavedPussy' => ['nullable', 'boolean'],
-            'analAmmount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_AMMOUNTS)],
-            'blowjobAmmount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_AMMOUNTS)],
-            'doublePenetrationAmmount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_AMMOUNTS)],
-            'vaginalAmmount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_AMMOUNTS)],
-            'pussyLickingAmmount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_AMMOUNTS)],
-            'tittfuckAmmount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_AMMOUNTS)],
-            'feetAmmount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_AMMOUNTS)],
-            'position69Ammount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_AMMOUNTS)],
+            'analAmount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_amountS)],
+            'blowjobAmount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_amountS)],
+            'doublePenetrationamount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_amountS)],
+            'vaginalamount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_amountS)],
+            'pussyLickingAmount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_amountS)],
+            'titfuckAmount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_amountS)],
+            'feetamount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_amountS)],
+            'position69amount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_amountS)],
             'cumshotType' => ['string', 'nullable', Rule::in(self::CUMSHOT_TYPES)],
             'location' => ['string', 'nullable', 'exists:locations,name'],
             'cameraStyle' => ['string', 'nullable', Rule::in(self::CAMERA_STYLES)],
@@ -145,7 +147,7 @@ Class MoviesAdvancedSearchValidator {
             'isSadisticOrMasochistic' => ['boolean', 'nullable'],
             'isFemaleDomination' => ['boolean', 'nullable'],
             'isTranslatedToPolish' => ['boolean', 'nullable'],
-            'showPantyhose' => ['boolean', 'nullable', ],
+            'showPantyhose' => ['boolean', 'nullable',],
             'showStockings' => ['boolean', 'nullable'],
             'showGlasses' => ['boolean', 'nullable'],
             'showHighHeels' => ['boolean', 'nullable'],
@@ -153,7 +155,7 @@ Class MoviesAdvancedSearchValidator {
             'showWhips' => ['boolean', 'nullable'],
             'showSexToys' => ['boolean', 'nullable'],
 
-            'minimumMovieTime'  => ['nullable', 'integer', 'between:0,180'], 
+            'minimumMovieTime'  => ['nullable', 'integer', 'between:0,180'],
             'maximumMovieTime'  => ['nullable', 'integer', 'between:0,180'],
             'minimumMovieViews' => ['nullable', 'numeric', 'between:0,100000'],
             'maximumMovieViews' => ['nullable', 'numeric', 'between:0,100000'],
@@ -163,18 +165,19 @@ Class MoviesAdvancedSearchValidator {
 
             'page' => ['required', 'numeric', 'min:0']
         ];
-    } 
+    }
 
     //if you wonder why I didn't use a custom request validation, that's because custom requests break
     // when more fields get validated
 
-    private static function castTypes(Request $request): void{
+    private static function castTypes(Request $request): void
+    {
 
-        foreach($request->all() as $key => $value){
+        foreach ($request->all() as $key => $value) {
 
-            if(in_array($key,self::CAST_STRING_TO_BOOLEAN)){
+            if (in_array($key, self::CAST_STRING_TO_BOOLEAN)) {
 
-                $casted = match($value){
+                $casted = match ($value) {
                     'true' => true,
                     'false' => false,
                     '1' => true,
@@ -182,23 +185,19 @@ Class MoviesAdvancedSearchValidator {
                 };
 
                 $request->merge([$key => $casted]);
-                
-            } 
-            else if(in_array($key,self::CAST_STRING_TO_INTEGER)){
+            } else if (in_array($key, self::CAST_STRING_TO_INTEGER)) {
 
                 $casted = intval($value);
                 $request->merge([$key => $casted]);
             }
-             
         }
     }
 
-    public static function validate(Request $request):bool | Response {
+    public static function validate(Request $request): bool | Response
+    {
 
         self::castTypes($request);
         $validator = Validator::make($request->all(), self::getRules());
-        return $validator->fails() ? response('Request data is invalid',400) : true;
+        return $validator->fails() ? response('Request data is invalid', 400) : true;
     }
-
-
 }
