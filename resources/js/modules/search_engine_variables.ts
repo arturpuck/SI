@@ -20,7 +20,7 @@ const variables: {
 
     initialValueIsEmptyString: ['abundanceType', 'titsSize', 'assSize', 'thicknessSize', 'ageRange', 'hairColor', 'race',
         'nationality', 'shavedPussy', 'analAmount', 'blowjobAmount', 'handjobAmount', 'doublePenetrationamount', 'vaginalamount', 'pussyLickingAmount', 'titfuckAmount',
-        'feetamount', 'position69amount', 'cumshotType', 'location', 'cameraStyle', 'hasStory', 'storyOrCostume',
+        'feetPettingAmount', 'position69amount', 'cumshotType', 'location', 'cameraStyle', 'hasStory', 'storyOrCostume',
         'professionalismLevel'],
 
     initialValueIsFalse: ['isCumshotCompilation', 'recordedBySpamCamera', 'isSadisticOrMasochistic', 'isFemaleDomination',

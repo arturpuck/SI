@@ -48,6 +48,126 @@ class GetMoviesByCategoryHandler
             case 'pussy-licking' :
                 $this->moviesRepository->filterByPussyLickingAmount('maximum');
             break;
+
+            case 'feet' :
+                $this->moviesRepository->filterByFeetPettingAmount('maximum');
+            break;
+
+            case 'bukkake' : 
+                $this->moviesRepository->filterByAbundanceType('bukkake');
+            break;
+
+            case 'femdom' : 
+                $this->moviesRepository->filterByIsFemaleDomination(true);
+            break;
+
+            case 'bdsm' :
+                $this->moviesRepository->filterByIsSadisticOrMasochistic(true);
+            break;
+
+            case 'brunettes' :
+                $this->moviesRepository->filterByHairColor('dark');
+            break;
+
+            case 'redheads' : 
+                $this->moviesRepository->filterByHairColor('red');
+            break;
+
+            case 'matures' :
+                $this->moviesRepository->filterByAgeRange('mature');
+            break;
+
+            case 'teenagers' :
+                $this->moviesRepository->filterByAgeRange('teenagers');
+            break;
+
+            case 'amateur' :
+                $this->moviesRepository->filterByProfessionalismLevel('amateur');
+            break;
+
+            case 'asians' :
+                $this->moviesRepository->filterByRace('asian');
+            break;
+
+            case 'latinas' :
+                $this->moviesRepository->filterByRace('latin');
+            break;
+
+            case 'ebonies' :
+                $this->moviesRepository->filterByRace('ebony');
+            break;
+
+            case 'GangBang' :
+                $this->moviesRepository->filterByAbundanceType('GangBang');
+            break;
+
+            case 'lesbians' :
+                $this->moviesRepository->filterByAbundanceType('lesbian');
+            break;
+
+            case 'group' :
+                $this->moviesRepository->filterByAbundanceType('group');
+            break;
+
+            case 'cumshot-compilations' :
+              $this->moviesRepository->filterByIsCumshotCompilation(true);
+            break;
+
+            case 'cum-on-face' :
+                $this->moviesRepository->filterByCumshotType('on_face');
+            break;
+
+            case 'cum-swallow' :
+                $this->moviesRepository->filterByCumshotType('cum_swallow');
+            break;
+
+            case 'cum-on-feet' :
+                $this->moviesRepository->filterByCumshotType('on_feet');
+            break;
+
+            case 'creampie' :
+                $this->moviesRepository->filterByCumshotType('creampie');
+            break;
+
+            case 'cum-in-ass' :
+                $this->moviesRepository->filterByCumshotType('anal_creampie');
+            break;
+
+            case 'cum-on-tits' :
+                $this->moviesRepository->filterByCumshotType('on_tits');
+            break;
+
+            case 'pantyhose' :
+                $this->moviesRepository->filterByShowPantyhose(true);
+            break;
+
+            case 'high-heels' :
+                $this->moviesRepository->filterByShowHighHeels(true);
+            break;
+
+            case 'nurses' :
+                $this->moviesRepository->filterByStoryOrCostume('nurse');
+            break;
+
+            case 'female-teachers' :
+                $this->moviesRepository->filterByStoryOrCostume('female_teacher');
+            break;
+
+            case 'japanese' :
+                $this->moviesRepository->filterByNationality('japanese');
+            break;
+
+            case 'POV' :
+                $this->moviesRepository->filterByCameraStyle('POV');
+            break;
+
+            case 'russians' :
+                $this->moviesRepository->filterByNationality('russian');
+            break;
+
+            case 'pornstars' :
+                $this->moviesRepository->withAnyPornstar();
+            break;
         }
 
         $movies = $this->moviesRepository->withBasicPornstarList()

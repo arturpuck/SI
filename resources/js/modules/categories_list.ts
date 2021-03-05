@@ -3,13 +3,13 @@ import Translator from '@jsmodules/translator.js';
 
 type categoryType = 'theMostPopularCategories' | 'otherCategories'
 
-const categoriesData : {
-    theMostPopularCategories : string[] 
-    getTheMostPopular() : CategoryData[]
-    getDataByType(categoryType : categoryType) : CategoryData[]
-    getSlug(categoryName) : string
+const categoriesData: {
+    theMostPopularCategories: string[]
+    getTheMostPopular(): CategoryData[]
+    getDataByType(categoryType: categoryType): CategoryData[]
+    getSlug(categoryName): string
 } = {
-    theMostPopularCategories :  [
+    theMostPopularCategories: [
         'big_titts',
         'anal',
         'blowjob',
@@ -20,11 +20,11 @@ const categoriesData : {
         'feet',
         'bukkake',
         'femdom',
-        'bdsm',
+        'BDSM',
         'brunettes',
         'redheads',
         'milfs',
-        'teens',
+        'teenagers',
         'amateur',
         'asian',
         'latins',
@@ -32,7 +32,7 @@ const categoriesData : {
         'GangBang',
         'lesbians',
         'group',
-        'cumshot_compilation',
+        'cumshot_compilations',
         'cum_on_face',
         'cum_swallow',
         'cum_on_feet',
@@ -49,27 +49,27 @@ const categoriesData : {
         'pornstars'
     ],
 
-    getTheMostPopular() : CategoryData[]{
+    getTheMostPopular(): CategoryData[] {
         return this.getDataByType('theMostPopularCategories');
     },
 
-    getSlug(categoryName):string{
+    getSlug(categoryName): string {
         return categoryName.replaceAll(' ', '-');
     },
 
-    getDataByType(categoryType : categoryType) : CategoryData[]{
+    getDataByType(categoryType: categoryType): CategoryData[] {
         const group = this[categoryType];
-        let data : CategoryData[] = [];
-        let translatedCategoryName : string;
-        let slug : string;
+        let data: CategoryData[] = [];
+        let translatedCategoryName: string;
+        let slug: string;
 
         group.forEach(categoryName => {
             translatedCategoryName = Translator.translate(categoryName);
             slug = this.getSlug(translatedCategoryName);
             data.push({
-               fileName : categoryName,
-               slug,
-               translatedName : translatedCategoryName
+                fileName: categoryName,
+                slug,
+                translatedName: translatedCategoryName
             });
         });
 

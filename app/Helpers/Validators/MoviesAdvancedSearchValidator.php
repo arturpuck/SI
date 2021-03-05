@@ -133,7 +133,7 @@ class MoviesAdvancedSearchValidator
             'vaginalamount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_amountS)],
             'pussyLickingAmount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_amountS)],
             'titfuckAmount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_amountS)],
-            'feetamount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_amountS)],
+            'feetPettingAmount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_amountS)],
             'position69amount' => ['string', 'nullable', Rule::in(self::SEX_TYPE_amountS)],
             'cumshotType' => ['string', 'nullable', Rule::in(self::CUMSHOT_TYPES)],
             'location' => ['string', 'nullable', 'exists:locations,name'],

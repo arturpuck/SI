@@ -1,11 +1,42 @@
 <?php
 
 return [
+    //pl
     'duże-cycki' => 'big-tits',
     'anal' => 'anal',
     'obciąganie' => 'blowjob',
     'walenie-konika' => 'handjob',
     'blondynki' => 'blondes',
     'na-hiszpana' => 'titfuck',
-    'minetka' => 'pussy-licking'
+    'minetka' => 'pussy-licking',
+    'stopy' => 'feet',
+    'bukkake' => 'bukkake',
+    'kobieca-dominacja' => 'femdom',
+    'BDSM' => 'bdsm',
+    'brunetki' => 'brunettes',
+    'rude' => 'redheads',
+    'dojrzałe' => 'matures',
+    'nastolatki' => 'teenagers',
+    'amatorskie' => 'amateur',
+    'azjatki' => 'asians',
+    'latynoski' => 'latinas',
+    'murzynki' => 'ebonies',
+    'GangBang' => 'GangBang',
+    'lesbijki' => 'lesbians',
+    'grupowy' => 'group',
+    'kompilacje-wytrysków' => 'cumshot-compilations',
+    'wytrysk-na-twarz' => 'cum-on-face',
+    'połykanie-spermy' => 'cum-swallow',
+    'wytrysk-na-stopy' => 'cum-on-feet',
+    'wytrysk-w-cipkę' => 'creampie',
+    'wytrysk-w-dupkę' => 'cum-in-ass',
+    'wytrysk-na-cycki' => 'cum-on-tits',
+    'rajstopki' => 'pantyhose',
+    'szpile' => 'high-heels',
+    'pielęgniarki' => 'nurses',
+    'nauczycielki' => 'female-teachers',
+    'japonki' => 'japanese',
+    'POV' => 'POV',
+    'rosjanki' => 'russians',
+    'gwiazdy' => 'pornstars'
 ];

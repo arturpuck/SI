@@ -52,7 +52,7 @@ class MoviesRepository extends BaseRepository
     public function filterByAbundanceType(string $abundance): MoviesRepository
     {
 
-        $this->query = $this->query->where('abundance', $abundance);
+        $this->query = $this->query->where('abundance', 'LIKE', "%$abundance%");
         return $this;
     }
 
@@ -111,7 +111,6 @@ class MoviesRepository extends BaseRepository
 
     public function filterByShavedPussy($shavedPussy): MoviesRepository
     {
-
         $shavedPussy = boolval($shavedPussy);
         $this->query = $this->query->where('shows_shaved_pussy', $shavedPussy);
         return $this;
@@ -209,6 +208,11 @@ class MoviesRepository extends BaseRepository
         return $this;
     }
 
+    public function filterByFeetPettingAmount(string $amount) : MoviesRepository {
+        $this->sexTypeQuery($amount, 'feet_petting_percentage');
+        return $this;
+    }
+
     public function filterByPussyLickingAmount(string $amount): MoviesRepository
     {
 
@@ -282,8 +286,6 @@ class MoviesRepository extends BaseRepository
 
     public function filterByIsCumshotCompilation(bool $isCumshotCompilation): MoviesRepository
     {
-
-        $isCumshotCompilation = boolval($isCumshotCompilation);
         $this->query = $this->query->where('is_cumshot_compilation_type', $isCumshotCompilation);
         return $this;
     }
@@ -416,6 +418,12 @@ class MoviesRepository extends BaseRepository
             });
         }
 
+        return $this;
+    }
+
+    public function withAnyPornstar() : MoviesRepository {
+        
+        $this->query = $this->query->has('pornstars');
         return $this;
     }
 }

@@ -78,7 +78,7 @@ export default {
   pussyLickingAmount: sexamounts,
   titfuckAmount: sexamounts,
   position69amount: sexamounts,
-  feetamount: sexamounts,
+  feetPettingAmount: sexamounts,
   doublePenetrationamount: sexamounts,
   handjobAmount: sexamounts,
 

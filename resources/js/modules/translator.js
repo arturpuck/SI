@@ -293,6 +293,7 @@ export default {
       lesbians: 'lesbijki',
       group: 'grupowy',
       cumshot_compilation: 'kompilacja wytrysków',
+      cumshot_compilations: 'kompilacje wytrysków',
       cum_on_face: 'wytrysk na twarz',
       cum_swallow: 'połykanie spermy',
       cum_on_feet: 'wytrysk na stopy',
@@ -311,7 +312,7 @@ export default {
       doublePenetrationamount: "wtyczka",
       vaginalamount: "waginalny",
       pussyLickingAmount: 'minetka',
-      feetamount: 'pieszczenie stóp',
+      feetPettingAmount: 'pieszczenie stóp',
       position69amount: 'pozycja 69',
       titfuckAmount: "na hiszpana",
       isCumshotCompilation: 'kompilacja wytrysków',
@@ -342,6 +343,7 @@ export default {
       popular_categories: "Popularne kategorie",
       categories_list: "Lista kategorii",
       big_titts: "duże cycki",
+      teenagers: "nastolatki",
       packages: {
          content_sidebar: {
             hide_side_bar_title: "Schowaj boczne menu",

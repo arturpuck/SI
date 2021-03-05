@@ -187,7 +187,7 @@ Object.defineProperty(exports, "__esModule", ({
 var translator_js_1 = __webpack_require__(/*! @jsmodules/translator.js */ "./resources/js/modules/translator.js");
 
 var categoriesData = {
-  theMostPopularCategories: ['big_titts', 'anal', 'blowjob', 'handjob', 'blondes', 'tittfuck', 'pussy_licking', 'feet', 'bukkake', 'femdom', 'bdsm', 'brunettes', 'redheads', 'milfs', 'teens', 'amateur', 'asian', 'latins', 'ebony', 'GangBang', 'lesbians', 'group', 'cumshot_compilation', 'cum_on_face', 'cum_swallow', 'cum_on_feet', 'creampie', 'cum_in_ass', 'cum_on_titts', 'pantyhose', 'high_heels', 'nurses', 'teachers', 'japanese', 'POV', 'russian', 'pornstars'],
+  theMostPopularCategories: ['big_titts', 'anal', 'blowjob', 'handjob', 'blondes', 'tittfuck', 'pussy_licking', 'feet', 'bukkake', 'femdom', 'BDSM', 'brunettes', 'redheads', 'milfs', 'teenagers', 'amateur', 'asian', 'latins', 'ebony', 'GangBang', 'lesbians', 'group', 'cumshot_compilations', 'cum_on_face', 'cum_swallow', 'cum_on_feet', 'creampie', 'cum_in_ass', 'cum_on_titts', 'pantyhose', 'high_heels', 'nurses', 'teachers', 'japanese', 'POV', 'russian', 'pornstars'],
   getTheMostPopular: function getTheMostPopular() {
     return this.getDataByType('theMostPopularCategories');
   },

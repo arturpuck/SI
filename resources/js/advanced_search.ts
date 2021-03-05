@@ -73,7 +73,7 @@ new Vue({
     handjobAmount: "",
     pussyLickingAmount: "",
     titfuckAmount: "",
-    feetamount: "",
+    feetPettingAmount: "",
     position69amount: "",
     doublePenetrationamount: "",
     cumshotType: "",

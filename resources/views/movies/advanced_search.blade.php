@@ -81,7 +81,7 @@
          <simple-labeled-select v-model="titfuckAmount" v-bind:options="searchEngineTranslations['sexamounts']">
             {{__('tittfuck')}} :
          </simple-labeled-select>
-         <simple-labeled-select v-model="feetamount" v-bind:options="searchEngineTranslations['sexamounts']">
+         <simple-labeled-select v-model="feetPettingAmount" v-bind:options="searchEngineTranslations['sexamounts']">
             {{__('feet')}} :
          </simple-labeled-select>
          <simple-labeled-select v-model="doublePenetrationamount" v-bind:options="searchEngineTranslations['sexamounts']">
