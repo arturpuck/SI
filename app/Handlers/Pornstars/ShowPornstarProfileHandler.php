@@ -18,7 +18,7 @@ Class ShowPornstarProfileHandler extends Handler {
 
     public function handle(Request $request){
 
-        $pornstarNickName = str_replace('_', ' ', $request->route('nickname'));
+        $pornstarNickName = str_replace('-', ' ', $request->route('nickname'));
         $pornstar = $this->pornstarsRepository
                      ->filterByNickname($pornstarNickName)
                      ->with(['votes', 'nationality'])

@@ -1056,8 +1056,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
-  name: 'movie-box',
+  name: "movie-box",
   components: {
     IconPolishFlag: _icon_polish_flag["default"]
   },
@@ -1068,10 +1081,13 @@ var _default = {
   },
   methods: {
     showPreview: function showPreview(event) {
-      this.$root.$emit('showPreview', {
+      this.$root.$emit("showPreview", {
         id: this.id,
         title: this.title
       });
+    },
+    getPornstarSlug: function getPornstarSlug(pornstarNickname) {
+      return pornstarNickname.replaceAll(" ", "-");
     }
   },
   computed: {
@@ -1082,19 +1098,19 @@ var _default = {
       return "/film/".concat(this.id);
     },
     viewsTranslated: function viewsTranslated() {
-      return "".concat(this.translator.translate('views'), " : ");
+      return "".concat(this.translator.translate("views"), " : ");
     },
     preViewTranslated: function preViewTranslated() {
-      return "".concat(this.translator.translate('preview'));
+      return "".concat(this.translator.translate("preview"));
     },
     aditionalInformation: function aditionalInformation() {
       return this.isTranslatedToPolish || this.pornstars;
     },
     pornstarsListTranslated: function pornstarsListTranslated() {
-      return this.pornstars.join(', ');
+      return this.pornstars.join(", ");
     },
     iconDecription: function iconDecription() {
-      return this.translator.translate('movie_translated_to_polish');
+      return this.translator.translate("movie_translated_to_polish");
     }
   },
   props: {
@@ -1874,7 +1890,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".movie-main-image[data-v-4e10eebb] {\n  width: 280px;\n  display: block;\n  height: 158px;\n  text-decoration: none;\n  border-radius: 3px;\n  position: relative;\n  background-size: cover;\n}\n.movie-main-image[data-v-4e10eebb]:hover {\n    box-shadow: 2px 2px 2px 2px black;\n}\n.movie-duration[data-v-4e10eebb] {\n  display: inline-block;\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  color: white;\n  padding: 2px;\n  font-family: Aldrich;\n  background: #0000005c;\n}\n.movie-description[data-v-4e10eebb] {\n  display: block;\n  padding-top: 2px;\n  color: white;\n  text-decoration: none;\n}\n.movie-description[data-v-4e10eebb]:hover {\n    text-decoration: underline;\n}\n.movie-box[data-v-4e10eebb] {\n  color: white;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.movie-box[data-v-4e10eebb] {\n      font-size: 14px;\n}\n}\n.movie-details-and-controls[data-v-4e10eebb] {\n  padding-top: 5px;\n  display: flex;\n  justify-content: space-between;\n}\n.play-icon[data-v-4e10eebb], .magnifier-icon[data-v-4e10eebb] {\n  color: #960b2e;\n}\n.star-icon[data-v-4e10eebb] {\n  color: gold;\n}\n.preview-control[data-v-4e10eebb] {\n  cursor: pointer;\n}\n@media (max-width: 870px) {\n.movie-main-image[data-v-4e10eebb] {\n    width: 232px;\n    height: 120px;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".pornstar-profile-link[data-v-4e10eebb] {\n  text-decoration: none;\n  color: white;\n}\n.pornstar-profile-link[data-v-4e10eebb]:hover {\n    text-decoration: underline;\n}\n.movie-main-image[data-v-4e10eebb] {\n  width: 280px;\n  display: block;\n  height: 158px;\n  text-decoration: none;\n  border-radius: 3px;\n  position: relative;\n  background-size: cover;\n}\n.movie-main-image[data-v-4e10eebb]:hover {\n    box-shadow: 2px 2px 2px 2px black;\n}\n.movie-duration[data-v-4e10eebb] {\n  display: inline-block;\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  color: white;\n  padding: 2px;\n  font-family: Aldrich;\n  background: #0000005c;\n}\n.movie-description[data-v-4e10eebb] {\n  display: block;\n  padding-top: 2px;\n  color: white;\n  text-decoration: none;\n}\n.movie-description[data-v-4e10eebb]:hover {\n    text-decoration: underline;\n}\n.movie-box[data-v-4e10eebb] {\n  color: white;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.movie-box[data-v-4e10eebb] {\n      font-size: 14px;\n}\n}\n.movie-details-and-controls[data-v-4e10eebb] {\n  padding-top: 5px;\n  display: flex;\n  justify-content: space-between;\n}\n.play-icon[data-v-4e10eebb],\n.magnifier-icon[data-v-4e10eebb] {\n  color: #960b2e;\n}\n.star-icon[data-v-4e10eebb] {\n  color: gold;\n}\n.preview-control[data-v-4e10eebb] {\n  cursor: pointer;\n}\n@media (max-width: 870px) {\n.movie-main-image[data-v-4e10eebb] {\n    width: 232px;\n    height: 120px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5020,15 +5036,25 @@ var render = function() {
             { staticClass: "movie-details-and-controls" },
             [
               _vm.pornstars
-                ? _c("span", [
-                    _c("span", { staticClass: "fas fa-star star-icon" }),
-                    _vm._v(" "),
-                    _c("span", {
-                      domProps: {
-                        textContent: _vm._s(_vm.pornstarsListTranslated)
-                      }
-                    })
-                  ])
+                ? _c(
+                    "span",
+                    _vm._l(_vm.pornstars, function(pornstar) {
+                      return _c("span", { key: pornstar }, [
+                        _c("span", { staticClass: "fas fa-star star-icon" }),
+                        _vm._v(" "),
+                        _c("a", {
+                          staticClass: "pornstar-profile-link",
+                          attrs: {
+                            href:
+                              "/gwiazda-porno/profil/" +
+                              _vm.getPornstarSlug(pornstar)
+                          },
+                          domProps: { textContent: _vm._s(pornstar + " ") }
+                        })
+                      ])
+                    }),
+                    0
+                  )
                 : _vm._e(),
               _vm._v(" "),
               _vm.isTranslatedToPolish

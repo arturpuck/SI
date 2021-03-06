@@ -376,8 +376,8 @@ function (_super) {
   function PornstarsList() {
     var _this = _super !== null && _super.apply(this, arguments) || this;
 
-    _this.translations = translator_js_1["default"].getPackage('pornstars_list');
-    _this.requestedText = '';
+    _this.translations = translator_js_1["default"].getPackage("pornstars_list");
+    _this.requestedText = "";
     _this.displayedPornstars = [];
     return _this;
   }
@@ -402,16 +402,16 @@ function (_super) {
   };
 
   PornstarsList.prototype.getPornstarImageFilePath = function (pornstarNickname) {
-    var pornstarFileName = pornstarNickname.replace(/ /g, '_');
+    var pornstarFileName = pornstarNickname.replace(/ /g, "_");
     return "/images/decoration/pornstars/profile-small/" + pornstarFileName + ".jpg";
   };
 
   PornstarsList.prototype.getPornstarProfileRoute = function (pornstarNickname) {
-    return this.pornstarProfileRoute + "/" + pornstarNickname.replace(/ /g, '_');
+    return this.pornstarProfileRoute + "/" + pornstarNickname.replace(/ /g, "-");
   };
 
   PornstarsList.prototype.resetSearchInput = function () {
-    this.requestedText = '';
+    this.requestedText = "";
   };
 
   Object.defineProperty(PornstarsList.prototype, "showNoResultsInfo", {
@@ -460,7 +460,7 @@ function (_super) {
     required: true
   })], PornstarsList.prototype, "pornstarProfileRoute", void 0);
 
-  __decorate([vue_property_decorator_1.Watch('requestedText')], PornstarsList.prototype, "resetListIfValueIsEmpty", null);
+  __decorate([vue_property_decorator_1.Watch("requestedText")], PornstarsList.prototype, "resetListIfValueIsEmpty", null);
 
   PornstarsList = __decorate([vue_property_decorator_1.Component({
     components: {
