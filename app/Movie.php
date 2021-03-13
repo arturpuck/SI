@@ -17,6 +17,13 @@ class Movie extends Model
 
     protected $hidden = ['pivot'];
 
+    public $timestamps = false;
+
+    private const SEX_TYPES_COLUMNS = [
+       'anal', 'blowjob', 'pussy_fuck', 'handjob', 'tittfuck', 'pussy_licking',
+       'feet_petting', 'position_69'
+    ];
+
 
     public function getDurationAttribute($value)
     {
@@ -47,5 +54,19 @@ class Movie extends Model
     public function storyOrCostumeType()
     {
         return $this->belongsTo(StoryOrCostumeType::class, 'story_or_costume_type_id');
+    }
+
+    public function getSpecificSexTypesAttribute() {
+        $matchingTypes = [];
+
+        foreach(self::SEX_TYPES_COLUMNS as $sexType){
+
+            $propertyName = $sexType.'_percentage';
+            if($this->$propertyName > 90){
+                $matchingTypes[] = $propertyName;
+            }
+        }
+
+        return count($matchingTypes) > 0 ? $matchingTypes : false;
     }
 }

@@ -32,6 +32,9 @@ Route::namespace('Movies')->name('movies.')->group(function () {
 
       Route::get('/filmy/kategoria/{categoryName}/{pageNumber?}', 'MoviesController@getMoviesByCategory')
             ->name('category.specific');
+
+      Route::get('/film/{slug}', 'MoviesController@showSingleMovie')
+            ->name('show.single');
 });
 
 Route::namespace('Pornstars')->name('pornstars.')->group(function () {

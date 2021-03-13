@@ -10,6 +10,7 @@ use App\Pornstar;
 use App\Handlers\Movies\ShowAdvancedSearchPanelHandler;
 use App\Handlers\Movies\AdvancedSearchHandler;
 use App\Handlers\Movies\GetMoviesByCategoryHandler;
+use App\Handlers\Movies\ShowSingleMovieHandler;
 
 class MoviesController extends Controller
 {
@@ -46,5 +47,10 @@ class MoviesController extends Controller
     public function getMoviesByCategory(string $categoryName, int $pageNumber = 1, GetMoviesByCategoryHandler $categoriesHandler)
     {
         return $categoriesHandler->handle($categoryName, $pageNumber);
+    }
+
+    public function showSingleMovie(string $slug, ShowSingleMovieHandler $singleMovieHandler){
+        
+        return $singleMovieHandler->handle($slug);
     }
 }

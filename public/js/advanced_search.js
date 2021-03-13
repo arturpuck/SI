@@ -2092,6 +2092,27 @@ exports.default = variables;
 
 /***/ }),
 
+/***/ "./resources/js/modules/slugifier.ts":
+/*!*******************************************!*\
+  !*** ./resources/js/modules/slugifier.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+function slugifier(text) {
+  var slug = text.replaceAll(' ', '-').replaceAll(':', '').replaceAll(')', '').replaceAll('(', '').replaceAll('(', '').replaceAll('?', '').replaceAll('!', '').replaceAll('.', '').replaceAll(',', '').toLowerCase();
+  return slug;
+}
+
+exports.default = slugifier;
+
+/***/ }),
+
 /***/ "./resources/js/modules/translations/components/pages_list.ts":
 /*!********************************************************************!*\
   !*** ./resources/js/modules/translations/components/pages_list.ts ***!
@@ -2678,6 +2699,8 @@ exports.default = void 0;
 
 var _icon_polish_flag = _interopRequireDefault(__webpack_require__(/*! @jscomponents-decoration/flags/icon_polish_flag.vue */ "./resources/js/components/decoration/flags/icon_polish_flag.vue"));
 
+var _slugifier = _interopRequireDefault(__webpack_require__(/*! @jsmodules/slugifier */ "./resources/js/modules/slugifier.ts"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 //
@@ -2748,7 +2771,7 @@ var _default = {
       return "url('/images/movies/main/".concat(this.id, ".jpg')");
     },
     movieURL: function movieURL() {
-      return "/film/".concat(this.id);
+      return "/film/".concat((0, _slugifier["default"])(this.title));
     },
     viewsTranslated: function viewsTranslated() {
       return "".concat(this.translator.translate("views"), " : ");

@@ -42,6 +42,7 @@
 
 <script>
 import IconPolishFlag from "@jscomponents-decoration/flags/icon_polish_flag.vue";
+import Slugifier from "@jsmodules/slugifier";
 
 export default {
   name: "movie-box",
@@ -72,7 +73,7 @@ export default {
     },
 
     movieURL() {
-      return `/film/${this.id}`;
+      return `/film/${Slugifier(this.title)}`;
     },
 
     viewsTranslated() {

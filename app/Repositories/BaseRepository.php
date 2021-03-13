@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 Abstract Class BaseRepository{
 
@@ -13,8 +14,10 @@ Abstract Class BaseRepository{
        $this->resetQuery();
     }
 
-    public function get(){
-      return $this->query->get();
+    public function get() : Collection {
+      $result = $this->query->get();
+      $this->resetQuery();
+      return $result;
     }
 
     public function select(array $columnNames): self{
