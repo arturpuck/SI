@@ -1,4 +1,4 @@
-<x-base title="{{__('create_an_account')}}" specificImageClass="{{$specificImageClass}}" description="{{__('registration_description')}}">
+<x-base title="{{__('create_an_account')}}" customBodyClass="{{$customBodyClass}}" description="{{__('registration_description')}}">
 		<main id="main-panel" class="main-panel @if($errors->any())main-panel-without-top-margin @endif">
 			<section class="register-panel">
 				<form ref="register_panel" method="POST" action="{{route('auth.register.create')}}" class="main-panel-form register-form">

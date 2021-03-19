@@ -1,0 +1,21 @@
+@import "~sass/basic";
+@import "~sass/fonts";
+@import "~sasscomponent/movies/free_video_player_plyr";
+@import '~sass/standard_background';
+
+.movie-block{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.player-container{
+    display: flex;
+    justify-content: center;
+    margin: 8px 0;
+}
+
+.plyr{
+    min-width:300px;
+    border-radius: 6px;
+    width: 100%;
+}

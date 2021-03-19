@@ -17,7 +17,7 @@ class UserSettingsController extends Controller
 {
     public function showPanel(){
         return view('user.settings_panel')->with([
-            'specificImageClass' => 'empire-background-image-'.rand(1,1),
+            'customBodyClass' => 'empire-background-image-'.rand(1,1),
             'userTypes' => UserType::all(),
             'sexualOrientations' => SexualOrientation::all()
         ]);

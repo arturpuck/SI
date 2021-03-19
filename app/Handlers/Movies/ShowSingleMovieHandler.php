@@ -17,12 +17,22 @@ Class ShowSingleMovieHandler {
                                         ->withAllRelations()
                                         ->get()
                                         ->first();
-       ++$movie->views;
-       $movie->save();
+        ++$movie->views;
+        $movie->save();
        
-       $similarMovies = $this->moviesRepository->filterBySimilarMovies($movie)
+        $similarMovies = $this->moviesRepository->filterBySimilarMovies($movie)
                                                 ->get();
-        dd($similarMovies);
+
+        return view('movies.single_movie')->with([
+          'similarMovies' => $similarMovies,
+          'movie' => $movie,
+          'title' => $movie->title,
+          'description' => $this->getDescription($movie->title)
+        ]);
+    }
+
+    private function getDescription(string $movieTitle) : string {
+        return __('single_movie_description_beginning').$movieTitle;
     }
     
 

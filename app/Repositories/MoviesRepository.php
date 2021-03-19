@@ -56,7 +56,7 @@ class MoviesRepository extends BaseRepository
     public function chronological(): MoviesRepository
     {
 
-        $this->query = $this->query->orderBy('created_at', 'desc');
+        $this->query = $this->query->orderBy('id', 'desc');
         return $this;
     }
 

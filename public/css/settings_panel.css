@@ -112,15 +112,16 @@
 .full-body {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  border-top: 1px solid transparent;
   background-size: cover;
   background-position: center;
   background-attachment: fixed; }
 
 .aplication-container {
-  min-height: calc(100vh - 40px);
+  min-height: calc(90vh - 30px);
   border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent; }
+  border-bottom: 1px solid transparent;
+  margin-top: calc(35px + 1.5vw); }
 
 .shadow-container {
   position: absolute;
@@ -159,7 +160,7 @@
   box-shadow: 2px 2px 2px 2px black;
   min-width: 320px;
   width: 30%;
-  margin: calc(20px + 5vw) auto; }
+  margin: 10px auto; }
 
 .user-settings-tab-list {
   list-style-type: none;

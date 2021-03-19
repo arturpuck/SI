@@ -2,7 +2,7 @@
 @import "~sass/fonts";
 @import "~sass/responsive_icon";
 @import "~sasscomponent/controls/slider/standard_slider";
-@import "~sass/advanced_search_results";
+@import "~sass/movies/advanced_search_results"; 
 
 @mixin panel-group {
     border-radius: 1vw;
@@ -51,7 +51,6 @@
 .advanced-search-panel {
     display: grid;
     padding: 0 0 5px 0;
-    margin-top: calc(35px + 1vw);
     grid-template-columns: repeat(4, 23%);
     grid-template-rows: auto;
     justify-content: space-evenly;

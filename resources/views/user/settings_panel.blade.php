@@ -1,4 +1,4 @@
-<x-base title="{{__('user_settings_title')}} : {{Auth::user()->login}}" specificImageClass="{{$specificImageClass}}" description="{{__('user_settings_description')}}">
+<x-base title="{{__('user_settings_title')}} : {{Auth::user()->login}}" customBodyClass="{{$customBodyClass}}" description="{{__('user_settings_description')}}">
     <main class="user-settings-panel">
        <nav class="user-setting-tabs">
            <ul role="tabpanel" class="user-settings-tab-list">

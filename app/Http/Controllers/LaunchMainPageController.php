@@ -16,7 +16,7 @@ class LaunchMainPageController extends Controller
                 ->get();
         
         return view('mainpage')->with([
-            'specificImageClass' => 'empire-background-image-'.rand(1,4),
+            'customBodyClass' => 'empire-background-image-'.rand(1,4),
             'news' => $news
         ]);
     }

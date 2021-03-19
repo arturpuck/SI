@@ -112,15 +112,16 @@
 .full-body {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  border-top: 1px solid transparent;
   background-size: cover;
   background-position: center;
   background-attachment: fixed; }
 
 .aplication-container {
-  min-height: calc(100vh - 40px);
+  min-height: calc(90vh - 30px);
   border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent; }
+  border-bottom: 1px solid transparent;
+  margin-top: calc(35px + 1.5vw); }
 
 .default-news-header {
   padding: 7px 3px;
@@ -242,7 +243,7 @@
   flex-direction: row;
   border-radius: 8px;
   box-shadow: 2px 2px 3px 3px black;
-  margin: calc(40px + 5vw) auto;
+  margin: calc(40px + 1vw) auto;
   width: 70%;
   min-width: 750px;
   height: 55vh;

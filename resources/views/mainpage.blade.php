@@ -1,4 +1,4 @@
-<x-base title="{{__('sex_empire_main_page')}}" specificImageClass="{{$specificImageClass}}" description="{{__('sex_empire_main_page_description')}}">
+<x-base title="{{__('sex_empire_main_page')}}" customBodyClass="{{$customBodyClass}}" description="{{__('sex_empire_main_page_description')}}">
    <main class="main-content">
       <header class="introductory-content">
          <h1 class="introductory-header">

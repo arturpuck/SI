@@ -1,4 +1,4 @@
-<x-base title="{{__($title)}}" specificImageClass="no-image-background" description="{{__($description)}}">
+<x-base title="{{__($title)}}" customBodyClass="standard-background" description="{{__($description)}}">
    <form class="advanced-search-panel" v-bind:class="{'advanced-search-panel--hidden' : !advancedSearchPanelIsVisible}">
       <fieldset v-bind:class="{'aditional-control-panel--hidden' : !showControlsShortcut}" class="aditional-control-panel">
          <legend class="aditional-control-panel__description">{{__('controls')}}</legend>

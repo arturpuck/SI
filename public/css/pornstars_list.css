@@ -112,22 +112,22 @@
 .full-body {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  border-top: 1px solid transparent;
   background-size: cover;
   background-position: center;
   background-attachment: fixed; }
 
 .aplication-container {
-  min-height: calc(100vh - 40px);
+  min-height: calc(90vh - 30px);
   border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent; }
+  border-bottom: 1px solid transparent;
+  margin-top: calc(35px + 1.5vw); }
 
 .full-body {
   background: #151313; }
 
 .pornstars-list-content-all {
-  display: block;
-  margin: calc(35px + 2vw) auto; }
+  display: block; }
 
 .pornstars-list-main-header {
   font-size: 1.5vw;

@@ -84,7 +84,7 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         return view('auth.register')->with([
-          'specificImageClass' => 'register-background-image-'.rand(1,3),
+          'customBodyClass' => 'register-background-image-'.rand(1,3),
           'sexualOrientations' => SexualOrientation::all(),
           'userTypes' => UserType::all()
         ]);
