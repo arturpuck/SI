@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Movies;
 
-use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
-use App\Repositories\MoviesRepository;
-use App\Http\Controllers\Controller;
-use App\Pornstar;
-use App\Handlers\Movies\ShowAdvancedSearchPanelHandler;
 use App\Handlers\Movies\AdvancedSearchHandler;
 use App\Handlers\Movies\GetMoviesByCategoryHandler;
+use App\Handlers\Movies\RateMovieHandler;
 use App\Handlers\Movies\ShowSingleMovieHandler;
+use App\Handlers\Movies\AddSpermatozoidHandler;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Movies\RateMovieRequest;
+use App\Http\Requests\Movies\AddSpermatozoidRequest;
+use App\Repositories\MoviesRepository;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class MoviesController extends Controller
 {
@@ -26,7 +28,7 @@ class MoviesController extends Controller
         return view('movies.movies_set_complete')->with([
             'title' => 'the_latest_movies',
             'description' => 'the_latest_movies_page_description',
-            'movies' => $movies
+            'movies' => $movies,
         ]);
     }
 
@@ -35,7 +37,7 @@ class MoviesController extends Controller
 
         return view('movies.advanced_search')->with([
             'title' => 'porn_movies_advanced_search',
-            'description' => 'advanced_search_description'
+            'description' => 'advanced_search_description',
         ]);
     }
 
@@ -49,8 +51,19 @@ class MoviesController extends Controller
         return $categoriesHandler->handle($categoryName, $pageNumber);
     }
 
-    public function showSingleMovie(string $slug, ShowSingleMovieHandler $singleMovieHandler){
-        
+    public function showSingleMovie(string $slug, ShowSingleMovieHandler $singleMovieHandler)
+    {
+
         return $singleMovieHandler->handle($slug);
+    }
+
+    public function rateMovie(RateMovieHandler $ratMovieHandler, RateMovieRequest $request): Response
+    {
+        return $ratMovieHandler->handle($request);
+    }
+
+    public function addSpermatozoid(AddSpermatozoidHandler $handler, AddSpermatozoidRequest $request){
+
+        return $handler->handle($request);
     }
 }

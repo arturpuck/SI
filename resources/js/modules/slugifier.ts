@@ -4,7 +4,6 @@ function slugifier(text: any): string {
         .replaceAll(':', '')
         .replaceAll(')', '')
         .replaceAll('(', '')
-        .replaceAll('(', '')
         .replaceAll('?', '')
         .replaceAll('!', '')
         .replaceAll('.', '')

@@ -9,10 +9,11 @@ use App\Movie;
 use Carbon\Carbon;
 use App\PornstarRate;
 use App\PornstarComment;
+use App\Traits\Slugifier;
 
 class Pornstar extends Model
 {
-    use HasFactory;
+    use HasFactory, Slugifier;
 
     public int $userRate;
     public bool $limitComments = true;

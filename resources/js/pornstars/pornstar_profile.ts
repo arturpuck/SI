@@ -245,7 +245,7 @@ new Vue({
     async ratePornstar(data) {
 
       const rateData = {
-        pornstar_id: data['pornstarID'],
+        pornstar_id: data['elementID'],
         rate: data['rate']
       };
 
@@ -263,7 +263,7 @@ new Vue({
 
         switch (response.status) {
           case 200:
-            this.showNotification(this.translator.translate('pornstar_has_been_rated'));
+            this.showNotification(this.translator.translate('element_has_been_rated'));
             break;
 
           case 400:

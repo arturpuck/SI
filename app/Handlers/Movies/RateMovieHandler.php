@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Handlers\Movies;
+
+use App\Http\Requests\Movies\RateMovieRequest;
+use App\MovieRating;
+use Symfony\Component\HttpFoundation\Response;
+
+class RateMovieHandler
+{
+
+    public function handle(RateMovieRequest $request): Response
+    {
+
+        MovieRating::updateOrCreate(
+            ['user_id' => \Auth::user()->id, 'movie_id' => $request->get('movie_id')],
+            ['user_vote' => $request->get('user_vote')]
+        );
+        return response('movie has been rated', 200);
+    }
+
+}

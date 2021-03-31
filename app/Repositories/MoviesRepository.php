@@ -2,10 +2,9 @@
 
 namespace App\Repositories;
 
-
 use App\Movie;
-use App\Traits\Repositories\ElegantPagination;
 use App\Services\ElegantPaginator;
+use App\Traits\Repositories\ElegantPagination;
 use Carbon\Carbon;
 
 class MoviesRepository extends BaseRepository
@@ -15,7 +14,7 @@ class MoviesRepository extends BaseRepository
 
     public const MODEL_NAME = Movie::class;
 
-    private ?string $rawSQLForTheMostSimilarMoviesSorting;
+    private  ? string $rawSQLForTheMostSimilarMoviesSorting;
 
     private const SEX_TYPES_COLUMNS_NOT_POLYMORPHIC = [
         'anal_percentage',
@@ -50,10 +49,10 @@ class MoviesRepository extends BaseRepository
         'actress_thickness',
         'actress_hair_color',
         'actress_age_range',
-        'actress_race'
+        'actress_race',
     ];
 
-    public function chronological(): MoviesRepository
+    public function chronological() : MoviesRepository
     {
 
         $this->query = $this->query->orderBy('id', 'desc');
@@ -236,7 +235,8 @@ class MoviesRepository extends BaseRepository
         return $this;
     }
 
-    public function filterByFeetPettingAmount(string $amount) : MoviesRepository {
+    public function filterByFeetPettingAmount(string $amount): MoviesRepository
+    {
         $this->sexTypeQuery($amount, 'feet_petting_percentage');
         return $this;
     }
@@ -397,7 +397,7 @@ class MoviesRepository extends BaseRepository
         return $this;
     }
 
-    private function translateMinutesToDuration(int  $minutes): string
+    private function translateMinutesToDuration(int $minutes): string
     {
 
         $duration = Carbon::createFromFormat('H:i:s', '00:00:00');
@@ -405,7 +405,7 @@ class MoviesRepository extends BaseRepository
         return $duration->toTimeString();
     }
 
-    public function filterByMinimumMovieTime(int  $minimumMovieTimeinMinutes): MoviesRepository
+    public function filterByMinimumMovieTime(int $minimumMovieTimeinMinutes): MoviesRepository
     {
 
         $duration = $this->translateMinutesToDuration($minimumMovieTimeinMinutes);
@@ -413,7 +413,7 @@ class MoviesRepository extends BaseRepository
         return $this;
     }
 
-    public function filterByMaximumMovieTime(int  $maximumMovieTimeinMinutes): MoviesRepository
+    public function filterByMaximumMovieTime(int $maximumMovieTimeinMinutes): MoviesRepository
     {
 
         $duration = $this->translateMinutesToDuration($maximumMovieTimeinMinutes);
@@ -449,125 +449,133 @@ class MoviesRepository extends BaseRepository
         return $this;
     }
 
-    public function filterBySlug(string $slug) : MoviesRepository {
+    public function filterBySlug(string $slug): MoviesRepository
+    {
 
         $this->query = $this->query->where('movies.slug', $slug);
         return $this;
     }
 
-    public function withAnyPornstar() : MoviesRepository {
-        
+    public function withAnyPornstar(): MoviesRepository
+    {
+
         $this->query = $this->query->has('pornstars');
         return $this;
     }
 
-    public function withAllRelations() : Moviesrepository {
+    public function withAllRelations(): Moviesrepository
+    {
         $this->withBasicPornstarList();
-        $this->with(['actressNationality', 'storyOrCostumeType', 'location']);
+        $this->with(['actressNationality', 'storyOrCostumeType', 'location', 'votes']);
         return $this;
     }
 
-    public function filterBySimilarMovies(Movie $movie, ?int $howManyMovies = 20) : Moviesrepository {
+    public function filterBySimilarMovies(Movie $movie, ?int $howManyMovies = 20): Moviesrepository
+    {
         $this->initiateFilteringByTheMostSimilarMovies();
-        $this->query = $this->query->where('movies.id', '!=', $movie->id)->where(function($query) use ($movie){
+        $this->query = $this->query->where('movies.id', '!=', $movie->id)->where(function ($query) use ($movie) {
 
-            if($specificSexTypes = $movie->specific_sex_types){
+            if ($specificSexTypes = $movie->specific_sex_types) {
 
-                foreach($specificSexTypes as $sexType){
-                    $query->orWhere($sexType ,'>', 90);
+                foreach ($specificSexTypes as $sexType) {
+                    $query->orWhere($sexType, '>', 90);
                     $this->addColumnForTheMostSimilarMoviesSorting($sexType, 90, '>');
                 }
             }
-    
-             if($movie->actressNationality){
+
+            if ($movie->actressNationality) {
                 $nationalityID = $movie->actressNationality->id;
                 $query->orWhere('movies.actress_nationality_id', $nationalityID);
                 $this->addColumnForTheMostSimilarMoviesSorting('movies.actress_nationality_id', $nationalityID);
-             }
-    
-             if($movie->pornstars()->exists()){
-               $pornstarsIDs = $movie->pornstars->pluck('id')->toArray();
-               $this->addPornstarsToRawSortingSQL($pornstarsIDs);
-               $this->query = $this->query->leftJoin('movie_has_pornstar', 'movies.id', '=', 'movie_has_pornstar.movie_id')
-                                          ->leftJoin('pornstars', 'movie_has_pornstar.pornstar_id', '=', 'pornstars.id');
-               $query->orWhereIn('pornstars.id', $pornstarsIDs);
+            }
 
-             }
-    
-             if($movie->storyOrCostumeType){
+            if ($movie->pornstars()->exists()) {
+                $pornstarsIDs = $movie->pornstars->pluck('id')->toArray();
+                $this->addPornstarsToRawSortingSQL($pornstarsIDs);
+                $this->query = $this->query->leftJoin('movie_has_pornstar', 'movies.id', '=', 'movie_has_pornstar.movie_id')
+                    ->leftJoin('pornstars', 'movie_has_pornstar.pornstar_id', '=', 'pornstars.id');
+                $query->orWhereIn('pornstars.id', $pornstarsIDs);
+
+            }
+
+            if ($movie->storyOrCostumeType) {
                 $storyOrCostumeTypeID = $movie->storyOrCostumeType->id;
-                $this->addColumnForTheMostSimilarMoviesSorting('movies.story_or_costume_type_id', $storyOrCostumeType);
-                $query->orWhere('movies.story_or_costume_type_id', $storyOrCostumeType);
-             }
-    
-             if($movie->location){
+                $this->addColumnForTheMostSimilarMoviesSorting('movies.story_or_costume_type_id', $storyOrCostumeTypeID);
+                $query->orWhere('movies.story_or_costume_type_id', $storyOrCostumeTypeID);
+            }
+
+            if ($movie->location) {
                 $locationID = $movie->location->id;
                 $this->addColumnForTheMostSimilarMoviesSorting('movies.action_location_id', $locationID);
                 $query->orWhere('movies.action_location_id', $locationID);
-             }
-    
-             if($movie->shows_shaved_pussy !== null){
-                 $isPussyShaved = $movie->shows_shaved_pussy;
-                 $this->addColumnForTheMostSimilarMoviesSorting('shows_shaved_pussy', $isPussyShaved);
-                 $query->orWhere('shows_shaved_pussy', $isPussyShaved);
-             }
-    
-             if($movie->is_professional_production !== null){
+            }
+
+            if ($movie->shows_shaved_pussy !== null) {
+                $isPussyShaved = $movie->shows_shaved_pussy;
+                $this->addColumnForTheMostSimilarMoviesSorting('shows_shaved_pussy', $isPussyShaved);
+                $query->orWhere('shows_shaved_pussy', $isPussyShaved);
+            }
+
+            if ($movie->is_professional_production !== null) {
                 $this->addColumnForTheMostSimilarMoviesSorting('is_professional_production', $movie->is_professional_production);
                 $query->orWhere('is_professional_production', $movie->is_professional_production);
             }
-            
+
             $this->addColumnForTheMostSimilarMoviesSorting('camera_style', $movie->camera_style);
-            $query->orWhere('camera_style',$movie->camera_style);
-    
+            $query->orWhere('camera_style', $movie->camera_style);
+
             $this->addColumnForTheMostSimilarMoviesSorting('camera_style', $movie->camera_style);
             $query->orWhere('abundance', 'LIKE', "%$movie->abundance%");
-    
-            foreach(self::EXAMINE_IN_LOOP_MOVIE_ATTRIBUTES as $attribute){
-    
-                if($movie->$attribute){
+
+            foreach (self::EXAMINE_IN_LOOP_MOVIE_ATTRIBUTES as $attribute) {
+
+                if ($movie->$attribute) {
                     $query->orWhere($attribute, $movie->$attribute);
                     $this->addColumnForTheMostSimilarMoviesSorting($attribute, $movie->$attribute);
                 }
             }
         });
-        
-       
+
         $this->terminateRawSQLForTheMostSimilarMoviesSorting();
-        if($howManyMovies){
+        if ($howManyMovies) {
             $this->query->take($howManyMovies);
         }
         $this->query = $this->query->orderByRaw($this->rawSQLForTheMostSimilarMoviesSorting);
-        
+
         return $this;
     }
 
-    private function addColumnForTheMostSimilarMoviesSorting(string $columnName, $value, string $operator = '=') : void{
+    private function addColumnForTheMostSimilarMoviesSorting(string $columnName, $value, string $operator = '='): void
+    {
         $parsedValue = (is_float($value) || is_integer($value)) ? $value : "'$value'";
         $this->rawSQLForTheMostSimilarMoviesSorting .= "(IFNULL($columnName,0) $operator $parsedValue) + ";
     }
 
-    private function initiateRawSQLForTheMostSimilarMoviesSorting() : void{
+    private function initiateRawSQLForTheMostSimilarMoviesSorting(): void
+    {
         $this->rawSQLForTheMostSimilarMoviesSorting = ' ( ';
     }
 
-    private function terminateRawSQLForTheMostSimilarMoviesSorting() : void {
+    private function terminateRawSQLForTheMostSimilarMoviesSorting(): void
+    {
         $this->rawSQLForTheMostSimilarMoviesSorting = substr($this->rawSQLForTheMostSimilarMoviesSorting, 0, -3);
         $this->rawSQLForTheMostSimilarMoviesSorting .= ') DESC';
     }
 
-    private function addPornstarsToRawSortingSQL(array $pornstarsIDs) : void {
-           $SQLpart = '( ';
-           foreach($pornstarsIDs as $pornstarID){
-               $SQLpart .= "(pornstars.id = $pornstarID) OR";
-           }
+    private function addPornstarsToRawSortingSQL(array $pornstarsIDs): void
+    {
+        $SQLpart = '( ';
+        foreach ($pornstarsIDs as $pornstarID) {
+            $SQLpart .= "(pornstars.id = $pornstarID) OR";
+        }
 
-           $SQLpart = substr($SQLpart,0,-2);
-           $SQLpart .= ') * 5 + ';
-           $this->rawSQLForTheMostSimilarMoviesSorting .= $SQLpart;
+        $SQLpart = substr($SQLpart, 0, -2);
+        $SQLpart .= ') * 5 + ';
+        $this->rawSQLForTheMostSimilarMoviesSorting .= $SQLpart;
     }
 
-    private function initiateFilteringByTheMostSimilarMovies() : void {
+    private function initiateFilteringByTheMostSimilarMovies(): void
+    {
         $this->withAllRelations();
         $this->initiateRawSQLForTheMostSimilarMoviesSorting();
     }

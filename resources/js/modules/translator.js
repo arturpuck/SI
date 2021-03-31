@@ -135,8 +135,9 @@ export default {
       porn: "Porno",
       user_avatar_description: "Avatar użytkownika o nicku",
       hide: "Schowaj",
-      pornstar_has_been_rated: "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie.",
+      element_has_been_rated: "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie.",
       pornstar_rate_data_is_invalid: "Niepoprawne dane oceny lub gwiazdy",
+      movie_rate_data_is_invalid: "Niepoprawne dane oceny lub filmu",
       nickname_is_missing: "Nie podano pseudonimu",
       the_nickname_exceeds_20_characters: "Długość pseudonimu przekracza 20 znaków",
       unexpected_error_occured_while_fetching_comments: "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy",
@@ -386,7 +387,7 @@ export default {
          },
 
          star_rating: {
-            no_selected_value: "Nie wybrano oceny"
+            no_selected_value: "nie przyznano"
          },
 
          comment_box: {

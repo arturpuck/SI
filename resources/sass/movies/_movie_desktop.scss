@@ -1,0 +1,197 @@
+@import "~sasscomponent/movies/free_video_player_plyr";
+@import '~sass/standard_background';
+@import "~sass/responsive_icon";
+
+.movie-block{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.player-container{
+    display: flex;
+    justify-content: center;
+    margin: 8px 0;
+}
+
+.plyr{
+    min-width:300px;
+    border-radius: 6px;
+    width: 100%;
+}
+
+@mixin movie-information-detail{
+    color:white;
+    @include responsive-font(1.2vw, 14px);
+}
+
+@mixin movie-information-container{
+    display:flex;
+    align-items: center;
+    padding: 7px 0;
+}
+
+.separator{
+    @include movie-information-detail();
+    margin:0 0.5em;
+}
+
+@mixin smaller-icon {
+    @include responsive-icon(0 5px, 1.8vw, 25px);
+    flex-shrink: 0;
+    fill:white;
+}
+
+.movie-desktop{
+
+    padding:0;
+    border-radius:4px;
+    border:1px solid #cc122c;
+    overflow:hidden;
+    background:black;
+
+    &__header{
+        @include responsive-font(1.5vw,17px, "Aldrich");
+        display:flex;
+        align-items: center;
+        background: linear-gradient(black, #0f0e0e);
+        color:white;
+        padding: 1vw;
+        margin: 0;
+    }
+
+    &__title{
+        text-align:center;
+        flex-grow:100;
+    }
+
+    &__icon{
+        &--movie-roll{
+            fill:silver;
+            flex-shrink: 0;
+            filter: brightness(170%);
+            @include responsive-icon(0 5px, 2vw, 27px);
+         }
+    }
+}
+
+
+.movie-information{
+
+    &__download-link{
+       @include movie-information-container();
+       text-decoration:none;
+    }
+
+    &__pornstar-profile-link{
+
+        @include movie-information-detail();
+        text-decoration:none;
+
+        &:hover{
+            text-decoration: underline;
+        }
+
+        &:not(:last-child):after{
+            content : ', ';
+            margin:0 4px;
+        }
+    }
+
+    &__detail-key{
+        @include movie-information-detail();
+        font-weight:bold;
+    }
+
+    &__detail-value{
+        @include movie-information-detail();
+    }
+
+    &__detail{
+        @include movie-information-container();
+    }
+
+    &__details{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 320px);
+        justify-content: space-evenly;
+        grid-column-gap: 8px;
+
+        @media(max-width: 720px){
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+
+    &__icon{
+
+        &--smaller{
+           @include smaller-icon();
+        }
+
+        &--download{
+            @include smaller-icon();
+            margin:0 7px 0 0;
+        }
+
+        &--star{
+          @include smaller-icon();
+          fill:gold;
+          height: auto;
+        }
+
+    }
+}
+
+@keyframes increase-size{
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.3);
+    }
+}
+
+.movie-voting{
+    padding: 2.5vw 1vw 1vw;
+    display:flex;
+    flex-wrap:wrap;
+
+    &__registered-users-only-info{
+        flex-basis: 100%;
+    }
+
+    &__icon{
+        @include responsive-icon(0 auto, 5vw, 55px);
+        display:block;
+        fill:white;
+    }
+
+    &__registered-users-only-text{
+        display:block;
+        text-align:center;
+        padding:5px;
+        @include responsive-font(1.4vw, 19px);
+        color:white;
+    }
+
+    &__assign-spermatozoid-label{
+        @include responsive-font(1.1vw, 12px);
+        color:white;
+        padding: 0.5vw;
+    }
+
+    &__spermatozoid-icon{
+        display:block;
+        @include responsive-icon(0 auto, 5vw, 50px);
+        fill:white;
+        &:hover {
+            cursor: pointer;
+            fill:#d22d2d;
+         }
+
+         &:active{
+             animation: increase-size 0.5s;
+         }
+    }
+}
