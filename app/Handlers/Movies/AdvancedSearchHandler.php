@@ -27,8 +27,6 @@ Class AdvancedSearchHandler {
                 'views',
                 'created_at',
                 'is_translated_to_polish',
-                'votes_count',
-                'votes_summary',
                 'duration'
             ])->withBasicPornstarList();
 

@@ -1,11 +1,14 @@
 <x-base title="{{$title}}" customBodyClass="standard-background" description="{{$description}}">
     <main class="movie-block">
         <div class="player-container">
-            <video id="player" playsinline controls>
+            <video id="player" ref="player" data-movie-id="{{$movie->id}}" playsinline controls>
                <source src="/movies/{{$movie->id}}.mp4" type="video/mp4" />
             </video>
         </div>
         <section class="movie-desktop">
+        <relative-shadow-container v-show="showMovieDesktopFetchingDecoration">
+           <expect-circle label="{{__('fetching_movie_data')}}"></expect-circle>
+        </relative-shadow-container>
           <h1 class="movie-desktop__header">
               <movie-roll-icon class="movie-desktop__icon--movie-roll"></movie-roll-icon>
               <span class="movie-desktop__title">
@@ -15,43 +18,31 @@
             <div class="movie-information__details">
                 <span class="movie-information__detail">
                    <television-icon class="movie-information__icon--smaller"></television-icon>
-                   <span class="movie-information__detail-key">{{__('movie_views')}}</span>
-                   <span class="separator"> : </span>
-                   <span class="movie-information__detail-value">{{$movie->views}}</span>
+                   <span v-text="viewsLabel" class="movie-information__detail-value"></span>
                 </span>
                 <span class="movie-information__detail">
                    <date-confirmed-icon class="movie-information__icon--smaller"></date-confirmed-icon>
-                   <span class="movie-information__detail-key">{{__('movie_added_at')}}</span>
-                   <span class="separator"> : </span>
-                   <time datetime="{{$movie->created_at}}" class="movie-information__detail-value">{{$movie->created_at}}</time>
+                   <time v-bind:datetime="addedAtLabel" v-text="addedAtLabel" class="movie-information__detail-value"></time>
                 </span>
-                @if($movie->pornstars->isNotEmpty())
-                <span class="movie-information__detail">
+                
+                <span v-if="moviePornstars" class="movie-information__detail">
                    <star-full-icon class="movie-information__icon--star"></star-full-icon>
                    <span class="movie-information__detail-key">{{__('pornstars_movie_caption')}}</span>
                    <span class="separator"> : </span>
-                   @foreach($movie->pornstars as $pornstar)
-                      <a href="{{route('pornstars.profile', ['nickname' => $pornstar->slugify('nickname')])}}" class="movie-information__pornstar-profile-link">{{$pornstar->nickname}}</a>
-                   @endforeach
+                   <a class="movie-information__pornstar-profile-link"></a>
                 </span>
-                @endif
-                <span class="movie-information__detail" @if(!$movie->hasRatingByAverage()) title="{{__('when_movie_rating_occurs_explanation')}}" @endif>
+                
+                <span class="movie-information__detail">
                    <chart-growth-icon class="movie-information__icon--smaller"></chart-growth-icon>
-                   <span class="movie-information__detail-key">{{__('average_rating')}}</span>
-                   <span class="separator"> : </span>
-                   <span class="movie-information__detail-value">{{$movie->showRatingByAverage()}}</span>
+                   <span v-text="averageRatingLabel" class="movie-information__detail-value"></span>
                 </span>
                 <span class="movie-information__detail">
                    <spermatozoid-icon class="movie-information__icon--smaller"></spermatozoid-icon>
-                   <span class="movie-information__detail-key">{{__('ammount_of_spermatozoids')}}</span>
-                   <span class="separator"> : </span>
-                   <span class="movie-information__detail-value">{{$movie->ammountOfSpermatozoids()}}</span>
+                   <span v-text="spermatozoidsLabel" class="movie-information__detail-value"></span>
                 </span>
                 <span class="movie-information__detail">
                    <like-icon class="movie-information__icon--smaller"></like-icon>
-                   <span class="movie-information__detail-key">{{__('ammount_of_likes')}}</span>
-                   <span class="separator"> : </span>
-                   <span class="movie-information__detail-value">{{$movie->ammountOfLikes()}}</span>
+                   <span v-text="likesLabel" class="movie-information__detail-value"></span>
                 </span>
                 <a href="{{asset('/movies/'.$movie->id.'.mp4')}}" class="movie-information__download-link" download="{{$movie->title}}">
                    <download-icon class="movie-information__icon--download"></download-icon>
@@ -60,14 +51,15 @@
             </div>
             <div class="movie-voting">
                @if(\Auth::check())
-                 <star-rating label="{{__('your_rate')}}" v-bind:show-number="true"
-                    @if($movie->hasBeenRatedByCurrentUser())
-                       v-bind:initial-value="{{$movie->currentUserRate()}}"
-                    @endif
-                    v-on:selected="rateMovie"
-                    v-bind:rated-element-id="{{$movie->id}}"
-                 >
+                 <p class="movie-voting__information-container">
+                    <info-circle-icon class="movie-voting__info-circle-icon"></info-circle-icon>
+                    <span class="movie-voting__information">{{__('movie_voting_information')}}</span>  
+                 </p>
+                 <star-rating label="{{__('your_rate')}}" v-bind:show-number="true" v-on:selected="rateMovie">
                  </star-rating>
+                 
+                  <spermatozoid-icon v-on:click.native="addSpermatozoid" role="button" class="movie-voting__vote-icon--spermatozoid-icon"></spermatozoid-icon>
+                  <like-background-icon v-on:click.native="addLike" role="button" class="movie-voting__vote-icon--like-background-icon"></like-background-icon>
                @else
                   <div class="movie-voting__registered-users-only-info">
                      <unknown-person-icon class="movie-voting__icon"></unknown-person-icon>
@@ -76,10 +68,6 @@
                      </div>
                   </div>
                @endif
-               <div>
-                   <div class="movie-voting__assign-spermatozoid-label">{{__('give_spermatozoid_if_you_came_watching_this_movie')}}</div>
-                   <spermatozoid-icon v-on:click.native="addSpermatozoid({{$movie->id}})" role="button" class="movie-voting__spermatozoid-icon"></spermatozoid-icon>
-               </div>
             </div>
         </section>
     </main>

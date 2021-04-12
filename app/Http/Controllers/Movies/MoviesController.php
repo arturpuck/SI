@@ -7,9 +7,12 @@ use App\Handlers\Movies\GetMoviesByCategoryHandler;
 use App\Handlers\Movies\RateMovieHandler;
 use App\Handlers\Movies\ShowSingleMovieHandler;
 use App\Handlers\Movies\AddSpermatozoidHandler;
+use App\Handlers\Movies\AddMovieLikeHandler;
+use App\Handlers\Movies\GetMovieDetailsHandler;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Movies\RateMovieRequest;
 use App\Http\Requests\Movies\AddSpermatozoidRequest;
+use App\Http\Requests\Movies\AddMovieLikeRequest;
 use App\Repositories\MoviesRepository;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,7 +56,6 @@ class MoviesController extends Controller
 
     public function showSingleMovie(string $slug, ShowSingleMovieHandler $singleMovieHandler)
     {
-
         return $singleMovieHandler->handle($slug);
     }
 
@@ -62,8 +64,16 @@ class MoviesController extends Controller
         return $ratMovieHandler->handle($request);
     }
 
-    public function addSpermatozoid(AddSpermatozoidHandler $handler, AddSpermatozoidRequest $request){
+    public function addSpermatozoid(AddSpermatozoidHandler $handler, AddSpermatozoidRequest $request): Response{
 
         return $handler->handle($request);
+    }
+
+    public function addLike(AddMovieLikeHandler $handler, AddMovieLikeRequest $request): Response {
+        return $handler->handle($request);
+    }
+
+    public function getMovieDetails(int $movieID, GetMovieDetailsHandler $handler) : Response {
+        return $handler->handle($movieID);
     }
 }

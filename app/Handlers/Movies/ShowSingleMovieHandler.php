@@ -14,17 +14,12 @@ Class ShowSingleMovieHandler {
     public function handle(string $slug){
 
        $movie = $this->moviesRepository->filterBySlug($slug)
-                                        ->withAllRelations()
                                         ->get()
                                         ->first();
         ++$movie->views;
         $movie->save();
-       
-        $similarMovies = $this->moviesRepository->filterBySimilarMovies($movie)
-                                                ->get();
 
         return view('movies.single_movie')->with([
-          'similarMovies' => $similarMovies,
           'movie' => $movie,
           'title' => $movie->title,
           'description' => $this->getDescription($movie->title)

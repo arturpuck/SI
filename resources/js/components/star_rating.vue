@@ -68,6 +68,13 @@ export default class StarRating extends Vue {
   })
   readonly label: string;
 
+  @Prop({
+    type: String,
+    required: false,
+    default: "starRate",
+  })
+  readonly identifier: string;
+
   setHoverValue(starNumber: number) {
     if (!this.fixedValue) {
       this.valueOnHover = starNumber;
@@ -125,6 +132,10 @@ export default class StarRating extends Vue {
 
   mounted() {
     this.selectedValue = this.initialValue;
+    this.$root.$on(
+      `${this.identifier}UpdateRate`,
+      (rate: number) => (this.selectedValue = rate)
+    );
   }
 }
 </script>

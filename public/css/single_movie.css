@@ -1508,21 +1508,16 @@ a.plyr__control::after, a.plyr__control::before {
   border-radius: 6px;
   width: 100%; }
 
-.separator {
-  color: white;
-  font-size: 1.2vw;
-  font-family: "Exo 2", sans-serif;
-  margin: 0 0.5em; }
-  @media (max-width: 1200px) {
-    .separator {
-      font-size: 14px; } }
+#app .relative-shadow-container {
+  background: rgba(0, 0, 0, 0.9); }
 
 .movie-desktop {
   padding: 0;
   border-radius: 4px;
   border: 1px solid #cc122c;
   overflow: hidden;
-  background: black; }
+  background: black;
+  position: relative; }
   .movie-desktop__header {
     font-size: 1.5vw;
     font-family: "Aldrich", sans-serif;
@@ -1645,7 +1640,13 @@ a.plyr__control::after, a.plyr__control::before {
 .movie-voting {
   padding: 2.5vw 1vw 1vw;
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  justify-content: space-evenly; }
+  @media (max-width: 560px) {
+    .movie-voting {
+      justify-content: center;
+      flex-direction: column;
+      align-items: center; } }
   .movie-voting__registered-users-only-info {
     flex-basis: 100%; }
   .movie-voting__icon {
@@ -1666,26 +1667,69 @@ a.plyr__control::after, a.plyr__control::before {
     @media (max-width: 1200px) {
       .movie-voting__registered-users-only-text {
         font-size: 19px; } }
-  .movie-voting__assign-spermatozoid-label {
-    font-size: 1.1vw;
-    font-family: "Exo 2", sans-serif;
-    color: white;
-    padding: 0.5vw; }
-    @media (max-width: 1200px) {
-      .movie-voting__assign-spermatozoid-label {
-        font-size: 12px; } }
-  .movie-voting__spermatozoid-icon {
-    display: block;
+  .movie-voting__vote-icon--spermatozoid-icon {
     width: 5vw;
-    margin: 0 auto;
+    margin: 0 5px;
+    display: block;
     fill: white; }
     @media (max-width: 1200px) {
-      .movie-voting__spermatozoid-icon {
+      .movie-voting__vote-icon--spermatozoid-icon {
         width: 50px; } }
-    .movie-voting__spermatozoid-icon:hover {
+    @media (max-width: 560px) {
+      .movie-voting__vote-icon--spermatozoid-icon {
+        margin: 15px 0; } }
+    .movie-voting__vote-icon--spermatozoid-icon:hover {
       cursor: pointer;
       fill: #d22d2d; }
-    .movie-voting__spermatozoid-icon:active {
+    .movie-voting__vote-icon--spermatozoid-icon:active {
       -webkit-animation: increase-size 0.5s;
               animation: increase-size 0.5s; }
+  .movie-voting__vote-icon--like-background-icon {
+    width: 4vw;
+    margin: 0 5px;
+    display: block; }
+    @media (max-width: 1200px) {
+      .movie-voting__vote-icon--like-background-icon {
+        width: 50px; } }
+    @media (max-width: 560px) {
+      .movie-voting__vote-icon--like-background-icon {
+        margin: 15px 0; } }
+    .movie-voting__vote-icon--like-background-icon:hover {
+      cursor: pointer; }
+    .movie-voting__vote-icon--like-background-icon:active {
+      -webkit-animation: increase-size 0.5s;
+              animation: increase-size 0.5s; }
+  .movie-voting__information-container {
+    width: 100%;
+    font-size: 1.2vw;
+    font-family: "Exo 2", sans-serif;
+    color: white;
+    padding: 1vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center; }
+    @media (max-width: 1200px) {
+      .movie-voting__information-container {
+        font-size: 16px; } }
+    @media (max-width: 530px) {
+      .movie-voting__information-container {
+        flex-direction: column;
+        justify-content: center; } }
+  .movie-voting__information {
+    font-size: 1.2vw;
+    font-family: "Exo 2", sans-serif;
+    color: white;
+    text-align: center; }
+    @media (max-width: 1200px) {
+      .movie-voting__information {
+        font-size: 16px; } }
+  .movie-voting__info-circle-icon {
+    width: 2.7vw;
+    margin: 0 5px;
+    height: auto;
+    fill: #1ebb19;
+    flex-shrink: 0; }
+    @media (max-width: 1200px) {
+      .movie-voting__info-circle-icon {
+        width: 30px; } }
 

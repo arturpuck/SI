@@ -59,6 +59,11 @@ class MoviesRepository extends BaseRepository
         return $this;
     }
 
+    public function filterById(int $movieID) : MoviesRepository {
+        $this->query = $this->query->where('movies.id', $movieID);
+        return $this;
+    }
+
     public function withBasicPornstarList(): MoviesRepository
     {
 

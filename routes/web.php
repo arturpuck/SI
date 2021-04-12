@@ -40,6 +40,12 @@ Route::namespace ('Movies')->name('movies.')->group(function () {
 
     Route::put('/add/spermatozoid', 'MoviesController@addSpermatozoid')
         ->name('rate')->middleware('auth');
+
+    Route::put('/movie/add-like', 'MoviesController@addLike')
+        ->name('add.like')->middleware('auth');
+
+    Route::get('/movie/details/{movieID}', 'MoviesController@getMovieDetails')
+              ->name('details');
 });
 
 Route::namespace ('Pornstars')->name('pornstars.')->group(function () {
