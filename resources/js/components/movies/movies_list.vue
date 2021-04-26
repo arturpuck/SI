@@ -24,6 +24,7 @@ import MovieBox from "@jscomponents/movies/movie_box.vue";
 import PagesList from "@jscomponents/pages_list.vue";
 import { MoviesListResponse } from "@interfaces/movies/MoviesListResponse.ts";
 import { MovieBasicData } from "@interfaces/movies/MovieBasicData.ts";
+import { MoviesCurrentPage } from "@interfaces/movies/MoviesCurrentPage.ts";
 import { BasicPornstarData } from "@interfaces/pornstars/BasicPornstarData.ts";
 import PagesListBasicData from "@interfaces/pages_list_basic_data.ts";
 import MoviePreviewComplete from "@jscomponents/movies/movie_preview_complete.vue";
@@ -66,10 +67,7 @@ export default class MoviesList extends Vue {
     this.$root.$on("updateMoviesList", this.updateMoviesList);
   }
 
-  updateMoviesList(response: {
-    moviesData: MoviesListResponse;
-    currentPage: number;
-  }): void {
+  updateMoviesList(response: MoviesCurrentPage): void {
     this.totalMovies = response.moviesData.totalMovies;
     this.movies = response.moviesData.movies;
     const amountOfSubPages: number = Math.ceil(

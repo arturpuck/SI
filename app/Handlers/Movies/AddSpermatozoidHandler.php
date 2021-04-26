@@ -2,11 +2,13 @@
 
 namespace App\Handlers\Movies;
 
+use Carbon\Carbon;
+use App\MovieRating;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\Movies\AddSpermatozoidRequest;
-use App\MovieRating;
-use Carbon\Carbon;
+use App\Services\ModelDataExtractors\Movie\MovieRatingsDataExtractor;
+
 
 
 Class AddSpermatozoidHandler {
@@ -18,7 +20,9 @@ Class AddSpermatozoidHandler {
       ++$rating->ammount_of_spermatozoids;
       $rating->last_spermatozoid_added_at = Carbon::now();
       $rating->save();
-      return response('success',200);
+
+      $movieSpermatozoids = MovieRatingsDataExtractor::getAmmountOfSpermatozoids(\Auth::user(), ...$rating->movie->votes);
+      return response()->json($movieSpermatozoids, 200);
     }
     
 }

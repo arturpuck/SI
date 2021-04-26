@@ -8,7 +8,7 @@ use App\Pornstar;
 use App\Handlers\Pornstars\ShowPornstarProfileHandler;
 use App\Repositories\PornstarsRepository;
 
-Class ShowPornstarProfileHandler extends Handler {
+Class ShowPornstarProfileHandler {
 
    private PornstarsRepository $pornstarsRepository;
 

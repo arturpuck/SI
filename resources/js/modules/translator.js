@@ -355,7 +355,10 @@ export default {
       ammount_of_spermatozoids: "Liczba plemników",
       your_spermatozoids: "twoich",
       number_of_likes: "Polubień",
+      failed_to_load_movie_data: "Nie udało się pobrać szczegółowych danych filmu",
+      failed_to_load_similar_movies: "Nie udało się załadować podobnych filmów",
       you_like_it: "Lubisz to",
+      you_already_like_this_movie: "Już wcześniej polubiłeś ten film",
       you_and: "Ty i",
       people_like_it: "osób lubi to",
       packages: {

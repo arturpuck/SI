@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Movie;
 
 class MovieRating extends Model
 {
@@ -19,6 +20,10 @@ class MovieRating extends Model
     ];
 
     public $timestamps = false;
+
+    public function movie(){
+        return $this->belongsTo(Movie::class);
+    }
 
 
 }

@@ -1,4 +1,4 @@
 export default interface StarRate {
-    elementID: number,
+    elementID?: number,
     rate: number
 }

@@ -6,9 +6,9 @@
             </video>
         </div>
         <section class="movie-desktop">
-        <relative-shadow-container v-show="showMovieDesktopFetchingDecoration">
-           <expect-circle label="{{__('fetching_movie_data')}}"></expect-circle>
-        </relative-shadow-container>
+            <relative-shadow-container v-show="showMovieDesktopFetchingDecoration">
+               <expect-circle label="{{__('fetching_movie_data')}}"></expect-circle>
+            </relative-shadow-container>
           <h1 class="movie-desktop__header">
               <movie-roll-icon class="movie-desktop__icon--movie-roll"></movie-roll-icon>
               <span class="movie-desktop__title">
@@ -55,7 +55,7 @@
                     <info-circle-icon class="movie-voting__info-circle-icon"></info-circle-icon>
                     <span class="movie-voting__information">{{__('movie_voting_information')}}</span>  
                  </p>
-                 <star-rating label="{{__('your_rate')}}" v-bind:show-number="true" v-on:selected="rateMovie">
+                 <star-rating label="{{__('your_rate')}}" v-bind:show-number="true"  v-on:selected="rateMovie">
                  </star-rating>
                  
                   <spermatozoid-icon v-on:click.native="addSpermatozoid" role="button" class="movie-voting__vote-icon--spermatozoid-icon"></spermatozoid-icon>
@@ -69,6 +69,27 @@
                   </div>
                @endif
             </div>
+        </section>
+        <section class="movie-lower-section">
+           <ul role="tablist" class="tablist">
+              <li role="tab" aria-controls="similar-movies-tabpanel" v-bind:aria-selected="similarMoviesTabIsSelected" v-bind:class="similarMoviesClassName">
+                  <movie-roll-icon class="tablist__icon"></movie-roll-icon>
+                   {{__('similar_movies')}} 
+              </li>
+              <li role="tab" aria-controls="movie-comments-tabpanel" v-bind:aria-selected="movieCommentsTabIsSelected" v-bind:class="movieCommentsClassName">
+                   <comment-pen-icon class="tablist__icon"></comment-pen-icon>
+                   {{__('comments')}}
+              </li>
+           </ul>
+           <div aria-hidden="true" class="tablist__bar"></div>
+           <div id="similar-movies-tabpanel" role="tabpanel" class="similar-movies-tabpanel">
+              <relative-shadow-container v-show="showSimilarMoviesFetchingDecoration">
+                  <expect-circle label="{{__('fetching_related_movies')}}"></expect-circle>
+               </relative-shadow-container>
+           </div>
+           <div role="tabpanel" id="movie-comments-tabpanel" class="movie-comments-tabpanel">
+           
+           </div>
         </section>
     </main>
     <user-notification></user-notification>

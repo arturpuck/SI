@@ -1526,7 +1526,8 @@ a.plyr__control::after, a.plyr__control::before {
     background: linear-gradient(black, #0f0e0e);
     color: white;
     padding: 1vw;
-    margin: 0; }
+    margin: 0;
+    overflow: hidden; }
     @media (max-width: 1200px) {
       .movie-desktop__header {
         font-size: 17px; } }
@@ -1732,4 +1733,60 @@ a.plyr__control::after, a.plyr__control::before {
     @media (max-width: 1200px) {
       .movie-voting__info-circle-icon {
         width: 30px; } }
+
+.movie-lower-section {
+  padding: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 8px 0 0 0; }
+
+.tablist {
+  list-style-type: none;
+  padding: 0 0 0 2vw;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 0; }
+  .tablist__element {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 4px 4px 0 0;
+    font-size: 1.2vw;
+    font-family: "Exo 2", sans-serif;
+    color: white;
+    padding: 0.5vw;
+    background: black; }
+    @media (max-width: 1200px) {
+      .tablist__element {
+        font-size: 16px; } }
+    .tablist__element:hover {
+      cursor: pointer; }
+    .tablist__element--active {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 4px 4px 0 0;
+      font-size: 1.2vw;
+      font-family: "Exo 2", sans-serif;
+      color: white;
+      padding: 0.5vw;
+      background: #242229; }
+      @media (max-width: 1200px) {
+        .tablist__element--active {
+          font-size: 16px; } }
+      .tablist__element--active:hover {
+        cursor: pointer; }
+  .tablist__icon {
+    width: 1.5vw;
+    margin: 0 5px;
+    fill: white; }
+    @media (max-width: 1200px) {
+      .tablist__icon {
+        width: 20px; } }
+  .tablist__bar {
+    height: 1.5vw;
+    background: #242229; }
+
+.similar-movies-tabpanel {
+  min-height: 30vh;
+  border: 4px solid #242229;
+  position: relative; }
 

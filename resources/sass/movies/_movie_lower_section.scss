@@ -1,0 +1,56 @@
+@import "~sass/responsive_icon";
+@import "~sass/fonts";
+
+.movie-lower-section{
+    padding:0;
+    border-radius:4px;
+    overflow:hidden;
+    margin:8px 0 0 0;
+}
+
+@mixin tablist-element{
+    display:inline-flex;
+    align-items: center;
+    border-radius:4px 4px 0 0;
+    @include responsive-font();
+    color:white;
+    padding: 0.5vw;
+    &:hover{
+        cursor:pointer;
+    }
+}
+
+.tablist{
+    list-style-type: none;
+    padding:0 0 0 2vw;
+    margin:0;
+    background:rgba(0,0,0,0.5);
+    font-size: 0;
+
+    &__element{
+
+        @include tablist-element();
+        background:black;
+
+        &--active{
+            @include tablist-element();
+            background:#242229;
+        }
+    }
+
+    &__icon{
+        @include responsive-icon(0 5px, 1.5vw, 20px);
+        fill:white;
+    }
+
+    &__bar{
+        height:1.5vw;
+        background:#242229;
+    }
+}
+
+.similar-movies-tabpanel{
+    min-height:30vh;
+    border:4px solid #242229;
+    position:relative;
+}

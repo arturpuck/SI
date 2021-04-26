@@ -2,10 +2,12 @@
 
 namespace App\Handlers\Movies;
 
-
 use Symfony\Component\HttpFoundation\Response;
 use App\Repositories\MoviesRepository;
-use App\Services\ModelDataExtractors\MovieDataExtractor;
+use App\Services\ModelDataExtractors\Movie\MovieRatingsDataExtractor;
+use App\Services\ModelDataExtractors\Movie\MovieDataExtractor;
+use App\ModelShards\Movie\MovieRatingShard;
+use App\ModelShards\Movie\MovieBasicDataShard;
 
 
 Class GetMovieDetailsHandler {
@@ -19,23 +21,20 @@ Class GetMovieDetailsHandler {
                                        ->with(['votes'])
                                        ->get()
                                        ->first();
-      $data = [
-        'views' => $movie->views,
-        'added_at' => $movie->created_at,
-        'rating' => MovieDataExtractor::getRating($movie),
-        'spermatozoids' => MovieDataExtractor::getAmmountOfSpermatozoids($movie, \Auth::user()),
-        'likes' => MovieDataExtractor::getAmmountOfLikes($movie, \Auth::user()),
-      ];
+      $votes = $movie->votes->all();
+      $user = \Auth::user();
+      $ratingShard = MovieRatingsDataExtractor::getRating($user,...$votes);
+      $spermatozoidsShard = MovieRatingsDataExtractor::getAmmountOfSpermatozoids($user,...$votes);
+      $likesShard = MovieRatingsDataExtractor::getAmmountOfLikes($user,...$votes);
+      $pornstarsListShard = MovieDataExtractor::getPornstarsList($movie);
+      $movieDetails = new MovieBasicDataShard($movie->views,
+                                              $movie->created_at,
+                                              $ratingShard,
+                                              $likesShard,
+                                              $spermatozoidsShard,
+                                              $pornstarsListShard);
 
-      if(\Auth::check()){
-          $data['user_rate'] = MovieDataExtractor::getUserRate($movie, \Auth::user());
-      }
-
-      if($movie->pornstars->isNotEmpty()){
-          $data['pornstars'] = $movie->pornstars->toArray();
-      }
-
-        return response()->json($data, 200);
+        return response()->json($movieDetails, 200);
     }
     
 }
