@@ -27,9 +27,10 @@
                 
                 <span v-if="moviePornstars" class="movie-information__detail">
                    <star-full-icon class="movie-information__icon--star"></star-full-icon>
-                   <span class="movie-information__detail-key">{{__('pornstars_movie_caption')}}</span>
-                   <span class="separator"> : </span>
-                   <a class="movie-information__pornstar-profile-link"></a>
+                   <span class="movie-information__detail-key">{{__('pornstars_movie_caption')}} :</span>
+                   <a v-for="pornstar in moviePornstars" 
+                      v-bind:href="`/gwiazda-porno/profil/${getPornstarSlug(pornstar.nickname)}`"
+                      v-text="`${pornstar.nickname} `" class="movie-information__pornstar-profile-link"></a>
                 </span>
                 
                 <span class="movie-information__detail">
@@ -72,23 +73,26 @@
         </section>
         <section class="movie-lower-section">
            <ul role="tablist" class="tablist">
-              <li role="tab" aria-controls="similar-movies-tabpanel" v-bind:aria-selected="similarMoviesTabIsSelected" v-bind:class="similarMoviesClassName">
+              <li v-on:click="showSimilarMoviesTab" role="tab" aria-controls="similar-movies-tabpanel" v-bind:aria-selected="similarMoviesTabIsSelected" v-bind:class="similarMoviesClassName">
                   <movie-roll-icon class="tablist__icon"></movie-roll-icon>
                    {{__('similar_movies')}} 
               </li>
-              <li role="tab" aria-controls="movie-comments-tabpanel" v-bind:aria-selected="movieCommentsTabIsSelected" v-bind:class="movieCommentsClassName">
+              <li role="tab" v-on:click="showCommentsTab" aria-controls="movie-comments-tabpanel" v-bind:aria-selected="movieCommentsTabIsSelected" v-bind:class="movieCommentsClassName">
                    <comment-pen-icon class="tablist__icon"></comment-pen-icon>
                    {{__('comments')}}
               </li>
            </ul>
            <div aria-hidden="true" class="tablist__bar"></div>
-           <div id="similar-movies-tabpanel" role="tabpanel" class="similar-movies-tabpanel">
+           <div id="similar-movies-tabpanel" role="tabpanel" v-show="similarMoviesTabIsSelected" class="tabpanel">
               <relative-shadow-container v-show="showSimilarMoviesFetchingDecoration">
                   <expect-circle label="{{__('fetching_related_movies')}}"></expect-circle>
                </relative-shadow-container>
+               <movies-list></movies-list>
            </div>
-           <div role="tabpanel" id="movie-comments-tabpanel" class="movie-comments-tabpanel">
-           
+           <div role="tabpanel" id="movie-comments-tabpanel" v-show="movieCommentsTabIsSelected" class="tabpanel">
+           <relative-shadow-container v-show="showCommentsFetchingDecoration">
+                  <expect-circle label="{{__('fetching_comments')}}"></expect-circle>
+               </relative-shadow-container>
            </div>
         </section>
     </main>

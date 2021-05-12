@@ -456,7 +456,6 @@ class MoviesRepository extends BaseRepository
 
     public function filterBySlug(string $slug): MoviesRepository
     {
-
         $this->query = $this->query->where('movies.slug', $slug);
         return $this;
     }
@@ -478,6 +477,7 @@ class MoviesRepository extends BaseRepository
     public function filterBySimilarMovies(Movie $movie, ?int $howManyMovies = 20): Moviesrepository
     {
         $this->initiateFilteringByTheMostSimilarMovies();
+        $this->query = $this->query->select('movies.id', 'movies.title', 'movies.duration', 'movies.views', 'created_at');
         $this->query = $this->query->where('movies.id', '!=', $movie->id)->where(function ($query) use ($movie) {
 
             if ($specificSexTypes = $movie->specific_sex_types) {
@@ -498,7 +498,7 @@ class MoviesRepository extends BaseRepository
                 $pornstarsIDs = $movie->pornstars->pluck('id')->toArray();
                 $this->addPornstarsToRawSortingSQL($pornstarsIDs);
                 $this->query = $this->query->leftJoin('movie_has_pornstar', 'movies.id', '=', 'movie_has_pornstar.movie_id')
-                    ->leftJoin('pornstars', 'movie_has_pornstar.pornstar_id', '=', 'pornstars.id');
+                    ->leftJoin('pornstars', 'pornstars.id', '=', 'movie_has_pornstar.pornstar_id');
                 $query->orWhereIn('pornstars.id', $pornstarsIDs);
 
             }
@@ -546,6 +546,7 @@ class MoviesRepository extends BaseRepository
             $this->query->take($howManyMovies);
         }
         $this->query = $this->query->orderByRaw($this->rawSQLForTheMostSimilarMoviesSorting);
+                                   
 
         return $this;
     }

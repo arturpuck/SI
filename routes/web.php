@@ -44,8 +44,13 @@ Route::namespace ('Movies')->name('movies.')->group(function () {
     Route::put('/movie/add-like', 'MoviesController@addLike')
         ->name('add.like')->middleware('auth');
 
+    Route::get('/movie/similar/{movie}', 'MoviesController@getSimilarMovies')
+              ->name('details');
+
     Route::get('/movie/details/{movieID}', 'MoviesController@getMovieDetails')
               ->name('details');
+
+    Route::get('/movie/comments', 'MoviesController@getMovieComments');
 });
 
 Route::namespace ('Pornstars')->name('pornstars.')->group(function () {

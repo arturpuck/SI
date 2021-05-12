@@ -361,6 +361,7 @@ export default {
       you_already_like_this_movie: "Już wcześniej polubiłeś ten film",
       you_and: "Ty i",
       people_like_it: "osób lubi to",
+      no_comments: "Brak komentarzy",
       packages: {
          content_sidebar: {
             hide_side_bar_title: "Schowaj boczne menu",

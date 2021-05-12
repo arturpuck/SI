@@ -19,6 +19,7 @@ import NotificationFunction from '@jsmodules/notification_function';
 import RelativeShadowContainer from '@jscomponents/decoration/relative_shadow_container.vue';
 import ExpectCircle from '@jscomponents/decoration/expect_circle.vue';
 import MoviesList from '@jscomponents/movies/movies_list.vue';
+import CommentList from '@jscomponents/form_controls/comment_list.vue';
 import { MovieBasicData } from "@interfaces/movies/MovieBasicData";
 import { MovieRating } from "@interfaces/movies/MovieRating";
 import { MovieSpermatozoids } from "@interfaces/movies/MovieSpermatozoids";
@@ -26,6 +27,9 @@ import { MovieLikes } from "@interfaces/movies/MovieLikes";
 import { MovieTheatreTab } from "@js/enum/movie_theatre_tab";
 import { MoviesListResponse } from "@interfaces/movies/MoviesListResponse.ts";
 import { MoviesCurrentPage } from "@interfaces/movies/MoviesCurrentPage.ts";
+import PageListUpdate from '@interfaces/PageListUpdate';
+import Comment from '@interfaces/Comment';
+
 
 const Vue = VueConstructor.build();
 Vue.component('movie-roll-icon', MovieRollIcon);
@@ -45,6 +49,7 @@ Vue.component('relative-shadow-container', RelativeShadowContainer);
 Vue.component('expect-circle', ExpectCircle);
 Vue.component('comment-pen-icon', CommentPenIcon);
 Vue.component('movies-list', MoviesList);
+Vue.component('comment-list', CommentList);
 
 new Vue({
     el: '#app',
@@ -65,7 +70,9 @@ new Vue({
             ammountOfSpermatozoidsAssignedByUser: undefined,
             userRate: undefined,
             userLikesMovie: undefined,
-            selectedTab: MovieTheatreTab.SimilarMovies
+            selectedTab: MovieTheatreTab.SimilarMovies,
+            showCommentsFetchingDecoration: true,
+            commentsPerPage: 10
         }
     },
 
@@ -142,7 +149,6 @@ new Vue({
                 switch (response.status) {
                     case 200:
                         const movieRating: MovieRating = await response.json();
-                        console.log(movieRating);
                         this.loadMovieRating(movieRating);
                         this.showNotification(this.translator.translate('element_has_been_rated'));
                         break;
@@ -184,7 +190,6 @@ new Vue({
                 switch (response.status) {
                     case 200:
                         const movieSpermatozoids: MovieSpermatozoids = await response.json();
-                        console.log(movieSpermatozoids);
                         this.loadMovieSpermatozoids(movieSpermatozoids);
                         this.showNotification(this.translator.translate('spermatozoid_has_been_asigned'));
                         break;
@@ -225,8 +230,6 @@ new Vue({
                 }
             };
 
-
-
             try {
                 const response = await fetch(`/movie/details/${this.movie_id}`, requestData);
                 if (response.status == 200) {
@@ -257,7 +260,7 @@ new Vue({
             };
 
             try {
-                const response = await fetch(`/movie/similar/${this.movie_id}/${pageNumber}`, requestData);
+                const response = await fetch(`/movie/similar/${this.movie_id}`, requestData);
 
                 if (response.status == 200) {
                     const moviesList: MoviesListResponse = await response.json();
@@ -276,22 +279,70 @@ new Vue({
 
         },
 
+        async fetchComments(pageNumber: number = 1) {
+
+            const requestData = {
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': this.csrfToken
+                }
+            };
+            const parameters = `movie_id=${this.movie_id}&page=${pageNumber}&per_page=${this.commentsPerPage}`;
+            try {
+                const response = await fetch(`/movie/comments?${parameters}`, requestData);
+
+                if (response.status == 200) {
+                    const commentsPageListUpdate: PageListUpdate<Comment> = await response.json();
+                    this.loadComments(commentsPageListUpdate);
+                } else {
+                    throw new Error('');
+                }
+
+            }
+            catch (exception) {
+                this.showNotification(this.translator.translate(exception.message), 'error');
+            }
+            finally {
+                this.hideCommentsFetchingDecoration();
+            }
+
+        },
+
+        loadComments(commentsPageListUpdate: PageListUpdate<Comment>): void {
+            this.$root.$emit('updateComments', commentsPageListUpdate);
+        },
+
         loadSimilarMovies(moviesList: MoviesListResponse, pageNumber: number): void {
 
             const moviesListUpdate: MoviesCurrentPage = {
                 moviesData: moviesList,
                 currentPage: pageNumber
             };
-
+            console.log(moviesList);
             this.$root.$emit('updateMoviesList', moviesListUpdate);
         },
 
         loadMovieData(movie: MovieBasicData): void {
             this.views = movie.views;
             this.addedAt = movie.created_at;
+            this.moviePornstars = movie.pornstars;
             this.loadMovieRating(movie.rating);
             this.loadMovieSpermatozoids(movie.spermatozoids);
             this.loadMovieLikes(movie.likes);
+        },
+
+        getPornstarSlug(pornstarNickname): string {
+            return pornstarNickname.replaceAll(" ", "-");
+        },
+
+        showSimilarMoviesTab(): void {
+            this.selectedTab = MovieTheatreTab.SimilarMovies;
+        },
+
+        showCommentsTab(): void {
+            this.selectedTab = MovieTheatreTab.Comments;
+            this.showCommentsDecoration();
+            this.fetchComments();
         },
 
         hideMovieDesktopFetchingDecoration(): void {
@@ -300,6 +351,14 @@ new Vue({
 
         hideSimilarMoviesFetchingDecoration(): void {
             this.showSimilarMoviesFetchingDecoration = false;
+        },
+
+        hideCommentsFetchingDecoration(): void {
+            this.showCommentsFetchingDecoration = false;
+        },
+
+        showCommentsDecoration(): void {
+            this.showCommentsFetchingDecoration = true;
         },
 
         loadMovieRating(movieRating: MovieRating): void {
@@ -327,6 +386,7 @@ new Vue({
         this.movie_id = this.$refs.player.getAttribute('data-movie-id');
         this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
         this.fetchMovieData();
+        this.fetchSimilarMovies();
     },
 
     computed: {

@@ -260,5 +260,6 @@
     "movie_voting_information": "Aby ocenić użyj gwiazdek. Jeśli wystrzeliłeś oglądając ten film możesz dać plemnika klikając w ikonę. Możesz też dać like'a",
     "fetching_movie_data": "Pobieram szczegóły filmu",
     "similar_movies": "Podobne filmy",
-    "fetching_related_movies": "Ładuję podobne filmy"
+    "fetching_related_movies": "Ładuję podobne filmy",
+    "fetching_comments": "Pobieram komentarze"
 }

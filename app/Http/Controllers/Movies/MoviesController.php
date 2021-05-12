@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers\Movies;
 
-use App\Handlers\Movies\AdvancedSearchHandler;
-use App\Handlers\Movies\GetMoviesByCategoryHandler;
-use App\Handlers\Movies\RateMovieHandler;
-use App\Handlers\Movies\ShowSingleMovieHandler;
-use App\Handlers\Movies\AddSpermatozoidHandler;
-use App\Handlers\Movies\AddMovieLikeHandler;
-use App\Handlers\Movies\GetMovieDetailsHandler;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Movies\RateMovieRequest;
-use App\Http\Requests\Movies\AddSpermatozoidRequest;
-use App\Http\Requests\Movies\AddMovieLikeRequest;
-use App\Repositories\MoviesRepository;
+use App\Movie;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Repositories\MoviesRepository;
+use App\Handlers\Movies\RateMovieHandler;
+use App\Handlers\Movies\AddMovieLikeHandler;
+use App\Handlers\Movies\AdvancedSearchHandler;
+use App\Http\Requests\Movies\RateMovieRequest;
 use Symfony\Component\HttpFoundation\Response;
+use App\Handlers\Movies\AddSpermatozoidHandler;
+use App\Handlers\Movies\GetMovieDetailsHandler;
+use App\Handlers\Movies\ShowSingleMovieHandler;
+use App\Handlers\Movies\GetMovieCommentsHandler;
+use App\Handlers\Movies\GetSimilarMoviesHandler;
+use App\Http\Requests\Movies\AddMovieLikeRequest;
+use App\Handlers\Movies\GetMoviesByCategoryHandler;
+use App\Http\Requests\Movies\AddSpermatozoidRequest;
+use App\Http\Requests\Movies\GetMovieCommentsRequest;
 
 class MoviesController extends Controller
 {
@@ -75,5 +79,13 @@ class MoviesController extends Controller
 
     public function getMovieDetails(int $movieID, GetMovieDetailsHandler $handler) : Response {
         return $handler->handle($movieID);
+    }
+
+    public function getSimilarMovies(Movie $movie, GetSimilarMoviesHandler $handler) : Response {
+         return $handler->handle($movie);
+    }
+
+    public function getMovieComments(GetMovieCommentsHandler $handler, GetMovieCommentsRequest $request) : Response {
+          return $handler->handle($request);
     }
 }

@@ -84,7 +84,7 @@ export default class MoviesList extends Vue {
   }
 
   extractPornstars(pornstarsList: BasicPornstarData[]): string[] | string {
-    if (pornstarsList.length > 0) {
+    if (pornstarsList && pornstarsList.length > 0) {
       let parsedPornstarslist: string[] = [];
 
       pornstarsList.forEach((pornstar) => {

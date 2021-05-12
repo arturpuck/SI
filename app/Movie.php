@@ -31,7 +31,7 @@ class Movie extends Model
 
     public function pornstars()
     {
-        return $this->belongsToMany(Pornstar::class, 'movie_has_pornstar');
+        return $this->belongsToMany(Pornstar::class, 'movie_has_pornstar', 'movie_has_pornstar.movie_id', 'movie_has_pornstar.pornstar_id');
     }
 
     public function getPornstarsNamesAttribute()
