@@ -39,18 +39,22 @@ Route::namespace ('Movies')->name('movies.')->group(function () {
         ->name('rate')->middleware('auth');
 
     Route::put('/add/spermatozoid', 'MoviesController@addSpermatozoid')
-        ->name('rate')->middleware('auth');
+        ->name('rate.spermatozoid')->middleware('auth');
 
     Route::put('/movie/add-like', 'MoviesController@addLike')
         ->name('add.like')->middleware('auth');
 
     Route::get('/movie/similar/{movie}', 'MoviesController@getSimilarMovies')
-              ->name('details');
+              ->name('similar');
 
     Route::get('/movie/details/{movieID}', 'MoviesController@getMovieDetails')
               ->name('details');
 
-    Route::get('/movie/comments', 'MoviesController@getMovieComments');
+    Route::get('/movie/comments', 'MoviesController@getMovieComments')
+               ->name('get.comments');
+
+    Route::put('/movie/add-comment', 'MoviesController@addMovieComment')
+              ->name('add.comment');
 });
 
 Route::namespace ('Pornstars')->name('pornstars.')->group(function () {
@@ -126,5 +130,7 @@ Route::middleware(['auth'])->name('auth.user.')->namespace('Auth\User')->group(f
         ->name('change.password')->middleware('api');
 
     Route::patch('user/profile/settings/other/change', 'UserSettingsController@changeOtherSettings')
-        ->name('change.password')->middleware('api');
+        ->name('change.other')->middleware('api');
+
+    
 });

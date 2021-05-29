@@ -1,0 +1,23 @@
+.empire-footer
+{
+	width:100%;
+	padding:10px;
+	background: linear-gradient(to right,#000,#3b3a38);
+	font:{
+     family: Aldrich;
+     size:22px;
+	}
+	color:white;
+	text-align: center;
+}
+
+.contact-us-link
+{
+	text-decoration: none;
+	color:white;
+	margin: 0 18px;
+	&:hover
+	{
+		text-decoration: underline;
+	}
+}

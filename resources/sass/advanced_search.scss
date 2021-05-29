@@ -1,0 +1,228 @@
+@import "~sass/basic";
+@import "~sass/fonts";
+@import "~sass/responsive_icon";
+@import "~sasscomponent/controls/slider/standard_slider";
+@import "~sass/advanced_search_results";
+
+@mixin panel-group {
+    border-radius: 1vw;
+    padding: 6px;
+    margin: 0;
+    border: 2px solid black;
+}
+
+@mixin control-panel-button-icon {
+    vertical-align: middle;
+    margin-right: 5px;
+    min-width: 12px;
+    fill: white;
+    height: auto;
+}
+
+@mixin fixed-control-control-panel-button {
+    border: none;
+    outline: none;
+    display: block;
+    width: 90%;
+    padding: 3px;
+    text-align: center;
+    margin: 4px auto;
+    border-radius: 4px;
+    cursor: pointer;
+    @include responsive-font(1.1vw, 12px);
+    line-height: 1.5em;
+    color: white;
+    &:hover {
+        filter: saturate(1.7);
+    }
+}
+
+@mixin control-panel-button {
+    line-height: 1.5em;
+    &:hover {
+        filter: saturate(1.7);
+    }
+}
+
+.full-body {
+    background: #0e0e0e;
+}
+
+.advanced-search-panel {
+    display: grid;
+    padding: 0 0 5px 0;
+    margin-top: calc(35px + 1vw);
+    grid-template-columns: repeat(4, 23%);
+    grid-template-rows: auto;
+    justify-content: space-evenly;
+    overflow: hidden;
+    max-height: 3000px;
+    transition: max-height 1s;
+    @media (max-width: 541) {
+        margin-top: 70px;
+    }
+    @media (max-width: 1250px) {
+        grid-template-columns: repeat(2, 43%);
+    }
+    @media (max-width: 700px) {
+        grid-template-columns: 65%;
+    }
+    @media (max-width: 420px) {
+        grid-template-columns: 98%;
+    }
+
+    &--hidden {
+        max-height: 0;
+    }
+}
+
+.information-content {
+    @include responsive-font();
+    color: white;
+    margin: 0;
+    padding: 0 0 7px 0;
+    text-align: center;
+}
+
+.panel-group {
+    @include panel-group();
+    &--relative {
+        @include panel-group();
+        position: relative;
+    }
+}
+
+.panel-group-legend {
+    @include responsive-font(1.8vw, 25px);
+    color: silver;
+}
+
+.decoration-icon {
+    @include responsive-icon();
+    vertical-align: middle;
+}
+
+#app .select_container {
+    display: flex;
+}
+
+#app .select-container {
+    display: flex;
+}
+
+#app .select-container__select {
+    flex-grow: 10;
+}
+
+.select-container {
+    margin: 10px 0;
+}
+
+.labeled-checkbox-description {
+    @include responsive-font();
+    color: white;
+}
+
+.labeled_checkbox--aditional-margin {
+    margin: 8px 0;
+}
+
+#app .relative-shadow-container {
+    top: 5%;
+    height: 95%;
+}
+
+.range-selection {
+    &__label {
+        text-align: center;
+        @include responsive-font();
+        color: white;
+        display: block;
+        padding-bottom: 7px;
+    }
+
+    &__value {
+        text-align: center;
+        @include responsive-font(1.1vw, 13px);
+        color: #3d9c16;
+    }
+}
+
+@include standard-slider(".range-selection__input");
+
+#app .control-panel-button {
+    &--type-reset {
+        @include control-panel-button();
+        &:hover {
+            background: linear-gradient(#ec1515, #8a240a);
+        }
+    }
+
+    &--type-submit {
+        margin: 20px auto;
+        @include control-panel-button();
+        &:hover {
+            background: linear-gradient(#0fe00b, #054004);
+        }
+    }
+}
+
+.control-panel-button__icon {
+    width: 1em;
+    @include control-panel-button-icon();
+
+    &--bigger {
+        width: 1.5em;
+        @include control-panel-button-icon();
+    }
+
+    &--arrow-down {
+        @include control-panel-button-icon();
+        width: 15%;
+    }
+}
+
+.aditional-control-panel {
+    position: fixed;
+    right: 0;
+    top: calc(35px + 1vw);
+    min-width: 80px;
+    padding: 0;
+    width: 8vw;
+    box-shadow: 1px 1px 1px 1px black;
+    z-index: 2;
+    border: 1px solid black;
+    border-radius: 5px 0 0 5px;
+    overflow: hidden;
+    background: #151314;
+    opacity: 1;
+    transition: opacity 1.5s;
+
+    &--hidden {
+        opacity: 0;
+    }
+
+    &__description {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    &__button {
+        &--green {
+            @include fixed-control-control-panel-button();
+            background: linear-gradient(#0fe00b, #054004);
+            margin-bottom: 1px;
+        }
+
+        &--red {
+            @include fixed-control-control-panel-button();
+            background: linear-gradient(#ec1515, #8a240a);
+        }
+
+        &--arrow-down {
+            @include fixed-control-control-panel-button();
+            background: black;
+        }
+    }
+}

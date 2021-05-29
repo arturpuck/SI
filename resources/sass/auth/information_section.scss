@@ -1,0 +1,50 @@
+.registration-information{
+	display:none;
+}
+
+.welcome-user{
+	max-height:250px;
+	overflow-y:auto;
+}
+
+.information-section{
+	flex-grow:10;
+	font:{
+	  family: "Exo 2", sans-serif;
+	  size: 15px;
+	}
+	color:white;
+	padding:7px;
+	max-height: 370px;
+	overflow-y: auto;
+	position: relative;
+}
+
+.input-name{
+	font-weight: bold;
+	margin: 5px 0;
+}
+
+.input-list{
+	display:block;
+	margin:5px 0;
+}
+
+.input-description{
+	display:block;
+	margin-left:12px
+}
+
+.shadow-container{
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	background:rgba(0,0,0,0.95);
+	height: 100%;
+	z-index: 2;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

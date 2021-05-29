@@ -27,8 +27,8 @@ class AddPornstarCommentRequest extends FormRequest
     public function rules()
     {
         return [
-            'comment_text' => ['required', 'max:1000'],
-            'nickname' => ['nullable', Rule::requiredIf(!\Auth::check()), 'max:50'],
+            'body' => ['required', 'max:1000'],
+            'userNickname' => ['nullable', Rule::requiredIf(!\Auth::check()), 'max:50'],
             'pornstar_id' => ['required', 'exists:pornstars,id'],
             'parent_comment_id' => ['nullable' => 'exists:pornstar_comments,id']
         ];

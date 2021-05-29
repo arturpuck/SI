@@ -80,6 +80,50 @@ new Vue({
 
         showNotification: NotificationFunction,
 
+        async saveMovieComment(comment: Comment) {
+
+            const requestBody = {
+                movie_id: this.movie_id,
+                commentsPerPage: this.commentsPerPage,
+                ...comment
+            };
+
+            const requestData = {
+                method: 'PUT',
+                headers: {
+                    'X-CSRF-TOKEN': this.csrfToken,
+                    'Content-type': 'application/json; charset=UTF-8'
+                },
+                body: JSON.stringify(requestBody)
+            };
+
+            try {
+                const response = await fetch('/movie/add-comment', requestData);
+
+                switch (response.status) {
+                    case 200:
+                        const commentsUpdateList: PageListUpdate<Comment> = await response.json();
+                        this.loadComments(commentsUpdateList);
+                        this.showNotification(this.translator.translate('comment_added'));
+                        break;
+
+                    case 500:
+                        throw new Error('the_requested_data_is_probably_ok_but_a_server_error_occured');
+                        break;
+
+                    default:
+                        throw new Error('undefined_error');
+                        break;
+
+                }
+
+            }
+            catch (exception) {
+                this.showNotification(this.translator.translate(exception.message), 'error');
+            }
+
+        },
+
         async addLike() {
 
             if (this.userLikesMovie) {
@@ -234,7 +278,6 @@ new Vue({
                 const response = await fetch(`/movie/details/${this.movie_id}`, requestData);
                 if (response.status == 200) {
                     const responseData: MovieBasicData = await response.json();
-                    console.log(responseData);
                     this.loadMovieData(responseData);
                 }
                 else {
@@ -387,6 +430,7 @@ new Vue({
         this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
         this.fetchMovieData();
         this.fetchSimilarMovies();
+        this.$root.$on('pageHasBeenSelected', this.fetchComments);
     },
 
     computed: {

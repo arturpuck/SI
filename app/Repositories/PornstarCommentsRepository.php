@@ -33,8 +33,8 @@ Class PornstarCommentsRepository extends BaseRepository{
     public function storeComment(AddPornstarCommentRequest $request){
 
           $data = [
-            'comment' => $request->get('comment_text'),
-            'nickname' => $request->get('nickname'),
+            'comment' => $request->get('body'),
+            'nickname' => $request->get('userNickname'),
             'pornstar_id' => $request->get('pornstar_id'),
             'parent_comment_id' => $request->get('parent_comment_id')
           ];

@@ -31,9 +31,7 @@
               v-text="pageNumber"
               v-on:click="pageHasBeenSelected(pageNumber)"
               v-bind:class="{
-                'pages-list__pagination-button--green': checkCurrentPage(
-                  pageNumber
-                ),
+                'pages-list__pagination-button--green': checkCurrentPage(pageNumber),
               }"
               class="pages-list__pagination-button"
             ></button>
@@ -176,8 +174,7 @@ export default class PagesList extends Vue {
   }
 
   chechIfArrowsShouldBeDisplayed() {
-    this.arrowsShouldBeDisplayed =
-      this.pagesNumber > this.getamountOfVisibleLinksInBox();
+    this.arrowsShouldBeDisplayed = this.pagesNumber > this.getamountOfVisibleLinksInBox();
   }
 
   resetScrollOffset(): void {
@@ -219,9 +216,7 @@ export default class PagesList extends Vue {
     switch (direction) {
       case LinkListScrollDirection.Left:
         this.scrollOffset =
-          this.scrollOffset - linksToSkip <= 0
-            ? 0
-            : this.scrollOffset - linksToSkip;
+          this.scrollOffset - linksToSkip <= 0 ? 0 : this.scrollOffset - linksToSkip;
         break;
 
       case LinkListScrollDirection.Right:
@@ -310,28 +305,12 @@ export default class PagesList extends Vue {
   &__scroll-pages-button {
     &--arrow-left {
       @include pages-list-scroll-pages-button();
-      clip-path: polygon(
-        40% 0%,
-        40% 25%,
-        100% 25%,
-        100% 75%,
-        40% 75%,
-        40% 100%,
-        0% 50%
-      );
+      clip-path: polygon(40% 0%, 40% 25%, 100% 25%, 100% 75%, 40% 75%, 40% 100%, 0% 50%);
     }
 
     &--arrow-right {
       @include pages-list-scroll-pages-button();
-      clip-path: polygon(
-        0% 25%,
-        60% 25%,
-        60% 0%,
-        100% 50%,
-        60% 100%,
-        60% 75%,
-        0% 75%
-      );
+      clip-path: polygon(0% 25%, 60% 25%, 60% 0%, 100% 50%, 60% 100%, 60% 75%, 0% 75%);
     }
   }
 

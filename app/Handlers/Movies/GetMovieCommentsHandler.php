@@ -7,22 +7,22 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\Movies\GetMovieCommentsRequest;
 
 
-Class GetMovieCommentsHandler {
+class GetMovieCommentsHandler
+{
 
-    public function __construct(public MovieCommentsRepository $movieCommentsRepository){}
+  public function __construct(public MovieCommentsRepository $movieCommentsRepository)
+  {
+  }
 
 
-    public function handle(GetMovieCommentsRequest $request) : Response {
+  public function handle(GetMovieCommentsRequest $request): Response
+  {
 
-      $movieID = $request->get('movie_id');
-      $currentPage = $request->get('page');
-      $perPage = $request->get('per_page'); 
+    $movieID = $request->get('movie_id');
+    $currentPage = $request->get('page');
+    $perPage = $request->get('per_page');
+    $commentsShards = $this->movieCommentsRepository->getPageList($movieID, $currentPage, $perPage);
 
-      $comments = $this->movieCommentsRepository->filterByMovieID($movieID)
-                                          ->chronological()
-                                          ->getForPageList($currentPage, $perPage);
-                                          
-      return response()->json($comments, 200);
-    }
-    
+    return response()->json($commentsShards, 200);
+  }
 }

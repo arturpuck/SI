@@ -1,0 +1,111 @@
+@import '~sass/fonts';
+
+@mixin summary-header{
+    text-align:center;
+    font-weight:bold;
+}
+
+@mixin search-results-icon{
+    width: 1.7vw;
+    height: 1.7vw;
+    min-width: 25px;
+    min-height: 25px;
+    vertical-align: bottom;
+}
+
+.search-results{
+
+    &__back-to-search-panel-button{
+        min-width:200px;
+        margin:10px auto;
+        width:20%;
+        background: linear-gradient(#0fe00b, #054004);
+        color:white;
+        @include responsive-font();
+        border-radius:4px;
+        cursor:pointer;
+        display: block;
+        padding: 6px;
+        border:none;
+        &:hover{
+            background:linear-gradient(#d61436, #800c22);
+        }
+    }
+
+    &__icon{
+
+        &--white{
+            fill: white;
+            @include search-results-icon();
+        }
+
+        &--crimson{
+            fill: crimson;
+            @include search-results-icon();
+        }
+
+        &--exit{
+            fill: white;
+            width: 1.2vw;
+            height: 1.2vw;
+            min-width: 17px;
+            min-height: 17px;
+            vertical-align: bottom;
+            margin-right: 5px;
+        }
+         
+    }
+
+    &__options-list{
+      margin: 0;
+      padding: 0.4vw 0 1vw 6vw;
+      list-style-type:none;
+    }
+
+    &__option{
+        color:white;
+        @include responsive-font();
+        &::before{
+          content: " ";  
+          color: crimson; 
+          background:crimson;
+          display: inline-block; 
+          width: 0.5em; 
+          height:0.5em;
+          margin-right:5px;
+        }
+    }
+
+    &__summary{
+        width: 40%;
+        min-width: 300px;
+        margin: 0 auto;
+        border: 1px solid #d2cacb;
+        box-shadow: 1px 1px 1px 1px black;
+        border-radius: 4px;
+        background: black;
+        padding-bottom: 7px;
+    }
+
+    &__header{
+
+        @include responsive-font();
+        @include summary-header();
+        color:white;
+
+        &--extra-padding{
+            @include responsive-font();
+            @include summary-header();
+            color:white;
+            padding:6px;
+        }
+        
+
+        &--crimson{
+            @include summary-header();
+            padding:6px;
+            @include responsive-font(1.7vw,22px);
+            color:crimson;
+        }
+    }
+}

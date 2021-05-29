@@ -1,8 +1,8 @@
 export default interface Comment {
-    id: number
+    id?: number
     userNickname: string
     body: string
-    avatarFilePath: string
-    addedAgo: string
+    avatarFilePath?: string
+    addedAgo?: string
     addedByAuthenticatedUser?: boolean
 }

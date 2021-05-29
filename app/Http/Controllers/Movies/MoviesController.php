@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Movies;
 
+use App\Handlers\Movies\AddMovieCommentHandler;
 use App\Movie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,6 +19,7 @@ use App\Handlers\Movies\GetMovieCommentsHandler;
 use App\Handlers\Movies\GetSimilarMoviesHandler;
 use App\Http\Requests\Movies\AddMovieLikeRequest;
 use App\Handlers\Movies\GetMoviesByCategoryHandler;
+use App\Http\Requests\Movies\AddMovieCommentRequest;
 use App\Http\Requests\Movies\AddSpermatozoidRequest;
 use App\Http\Requests\Movies\GetMovieCommentsRequest;
 
@@ -68,24 +70,34 @@ class MoviesController extends Controller
         return $ratMovieHandler->handle($request);
     }
 
-    public function addSpermatozoid(AddSpermatozoidHandler $handler, AddSpermatozoidRequest $request): Response{
+    public function addSpermatozoid(AddSpermatozoidHandler $handler, AddSpermatozoidRequest $request): Response
+    {
 
         return $handler->handle($request);
     }
 
-    public function addLike(AddMovieLikeHandler $handler, AddMovieLikeRequest $request): Response {
+    public function addLike(AddMovieLikeHandler $handler, AddMovieLikeRequest $request): Response
+    {
         return $handler->handle($request);
     }
 
-    public function getMovieDetails(int $movieID, GetMovieDetailsHandler $handler) : Response {
+    public function getMovieDetails(int $movieID, GetMovieDetailsHandler $handler): Response
+    {
         return $handler->handle($movieID);
     }
 
-    public function getSimilarMovies(Movie $movie, GetSimilarMoviesHandler $handler) : Response {
-         return $handler->handle($movie);
+    public function getSimilarMovies(Movie $movie, GetSimilarMoviesHandler $handler): Response
+    {
+        return $handler->handle($movie);
     }
 
-    public function getMovieComments(GetMovieCommentsHandler $handler, GetMovieCommentsRequest $request) : Response {
-          return $handler->handle($request);
+    public function getMovieComments(GetMovieCommentsHandler $handler, GetMovieCommentsRequest $request): Response
+    {
+        return $handler->handle($request);
+    }
+
+    public function addMovieComment(AddMovieCommentHandler $addMovieCommentHandler, AddMovieCommentRequest $request): Response
+    {
+        return $addMovieCommentHandler->handle($request);
     }
 }

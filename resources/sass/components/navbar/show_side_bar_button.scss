@@ -1,0 +1,38 @@
+.show-sidebar-button{
+    position: absolute;
+    padding: 4px 2px;
+    top:100%;
+    width:5vw;
+    min-width:35px;
+    text-align:center;
+    color:white;
+    border-radius: 0 0 5px 5px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-top: none;
+    background: #0d0c0d;
+    opacity:0;
+    &:hover{
+        background:#2d2d30;
+    }
+    cursor:pointer;
+    transition:opacity 1s, background 2s;
+    box-shadow: -1px 2px 2px 1px black;
+}
+
+.show-authenticated-user-side-bar-button{
+    right:0;
+}
+
+.show-content-side-bar-button{
+    left:0;
+}
+
+.visible-sidebar-button{
+    opacity:1;
+}
+
+.show-sidebar-button-decoration{
+    @include responsive-font(1.5vw,18px,"");
+}

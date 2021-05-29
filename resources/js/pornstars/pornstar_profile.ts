@@ -15,6 +15,7 @@ import CommentBox from '@jscomponents-form-controls/comment_box.vue';
 import CommentBody from '@jscomponents/form_controls/comment_body.vue';
 import LinksBox from '@jscomponents/links_box.vue';
 import MoviePreviewComplete from '@jscomponents/movies/movie_preview_complete.vue';
+import Comment from "@interfaces/Comment";
 
 const Vue = VueConstructor.build();
 Vue.component('movie-box', MovieBox);
@@ -65,28 +66,20 @@ new Vue({
       return pageNumber == this.currentCommentsPage;
     },
 
-    validateComment(commentData: object): object {
+    validateComment(commentData: Comment): object {
 
       try {
 
-        if (!commentData['comment_text']) {
+        if (!commentData.body) {
           throw new Error('comment_text_is_missing');
         }
 
-        if (commentData['comment_text'].length > 1000) {
+        if (commentData.body.length > 1000) {
           throw new Error('comment_text_exceeds_1000_characters');
         }
 
-        if (commentData.hasOwnProperty('nickname')) {
-
-          if (!commentData['nickname']) {
-            throw new Error('nickname_is_missing');
-          }
-
-          if (commentData['nickname'].length > 50) {
-            throw new Error('nickname_exceeds_50_characters');
-          }
-
+        if (commentData.userNickname.length > 50) {
+          throw new Error('nickname_exceeds_50_characters');
         }
 
       }
@@ -101,7 +94,7 @@ new Vue({
       this.$root.$emit('resetCommentBox');
     },
 
-    async saveComment(commentData: object) {
+    async saveComment(commentData: Comment) {
 
       try {
 
