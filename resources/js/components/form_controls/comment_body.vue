@@ -7,8 +7,8 @@
         v-bind:avatar-file-path="avatarFilePath"
       >
       </user-preview>
-      <div>
-        <span class="fas fa-calendar-check date-icon"></span>
+      <div class="date-conatiner">
+        <date-confirmed-icon class="date-confirmed-icon"></date-confirmed-icon>
         <span v-text="addedAgo" class="added-ago"></span>
       </div>
     </div>
@@ -20,8 +20,9 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator.js";
 import UserPreview from "@jscomponents/user/user_preview.vue";
+import DateConfirmedIcon from "@svgicon/date_confirmed_icon";
 
-@Component({ components: { UserPreview } })
+@Component({ components: { UserPreview, DateConfirmedIcon } })
 export default class CommentBody extends Vue {
   @Prop({
     type: Boolean,
@@ -61,10 +62,20 @@ export default class CommentBody extends Vue {
 
 <style lang="scss" scoped>
 @import "~sass/fonts";
+@import "~sass/responsive_icon";
 
 .added-ago {
   @include responsive-font();
+  width: max-content;
   color: white;
+}
+
+.date-conatiner {
+  display: flex;
+  padding: 4px;
+  @media (max-width: 500px) {
+    padding: 4px 4px 4px 10px;
+  }
 }
 
 .date-icon {
@@ -79,6 +90,10 @@ export default class CommentBody extends Vue {
   align-items: center;
   background: #252222;
   justify-content: space-between;
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .comment-text {
@@ -90,11 +105,15 @@ export default class CommentBody extends Vue {
 
 .comment-container {
   min-width: 300px;
-  width: 40vw;
+  width: 70vw;
   box-shadow: 2px 2px 2px 2px black;
   border-radius: 1vw;
   overflow: hidden;
   margin: 20px auto;
   border: 1px solid gray;
+}
+
+.date-confirmed-icon {
+  @include responsive-icon();
 }
 </style>

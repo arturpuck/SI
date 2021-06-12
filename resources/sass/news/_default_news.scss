@@ -12,7 +12,7 @@
 }
 
 .default-news-content{
-   @include responsive-font();
+    @include responsive-font(1vw, 16px, "Exo 2", 1400px);
    color:white;
    padding:5px;
 }

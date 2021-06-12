@@ -128,6 +128,13 @@ export default class PagesList extends Vue {
   })
   readonly initialPages: number;
 
+  @Prop({
+    type: String,
+    required: false,
+    default: "",
+  })
+  readonly uniqueIdentifier: string;
+
   private scrollOffset: number = 0;
   private leftScrollDirection = LinkListScrollDirection.Left;
   private rightScrollDirection = LinkListScrollDirection.Right;
@@ -150,7 +157,7 @@ export default class PagesList extends Vue {
 
   pageHasBeenSelected(pageNumber: number): void {
     this.currentPage = pageNumber;
-    this.$root.$emit("pageHasBeenSelected", pageNumber);
+    this.$root.$emit(`pageHasBeenSelected${this.uniqueIdentifier}`, pageNumber);
   }
 
   navigatePageByDirection(pageDirection: PageDirection): void {
@@ -268,7 +275,7 @@ export default class PagesList extends Vue {
       this.currentPage - 1 >= maxOffset ? maxOffset : this.currentPage - 1;
     this.controlInterface();
     window.addEventListener("resize", () => this.controlInterface());
-    this.$root.$on("updatePagesList", this.updatePagesList);
+    this.$root.$on(`updatePagesList${this.uniqueIdentifier}`, this.updatePagesList);
   }
 }
 </script>

@@ -5,6 +5,7 @@
 .movie-block{
     width: 90%;
     margin: 0 auto;
+    min-width:320px;
 }
 
 .player-container{
@@ -111,6 +112,7 @@
 
     &__detail{
         @include movie-information-container();
+        overflow-x:hidden;
     }
 
     &__details{
@@ -118,10 +120,16 @@
         grid-template-columns: repeat(auto-fit, 320px);
         justify-content: space-evenly;
         grid-column-gap: 8px;
+        padding: 0 6px;
+        row-gap: 0.5vw;
 
-        @media(max-width: 720px){
+        @media(max-width: 730px){
             display: flex;
             flex-wrap: wrap;
+        }
+
+        @media(min-width:1300px){
+            grid-template-columns: repeat(auto-fit, 400px);
         }
     }
 

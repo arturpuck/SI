@@ -28,7 +28,7 @@ class AddPornstarCommentRequest extends FormRequest
     {
         return [
             'body' => ['required', 'max:1000'],
-            'userNickname' => ['nullable', Rule::requiredIf(!\Auth::check()), 'max:50'],
+            'userNickname' => ['nullable', Rule::requiredIf(!\Auth::check()), 'max:20'],
             'pornstar_id' => ['required', 'exists:pornstars,id'],
             'parent_comment_id' => ['nullable' => 'exists:pornstar_comments,id']
         ];

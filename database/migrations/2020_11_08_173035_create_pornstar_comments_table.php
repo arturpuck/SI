@@ -22,7 +22,7 @@ class CreatePornstarCommentsTable extends Migration
             $table->unsignedBigInteger('parent_comment_id')->nullable();
             $table->foreign('parent_comment_id')->references('id')->on('pornstar_comments');
             $table->string('comment',1000);
-            $table->string('nickname',50)->nullable();
+            $table->string('nickname',20)->nullable();
             $table->timestamps();
         });
     }

@@ -26,7 +26,7 @@ class AddMovieCommentRequest extends FormRequest
     {
         return [
             'movie_id' => ['required', 'exists:movies,id'],
-            'userNickname' => ['nullable', Rule::requiredIf(!\Auth::check()), 'max:50'],
+            'userNickname' => ['nullable', Rule::requiredIf(!\Auth::check()), 'max:20'],
             'body' => ['required', 'max:1000'],
             'commentsPerPage' => ['required', 'integer', 'min:0']
         ];

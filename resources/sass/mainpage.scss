@@ -26,23 +26,28 @@ $imageFolder: mainpage;
 @include background-image(japanese-chick-in-lambo, 4);
 @include nice-scrollbar(".news-container");
 
+.news-header-icon{
+    @include responsive-icon();
+    fill:#ef0244;
+}
+
 .news-introduction {
     padding: 3px 5px;
     margin: 0;
     flex-grow: 10;
+    @include responsive-font(1vw, 16px, "Exo 2", 1400px);
 }
 
 .main-content {
     display: flex;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 0.85);
     flex-wrap: nowrap;
     flex-direction: row;
     border-radius: 8px;
     box-shadow: 2px 2px 3px 3px black;
     margin: calc(40px + 1vw) auto;
-    width: 70%;
-    min-width: 750px;
-    height: 55vh;
+    width: 75%;
+    height: min-content;
     min-height: 360px;
     justify-content: stretch;
     overflow: hidden;
@@ -51,7 +56,7 @@ $imageFolder: mainpage;
 .introductory-content {
     width: 30%;
     min-width: 320px;
-    @include responsive-font(1.3vw, 17px);
+    @include responsive-font(1vw, 16px, "Exo 2", 1300px);
     color: white;
     border-right: 1px solid silver;
     display: flex;
@@ -125,7 +130,7 @@ $imageFolder: mainpage;
 .quickstart-option-description {
     display: block;
     text-align: center;
-    @include responsive-font(1.1vw, 14px);
+    @include responsive-font(0.9vw, 15px, "Exo 2", 1500px);
     color: white;
     padding: 3px 0;
 }
@@ -146,11 +151,11 @@ $imageFolder: mainpage;
     }
 }
 
-@media (max-width: 790px) {
+@media (max-width: 830px) {
     .main-content {
         flex-direction: column;
         min-width: 300px;
-        width: 95%;
+        width: 80%;
         max-height: none;
         height: auto;
     }
@@ -165,7 +170,9 @@ $imageFolder: mainpage;
     }
 
     .news-all {
-        height: 50vh;
         min-height: 250px;
+        max-height: 50vh;
+        overflow:auto;
     }
+    @include nice-scrollbar(".news-all");
 }

@@ -12,12 +12,13 @@
       v-bind:authenticated-user-nickname="authenticatedUserNickname"
       v-on:send="sendComment"
     ></comment-box>
+    <pages-list v-bind:unique-identifier="uniqueIdentifier"></pages-list>
     <div
       v-show="!anyCommentsAvailable"
       v-text="translations['no_comments']"
       class="no-comments-info"
     ></div>
-    <ul>
+    <ul clas="comments-list">
       <comment-body
         v-for="comment in comments"
         v-bind:key="comment.id"
@@ -29,7 +30,6 @@
       >
       </comment-body>
     </ul>
-    <pages-list></pages-list>
   </div>
 </template>
 
@@ -83,10 +83,18 @@ export default class CommentList extends Vue {
   })
   readonly initialCommentsPerPage: number;
 
+  @Prop({
+    type: String,
+    required: false,
+    default: "",
+  })
+  readonly uniqueIdentifier: string;
+
   private comments: Comment[] = [];
   private commentFormIsVisible = false;
   private translations = Translations;
   private commentsPerPage: number;
+  private totalCommentsAvailable: number = 0;
 
   mounted() {
     this.comments = this.initialComments;
@@ -97,6 +105,7 @@ export default class CommentList extends Vue {
   updateComments(commentsUpdate: PageListUpdate<Comment>): void {
     this.updatePagesList(commentsUpdate);
     this.comments = commentsUpdate.content;
+    this.totalCommentsAvailable = commentsUpdate.totalElements;
   }
 
   updatePagesList(commentsUpdate: PageListUpdate<Comment>): void {
@@ -109,7 +118,7 @@ export default class CommentList extends Vue {
       pagesNumber,
       currentPage: commentsUpdate.currentPage,
     };
-    this.$root.$emit("updatePagesList", pagesListStatus);
+    this.$root.$emit(`updatePagesList${this.uniqueIdentifier}`, pagesListStatus);
   }
 
   calculateSubPagesNumber(totalComments: number, commentsPerPage: number): number {
@@ -117,7 +126,7 @@ export default class CommentList extends Vue {
   }
 
   get anyCommentsAvailable(): boolean {
-    return this.comments.length > 0;
+    return this.totalCommentsAvailable > 0;
   }
 
   showCommentForm(): void {
@@ -126,6 +135,12 @@ export default class CommentList extends Vue {
 
   sendComment(comment: Comment): void {
     this.$emit("comment", comment);
+  }
+
+  get availableCommentsInformation(): string {
+    return this.anyCommentsAvailable
+      ? `${this.translations["total_comments"]} : ${this.totalCommentsAvailable}`
+      : this.translations["no_comments_available"];
   }
 }
 </script>
@@ -142,5 +157,10 @@ export default class CommentList extends Vue {
   text-align: center;
   color: white;
   padding: 5px;
+}
+
+.comments-list {
+  padding: 0;
+  margin: 0;
 }
 </style>

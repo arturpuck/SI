@@ -21,7 +21,7 @@ class MovieCommentsDataExtractor
                 $movieComment->id,
                 $userNickname,
                 $movieComment->comment,
-                $movieComment->created_at,
+                $movieComment->added_ago,
                 $movieComment->user?->avatar_file_path,
                 $createdByAuthenticatedUser
             );

@@ -17,7 +17,7 @@
                     <star-full-icon class="quickstart-option-icon" />
                 </a>
             </li>
-            <li class="quickstart-option">
+            <li v-on:click="showCategories" class="quickstart-option">
                 <span class="quickstart-option-description">{{__('categories')}}</span>
                 <video-playlist-icon class="quickstart-option-icon" />
             </li>

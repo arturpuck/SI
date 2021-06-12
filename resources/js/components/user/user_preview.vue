@@ -54,9 +54,7 @@ export default class UserPreview extends Vue {
   get userLabel(): string {
     return this.authenticatedUser
       ? this.userNickname
-      : `${this.translations.translate("unregistered_user")} - ${
-          this.userNickname
-        }`;
+      : `${this.translations.translate("unregistered_user")} - ${this.userNickname}`;
   }
 }
 </script>
@@ -74,6 +72,10 @@ export default class UserPreview extends Vue {
   display: inline-flex;
   align-items: center;
   padding: 4px;
+  @media (max-width: 500px) {
+    border-bottom: 1px solid #5d0e0e;
+    width: 100%;
+  }
 }
 
 .user-nickname {

@@ -130,11 +130,6 @@
                @endif>
             </comment-box>
          </div>
-         <div v-if="anyCommentsAvailable" v-text="amountOfCommentsCaption" class="amount-of-comments-info"></div>
-         <ul class="comments-list">
-            <comment-body v-for="comment in pornstarComments[currentCommentsPage]" v-bind:comment-body="comment.comment" v-bind:authenticated-user="comment.added_by_authenticated_user" v-bind:avatar-file-path="comment.avatar_file_path" v-bind:added-ago="comment.added_ago" v-bind:user-nickname="comment.user_nickname">
-            </comment-body>
-         </ul>
          <links-box v-bind:initial-current-page="1" v-if="linksBoxShouldBeDisplayed">
             <template v-slot:pages-list>
                <li v-for="pageNumber in pagesNumber" v-on:click="fetchPornstarComments(pageNumber)" class="pagination-link-list-element">
@@ -168,6 +163,11 @@
                </li>
             </template>
          </links-box>
+         <div v-if="anyCommentsAvailable" v-text="amountOfCommentsCaption" class="amount-of-comments-info"></div>
+         <ul class="comments-list">
+            <comment-body v-for="comment in pornstarComments[currentCommentsPage]" v-bind:comment-body="comment.comment" v-bind:authenticated-user="comment.added_by_authenticated_user" v-bind:avatar-file-path="comment.avatar_file_path" v-bind:added-ago="comment.added_ago" v-bind:user-nickname="comment.user_nickname">
+            </comment-body>
+         </ul>
          <div v-if="!anyCommentsAvailable" class="no-data-info">
             {{__('this_pornstar_has_no_comments')}}
          </div>

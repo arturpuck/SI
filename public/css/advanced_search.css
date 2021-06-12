@@ -118,10 +118,13 @@
   background-attachment: fixed; }
 
 .aplication-container {
-  min-height: calc(90vh - 30px);
+  min-height: calc(100vh - 2*10px - 30px - 35px - 1.5vw);
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   margin-top: calc(35px + 1.5vw); }
+  @media (min-width: 1200px) {
+    .aplication-container {
+      min-height: calc(100vh - 2*10px - 2vw - 35px - 1.5vw); } }
 
 .search-results__back-to-search-panel-button {
   min-width: 200px;

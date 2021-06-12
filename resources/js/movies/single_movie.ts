@@ -29,6 +29,7 @@ import { MoviesListResponse } from "@interfaces/movies/MoviesListResponse.ts";
 import { MoviesCurrentPage } from "@interfaces/movies/MoviesCurrentPage.ts";
 import PageListUpdate from '@interfaces/PageListUpdate';
 import Comment from '@interfaces/Comment';
+import CommentValidator from '@jsmodules/validators/comment_validator';
 
 
 const Vue = VueConstructor.build();
@@ -80,24 +81,33 @@ new Vue({
 
         showNotification: NotificationFunction,
 
+        validateComment : CommentValidator,
+
         async saveMovieComment(comment: Comment) {
 
-            const requestBody = {
-                movie_id: this.movie_id,
-                commentsPerPage: this.commentsPerPage,
-                ...comment
-            };
-
-            const requestData = {
-                method: 'PUT',
-                headers: {
-                    'X-CSRF-TOKEN': this.csrfToken,
-                    'Content-type': 'application/json; charset=UTF-8'
-                },
-                body: JSON.stringify(requestBody)
-            };
-
             try {
+
+                const validationResult = this.validateComment(comment);
+
+                if (!validationResult['success']) {
+                   throw new Error(validationResult['message']);
+                }
+
+                const requestBody = {
+                    movie_id: this.movie_id,
+                    commentsPerPage: this.commentsPerPage,
+                    ...comment
+                };
+    
+                const requestData = {
+                    method: 'PUT',
+                    headers: {
+                        'X-CSRF-TOKEN': this.csrfToken,
+                        'Content-type': 'application/json; charset=UTF-8'
+                    },
+                    body: JSON.stringify(requestBody)
+                };
+
                 const response = await fetch('/movie/add-comment', requestData);
 
                 switch (response.status) {
@@ -430,7 +440,7 @@ new Vue({
         this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
         this.fetchMovieData();
         this.fetchSimilarMovies();
-        this.$root.$on('pageHasBeenSelected', this.fetchComments);
+        this.$root.$on('pageHasBeenSelectedMovieComments', this.fetchComments);
     },
 
     computed: {

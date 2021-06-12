@@ -18,7 +18,10 @@
 }
 
 .aplication-container{
-	min-height: calc(90vh - 30px);
+	min-height: calc(100vh - 2*#{$footerPadding} - #{$footerFontFixed} - 35px - 1.5vw);
+	@media(min-width: 1200px){
+       min-height: calc(100vh - 2*#{$footerPadding} - #{$footerFontRelative} - 35px - 1.5vw);
+	}
 	border-top: 1px solid transparent;
 	border-bottom: 1px solid transparent;
 	margin-top: calc(35px + 1.5vw);

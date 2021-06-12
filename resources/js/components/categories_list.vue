@@ -23,10 +23,7 @@
           v-bind:href="`/filmy/kategoria/${category.slug}`"
           class="categories-list__link"
         >
-          <span
-            v-text="category.translatedName"
-            class="categories-list__name"
-          ></span>
+          <span v-text="category.translatedName" class="categories-list__name"></span>
         </a>
       </li>
     </ul>
@@ -107,7 +104,10 @@ export default class CategoriesList extends Vue {
     width: 100%;
     padding: 4px 1px;
     background: #bf0e30db;
-    @include responsive-font(1.1vw, 13px);
+    font: {
+      family: "Exo 2", sans-serif;
+      size: 14px;
+    }
   }
 }
 

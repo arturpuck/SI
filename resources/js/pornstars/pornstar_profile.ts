@@ -15,7 +15,7 @@ import CommentBox from '@jscomponents-form-controls/comment_box.vue';
 import CommentBody from '@jscomponents/form_controls/comment_body.vue';
 import LinksBox from '@jscomponents/links_box.vue';
 import MoviePreviewComplete from '@jscomponents/movies/movie_preview_complete.vue';
-import Comment from "@interfaces/Comment";
+import CommentValidator from '@jsmodules/validators/comment_validator';
 
 const Vue = VueConstructor.build();
 Vue.component('movie-box', MovieBox);
@@ -66,29 +66,7 @@ new Vue({
       return pageNumber == this.currentCommentsPage;
     },
 
-    validateComment(commentData: Comment): object {
-
-      try {
-
-        if (!commentData.body) {
-          throw new Error('comment_text_is_missing');
-        }
-
-        if (commentData.body.length > 1000) {
-          throw new Error('comment_text_exceeds_1000_characters');
-        }
-
-        if (commentData.userNickname.length > 50) {
-          throw new Error('nickname_exceeds_50_characters');
-        }
-
-      }
-      catch (error) {
-        return { success: false, message: error.message };
-      }
-
-      return { success: true };
-    },
+    validateComment : CommentValidator,
 
     resetCommentBox() {
       this.$root.$emit('resetCommentBox');

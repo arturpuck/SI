@@ -1,11 +1,15 @@
 @import '~sass/fonts';
 
+$footerFontRelative : 2vw;
+$footerFontFixed : 30px;
+$footerPadding: 10px;
+
 .empire-footer
 {
 	width:100%;
-	padding:10px;
+	padding:$footerPadding;
 	background: black;
-	@include responsive-font(2vw,30px, Aldrich);
+	@include responsive-font($footerFontRelative,$footerFontFixed, Aldrich);
 	color:white;
 	text-align: center;
 	position: relative;
