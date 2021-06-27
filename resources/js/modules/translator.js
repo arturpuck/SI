@@ -365,6 +365,9 @@ export default {
       you_and: "Ty i",
       people_like_it: "osób lubi to",
       no_comments: "Brak komentarzy",
+      cookie_notification_header: "Ta strona wykorzystuje pliki cookie",
+      cookie_notification_body : `Poprzez dalsze korzystanie z portalu lub naciśnięcie przycisku "Akceptuję" wyrażasz zgodę na przechowywanie plików cookie na Twej maszynie`,
+      accept_button_caption : "Akceptuję - zamknij",
       packages: {
          content_sidebar: {
             hide_side_bar_title: "Schowaj boczne menu",

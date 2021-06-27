@@ -17,8 +17,6 @@
 	}
 	color:white;
 	padding:7px;
-	max-height: 370px;
-	overflow-y: auto;
 	position: relative;
 }
 
@@ -35,6 +33,11 @@
 .input-description{
 	display:block;
 	margin-left:12px
+}
+
+.scroll-container{
+	max-height: 420px;
+	overflow-y: auto;
 }
 
 @media(max-width:1200px){

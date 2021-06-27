@@ -1,5 +1,5 @@
 <template>
-  <section v-show="showCategories" class="categories-panel">
+  <section class="categories-panel">
     <div class="panel-bar">
       <div class="panel-bar__description">
         <span v-text="translations['categories_list']"></span>
@@ -38,22 +38,19 @@ import Categories from "@jsmodules/categories_list";
 import CategoryData from "@interfaces/movies/category_data";
 import MovieTapeIcon from "@svgicon/movie_tape_icon.vue";
 
-@Component({ components: { ButtonClose, MovieTapeIcon } })
+@Component({
+  components: {
+    ButtonClose,
+    MovieTapeIcon,
+  },
+})
 export default class CategoriesList extends Vue {
   private showCategories: boolean = false;
   private translations: object = CategoriesListTranslations;
   private categories: CategoryData[] = Categories;
 
-  showPanel(): void {
-    this.showCategories = true;
-  }
-
-  created(): void {
-    this.$root.$on("showCategories", this.showPanel);
-  }
-
   hideCategories(): void {
-    this.showCategories = false;
+    this.$emit("hide");
   }
 }
 </script>

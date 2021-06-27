@@ -24,7 +24,7 @@
                   </div>
                   <div class="pornstar-data-key-value-pair">
                      <dt class="pornstar-data-key pornstar-data-list-element">{{__('pornstar_nationality')}} : </dt>
-                     <dl class="pornstar-data-value pornstar-data-list-element">{{$pornstar->nationality->name}}</dl>
+                     <dl class="pornstar-data-value pornstar-data-list-element">{{__($pornstar->nationality->name.'_nationality')}}</dl>
                   </div>
                   <div class="pornstar-data-key-value-pair">
                      <dt class="pornstar-data-key pornstar-data-list-element">{{__('pornstar_activity_period')}} : </dt>

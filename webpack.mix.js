@@ -54,7 +54,8 @@ mix.js('resources/js/mainpage.js', 'public/js').vue()
         '@jscomponents-decoration': path.resolve("resources/js/components/decoration"),
         '@jscomponents-form-controls': path.resolve('resources/js/components/form_controls'),
         '@interfaces': path.resolve('resources/js/interfaces'),
-        '@svgicon': path.resolve('resources/js/components/decoration/icons/svg')
+        '@svgicon': path.resolve('resources/js/components/decoration/icons/svg'),
+        '@config' : path.resolve('resources/js/config')
       },
       extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx", ".svg"]
     },

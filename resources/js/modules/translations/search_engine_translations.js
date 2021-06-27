@@ -147,7 +147,7 @@ export default {
     female_slave: Translator.translate('female_slave'),
     nun: Translator.translate('nun'),
     female_police_officer: Translator.translate('female_police_officer'),
-    prostitue: Translator.translate('prostitute'),
+    prostitute: Translator.translate('prostitute'),
     female_boss: Translator.translate('female_boss'),
     cleaner: Translator.translate('cleaner'),
     mommy: Translator.translate('mommy')

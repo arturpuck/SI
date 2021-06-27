@@ -23,6 +23,9 @@ Route::namespace ('Movies')->name('movies.')->group(function () {
     Route::get('/filmy/najnowsze/strona/{pageNumber?}', 'MoviesController@getLatestMoviesPage')
         ->name('new');
 
+    Route::get('/filmy/najpopularniejsze/strona/{pageNumber?}', 'MoviesController@getTheMostPopularMoviesPage')
+        ->name('the-most-popular');
+
     Route::get('/filmy/wyszukiwanie-zaawansowane', 'MoviesController@getAdvancedSearchPage')
         ->name('advanced.search.panel');
 

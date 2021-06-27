@@ -270,7 +270,7 @@ exports.default = void 0;
 //
 //
 var _default = {
-  name: 'expect-circle',
+  name: "expect-circle",
   props: {
     label: {
       required: false,
@@ -558,8 +558,59 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
-  name: 'date-picker',
+  name: "date-picker",
   methods: {
     adjustDays: function adjustDays() {
       var selectedMonth = this.selectedMonth;
@@ -614,7 +665,7 @@ var _default = {
     language: {
       required: false,
       type: String,
-      "default": 'Polski'
+      "default": "Polski"
     },
     initialValue: {
       required: false,
@@ -711,20 +762,20 @@ var _default = {
     };
   },
   created: function created() {
-    this.months = _months_in_different_languages["default"][this.language]['months'];
+    this.months = _months_in_different_languages["default"][this.language]["months"];
     this.errorMessage = this.initialErrorText;
     this.iconErrorCanBeDisplayed = this.errorIconAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable;
     this.iconConfirmationCanBeDisplayed = this.confirmationIconAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable;
     this.redBorderCanBeDisplayed = this.redBorderAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable;
     this.greenBorderCanBeDisplayed = this.greenBorderAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable;
     this.timespan = this.lastYear - this.sinceYear + 1;
-    this.descriptions = _months_in_different_languages["default"][this.language]['timeSpanNames'];
+    this.descriptions = _months_in_different_languages["default"][this.language]["timeSpanNames"];
     this.valueOK = this.initialOk;
     this.initiateDate();
   },
   mounted: function mounted() {
     if (this.onDateSelectCallback) {
-      this.$refs.day_select.addEventListener('change', this.invokeCallback.bind(this));
+      this.$refs.day_select.addEventListener("change", this.invokeCallback.bind(this));
     }
   },
   computed: {
@@ -1612,8 +1663,97 @@ var _vueClickaway = __webpack_require__(/*! vue-clickaway */ "./node_modules/vue
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
-  name: 'navbar',
+  name: "navbar",
   directives: {
     onClickaway: _vueClickaway.directive
   },
@@ -1643,36 +1783,45 @@ var _default = {
       animatePanel: false,
       userIsAuthenticated: undefined,
       authenticatedUserSideBarIsVisible: true,
-      contentSideBarIsVisible: true
+      contentSideBarIsVisible: true,
+      showCategories: false
     };
   },
+  components: {
+    "categories-list": function categoriesList() {
+      return __webpack_require__.e(/*! import() */ "resources_js_components_categories_list_vue").then(__webpack_require__.bind(__webpack_require__, /*! @jscomponents/categories_list.vue */ "./resources/js/components/categories_list.vue"));
+    }
+  },
   methods: {
-    showCategories: function showCategories() {
+    showCategoriesList: function showCategoriesList() {
       this.resetNavbar();
-      this.$root.$emit('showCategories');
+      this.showCategories = true;
+    },
+    hideCategories: function hideCategories() {
+      this.showCategories = false;
     },
     showContentSideBar: function showContentSideBar() {
       this.contentSideBarIsVisible = true;
-      this.setSideBarVisibilityInformation(true, 'contentSideBar');
+      this.setSideBarVisibilityInformation(true, "contentSideBar");
     },
     hideAuthenticatedUserSideBar: function hideAuthenticatedUserSideBar() {
       this.authenticatedUserSideBarIsVisible = false;
-      this.setSideBarVisibilityInformation(false, 'authenticatedUserSideBar');
+      this.setSideBarVisibilityInformation(false, "authenticatedUserSideBar");
     },
     hideContentSideBar: function hideContentSideBar() {
       this.contentSideBarIsVisible = false;
-      this.setSideBarVisibilityInformation(false, 'contentSideBar');
+      this.setSideBarVisibilityInformation(false, "contentSideBar");
     },
     toggleAuthenticatedUserSideBar: function toggleAuthenticatedUserSideBar() {
       this.authenticatedUserSideBarIsVisible = !this.authenticatedUserSideBarIsVisible;
-      this.setSideBarVisibilityInformation(this.authenticatedUserSideBarIsVisible, 'authenticatedUserSideBar');
+      this.setSideBarVisibilityInformation(this.authenticatedUserSideBarIsVisible, "authenticatedUserSideBar");
     },
     setSideBarVisibilityInformation: function setSideBarVisibilityInformation(hidden, sideBarType) {
-      var visible = hidden ? 'visible' : 'hidden';
+      var visible = hidden ? "visible" : "hidden";
       localStorage.setItem(sideBarType, visible);
     },
     isSideBarVisible: function isSideBarVisible(sideBarType) {
-      return localStorage.getItem(sideBarType) !== 'hidden';
+      return localStorage.getItem(sideBarType) !== "hidden";
     },
     hideAllSecondLevelSubMenus: function hideAllSecondLevelSubMenus() {
       this.moviesSubMenuIsVisible = false;
@@ -1727,22 +1876,22 @@ var _default = {
       return "/images/decoration/users/avatars/".concat(this.avatarFileName);
     },
     userAvatarDescription: function userAvatarDescription() {
-      return "".concat(this.translator.translate('user_avatar_description'), " : ").concat(this.userName);
+      return "".concat(this.translator.translate("user_avatar_description"), " : ").concat(this.userName);
     }
   },
   created: function created() {
     this.userIsAuthenticated = Boolean(this.userId);
 
     if (this.userIsAuthenticated) {
-      this.authenticatedUserSideBarIsVisible = this.isSideBarVisible('authenticatedUserSideBar');
+      this.authenticatedUserSideBarIsVisible = this.isSideBarVisible("authenticatedUserSideBar");
     }
 
-    this.contentSideBarIsVisible = this.isSideBarVisible('contentSideBar');
+    this.contentSideBarIsVisible = this.isSideBarVisible("contentSideBar");
   },
   mounted: function mounted() {
     this.csrfToken = document.getElementById("csrf-token").content;
-    this.$root.$on('hide-side-bar', this.hideAuthenticatedUserSideBar);
-    this.$root.$on('hide-content-bar', this.hideContentSideBar);
+    this.$root.$on("hide-side-bar", this.hideAuthenticatedUserSideBar);
+    this.$root.$on("hide-content-bar", this.hideContentSideBar);
   }
 };
 exports.default = _default;
@@ -1858,6 +2007,8 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.default = void 0;
 
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
+
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"));
 
 var _translator = _interopRequireDefault(__webpack_require__(/*! @js/modules/translator.js */ "./resources/js/modules/translator.js"));
@@ -1882,6 +2033,50 @@ var _content_sidebar = _interopRequireDefault(__webpack_require__(/*! @jscompone
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function checkCookiePolicy() {
+  return _checkCookiePolicy.apply(this, arguments);
+}
+
+function _checkCookiePolicy() {
+  _checkCookiePolicy = _asyncToGenerator( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
+    var userHasAlreadyAcceptedCookies, NotificationComponentModule, CookieNotificationComponentClass, cookieComponent;
+    return _regenerator["default"].wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            userHasAlreadyAcceptedCookies = function _userHasAlreadyAccept() {
+              return localStorage.getItem('cookiesAccepted') == 'yes';
+            };
+
+            if (userHasAlreadyAcceptedCookies()) {
+              _context.next = 8;
+              break;
+            }
+
+            _context.next = 4;
+            return __webpack_require__.e(/*! import() */ "resources_js_components_cookie_notification_vue").then(__webpack_require__.bind(__webpack_require__, /*! @jscomponents/cookie_notification.vue */ "./resources/js/components/cookie_notification.vue"));
+
+          case 4:
+            NotificationComponentModule = _context.sent;
+            CookieNotificationComponentClass = _vue["default"].extend(NotificationComponentModule["default"]);
+            cookieComponent = new CookieNotificationComponentClass().$mount();
+            document.getElementById('app').appendChild(cookieComponent.$el);
+
+          case 8:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _checkCookiePolicy.apply(this, arguments);
+}
+
+window.addEventListener('DOMContentLoaded', checkCookiePolicy);
 var _default = {
   build: function build() {
     _vue["default"].prototype.translator = _translator["default"];
@@ -1903,10 +2098,6 @@ var _default = {
     _vue["default"].component('empire-logo', _empire_logo["default"]);
 
     _vue["default"].component('content-sidebar', _content_sidebar["default"]);
-
-    _vue["default"].component('categories-list', function () {
-      return __webpack_require__.e(/*! import() */ "resources_js_components_categories_list_vue").then(__webpack_require__.bind(__webpack_require__, /*! @jscomponents/categories_list.vue */ "./resources/js/components/categories_list.vue"));
-    });
 
     return _vue["default"];
   }
@@ -2070,7 +2261,7 @@ var _default = {
     login_has_already_been_taken: "Login jest już zajęty",
     login_contains_less_then_3_characters: "Login ma mniej niż 3 znaki",
     login_contains_more_then_20_characters: "Login ma więcej niż 20 znaków"
-  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "avatar_has_been_deleted_successfully", "Pomyślnie usunięto avatar"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "views", "Wyświetleń"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "previous_page", "poprzednia"), _defineProperty(_pl, "next_page", "następna"), _defineProperty(_pl, "first_page", "pierwsza"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "element_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "movie_rate_data_is_invalid", "Niepoprawne dane oceny lub filmu"), _defineProperty(_pl, "nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "the_nickname_exceeds_20_characters", "Długość pseudonimu przekracza 20 znaków"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "add_comment", "Dodaj komentarz"), _defineProperty(_pl, "add", "dodaj"), _defineProperty(_pl, "comment_added", "Dodano komentarz"), _defineProperty(_pl, "unregistered_user", "Niezarejestrowany"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "adding_comment", "Dodaję komentarz"), _defineProperty(_pl, "fetching_comments", "Pobieram komentarze"), _defineProperty(_pl, "comment_text_is_missing", "Nie podano treści komentarza"), _defineProperty(_pl, "comment_text_exceeds_1000_characters", "Treść komentarza przekracza 1000 znaków"), _defineProperty(_pl, "nickname_exceeds_20_characters", "Pseudonim przekracza 20 znaków"), _defineProperty(_pl, "no_comments_available", "Brak komentarzy"), _defineProperty(_pl, "because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute", "Z powodów bezpieczeństwa ograniczono liczbę dodawanych komentarzy do 2 na minutę"), _defineProperty(_pl, "total_comments", "Liczba wszystkich komentarzy"), _defineProperty(_pl, "publish_comment", "Opublikuj komentarz"), _defineProperty(_pl, "show_comments_sub_page_with_number", "Pokaż podstronę komentarzy o numerze"), _defineProperty(_pl, "sex_empire_short", "SI"), _defineProperty(_pl, "small_ass", "mały"), _defineProperty(_pl, "medium_ass", "średni"), _defineProperty(_pl, "big_ass", "duży"), _defineProperty(_pl, "small_tits", "małe"), _defineProperty(_pl, "medium_tits", "średnie"), _defineProperty(_pl, "big_tits", "duże"), _defineProperty(_pl, "skinny_tchickness", "chuda"), _defineProperty(_pl, "medium_tchickness", "średnia"), _defineProperty(_pl, "fat_tchickness", "gruba"), _defineProperty(_pl, "teenagers", "nastolatki(18 - 19)"), _defineProperty(_pl, "age_range_young", "młode (20 -29)"), _defineProperty(_pl, "age_range_mature", "dojrzałe(30 - 50)"), _defineProperty(_pl, "dark_hair", "czarny"), _defineProperty(_pl, "blonde_hair", "blond"), _defineProperty(_pl, "brown_hair", "brązowy"), _defineProperty(_pl, "red_hair", "rudy"), _defineProperty(_pl, "white_race", "biała"), _defineProperty(_pl, "asian_race", "azjatki"), _defineProperty(_pl, "ebony_race", "murzynki"), _defineProperty(_pl, "latin_race", "latynoski"), _defineProperty(_pl, "arabic_race", "arabki"), _defineProperty(_pl, "yes", "tak"), _defineProperty(_pl, "no", "nie"), _defineProperty(_pl, "one_male_one_female", "facet i kobieta"), _defineProperty(_pl, "bukkake", "bukkake"), _defineProperty(_pl, "single_female", "kobieta solo"), _defineProperty(_pl, "lesbians", "lesbijki"), _defineProperty(_pl, "group_sex", "grupowy"), _defineProperty(_pl, "one_male_many_females", "facet i wiele kobiet"), _defineProperty(_pl, "GangBang", "GangBang"), _defineProperty(_pl, "one_female_two_males", "Na 2 baty"), _defineProperty(_pl, "lesbian_group_sex", "Lesbijki grupowo"), _defineProperty(_pl, "only", "tylko i wyłącznie"), _defineProperty(_pl, "maximum", "maximum"), _defineProperty(_pl, "a_lot", "dużo"), _defineProperty(_pl, "medium", "średnio"), _defineProperty(_pl, "a_little", "trochę"), _defineProperty(_pl, "exclude", "wyklucz"), _defineProperty(_pl, "on_face", "na twarz"), _defineProperty(_pl, "cum_swallow", "z połykiem"), _defineProperty(_pl, "creampie", "w cipkę"), _defineProperty(_pl, "anal_creampie", "w dupkę"), _defineProperty(_pl, "on_tits", "na cycki"), _defineProperty(_pl, "on_pussy", "na cipkę"), _defineProperty(_pl, "on_ass", "na dupkę"), _defineProperty(_pl, "on_feet", "na stopy"), _defineProperty(_pl, "on_many_places", "na wiele miejsc"), _defineProperty(_pl, "on_other_body_parts", "na inne miejsca"), _defineProperty(_pl, "american_nationality", "amerykańska"), _defineProperty(_pl, "japanese_nationality", "japońska"), _defineProperty(_pl, "german_nationality", "niemiecka"), _defineProperty(_pl, "czech_nationality", "czeska"), _defineProperty(_pl, "russian_nationality", "rosyjska"), _defineProperty(_pl, "british_nationality", "brytyjska"), _defineProperty(_pl, "swedish_nationality", "szwedzka"), _defineProperty(_pl, "ukrainian_nationality", "ukraińska"), _defineProperty(_pl, "slovac_nationality", "słowacka"), _defineProperty(_pl, "hanguarian_nationality", "węgierska"), _defineProperty(_pl, "polish_nationality", "polska"), _defineProperty(_pl, "dutch_nationality", "holenderska"), _defineProperty(_pl, "hindu_nationality", "hinduska"), _defineProperty(_pl, "french_nationality", "francuska"), _defineProperty(_pl, "spanish_nationality", "hiszpańska"), _defineProperty(_pl, "italian_nationality", "włoska"), _defineProperty(_pl, "canadian_nationality", "kanadyjska"), _defineProperty(_pl, "argentinian_nationality", "argentyńska"), _defineProperty(_pl, "house", "dom"), _defineProperty(_pl, "bathroom", "łazienka"), _defineProperty(_pl, "office", "biuro"), _defineProperty(_pl, "school", "szkoła"), _defineProperty(_pl, "public_place", "miejsca publiczne"), _defineProperty(_pl, "car", "samochód"), _defineProperty(_pl, "nature", "łono natury"), _defineProperty(_pl, "solarium", "solarium"), _defineProperty(_pl, "elevator", "winda"), _defineProperty(_pl, "beach", "plaża"), _defineProperty(_pl, "gym", "siłownia"), _defineProperty(_pl, "POV", "POV"), _defineProperty(_pl, "outside_camera_style", "z zewnątrz"), _defineProperty(_pl, "mixed_camera_style", "mieszane"), _defineProperty(_pl, "female_pupil", "uczennica"), _defineProperty(_pl, "female_employee", "pracownica"), _defineProperty(_pl, "female_student", "studentka"), _defineProperty(_pl, "wife", "żona"), _defineProperty(_pl, "female_teacher", "nauczycielka"), _defineProperty(_pl, "nurse", "pielęgniarka"), _defineProperty(_pl, "female_slave", "niewolnica"), _defineProperty(_pl, "nun", "zakonnica"), _defineProperty(_pl, "female_police_officer", "policjantka"), _defineProperty(_pl, "prostitute", "prostytutka"), _defineProperty(_pl, "female_boss", "szefowa"), _defineProperty(_pl, "cleaner", "sprzątaczka"), _defineProperty(_pl, "mommy", "mamusia"), _defineProperty(_pl, "amateur", "amatorski"), _defineProperty(_pl, "professional", "profesjonalny"), _defineProperty(_pl, "choose_options", "wybierz opcje"), _defineProperty(_pl, "search", "szukaj"), _defineProperty(_pl, "remove_option", "usuń opcję"), _defineProperty(_pl, "close", "zamknij"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę"), _defineProperty(_pl, "fetching_pornstars", "Pobieram listę gwiazd"), _defineProperty(_pl, "not_selected", "nie wybrano"), _defineProperty(_pl, "minutes_inflected", "minut(y)"), _defineProperty(_pl, "views_inflected", "wyświetleń"), _defineProperty(_pl, "unexpected_error_occured", "Pojawił się bliżej niezidentyfikowany błąd"), _defineProperty(_pl, "titsSize", "rozmiar cycków"), _defineProperty(_pl, "assSize", "rozmiar dupci"), _defineProperty(_pl, "thicknessSize", "tusza"), _defineProperty(_pl, "ageRange", "przedział wiekowy"), _defineProperty(_pl, "hairColor", "kolor włosów"), _defineProperty(_pl, "race", "rasa"), _defineProperty(_pl, "abundanceType", "liczebność"), _defineProperty(_pl, "cumshotType", "typ wytrysku"), _defineProperty(_pl, "nationality", "narodowość"), _defineProperty(_pl, "location", "lokalizacja"), _defineProperty(_pl, "cameraStyle", "ujęcie kamery"), _defineProperty(_pl, "storyOrCostume", "motyw fabularno kostiumowy"), _defineProperty(_pl, "professionalismLevel", "poziom filmu"), _defineProperty(_pl, "shavedPussy", "wygolona cipka"), _defineProperty(_pl, "analAmount", "anal"), _defineProperty(_pl, "blowjob", "obciąganie"), _defineProperty(_pl, "handjob", "walenie konika"), _defineProperty(_pl, "blondes", "blondynki"), _defineProperty(_pl, "tittfuck", "na hiszpana"), _defineProperty(_pl, "pussy_licking", "minetka"), _defineProperty(_pl, "feet", "stopy"), _defineProperty(_pl, "femdom", "kobieca dominacja"), _defineProperty(_pl, "brunettes", "brunetki"), _defineProperty(_pl, "redheads", "rude"), _defineProperty(_pl, "milfs", "dojrzałe"), _defineProperty(_pl, "teens", 'nastolatki'), _defineProperty(_pl, "amateur", "amatorskie"), _defineProperty(_pl, "asian", 'azjatki'), _defineProperty(_pl, "latins", 'latynoski'), _defineProperty(_pl, "ebony", 'murzynki'), _defineProperty(_pl, "lesbians", 'lesbijki'), _defineProperty(_pl, "group", 'grupowy'), _defineProperty(_pl, "cumshot_compilation", 'kompilacja wytrysków'), _defineProperty(_pl, "cumshot_compilations", 'kompilacje wytrysków'), _defineProperty(_pl, "cum_on_face", 'wytrysk na twarz'), _defineProperty(_pl, "cum_swallow", 'połykanie spermy'), _defineProperty(_pl, "cum_on_feet", 'wytrysk na stopy'), _defineProperty(_pl, "creampie", 'wytrysk w cipkę'), _defineProperty(_pl, "cum_in_ass", 'wytrysk w dupkę'), _defineProperty(_pl, "cum_on_titts", 'wytrysk na cycki'), _defineProperty(_pl, "pantyhose", 'rajstopki'), _defineProperty(_pl, "high_heels", 'szpile'), _defineProperty(_pl, "nurses", 'pielęgniarki'), _defineProperty(_pl, "teachers", 'nauczycielki'), _defineProperty(_pl, "japanese", 'japonki'), _defineProperty(_pl, "russian", 'rosjanki'), _defineProperty(_pl, "pornstars", 'gwiazdy'), _defineProperty(_pl, "blowjobAmount", 'obciąganie'), _defineProperty(_pl, "handjobAmount", 'walenie konika'), _defineProperty(_pl, "doublePenetrationamount", "wtyczka"), _defineProperty(_pl, "vaginalamount", "waginalny"), _defineProperty(_pl, "pussyLickingAmount", 'minetka'), _defineProperty(_pl, "feetPettingAmount", 'pieszczenie stóp'), _defineProperty(_pl, "position69amount", 'pozycja 69'), _defineProperty(_pl, "titfuckAmount", "na hiszpana"), _defineProperty(_pl, "isCumshotCompilation", 'kompilacja wytrysków'), _defineProperty(_pl, "recordedBySpamCamera", 'nagrany kamerą szpiegowską'), _defineProperty(_pl, "isSadisticOrMasochistic", 'sado-masochostyczny'), _defineProperty(_pl, "isFemaleDomination", 'kobieca dominacja'), _defineProperty(_pl, "isTranslatedToPolish", 'polska wersja językowa'), _defineProperty(_pl, "showPantyhose", 'rajstopy'), _defineProperty(_pl, "showStockings", 'pończochy'), _defineProperty(_pl, "showGlasses", 'okulary'), _defineProperty(_pl, "showHighHeels", 'szpile'), _defineProperty(_pl, "showHugeCock", 'wielki kutas'), _defineProperty(_pl, "showWhips", 'bicze'), _defineProperty(_pl, "showSexToys", 'sex-zabawki'), _defineProperty(_pl, "minimumMovieTime", "minimalny czas"), _defineProperty(_pl, "maximumMovieTime", "maksymalny czas"), _defineProperty(_pl, "minimumMovieViews", 'minimalna liczba wyświetleń'), _defineProperty(_pl, "maximumMovieViews", 'maksymalna liczba wyświetleń'), _defineProperty(_pl, "hasStory", 'zawiera fabułę'), _defineProperty(_pl, "total_movies_found", "Ilość znalezionych filmów"), _defineProperty(_pl, "movie_with_following_pornstars", "występują jednocześnie następujące gwiazdy"), _defineProperty(_pl, "last_page", "ostatnia"), _defineProperty(_pl, "movie_with_pornstar", "Film w którym występuje"), _defineProperty(_pl, "no_movies_have_been_found", "Nie znaleziono żadnych filmów pasujących do wybranych kryteriów"), _defineProperty(_pl, "no_options_have_been_selected", "Nie wybrano żadnych opcji"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd"), _defineProperty(_pl, "because_of_security_reasons_search_was_blocked", "Ze względów bezpieczeństwa ilość zapytań do wyszukiwarki w ciągu minuty jest ograniczona. Prosimy zaczekać chwilę i spróbować ponownie."), _defineProperty(_pl, "popular_categories", "Popularne kategorie"), _defineProperty(_pl, "categories_list", "Lista kategorii"), _defineProperty(_pl, "big_titts", "duże cycki"), _defineProperty(_pl, "teenagers", "nastolatki"), _defineProperty(_pl, "spermatozoid_has_been_asigned", "Przyznano plemnika. Musisz odczekać minimum pół godziny aby przyznać kolejnego."), _defineProperty(_pl, "you_have_exceeded_cum_limit", "Możesz przyznać maksymalnie jednego plemnika na pół godziny niezależnie od filmu"), _defineProperty(_pl, "spermatozoid_rate_data_is_incorrect", "Niepoprawne dane filmu"), _defineProperty(_pl, "movie_views", "Liczba wyświetleń"), _defineProperty(_pl, "movie_added_at", "Data dodania"), _defineProperty(_pl, "movie_average_rating", "Średnia ocen"), _defineProperty(_pl, "average_rate_not_available_yet", "jeszcze niedostępna"), _defineProperty(_pl, "ammount_of_spermatozoids", "Liczba plemników"), _defineProperty(_pl, "your_spermatozoids", "twoich"), _defineProperty(_pl, "number_of_likes", "Polubień"), _defineProperty(_pl, "failed_to_load_movie_data", "Nie udało się pobrać szczegółowych danych filmu"), _defineProperty(_pl, "failed_to_load_similar_movies", "Nie udało się załadować podobnych filmów"), _defineProperty(_pl, "you_like_it", "Lubisz to"), _defineProperty(_pl, "you_already_like_this_movie", "Już wcześniej polubiłeś ten film"), _defineProperty(_pl, "you_and", "Ty i"), _defineProperty(_pl, "people_like_it", "osób lubi to"), _defineProperty(_pl, "no_comments", "Brak komentarzy"), _defineProperty(_pl, "packages", {
+  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "avatar_has_been_deleted_successfully", "Pomyślnie usunięto avatar"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "views", "Wyświetleń"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "previous_page", "poprzednia"), _defineProperty(_pl, "next_page", "następna"), _defineProperty(_pl, "first_page", "pierwsza"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "element_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "movie_rate_data_is_invalid", "Niepoprawne dane oceny lub filmu"), _defineProperty(_pl, "nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "the_nickname_exceeds_20_characters", "Długość pseudonimu przekracza 20 znaków"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "add_comment", "Dodaj komentarz"), _defineProperty(_pl, "add", "dodaj"), _defineProperty(_pl, "comment_added", "Dodano komentarz"), _defineProperty(_pl, "unregistered_user", "Niezarejestrowany"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "adding_comment", "Dodaję komentarz"), _defineProperty(_pl, "fetching_comments", "Pobieram komentarze"), _defineProperty(_pl, "comment_text_is_missing", "Nie podano treści komentarza"), _defineProperty(_pl, "comment_text_exceeds_1000_characters", "Treść komentarza przekracza 1000 znaków"), _defineProperty(_pl, "nickname_exceeds_20_characters", "Pseudonim przekracza 20 znaków"), _defineProperty(_pl, "no_comments_available", "Brak komentarzy"), _defineProperty(_pl, "because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute", "Z powodów bezpieczeństwa ograniczono liczbę dodawanych komentarzy do 2 na minutę"), _defineProperty(_pl, "total_comments", "Liczba wszystkich komentarzy"), _defineProperty(_pl, "publish_comment", "Opublikuj komentarz"), _defineProperty(_pl, "show_comments_sub_page_with_number", "Pokaż podstronę komentarzy o numerze"), _defineProperty(_pl, "sex_empire_short", "SI"), _defineProperty(_pl, "small_ass", "mały"), _defineProperty(_pl, "medium_ass", "średni"), _defineProperty(_pl, "big_ass", "duży"), _defineProperty(_pl, "small_tits", "małe"), _defineProperty(_pl, "medium_tits", "średnie"), _defineProperty(_pl, "big_tits", "duże"), _defineProperty(_pl, "skinny_tchickness", "chuda"), _defineProperty(_pl, "medium_tchickness", "średnia"), _defineProperty(_pl, "fat_tchickness", "gruba"), _defineProperty(_pl, "teenagers", "nastolatki(18 - 19)"), _defineProperty(_pl, "age_range_young", "młode (20 -29)"), _defineProperty(_pl, "age_range_mature", "dojrzałe(30 - 50)"), _defineProperty(_pl, "dark_hair", "czarny"), _defineProperty(_pl, "blonde_hair", "blond"), _defineProperty(_pl, "brown_hair", "brązowy"), _defineProperty(_pl, "red_hair", "rudy"), _defineProperty(_pl, "white_race", "biała"), _defineProperty(_pl, "asian_race", "azjatki"), _defineProperty(_pl, "ebony_race", "murzynki"), _defineProperty(_pl, "latin_race", "latynoski"), _defineProperty(_pl, "arabic_race", "arabki"), _defineProperty(_pl, "yes", "tak"), _defineProperty(_pl, "no", "nie"), _defineProperty(_pl, "one_male_one_female", "facet i kobieta"), _defineProperty(_pl, "bukkake", "bukkake"), _defineProperty(_pl, "single_female", "kobieta solo"), _defineProperty(_pl, "lesbians", "lesbijki"), _defineProperty(_pl, "group_sex", "grupowy"), _defineProperty(_pl, "one_male_many_females", "facet i wiele kobiet"), _defineProperty(_pl, "GangBang", "GangBang"), _defineProperty(_pl, "one_female_two_males", "Na 2 baty"), _defineProperty(_pl, "lesbian_group_sex", "Lesbijki grupowo"), _defineProperty(_pl, "only", "tylko i wyłącznie"), _defineProperty(_pl, "maximum", "maximum"), _defineProperty(_pl, "a_lot", "dużo"), _defineProperty(_pl, "medium", "średnio"), _defineProperty(_pl, "a_little", "trochę"), _defineProperty(_pl, "exclude", "wyklucz"), _defineProperty(_pl, "on_face", "na twarz"), _defineProperty(_pl, "cum_swallow", "z połykiem"), _defineProperty(_pl, "creampie", "w cipkę"), _defineProperty(_pl, "anal_creampie", "w dupkę"), _defineProperty(_pl, "on_tits", "na cycki"), _defineProperty(_pl, "on_pussy", "na cipkę"), _defineProperty(_pl, "on_ass", "na dupkę"), _defineProperty(_pl, "on_feet", "na stopy"), _defineProperty(_pl, "on_many_places", "na wiele miejsc"), _defineProperty(_pl, "on_other_body_parts", "na inne miejsca"), _defineProperty(_pl, "american_nationality", "amerykańska"), _defineProperty(_pl, "japanese_nationality", "japońska"), _defineProperty(_pl, "german_nationality", "niemiecka"), _defineProperty(_pl, "czech_nationality", "czeska"), _defineProperty(_pl, "russian_nationality", "rosyjska"), _defineProperty(_pl, "british_nationality", "brytyjska"), _defineProperty(_pl, "swedish_nationality", "szwedzka"), _defineProperty(_pl, "ukrainian_nationality", "ukraińska"), _defineProperty(_pl, "slovac_nationality", "słowacka"), _defineProperty(_pl, "hanguarian_nationality", "węgierska"), _defineProperty(_pl, "polish_nationality", "polska"), _defineProperty(_pl, "dutch_nationality", "holenderska"), _defineProperty(_pl, "hindu_nationality", "hinduska"), _defineProperty(_pl, "french_nationality", "francuska"), _defineProperty(_pl, "spanish_nationality", "hiszpańska"), _defineProperty(_pl, "italian_nationality", "włoska"), _defineProperty(_pl, "canadian_nationality", "kanadyjska"), _defineProperty(_pl, "argentinian_nationality", "argentyńska"), _defineProperty(_pl, "house", "dom"), _defineProperty(_pl, "bathroom", "łazienka"), _defineProperty(_pl, "office", "biuro"), _defineProperty(_pl, "school", "szkoła"), _defineProperty(_pl, "public_place", "miejsca publiczne"), _defineProperty(_pl, "car", "samochód"), _defineProperty(_pl, "nature", "łono natury"), _defineProperty(_pl, "solarium", "solarium"), _defineProperty(_pl, "elevator", "winda"), _defineProperty(_pl, "beach", "plaża"), _defineProperty(_pl, "gym", "siłownia"), _defineProperty(_pl, "POV", "POV"), _defineProperty(_pl, "outside_camera_style", "z zewnątrz"), _defineProperty(_pl, "mixed_camera_style", "mieszane"), _defineProperty(_pl, "female_pupil", "uczennica"), _defineProperty(_pl, "female_employee", "pracownica"), _defineProperty(_pl, "female_student", "studentka"), _defineProperty(_pl, "wife", "żona"), _defineProperty(_pl, "female_teacher", "nauczycielka"), _defineProperty(_pl, "nurse", "pielęgniarka"), _defineProperty(_pl, "female_slave", "niewolnica"), _defineProperty(_pl, "nun", "zakonnica"), _defineProperty(_pl, "female_police_officer", "policjantka"), _defineProperty(_pl, "prostitute", "prostytutka"), _defineProperty(_pl, "female_boss", "szefowa"), _defineProperty(_pl, "cleaner", "sprzątaczka"), _defineProperty(_pl, "mommy", "mamusia"), _defineProperty(_pl, "amateur", "amatorski"), _defineProperty(_pl, "professional", "profesjonalny"), _defineProperty(_pl, "choose_options", "wybierz opcje"), _defineProperty(_pl, "search", "szukaj"), _defineProperty(_pl, "remove_option", "usuń opcję"), _defineProperty(_pl, "close", "zamknij"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę"), _defineProperty(_pl, "fetching_pornstars", "Pobieram listę gwiazd"), _defineProperty(_pl, "not_selected", "nie wybrano"), _defineProperty(_pl, "minutes_inflected", "minut(y)"), _defineProperty(_pl, "views_inflected", "wyświetleń"), _defineProperty(_pl, "unexpected_error_occured", "Pojawił się bliżej niezidentyfikowany błąd"), _defineProperty(_pl, "titsSize", "rozmiar cycków"), _defineProperty(_pl, "assSize", "rozmiar dupci"), _defineProperty(_pl, "thicknessSize", "tusza"), _defineProperty(_pl, "ageRange", "przedział wiekowy"), _defineProperty(_pl, "hairColor", "kolor włosów"), _defineProperty(_pl, "race", "rasa"), _defineProperty(_pl, "abundanceType", "liczebność"), _defineProperty(_pl, "cumshotType", "typ wytrysku"), _defineProperty(_pl, "nationality", "narodowość"), _defineProperty(_pl, "location", "lokalizacja"), _defineProperty(_pl, "cameraStyle", "ujęcie kamery"), _defineProperty(_pl, "storyOrCostume", "motyw fabularno kostiumowy"), _defineProperty(_pl, "professionalismLevel", "poziom filmu"), _defineProperty(_pl, "shavedPussy", "wygolona cipka"), _defineProperty(_pl, "analAmount", "anal"), _defineProperty(_pl, "blowjob", "obciąganie"), _defineProperty(_pl, "handjob", "walenie konika"), _defineProperty(_pl, "blondes", "blondynki"), _defineProperty(_pl, "tittfuck", "na hiszpana"), _defineProperty(_pl, "pussy_licking", "minetka"), _defineProperty(_pl, "feet", "stopy"), _defineProperty(_pl, "femdom", "kobieca dominacja"), _defineProperty(_pl, "brunettes", "brunetki"), _defineProperty(_pl, "redheads", "rude"), _defineProperty(_pl, "milfs", "dojrzałe"), _defineProperty(_pl, "teens", 'nastolatki'), _defineProperty(_pl, "amateur", "amatorskie"), _defineProperty(_pl, "asian", 'azjatki'), _defineProperty(_pl, "latins", 'latynoski'), _defineProperty(_pl, "ebony", 'murzynki'), _defineProperty(_pl, "lesbians", 'lesbijki'), _defineProperty(_pl, "group", 'grupowy'), _defineProperty(_pl, "cumshot_compilation", 'kompilacja wytrysków'), _defineProperty(_pl, "cumshot_compilations", 'kompilacje wytrysków'), _defineProperty(_pl, "cum_on_face", 'wytrysk na twarz'), _defineProperty(_pl, "cum_swallow", 'połykanie spermy'), _defineProperty(_pl, "cum_on_feet", 'wytrysk na stopy'), _defineProperty(_pl, "creampie", 'wytrysk w cipkę'), _defineProperty(_pl, "cum_in_ass", 'wytrysk w dupkę'), _defineProperty(_pl, "cum_on_titts", 'wytrysk na cycki'), _defineProperty(_pl, "pantyhose", 'rajstopki'), _defineProperty(_pl, "high_heels", 'szpile'), _defineProperty(_pl, "nurses", 'pielęgniarki'), _defineProperty(_pl, "teachers", 'nauczycielki'), _defineProperty(_pl, "japanese", 'japonki'), _defineProperty(_pl, "russian", 'rosjanki'), _defineProperty(_pl, "pornstars", 'gwiazdy'), _defineProperty(_pl, "blowjobAmount", 'obciąganie'), _defineProperty(_pl, "handjobAmount", 'walenie konika'), _defineProperty(_pl, "doublePenetrationamount", "wtyczka"), _defineProperty(_pl, "vaginalamount", "waginalny"), _defineProperty(_pl, "pussyLickingAmount", 'minetka'), _defineProperty(_pl, "feetPettingAmount", 'pieszczenie stóp'), _defineProperty(_pl, "position69amount", 'pozycja 69'), _defineProperty(_pl, "titfuckAmount", "na hiszpana"), _defineProperty(_pl, "isCumshotCompilation", 'kompilacja wytrysków'), _defineProperty(_pl, "recordedBySpamCamera", 'nagrany kamerą szpiegowską'), _defineProperty(_pl, "isSadisticOrMasochistic", 'sado-masochostyczny'), _defineProperty(_pl, "isFemaleDomination", 'kobieca dominacja'), _defineProperty(_pl, "isTranslatedToPolish", 'polska wersja językowa'), _defineProperty(_pl, "showPantyhose", 'rajstopy'), _defineProperty(_pl, "showStockings", 'pończochy'), _defineProperty(_pl, "showGlasses", 'okulary'), _defineProperty(_pl, "showHighHeels", 'szpile'), _defineProperty(_pl, "showHugeCock", 'wielki kutas'), _defineProperty(_pl, "showWhips", 'bicze'), _defineProperty(_pl, "showSexToys", 'sex-zabawki'), _defineProperty(_pl, "minimumMovieTime", "minimalny czas"), _defineProperty(_pl, "maximumMovieTime", "maksymalny czas"), _defineProperty(_pl, "minimumMovieViews", 'minimalna liczba wyświetleń'), _defineProperty(_pl, "maximumMovieViews", 'maksymalna liczba wyświetleń'), _defineProperty(_pl, "hasStory", 'zawiera fabułę'), _defineProperty(_pl, "total_movies_found", "Ilość znalezionych filmów"), _defineProperty(_pl, "movie_with_following_pornstars", "występują jednocześnie następujące gwiazdy"), _defineProperty(_pl, "last_page", "ostatnia"), _defineProperty(_pl, "movie_with_pornstar", "Film w którym występuje"), _defineProperty(_pl, "no_movies_have_been_found", "Nie znaleziono żadnych filmów pasujących do wybranych kryteriów"), _defineProperty(_pl, "no_options_have_been_selected", "Nie wybrano żadnych opcji"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd"), _defineProperty(_pl, "because_of_security_reasons_search_was_blocked", "Ze względów bezpieczeństwa ilość zapytań do wyszukiwarki w ciągu minuty jest ograniczona. Prosimy zaczekać chwilę i spróbować ponownie."), _defineProperty(_pl, "popular_categories", "Popularne kategorie"), _defineProperty(_pl, "categories_list", "Lista kategorii"), _defineProperty(_pl, "big_titts", "duże cycki"), _defineProperty(_pl, "teenagers", "nastolatki"), _defineProperty(_pl, "spermatozoid_has_been_asigned", "Przyznano plemnika. Musisz odczekać minimum pół godziny aby przyznać kolejnego."), _defineProperty(_pl, "you_have_exceeded_cum_limit", "Możesz przyznać maksymalnie jednego plemnika na pół godziny niezależnie od filmu"), _defineProperty(_pl, "spermatozoid_rate_data_is_incorrect", "Niepoprawne dane filmu"), _defineProperty(_pl, "movie_views", "Liczba wyświetleń"), _defineProperty(_pl, "movie_added_at", "Data dodania"), _defineProperty(_pl, "movie_average_rating", "Średnia ocen"), _defineProperty(_pl, "average_rate_not_available_yet", "jeszcze niedostępna"), _defineProperty(_pl, "ammount_of_spermatozoids", "Liczba plemników"), _defineProperty(_pl, "your_spermatozoids", "twoich"), _defineProperty(_pl, "number_of_likes", "Polubień"), _defineProperty(_pl, "failed_to_load_movie_data", "Nie udało się pobrać szczegółowych danych filmu"), _defineProperty(_pl, "failed_to_load_similar_movies", "Nie udało się załadować podobnych filmów"), _defineProperty(_pl, "you_like_it", "Lubisz to"), _defineProperty(_pl, "you_already_like_this_movie", "Już wcześniej polubiłeś ten film"), _defineProperty(_pl, "you_and", "Ty i"), _defineProperty(_pl, "people_like_it", "osób lubi to"), _defineProperty(_pl, "no_comments", "Brak komentarzy"), _defineProperty(_pl, "cookie_notification_header", "Ta strona wykorzystuje pliki cookie"), _defineProperty(_pl, "cookie_notification_body", "Poprzez dalsze korzystanie z portalu lub naci\u015Bni\u0119cie przycisku \"Akceptuj\u0119\" wyra\u017Casz zgod\u0119 na przechowywanie plik\xF3w cookie na Twej maszynie"), _defineProperty(_pl, "accept_button_caption", "Akceptuję - zamknij"), _defineProperty(_pl, "packages", {
     content_sidebar: {
       hide_side_bar_title: "Schowaj boczne menu",
       hide_side_bar_caption: "Schowaj",
@@ -2221,10 +2412,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".logo-description[data-v-e62713bc] {\n
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&id=08c0afbc&lang=scss&scoped=true&":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&id=08c0afbc&lang=scss&scoped=true& ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&lang=scss&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&lang=scss& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2238,7 +2429,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".expect-circles-outer-container[data-v-08c0afbc] {\n  display: inline-block;\n}\n.expect-circles-label[data-v-08c0afbc] {\n  padding: 4px 0;\n  text-align: center;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.expect-circles-label[data-v-08c0afbc] {\n      font-size: 16px;\n}\n}\n.expect-circles-inner-container[data-v-08c0afbc] {\n  min-width: 100px;\n  min-height: 100px;\n  width: 10vw;\n  height: 10vw;\n  position: relative;\n  margin: 0 auto;\n}\n.flickering-circle[data-v-08c0afbc] {\n  border-radius: 50%;\n  width: 20%;\n  height: 20%;\n  background: #0b5a8a;\n  position: absolute;\n  opacity: 0;\n  -webkit-animation: flicker-data-v-08c0afbc 4s linear 0s infinite;\n          animation: flicker-data-v-08c0afbc 4s linear 0s infinite;\n}\n.circle-1[data-v-08c0afbc] {\n  top: 5%;\n  left: 40%;\n}\n.circle-2[data-v-08c0afbc] {\n  top: 15%;\n  right: 15%;\n  -webkit-animation-delay: 0.5s;\n          animation-delay: 0.5s;\n}\n.circle-3[data-v-08c0afbc] {\n  top: 40%;\n  right: 5%;\n  -webkit-animation-delay: 1s;\n          animation-delay: 1s;\n}\n.circle-4[data-v-08c0afbc] {\n  bottom: 15%;\n  right: 15%;\n  -webkit-animation-delay: 1.5s;\n          animation-delay: 1.5s;\n}\n.circle-5[data-v-08c0afbc] {\n  bottom: 5%;\n  left: 40%;\n  -webkit-animation-delay: 2s;\n          animation-delay: 2s;\n}\n.circle-6[data-v-08c0afbc] {\n  left: 15%;\n  bottom: 15%;\n  -webkit-animation-delay: 2.5s;\n          animation-delay: 2.5s;\n}\n.circle-7[data-v-08c0afbc] {\n  left: 5%;\n  top: 40%;\n  -webkit-animation-delay: 3s;\n          animation-delay: 3s;\n}\n.circle-8[data-v-08c0afbc] {\n  top: 15%;\n  left: 15%;\n  -webkit-animation-delay: 3.5s;\n          animation-delay: 3.5s;\n}\n@-webkit-keyframes flicker-data-v-08c0afbc {\n0% {\n    opacity: 0;\n}\n50% {\n    opacity: 1;\n}\n70% {\n    opacity: 0;\n}\n100% {\n    opacity: 0;\n}\n}\n@keyframes flicker-data-v-08c0afbc {\n0% {\n    opacity: 0;\n}\n50% {\n    opacity: 1;\n}\n70% {\n    opacity: 0;\n}\n100% {\n    opacity: 0;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".expect-circles-outer-container {\n  display: inline-block;\n}\n.expect-circles-label {\n  padding: 4px 0;\n  text-align: center;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n}\n@media (max-width: 1200px) {\n.expect-circles-label {\n      font-size: 16px;\n}\n}\n.expect-circles-inner-container {\n  min-width: 100px;\n  min-height: 100px;\n  width: 10vw;\n  height: 10vw;\n  position: relative;\n  margin: 0 auto;\n}\n.flickering-circle {\n  border-radius: 50%;\n  width: 20%;\n  height: 20%;\n  background: #0b5a8a;\n  position: absolute;\n  opacity: 0;\n  -webkit-animation: flicker 4s linear 0s infinite;\n          animation: flicker 4s linear 0s infinite;\n}\n.flickering-circle-1 {\n  top: 5%;\n  left: 40%;\n}\n.flickering-circle-2 {\n  top: 15%;\n  right: 15%;\n  -webkit-animation-delay: 0.5s;\n          animation-delay: 0.5s;\n}\n.flickering-circle-3 {\n  top: 40%;\n  right: 5%;\n  -webkit-animation-delay: 1s;\n          animation-delay: 1s;\n}\n.flickering-circle-4 {\n  bottom: 15%;\n  right: 15%;\n  -webkit-animation-delay: 1.5s;\n          animation-delay: 1.5s;\n}\n.flickering-circle-5 {\n  bottom: 5%;\n  left: 40%;\n  -webkit-animation-delay: 2s;\n          animation-delay: 2s;\n}\n.flickering-circle-6 {\n  left: 15%;\n  bottom: 15%;\n  -webkit-animation-delay: 2.5s;\n          animation-delay: 2.5s;\n}\n.flickering-circle-7 {\n  left: 5%;\n  top: 40%;\n  -webkit-animation-delay: 3s;\n          animation-delay: 3s;\n}\n.flickering-circle-8 {\n  top: 15%;\n  left: 15%;\n  -webkit-animation-delay: 3.5s;\n          animation-delay: 3.5s;\n}\n@-webkit-keyframes flicker {\n0% {\n    opacity: 0;\n}\n50% {\n    opacity: 1;\n}\n70% {\n    opacity: 0;\n}\n100% {\n    opacity: 0;\n}\n}\n@keyframes flicker {\n0% {\n    opacity: 0;\n}\n50% {\n    opacity: 1;\n}\n70% {\n    opacity: 0;\n}\n100% {\n    opacity: 0;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2382,7 +2573,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".error-message-box[data-v-9960fe74] {\n  display: block;\n  font-size: 1vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: red;\n  padding: 2px 2px 3px;\n  text-align: center;\n  height: calc(1em + 6px);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n@media (max-width: 1200px) {\n.error-message-box[data-v-9960fe74] {\n      font-size: 13px;\n}\n}\n.date-picker-container[data-v-9960fe74] {\n  color: white;\n}\n.disabled-input-icon[data-v-9960fe74] {\n  top: 50%;\n  transform: translateY(-50%);\n  right: 1%;\n  position: absolute;\n  color: red;\n  font-size: 1.3vw;\n}\n@media (max-width: 1200px) {\n.disabled-input-icon[data-v-9960fe74] {\n      font-size: 18px;\n}\n}\n.date-picker-description[data-v-9960fe74] {\n  text-align: center;\n  position: relative;\n  padding: 3px;\n  color: white;\n  font-size: 1.3vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.date-picker-description[data-v-9960fe74] {\n      font-size: 17px;\n}\n}\n.date-picker-flex-container[data-v-9960fe74] {\n  display: flex;\n  border-radius: 8px;\n  justify-content: space-evenly;\n  background: #242229;\n  padding: 3px;\n  border: 2px solid transparent;\n  position: relative;\n  width: 95%;\n  height: 2em;\n  margin: 0 auto;\n  font-size: 1vw;\n  font-family: \"Exo 2\", sans-serif;\n  align-items: center;\n}\n@media (max-width: 1200px) {\n.date-picker-flex-container[data-v-9960fe74] {\n      font-size: 14px;\n}\n}\n.time-span-select[data-v-9960fe74] {\n  border-radius: 4px;\n  background: #242229;\n  color: white;\n  border: 1px solid black;\n  font-size: 1vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.time-span-select[data-v-9960fe74] {\n      font-size: 14px;\n}\n}\n.time-span-label[data-v-9960fe74] {\n  position: absolute;\n  top: -9999px;\n  left: -9999px;\n}\n.time-span-container[data-v-9960fe74] {\n  padding: 2px;\n  border-radius: 6px;\n}\n.incorrect-value[data-v-9960fe74] {\n  border: 2px solid red;\n}\n.correct-value[data-v-9960fe74] {\n  border: 2px solid green;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".error-message-box[data-v-9960fe74] {\n  display: block;\n  font-size: 1vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: red;\n  padding: 2px 2px 3px;\n  text-align: center;\n  height: calc(1em + 6px);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n@media (max-width: 1200px) {\n.error-message-box[data-v-9960fe74] {\n      font-size: 13px;\n}\n}\n.date-picker-container[data-v-9960fe74] {\n  color: white;\n}\n.disabled-input-icon[data-v-9960fe74] {\n  top: 50%;\n  transform: translateY(-50%);\n  right: 1%;\n  position: absolute;\n  color: red;\n  font-size: 1.3vw;\n}\n@media (max-width: 1200px) {\n.disabled-input-icon[data-v-9960fe74] {\n      font-size: 18px;\n}\n}\n.date-picker-description[data-v-9960fe74] {\n  text-align: center;\n  position: relative;\n  padding: 3px;\n  color: white;\n  font-size: 1.3vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.date-picker-description[data-v-9960fe74] {\n      font-size: 17px;\n}\n}\n.date-picker-flex-container[data-v-9960fe74] {\n  display: flex;\n  border-radius: 8px;\n  justify-content: space-evenly;\n  background: #242229;\n  padding: 3px 7px;\n  border: 2px solid transparent;\n  position: relative;\n  width: 95%;\n  height: 2em;\n  margin: 0 auto;\n  font-size: 1vw;\n  font-family: \"Exo 2\", sans-serif;\n  align-items: center;\n}\n@media (max-width: 1200px) {\n.date-picker-flex-container[data-v-9960fe74] {\n      font-size: 14px;\n}\n}\n.time-span-select[data-v-9960fe74] {\n  border-radius: 4px;\n  background: #242229;\n  color: white;\n  border: 1px solid black;\n  font-size: 1vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.time-span-select[data-v-9960fe74] {\n      font-size: 14px;\n}\n}\n.time-span-label[data-v-9960fe74] {\n  position: absolute;\n  top: -9999px;\n  left: -9999px;\n}\n.time-span-container[data-v-9960fe74] {\n  padding: 2px;\n  border-radius: 6px;\n}\n.incorrect-value[data-v-9960fe74] {\n  border: 2px solid red;\n}\n.correct-value[data-v-9960fe74] {\n  border: 2px solid green;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3493,10 +3684,10 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&id=08c0afbc&lang=scss&scoped=true&":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&id=08c0afbc&lang=scss&scoped=true& ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&lang=scss&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&lang=scss& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3506,7 +3697,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_expect_circle_vue_vue_type_style_index_0_id_08c0afbc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./expect_circle.vue?vue&type=style&index=0&id=08c0afbc&lang=scss&scoped=true& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&id=08c0afbc&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_expect_circle_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./expect_circle.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&lang=scss&");
 
             
 
@@ -3515,11 +3706,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_expect_circle_vue_vue_type_style_index_0_id_08c0afbc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_expect_circle_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_expect_circle_vue_vue_type_style_index_0_id_08c0afbc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_expect_circle_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
@@ -4767,9 +4958,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "__esModule": () => (/* reexport safe */ _expect_circle_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.__esModule),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _expect_circle_vue_vue_type_template_id_08c0afbc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./expect_circle.vue?vue&type=template&id=08c0afbc&scoped=true& */ "./resources/js/components/decoration/expect_circle.vue?vue&type=template&id=08c0afbc&scoped=true&");
+/* harmony import */ var _expect_circle_vue_vue_type_template_id_08c0afbc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./expect_circle.vue?vue&type=template&id=08c0afbc& */ "./resources/js/components/decoration/expect_circle.vue?vue&type=template&id=08c0afbc&");
 /* harmony import */ var _expect_circle_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./expect_circle.vue?vue&type=script&lang=js& */ "./resources/js/components/decoration/expect_circle.vue?vue&type=script&lang=js&");
-/* harmony import */ var _expect_circle_vue_vue_type_style_index_0_id_08c0afbc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./expect_circle.vue?vue&type=style&index=0&id=08c0afbc&lang=scss&scoped=true& */ "./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&id=08c0afbc&lang=scss&scoped=true&");
+/* harmony import */ var _expect_circle_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./expect_circle.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&lang=scss&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -4781,11 +4972,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
   _expect_circle_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _expect_circle_vue_vue_type_template_id_08c0afbc_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
-  _expect_circle_vue_vue_type_template_id_08c0afbc_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _expect_circle_vue_vue_type_template_id_08c0afbc___WEBPACK_IMPORTED_MODULE_0__.render,
+  _expect_circle_vue_vue_type_template_id_08c0afbc___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  "08c0afbc",
+  null,
   null
   
 )
@@ -5788,15 +5979,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&id=08c0afbc&lang=scss&scoped=true&":
-/*!************************************************************************************************************************!*\
-  !*** ./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&id=08c0afbc&lang=scss&scoped=true& ***!
-  \************************************************************************************************************************/
+/***/ "./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&lang=scss&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&lang=scss& ***!
+  \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_expect_circle_vue_vue_type_style_index_0_id_08c0afbc_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./expect_circle.vue?vue&type=style&index=0&id=08c0afbc&lang=scss&scoped=true& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&id=08c0afbc&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_24_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_expect_circle_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[3]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./expect_circle.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-24[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=style&index=0&lang=scss&");
 
 
 /***/ }),
@@ -6026,19 +6217,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/decoration/expect_circle.vue?vue&type=template&id=08c0afbc&scoped=true&":
-/*!*********************************************************************************************************!*\
-  !*** ./resources/js/components/decoration/expect_circle.vue?vue&type=template&id=08c0afbc&scoped=true& ***!
-  \*********************************************************************************************************/
+/***/ "./resources/js/components/decoration/expect_circle.vue?vue&type=template&id=08c0afbc&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/decoration/expect_circle.vue?vue&type=template&id=08c0afbc& ***!
+  \*********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_expect_circle_vue_vue_type_template_id_08c0afbc_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_expect_circle_vue_vue_type_template_id_08c0afbc_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_expect_circle_vue_vue_type_template_id_08c0afbc___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_expect_circle_vue_vue_type_template_id_08c0afbc___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_expect_circle_vue_vue_type_template_id_08c0afbc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./expect_circle.vue?vue&type=template&id=08c0afbc&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=template&id=08c0afbc&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_expect_circle_vue_vue_type_template_id_08c0afbc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./expect_circle.vue?vue&type=template&id=08c0afbc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=template&id=08c0afbc&");
 
 
 /***/ }),
@@ -6358,10 +6549,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=template&id=08c0afbc&scoped=true&":
-/*!************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=template&id=08c0afbc&scoped=true& ***!
-  \************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=template&id=08c0afbc&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/expect_circle.vue?vue&type=template&id=08c0afbc& ***!
+  \************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6391,21 +6582,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "expect-circles-inner-container" }, [
-      _c("div", { staticClass: "flickering-circle circle-1" }),
+      _c("div", { staticClass: "flickering-circle flickering-circle-1" }),
       _vm._v(" "),
-      _c("div", { staticClass: "flickering-circle circle-2" }),
+      _c("div", { staticClass: "flickering-circle flickering-circle-2" }),
       _vm._v(" "),
-      _c("div", { staticClass: "flickering-circle circle-3" }),
+      _c("div", { staticClass: "flickering-circle flickering-circle-3" }),
       _vm._v(" "),
-      _c("div", { staticClass: "flickering-circle circle-4" }),
+      _c("div", { staticClass: "flickering-circle flickering-circle-4" }),
       _vm._v(" "),
-      _c("div", { staticClass: "flickering-circle circle-5" }),
+      _c("div", { staticClass: "flickering-circle flickering-circle-5" }),
       _vm._v(" "),
-      _c("div", { staticClass: "flickering-circle circle-6" }),
+      _c("div", { staticClass: "flickering-circle flickering-circle-6" }),
       _vm._v(" "),
-      _c("div", { staticClass: "flickering-circle circle-7" }),
+      _c("div", { staticClass: "flickering-circle flickering-circle-7" }),
       _vm._v(" "),
-      _c("div", { staticClass: "flickering-circle circle-8" })
+      _c("div", { staticClass: "flickering-circle flickering-circle-8" })
     ])
   }
 ]
@@ -6783,7 +6974,7 @@ var render = function() {
               _vm._v(" "),
               _vm._l(_vm.months, function(month, index) {
                 return _c("option", { domProps: { value: index + 1 } }, [
-                  _vm._v(_vm._s(month))
+                  _vm._v("\n          " + _vm._s(month) + "\n        ")
                 ])
               })
             ],
@@ -6842,7 +7033,13 @@ var render = function() {
                 return _c(
                   "option",
                   { domProps: { value: _vm.lastYear - n + 1 } },
-                  [_vm._v(_vm._s(_vm.lastYear - n + 1))]
+                  [
+                    _vm._v(
+                      "\n          " +
+                        _vm._s(_vm.lastYear - n + 1) +
+                        "\n        "
+                    )
+                  ]
                 )
               })
             ],
@@ -7914,9 +8111,7 @@ var render = function() {
                   staticClass: "fas navbar-icon navbar-icon-outer fa-arrow-up"
                 }),
                 _vm._v(" "),
-                _c("phantom-button", [
-                  _vm._v("\r\n                 Porno\r\n\t\t\t   ")
-                ])
+                _c("phantom-button", [_vm._v(" Porno ")])
               ],
               1
             ),
@@ -7924,9 +8119,7 @@ var render = function() {
             !_vm.userIsAuthenticated
               ? _c(
                   "li",
-                  {
-                    staticClass: "navigation-element-main register-selection "
-                  },
+                  { staticClass: "navigation-element-main register-selection" },
                   [_vm._m(0)]
                 )
               : _vm._e(),
@@ -7948,7 +8141,7 @@ var render = function() {
                             staticClass:
                               "fas navbar-icon navbar-icon-outer fa-sign-in-alt"
                           }),
-                          _vm._v("\r\n\t\t\t       Loguj\r\n\t\t\t\t")
+                          _vm._v("\n            Loguj\n          ")
                         ])
                       ],
                       1
@@ -8050,9 +8243,7 @@ var render = function() {
                           "fas navbar-icon navbar-icon-outer fa-arrow-up"
                       }),
                       _vm._v(" "),
-                      _c("phantom-button", [
-                        _vm._v("\r\n                  Filmy\r\n\t\t\t\t")
-                      ])
+                      _c("phantom-button", [_vm._v(" Filmy ")])
                     ],
                     1
                   )
@@ -8076,14 +8267,14 @@ var render = function() {
                       {
                         staticClass:
                           "sub-menu-list-element-intendation-second-level",
-                        on: { click: _vm.showCategories }
+                        on: { click: _vm.showCategoriesList }
                       },
                       [
                         _c("span", {
                           staticClass:
                             "fas navbar-icon navbar-icon-second-level fa-images"
                         }),
-                        _vm._v("\r\n\t\t\t\t\t\tKategorie\r\n\t\t\t\t\t")
+                        _vm._v("\n            Kategorie\n          ")
                       ]
                     ),
                     _vm._v(" "),
@@ -8215,7 +8406,7 @@ var render = function() {
                       staticClass: "remember-me-checkbox",
                       attrs: { name: "remember" }
                     },
-                    [_vm._v("\r\n\t\t\t\t\t\tZapamiętaj mnie\r\n\t\t\t\t\t")]
+                    [_vm._v("\n        Zapamiętaj mnie\n      ")]
                   ),
                   _vm._v(" "),
                   _c("submit-button", [_vm._v("Zaloguj")]),
@@ -8233,6 +8424,10 @@ var render = function() {
               )
             ]
           )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.showCategories
+        ? _c("categories-list", { on: { hide: _vm.hideCategories } })
         : _vm._e()
     ],
     1
@@ -8250,7 +8445,7 @@ var staticRenderFns = [
         _c("span", {
           staticClass: "fas navbar-icon navbar-icon-outer fa-user-plus"
         }),
-        _vm._v(" \r\n\t\t\t  Rejestruj\r\n\t\t\t")
+        _vm._v("\n          Rejestruj\n        ")
       ]
     )
   },
@@ -8273,7 +8468,7 @@ var staticRenderFns = [
               staticClass:
                 "fas navbar-icon navbar-icon-second-level fa-folder-plus"
             }),
-            _vm._v("\r\n\t\t\t\t\t\t  Najnowsze\r\n\t\t\t\t\t\t")
+            _vm._v("\n              Najnowsze\n            ")
           ]
         )
       ]
@@ -8287,10 +8482,19 @@ var staticRenderFns = [
       "li",
       { staticClass: "sub-menu-list-element-intendation-second-level" },
       [
-        _c("span", {
-          staticClass: "fas navbar-icon navbar-icon-second-level fa-grin"
-        }),
-        _vm._v("\r\n\t\t\t\t\t\tNajpopularniejsze\r\n\t\t\t\t\t")
+        _c(
+          "a",
+          {
+            staticClass: "navbar-link-main-manu",
+            attrs: { href: "/filmy/najpopularniejsze/strona/1" }
+          },
+          [
+            _c("span", {
+              staticClass: "fas navbar-icon navbar-icon-second-level fa-grin"
+            }),
+            _vm._v("\n              Najpopularniejsze\n            ")
+          ]
+        )
       ]
     )
   },
@@ -8312,7 +8516,7 @@ var staticRenderFns = [
             _c("span", {
               staticClass: "fas navbar-icon navbar-icon-second-level fa-search"
             }),
-            _vm._v("\r\n\t\t\t\t\t\t  Szukanie zaawansowane\r\n\t\t\t\t\t\t")
+            _vm._v("\n              Szukanie zaawansowane\n            ")
           ]
         )
       ]
@@ -8337,7 +8541,7 @@ var staticRenderFns = [
               _c("span", {
                 staticClass: "fas navbar-icon navbar-icon-outer fa-star"
               }),
-              _vm._v("\r\n\t\t\t\t\t    Gwiazdy porno\r\n\t\t\t\t\t  ")
+              _vm._v("\n            Gwiazdy porno\n          ")
             ]
           )
         ])
@@ -21257,7 +21461,7 @@ Vue.compile = compileToFunctions;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "resources_js_components_categories_list_vue") return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_cookie_notification_vue":1,"resources_js_components_categories_list_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

@@ -24,7 +24,7 @@ Vue.component('icon-confirm', IconConfirm);
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
     }
 
-    const email  = sender.inputValue;
+    const email  = sender.inputValue; 
 
     if(!email || emailhasCorrectFormat(email)){
       sender.resetValidation();

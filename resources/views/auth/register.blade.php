@@ -131,26 +131,28 @@
 				</form>
 			</section>
 			<section class="information-section">
-				<div v-show="verificationInProgress" class="shadow-container">
-			   		<expect-circle label="{{__('verification_in_progress')}}" v-bind:hidden="false"></expect-circle>
+				<div class="scroll-container">
+					<div v-show="verificationInProgress" class="shadow-container">
+						<expect-circle label="{{__('verification_in_progress')}}" v-bind:hidden="false"></expect-circle>
+					</div>
+				<p class="registration-requirements">
+						<strong>{{__('registration_and_usage_only_for_adaults')}}.</strong> {{__('the_data_must_meet_the_following_requirements')}}. <strong>{{__('it_is_impossible_to_modify_a_birth_date_and_a_login')}}</strong>
+						<dl class="input-list">
+							<dt class="input-name">{{__('login')}}</dt>
+							<dd class="input-description">{{__('login_requirements')}}</dd>
+							<dt class="input-name">{{__('email')}}</dt>
+							<dd class="input-description">{{__('email_requirements')}}</dd>
+							<dt class="input-name">{{__('password')}}</dt>
+							<dd class="input-description">{{__('password_requirements')}}</dd>
+							<dt class="input-name">{{__('who_you_are')}}</dt>
+							<dd class="input-description">{{__('it_is_about_user_sex')}} {{__('the_field_is_optional')}}.</dd>
+							<dt class="input-name">{{__('orientation')}}</dt>
+							<dd class="input-description">{{__('sexual_orientation')}} {{__('the_field_is_optional')}}.</dd>
+							<dt class="input-name">{{__('birth_date')}}</dt>
+							<dd class="input-description">{{__('birth_date_requirements')}}</dd>
+						</dl>
+					</p>
 				</div>
-			   <p class="registration-requirements">
-					<strong>{{__('registration_and_usage_only_for_adaults')}}.</strong> {{__('the_data_must_meet_the_following_requirements')}}. <strong>{{__('it_is_impossible_to_modify_a_birth_date_and_a_login')}}</strong>
-					<dl class="input-list">
-						<dt class="input-name">{{__('login')}}</dt>
-						<dd class="input-description">{{__('login_requirements')}}</dd>
-						<dt class="input-name">{{__('email')}}</dt>
-						<dd class="input-description">{{__('email_requirements')}}</dd>
-						<dt class="input-name">{{__('password')}}</dt>
-						<dd class="input-description">{{__('password_requirements')}}</dd>
-						<dt class="input-name">{{__('who_you_are')}}</dt>
-						<dd class="input-description">{{__('it_is_about_user_sex')}} {{__('the_field_is_optional')}}.</dd>
-						<dt class="input-name">{{__('orientation')}}</dt>
-						<dd class="input-description">{{__('sexual_orientation')}} {{__('the_field_is_optional')}}.</dd>
-						<dt class="input-name">{{__('birth_date')}}</dt>
-						<dd class="input-description">{{__('birth_date_requirements')}}</dd>
-					</dl>
-			   </p>
 			</section>
 		</main>
 </x-base>

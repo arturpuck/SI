@@ -41,7 +41,6 @@
 		</navbar>
 		<x-report />
 		{{$slot}}
-		<categories-list></categories-list>
 	</div>
 	<x-footer />
 	<script src="{{$jsFilePath}}"></script>

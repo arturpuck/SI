@@ -19,9 +19,11 @@ use App\Handlers\Movies\GetMovieCommentsHandler;
 use App\Handlers\Movies\GetSimilarMoviesHandler;
 use App\Http\Requests\Movies\AddMovieLikeRequest;
 use App\Handlers\Movies\GetMoviesByCategoryHandler;
+use App\Handlers\Movies\GetTheMostPopularMoviesHandler;
 use App\Http\Requests\Movies\AddMovieCommentRequest;
 use App\Http\Requests\Movies\AddSpermatozoidRequest;
 use App\Http\Requests\Movies\GetMovieCommentsRequest;
+use Illuminate\View\View;
 
 class MoviesController extends Controller
 {
@@ -99,5 +101,10 @@ class MoviesController extends Controller
     public function addMovieComment(AddMovieCommentHandler $addMovieCommentHandler, AddMovieCommentRequest $request): Response
     {
         return $addMovieCommentHandler->handle($request);
+    }
+
+    public function getTheMostPopularMoviesPage(?int $pageNumber, GetTheMostPopularMoviesHandler $handler) : View 
+    {
+        return $handler->handle($pageNumber);
     }
 }

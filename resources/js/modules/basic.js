@@ -10,6 +10,26 @@ import AuthenticatedUserSidebar from '@jscomponents/navigation/authenticated_use
 import EmpireLogo from '@jscomponents/decoration/empire_logo.vue';
 import ContentSidebar from '@jscomponents/navigation/content_sidebar.vue';
 
+async function checkCookiePolicy()
+{
+   function userHasAlreadyAcceptedCookies()
+   {
+      return localStorage.getItem('cookiesAccepted') == 'yes';
+   }
+
+   if(!userHasAlreadyAcceptedCookies())
+   {
+     const NotificationComponentModule =  await import("@jscomponents/cookie_notification.vue");
+     const CookieNotificationComponentClass = Vue.extend(NotificationComponentModule.default);
+     const cookieComponent =  new CookieNotificationComponentClass().$mount();
+     document.getElementById('app').appendChild(cookieComponent.$el)
+   }
+}
+
+window.addEventListener('DOMContentLoaded', checkCookiePolicy);
+
+
+
 export default {
 
    build() {
@@ -23,8 +43,6 @@ export default {
       Vue.component('button-close', ButtonClose);
       Vue.component('empire-logo', EmpireLogo);
       Vue.component('content-sidebar', ContentSidebar);
-      Vue.component('categories-list', () => import('@jscomponents/categories_list.vue'));
-
       return Vue;
    }
 };

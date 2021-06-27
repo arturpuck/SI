@@ -198,6 +198,6 @@ class MoviesAdvancedSearchValidator
 
         self::castTypes($request);
         $validator = Validator::make($request->all(), self::getRules());
-        return $validator->fails() ? response('Request data is invalid', 400) : true;
+        return $validator->fails() ? response($validator->errors()->all(), 400) : true;
     }
 }

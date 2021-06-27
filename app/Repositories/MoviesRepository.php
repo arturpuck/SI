@@ -14,7 +14,7 @@ class MoviesRepository extends BaseRepository
 
     public const MODEL_NAME = Movie::class;
 
-    private  ? string $rawSQLForTheMostSimilarMoviesSorting;
+    private  ?string $rawSQLForTheMostSimilarMoviesSorting;
 
     private const SEX_TYPES_COLUMNS_NOT_POLYMORPHIC = [
         'anal_percentage',
@@ -52,14 +52,21 @@ class MoviesRepository extends BaseRepository
         'actress_race',
     ];
 
-    public function chronological() : MoviesRepository
+    public function chronological(): MoviesRepository
     {
 
         $this->query = $this->query->orderBy('id', 'desc');
         return $this;
     }
 
-    public function filterById(int $movieID) : MoviesRepository {
+    public function sortByTheMostPopular(): MoviesRepository
+    {
+        $this->query = $this->query->orderBy('views', 'desc');
+        return $this; 
+    }
+
+    public function filterById(int $movieID): MoviesRepository
+    {
         $this->query = $this->query->where('movies.id', $movieID);
         return $this;
     }
@@ -500,7 +507,6 @@ class MoviesRepository extends BaseRepository
                 $this->query = $this->query->leftJoin('movie_has_pornstar', 'movies.id', '=', 'movie_has_pornstar.movie_id')
                     ->leftJoin('pornstars', 'pornstars.id', '=', 'movie_has_pornstar.pornstar_id');
                 $query->orWhereIn('pornstars.id', $pornstarsIDs);
-
             }
 
             if ($movie->storyOrCostumeType) {
@@ -546,7 +552,7 @@ class MoviesRepository extends BaseRepository
             $this->query->take($howManyMovies);
         }
         $this->query = $this->query->orderByRaw($this->rawSQLForTheMostSimilarMoviesSorting);
-                                   
+
 
         return $this;
     }

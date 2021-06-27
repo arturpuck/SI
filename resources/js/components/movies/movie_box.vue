@@ -2,28 +2,36 @@
   <li class="movie-box">
     <a
       v-bind:href="movieURL"
-      v-bind:style="{ backgroundImage: mainImageURL }"
-      class="movie-main-image"
+      v-on:mouseenter="toggleImages"
+      v-on:mouseleave="toggleImages"
+      class="movie-link"
     >
+      <img
+        class="movie-image"
+        v-bind:src="movieImageURL"
+        v-on:load="imageHasBeenLoaded"
+        v-bind:alt="title"
+      />
       <time v-text="duration" class="movie-duration"></time>
+      <expect-shadow-circle v-show="fetchingInProgress"></expect-shadow-circle>
     </a>
     <div class="movie-data">
       <a v-bind:href="movieURL" v-text="title" class="movie-description"></a>
       <div class="movie-details-and-controls">
-        <span>
-          <span class="fas fa-play-circle play-icon"></span>
+        <span class="movie-details-row">
+          <play-round-icon class="play-icon"></play-round-icon>
           <span v-text="viewsTranslated"></span>
           <span v-text="views"></span>
         </span>
-        <span v-on:click="showPreview" class="preview-control">
-          <span class="fas fa-search-plus magnifier-icon"></span>
+        <span v-on:click="showPreview" class="preview-control movie-details-row">
+          <magnifier-icon class="magnifier-icon"></magnifier-icon>
           <span v-text="preViewTranslated"></span>
         </span>
       </div>
       <div v-if="aditionalInformation" class="movie-details-and-controls">
         <span v-if="pornstars">
           <span v-for="pornstar in pornstars" v-bind:key="pornstar">
-            <span class="fas fa-star star-icon"></span>
+            <star-yellow-icon class="star-icon"></star-yellow-icon>
             <a
               v-bind:href="`/gwiazda-porno/profil/${getPornstarSlug(pornstar)}`"
               class="pornstar-profile-link"
@@ -31,10 +39,7 @@
             ></a>
           </span>
         </span>
-        <icon-polish-flag
-          v-bind:title="iconDecription"
-          v-if="isTranslatedToPolish"
-        />
+        <icon-polish-flag v-bind:title="iconDecription" v-if="isTranslatedToPolish" />
       </div>
     </div>
   </li>
@@ -43,17 +48,29 @@
 <script>
 import IconPolishFlag from "@jscomponents-decoration/flags/icon_polish_flag.vue";
 import Slugifier from "@jsmodules/slugifier";
+import PlayRoundIcon from "@svgicon/play_round_icon.vue";
+import MagnifierIcon from "@svgicon/magnifier_icon";
+import StarYellowIcon from "@svgicon/star_yellow_icon";
+import Config from "@config/paths/movies";
+import ExpectShadowCircle from "@jscomponents-decoration/expect_shadow_circle";
+//use teleport instead???
 
 export default {
   name: "movie-box",
 
   components: {
     IconPolishFlag,
+    PlayRoundIcon,
+    MagnifierIcon,
+    StarYellowIcon,
+    ExpectShadowCircle,
   },
 
   data() {
     return {
       translator: null,
+      fetchingInProgress: false,
+      showsGIF: false,
     };
   },
 
@@ -65,15 +82,26 @@ export default {
     getPornstarSlug(pornstarNickname) {
       return pornstarNickname.replaceAll(" ", "-");
     },
+
+    toggleImages() {
+      this.fetchingInProgress = true;
+      this.showsGIF = !this.showsGIF;
+    },
+
+    imageHasBeenLoaded() {
+      this.fetchingInProgress = false;
+    },
   },
 
   computed: {
-    mainImageURL() {
-      return `url('/images/movies/main/${this.id}.jpg')`;
-    },
-
     movieURL() {
       return `/film/${Slugifier(this.title)}`;
+    },
+
+    movieImageURL() {
+      return this.showsGIF
+        ? `${Config.moviePreviewFolder}${this.id}.gif`
+        : `${Config.movieImagesFolder}${this.id}.jpg`;
     },
 
     viewsTranslated() {
@@ -139,6 +167,28 @@ export default {
 <style lang="scss" scoped>
 @import "~sass/fonts";
 
+.movie-image {
+  width: 280px;
+  display: block;
+  height: 158px;
+  border-radius: 3px;
+}
+
+.expect-bar {
+  margin: 0;
+  width: 100%;
+}
+
+.expect-circles-inner-container {
+  width: 10%;
+  height: 10%;
+}
+
+.movie-details-row {
+  display: inline-flex;
+  align-items: center;
+}
+
 .pornstar-profile-link {
   text-decoration: none;
   color: white;
@@ -147,7 +197,7 @@ export default {
   }
 }
 
-.movie-main-image {
+.movie-link {
   width: 280px;
   display: block;
   height: 158px;
@@ -183,7 +233,10 @@ export default {
 
 .movie-box {
   color: white;
-  @include responsive-font(1.2vw, 14px);
+  font: {
+    size: 16px;
+    family: "Exo 2", sans-serif;
+  }
 }
 
 .movie-details-and-controls {
@@ -192,21 +245,36 @@ export default {
   justify-content: space-between;
 }
 
-.play-icon,
 .magnifier-icon {
-  color: #960b2e;
+  fill: #df1c4d;
+  width: 16px;
+  height: auto;
+  margin-right: 4px;
 }
 
 .star-icon {
-  color: gold;
+  width: 16px;
+  height: auto;
 }
 
 .preview-control {
   cursor: pointer;
 }
 
+.play-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 4px;
+  fill: #ef0244;
+}
+
+.relative-shadow-container {
+  z-index: 0;
+}
+
 @media (max-width: 870px) {
-  .movie-main-image {
+  .movie-image,
+  .movie-link {
     width: 232px;
     height: 120px;
   }

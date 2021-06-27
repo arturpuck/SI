@@ -1,6 +1,7 @@
 @import '~sass/basic';
 @import '~sass/auth/information_section';
 @import '~sass/auth/register_page_background_images';
+@import "~sass/nice_scrollbar";
 
 .main-panel
 {
@@ -28,7 +29,7 @@
 .register-panel
 {
 	width:41%;
-	min-width:275px;
+	min-width:min-content;
 	position:relative;
 	border-right: 2px solid black;
 }
@@ -72,4 +73,6 @@
 	}
 
 }
+
+@include nice-scrollbar(".information-section");
 
