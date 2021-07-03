@@ -14,7 +14,7 @@
   >
     <g>
       <polygon
-        points="122.88,0 122.88,30.82 61.44,80.593 0,30.82 0,0 61.44,49.772 122.88,0"
+        points="122.88,80.593 122.88,49.772 61.44,0 0,49.772 0,80.593 61.44,30.82 122.88,80.593"
       />
     </g>
   </svg>
@@ -24,5 +24,5 @@
 import { Vue, Component } from "vue-property-decorator";
 
 @Component
-export default class ArrowDownIcon extends Vue {}
+export default class AngleTopIcon extends Vue {}
 </script>

@@ -1,90 +1,108 @@
 <template>
-  <nav class="fixed-sidebar authenticated-user-side-bar">
-       <ul class="user-sidebar-list">
-		   <li v-on:click="hideSideBar" v-bind:title="translations['hide_side_bar_title']" class="authenticated-user-sidebar-list-element">
-			   <phantom-button>
-                 <span class="fas fa-angle-up authenticated-user-sidebar-icon"></span>
-			     <span v-text="translations['hide_authenticated_user_sidebar_caption']" class="sidebar-item-description"></span>
-			   </phantom-button>
-		   </li>
-		   <li v-bind:title="translations['show_user_profile_settings_title']" class="authenticated-user-sidebar-list-element">
-			  <a href="/profil/ustawienia" class="sub-menu-link">
-				<span class="fas fa-cogs authenticated-user-sidebar-icon"></span>
-				<span v-text="translations['show_user_profile_settings_caption']" class="sidebar-item-description"></span>
-			  </a>
-		   </li>
-		   <li class="authenticated-user-sidebar-list-element">
-			   <span class="fas fa-envelope authenticated-user-sidebar-icon"></span>
-			   <span v-text="translations['mailbox_caption']" class="sidebar-item-description"></span>
-		   </li>
-		   <li v-bind:title="translations['favourites_title']" class="authenticated-user-sidebar-list-element">
-			   <span class="fas fa-thumbs-up authenticated-user-sidebar-icon"></span>
-			   <span v-text="translations['favourites_caption']" class="sidebar-item-description"></span>
-		   </li>
-		   <li class="authenticated-user-sidebar-list-element">
-			   <span class="fas fa-user-friends authenticated-user-sidebar-icon"></span>
-			   <span v-text="translations['friends_caption']" class="sidebar-item-description"></span>
-		   </li>
-		   <li v-on:click="logout" class="authenticated-user-sidebar-list-element">
-			   <phantom-button>
-                 <span class="fas fa-sign-out-alt authenticated-user-sidebar-icon"></span>
-			     <span v-text="translations['logout_caption']" class="sidebar-item-description"></span>
-			   </phantom-button>
-			   <form aria-hidden="true" id="logoutForm" class="logout-form" method="POST" action="/wyloguj">
-				  <input type="hidden" v-bind:value="csrfToken" name="_token">
-			   </form>
-		   </li>
-	   </ul>
-	</nav>
+  <nav
+    id="fixed-authenticated-user-sidebar"
+    class="fixed-sidebar authenticated-user-side-bar"
+  >
+    <ul class="user-sidebar-list">
+      <li
+        v-on:click="hideSideBar"
+        v-bind:title="translations['hide_side_bar_title']"
+        class="authenticated-user-sidebar-list-element"
+      >
+        <phantom-button>
+          <angle-top-icon class="authenticated-user-sidebar-icon"></angle-top-icon>
+          <span
+            v-text="translations['hide_authenticated_user_sidebar_caption']"
+            class="sidebar-item-description"
+          ></span>
+        </phantom-button>
+      </li>
+      <li
+        v-bind:title="translations['show_user_profile_settings_title']"
+        class="authenticated-user-sidebar-list-element"
+      >
+        <a href="/profil/ustawienia" class="sub-menu-link">
+          <settings-icon class="authenticated-user-sidebar-icon"></settings-icon>
+          <span
+            v-text="translations['show_user_profile_settings_caption']"
+            class="sidebar-item-description"
+          ></span>
+        </a>
+      </li>
+      <li v-on:click="logout" class="authenticated-user-sidebar-list-element">
+        <phantom-button>
+          <exit-arrow-icon class="authenticated-user-sidebar-icon"></exit-arrow-icon>
+          <span
+            v-text="translations['logout_caption']"
+            class="sidebar-item-description"
+          ></span>
+        </phantom-button>
+        <form
+          aria-hidden="true"
+          id="logoutForm"
+          class="logout-form"
+          method="POST"
+          action="/wyloguj"
+        >
+          <input type="hidden" v-bind:value="csrfToken" name="_token" />
+        </form>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script lang="ts">
-  import {Vue, Component, Prop} from 'vue-property-decorator';
-  import Translator from '@jsmodules/translator.js';
+import { Vue, Component, Prop } from "vue-property-decorator";
+import Translator from "@jsmodules/translator.js";
+import AngleTopIcon from "@svgicon/angle_top_icon";
+import SettingsIcon from "@svgicon/settings_icon";
+import ExitArrowIcon from "@svgicon/exit_arrow_icon";
 
-@Component
-    export default class AuthenticatedUserSidebar extends Vue {
-		
-		@Prop({
-            type: String,
-            required: true,
-        }) readonly csrfToken: String;
+@Component({ components: { AngleTopIcon, SettingsIcon, ExitArrowIcon } })
+export default class AuthenticatedUserSidebar extends Vue {
+  @Prop({
+    type: String,
+    required: true,
+  })
+  readonly csrfToken: String;
 
-		private translations = Translator.getPackage('authenticated_user_sidebar');
+  private translations = Translator.getPackage("authenticated_user_sidebar");
 
-           logout(){
-			 (<HTMLFormElement>document.getElementById('logoutForm')).submit()
-		   }
+  logout() {
+    (<HTMLFormElement>document.getElementById("logoutForm")).submit();
+  }
 
-		   hideSideBar(){
-			   this.$root.$emit('hide-side-bar');
-		   }
-
-    }
-    
-        
+  hideSideBar() {
+    this.$root.$emit("hideSideBar");
+  }
+}
 </script>
 
 <style lang="scss" scoped>
-  @import '~sass/fonts';
-  @import '~sass/components/side_bar';
+@import "~sass/fonts";
+@import "~sass/components/side_bar";
 
-  .authenticated-user-side-bar{
-	right:0;
-	box-shadow: -1px -1px 2px 2px black;
-	min-width:65px;
+.authenticated-user-side-bar {
+  right: 0;
+  box-shadow: -1px -1px 2px 2px black;
+  min-width: min-content;
+  @include responsive-font(0.9vw, 12px);
 }
 
-.authenticated-user-sidebar-list-element{
-	@include sidebar-list-element();
-	padding: 4px 0;
-	&:hover{
-        background:#211e1e;
-    }
+.authenticated-user-sidebar-list-element {
+  @include sidebar-list-element();
+  padding: 4px 0;
+  &:hover {
+    background: #211e1e;
+  }
 }
 
-.authenticated-user-sidebar-icon{
-	@include responsive-font(1.4vw,16px, initial);
-	color:red;
+.authenticated-user-sidebar-icon {
+  @include responsive-font(1.4vw, 16px, initial);
+  color: red;
+  height: auto;
+
+  fill: red;
+  width: 1em;
 }
 </style>

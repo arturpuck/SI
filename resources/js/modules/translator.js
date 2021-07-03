@@ -387,9 +387,9 @@ export default {
 
          authenticated_user_sidebar: {
             hide_side_bar_title: "Schowaj menu użytkownika",
-            hide_authenticated_user_sidebar_caption: "Schowaj",
+            hide_authenticated_user_sidebar_caption: "Schowaj menu",
             show_user_profile_settings_title: "Ustawienia profilu : hasło, avatar, dane personalne",
-            show_user_profile_settings_caption: "Profil",
+            show_user_profile_settings_caption: "Ustawienia profilu",
             mailbox_caption: "Wiadomości",
             favourites_title: "Twoje ulubione filmy, gwiazdy itp",
             favourites_caption: "Ulubione",

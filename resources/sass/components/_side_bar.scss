@@ -18,7 +18,7 @@
 }
 
 .user-sidebar-list{
-    padding:calc(25px + 2vw) 0 0 0;
+    padding:calc(25px + 2vw) 2px 0;
     display:flex;
     flex-direction: column;
     margin:0;
@@ -38,7 +38,6 @@
 }
 
 .sidebar-item-description{
-    @include responsive-font(0.9vw,10px);
     color:white;
 }
 

@@ -99,6 +99,7 @@ new Vue({
     advancedSearchPanelIsVisible: true,
     selectedOptionsVisibleForUser: [],
     totalMoviesFound: undefined,
+    advancedSearchSmallControlPanelRighOffset : "0"
   },
 
   computed: {
@@ -387,6 +388,11 @@ new Vue({
       });
 
       this.pornstarsList = [];
+    },
+
+    adjustSearchControlMenu(userSideBarIsVisible : boolean): void {
+      this.advancedSearchSmallControlPanelRighOffset = userSideBarIsVisible ?
+      `${document.getElementById("fixed-authenticated-user-sidebar").offsetWidth}px` : "0";
     }
 
   },
@@ -397,6 +403,9 @@ new Vue({
     this.fetchPornstars();
     this.initiateAditionalPanelSettings();
     this.$root.$on('pageHasBeenSelected', this.searchMovies);
+    this.$root.$on('pageHasBeenSelected', this.searchMovies);
+    this.$root.$on('hideSideBar', () => this.adjustSearchControlMenu(false));
+    this.$root.$on('sideBarVisibilityChanged', this.adjustSearchControlMenu);
   }
 
 });

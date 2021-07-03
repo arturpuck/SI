@@ -1,6 +1,6 @@
 <x-base title="{{__($title)}}" customBodyClass="standard-background" description="{{__($description)}}">
    <form class="advanced-search-panel" v-bind:class="{'advanced-search-panel--hidden' : !advancedSearchPanelIsVisible}">
-      <fieldset v-bind:class="{'aditional-control-panel--hidden' : !showControlsShortcut}" class="aditional-control-panel">
+      <fieldset v-bind:style="{right : advancedSearchSmallControlPanelRighOffset}" v-bind:class="{'aditional-control-panel--hidden' : !showControlsShortcut}" class="aditional-control-panel">
          <legend class="aditional-control-panel__description">{{__('controls')}}</legend>
          <button type="button" v-show="advancedSearchPanelIsVisible" v-on:click="firstSearch" class="aditional-control-panel__button--green">
             <magnifier-icon class="control-panel-button__icon"></magnifier-icon>

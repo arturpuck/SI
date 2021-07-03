@@ -28,22 +28,23 @@
           v-on:mouseenter="showPornSubMenu"
           class="navigation-element-main navigation-element-main-has-content"
         >
-          <span
+          <adult-icon
+            class="navbar-icon navbar-icon-outer"
             v-show="!pornSubMenuIsVisible"
-            class="fas navbar-icon navbar-icon-outer fa-camera-retro"
-          ></span>
-          <span
+          ></adult-icon>
+          <arrow-up-icon
             v-show="pornSubMenuIsVisible"
             class="fas navbar-icon navbar-icon-outer fa-arrow-up"
-          ></span>
-          <phantom-button> Porno </phantom-button>
+          >
+          </arrow-up-icon>
+          <phantom-button class="phantom-button"> Porno </phantom-button>
         </li>
         <li
           v-if="!userIsAuthenticated"
           class="navigation-element-main register-selection"
         >
           <a class="navbar-link-main-manu" href="/rejestruj">
-            <span class="fas navbar-icon navbar-icon-outer fa-user-plus"></span>
+            <signup-icon class="navbar-icon navbar-icon-outer"></signup-icon>
             Rejestruj
           </a>
         </li>
@@ -53,9 +54,9 @@
           class="navigation-element-main"
         >
           <div class="login-button-container">
-            <phantom-button>
-              <span class="fas navbar-icon navbar-icon-outer fa-sign-in-alt"></span>
-              Loguj
+            <phantom-button class="navbar-phantom-button">
+              <enter-icon class="navbar-icon navbar-icon-outer"></enter-icon>
+              <span class="login-description">Loguj</span>
             </phantom-button>
           </div>
         </li>
@@ -68,10 +69,10 @@
             class="show-user-sidebar-button"
             label="rozwiń menu użytkownika"
           >
-            <span
+            <avatar-icon
               v-if="!avatarFileName"
-              class="fas navbar-icon navbar-icon-outer fa-user"
-            ></span>
+              class="navbar-icon navbar-icon-outer"
+            ></avatar-icon>
             <span v-text="userName" class="user-nick"></span>
             <img
               v-if="avatarFileName"
@@ -92,14 +93,16 @@
       >
         <li class="sub-menu-list-element intendation-first-level">
           <div v-on:click="toggleMoviesSubMenu" class="sub-menu-level-one-item">
-            <span
+            <movie-media-player-icon
               v-show="!moviesSubMenuIsVisible"
-              class="fas navbar-icon navbar-icon-outer fa-film"
-            ></span>
-            <span
+              class="navbar-icon navbar-icon-outer"
+            >
+            </movie-media-player-icon>
+
+            <arrow-up-icon
               v-show="moviesSubMenuIsVisible"
-              class="fas navbar-icon navbar-icon-outer fa-arrow-up"
-            ></span>
+              class="navbar-icon navbar-icon-outer"
+            ></arrow-up-icon>
             <phantom-button> Filmy </phantom-button>
           </div>
         </li>
@@ -116,26 +119,30 @@
               v-on:click="showCategoriesList"
               class="sub-menu-list-element-intendation-second-level"
             >
-              <span class="fas navbar-icon navbar-icon-second-level fa-images"></span>
+              <folder-icon class="navbar-icon navbar-icon-second-level"></folder-icon>
               Kategorie
             </li>
             <li class="sub-menu-list-element-intendation-second-level">
               <a class="navbar-link-main-manu" href="/filmy/najnowsze/strona/1">
-                <span
-                  class="fas navbar-icon navbar-icon-second-level fa-folder-plus"
-                ></span>
+                <expand-all-icon
+                  class="navbar-icon navbar-icon-second-level--colored"
+                ></expand-all-icon>
                 Najnowsze
               </a>
             </li>
             <li class="sub-menu-list-element-intendation-second-level">
               <a class="navbar-link-main-manu" href="/filmy/najpopularniejsze/strona/1">
-                <span class="fas navbar-icon navbar-icon-second-level fa-grin"></span>
+                <happy-tongue-icon
+                  class="navbar-icon navbar-icon-second-level--colored"
+                ></happy-tongue-icon>
                 Najpopularniejsze
               </a>
             </li>
             <li class="sub-menu-list-element-intendation-second-level">
               <a class="navbar-link-main-manu" href="/filmy/wyszukiwanie-zaawansowane">
-                <span class="fas navbar-icon navbar-icon-second-level fa-search"></span>
+                <magnifier-icon
+                  class="navbar-icon navbar-icon-second-level--colored"
+                ></magnifier-icon>
                 Szukanie zaawansowane
               </a>
             </li>
@@ -144,7 +151,7 @@
         <li class="sub-menu-list-element intendation-first-level">
           <div class="sub-menu-level-one-item">
             <a class="navbar-link-main-manu" href="/gwiazdy-porno/lista">
-              <span class="fas navbar-icon navbar-icon-outer fa-star"></span>
+              <star-full-icon class="navbar-icon navbar-icon-outer"></star-full-icon>
               Gwiazdy porno
             </a>
           </div>
@@ -218,6 +225,17 @@
 
 <script>
 import { directive as onClickaway } from "vue-clickaway";
+import AdultIcon from "@svgicon/adult_icon";
+import ArrowUpIcon from "@svgicon/arrow_up_icon";
+import MovieMediaPlayerIcon from "@svgicon/movie_media_player_icon";
+import StarFullIcon from "@svgicon/star_full_icon";
+import FolderIcon from "@svgicon/folder_icon";
+import ExpandAllIcon from "@svgicon/expand_all_icon";
+import HappyTongueIcon from "@svgicon/happy_tongue_icon";
+import MagnifierIcon from "@svgicon/magnifier_icon";
+import SignupIcon from "@svgicon/signup_icon";
+import EnterIcon from "@svgicon/enter_icon";
+import AvatarIcon from "@svgicon/avatar_icon";
 
 export default {
   name: "navbar",
@@ -259,6 +277,17 @@ export default {
 
   components: {
     "categories-list": () => import("@jscomponents/categories_list.vue"),
+    AdultIcon,
+    ArrowUpIcon,
+    MovieMediaPlayerIcon,
+    StarFullIcon,
+    FolderIcon,
+    ExpandAllIcon,
+    HappyTongueIcon,
+    MagnifierIcon,
+    SignupIcon,
+    EnterIcon,
+    AvatarIcon,
   },
 
   methods: {
@@ -291,6 +320,11 @@ export default {
       this.setSideBarVisibilityInformation(
         this.authenticatedUserSideBarIsVisible,
         "authenticatedUserSideBar"
+      );
+
+      this.$root.$emit(
+        "sideBarVisibilityChanged",
+        this.authenticatedUserSideBarIsVisible
       );
     },
 
@@ -376,7 +410,7 @@ export default {
 
   mounted() {
     this.csrfToken = document.getElementById("csrf-token").content;
-    this.$root.$on("hide-side-bar", this.hideAuthenticatedUserSideBar);
+    this.$root.$on("hideSideBar", this.hideAuthenticatedUserSideBar);
     this.$root.$on("hide-content-bar", this.hideContentSideBar);
   },
 };
