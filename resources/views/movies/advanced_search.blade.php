@@ -1,13 +1,12 @@
 <x-base title="{{__($title)}}" customBodyClass="standard-background" description="{{__($description)}}">
    <form class="advanced-search-panel" v-bind:class="{'advanced-search-panel--hidden' : !advancedSearchPanelIsVisible}">
-      <fieldset v-bind:style="{right : advancedSearchSmallControlPanelRighOffset}" v-bind:class="{'aditional-control-panel--hidden' : !showControlsShortcut}" class="aditional-control-panel">
+      <fieldset v-bind:class="{'aditional-control-panel--hidden' : !showControlsShortcut}" class="aditional-control-panel">
          <legend class="aditional-control-panel__description">{{__('controls')}}</legend>
          <button type="button" v-show="advancedSearchPanelIsVisible" v-on:click="firstSearch" class="aditional-control-panel__button--green">
             <magnifier-icon class="control-panel-button__icon"></magnifier-icon>
             {{__('search_button_caption')}}
          </button>
          <button v-on:click="resetPanel" v-show="advancedSearchPanelIsVisible" type="reset" class="aditional-control-panel__button--red">
-            <shutdown-icon class="control-panel-button__icon--bigger"></shutdown-icon>
             {{__('fixed_panel_reset_caption')}}
          </button>
          <button type="button" v-show="!advancedSearchPanelIsVisible" v-on:click="showSearchPanel" class="aditional-control-panel__button--green">
@@ -178,11 +177,11 @@
             {{__('controls')}}
          </legend>
          <accept-button v-on:click.native="firstSearch" class="control-panel-button--type-submit">
-            <img src="/images/decoration/advanced-search/magnifier.svg" alt="" class="control-panel-button__icon">
+            <magnifier-icon class="control-panel-button__icon"></magnifier-icon>
             {{__('search_button_caption')}}
          </accept-button>
          <reset-button v-on:click.native="resetPanel" class="control-panel-button--type-reset">
-            <img src="/images/decoration/advanced-search/shutdown.svg" alt="" class="control-panel-button__icon--bigger">
+            <shutdown-icon class="control-panel-button__icon--bigger"></shutdown-icon>
             {{__('reset_panel')}}
          </reset-button>
          <labeled-checkbox v-on:click.native="savePanelSettings" v-model="showControlsShortcut" class="labeled_checkbox--aditional-margin" name="show-controls-shortcut">{{__('show_controls_shortcut')}}</labeled-checkbox>

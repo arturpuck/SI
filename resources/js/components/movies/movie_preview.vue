@@ -32,7 +32,7 @@
       />
     </div>
     <div aria-hidden="true" class="trapeze-decoration">
-      <empire-logo class="empire-logo" />
+      <empire-logo class="empire-logo--modified"></empire-logo>
     </div>
   </div>
 </template>
@@ -128,7 +128,7 @@ $borders-difference: 0.8vw;
   transform: translateY(-100%);
 }
 
-.empire-logo {
+.empire-logo--modified {
   @include responsive-font(1.5vw, 13px, "", 780px);
   position: absolute;
   transform: translate(-50%, calc(-100% - 1vw));

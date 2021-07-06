@@ -1258,6 +1258,29 @@ exports.default = ContentSideBar;
 
 /***/ }),
 
+/***/ "./resources/js/mixins/side_bar_visibility.ts":
+/*!****************************************************!*\
+  !*** ./resources/js/mixins/side_bar_visibility.ts ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+var mixin = {
+  methods: {
+    isSideBarVisible: function isSideBarVisible(sideBarType) {
+      return localStorage.getItem(sideBarType) !== "hidden";
+    }
+  }
+};
+exports.default = mixin;
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/empire_logo.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/decoration/empire_logo.vue?vue&type=script&lang=js& ***!
@@ -1430,7 +1453,7 @@ exports.default = void 0;
 //
 //
 var _default = {
-  name: 'button-close',
+  name: "button-close",
   data: function data() {
     return {
       translator: undefined
@@ -1445,7 +1468,7 @@ var _default = {
     label: {
       required: false,
       type: String,
-      "default": 'close'
+      "default": "close"
     }
   },
   created: function created() {
@@ -1453,7 +1476,7 @@ var _default = {
   },
   mounted: function mounted() {
     if (this.title) {
-      this.$refs.container.setAttribute('title', this.translator.translate(this.title));
+      this.$refs.container.setAttribute("title", this.translator.translate(this.title));
     }
   }
 };
@@ -1850,6 +1873,8 @@ var _enter_icon = _interopRequireDefault(__webpack_require__(/*! @svgicon/enter_
 
 var _avatar_icon = _interopRequireDefault(__webpack_require__(/*! @svgicon/avatar_icon */ "./resources/js/components/decoration/icons/svg/avatar_icon.vue"));
 
+var _side_bar_visibility = _interopRequireDefault(__webpack_require__(/*! @js/mixins/side_bar_visibility */ "./resources/js/mixins/side_bar_visibility.ts"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 //
@@ -2082,6 +2107,7 @@ var _default = {
   directives: {
     onClickaway: _vueClickaway.directive
   },
+  mixins: [_side_bar_visibility["default"]],
   props: {
     userId: {
       type: Number,
@@ -2156,9 +2182,6 @@ var _default = {
     setSideBarVisibilityInformation: function setSideBarVisibilityInformation(hidden, sideBarType) {
       var visible = hidden ? "visible" : "hidden";
       localStorage.setItem(sideBarType, visible);
-    },
-    isSideBarVisible: function isSideBarVisible(sideBarType) {
-      return localStorage.getItem(sideBarType) !== "hidden";
     },
     hideAllSecondLevelSubMenus: function hideAllSecondLevelSubMenus() {
       this.moviesSubMenuIsVisible = false;
@@ -2774,7 +2797,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".button-close:hover .button-close__cross {\n  background: white;\n}\n.button-close {\n  position: relative;\n  background: white;\n  border-radius: 50%;\n  border: 3px solid #ef0244;\n  font-size: 0;\n  min-width: 30px;\n  min-height: 30px;\n  width: 2.3vw;\n  height: 2.3vw;\n  cursor: pointer;\n  display: inline-block;\n}\n.button-close:hover {\n    background: #ef0244;\n}\n.button-close__cross {\n    display: inline-block;\n    background: #ef0244;\n    width: 65%;\n    height: 65%;\n    position: absolute;\n    font-size: 0;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    -webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);\n            clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);\n}\n.button-close__label {\n    position: absolute;\n    top: -9999px;\n    left: -9999px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".button-close:hover .button-close__cross {\n  background: white;\n}\n.button-close {\n  position: relative;\n  flex-shrink: 0;\n  background: white;\n  border-radius: 50%;\n  border: 3px solid #ef0244;\n  font-size: 0;\n  min-width: 30px;\n  min-height: 30px;\n  width: 2.3vw;\n  height: 2.3vw;\n  cursor: pointer;\n  display: inline-block;\n}\n.button-close:hover {\n    background: #ef0244;\n}\n.button-close__cross {\n    display: inline-block;\n    background: #ef0244;\n    width: 65%;\n    height: 65%;\n    position: absolute;\n    font-size: 0;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    -webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);\n            clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);\n}\n.button-close__label {\n    position: absolute;\n    top: -9999px;\n    left: -9999px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

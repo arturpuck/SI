@@ -20,11 +20,12 @@ import { XHRRequestData } from '@interfaces/XHRRequestData.ts';
 import FixedShadowContainer from '@jscomponents/decoration/fixed_shadow_container.vue';
 import MoviesList from '@jscomponents/movies/movies_list.vue';
 import MagnifierIcon from '@svgicon/magnifier_icon.vue';
-import ShutDownIcon from '@svgicon/shutdown_icon.vue';
 import ExitArrowIcon from '@svgicon/exit_arrow_icon.vue';
 import ArrowDownIcon from '@svgicon/arrow_down_icon.vue';
 import ImprovementPerformanceIcon from '@svgicon/improvement_performance_icon.vue';
 import FingerPointIcon from '@svgicon/finger_point_icon.vue';
+import SideBarVisibilityMixin from "@js/mixins/side_bar_visibility";
+import ShutdownIcon from "@svgicon/shutdown_icon.vue";
 
 Vue.component('simple-labeled-select', SimpleLabeledSelect);
 Vue.component('labeled-checkbox', LabeledCheckBox);
@@ -37,14 +38,16 @@ Vue.component('reset-button', ResetButton);
 Vue.component('fixed-shadow-container', FixedShadowContainer);
 Vue.component('movies-list', MoviesList);
 Vue.component('magnifier-icon', MagnifierIcon);
-Vue.component('shutdown-icon', ShutDownIcon);
 Vue.component('exit-arrow-icon', ExitArrowIcon);
 Vue.component('arrow-down-icon', ArrowDownIcon);
 Vue.component('improvement-performance-icon', ImprovementPerformanceIcon);
 Vue.component('finger-point-icon', FingerPointIcon);
+Vue.component('shutdown-icon', ShutdownIcon);
 
 new Vue({
   el: '#app',
+
+  mixins: [SideBarVisibilityMixin],
 
   data: {
 
@@ -99,7 +102,6 @@ new Vue({
     advancedSearchPanelIsVisible: true,
     selectedOptionsVisibleForUser: [],
     totalMoviesFound: undefined,
-    advancedSearchSmallControlPanelRighOffset : "0"
   },
 
   computed: {
@@ -319,12 +321,19 @@ new Vue({
 
         this.$root.$emit('updateMoviesList', { moviesData, currentPage });
       }
+      else{
+        this.clearMoviesList();
+      }
 
       this.totalMoviesFound = moviesData.totalMovies;
       this.advancedSearchPanelIsVisible = false;
+      
+      
     },
 
-
+    clearMoviesList() : void {
+      this.$root.$emit('updateMoviesList', { moviesData : { totalMovies : 0, movies : [] }, currentPage : 0});
+    },
 
     async searchMovies(currentPage: number = 1) {
 
@@ -360,7 +369,6 @@ new Vue({
 
       }
       catch (exception) {
-        alert(exception.message);
         this.showNotification(SearchEngineTranslations[exception.message], 'error');
       }
       finally {
@@ -388,11 +396,6 @@ new Vue({
       });
 
       this.pornstarsList = [];
-    },
-
-    adjustSearchControlMenu(userSideBarIsVisible : boolean): void {
-      this.advancedSearchSmallControlPanelRighOffset = userSideBarIsVisible ?
-      `${document.getElementById("fixed-authenticated-user-sidebar").offsetWidth}px` : "0";
     }
 
   },
@@ -404,8 +407,6 @@ new Vue({
     this.initiateAditionalPanelSettings();
     this.$root.$on('pageHasBeenSelected', this.searchMovies);
     this.$root.$on('pageHasBeenSelected', this.searchMovies);
-    this.$root.$on('hideSideBar', () => this.adjustSearchControlMenu(false));
-    this.$root.$on('sideBarVisibilityChanged', this.adjustSearchControlMenu);
   }
 
 });

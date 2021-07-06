@@ -23,13 +23,13 @@
     border: none;
     outline: none;
     display: block;
-    width: 90%;
+    width: 30%;
     padding: 3px;
     text-align: center;
     margin: 4px auto;
     border-radius: 4px;
     cursor: pointer;
-    @include responsive-font(1.1vw, 12px);
+    @include responsive-font(1.1vw, 14px);
     line-height: 1.5em;
     color: white;
     &:hover {
@@ -50,7 +50,7 @@
 
 .advanced-search-panel {
     display: grid;
-    padding: 0 0 5px 0;
+    padding: calc(30px + 1vw) 0 5px 0;
     grid-template-columns: repeat(4, 23%);
     grid-template-rows: auto;
     justify-content: space-evenly;
@@ -183,11 +183,13 @@
 
 .aditional-control-panel {
     position: fixed;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
     top: calc(35px + 1vw);
-    min-width: 80px;
+    min-width: 260px;
     padding: 0;
-    width: 8vw;
+    width: 30vw;
     box-shadow: 1px 1px 1px 1px black;
     z-index: 2;
     border: 1px solid black;
@@ -211,7 +213,6 @@
         &--green {
             @include fixed-control-control-panel-button();
             background: linear-gradient(#0fe00b, #054004);
-            margin-bottom: 1px;
         }
 
         &--red {
@@ -221,7 +222,7 @@
 
         &--arrow-down {
             @include fixed-control-control-panel-button();
-            background: black;
+            background: #1d42d2;
         }
     }
 }

@@ -236,11 +236,14 @@ import MagnifierIcon from "@svgicon/magnifier_icon";
 import SignupIcon from "@svgicon/signup_icon";
 import EnterIcon from "@svgicon/enter_icon";
 import AvatarIcon from "@svgicon/avatar_icon";
+import SideBarVisibilityMixin from "@js/mixins/side_bar_visibility";
 
 export default {
   name: "navbar",
 
   directives: { onClickaway },
+
+  mixins: [SideBarVisibilityMixin],
 
   props: {
     userId: {
@@ -331,10 +334,6 @@ export default {
     setSideBarVisibilityInformation(hidden, sideBarType) {
       const visible = hidden ? "visible" : "hidden";
       localStorage.setItem(sideBarType, visible);
-    },
-
-    isSideBarVisible(sideBarType) {
-      return localStorage.getItem(sideBarType) !== "hidden";
     },
 
     hideAllSecondLevelSubMenus() {
