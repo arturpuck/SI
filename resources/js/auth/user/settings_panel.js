@@ -9,6 +9,11 @@ import AcceptButton from '@jscomponents/form_controls/accept_button.vue';
 import UserNotification from '@jscomponents/user_notification.vue';
 import SuccessInformation from '@jscomponents/decoration/success_information.vue';
 import EmailValidator from '@jsmodules/validators/email_validator.js';
+import EditPenIcon from "@svgicon/edit_pen_icon.vue";
+import ImagePhotographyIcon from "@svgicon/image_photography_icon.vue";
+import KeyIcon from "@svgicon/key_icon.vue";
+import InfoCircleIcon from "@svgicon/info_circle_icon.vue";
+
 const Vue = VueConstructor.build();
 
 Vue.component('textarea-combo', TextareaCombo);
@@ -22,6 +27,10 @@ Vue.component('user-notification', UserNotification);
 Vue.component('icon-confirm', IconConfirm);
 Vue.component('icon-stop', IconStop);
 Vue.component('success-information',SuccessInformation);
+Vue.component('edit-pen-icon', EditPenIcon);
+Vue.component('image-photography-icon', ImagePhotographyIcon);
+Vue.component('key-icon', KeyIcon);
+Vue.component('info-circle-icon', InfoCircleIcon);
 
 new Vue({
     el: '#app',

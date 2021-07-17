@@ -14,7 +14,6 @@
                      <dt class="pornstar-data-key pornstar-data-list-element">{{__('pornstar_born_at')}} : </dt>
                      <dl class="pornstar-data-value pornstar-data-list-element">
                         {{$pornstar->born}}
-                        <span class="fas fa-birthday-cake pornstar-data-icon"></span>
                         <span class="pornstar-current-age">({{__('pornstar_current_age')}} : {{$pornstar->age}})</span>
                      </dl>
                   </div>
@@ -39,7 +38,6 @@
                      <dt class="pornstar-data-key pornstar-data-list-element">{{__('pornstar_official_website')}} : </dt>
                      <dl class="pornstar-data-value pornstar-data-list-element">
                         <a class="neutral-link" href="http://www.{{$pornstar->official_website}}">{{$pornstar->official_website}}</a>
-                        <span class="fas fa-house-user pornstar-data-icon"></span>
                      </dl>
                   </div>
                   @endif
@@ -55,15 +53,15 @@
       </section>
       <ul class="pornstar-profile-tabpanel" role="tabpanel">
          <li class="pornstar-profile-tab" id="movies-tab" v-bind:class="{'active-tab' : pornstarMoviesTabIsActive}" v-on:click="changeTab" v-bind:aria-selected="pornstarMoviesTabIsActive" aria-controls="movies-section">
-            <span class="fas fa-video"></span>
+            <camera-icon class="tab-icon"></camera-icon>
             {{__('movies')}}
          </li>
          <li class="pornstar-profile-tab" id="comments-tab" v-bind:class="{'active-tab' : pornstarCommentsTabIsActive}" v-on:click="showComments({{$pornstar->id}})" v-bind:aria-selected="pornstarCommentsTabIsActive" aria-controls="comments-section">
-            <span class="fas fa-comments"></span>
+            <comment-icon class="tab-icon"></comment-icon>
             {{__('comments')}}
          </li>
          <li class="pornstar-profile-tab" id="rank-tab" v-bind:class="{'active-tab' : pornstarRankingTabIsActive}" v-on:click="changeTab" v-bind:aria-selected="pornstarRankingTabIsActive" aria-controls="ranking-section">
-            <span class="fas fa-level-up-alt"></span>
+            <podium-icon class="tab-icon"></podium-icon>
             {{__('ranking')}}
          </li>
       </ul>
@@ -85,7 +83,6 @@
             <div class="pornstar-current-rating">
                <span class="pornstar-votes-data">{{__('current_number_of_votes')}} : </span>
                <span class="pornstar-votes-data">{{$pornstar->amount_of_votes}}</span>
-               <span class="fas fa-vote-yea voter-icon"></span>
             </div>
             <div class="rate-container">
                <div class="pornstar-votes-data">{{__('votes_average')}} : {{$pornstar->votes_average}}</div>
@@ -99,7 +96,7 @@
          @endif
          @if(Auth::check())
          <div class="voting-all">
-            <span class="fas fa-person-booth voting-person-icon"></span>
+            <box-voting-icon class="voting-icon"></box-voting-icon>
             <div class="pornstar-votes-data">{{__('your_rate')}}</div>
             <div class="user-vote-element">
                <star-rating v-bind:rated-element-id="{{$pornstar->id}}" v-on:selected="ratePornstar" @if($pornstar->has_been_rated_by_current_user)
@@ -111,7 +108,8 @@
          </div>
          @else
          <div class="unauthenticated-users-info">
-            {{__('you_have_to_be_loged_in_to_vote')}} <span class="fas fa-user-lock"></span>
+            {{__('you_have_to_be_loged_in_to_vote')}} 
+            <stop-hand-icon class="authenticated-users-only-icon"></stop-hand-icon>
          </div>
          @endif
       </section>
@@ -121,7 +119,6 @@
          </relative-shadow-container>
          <accept-button v-show="!showCommentPanel" v-on:click.native="showCommentForm">
             {{__('publish_comment')}}
-            <span class="fas fa-comment comment-icon"></span>
          </accept-button>
          <div v-bind:class="{'opened-show-on-demand-container' : showCommentPanel}" class="hide-content-show-on-demand-container">
             <comment-box v-on:send="saveComment" @if(Auth::check()) v-bind:authenticated-user="true" authenticated-user-nickname="{{Auth::user()->login}}" @if(Auth::user()->has_avatar)

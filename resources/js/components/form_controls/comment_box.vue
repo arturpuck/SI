@@ -8,11 +8,8 @@
       >
       </user-preview>
       <button v-on:click="send" class="add-button">
-        <span
-          v-text="translator.translate('add')"
-          class="add-button-description"
-        ></span>
-        <span class="fas add-comment-decoration fa-plus-circle"></span>
+        <span v-text="translator.translate('add')" class="add-button-description"></span>
+        <add-plus-icon class="add-comment-decoration"></add-plus-icon>
       </button>
     </div>
     <label v-if="!authenticatedUser" class="user-nickname-label">
@@ -29,11 +26,8 @@
         class="unauthenticated-user-nickname"
       />
       <button v-on:click="send" class="add-button">
-        <span
-          v-text="translator.translate('add')"
-          class="add-button-description"
-        ></span>
-        <span class="fas add-comment-decoration fa-plus-circle"></span>
+        <span v-text="translator.translate('add')" class="add-button-description"></span>
+        <add-plus-icon class="add-comment-decoration"></add-plus-icon>
       </button>
     </label>
     <div class="comment-background">
@@ -62,8 +56,9 @@ import Translator from "@jsmodules/translator.js";
 import UserPreview from "@jscomponents/user/user_preview.vue";
 import AvatarIcon from "@svgicon/avatar_icon.vue";
 import Comment from "@interfaces/Comment";
+import AddPlusIcon from "@svgicon/add_plus_icon.vue";
 
-@Component({ components: { UserPreview, AvatarIcon } })
+@Component({ components: { UserPreview, AvatarIcon, AddPlusIcon } })
 export default class CommentBox extends Vue {
   @Prop({
     type: Boolean,
@@ -178,6 +173,9 @@ export default class CommentBox extends Vue {
 
 .add-comment-decoration {
   margin: 0 4px;
+  width: 1em;
+  height: auto;
+  fill: white;
 }
 
 .add-button {

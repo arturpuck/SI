@@ -96,9 +96,11 @@
     color: silver;
 }
 
-.decoration-icon {
+.info-decoration-icon {
     @include responsive-icon();
     vertical-align: middle;
+    fill:#ec1515;
+    height:auto;
 }
 
 #app .select_container {

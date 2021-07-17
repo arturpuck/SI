@@ -6,8 +6,11 @@ $imageFolder : user-settings;
 @include background-image(chick-in-bar,1);
 
 .information-icon{
-    color:#ef0244;
-    @include responsive-font(1.7vw,24px,"");
+    fill:#ef0244;
+    width:2em;
+    height:auto;
+    display:block;
+    margin:0 auto;
 }
 
 .user-settings-panel{
@@ -48,6 +51,10 @@ $imageFolder : user-settings;
 
 .tab-icon{
     margin:0 2px;
+    width:1em;
+    height:auto;
+    fill:white;
+    vertical-align: text-bottom;
 }
 
 .first-tab{
@@ -55,8 +62,6 @@ $imageFolder : user-settings;
 }
 
 .user-settings{
-    border: 3px solid #242229;
-    border-radius: 0 0 8px 8px;
     padding-bottom:10px;
 }
 

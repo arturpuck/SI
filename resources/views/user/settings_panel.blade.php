@@ -3,15 +3,15 @@
        <nav class="user-setting-tabs">
            <ul role="tabpanel" class="user-settings-tab-list">
                <li role="tab" v-bind:aria-selected="basicUserDataTabIsActive" aria-controls="basic-data-panel" id="basicUserDataTab" v-on:click="showApropriateContent" v-bind:class="{'active-tab' : basicUserDataTabIsActive}" class="user-settings-tab first-tab">
-                   <span class="fas fa-user-edit tab-icon"></span>
+                   <edit-pen-icon class="tab-icon"></edit-pen-icon>
                    {{__('data')}}
                 </li>
                <li role="tab" v-bind:aria-selected="avatarTabIsActive" aria-controls="avatar-panel" id="avatarTab" v-on:click="showApropriateContent" v-bind:class="{'active-tab' : avatarTabIsActive}" class="user-settings-tab">
-                  <span class="fas fa-image tab-icon"></span>
+                  <image-photography-icon class="tab-icon"></image-photography-icon>
                   {{__('avatar')}}
                 </li>
                 <li role="tab" v-bind:aria-selected="passwordTabIsActive" aria-controls="password-panel" id="passwordTab" v-on:click="showApropriateContent" v-bind:class="{'active-tab' : passwordTabIsActive}" class="user-settings-tab">
-                  <span class="fas fa-key tab-icon"></span>
+                  <key-icon class="tab-icon"></key-icon>
                   {{__('password')}}
                 </li>
                 <li role="tab" v-bind:aria-selected="otherTabIsActive" aria-controls="other-panel" id="otherTab" v-on:click="showApropriateContent" v-bind:class="{'active-tab' : otherTabIsActive}" class="user-settings-tab">
@@ -32,11 +32,10 @@
             <div v-show="verificationInProgress" class="shadow-container">
                 <expect-circle v-bind:label="currentExpectDecorationLabel"></expect-circle>
             </div>
+            <info-circle-icon class="information-icon"></info-circle-icon>
+                
             <form id="basic-data-panel" v-show="basicUserDataTabIsActive" class="basic-user-data-settings user-settings">
                 <div class="information-for-user">
-                    <div>
-                       <span class="fas fa-info-circle information-icon"></span>
-                    </div>
                     {{__('password_is_required_for_any_changes')}}
                 </div>
                 <text-input-combo
@@ -98,9 +97,6 @@
             <form id="avatar-panel" action="{{route('auth.user.upload.avatar')}}" method="POST" v-show="avatarTabIsActive" enctype="multipart/form-data" class="avatar-settings user-settings">
                 @method('PUT')    
                 @csrf
-                <div class="icon-information-container">
-                    <span class="fas fa-info-circle information-icon"></span>
-                </div>
                 <p class="information-for-user">
                     {{__('avatar_requirements_information')}}
                 </p>
@@ -130,9 +126,6 @@
                 <submit-button>{{__('accept_avatar')}}</submit-button>
             </form>
             <form id="password-panel" v-show="passwordTabIsActive" class="user-settings">
-                <div class="icon-information-container">
-                   <span class="fas fa-info-circle information-icon"></span>
-                </div>
                 <p class="information-for-user">
                     {{__('edit_password_notification')}}
                </p>
@@ -163,9 +156,6 @@
                 <accept-button v-on:click.native="tryToChangeUserPassword">{{__('change_password')}}</accept-button>
             </form>
             <form id="other-panel" v-show="otherTabIsActive" class="user-settings other-settings">
-               <div class="icon-information-container">
-                   <span class="fas fa-info-circle information-icon"></span>
-               </div>
                <p class="information-for-user">
                     {{__('other_settings_information')}}
                </p>

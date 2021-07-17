@@ -26,6 +26,7 @@ import ImprovementPerformanceIcon from '@svgicon/improvement_performance_icon.vu
 import FingerPointIcon from '@svgicon/finger_point_icon.vue';
 import SideBarVisibilityMixin from "@js/mixins/side_bar_visibility";
 import ShutdownIcon from "@svgicon/shutdown_icon.vue";
+import InfoCircleIcon from "@svgicon/info_circle_icon.vue";
 
 Vue.component('simple-labeled-select', SimpleLabeledSelect);
 Vue.component('labeled-checkbox', LabeledCheckBox);
@@ -43,6 +44,7 @@ Vue.component('arrow-down-icon', ArrowDownIcon);
 Vue.component('improvement-performance-icon', ImprovementPerformanceIcon);
 Vue.component('finger-point-icon', FingerPointIcon);
 Vue.component('shutdown-icon', ShutdownIcon);
+Vue.component('info-circle-icon', InfoCircleIcon);
 
 new Vue({
   el: '#app',

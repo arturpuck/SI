@@ -16,6 +16,11 @@ import CommentBody from '@jscomponents/form_controls/comment_body.vue';
 import LinksBox from '@jscomponents/links_box.vue';
 import MoviePreviewComplete from '@jscomponents/movies/movie_preview_complete.vue';
 import CommentValidator from '@jsmodules/validators/comment_validator';
+import CameraIcon from "@svgicon/camera_icon.vue";
+import CommentIcon from "@svgicon/comment_icon.vue";
+import PodiumIcon from "@svgicon/podium_icon.vue";
+import StopHandIcon from "@svgicon/stop_hand_icon.vue";
+import BoxVotingIcon from "@svgicon/box_voting_icon.vue";
 
 const Vue = VueConstructor.build();
 Vue.component('movie-box', MovieBox);
@@ -31,6 +36,11 @@ Vue.component('comment-box', CommentBox);
 Vue.component('comment-body', CommentBody);
 Vue.component('links-box', LinksBox);
 Vue.component('movie-preview-complete', MoviePreviewComplete);
+Vue.component('camera-icon', CameraIcon);
+Vue.component('comment-icon', CommentIcon);
+Vue.component('podium-icon', PodiumIcon);
+Vue.component("stop-hand-icon", StopHandIcon);
+Vue.component('box-voting-icon', BoxVotingIcon);
 
 
 new Vue({

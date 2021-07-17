@@ -289,12 +289,14 @@
     .panel-group-legend {
       font-size: 25px; } }
 
-.decoration-icon {
+.info-decoration-icon {
   width: 1.8vw;
   margin: 0 3px;
-  vertical-align: middle; }
+  vertical-align: middle;
+  fill: #ec1515;
+  height: auto; }
   @media (max-width: 1200px) {
-    .decoration-icon {
+    .info-decoration-icon {
       width: 25px; } }
 
 #app .select_container {

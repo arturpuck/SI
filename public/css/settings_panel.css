@@ -151,11 +151,11 @@
     background-image: url("/images/decoration/user-settings/background-images/compressed/chick-in-bar-m-0-min.jpg"); } }
 
 .information-icon {
-  color: #ef0244;
-  font-size: 1.7vw; }
-  @media (max-width: 1200px) {
-    .information-icon {
-      font-size: 24px; } }
+  fill: #ef0244;
+  width: 2em;
+  height: auto;
+  display: block;
+  margin: 0 auto; }
 
 .user-settings-panel {
   background: rgba(0, 0, 0, 0.9);
@@ -194,14 +194,16 @@
   color: white; }
 
 .tab-icon {
-  margin: 0 2px; }
+  margin: 0 2px;
+  width: 1em;
+  height: auto;
+  fill: white;
+  vertical-align: text-bottom; }
 
 .first-tab {
   margin-left: 5%; }
 
 .user-settings {
-  border: 3px solid #242229;
-  border-radius: 0 0 8px 8px;
   padding-bottom: 10px; }
 
 .arrows-container {

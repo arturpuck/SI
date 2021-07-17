@@ -25,7 +25,7 @@ new Vue({
   methods: {
 
     showCategories(){
-      this.$root.$emit('showCategories');
+      this.$root.$emit('showMoviesCategories');
     }
 
   }

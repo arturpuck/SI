@@ -3,6 +3,14 @@
 @import '~sasscomponent/hide_content_show_on_demand_container';
 @import '~sass/nice_scrollbar';
 
+.authenticated-users-only-icon{
+    width: 2em;
+    height: auto;
+    fill: red;
+    display: block;
+    margin: 10px auto 0;
+}
+
 .pornstar-profile-tabpanel{
     list-style-type: none;
     margin:0;
@@ -10,6 +18,13 @@
     display:flex;
     flex-wrap:nowrap;
     background:#3e3e3e;
+}
+
+.tab-icon{
+    width:1em;
+    height:auto;
+    fill:#df0f67;
+    vertical-align: middle;
 }
 
 .pornstar-profile-tab{
@@ -77,16 +92,17 @@
     justify-content: center;
 }
 
-.voting-person-icon{
-    color:white;
-    @include responsive-font(5.5vw,45px);
+.voting-icon{
+    fill:#31db18;
+    width: 5em;
+    margin:0 auto;
+    height:auto;
     display:block;
     padding:6px;
 }
 
 .voting-all{
     text-align:center;
-    background:#9c1a31;
     padding: 5px;
 }
 

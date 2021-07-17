@@ -368,6 +368,10 @@ export default {
       cookie_notification_header: "Ta strona wykorzystuje pliki cookie",
       cookie_notification_body : `Poprzez dalsze korzystanie z portalu lub naciśnięcie przycisku "Akceptuję" wyrażasz zgodę na przechowywanie plików cookie na Twej maszynie`,
       accept_button_caption : "Akceptuję - zamknij",
+      show_content_side_bar_title : "Rozwiń nawigację strony dla wersji mobilnej",
+      show_content_side_bar_caption : "Nawigacja",
+      show_authenticated_user_sidebar_title : "Rozwiń menu użytkownika, ustawienia profilu, wylogowanie itp.",
+      show_authenticated_user_sidebar_caption : "Profil",
       packages: {
          content_sidebar: {
             hide_side_bar_title: "Schowaj boczne menu",
@@ -378,8 +382,8 @@ export default {
             latest_porn_movies_title: "Najnowsze filmy porno",
             latest_porn_movies_caption: "Najnowsze",
             the_most_popular_porn_movies_title: "Najpopularniejsze filmy porno",
-            the_most_popular_porn_movies_caption: "Najpopularniejsze",
-            advanced_search_caption: "Szukanie zaawansowane",
+            the_most_popular_porn_movies_caption: "Najbardziej popularne",
+            advanced_search_caption: "Szukanie precyzyjne",
             advanced_search_title: "Użyj wyszukiwarki do precyzyjnego odnajdywania filmów porno",
             movies_caption: "Filmy",
             pornstars: "Gwiazdy porno"
@@ -387,7 +391,7 @@ export default {
 
          authenticated_user_sidebar: {
             hide_side_bar_title: "Schowaj menu użytkownika",
-            hide_authenticated_user_sidebar_caption: "Schowaj menu",
+            hide_authenticated_user_sidebar_caption: "Schowaj",
             show_user_profile_settings_title: "Ustawienia profilu : hasło, avatar, dane personalne",
             show_user_profile_settings_caption: "Ustawienia profilu",
             mailbox_caption: "Wiadomości",

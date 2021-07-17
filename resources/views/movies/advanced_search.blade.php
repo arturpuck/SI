@@ -21,7 +21,7 @@
       <fieldset class="panel-group">
          <legend class="panel-group-legend">
             {{__('information')}}
-            <img src="/images/decoration/icons/advanced_search/info-circle.svg" alt="" class="decoration-icon">
+            <info-circle-icon class="info-decoration-icon"></info-circle-icon>
          </legend>
          <p class="information-content">{{__('search_panel_information')}}</p>
          <p class="information-content">{{__('search_panel_information_detailed')}}</p>

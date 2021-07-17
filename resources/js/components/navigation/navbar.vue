@@ -4,19 +4,18 @@
       <ul class="navigation-list">
         <li
           v-bind:aria-hidden="!contentSideBarIsVisible"
-          v-on:click="showContentSideBar"
           class="navigation-element-main contenerized-navbar-element"
         >
-          <button
-            title="rozwiń menu boczne"
-            v-bind:class="{ 'visible-sidebar-button': !contentSideBarIsVisible }"
-            class="show-sidebar-button show-content-side-bar-button"
-          >
-            <span
-              class="fas fa-angle-down show-sidebar-button-decoration show-sidebar-button-element"
-            ></span>
-            <span class="phantom-text">rozwiń menu boczne</span>
-          </button>
+          <roll-down-button
+            v-bind:class="{
+              'visible-sidebar-button': !contentSideBarIsVisible,
+              'hidden-sidebar-button': contentSideBarIsVisible,
+            }"
+            v-on:click.native="showContentSideBar"
+            v-bind:caption="translations['showContentSideBarButtonCaption']"
+            v-bind:title="translations['showContentSideBarButtonTitle']"
+            class="show-side-bar-button--left"
+          ></roll-down-button>
         </li>
         <li class="navigation-element-main">
           <a title="Strona główna" href="/" class="logo-link">
@@ -62,25 +61,29 @@
         </li>
         <li
           v-if="userIsAuthenticated"
-          v-on:click="toggleAuthenticatedUserSideBar"
           class="navigation-element-main navbar-element-user"
         >
-          <phantom-button
-            class="show-user-sidebar-button"
-            label="rozwiń menu użytkownika"
-          >
-            <avatar-icon
-              v-if="!avatarFileName"
-              class="navbar-icon navbar-icon-outer"
-            ></avatar-icon>
-            <span v-text="userName" class="user-nick"></span>
-            <img
-              v-if="avatarFileName"
-              v-bind:src="avatarFilePath"
-              v-bind:alt="userAvatarDescription"
-              class="user-avatar"
-            />
-          </phantom-button>
+          <avatar-icon
+            v-if="!avatarFileName"
+            class="navbar-icon navbar-icon-outer"
+          ></avatar-icon>
+          <span v-text="userName" class="user-nick"></span>
+          <img
+            v-if="avatarFileName"
+            v-bind:src="avatarFilePath"
+            v-bind:alt="userAvatarDescription"
+            class="user-avatar"
+          />
+          <roll-down-button
+            v-bind:class="{
+              'visible-sidebar-button': !authenticatedUserSideBarIsVisible,
+              'hidden-sidebar-button': authenticatedUserSideBarIsVisible,
+            }"
+            v-on:click.native="toggleAuthenticatedUserSideBar"
+            v-bind:caption="translations['showAuthenticatedUserSidebarCaption']"
+            v-bind:title="translations['showAuthenticatedUserSideBarTitle']"
+            class="show-side-bar-button--right"
+          ></roll-down-button>
         </li>
       </ul>
       <ul
@@ -237,6 +240,8 @@ import SignupIcon from "@svgicon/signup_icon";
 import EnterIcon from "@svgicon/enter_icon";
 import AvatarIcon from "@svgicon/avatar_icon";
 import SideBarVisibilityMixin from "@js/mixins/side_bar_visibility";
+import RollDownButton from "@jscomponents/form_controls/roll_down_button";
+import Translations from "@jsmodules/translations/components/navbar";
 
 export default {
   name: "navbar",
@@ -275,6 +280,7 @@ export default {
       authenticatedUserSideBarIsVisible: true,
       contentSideBarIsVisible: true,
       showCategories: false,
+      translations: Translations,
     };
   },
 
@@ -291,6 +297,7 @@ export default {
     SignupIcon,
     EnterIcon,
     AvatarIcon,
+    RollDownButton,
   },
 
   methods: {
@@ -411,6 +418,7 @@ export default {
     this.csrfToken = document.getElementById("csrf-token").content;
     this.$root.$on("hideSideBar", this.hideAuthenticatedUserSideBar);
     this.$root.$on("hide-content-bar", this.hideContentSideBar);
+    this.$root.$on("showMoviesCategories", this.showCategoriesList);
   },
 };
 </script>
@@ -420,6 +428,18 @@ export default {
 @import "~sass/components/login_panel";
 @import "~sass/components/navbar/show_side_bar_button";
 @import "~sass/components/navbar/top_menu";
+
+.show-side-bar-button {
+  &--left {
+    @include show-sidebar-button();
+    left: 0;
+  }
+
+  &--right {
+    @include show-sidebar-button();
+    right: 0;
+  }
+}
 
 .remember-me-checkbox {
   color: white;
@@ -479,7 +499,7 @@ export default {
 }
 
 @media (min-width: 541px) {
-  .show-content-side-bar-button {
+  .show-side-bar-button--left {
     display: none;
   }
 }

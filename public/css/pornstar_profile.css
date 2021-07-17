@@ -215,7 +215,7 @@
   padding: 5px; }
 
 .pornstar-data-key {
-  color: white;
+  color: #4ddf0b;
   font-weight: bold; }
 
 .pornstar-data-value {
@@ -296,6 +296,13 @@
 .opened-show-on-demand-container {
   max-height: 1000px; }
 
+.authenticated-users-only-icon {
+  width: 2em;
+  height: auto;
+  fill: red;
+  display: block;
+  margin: 10px auto 0; }
+
 .pornstar-profile-tabpanel {
   list-style-type: none;
   margin: 0;
@@ -303,6 +310,12 @@
   display: flex;
   flex-wrap: nowrap;
   background: #3e3e3e; }
+
+.tab-icon {
+  width: 1em;
+  height: auto;
+  fill: #df0f67;
+  vertical-align: middle; }
 
 .pornstar-profile-tab {
   font-size: 1.4vw;
@@ -374,19 +387,16 @@
   align-items: center;
   justify-content: center; }
 
-.voting-person-icon {
-  color: white;
-  font-size: 5.5vw;
-  font-family: "Exo 2", sans-serif;
+.voting-icon {
+  fill: #31db18;
+  width: 5em;
+  margin: 0 auto;
+  height: auto;
   display: block;
   padding: 6px; }
-  @media (max-width: 1200px) {
-    .voting-person-icon {
-      font-size: 45px; } }
 
 .voting-all {
   text-align: center;
-  background: #9c1a31;
   padding: 5px; }
 
 #app .textarea-combo-message {
