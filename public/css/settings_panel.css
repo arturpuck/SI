@@ -19,8 +19,10 @@
   .contact-us-link:hover {
     text-decoration: underline; }
 
-.empire-icon {
-  color: red; }
+.footer-icon {
+  fill: #eb091c;
+  width: 1em;
+  height: auto; }
 
 .icon-error-close {
   display: inline-block;
@@ -152,10 +154,10 @@
 
 .information-icon {
   fill: #ef0244;
-  width: 2em;
+  width: 1.7em;
   height: auto;
   display: block;
-  margin: 0 auto; }
+  margin: 5px auto; }
 
 .user-settings-panel {
   background: rgba(0, 0, 0, 0.9);
@@ -229,21 +231,21 @@
 .avatar-settings {
   text-align: center; }
 
-.undefined-avatar-frame {
-  background: #b1b1ca;
+.avatar-image {
+  border-radius: 8px;
+  display: block;
+  margin: 10px auto;
+  width: 128px;
+  height: 128px; }
+
+.undefined-avatar {
   border-radius: 8px;
   border: 2px solid black;
   display: block;
   margin: 10px auto;
-  text-align: center;
   width: 128px;
   height: 128px;
-  padding: 7px;
-  background-size: cover;
-  background-position: center; }
-
-.undefined-avatar {
-  font-size: 100px; }
+  fill: #eb091c; }
 
 .information-for-user {
   padding: 5px;
@@ -264,9 +266,9 @@
   background: #242229; }
 
 .choose-avatar-button {
-  display: block;
+  display: flex;
+  justify-content: space-between;
   width: 95%;
-  text-align: center;
   font-size: 1.2vw;
   font-family: "Exo 2", sans-serif;
   border-radius: 5px;
@@ -302,14 +304,21 @@
     .avatar-file-name {
       font-size: 13px; } }
 
-.disc-icon, .trash-icon {
-  float: right; }
+.delete-avatar-icon {
+  width: 1.5em;
+  height: auto;
+  fill: white; }
+
+.upload-from-disc-icon {
+  fill: #040404;
+  width: 1.5em;
+  height: auto; }
 
 .delete-avatar-button {
   background: linear-gradient(#ff0707, #520d02);
   color: white;
-  display: block;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
   padding: 5px;
   border-radius: 5px;
   margin: 0 auto 5px auto;

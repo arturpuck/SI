@@ -13,6 +13,9 @@ import EditPenIcon from "@svgicon/edit_pen_icon.vue";
 import ImagePhotographyIcon from "@svgicon/image_photography_icon.vue";
 import KeyIcon from "@svgicon/key_icon.vue";
 import InfoCircleIcon from "@svgicon/info_circle_icon.vue";
+import AvatarIcon from "@svgicon/avatar_icon.vue";
+import ServerStorageIcon from "@svgicon/server_storage_icon.vue";
+import BackspaceEraseIcon from "@svgicon/backspace_erase_icon.vue";
 
 const Vue = VueConstructor.build();
 
@@ -31,6 +34,9 @@ Vue.component('edit-pen-icon', EditPenIcon);
 Vue.component('image-photography-icon', ImagePhotographyIcon);
 Vue.component('key-icon', KeyIcon);
 Vue.component('info-circle-icon', InfoCircleIcon);
+Vue.component('avatar-icon', AvatarIcon);
+Vue.component('server-storage-icon', ServerStorageIcon);
+Vue.component('backspace-erase-icon', BackspaceEraseIcon);
 
 new Vue({
     el: '#app',
@@ -135,8 +141,9 @@ new Vue({
          }  
       },
 
-        showApropriateContent(event){
-            this.selectedTab = event.target.id || event.target.parentElement.id;
+        showApropriateContent(selectedTab){
+            this.selectedTab = selectedTab;
+            
         },
 
         validateSelect(sender){
@@ -528,11 +535,6 @@ new Vue({
    mounted(){
     this.csrfToken = document.getElementById("csrf-token").content;
     Object.entries(this.basicUserDataEditableFields).forEach(([key, value]) => this.basicUserDataEditableFields[key].initialValue = this.$refs[key].initialValue);
-    const avatarFrame = this.$refs.avatar_frame;
-
-   if(avatarFrame.hasAttribute('data-initial-image')){
-       this.avatarFile = avatarFrame.getAttribute('data-initial-image');
-   }
 
  }
    

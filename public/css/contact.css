@@ -19,8 +19,10 @@
   .contact-us-link:hover {
     text-decoration: underline; }
 
-.empire-icon {
-  color: red; }
+.footer-icon {
+  fill: #eb091c;
+  width: 1em;
+  height: auto; }
 
 .icon-error-close {
   display: inline-block;

@@ -91,7 +91,7 @@ export default {
       email_has_already_been_taken: "Email jest już zajęty",
       email_seems_to_be_incorrect: "Email wygląda na nieprawidłowy",
       you_are_under_18: "Nie ukończyłeś 18 lat",
-      avatar_has_been_deleted_successfully: "Pomyślnie usunięto avatar",
+      avatar_has_been_deleted_successfully: "Pomyślnie usunięto avatar, zmiany będą widoczne po odświeżeniu strony",
       the_user_has_no_avatar: "Użytkownik nie posiada avataru",
       password_change_attempt: "Próba zmiany hasła",
       password_changed_successfully: "Pomyślnie zmieniono hasło",

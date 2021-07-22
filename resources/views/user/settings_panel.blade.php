@@ -2,19 +2,19 @@
     <main class="user-settings-panel">
        <nav class="user-setting-tabs">
            <ul role="tabpanel" class="user-settings-tab-list">
-               <li role="tab" v-bind:aria-selected="basicUserDataTabIsActive" aria-controls="basic-data-panel" id="basicUserDataTab" v-on:click="showApropriateContent" v-bind:class="{'active-tab' : basicUserDataTabIsActive}" class="user-settings-tab first-tab">
+               <li role="tab" v-bind:aria-selected="basicUserDataTabIsActive" aria-controls="basic-data-panel" v-on:click="showApropriateContent('basicUserDataTab')" v-bind:class="{'active-tab' : basicUserDataTabIsActive}" class="user-settings-tab first-tab">
                    <edit-pen-icon class="tab-icon"></edit-pen-icon>
                    {{__('data')}}
                 </li>
-               <li role="tab" v-bind:aria-selected="avatarTabIsActive" aria-controls="avatar-panel" id="avatarTab" v-on:click="showApropriateContent" v-bind:class="{'active-tab' : avatarTabIsActive}" class="user-settings-tab">
+               <li role="tab" v-bind:aria-selected="avatarTabIsActive" aria-controls="avatar-panel"  v-on:click="showApropriateContent('avatarTab')" v-bind:class="{'active-tab' : avatarTabIsActive}" class="user-settings-tab">
                   <image-photography-icon class="tab-icon"></image-photography-icon>
                   {{__('avatar')}}
                 </li>
-                <li role="tab" v-bind:aria-selected="passwordTabIsActive" aria-controls="password-panel" id="passwordTab" v-on:click="showApropriateContent" v-bind:class="{'active-tab' : passwordTabIsActive}" class="user-settings-tab">
+                <li role="tab" v-bind:aria-selected="passwordTabIsActive" aria-controls="password-panel" v-on:click="showApropriateContent('passwordTab')" v-bind:class="{'active-tab' : passwordTabIsActive}" class="user-settings-tab">
                   <key-icon class="tab-icon"></key-icon>
                   {{__('password')}}
                 </li>
-                <li role="tab" v-bind:aria-selected="otherTabIsActive" aria-controls="other-panel" id="otherTab" v-on:click="showApropriateContent" v-bind:class="{'active-tab' : otherTabIsActive}" class="user-settings-tab">
+                <li role="tab" v-bind:aria-selected="otherTabIsActive" aria-controls="other-panel"  v-on:click="showApropriateContent('otherTab')" v-bind:class="{'active-tab' : otherTabIsActive}" class="user-settings-tab">
                   <span class="fas fa-cogs tab-icon"></span>
                   {{__('other')}}
                 </li>
@@ -108,19 +108,22 @@
                         {{__('no_avatar_has_been_choosen')}}
                     @endif
                 </div>
-                <div ref="avatar_frame" @if(Auth::user()->has_avatar) data-initial-image="{{Auth::user()->avatar_file_path}}" @endif  v-bind:style="{backgroundImage : avatarFileBackgroundImageAdress}" class="undefined-avatar-frame avatar">
-                    <span v-bind:class="{'fas' : !avatarFile, 'fa-user' : !avatarFile}" class="undefined-avatar"></span>
-                </div>
+                @if(Auth::user()->has_avatar)
+                     <img src="{{Auth::user()->avatar_file_path}}" class="avatar-image" alt="{{__('your_avatar')}}">
+                @else
+                       <avatar-icon class="undefined-avatar"></avatar-icon>
+                @endif
+                
                 @if(Auth::user()->has_avatar)
                 <button v-on:click="deleteAvatar" v-show="showDeleteAvatarButton" class="delete-avatar-button" type="button">
                     {{__('delete_my_avatar')}}
-                    <span class="fas fa-trash-alt trash-icon"></span>
+                    <backspace-erase-icon class="delete-avatar-icon"></trash-can-icon>
                 </button>
                 @endif
                 <label  class="choose-avatar-button">
                     {{__('choose_avatar')}}
                     <input type="file" v-on:change="processImageFromHardDrive" name="avatar_from_hard_drive" class="avatar-file">
-                    <span class="fas fa-hdd disc-icon"></span>
+                    <server-storage-icon class="upload-from-disc-icon"></server-storage-icon>
                 </label>
                 <div v-text="avatarFileName" class="avatar-file-name"></div>
                 <submit-button>{{__('accept_avatar')}}</submit-button>

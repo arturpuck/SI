@@ -8,7 +8,7 @@
     />
     <div class="date-picker-description">
       <slot></slot>
-      <span v-if="isDisabled" class="fas fa-lock disabled-input-icon"></span>
+      <padlock-icon v-if="isDisabled" class="disabled-input-icon"></padlock-icon>
     </div>
     <div
       v-bind:class="{
@@ -89,9 +89,14 @@
 
 <script>
 import MonthsInDifferentLanguages from "@jsmodules/months_in_different_languages.js";
+import PadlockIcon from "@svgicon/padlock_icon.vue";
 
 export default {
   name: "date-picker",
+
+  components: {
+    PadlockIcon,
+  },
 
   methods: {
     adjustDays() {
@@ -340,8 +345,9 @@ export default {
   transform: translateY(-50%);
   right: 1%;
   position: absolute;
-  color: red;
-  @include responsive-font(1.3vw, 18px, "");
+  fill: red;
+  width: 1em;
+  height: auto;
 }
 
 .date-picker-description {
