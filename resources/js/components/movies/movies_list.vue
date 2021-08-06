@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Options, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator.js";
 import MovieBox from "@jscomponents/movies/movie_box.vue";
 import PagesList from "@jscomponents/pages_list.vue";
@@ -28,8 +28,12 @@ import { MoviesCurrentPage } from "@interfaces/movies/MoviesCurrentPage.ts";
 import { BasicPornstarData } from "@interfaces/pornstars/BasicPornstarData.ts";
 import PagesListBasicData from "@interfaces/pages_list_basic_data.ts";
 import MoviePreviewComplete from "@jscomponents/movies/movie_preview_complete.vue";
+import EventBus from "@jsmodules/event_bus.js";
 
-@Component({ components: { MovieBox, PagesList, MoviePreviewComplete } })
+@Options({
+  components: { MovieBox, PagesList, MoviePreviewComplete },
+  name: "MoviesList",
+})
 export default class MoviesList extends Vue {
   @Prop({
     type: Object,
@@ -64,15 +68,13 @@ export default class MoviesList extends Vue {
       this.totalMovies = this.initialTotalMovies;
     }
 
-    this.$root.$on("updateMoviesList", this.updateMoviesList);
+    EventBus.$on("updateMoviesList", this.updateMoviesList);
   }
 
   updateMoviesList(response: MoviesCurrentPage): void {
     this.totalMovies = response.moviesData.totalMovies;
     this.movies = response.moviesData.movies;
-    const amountOfSubPages: number = Math.ceil(
-      this.totalMovies / this.moviesPerPage
-    );
+    const amountOfSubPages: number = Math.ceil(this.totalMovies / this.moviesPerPage);
     this.updatePagesList({
       pagesNumber: amountOfSubPages,
       currentPage: response.currentPage,
@@ -80,7 +82,7 @@ export default class MoviesList extends Vue {
   }
 
   updatePagesList(data: PagesListBasicData) {
-    this.$root.$emit("updatePagesList", data);
+    EventBus.$emit("updatePagesList", data);
   }
 
   extractPornstars(pornstarsList: BasicPornstarData[]): string[] | string {

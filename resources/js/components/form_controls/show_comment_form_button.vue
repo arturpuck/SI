@@ -1,18 +1,16 @@
 <template>
   <button type="button" class="show-comment-form-button">
     <span v-text="caption" class="show-comment-form-button__caption"></span>
-    <writing-comment-icon
-      class="show-comment-form-button__icon"
-    ></writing-comment-icon>
+    <writing-comment-icon class="show-comment-form-button__icon"></writing-comment-icon>
   </button>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Options } from "vue-property-decorator";
 import WritingCommentIcon from "@svgicon/writing_comment_icon.vue";
 import Translator from "@jsmodules/translator.js";
 
-@Component({ components: { WritingCommentIcon } })
+@Options({ name: "ShowCommentFormButton", components: { WritingCommentIcon } })
 export default class ShowCommentFormButton extends Vue {
   private caption = Translator.translate("publish_comment");
 }

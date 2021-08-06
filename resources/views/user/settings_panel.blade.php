@@ -20,10 +20,10 @@
                 </li>
            </ul>
            <div class="arrows-container">
-               <phantom-button v-on:click.native="previousTab" label="{{__('previous_tab')}}">
+               <phantom-button v-on:click="previousTab" label="{{__('previous_tab')}}">
                   <span class="fas fa-arrow-left arrow-icon"></span>
                </phantom-button>
-               <phantom-button v-on:click.native="nextTab" label="{{__('next_tab')}}">
+               <phantom-button v-on:click="nextTab" label="{{__('next_tab')}}">
                   <span class="fas fa-arrow-right arrow-icon"></span>
                </phantom-button>
            </div>
@@ -40,7 +40,7 @@
                 </div>
                 <text-input-combo
                     initial-value="{{Auth::user()->login}}"
-                    v-on:click.native="notifyUserAboutLockedInput"
+                    v-on:click="notifyUserAboutLockedInput"
                     name="login"
                     v-bind:is-disabled="true"
                     input-type="text">
@@ -79,7 +79,7 @@
                 <date-picker
                     name="birth_date"
                     initial-value="{{Auth::user()->birth_date}}"
-                    v-on:click.native="notifyUserAboutLockedInput"
+                    v-on:click="notifyUserAboutLockedInput"
                     v-bind:is-disabled="true">
                     {{ucfirst(__('birth_date'))}}
                 </date-picker>
@@ -92,7 +92,7 @@
                     v-bind:error-message-box-available="true">
                     {{ucfirst(__('password'))}} : 
                 </text-input-combo>
-                <accept-button v-on:click.native="tryToEditUserData">{{__('save_data')}}</accept-button>
+                <accept-button v-on:click="tryToEditUserData">{{__('save_data')}}</accept-button>
             </form>
             <form id="avatar-panel" action="{{route('auth.user.upload.avatar')}}" method="POST" v-show="avatarTabIsActive" enctype="multipart/form-data" class="avatar-settings user-settings">
                 @method('PUT')    
@@ -156,7 +156,7 @@
                  v-bind:on-blur-callback="validatePassword">
                  {{__('new_password_confirmation')}} : 
                 </text-input-combo>
-                <accept-button v-on:click.native="tryToChangeUserPassword">{{__('change_password')}}</accept-button>
+                <accept-button v-on:click="tryToChangeUserPassword">{{__('change_password')}}</accept-button>
             </form>
             <form id="other-panel" v-show="otherTabIsActive" class="user-settings other-settings">
                <p class="information-for-user">
@@ -177,7 +177,7 @@
                  v-bind:on-blur-callback="validatePassword">
                  {{__('password')}} : 
                 </text-input-combo>
-                <accept-button v-on:click.native="tryToChangeOtherSettings">{{__('save_data')}}</accept-button>
+                <accept-button v-on:click="tryToChangeOtherSettings">{{__('save_data')}}</accept-button>
             </form>
        </div>
     </main>

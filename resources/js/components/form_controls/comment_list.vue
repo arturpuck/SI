@@ -2,7 +2,7 @@
   <div>
     <show-comment-form-button
       v-show="!commentFormIsVisible"
-      v-on:click.native="showCommentForm"
+      v-on:click="showCommentForm"
       class="comment-form-button"
     ></show-comment-form-button>
     <comment-box
@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Options, Prop } from "vue-property-decorator";
 import CommentBody from "@jscomponents/form_controls/comment_body.vue";
 import Comment from "@interfaces/Comment";
 import PageListUpdate from "@interfaces/PageListUpdate";
@@ -43,9 +43,11 @@ import PagesList from "@jscomponents/pages_list.vue";
 import Translations from "@jsmodules/translations/comments_list";
 import ShowCommentFormButton from "@jscomponents/form_controls/show_comment_form_button.vue";
 import CommentBox from "@jscomponents/form_controls/comment_box.vue";
+import EventBus from "@jsmodules/event_bus.js";
 
-@Component({
+@Options({
   components: { ShowCommentFormButton, CommentBody, PagesList, CommentBox },
+  name: "CommentList",
 })
 export default class CommentList extends Vue {
   @Prop({
@@ -98,7 +100,7 @@ export default class CommentList extends Vue {
 
   mounted() {
     this.comments = this.initialComments;
-    this.$root.$on("updateComments", this.updateComments);
+    EventBus.$on("updateComments", this.updateComments);
     this.commentsPerPage = this.initialCommentsPerPage;
   }
 
@@ -118,7 +120,7 @@ export default class CommentList extends Vue {
       pagesNumber,
       currentPage: commentsUpdate.currentPage,
     };
-    this.$root.$emit(`updatePagesList${this.uniqueIdentifier}`, pagesListStatus);
+    EventBus.$emit(`updatePagesList${this.uniqueIdentifier}`, pagesListStatus);
   }
 
   calculateSubPagesNumber(totalComments: number, commentsPerPage: number): number {

@@ -15,11 +15,11 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Options, Prop } from "vue-property-decorator";
 import AvatarIcon from "@svgicon/avatar_icon.vue";
 import Translator from "@jsmodules/translator";
 
-@Component({ components: { AvatarIcon } })
+@Options({ name: "UserPreview", components: { AvatarIcon } })
 export default class UserPreview extends Vue {
   @Prop({
     type: String,

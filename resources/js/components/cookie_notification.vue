@@ -6,7 +6,7 @@
     ></header>
     <p v-text="translations['cookieNotificationBody']"></p>
     <accept-button
-      v-on:click.native="acceptCookies"
+      v-on:click="acceptCookies"
       class="cookies-notification__accept-button"
     >
       {{ translations["acceptButtonCaption"] }}</accept-button
@@ -15,11 +15,11 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Options } from "vue-property-decorator";
 import Translations from "@jsmodules/translations/components/cookie_notification";
 import AcceptButton from "@jscomponents/form_controls/accept_button.vue";
 
-@Component({ components: { AcceptButton } })
+@Options({ name: "CookieNotification", components: { AcceptButton } })
 export default class CookieNotification extends Vue {
   private translations = Translations;
   private showNotification = true;

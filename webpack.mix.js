@@ -55,7 +55,8 @@ mix.js('resources/js/mainpage.js', 'public/js').vue()
         '@jscomponents-form-controls': path.resolve('resources/js/components/form_controls'),
         '@interfaces': path.resolve('resources/js/interfaces'),
         '@svgicon': path.resolve('resources/js/components/decoration/icons/svg'),
-        '@config' : path.resolve('resources/js/config')
+        '@config' : path.resolve('resources/js/config'),
+        'vue' : '@vue/compat'
       },
       extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx", ".svg"]
     },
@@ -76,6 +77,18 @@ mix.js('resources/js/mainpage.js', 'public/js').vue()
             'vue-svg-loader',
           ],
         },
+
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader',
+          options: {
+            compilerOptions: {
+              compatConfig: {
+                MODE: 2
+              }
+            }
+          }
+        }
       ]
     }
   })

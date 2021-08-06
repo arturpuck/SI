@@ -35,8 +35,8 @@
 </style>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Options, Prop } from "vue-property-decorator";
 
-@Component
+@Options({ name: "TelevisionIcon" })
 export default class TelevisionIcon extends Vue {}
 </script>

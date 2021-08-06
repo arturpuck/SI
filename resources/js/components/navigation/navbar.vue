@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav v-on-clickaway="handleClickoutsideNavbar" class="page-navigation">
+    <nav v-click-away="handleClickoutsideNavbar" class="page-navigation">
       <ul class="navigation-list">
         <li
           v-bind:aria-hidden="!contentSideBarIsVisible"
@@ -11,7 +11,7 @@
               'visible-sidebar-button': !contentSideBarIsVisible,
               'hidden-sidebar-button': contentSideBarIsVisible,
             }"
-            v-on:click.native="showContentSideBar"
+            v-on:click="showContentSideBar"
             v-bind:caption="translations['showContentSideBarButtonCaption']"
             v-bind:title="translations['showContentSideBarButtonTitle']"
             class="show-side-bar-button--left"
@@ -79,7 +79,7 @@
               'visible-sidebar-button': !authenticatedUserSideBarIsVisible,
               'hidden-sidebar-button': authenticatedUserSideBarIsVisible,
             }"
-            v-on:click.native="toggleAuthenticatedUserSideBar"
+            v-on:click="toggleAuthenticatedUserSideBar"
             v-bind:caption="translations['showAuthenticatedUserSidebarCaption']"
             v-bind:title="translations['showAuthenticatedUserSideBarTitle']"
             class="show-side-bar-button--right"
@@ -191,7 +191,7 @@
         <header class="login-panel-toolbar">
           <span class="login-info">Zaloguj się do Sex-Imperium</span>
           <button-close
-            v-on:click.native="toggleLoginPanel"
+            v-on:click="toggleLoginPanel"
             title="Zamknij okno logowania"
             aria-label="Zamknij okno logowania"
           ></button-close>
@@ -226,8 +226,8 @@
   </div>
 </template>
 
-<script>
-import { directive as onClickaway } from "vue-clickaway";
+<script lang="ts">
+import { directive } from "vue3-click-away";
 import AdultIcon from "@svgicon/adult_icon";
 import ArrowUpIcon from "@svgicon/arrow_up_icon";
 import MovieMediaPlayerIcon from "@svgicon/movie_media_player_icon";
@@ -242,11 +242,15 @@ import AvatarIcon from "@svgicon/avatar_icon";
 import SideBarVisibilityMixin from "@js/mixins/side_bar_visibility";
 import RollDownButton from "@jscomponents/form_controls/roll_down_button";
 import Translations from "@jsmodules/translations/components/navbar";
+import EventBus from "@jsmodules/event_bus.js";
+import { defineAsyncComponent } from 'vue';
+
+const categoriesList = defineAsyncComponent(() => import("@jscomponents/categories_list.vue"));
 
 export default {
   name: "navbar",
 
-  directives: { onClickaway },
+  directives: { ClickAway : directive},
 
   mixins: [SideBarVisibilityMixin],
 
@@ -285,7 +289,7 @@ export default {
   },
 
   components: {
-    "categories-list": () => import("@jscomponents/categories_list.vue"),
+    "categories-list": categoriesList,
     AdultIcon,
     ArrowUpIcon,
     MovieMediaPlayerIcon,
@@ -297,10 +301,11 @@ export default {
     SignupIcon,
     EnterIcon,
     AvatarIcon,
-    RollDownButton,
+    RollDownButton
   },
 
   methods: {
+   
     showCategoriesList() {
       this.resetNavbar();
       this.showCategories = true;
@@ -332,7 +337,7 @@ export default {
         "authenticatedUserSideBar"
       );
 
-      this.$root.$emit(
+      EventBus.$emit(
         "sideBarVisibilityChanged",
         this.authenticatedUserSideBarIsVisible
       );
@@ -415,10 +420,10 @@ export default {
   },
 
   mounted() {
-    this.csrfToken = document.getElementById("csrf-token").content;
-    this.$root.$on("hideSideBar", this.hideAuthenticatedUserSideBar);
-    this.$root.$on("hide-content-bar", this.hideContentSideBar);
-    this.$root.$on("showMoviesCategories", this.showCategoriesList);
+    this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
+    EventBus.$on("hideSideBar", this.hideAuthenticatedUserSideBar);
+    EventBus.$on("hide-content-bar", this.hideContentSideBar);
+    EventBus.$on("showMoviesCategories", this.showCategoriesList);
   },
 };
 </script>

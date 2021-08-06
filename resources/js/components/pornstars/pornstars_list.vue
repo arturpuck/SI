@@ -10,10 +10,7 @@
       />
     </div>
     <ul class="pornstars-list">
-      <li
-        v-for="pornstarNickname in displayedPornstars"
-        class="pornstar-preview"
-      >
+      <li v-for="pornstarNickname in displayedPornstars" class="pornstar-preview">
         <a
           v-bind:href="getPornstarProfileRoute(pornstarNickname)"
           class="pornstar-profile-link"
@@ -43,14 +40,15 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from "vue-property-decorator";
+import { Vue, Options, Prop, Watch } from "vue-property-decorator";
 import Translator from "@jsmodules/translator.js";
 import HintedSearchField from "@jscomponents/form_controls/hinted_search_field.vue";
 
-@Component({
+@Options({
   components: {
     HintedSearchField,
   },
+  name: "PornstarsList",
 })
 export default class PornstarsList extends Vue {
   @Prop({
@@ -83,12 +81,12 @@ export default class PornstarsList extends Vue {
   findPornstar(nicknameSelectedByUser: string) {
     nicknameSelectedByUser = nicknameSelectedByUser.toLowerCase();
 
-    const results = this.allPornstarsNickNames.filter(
-      function filterPornstarList(nickname) {
-        nickname = nickname.toLowerCase();
-        return nickname.includes(nicknameSelectedByUser);
-      }
-    );
+    const results = this.allPornstarsNickNames.filter(function filterPornstarList(
+      nickname
+    ) {
+      nickname = nickname.toLowerCase();
+      return nickname.includes(nicknameSelectedByUser);
+    });
 
     this.displayedPornstars = results;
   }
@@ -99,10 +97,7 @@ export default class PornstarsList extends Vue {
   }
 
   getPornstarProfileRoute(pornstarNickname: string): string {
-    return `${this.pornstarProfileRoute}/${pornstarNickname.replace(
-      / /g,
-      "-"
-    )}`;
+    return `${this.pornstarProfileRoute}/${pornstarNickname.replace(/ /g, "-")}`;
   }
 
   resetSearchInput() {

@@ -17,12 +17,12 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Options, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator.js";
 import UserPreview from "@jscomponents/user/user_preview.vue";
 import DateConfirmedIcon from "@svgicon/date_confirmed_icon";
 
-@Component({ components: { UserPreview, DateConfirmedIcon } })
+@Options({ name: "CommentBody", components: { UserPreview, DateConfirmedIcon } })
 export default class CommentBody extends Vue {
   @Prop({
     type: Boolean,

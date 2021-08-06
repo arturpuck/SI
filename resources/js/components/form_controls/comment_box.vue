@@ -51,14 +51,15 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Options, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator.js";
 import UserPreview from "@jscomponents/user/user_preview.vue";
 import AvatarIcon from "@svgicon/avatar_icon.vue";
 import Comment from "@interfaces/Comment";
 import AddPlusIcon from "@svgicon/add_plus_icon.vue";
+import EventBus from "@jsmodules/event_bus.js";
 
-@Component({ components: { UserPreview, AvatarIcon, AddPlusIcon } })
+@Options({ name: "CommentBox", components: { UserPreview, AvatarIcon, AddPlusIcon } })
 export default class CommentBox extends Vue {
   @Prop({
     type: Boolean,
@@ -132,7 +133,7 @@ export default class CommentBox extends Vue {
 
   created() {
     this.translator = Translator;
-    this.$root.$on("resetCommentBox", this.resetCommentBox);
+    EventBus.$on("resetCommentBox", this.resetCommentBox);
   }
 
   mounted() {

@@ -21,8 +21,8 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Options } from "vue-property-decorator";
 
-@Component
+@Options({ name: "AddFileIcon" })
 export default class AddFileIcon extends Vue {}
 </script>

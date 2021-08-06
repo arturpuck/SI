@@ -1,20 +1,12 @@
 <template>
-   <input type="submit" class="submit-button" v-bind:value="description">
+   <button type="submit" class="submit-button">
+       <slot></slot>
+   </button>
 </template>
 
 <script>
 	export default {
-        name: 'submit-button',
-        data() {
-		 	return {
-		 		description : "Zaloguj"
-             };
-             
-         },
-
-        mounted(){
-            this.description = this.$slots.default[0].text;
-        }
+        name: 'submit-button'
     }
 </script>
 

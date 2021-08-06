@@ -27,8 +27,8 @@
 </style>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Options } from "vue-property-decorator";
 
-@Component
+@Options({ name: "DownloadIcon" })
 export default class DownloadIcon extends Vue {}
 </script>

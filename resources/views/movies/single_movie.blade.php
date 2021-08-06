@@ -57,8 +57,8 @@
             <star-rating label="{{__('your_rate')}}" v-bind:show-number="true" v-on:selected="rateMovie">
             </star-rating>
 
-            <spermatozoid-icon v-on:click.native="addSpermatozoid" role="button" class="movie-voting__vote-icon--spermatozoid-icon"></spermatozoid-icon>
-            <like-background-icon v-on:click.native="addLike" role="button" class="movie-voting__vote-icon--like-background-icon"></like-background-icon>
+            <spermatozoid-icon v-on:click="addSpermatozoid" role="button" class="movie-voting__vote-icon--spermatozoid-icon"></spermatozoid-icon>
+            <like-background-icon v-on:click="addLike" role="button" class="movie-voting__vote-icon--like-background-icon"></like-background-icon>
             @else
             <div class="movie-voting__registered-users-only-info">
                <unknown-person-icon class="movie-voting__icon"></unknown-person-icon>

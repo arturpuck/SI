@@ -27,8 +27,8 @@
 </style>
 
 <script lang="ts" scoped>
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Options } from "vue-property-decorator";
 
-@Component
+@Options({ name: "SignupIcon" })
 export default class SignupIcon extends Vue {}
 </script>

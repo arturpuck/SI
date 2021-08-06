@@ -17,7 +17,7 @@
       <li class="content-sidebar-list-element">
         <phantom-button
           class="expandable-icon hoverable-element"
-          v-on:click.native="toggleMoviesMenu"
+          v-on:click="toggleMoviesMenu"
         >
           <component v-bind:is="moviesIconName" class="content-sidebar-icon"></component>
           <span
@@ -98,7 +98,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Options, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator.js";
 import AngleTopIcon from "@svgicon/angle_top_icon";
 import MovieMediaPlayerIcon from "@svgicon/movie_media_player_icon";
@@ -107,8 +107,9 @@ import ExpandAllIcon from "@svgicon/expand_all_icon";
 import HappyTongueIcon from "@svgicon/happy_tongue_icon";
 import MagnifierIcon from "@svgicon/magnifier_icon";
 import StarFullIcon from "@svgicon/star_full_icon";
+import EventBus from "@jsmodules/event_bus.js";
 
-@Component({
+@Options({
   components: {
     AngleTopIcon,
     MovieMediaPlayerIcon,
@@ -118,17 +119,18 @@ import StarFullIcon from "@svgicon/star_full_icon";
     MagnifierIcon,
     StarFullIcon,
   },
+  name: "ContentSideBar",
 })
 export default class ContentSideBar extends Vue {
   private translations: Object = Translator.getPackage("content_sidebar");
   moviesSubMenuIsVisible: Boolean = false;
 
   showCategories() {
-    this.$root.$emit("showMoviesCategories");
+    EventBus.$emit("showMoviesCategories");
   }
 
   hideSideBar() {
-    this.$root.$emit("hide-content-bar");
+    EventBus.$emit("hide-content-bar");
   }
 
   toggleMoviesMenu() {

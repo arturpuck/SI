@@ -20,8 +20,8 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Options, Prop } from "vue-property-decorator";
 
-@Component
+@Options({ name: "StopHandIcon" })
 export default class StopHandIcon extends Vue {}
 </script>

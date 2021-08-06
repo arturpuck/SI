@@ -9,10 +9,7 @@
         v-bind:title="previousLinksDescription"
         class="scroll-links-button scroll-previous-links-button-decoration"
       >
-        <span
-          v-text="previousLinksDescription"
-          class="links-button-description"
-        ></span>
+        <span v-text="previousLinksDescription" class="links-button-description"></span>
       </button>
       <div class="links-container-outer">
         <ul
@@ -32,10 +29,7 @@
         v-bind:title="nextLinksDescription"
         class="scroll-links-button scroll-next-links-button-decoration"
       >
-        <span
-          v-text="nextLinksDescription"
-          class="links-button-description"
-        ></span>
+        <span v-text="nextLinksDescription" class="links-button-description"></span>
       </button>
     </div>
     <ul class="aditional-links">
@@ -45,11 +39,11 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Options, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator.js";
 import { LinkListScrollDirection } from "@js/enum/movies/scroll_types";
 
-@Component
+@Options({ name: "LinksBox" })
 export default class LinksBox extends Vue {
   @Prop({
     type: Number,
@@ -61,9 +55,7 @@ export default class LinksBox extends Vue {
   private previousLinksDescription: string = Translator.translate(
     "scroll_previous_links"
   );
-  private nextLinksDescription: string = Translator.translate(
-    "scroll_next_links"
-  );
+  private nextLinksDescription: string = Translator.translate("scroll_next_links");
   private scrollOffset: number = 0;
   private leftScrollDirection = LinkListScrollDirection.Left;
   private rightScrollDirection = LinkListScrollDirection.Right;
@@ -105,9 +97,7 @@ export default class LinksBox extends Vue {
     switch (direction) {
       case LinkListScrollDirection.Left:
         this.scrollOffset =
-          this.scrollOffset - linksToSkip <= 0
-            ? 0
-            : this.scrollOffset - linksToSkip;
+          this.scrollOffset - linksToSkip <= 0 ? 0 : this.scrollOffset - linksToSkip;
         break;
 
       case LinkListScrollDirection.Right:
@@ -169,27 +159,11 @@ export default class LinksBox extends Vue {
 }
 
 .scroll-previous-links-button-decoration {
-  clip-path: polygon(
-    40% 0%,
-    40% 25%,
-    100% 25%,
-    100% 75%,
-    40% 75%,
-    40% 100%,
-    0% 50%
-  );
+  clip-path: polygon(40% 0%, 40% 25%, 100% 25%, 100% 75%, 40% 75%, 40% 100%, 0% 50%);
 }
 
 .scroll-next-links-button-decoration {
-  clip-path: polygon(
-    0% 25%,
-    60% 25%,
-    60% 0%,
-    100% 50%,
-    60% 100%,
-    60% 75%,
-    0% 75%
-  );
+  clip-path: polygon(0% 25%, 60% 25%, 60% 0%, 100% 50%, 60% 100%, 60% 75%, 0% 75%);
 }
 
 .aditional-link-list-element {

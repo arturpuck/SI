@@ -1,44 +1,18 @@
 <template>
-  <button ref="container" type="button" class="button-close">
+  <button v-bind:title="translations['title']" type="button" class="button-close">
     <div class="button-close__cross"></div>
-    <span v-text="label" class="button-close__label"></span>
+    <span v-text="translations['label']" class="button-close__label"></span>
   </button>
 </template>
 
-<script>
-export default {
-  name: "button-close",
+<script lang="ts">
+import { Vue, Options } from "vue-property-decorator";
+import Translations from "@jsmodules/translations/components/form_controls/button_close";
 
-  data: function () {
-    return {
-      translator: undefined,
-    };
-  },
-
-  props: {
-    title: {
-      required: false,
-      type: String,
-      default: "",
-    },
-
-    label: {
-      required: false,
-      type: String,
-      default: "close",
-    },
-  },
-
-  created() {
-    this.translator = this.$root.translator;
-  },
-
-  mounted() {
-    if (this.title) {
-      this.$refs.container.setAttribute("title", this.translator.translate(this.title));
-    }
-  },
-};
+@Options({ name: "ButtonClose" })
+export default class ButtonClose extends Vue {
+  private translations = Translations;
+}
 </script>
 
 <style lang="scss">

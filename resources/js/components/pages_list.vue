@@ -94,7 +94,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Options, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator.js";
 import { LinkListScrollDirection } from "@js/enum/movies/scroll_types";
 import { PageDirection } from "@js/enum/page_direction";
@@ -104,14 +104,16 @@ import IconArrowRight from "@jscomponents/decoration/icons/icon_arrow_right.vue"
 import PagesListBasicData from "@interfaces/pages_list_basic_data.ts";
 import FastBackwardIcon from "@svgicon/fast_backward_icon.vue";
 import FastForwardIcon from "@svgicon/fast_forward_icon.vue";
+import EventBus from "@jsmodules/event_bus.js";
 
-@Component({
+@Options({
   components: {
     IconArrowLeft,
     IconArrowRight,
     FastForwardIcon,
     FastBackwardIcon,
   },
+  name: "PagesList",
 })
 export default class PagesList extends Vue {
   @Prop({
@@ -157,7 +159,7 @@ export default class PagesList extends Vue {
 
   pageHasBeenSelected(pageNumber: number): void {
     this.currentPage = pageNumber;
-    this.$root.$emit(`pageHasBeenSelected${this.uniqueIdentifier}`, pageNumber);
+    EventBus.$emit(`pageHasBeenSelected${this.uniqueIdentifier}`, pageNumber);
   }
 
   navigatePageByDirection(pageDirection: PageDirection): void {
@@ -275,7 +277,7 @@ export default class PagesList extends Vue {
       this.currentPage - 1 >= maxOffset ? maxOffset : this.currentPage - 1;
     this.controlInterface();
     window.addEventListener("resize", () => this.controlInterface());
-    this.$root.$on(`updatePagesList${this.uniqueIdentifier}`, this.updatePagesList);
+    EventBus.$on(`updatePagesList${this.uniqueIdentifier}`, this.updatePagesList);
   }
 }
 </script>

@@ -27,9 +27,8 @@
 </style>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Options } from "vue-property-decorator";
 
-@Component
+@Options({ name: "MovieRollIcon" })
 export default class MovieRollIcon extends Vue {}
 </script>
-

@@ -1,76 +1,87 @@
 <template>
-   <div ref="container" class="labeled-checkbox-container">
-     <input v-bind:checked="value" v-bind:value="checkboxValue"  v-on:input="updateModel" ref="checkbox" type="checkbox" class="labeled-checkbox" v-bind:name="name" v-bind:id="name">
-        <label ref="label" v-bind:for="name" class="labeled-checkbox-description"><slot></slot></label>	
-    </div>
+  <div ref="container" class="labeled-checkbox-container">
+    <input
+      v-bind:checked="value"
+      v-bind:value="checkboxValue"
+      v-on:input="updateModel"
+      ref="checkbox"
+      type="checkbox"
+      class="labeled-checkbox"
+      v-bind:name="name"
+      v-bind:id="name"
+    />
+    <label ref="label" v-bind:for="name" class="labeled-checkbox-description"
+      ><slot></slot
+    ></label>
+  </div>
 </template>
 
-<script>
-	export default {
-        name: 'labeled-checkbox',
-        props: {
-        	name : {
-        		type: String,
-            required: false,
-            default: "labeled-checkbox"
-          },
-          
-          aditionalClasses: {
-        		type: Object,
-            required: false,
-            default: undefined
-          },
+<script lang="ts">
+import { Vue, Options, Prop } from "vue-property-decorator";
 
-          checkedAtStart:{
-            required: false,
-            type:Boolean,
-            default: false
-          },
+@Options({ name: "LabeledCheckbox" })
+export default class LabeledCheckbox extends Vue {
+  @Prop({
+    type: String,
+    required: false,
+    default: "labeled-checkbox",
+  })
+  readonly name: string;
 
-          value:{
-            required: false,
-            default: false,
-          },
+  @Prop({
+    type: Object,
+    required: false,
+    default: undefined,
+  })
+  readonly aditionalClasses: object;
 
-         checkboxValue :{
-            required: false,
-            default: 1,
-          }
-        },
+  @Prop({
+    type: Boolean,
+    required: false,
+    default: false,
+  })
+  readonly checkedAtStart: boolean;
 
-        data(){
-           return {
-             checked : undefined
-           }
-        },
+  @Prop({
+    required: false,
+    default: false,
+  })
+  readonly value;
 
-        methods : {
-            updateModel(event){
-              this.$emit('input', event.target.checked);
-            }
-        },
-        
-        mounted(){
-          if(this.aditionalClasses){
-                Object.keys(this.aditionalClasses).forEach((key) => this.$refs[key].classList.add(this.aditionalClasses[key]));
-          }
+  @Prop({
+    required: false,
+    default: 1,
+  })
+  readonly checkboxValue;
 
-          this.$refs.checkbox.checked = this.checkedAtStart;
-          this.$emit('input', this.checkedAtStart);
-        }
+  private checked: boolean = false;
+
+  updateModel(event) {
+    this.$emit("input", event.target.checked);
+  }
+
+  mounted() {
+    if (this.aditionalClasses) {
+      Object.keys(this.aditionalClasses).forEach((key) =>
+        (<HTMLElement>this.$refs[key]).classList.add(this.aditionalClasses[key])
+      );
     }
+
+    (<HTMLInputElement>this.$refs.checkbox).checked = this.checkedAtStart;
+    this.$emit("input", this.checkedAtStart);
+  }
+}
 </script>
 
 <style lang="scss" scoped>
-
-.labeled-checkbox{
-   opacity:0;
+.labeled-checkbox {
+  opacity: 0;
 }
 
-.labeled-checkbox-description{
-  position:relative;
+.labeled-checkbox-description {
+  position: relative;
   padding: 0 8px;
-  &:before{
+  &:before {
     content: "";
     display: inline-block;
     position: absolute;
@@ -80,12 +91,11 @@
     height: 1.2vw;
     cursor: pointer;
     background: white;
-    border:none;
+    border: none;
     border-radius: 2px;
     z-index: 1;
   }
-  &:after
-  {
+  &:after {
     content: "";
     display: inline-block;
     position: absolute;
@@ -103,40 +113,33 @@
   }
 }
 
-@media(max-width: 1200px){
-  .labeled-checkbox-description:before{
+@media (max-width: 1200px) {
+  .labeled-checkbox-description:before {
     left: -16px;
     width: 16px;
     height: 16px;
   }
 
-  .labeled-checkbox-description:after{
+  .labeled-checkbox-description:after {
     left: -11px;
     width: 5px;
     height: 12px;
   }
-  
 }
 
-.labeled-checkbox-container
-{
-    display:table;
+.labeled-checkbox-container {
+  display: table;
 }
 
-
-.labeled-checkbox:hover + .labeled-checkbox-description:before
-{
-  background:#e80e53;
+.labeled-checkbox:hover + .labeled-checkbox-description:before {
+  background: #e80e53;
 }
 
-.labeled-checkbox:checked + .labeled-checkbox-description:before
-{
-  background:#e80e53;
+.labeled-checkbox:checked + .labeled-checkbox-description:before {
+  background: #e80e53;
 }
 
-.labeled-checkbox:checked + .labeled-checkbox-description:after
-{
-  opacity:1;
+.labeled-checkbox:checked + .labeled-checkbox-description:after {
+  opacity: 1;
 }
-
 </style>

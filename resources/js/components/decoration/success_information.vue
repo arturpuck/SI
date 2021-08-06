@@ -4,7 +4,7 @@
         <slot></slot>
     </div>
     <div class="icon-background">
-        <icon-confirm v-on:click.native="hideNotification" v-bind:aditional-classes="{container : 'icon-confirmation-center'}"></icon-confirm>
+        <icon-confirm v-on:click="hideNotification" v-bind:aditional-classes="{container : 'icon-confirmation-center'}"></icon-confirm>
     </div>   
 </div>
 </template>

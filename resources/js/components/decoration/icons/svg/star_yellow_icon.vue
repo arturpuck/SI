@@ -57,8 +57,8 @@
 </style>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Options, Prop } from "vue-property-decorator";
 
-@Component
+@Options({ name: "StarYellowIcon" })
 export default class StarYellowIcon extends Vue {}
 </script>

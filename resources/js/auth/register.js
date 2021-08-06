@@ -61,7 +61,7 @@ Vue.component('date-picker', DatePicker);
          return;
       }
           
-      this.$root.$emit('awaitingResponse');
+      this.verificationInProgress = true
       
 
       try{
@@ -79,7 +79,7 @@ Vue.component('date-picker', DatePicker);
          sender.showError(error);
       }
       finally{
-         this.$root.$emit('responseReceived');
+         this.verificationInProgress = false
       }
       
   },
@@ -130,14 +130,14 @@ Vue.component('date-picker', DatePicker);
         if(!emailhasCorrectFormat(email)){
            throw "email_seems_to_be_incorrect";
          }
-         this.$root.$emit('awaitingResponse');
+         this.verificationInProgress = true
          checkIfEmailExists.call(this,email);
      }
      catch(error){
         sender.showError(error);
      }
      finally{
-        this.$root.$emit('responseReceived');
+      this.verificationInProgress = false;
      }
   },
 
@@ -185,14 +185,8 @@ Vue.component('date-picker', DatePicker);
      }
      else{
         sender.showError("you_are_under_18");
-     }
-      
+     }  
   }
-},
-
-mounted(){
-   this.$root.$on('awaitingResponse', ()=> this.verificationInProgress = true);
-   this.$root.$on('responseReceived', ()=> this.verificationInProgress = false);
 }
 
 });

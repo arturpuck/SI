@@ -13,8 +13,8 @@
 </template>
 
 <script lang="ts" scoped>
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Options } from "vue-property-decorator";
 
-@Component
+@Options({ name: "CommentIcon" })
 export default class CommentIcon extends Vue {}
 </script>

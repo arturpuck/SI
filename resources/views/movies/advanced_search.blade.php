@@ -176,15 +176,15 @@
          <legend class="panel-group-legend">
             {{__('controls')}}
          </legend>
-         <accept-button v-on:click.native="firstSearch" class="control-panel-button--type-submit">
+         <accept-button v-on:click="firstSearch" class="control-panel-button--type-submit">
             <magnifier-icon class="control-panel-button__icon"></magnifier-icon>
             {{__('search_button_caption')}}
          </accept-button>
-         <reset-button v-on:click.native="resetPanel" class="control-panel-button--type-reset">
+         <reset-button v-on:click="resetPanel" class="control-panel-button--type-reset">
             <shutdown-icon class="control-panel-button__icon--bigger"></shutdown-icon>
             {{__('reset_panel')}}
          </reset-button>
-         <labeled-checkbox v-on:click.native="savePanelSettings" v-model="showControlsShortcut" class="labeled_checkbox--aditional-margin" name="show-controls-shortcut">{{__('show_controls_shortcut')}}</labeled-checkbox>
+         <labeled-checkbox v-on:click="savePanelSettings" v-model="showControlsShortcut" class="labeled_checkbox--aditional-margin" name="show-controls-shortcut">{{__('show_controls_shortcut')}}</labeled-checkbox>
       </fieldset>
    </form>
    <section v-show="!advancedSearchPanelIsVisible" class="search-results">

@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import Translator from '@js/modules/translator.js';
 import Navbar from '@jscomponents/navigation/navbar.vue';
 import TextInputCombo from '@jscomponents/form_controls/text_input_combo.vue';
@@ -10,7 +9,7 @@ import AuthenticatedUserSidebar from '@jscomponents/navigation/authenticated_use
 import EmpireLogo from '@jscomponents/decoration/empire_logo.vue';
 import ContentSidebar from '@jscomponents/navigation/content_sidebar.vue';
 
-async function checkCookiePolicy()
+/*async function checkCookiePolicy()
 {
    function userHasAlreadyAcceptedCookies()
    {
@@ -21,29 +20,26 @@ async function checkCookiePolicy()
    {
      const NotificationComponentModule =  await import("@jscomponents/cookie_notification.vue");
      const CookieNotificationComponentClass = Vue.extend(NotificationComponentModule.default);
-     const cookieComponent =  new CookieNotificationComponentClass().$mount();
+     const cookieComponent =  new CookieNotificationComponentClass().mount();
      document.getElementById('app').appendChild(cookieComponent.$el)
    }
 }
 
-window.addEventListener('DOMContentLoaded', checkCookiePolicy);
-
-
+window.addEventListener('DOMContentLoaded', checkCookiePolicy); */
+ButtonClose.inheritAttrs = true;
 
 export default {
 
-   build() {
-      Vue.prototype.translator = Translator;
-      Vue.component('authenticated-user-sidebar', AuthenticatedUserSidebar);
-      Vue.component('navbar', Navbar);
-      Vue.component('text-input-combo', TextInputCombo);
-      Vue.component('submit-button', SubmitButton);
-      Vue.component('phantom-button', PhantomButton);
-      Vue.component('labeled-checkbox', LabeledCheckbox);
-      Vue.component('button-close', ButtonClose);
-      Vue.component('empire-logo', EmpireLogo);
-      Vue.component('content-sidebar', ContentSidebar);
-      return Vue;
+   registerBasicComponents(app) {
+      app.component('authenticated-user-sidebar', AuthenticatedUserSidebar);
+      app.component('navbar', Navbar);
+      app.component('text-input-combo', TextInputCombo);
+      app.component('submit-button', SubmitButton);
+      app.component('phantom-button', PhantomButton);
+      app.component('labeled-checkbox', LabeledCheckbox);
+      app.component('button-close', ButtonClose);
+      app.component('empire-logo', EmpireLogo);
+      app.component('content-sidebar', ContentSidebar);
    }
 };
 

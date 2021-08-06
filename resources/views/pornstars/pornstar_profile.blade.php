@@ -117,7 +117,7 @@
          <relative-shadow-container v-show="processingCommentsInProgress">
             <expect-circle v-bind:label="expectCircleLabel"></expect-circle>
          </relative-shadow-container>
-         <accept-button v-show="!showCommentPanel" v-on:click.native="showCommentForm">
+         <accept-button v-show="!showCommentPanel" v-on:click="showCommentForm">
             {{__('publish_comment')}}
          </accept-button>
          <div v-bind:class="{'opened-show-on-demand-container' : showCommentPanel}" class="hide-content-show-on-demand-container">

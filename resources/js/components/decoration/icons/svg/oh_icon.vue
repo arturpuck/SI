@@ -18,9 +18,9 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Options } from "vue-property-decorator";
 
-@Component
+@Options({ name: "OhIcon" })
 export default class OhIcon extends Vue {}
 </script>
 

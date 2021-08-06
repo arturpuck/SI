@@ -20,12 +20,12 @@
       <div class="movie-details-and-controls">
         <span class="movie-details-row">
           <play-round-icon class="play-icon"></play-round-icon>
-          <span v-text="viewsTranslated"></span>
+          <span v-text="translations['views']"></span>
           <span v-text="views"></span>
         </span>
         <span v-on:click="showPreview" class="preview-control movie-details-row">
           <magnifier-icon class="magnifier-icon"></magnifier-icon>
-          <span v-text="preViewTranslated"></span>
+          <span v-text="translations['preview']"></span>
         </span>
       </div>
       <div v-if="aditionalInformation" class="movie-details-and-controls">
@@ -39,13 +39,17 @@
             ></a>
           </span>
         </span>
-        <icon-polish-flag v-bind:title="iconDecription" v-if="isTranslatedToPolish" />
+        <icon-polish-flag
+          v-bind:title="translations['movieTranslatedToPolish']"
+          v-if="isTranslatedToPolish"
+        />
       </div>
     </div>
   </li>
 </template>
 
-<script>
+<script lang="ts">
+import { Vue, Options, Prop } from "vue-property-decorator";
 import IconPolishFlag from "@jscomponents-decoration/flags/icon_polish_flag.vue";
 import Slugifier from "@jsmodules/slugifier";
 import PlayRoundIcon from "@svgicon/play_round_icon.vue";
@@ -53,11 +57,12 @@ import MagnifierIcon from "@svgicon/magnifier_icon";
 import StarYellowIcon from "@svgicon/star_yellow_icon";
 import Config from "@config/paths/movies";
 import ExpectShadowCircle from "@jscomponents-decoration/expect_shadow_circle";
+import Translations from "@jsmodules/translations/components/movie_box";
+import EventBus from "@jsmodules/event_bus.js";
 //use teleport instead???
 
-export default {
-  name: "movie-box",
-
+@Options({
+  name: "MovieBox",
   components: {
     IconPolishFlag,
     PlayRoundIcon,
@@ -65,103 +70,80 @@ export default {
     StarYellowIcon,
     ExpectShadowCircle,
   },
+})
+export default class MovieBox extends Vue {
+  @Prop({
+    type: String,
+    required: true,
+  })
+  readonly duration: string;
 
-  data() {
-    return {
-      translator: null,
-      fetchingInProgress: false,
-      showsGIF: false,
-    };
-  },
+  @Prop({
+    type: String,
+    required: true,
+  })
+  readonly title: string;
 
-  methods: {
-    showPreview(event) {
-      this.$root.$emit("showPreview", { id: this.id, title: this.title });
-    },
+  @Prop({
+    type: Number,
+    required: true,
+  })
+  readonly id: string;
 
-    getPornstarSlug(pornstarNickname) {
-      return pornstarNickname.replaceAll(" ", "-");
-    },
+  @Prop({
+    type: Number,
+    required: true,
+  })
+  readonly views: number;
 
-    toggleImages() {
-      this.fetchingInProgress = true;
-      this.showsGIF = !this.showsGIF;
-    },
+  @Prop({
+    type: Boolean,
+    required: false,
+    default: false,
+  })
+  readonly isTranslatedToPolish: boolean;
 
-    imageHasBeenLoaded() {
-      this.fetchingInProgress = false;
-    },
-  },
+  @Prop({
+    required: false,
+    default: "",
+  })
+  readonly pornstars: string | string[];
 
-  computed: {
-    movieURL() {
-      return `/film/${Slugifier(this.title)}`;
-    },
+  private translator = Translations;
+  private fetchingInProgress = false;
+  private showsGIF = false;
 
-    movieImageURL() {
-      return this.showsGIF
-        ? `${Config.moviePreviewFolder}${this.id}.gif`
-        : `${Config.movieImagesFolder}${this.id}.jpg`;
-    },
+  showPreview(event) {
+    EventBus.$emit("showPreview", { id: this.id, title: this.title });
+  }
 
-    viewsTranslated() {
-      return `${this.translator.translate("views")} : `;
-    },
+  getPornstarSlug(pornstarNickname) {
+    return pornstarNickname.replaceAll(" ", "-");
+  }
 
-    preViewTranslated() {
-      return `${this.translator.translate("preview")}`;
-    },
+  toggleImages() {
+    this.fetchingInProgress = true;
+    this.showsGIF = !this.showsGIF;
+  }
 
-    aditionalInformation() {
-      return this.isTranslatedToPolish || this.pornstars;
-    },
+  imageHasBeenLoaded() {
+    this.fetchingInProgress = false;
+  }
 
-    pornstarsListTranslated() {
-      return this.pornstars.join(", ");
-    },
+  get movieURL() {
+    return `/film/${Slugifier(this.title)}`;
+  }
 
-    iconDecription() {
-      return this.translator.translate("movie_translated_to_polish");
-    },
-  },
+  get movieImageURL() {
+    return this.showsGIF
+      ? `${Config.moviePreviewFolder}${this.id}.gif`
+      : `${Config.movieImagesFolder}${this.id}.jpg`;
+  }
 
-  props: {
-    duration: {
-      required: true,
-      type: String,
-    },
-
-    title: {
-      required: true,
-      type: String,
-    },
-
-    id: {
-      required: true,
-      type: Number,
-    },
-
-    views: {
-      required: true,
-      type: Number,
-    },
-
-    isTranslatedToPolish: {
-      required: false,
-      type: Boolean,
-      default: false,
-    },
-
-    pornstars: {
-      required: false,
-      default: "",
-    },
-  },
-
-  created() {
-    this.translator = this.$root.translator;
-  },
-};
+  get aditionalInformation() {
+    return this.isTranslatedToPolish || this.pornstars;
+  }
+}
 </script>
 
 <style lang="scss" scoped>

@@ -27,8 +27,8 @@
 </style>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Options } from "vue-property-decorator";
 
-@Component
+@Options({ name: "UnknownPersonIcon" })
 export default class UnknownPersonIcon extends Vue {}
 </script>

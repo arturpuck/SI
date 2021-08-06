@@ -22,11 +22,9 @@
   </svg>
 </template>
 
-
-
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Options } from "vue-property-decorator";
 
-@Component
+@Options({ name: "InfoCircleIcon" })
 export default class InfoCircleIcon extends Vue {}
 </script>

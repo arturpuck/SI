@@ -5,15 +5,16 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Options } from "vue-property-decorator";
 import RelativeShadowContainer from "@jscomponents/decoration/relative_shadow_container.vue";
 import ExpectCircle from "@jscomponents/decoration/expect_circle.vue";
 
-@Component({
+@Options({
+  name: "ExpectShadowCircle",
   components: {
     RelativeShadowContainer,
     ExpectCircle,
   },
 })
-export default class PornstarsList extends Vue {}
+export default class ExpectShadowCircle extends Vue {}
 </script>

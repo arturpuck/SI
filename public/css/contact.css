@@ -22,7 +22,8 @@
 .footer-icon {
   fill: #eb091c;
   width: 1em;
-  height: auto; }
+  height: auto;
+  vertical-align: middle; }
 
 .icon-error-close {
   display: inline-block;

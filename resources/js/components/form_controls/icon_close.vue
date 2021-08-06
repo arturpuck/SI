@@ -1,29 +1,15 @@
 <template>
-<div ref="container" class="icon-close-container">
+<div class="icon-close-container">
     <div class="icon-close"></div>
 </div>
 </template>
 
-<script>
-	export default {
-        name: 'icon-close',
+<script lang="ts">
+import { Vue, Options } from "vue-property-decorator";
 
-        props : {
-
-             title : {
-                required : false,
-                type : String,
-                default : ""
-             }
-        },
-
-
-         mounted(){
-            if(this.title){
-                this.$refs.container.setAttribute('title', this.$root.translator.translate(this.title));
-            }
-        }
-    }
+@Options({name : 'IconClose'})
+	export default class IconClose extends Vue{
+}
 </script>
 
 <style lang="scss">

@@ -18,10 +18,9 @@
   </svg>
 </template>
 
-
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Options } from "vue-property-decorator";
 
-@Component
+@Options({ name: "CommentPenIcon" })
 export default class CommentPenIcon extends Vue {}
 </script>

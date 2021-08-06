@@ -14,18 +14,18 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "expect-circle",
+<script lang="ts">
+import { Vue, Options, Prop } from "vue-property-decorator";
 
-  props: {
-    label: {
-      required: false,
-      type: String,
-      default: null,
-    },
-  },
-};
+@Options({ name: "ExpectCircle" })
+export default class ExpectCircle extends Vue {
+  @Prop({
+    type: String,
+    required: false,
+    default: "",
+  })
+  readonly label: string;
+}
 </script>
 
 <style lang="scss">

@@ -21,6 +21,7 @@ import CommentIcon from "@svgicon/comment_icon.vue";
 import PodiumIcon from "@svgicon/podium_icon.vue";
 import StopHandIcon from "@svgicon/stop_hand_icon.vue";
 import BoxVotingIcon from "@svgicon/box_voting_icon.vue";
+import EventBus from "@jsmodules/event_bus.js";
 
 const Vue = VueConstructor.build();
 Vue.component('movie-box', MovieBox);
@@ -79,7 +80,7 @@ new Vue({
     validateComment : CommentValidator,
 
     resetCommentBox() {
-      this.$root.$emit('resetCommentBox');
+      EventBus.$emit('resetCommentBox');
     },
 
     async saveComment(commentData: Comment) {
@@ -220,7 +221,7 @@ new Vue({
     showNotification(text, error = false) {
       const header = error ? "error" : "information";
       const type = error ? 'error' : 'no-error';
-      this.$root.$emit('showNotification', { notificationText: text, notificationType: type, headerText: header });
+      EventBus.$emit('showNotification', { notificationText: text, notificationType: type, headerText: header });
     },
 
     async ratePornstar(data) {

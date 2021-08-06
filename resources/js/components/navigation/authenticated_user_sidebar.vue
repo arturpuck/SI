@@ -52,13 +52,17 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Options, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator.js";
 import AngleTopIcon from "@svgicon/angle_top_icon";
 import SettingsIcon from "@svgicon/settings_icon";
 import ExitArrowIcon from "@svgicon/exit_arrow_icon";
+import EventBus from "@jsmodules/event_bus.js";
 
-@Component({ components: { AngleTopIcon, SettingsIcon, ExitArrowIcon } })
+@Options({
+  components: { AngleTopIcon, SettingsIcon, ExitArrowIcon },
+  name: "AuthenticatedUserSidebar",
+})
 export default class AuthenticatedUserSidebar extends Vue {
   @Prop({
     type: String,
@@ -73,7 +77,7 @@ export default class AuthenticatedUserSidebar extends Vue {
   }
 
   hideSideBar() {
-    this.$root.$emit("hideSideBar");
+    EventBus.$emit("hideSideBar");
   }
 }
 </script>

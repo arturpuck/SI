@@ -17,10 +17,11 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Options, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator";
+import EventBus from "@jsmodules/event_bus.js";
 
-@Component
+@Options({ name: "StarRating" })
 export default class StarRating extends Vue {
   private selectedValue: number = 0;
   private valueOnHover: number = 0;
@@ -106,8 +107,7 @@ export default class StarRating extends Vue {
 
   getStarColorClassName(starNumber: number): string {
     const primaryValue = this.valueOnHover || this.selectedValue;
-    const differenceBetweenSelectedValueAndStarIndex =
-      primaryValue - starNumber;
+    const differenceBetweenSelectedValueAndStarIndex = primaryValue - starNumber;
 
     if (differenceBetweenSelectedValueAndStarIndex >= 0) {
       return "completly-gold-star-rate";
@@ -132,10 +132,10 @@ export default class StarRating extends Vue {
 
   mounted() {
     this.selectedValue = this.initialValue;
-    this.$root.$on(
-      `${this.identifier}UpdateRate`,
-      (rate: number) => (this.selectedValue = rate)
-    );
+    EventBus.$on(`${this.identifier}UpdateRate`, (rate: number) => this.selectedValue = rate);
+   // this.$root.$on(
+    //  `${this.identifier}UpdateRate`,
+  //    (rate: number) => (this.selectedValue = rate));
   }
 }
 </script>
@@ -201,12 +201,6 @@ export default class StarRating extends Vue {
 }
 
 .half-gold-star-rate {
-  background: linear-gradient(
-    to right,
-    gold 0%,
-    gold 50%,
-    white 50%,
-    white 100%
-  );
+  background: linear-gradient(to right, gold 0%, gold 50%, white 50%, white 100%);
 }
 </style>

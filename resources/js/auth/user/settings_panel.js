@@ -16,6 +16,7 @@ import InfoCircleIcon from "@svgicon/info_circle_icon.vue";
 import AvatarIcon from "@svgicon/avatar_icon.vue";
 import ServerStorageIcon from "@svgicon/server_storage_icon.vue";
 import BackspaceEraseIcon from "@svgicon/backspace_erase_icon.vue";
+import EventBus from "@jsmodules/event_bus.js";
 
 const Vue = VueConstructor.build();
 
@@ -487,7 +488,7 @@ new Vue({
 
         showNotification(text, type="no-error"){
            const header = type === "no-error" ? "information" : "error";
-           this.$root.$emit('showNotification', {notificationText : text, notificationType : type, headerText : header});
+           EventBus.$emit('showNotification', {notificationText : text, notificationType : type, headerText : header});
         }
    },
 

@@ -1,34 +1,43 @@
 
-import VueConstructor from '@jsmodules/basic.js';
+import Vue from 'vue';
+import BasicElements from '@jsmodules/basic.js';
 import SmileInGlassesIcon from '@svgicon/smile_in_glasses_icon.vue';
 import RocketLaunchIcon from '@svgicon/rocket_launch_icon.vue';
 import StarFullIcon from '@svgicon/star_full_icon.vue';
 import VideoPlaylistIcon from '@svgicon/video_playlist_icon.vue';
 import MagnifierIcon from '@svgicon/magnifier_icon.vue';
 import AddFileIcon from '@svgicon/add_file_icon.vue';
+import EventBus from "@jsmodules/event_bus.js";
 
-const Vue = VueConstructor.build();
-Vue.component('smile-in-glasses-icon', SmileInGlassesIcon);
-Vue.component('rocket-launch-icon', RocketLaunchIcon);
-Vue.component('star-full-icon', StarFullIcon);
-Vue.component('video-playlist-icon', VideoPlaylistIcon);
-Vue.component('magnifier-icon', MagnifierIcon);
-Vue.component('add-file-icon', AddFileIcon);
 
-new Vue({
-  el: '#app',
 
-  data: {
 
+
+const settings = {
+
+  data() {
+     return {
+
+     };
   },
 
   methods: {
 
     showCategories(){
-      this.$root.$emit('showMoviesCategories');
+      EventBus.$emit('showMoviesCategories');
     }
 
   }
 
-});
+};
+
+const app = Vue.createApp(settings);
+BasicElements.registerBasicComponents(app);
+app.component('smile-in-glasses-icon', SmileInGlassesIcon);
+app.component('rocket-launch-icon', RocketLaunchIcon);
+app.component('star-full-icon', StarFullIcon);
+app.component('video-playlist-icon', VideoPlaylistIcon);
+app.component('magnifier-icon', MagnifierIcon);
+app.component('add-file-icon', AddFileIcon);
+app.mount("#app");
 

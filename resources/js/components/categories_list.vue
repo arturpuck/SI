@@ -6,7 +6,7 @@
         <movie-tape-icon class="panel-bar__icon" />
       </div>
       <button-close
-        v-on:click.native="hideCategories"
+        v-on:click="hideCategories"
         class="panel-bar__close-button"
       ></button-close>
     </div>
@@ -31,27 +31,28 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Options} from "vue-property-decorator";
 import CategoriesListTranslations from "@jsmodules/translations/categories_list.ts";
-import ButtonClose from "@jscomponents/form_controls/button_close.vue";
 import Categories from "@jsmodules/categories_list";
 import CategoryData from "@interfaces/movies/category_data";
-import MovieTapeIcon from "@svgicon/movie_tape_icon.vue";
+import MovieTapeIcon from "@svgicon/movie_tape_icon";
+import TestButton from "@jscomponents/test.vue";
 
-@Component({
+@Options({
   components: {
-    ButtonClose,
     MovieTapeIcon,
+    TestButton
   },
+  name: "CategoriesList",
+  
 })
 export default class CategoriesList extends Vue {
   private showCategories: boolean = false;
   private translations: object = CategoriesListTranslations;
   private categories: CategoryData[] = Categories;
 
-  hideCategories(): void {
-    this.$emit("hide");
-  }
+  hideCategories(){alert('event odpalony'); return 0;}
+
 }
 </script>
 
@@ -60,7 +61,7 @@ export default class CategoriesList extends Vue {
 @import "~sass/responsive_icon";
 @import "~sass/nice_scrollbar";
 
-.categories-list {
+.categories-list {  
   display: grid;
   grid-template-columns: repeat(auto-fit, 140px);
   justify-content: space-evenly;

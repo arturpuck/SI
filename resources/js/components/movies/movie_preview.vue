@@ -28,7 +28,7 @@
       <button-close
         class="preview-close-icon"
         title="close_movie_preview"
-        v-on:click.native="hidePreview"
+        v-on:click="hidePreview"
       />
     </div>
     <div aria-hidden="true" class="trapeze-decoration">
@@ -39,6 +39,7 @@
 
 <script lang="ts">
 import PreviewMovieData from "@interfaces/movies/preview_movie_data";
+import EventBus from "@jsmodules/event_bus.js";
 
 export default {
   data() {
@@ -57,7 +58,7 @@ export default {
     },
 
     hidePreview(): void {
-      this.$root.$emit("closePreview");
+      EventBus.$emit("closePreview");
     },
   },
 

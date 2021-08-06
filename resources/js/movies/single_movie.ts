@@ -30,6 +30,7 @@ import { MoviesCurrentPage } from "@interfaces/movies/MoviesCurrentPage.ts";
 import PageListUpdate from '@interfaces/PageListUpdate';
 import Comment from '@interfaces/Comment';
 import CommentValidator from '@jsmodules/validators/comment_validator';
+import EventBus from "@jsmodules/event_bus.js";
 
 
 const Vue = VueConstructor.build();
@@ -362,7 +363,7 @@ new Vue({
         },
 
         loadComments(commentsPageListUpdate: PageListUpdate<Comment>): void {
-            this.$root.$emit('updateComments', commentsPageListUpdate);
+            EventBus.$emit('updateComments', commentsPageListUpdate);
         },
 
         loadSimilarMovies(moviesList: MoviesListResponse, pageNumber: number): void {
@@ -372,7 +373,7 @@ new Vue({
                 currentPage: pageNumber
             };
             console.log(moviesList);
-            this.$root.$emit('updateMoviesList', moviesListUpdate);
+            EventBus.$emit('updateMoviesList', moviesListUpdate);
         },
 
         loadMovieData(movie: MovieBasicData): void {
@@ -416,7 +417,7 @@ new Vue({
 
         loadMovieRating(movieRating: MovieRating): void {
             this.rating = movieRating.overall_rating;
-            this.$root.$emit('starRateUpdateRate', movieRating.user_rating);
+            EventBus.$emit('starRateUpdateRate', movieRating.user_rating);
         },
 
         loadMovieSpermatozoids(movieSpermatozoids: MovieSpermatozoids): void {

@@ -41,12 +41,16 @@
 
 <script>
 import PadlockIcon from "@svgicon/padlock_icon.vue";
+import IconStop from "@jscomponents-decoration/icon_stop.vue";
+import IconConfirm from "@jscomponents-decoration/icon_confirm.vue";
 
 export default {
   name: "text-input-combo",
 
   components: {
     PadlockIcon,
+    IconStop,
+    IconConfirm
   },
 
   data() {

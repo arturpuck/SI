@@ -2,7 +2,7 @@
   <div v-bind:class="{'visible-user-notification-container' : visible, 'flickering-background' : flicker}" class="user-notification-container">
     <header v-bind:class="{'no-error-notification-bar' : !showsError, 'error-notification-bar' : showsError}" class="notification-bar">   
        <h1 v-text="headerText" class="notification-header"></h1> 
-       <button-close v-on:click.native="closeNotification"></button-close>
+       <button-close v-on:click="closeNotification"></button-close>
     </header>
         <p v-text="notificationText" class="notification-content">
 
