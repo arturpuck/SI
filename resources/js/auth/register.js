@@ -1,26 +1,20 @@
-import VueConstructor from '@jsmodules/basic.js';
+import BasicElements from '@jsmodules/basic.js';
+import { createApp } from 'vue';
 import TextareaCombo from '@jscomponents/form_controls/textarea_combo.vue';
 import IconStop from '@jscomponents/decoration/icon_stop.vue';
 import IconConfirm from '@jscomponents/decoration/icon_confirm.vue';
 import ExpectCircle  from '@jscomponents/decoration/expect_circle.vue';
 import DescribedSelect from '@jscomponents/form_controls/described_select.vue';
 import DatePicker from '@jscomponents/form_controls/date_picker.vue';
-const Vue = VueConstructor.build();
 
-Vue.component('textarea-combo', TextareaCombo);
-Vue.component('icon-stop', IconStop);
-Vue.component('icon-confirm', IconConfirm);
-Vue.component('expect-circle', ExpectCircle);
-Vue.component('described-select', DescribedSelect);
-Vue.component('date-picker', DatePicker);
+  const settings = {
 
-
-  new Vue({
- el: '#app',
-
- data : {
-    verificationInProgress : false
- },
+   data() {
+      return {
+         verificationInProgress : false
+      }
+      
+   },
 
  methods : {
    validateLogin(sender){
@@ -189,4 +183,14 @@ Vue.component('date-picker', DatePicker);
   }
 }
 
-});
+};
+
+const app = createApp(settings);
+BasicElements.registerBasicComponents(app);
+app.component('textarea-combo', TextareaCombo);
+app.component('icon-stop', IconStop);
+app.component('icon-confirm', IconConfirm);
+app.component('expect-circle', ExpectCircle);
+app.component('described-select', DescribedSelect);
+app.component('date-picker', DatePicker);
+app.mount("#app");

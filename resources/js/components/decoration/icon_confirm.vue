@@ -4,27 +4,26 @@
   </div>
 </template>
 
-<script>
-	export default {
-        name: 'icon-confirm',
+<script lang="ts">
+import { Vue, Options, Prop } from "vue-property-decorator";
+   @Options({name : 'IconConfirm'})
+	export default class IconConfirm extends Vue {
 
-        props : {
-            aditionalClasses : {
-                required : false,
-                type : Object,
-                default : undefined 
-             },
+        @Prop({
+                type: Object,
+                required: false,
+                default:undefined
+        }) readonly aditionalClasses: object;
 
-             attachedIcon : {
-                required : false,
-                type : Boolean,
-                default : false
-             }
-        },
+        @Prop({
+                type: Boolean,
+                required: false,
+                default:false
+        }) readonly attachedIcon: boolean;
 
          mounted(){
             if(this.aditionalClasses){
-                Object.keys(this.aditionalClasses).forEach((key) => this.$refs[key].classList.add(this.aditionalClasses[key]));
+                Object.keys(this.aditionalClasses).forEach((key) => (<HTMLElement>this.$refs[key]).classList.add(this.aditionalClasses[key]));
             }
         }
     }

@@ -26,7 +26,6 @@ import ContentSidebar from '@jscomponents/navigation/content_sidebar.vue';
 }
 
 window.addEventListener('DOMContentLoaded', checkCookiePolicy); */
-ButtonClose.inheritAttrs = true;
 
 export default {
 

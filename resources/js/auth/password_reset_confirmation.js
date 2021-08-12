@@ -1,7 +1,6 @@
-import VueConstructor from '@jsmodules/basic.js';
-const Vue = VueConstructor.build();
+import BasicElements from '@jsmodules/basic.js';
+import { createApp } from 'vue';
 
-  new Vue({
- el: '#app'
-
-});
+const app = createApp({});
+BasicElements.registerBasicComponents(app);
+app.mount("#app");

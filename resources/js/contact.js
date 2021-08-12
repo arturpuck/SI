@@ -1,21 +1,17 @@
-import VueConstructor from '@jsmodules/basic.js';
+import { createApp } from 'vue';
+import BasicElements from '@jsmodules/basic.js';
 import TextareaCombo from '@jscomponents-form-controls/textarea_combo.vue';
 import IconStop from '@jscomponents-decoration/icon_stop.vue';
 import IconConfirm from '@jscomponents-decoration/icon_confirm.vue';
 
-const Vue = VueConstructor.build();
 
-Vue.component('textarea-combo', TextareaCombo);
-Vue.component('icon-stop', IconStop);
-Vue.component('icon-confirm', IconConfirm);
+  const settings = ({
 
+    data() {
+        return{
 
-  new Vue({
- el: '#app',
-
- data : {
-    
- },
+        };
+    },
 
  methods : {
    validateEmail(sender){
@@ -69,3 +65,10 @@ Vue.component('icon-confirm', IconConfirm);
 
 }
 });
+
+const app = createApp(settings);
+BasicElements.registerBasicComponents(app);
+app.component('textarea-combo', TextareaCombo);
+app.component('icon-stop', IconStop);
+app.component('icon-confirm', IconConfirm);
+app.mount("#app");

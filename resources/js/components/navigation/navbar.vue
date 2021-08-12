@@ -226,7 +226,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { directive } from "vue3-click-away";
 import AdultIcon from "@svgicon/adult_icon";
 import ArrowUpIcon from "@svgicon/arrow_up_icon";
@@ -242,10 +242,12 @@ import AvatarIcon from "@svgicon/avatar_icon";
 import SideBarVisibilityMixin from "@js/mixins/side_bar_visibility";
 import RollDownButton from "@jscomponents/form_controls/roll_down_button";
 import Translations from "@jsmodules/translations/components/navbar";
-import EventBus from "@jsmodules/event_bus.js";
+import EventEmmiter from 'mitt';
+import TestButton from "@jscomponents/test.vue";
 import { defineAsyncComponent } from 'vue';
 
 const categoriesList = defineAsyncComponent(() => import("@jscomponents/categories_list.vue"));
+const EventBus = EventEmmiter();
 
 export default {
   name: "navbar",
@@ -301,12 +303,18 @@ export default {
     SignupIcon,
     EnterIcon,
     AvatarIcon,
-    RollDownButton
+    RollDownButton,
+    TestButton
   },
 
   methods: {
+
+    test(){
+      alert('odpalono-event');
+    },
    
     showCategoriesList() {
+      alert('odebrałem event');
       this.resetNavbar();
       this.showCategories = true;
     },
@@ -337,7 +345,7 @@ export default {
         "authenticatedUserSideBar"
       );
 
-      EventBus.$emit(
+      EventBus.emit(
         "sideBarVisibilityChanged",
         this.authenticatedUserSideBarIsVisible
       );
@@ -420,10 +428,10 @@ export default {
   },
 
   mounted() {
-    this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
-    EventBus.$on("hideSideBar", this.hideAuthenticatedUserSideBar);
-    EventBus.$on("hide-content-bar", this.hideContentSideBar);
-    EventBus.$on("showMoviesCategories", this.showCategoriesList);
+    this.csrfToken = document.getElementById("csrf-token").content;
+    EventBus.on("hideSideBar", this.hideAuthenticatedUserSideBar);
+    EventBus.on("hide-content-bar", this.hideContentSideBar);
+    EventBus.on("show-movies-categories", this.showCategoriesList);
   },
 };
 </script>

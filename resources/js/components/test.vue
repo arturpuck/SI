@@ -1,13 +1,22 @@
 <template>
-  <button>Test button</button>
+  <button type="button">Test button</button>
 </template>
 
-<script lang="ts">
-import { Vue, Options } from "vue-property-decorator";
+<script>
 
-@Options({name : 'TestButton'})
-export default class TestButton extends Vue {
+export default {
 
+  options : {
+    inheritAttrs: true
+  },
+
+  name : "test-button",
+  
+  mounted(){
+       alert('test');
+        console.log(this.$options);
+  }
+  
 }
 </script>
 

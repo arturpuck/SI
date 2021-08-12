@@ -1,6 +1,6 @@
 const mix = require('laravel-mix');
-require('laravel-mix-svg-vue');
 var path = require('path');
+const webpack = require('webpack')
 
 /*
  |--------------------------------------------------------------------------
@@ -12,38 +12,29 @@ var path = require('path');
  | file for the application as well as bundling up all the JS files.
  |
  */
+//mix.vue3("resources/js/test.js', 'public/js");
 
-mix.js('resources/js/mainpage.js', 'public/js').vue()
-  .js('resources/js/auth/register.js', 'public/js').vue()
-  .js('resources/js/contact.ts', 'public/js').vue()
-  .js('resources/js/auth/request_password_reset_link.js', 'public/js').vue()
-  .js('resources/js/auth/password_reset.js', 'public/js').vue()
-  .js('resources/js/auth/password_reset_confirmation.js', 'public/js').vue()
-  .js('resources/js/auth/user/settings_panel.js', 'public/js').vue()
-  .ts('resources/js/movies/movies_set_complete.ts', 'public/js').vue()
-  .ts('resources/js/pornstars/pornstars_list.ts', 'public/js').vue()
-  .ts('resources/js/pornstars/pornstar_profile.ts', 'public/js').vue()
-  .ts('resources/js/movies/advanced_search.ts', 'public/js').vue()
-  .ts('resources/js/movies/category_specific.ts', 'public/js').vue()
-  .ts('resources/js/movies/single_movie.ts', 'public/js').vue()
-  .sass('resources/sass/mainpage.scss', 'public/css')
-  .sass('resources/sass/movies/movies_set_complete.scss', 'public/css')
-  .sass('resources/sass/contact.scss', 'public/css')
-  .sass('resources/sass/auth/password_reset.scss', 'public/css')
-  .sass('resources/sass/auth/register.scss', 'public/css')
-  .sass('resources/sass/auth/password_reset_confirmation.scss', 'public/css')
-  .sass('resources/sass/auth/user/settings_panel.scss', 'public/css')
-  .sass('resources/sass/pornstars/pornstars_list.scss', 'public/css')
-  .sass('resources/sass/pornstars/pornstar_profile.scss', 'public/css')
-  .sass('resources/sass/movies/advanced_search.scss', 'public/css')
-  .sass('resources/sass/movies/category_specific.scss', 'public/css')
-  .sass('resources/sass/movies/single_movie.scss', 'public/css')
+mix.js('resources/js/test.js', 'public/js').vue()
+   .js('resources/js/mainpage.js', 'public/js').vue()
+   .ts('resources/js/category_specific.ts', 'public/js').vue()
+   .js('resources/js/contact.js', 'public/js').vue()
+   .js('resources/js/auth/register.js', 'public/js').vue()
+   .js('resources/js/auth/request_password_reset_link.js', 'public/js').vue()
+   .js('resources/js/auth/password_reset.js', 'public/js').vue()
+   .js('resources/js/auth/password_reset_confirmation.js', 'public/js').vue()
+   .sourceMaps()
   .options({ processCssUrls: false })
   .babelConfig({
     plugins: ['@babel/plugin-syntax-dynamic-import', "@babel/plugin-transform-modules-commonjs"],
     presets: ["@babel/env"]
   })
   .webpackConfig({
+    plugins: [
+      new webpack.DefinePlugin({
+        __VUE_OPTIONS_API__: true,
+        __VUE_PROD_DEVTOOLS__: true,
+      }),
+    ],
     resolve: {
       alias: {
         '@js': path.resolve('resources/js'),

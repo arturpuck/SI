@@ -126,7 +126,7 @@ export default class ContentSideBar extends Vue {
   moviesSubMenuIsVisible: Boolean = false;
 
   showCategories() {
-    EventBus.$emit("showMoviesCategories");
+    EventBus.$emit("show-movies-categories");
   }
 
   hideSideBar() {

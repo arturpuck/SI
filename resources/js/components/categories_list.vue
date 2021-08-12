@@ -3,12 +3,13 @@
     <div class="panel-bar">
       <div class="panel-bar__description">
         <span v-text="translations['categories_list']"></span>
-        <movie-tape-icon class="panel-bar__icon" />
+        <movie-tape-icon @click="testHandler" class="panel-bar__icon" />
       </div>
       <button-close
         v-on:click="hideCategories"
+        v-on:mouseover="testHandler"
         class="panel-bar__close-button"
-      ></button-close>
+      />
     </div>
     <ul class="categories-list">
       <li
@@ -31,27 +32,38 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options} from "vue-property-decorator";
 import CategoriesListTranslations from "@jsmodules/translations/categories_list.ts";
 import Categories from "@jsmodules/categories_list";
 import CategoryData from "@interfaces/movies/category_data";
 import MovieTapeIcon from "@svgicon/movie_tape_icon";
-import TestButton from "@jscomponents/test.vue";
 
-@Options({
-  components: {
-    MovieTapeIcon,
-    TestButton
-  },
+
+export default  {
+
   name: "CategoriesList",
-  
-})
-export default class CategoriesList extends Vue {
-  private showCategories: boolean = false;
-  private translations: object = CategoriesListTranslations;
-  private categories: CategoryData[] = Categories;
 
-  hideCategories(){alert('event odpalony'); return 0;}
+  data(){
+    return {
+      showCategories : false,
+      translations : CategoriesListTranslations,
+      categories : Categories
+    }
+  },
+
+  components : {
+    MovieTapeIcon
+  },
+
+  methods : {
+     hideCategories(){alert('event odpalony'); return 0;},
+
+     testHandler(){
+         alert('mouse over działa');
+     }
+  }
+
+  
+  
 
 }
 </script>

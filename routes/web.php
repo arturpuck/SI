@@ -18,6 +18,8 @@ Route::get('/kontakt', 'ContactFormController@showContactForm')
 Route::post('/contact/send-message', 'ContactFormController@sendMessageFromUser')
     ->name('contact.send.message');
 
+Route::get('/test', 'LaunchMainPageController@test');
+
 Route::namespace ('Movies')->name('movies.')->group(function () {
 
     Route::get('/filmy/najnowsze/strona/{pageNumber?}', 'MoviesController@getLatestMoviesPage')

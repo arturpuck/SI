@@ -20,4 +20,9 @@ class LaunchMainPageController extends Controller
             'news' => $news
         ]);
     }
+
+    public function test()
+    {
+       return view('test');
+    }
 }

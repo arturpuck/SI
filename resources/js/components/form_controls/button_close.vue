@@ -9,7 +9,7 @@
 import { Vue, Options } from "vue-property-decorator";
 import Translations from "@jsmodules/translations/components/form_controls/button_close";
 
-@Options({ name: "ButtonClose" })
+@Options({ name: "ButtonClose", inheritAttrs: true })
 export default class ButtonClose extends Vue {
   private translations = Translations;
 }

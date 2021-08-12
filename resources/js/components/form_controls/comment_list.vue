@@ -100,7 +100,7 @@ export default class CommentList extends Vue {
 
   mounted() {
     this.comments = this.initialComments;
-    EventBus.$on("updateComments", this.updateComments);
+    EventBus.$on("updateComments", this.updateComments); 
     this.commentsPerPage = this.initialCommentsPerPage;
   }
 
