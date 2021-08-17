@@ -243,7 +243,6 @@ import SideBarVisibilityMixin from "@js/mixins/side_bar_visibility";
 import RollDownButton from "@jscomponents/form_controls/roll_down_button";
 import Translations from "@jsmodules/translations/components/navbar";
 import EventEmmiter from 'mitt';
-import TestButton from "@jscomponents/test.vue";
 import { defineAsyncComponent } from 'vue';
 
 const categoriesList = defineAsyncComponent(() => import("@jscomponents/categories_list.vue"));
@@ -291,7 +290,7 @@ export default {
   },
 
   components: {
-    "categories-list": categoriesList,
+    CategoriesList : categoriesList,
     AdultIcon,
     ArrowUpIcon,
     MovieMediaPlayerIcon,
@@ -303,18 +302,12 @@ export default {
     SignupIcon,
     EnterIcon,
     AvatarIcon,
-    RollDownButton,
-    TestButton
+    RollDownButton
   },
 
   methods: {
-
-    test(){
-      alert('odpalono-event');
-    },
    
     showCategoriesList() {
-      alert('odebrałem event');
       this.resetNavbar();
       this.showCategories = true;
     },
@@ -412,7 +405,7 @@ export default {
     },
 
     userAvatarDescription() {
-      return `${this.translator.translate("user_avatar_description")} : ${this.userName}`;
+      return this.translations["user_avatar_description"];
     },
   },
 

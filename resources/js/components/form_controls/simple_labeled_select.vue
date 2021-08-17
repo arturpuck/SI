@@ -7,7 +7,7 @@
       v-bind:name="name"
       v-bind:disabled="isDisabled"
       v-on:input="emitValue"
-      v-bind:value="value"
+      v-bind:value="modelValue"
       class="select-container__select"
     >
       <option value="">{{ initialValue }}</option>
@@ -21,7 +21,8 @@
 <script lang="ts">
 import { Vue, Options, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator.js";
-import EventBus from "@jsmodules/event_bus.js";
+import EventEmmiter from "mitt";
+const EventBus = EventEmmiter();
 
 @Options({ name: "SimpleLabeledSelect" })
 export default class SimpleLabeledSelect extends Vue {
@@ -51,7 +52,7 @@ export default class SimpleLabeledSelect extends Vue {
     required: false,
     default: "",
   })
-  readonly value: string;
+  readonly modelValue: string;
 
   @Prop({
     type: String,
@@ -71,7 +72,7 @@ export default class SimpleLabeledSelect extends Vue {
 
   created() {
     this.selectOptions = this.options;
-    EventBus.$on(`updateSelectValues${this.name}`, this.updateSelectValues); 
+    EventBus.on(`updateSelectValues${this.name}`, this.updateSelectValues); 
   }
 
   updateSelectValues(options: object) {
@@ -79,7 +80,7 @@ export default class SimpleLabeledSelect extends Vue {
   }
 
   emitValue(event) {
-    this.$emit("input", event.target.value);
+    this.$emit("update:modelValue", event.target.value);
   }
 }
 </script>

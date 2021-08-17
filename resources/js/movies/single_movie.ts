@@ -1,4 +1,5 @@
-import VueConstructor from '@jsmodules/basic.js';
+import BasicElements from '@jsmodules/basic.js';
+import { createApp } from 'vue';
 import Plyr from 'plyr';
 import MovieRollIcon from '@svgicon/movie_roll_icon.vue';
 import TelevisionIcon from '@svgicon/television_icon.vue';
@@ -14,7 +15,7 @@ import InfoCircleIcon from '@svgicon/info_circle_icon.vue'
 import LikeIcon from '@svgicon/like_icon.vue';
 import CommentPenIcon from '@svgicon/comment_pen_icon.vue';
 import StarRate from '@interfaces/StarRate';
-import UserNotification from '@jscomponents/user_notification.vue';
+import UserNotification from '@jscomponents/user_notification';
 import NotificationFunction from '@jsmodules/notification_function';
 import RelativeShadowContainer from '@jscomponents/decoration/relative_shadow_container.vue';
 import ExpectCircle from '@jscomponents/decoration/expect_circle.vue';
@@ -30,31 +31,11 @@ import { MoviesCurrentPage } from "@interfaces/movies/MoviesCurrentPage.ts";
 import PageListUpdate from '@interfaces/PageListUpdate';
 import Comment from '@interfaces/Comment';
 import CommentValidator from '@jsmodules/validators/comment_validator';
-import EventBus from "@jsmodules/event_bus.js";
+import EventEmmiter from "mitt";
+import Translator from "@jsmodules/translator.js";
 
-
-const Vue = VueConstructor.build();
-Vue.component('movie-roll-icon', MovieRollIcon);
-Vue.component('television-icon', TelevisionIcon);
-Vue.component('date-confirmed-icon', DateConfirmedIcon);
-Vue.component('star-full-icon', StarFullIcon);
-Vue.component('chart-growth-icon', ChartGrowthIcon);
-Vue.component('spermatozoid-icon', SpermatozoidIcon);
-Vue.component('download-icon', DownloadIcon);
-Vue.component('star-rating', StarRating);
-Vue.component('unknown-person-icon', UnknownPersonIcon);
-Vue.component('like-icon', LikeIcon);
-Vue.component('user-notification', UserNotification);
-Vue.component('like-background-icon', LikeBackgroundIcon);
-Vue.component('info-circle-icon', InfoCircleIcon);
-Vue.component('relative-shadow-container', RelativeShadowContainer);
-Vue.component('expect-circle', ExpectCircle);
-Vue.component('comment-pen-icon', CommentPenIcon);
-Vue.component('movies-list', MoviesList);
-Vue.component('comment-list', CommentList);
-
-new Vue({
-    el: '#app',
+const EventBus = EventEmmiter();
+const settings = {
 
     data() {
 
@@ -74,7 +55,8 @@ new Vue({
             userLikesMovie: undefined,
             selectedTab: MovieTheatreTab.SimilarMovies,
             showCommentsFetchingDecoration: true,
-            commentsPerPage: 10
+            commentsPerPage: 10,
+            translator : Translator
         }
     },
 
@@ -363,7 +345,7 @@ new Vue({
         },
 
         loadComments(commentsPageListUpdate: PageListUpdate<Comment>): void {
-            EventBus.$emit('updateComments', commentsPageListUpdate);
+            EventBus.emit('updateComments', commentsPageListUpdate);
         },
 
         loadSimilarMovies(moviesList: MoviesListResponse, pageNumber: number): void {
@@ -373,7 +355,7 @@ new Vue({
                 currentPage: pageNumber
             };
             console.log(moviesList);
-            EventBus.$emit('updateMoviesList', moviesListUpdate);
+            EventBus.emit('updateMoviesList', moviesListUpdate);
         },
 
         loadMovieData(movie: MovieBasicData): void {
@@ -417,7 +399,7 @@ new Vue({
 
         loadMovieRating(movieRating: MovieRating): void {
             this.rating = movieRating.overall_rating;
-            EventBus.$emit('starRateUpdateRate', movieRating.user_rating);
+            EventBus.emit('starRateUpdateRate', movieRating.user_rating);
         },
 
         loadMovieSpermatozoids(movieSpermatozoids: MovieSpermatozoids): void {
@@ -441,7 +423,7 @@ new Vue({
         this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
         this.fetchMovieData();
         this.fetchSimilarMovies();
-        this.$root.$on('pageHasBeenSelectedMovieComments', this.fetchComments);
+        EventBus.on('pageHasBeenSelectedMovieComments', this.fetchComments);
     },
 
     computed: {
@@ -493,4 +475,26 @@ new Vue({
         }
     }
 
-});
+};
+
+const app = createApp(settings);
+BasicElements.registerBasicComponents(app);
+app.component('movie-roll-icon', MovieRollIcon);
+app.component('television-icon', TelevisionIcon);
+app.component('date-confirmed-icon', DateConfirmedIcon);
+app.component('star-full-icon', StarFullIcon);
+app.component('chart-growth-icon', ChartGrowthIcon);
+app.component('spermatozoid-icon', SpermatozoidIcon);
+app.component('download-icon', DownloadIcon);
+app.component('star-rating', StarRating);
+app.component('unknown-person-icon', UnknownPersonIcon);
+app.component('like-icon', LikeIcon);
+app.component('user-notification', UserNotification);
+app.component('like-background-icon', LikeBackgroundIcon);
+app.component('info-circle-icon', InfoCircleIcon);
+app.component('relative-shadow-container', RelativeShadowContainer);
+app.component('expect-circle', ExpectCircle);
+app.component('comment-pen-icon', CommentPenIcon);
+app.component('movies-list', MoviesList);
+app.component('comment-list', CommentList);
+app.mount("#app");

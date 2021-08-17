@@ -28,7 +28,8 @@ import { MoviesCurrentPage } from "@interfaces/movies/MoviesCurrentPage.ts";
 import { BasicPornstarData } from "@interfaces/pornstars/BasicPornstarData.ts";
 import PagesListBasicData from "@interfaces/pages_list_basic_data.ts";
 import MoviePreviewComplete from "@jscomponents/movies/movie_preview_complete.vue";
-import EventBus from "@jsmodules/event_bus.js";
+import EventEmmiter from "mitt";
+const EventBus = EventEmmiter();
 
 @Options({
   components: { MovieBox, PagesList, MoviePreviewComplete },
@@ -68,7 +69,7 @@ export default class MoviesList extends Vue {
       this.totalMovies = this.initialTotalMovies;
     }
 
-    EventBus.$on("updateMoviesList", this.updateMoviesList);
+    EventBus.on("updateMoviesList", this.updateMoviesList);
   }
 
   updateMoviesList(response: MoviesCurrentPage): void {
@@ -82,7 +83,7 @@ export default class MoviesList extends Vue {
   }
 
   updatePagesList(data: PagesListBasicData) {
-    EventBus.$emit("updatePagesList", data);
+    EventBus.emit("updatePagesList", data);
   }
 
   extractPornstars(pornstarsList: BasicPornstarData[]): string[] | string {

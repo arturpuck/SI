@@ -19,13 +19,16 @@
 <script lang="ts">
 import { Vue, Options, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator";
-import EventBus from "@jsmodules/event_bus.js";
+import EventEmmiter from "mitt";
+const EventBus = EventEmmiter();
 
 @Options({ name: "StarRating" })
 export default class StarRating extends Vue {
   private selectedValue: number = 0;
   private valueOnHover: number = 0;
   private translations = Translator.getPackage("star_rating");
+
+  emits = ['selected'];
 
   @Prop({
     type: Number,
@@ -132,10 +135,7 @@ export default class StarRating extends Vue {
 
   mounted() {
     this.selectedValue = this.initialValue;
-    EventBus.$on(`${this.identifier}UpdateRate`, (rate: number) => this.selectedValue = rate);
-   // this.$root.$on(
-    //  `${this.identifier}UpdateRate`,
-  //    (rate: number) => (this.selectedValue = rate));
+    EventBus.on(`${this.identifier}UpdateRate`, (rate: number) => this.selectedValue = rate);
   }
 }
 </script>

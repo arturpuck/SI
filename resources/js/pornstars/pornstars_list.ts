@@ -1,11 +1,8 @@
-import VueConstructor from '@jsmodules/basic.js';
+import BasicElements from '@jsmodules/basic.js';
+import { createApp } from 'vue';
 import PornstarsList from '@jscomponents/pornstars/pornstars_list.vue';
 
-const Vue = VueConstructor.build();
-Vue.component('pornstars-list', PornstarsList);
-
-new Vue({
-    el: '#app',
+const settings = {
 
     data(){
         return {
@@ -14,8 +11,9 @@ new Vue({
     },
    
    
-    methods : {
-           
-    }
-   
-   });
+};
+
+const app = createApp(settings);
+BasicElements.registerBasicComponents(app);
+app.component('pornstars-list', PornstarsList);
+app.mount("#app");

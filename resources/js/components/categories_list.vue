@@ -37,7 +37,6 @@ import Categories from "@jsmodules/categories_list";
 import CategoryData from "@interfaces/movies/category_data";
 import MovieTapeIcon from "@svgicon/movie_tape_icon";
 
-
 export default  {
 
   name: "CategoriesList",
@@ -55,15 +54,11 @@ export default  {
   },
 
   methods : {
-     hideCategories(){alert('event odpalony'); return 0;},
-
-     testHandler(){
-         alert('mouse over działa');
+     hideCategories(){
+       this.$emit("hide");
      }
-  }
 
-  
-  
+  }
 
 }
 </script>

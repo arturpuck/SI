@@ -1,7 +1,7 @@
 <template>
   <div ref="container" class="labeled-checkbox-container">
     <input
-      v-bind:checked="value"
+      v-bind:checked="modelValue"
       v-bind:value="checkboxValue"
       v-on:input="updateModel"
       ref="checkbox"
@@ -46,7 +46,7 @@ export default class LabeledCheckbox extends Vue {
     required: false,
     default: false,
   })
-  readonly value;
+  readonly modelValue;
 
   @Prop({
     required: false,
@@ -57,7 +57,7 @@ export default class LabeledCheckbox extends Vue {
   private checked: boolean = false;
 
   updateModel(event) {
-    this.$emit("input", event.target.checked);
+    this.$emit("update:modelValue", event.target.checked);
   }
 
   mounted() {

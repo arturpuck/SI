@@ -20,12 +20,13 @@
       <div class="movie-details-and-controls">
         <span class="movie-details-row">
           <play-round-icon class="play-icon"></play-round-icon>
-          <span v-text="translations['views']"></span>
+          <span  v-text="translator['views']"></span>
+          <span class="detail-separator">:</span> 
           <span v-text="views"></span>
         </span>
         <span v-on:click="showPreview" class="preview-control movie-details-row">
           <magnifier-icon class="magnifier-icon"></magnifier-icon>
-          <span v-text="translations['preview']"></span>
+          <span v-text="translator['preview']"></span>
         </span>
       </div>
       <div v-if="aditionalInformation" class="movie-details-and-controls">
@@ -40,7 +41,7 @@
           </span>
         </span>
         <icon-polish-flag
-          v-bind:title="translations['movieTranslatedToPolish']"
+          v-bind:title="translator['movieTranslatedToPolish']"
           v-if="isTranslatedToPolish"
         />
       </div>
@@ -58,8 +59,8 @@ import StarYellowIcon from "@svgicon/star_yellow_icon";
 import Config from "@config/paths/movies";
 import ExpectShadowCircle from "@jscomponents-decoration/expect_shadow_circle";
 import Translations from "@jsmodules/translations/components/movie_box";
-import EventBus from "@jsmodules/event_bus.js";
-//use teleport instead???
+import EventEmmiter from "mitt";
+const EventBus = EventEmmiter();
 
 @Options({
   name: "MovieBox",
@@ -114,7 +115,7 @@ export default class MovieBox extends Vue {
   private showsGIF = false;
 
   showPreview(event) {
-    EventBus.$emit("showPreview", { id: this.id, title: this.title });
+    EventBus.emit("showPreview", { id: this.id, title: this.title });
   }
 
   getPornstarSlug(pornstarNickname) {
@@ -148,6 +149,10 @@ export default class MovieBox extends Vue {
 
 <style lang="scss" scoped>
 @import "~sass/fonts";
+
+.detail-separator{
+  margin:0 5px;
+}
 
 .movie-image {
   width: 280px;
@@ -237,6 +242,7 @@ export default class MovieBox extends Vue {
 .star-icon {
   width: 16px;
   height: auto;
+  margin:0 3px;
 }
 
 .preview-control {

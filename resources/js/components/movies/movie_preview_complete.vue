@@ -9,7 +9,8 @@ import { Vue, Options, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator.js";
 import FixedShadowContainer from "@jscomponents/decoration/fixed_shadow_container.vue";
 import MoviePreview from "@jscomponents/movies/movie_preview.vue";
-import EventBus from "@jsmodules/event_bus.js";
+import EventEmmiter from "mitt";
+const EventBus = EventEmmiter();
 
 @Options({
   components: { FixedShadowContainer, MoviePreview },
@@ -27,8 +28,8 @@ export default class MoviePreviewComplete extends Vue {
   }
 
   created() {
-    EventBus.$on("showPreview", this.showMoviePreview);
-    EventBus.$on("closePreview", this.hideMoviePreview);
+    EventBus.on("showPreview", this.showMoviePreview);
+    EventBus.on("closePreview", this.hideMoviePreview);
   }
 }
 </script>

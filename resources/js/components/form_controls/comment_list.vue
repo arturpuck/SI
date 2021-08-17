@@ -43,7 +43,8 @@ import PagesList from "@jscomponents/pages_list.vue";
 import Translations from "@jsmodules/translations/comments_list";
 import ShowCommentFormButton from "@jscomponents/form_controls/show_comment_form_button.vue";
 import CommentBox from "@jscomponents/form_controls/comment_box.vue";
-import EventBus from "@jsmodules/event_bus.js";
+import EventEmmiter from "mitt";
+const EventBus = EventEmmiter();
 
 @Options({
   components: { ShowCommentFormButton, CommentBody, PagesList, CommentBox },
@@ -100,7 +101,7 @@ export default class CommentList extends Vue {
 
   mounted() {
     this.comments = this.initialComments;
-    EventBus.$on("updateComments", this.updateComments); 
+    EventBus.on("updateComments", this.updateComments); 
     this.commentsPerPage = this.initialCommentsPerPage;
   }
 
@@ -120,7 +121,7 @@ export default class CommentList extends Vue {
       pagesNumber,
       currentPage: commentsUpdate.currentPage,
     };
-    EventBus.$emit(`updatePagesList${this.uniqueIdentifier}`, pagesListStatus);
+    EventBus.emit(`updatePagesList${this.uniqueIdentifier}`, pagesListStatus);
   }
 
   calculateSubPagesNumber(totalComments: number, commentsPerPage: number): number {

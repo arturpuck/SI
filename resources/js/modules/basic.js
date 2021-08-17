@@ -30,6 +30,7 @@ window.addEventListener('DOMContentLoaded', checkCookiePolicy); */
 export default {
 
    registerBasicComponents(app) {
+      app.config.compilerOptions.whitespace = 'preserve';
       app.component('authenticated-user-sidebar', AuthenticatedUserSidebar);
       app.component('navbar', Navbar);
       app.component('text-input-combo', TextInputCombo);

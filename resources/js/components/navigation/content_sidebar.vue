@@ -107,7 +107,8 @@ import ExpandAllIcon from "@svgicon/expand_all_icon";
 import HappyTongueIcon from "@svgicon/happy_tongue_icon";
 import MagnifierIcon from "@svgicon/magnifier_icon";
 import StarFullIcon from "@svgicon/star_full_icon";
-import EventBus from "@jsmodules/event_bus.js";
+import EventEmmiter from "mitt";
+const EventBus = EventEmmiter();
 
 @Options({
   components: {
@@ -126,11 +127,11 @@ export default class ContentSideBar extends Vue {
   moviesSubMenuIsVisible: Boolean = false;
 
   showCategories() {
-    EventBus.$emit("show-movies-categories");
+    EventBus.emit("show-movies-categories");
   }
 
   hideSideBar() {
-    EventBus.$emit("hide-content-bar");
+    EventBus.emit("hide-content-bar");
   }
 
   toggleMoviesMenu() {

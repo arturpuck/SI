@@ -147,28 +147,28 @@
             <label for="minimum-movie-duration" class="range-selection__label">
                {{__('min_time_in_minutes')}}
             </label>
-            <input type="range" v-model="minimumMovieTime" value="0" min="0" max="180" step="1" class="range-selection__input" name="minimum-movie-duration" id="minimum-movie-duration" />
+            <input type="range" v-model="minimumMovieTime" min="0" max="180" step="1" class="range-selection__input" name="minimum-movie-duration" id="minimum-movie-duration" />
             <div v-text="minimumMovieTimeLabel" class="range-selection__value"></div>
          </div>
          <div class="range-selection">
             <label for="maximum-movie-duration" class="range-selection__label">
                {{__('max_time_in_minutes')}}
             </label>
-            <input type="range" v-model="maximumMovieTime" value="0" min="0" max="180" step="1" class="range-selection__input" name="maximum-movie-duration" id="maximum-movie-duration" />
+            <input type="range" v-model="maximumMovieTime" min="0" max="180" step="1" class="range-selection__input" name="maximum-movie-duration" id="maximum-movie-duration" />
             <div v-text="maximumMovieTimeLabel" class="range-selection__value"></div>
          </div>
          <div class="range-selection">
             <label for="min-movie-views" class="range-selection__label">
                {{__('minimum_views')}}
             </label>
-            <input type="range" v-model="minimumMovieViews" value="0" min="0" max="100000" step="100" class="range-selection__input" name="minimum-movie-views" id="min-movie-views" />
+            <input type="range" v-model="minimumMovieViews" min="0" max="100000" step="100" class="range-selection__input" name="minimum-movie-views" id="min-movie-views" />
             <div v-text="minimumMovieViewsLabel" class="range-selection__value"></div>
          </div>
          <div class="range-selection">
             <label for="max-movie-views" class="range-selection__label">
                {{__('maximum_views')}}
             </label>
-            <input type="range" v-model="maximumMovieViews" value="0" min="0" max="100000" step="100" class="range-selection__input" name="max-movie-views" id="max-movie-views" />
+            <input type="range" v-model="maximumMovieViews" min="0" max="100000" step="100" class="range-selection__input" name="max-movie-views" id="max-movie-views" />
             <div v-text="maximumMovieViewsLabel" class="range-selection__value"></div>
          </div>
       </fieldset>

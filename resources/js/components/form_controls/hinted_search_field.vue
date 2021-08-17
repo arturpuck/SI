@@ -15,13 +15,13 @@
       v-bind:class="{ 'top-left-corner-rounded': hintsAreDisplayed }"
       class="icon-container"
     >
-      <span class="fas fa-search magnifier-icon"></span>
+      <magnifier-icon class="decoration-icon"></magnifier-icon>
     </div>
     <input
       v-bind:placeholder="placeholderText"
       v-on:focus="toggleFocus"
       v-on:focusout="toggleFocus(true)"
-      v-bind:value="value"
+      v-bind:value="modelValue"
       v-on:input="emitTypedInValue"
       id="hinted-search-text"
       type="search"
@@ -30,7 +30,7 @@
     <button
       v-text="translations['search']"
       v-bind:class="{ 'top-right-corner-rounded': hintsAreDisplayed }"
-      v-on:click="startSearching(value)"
+      v-on:click="startSearching(modelValue)"
       class="search-button"
     ></button>
     <ul v-bind:class="{ 'visible-hints-list': hintsAreDisplayed }" class="hints-list">
@@ -47,14 +47,15 @@
 <script lang="ts">
 import { Vue, Options, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator.js";
+import MagnifierIcon from "@svgicon/magnifier_icon.vue";
 
-@Options({ name: "HintedSearchField" })
+@Options({ name: "HintedSearchField", components : {MagnifierIcon} })
 export default class HintedSearchField extends Vue {
   @Prop({
     type: String,
-    required: true,
+    required: false,
   })
-  readonly value: string;
+  readonly modelValue: string;
 
   @Prop({
     type: String,
@@ -107,13 +108,20 @@ export default class HintedSearchField extends Vue {
   }
 
   emitUserTypesTextInSearchFiled(value: string) {
-    this.$emit("input", value);
+    this.$emit("update:modelValue", value);
   }
 }
 </script>
 
 <style lang="scss">
 @import "~sass/fonts";
+
+.decoration-icon {
+  width:1em;
+  height:auto;
+  fill:white;
+  margin: 3px;
+}
 
 .hint {
   padding: 4px 0;

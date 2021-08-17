@@ -57,7 +57,8 @@ import Translator from "@jsmodules/translator.js";
 import AngleTopIcon from "@svgicon/angle_top_icon";
 import SettingsIcon from "@svgicon/settings_icon";
 import ExitArrowIcon from "@svgicon/exit_arrow_icon";
-import EventBus from "@jsmodules/event_bus.js";
+import EventEmmiter from "mitt";
+const EventBus = EventEmmiter();
 
 @Options({
   components: { AngleTopIcon, SettingsIcon, ExitArrowIcon },
@@ -77,7 +78,7 @@ export default class AuthenticatedUserSidebar extends Vue {
   }
 
   hideSideBar() {
-    EventBus.$emit("hideSideBar");
+    EventBus.emit("hideSideBar");
   }
 }
 </script>

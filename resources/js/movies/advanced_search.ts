@@ -1,10 +1,9 @@
-import VueConstructor from '@jsmodules/basic.js';
+import BasicElements from '@jsmodules/basic.js';
+import { createApp } from 'vue';
 import SimpleLabeledSelect from '@jscomponents-form-controls/simple_labeled_select.vue';
-import LabeledCheckBox from '@jscomponents-form-controls/labeled_checkbox.vue';
-import UserNotification from '@jscomponents/user_notification.vue';
+import UserNotification from '@jscomponents/user_notification';
 import NotificationFunction from '@jsmodules/notification_function.ts';
 import { MoviesListResponse } from '@interfaces/movies/MoviesListResponse.ts';
-const Vue = VueConstructor.build();
 import MultiSelect from '@jscomponents-form-controls/multiselect.vue';
 import Translator from '@jsmodules/translator.js';
 import SearchEngineTranslations from '@jsmodules/translations/search_engine_translations.js';
@@ -27,84 +26,69 @@ import FingerPointIcon from '@svgicon/finger_point_icon.vue';
 import SideBarVisibilityMixin from "@js/mixins/side_bar_visibility";
 import ShutdownIcon from "@svgicon/shutdown_icon.vue";
 import InfoCircleIcon from "@svgicon/info_circle_icon.vue";
-import EventBus from "@jsmodules/event_bus.js";  
+import EventEmmiter from "mitt";
+const EventBus = EventEmmiter();
 
-Vue.component('simple-labeled-select', SimpleLabeledSelect);
-Vue.component('labeled-checkbox', LabeledCheckBox);
-Vue.component('user-notification', UserNotification);
-Vue.component('multiselect', MultiSelect);
-Vue.component('relative-shadow-container', RelativeShadowContainer);
-Vue.component('expect-circle', ExpectCircle);
-Vue.component('accept-button', AcceptButton);
-Vue.component('reset-button', ResetButton);
-Vue.component('fixed-shadow-container', FixedShadowContainer);
-Vue.component('movies-list', MoviesList);
-Vue.component('magnifier-icon', MagnifierIcon);
-Vue.component('exit-arrow-icon', ExitArrowIcon);
-Vue.component('arrow-down-icon', ArrowDownIcon);
-Vue.component('improvement-performance-icon', ImprovementPerformanceIcon);
-Vue.component('finger-point-icon', FingerPointIcon);
-Vue.component('shutdown-icon', ShutdownIcon);
-Vue.component('info-circle-icon', InfoCircleIcon);
-
-new Vue({
-  el: '#app',
+const settings = {
 
   mixins: [SideBarVisibilityMixin],
 
-  data: {
+  data() {
 
-    searchEngineTranslations: SearchEngineTranslations,
-    csrfToken: undefined,
-    multiselectValues: [],
-    translator: Translator,
-    fetchingPornstarsInProgress: true,
-    minimumMovieTime: 0,
-    maximumMovieTime: 0,
-    minimumMovieViews: 0,
-    maximumMovieViews: 0,
-    showControlsShortcut: undefined,
-    abundanceType: "",
-    titsSize: "",
-    assSize: "",
-    thicknessSize: "",
-    ageRange: "",
-    hairColor: "",
-    race: "",
-    nationality: "",
-    shavedPussy: "",
-    analAmount: "",
-    blowjobAmount: "",
-    vaginalamount: "",
-    handjobAmount: "",
-    pussyLickingAmount: "",
-    titfuckAmount: "",
-    feetPettingAmount: "",
-    position69amount: "",
-    doublePenetrationamount: "",
-    cumshotType: "",
-    isCumshotCompilation: false,
-    location: "",
-    cameraStyle: "",
-    storyOrCostume: "",
-    professionalismLevel: "",
-    hasStory: "",
-    recordedBySpamCamera: false,
-    isSadisticOrMasochistic: false,
-    isFemaleDomination: false,
-    isTranslatedToPolish: false,
-    showPantyhose: false,
-    showStockings: false,
-    showGlasses: false,
-    showHighHeels: false,
-    showHugeCock: false,
-    showWhips: false,
-    showSexToys: false,
-    pornstarsList: [],
-    fetchingMoviesInProgress: false,
-    advancedSearchPanelIsVisible: true,
-    selectedOptionsVisibleForUser: [],
-    totalMoviesFound: undefined,
+    return {
+      searchEngineTranslations: SearchEngineTranslations,
+      csrfToken: undefined,
+      multiselectValues: [],
+      translator: Translator,
+      fetchingPornstarsInProgress: true,
+      minimumMovieTime: 0,
+      maximumMovieTime: 0,
+      minimumMovieViews: 0,
+      maximumMovieViews: 0,
+      showControlsShortcut: undefined,
+      abundanceType: "",
+      titsSize: "",
+      assSize: "",
+      thicknessSize: "",
+      ageRange: "",
+      hairColor: "",
+      race: "",
+      nationality: "",
+      shavedPussy: "",
+      analAmount: "",
+      blowjobAmount: "",
+      vaginalamount: "",
+      handjobAmount: "",
+      pussyLickingAmount: "",
+      titfuckAmount: "",
+      feetPettingAmount: "",
+      position69amount: "",
+      doublePenetrationamount: "",
+      cumshotType: "",
+      isCumshotCompilation: false,
+      location: "",
+      cameraStyle: "",
+      storyOrCostume: "",
+      professionalismLevel: "",
+      hasStory: "",
+      recordedBySpamCamera: false,
+      isSadisticOrMasochistic: false,
+      isFemaleDomination: false,
+      isTranslatedToPolish: false,
+      showPantyhose: false,
+      showStockings: false,
+      showGlasses: false,
+      showHighHeels: false,
+      showHugeCock: false,
+      showWhips: false,
+      showSexToys: false,
+      pornstarsList: [],
+      fetchingMoviesInProgress: false,
+      advancedSearchPanelIsVisible: true,
+      selectedOptionsVisibleForUser: [],
+      totalMoviesFound: undefined,
+    }
+
   },
 
   computed: {
@@ -235,7 +219,7 @@ new Vue({
 
         if (response.status == 200) {
           let pornstars = await response.json();
-          EventBus.$emit('replaceAvailableOptionsForMultiselect', pornstars);
+          EventBus.emit('replaceAvailableOptionsForMultiselect', pornstars);
         }
         else {
           this.showNotification(SearchEngineTranslations['fetchingPornstarsFailed'], 'error');
@@ -322,20 +306,20 @@ new Vue({
           window.scroll(0, 0);
         }
 
-        EventBus.$emit('updateMoviesList', { moviesData, currentPage });
+        EventBus.emit('updateMoviesList', { moviesData, currentPage });
       }
-      else{
+      else {
         this.clearMoviesList();
       }
 
       this.totalMoviesFound = moviesData.totalMovies;
       this.advancedSearchPanelIsVisible = false;
-      
-      
+
+
     },
 
-    clearMoviesList() : void {
-      EventBus.$emit('updateMoviesList', { moviesData : { totalMovies : 0, movies : [] }, currentPage : 0});
+    clearMoviesList(): void {
+      EventBus.emit('updateMoviesList', { moviesData: { totalMovies: 0, movies: [] }, currentPage: 0 });
     },
 
     async searchMovies(currentPage: number = 1) {
@@ -408,8 +392,28 @@ new Vue({
     this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
     this.fetchPornstars();
     this.initiateAditionalPanelSettings();
-    EventBus.$on('pageHasBeenSelected', this.searchMovies);
+    EventBus.on('pageHasBeenSelected', this.searchMovies);
   }
 
-});
+};
+
+const app = createApp(settings);
+BasicElements.registerBasicComponents(app);
+app.component('simple-labeled-select', SimpleLabeledSelect);
+app.component('user-notification', UserNotification);
+app.component('multiselect', MultiSelect);
+app.component('relative-shadow-container', RelativeShadowContainer);
+app.component('expect-circle', ExpectCircle);
+app.component('accept-button', AcceptButton);
+app.component('reset-button', ResetButton);
+app.component('fixed-shadow-container', FixedShadowContainer);
+app.component('movies-list', MoviesList);
+app.component('magnifier-icon', MagnifierIcon);
+app.component('exit-arrow-icon', ExitArrowIcon);
+app.component('arrow-down-icon', ArrowDownIcon);
+app.component('improvement-performance-icon', ImprovementPerformanceIcon);
+app.component('finger-point-icon', FingerPointIcon);
+app.component('shutdown-icon', ShutdownIcon);
+app.component('info-circle-icon', InfoCircleIcon);
+app.mount("#app");
 

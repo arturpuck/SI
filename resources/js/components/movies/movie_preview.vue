@@ -39,7 +39,9 @@
 
 <script lang="ts">
 import PreviewMovieData from "@interfaces/movies/preview_movie_data";
-import EventBus from "@jsmodules/event_bus.js";
+import EventEmmiter from "mitt";
+import Translations from "@jsmodules/translations/components/movie_preview"
+const EventBus = EventEmmiter();
 
 export default {
   data() {
@@ -58,13 +60,13 @@ export default {
     },
 
     hidePreview(): void {
-      EventBus.$emit("closePreview");
+      EventBus.emit("closePreview");
     },
   },
 
   computed: {
     movieAlt(): string {
-      return `${this.translator.translate("movie_frame")} : ${this.title}`;
+      return `${Translations['movieFrame']} : ${this.title}`;
     },
 
     currentFramePath(): string {
@@ -74,13 +76,12 @@ export default {
     },
 
     playButtonCaption(): string {
-      return this.translator.translate("play_movie_preview");
+      return Translations['playMoviePreview'];
     },
   },
 
   mounted() {
-    this.$root.$on("showPreview", this.showMoviePreview);
-    this.translator = this.$root.translator;
+    EventBus.on("showPreview", this.showMoviePreview);
   },
 };
 </script>

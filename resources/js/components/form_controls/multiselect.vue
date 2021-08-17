@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-on-clickaway="hideMenu" class="multiselect">
+    <div v-click-away="hideMenu" class="multiselect">
       <div class="multiselect__label" v-on:click="showMenu">
         <span v-text="mainLabel" class="multiselect__caption"></span>
         <icon-add-plus></icon-add-plus>
@@ -55,14 +55,15 @@ import { Vue, Options, Prop, Watch } from "vue-property-decorator";
 import Translations from "@jsmodules/translations/components/form_controls/multiselect.js";
 import IconAddPlus from "@jscomponents/decoration/icons/icon_add_plus.vue";
 import LabeledCheckbox from "@jscomponents/form_controls/labeled_checkbox.vue";
-import { directive as onClickaway } from "vue-clickaway";
+import { directive } from "vue3-click-away";
 import ButtonClose from "@jscomponents/form_controls/button_close.vue";
-import EventBus from "@jsmodules/event_bus.js";
+import EventEmmiter from "mitt";
+const EventBus = EventEmmiter();
 
 @Options({
   name: "MultiSelect",
   components: { IconAddPlus, LabeledCheckbox, ButtonClose },
-  directives: { onClickaway },
+  directives: { ClickAway : directive },
 })
 export default class MultiSelect extends Vue {
   private displayedOptions: object = {};
@@ -112,15 +113,15 @@ export default class MultiSelect extends Vue {
     required: false,
     default: [],
   })
-  readonly value: Array<any>;
+  readonly modelValue: Array<any>;
 
-  @Watch("value")
-  modelChanged(value: Array<any>, oldValue: Array<any>) {
+  @Watch("modelValue", {deep : true})
+  modelChanged(modelValue: Array<any>, oldValue: Array<any>) {
     let innerSelectedOptions: object = {};
 
     Object.keys(this.totalOptions).forEach((key) => {
       const option = this.totalOptions[key];
-      const isSelected = value.includes(option);
+      const isSelected = modelValue.includes(option);
       this.optionsStates[key] = isSelected;
       if (isSelected) {
         innerSelectedOptions[key] = option;
@@ -141,7 +142,7 @@ export default class MultiSelect extends Vue {
   }
 
   updateModel() {
-    setTimeout(() => this.$emit("input", this.getSelectedOptions(), 0));
+    setTimeout(() => this.$emit("update:modelValue", this.getSelectedOptions(), 0));
   }
 
   getSelectedOptions(): Array<any> {
@@ -162,7 +163,7 @@ export default class MultiSelect extends Vue {
 
   created() {
     this.replaceAvailableOptions(this.options);
-    EventBus.$on(`replaceAvailableOptionsFor${this.id}`, this.replaceAvailableOptions);
+    EventBus.on(`replaceAvailableOptionsFor${this.id}`, this.replaceAvailableOptions);
   }
 
   replaceAvailableOptions(options: Array<any>) {

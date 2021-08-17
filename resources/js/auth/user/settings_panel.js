@@ -1,4 +1,5 @@
-import VueConstructor from '@jsmodules/basic.js';
+import BasicElements from '@jsmodules/basic.js';
+import { createApp } from 'vue';
 import TextareaCombo from '@jscomponents/form_controls/textarea_combo.vue';
 import IconStop from '@jscomponents/decoration/icon_stop.vue';
 import IconConfirm from '@jscomponents/decoration/icon_confirm.vue';
@@ -16,58 +17,40 @@ import InfoCircleIcon from "@svgicon/info_circle_icon.vue";
 import AvatarIcon from "@svgicon/avatar_icon.vue";
 import ServerStorageIcon from "@svgicon/server_storage_icon.vue";
 import BackspaceEraseIcon from "@svgicon/backspace_erase_icon.vue";
-import EventBus from "@jsmodules/event_bus.js";
+import EventEmmiter from "mitt";
+const EventBus = EventEmmiter();
 
-const Vue = VueConstructor.build();
-
-Vue.component('textarea-combo', TextareaCombo);
-Vue.component('icon-stop', IconStop);
-Vue.component('icon-confirm', IconConfirm);
-Vue.component('described-select', DescribedSelect);
-Vue.component('date-picker', DatePicker);
-Vue.component('expect-circle', ExpectCircle);
-Vue.component('accept-button', AcceptButton);
-Vue.component('user-notification', UserNotification);
-Vue.component('icon-confirm', IconConfirm);
-Vue.component('icon-stop', IconStop);
-Vue.component('success-information',SuccessInformation);
-Vue.component('edit-pen-icon', EditPenIcon);
-Vue.component('image-photography-icon', ImagePhotographyIcon);
-Vue.component('key-icon', KeyIcon);
-Vue.component('info-circle-icon', InfoCircleIcon);
-Vue.component('avatar-icon', AvatarIcon);
-Vue.component('server-storage-icon', ServerStorageIcon);
-Vue.component('backspace-erase-icon', BackspaceEraseIcon);
-
-new Vue({
-    el: '#app',
+const settings = {
    
-    data : {
-       tabIndex : 0,
-       verificationInProgress : false,
-       showMyBirthday : false,
-       csrfToken : undefined,
-       basicUserDataEditableFields : {
-          email : {
-             initialValue : undefined
-          },
-
-          sexual_orientation_id : {
-             initialValue : undefined
-          },
-
-          user_type_id : {
-             initialValue : undefined
-          }
-       },
-       avatarFileName : "",
-       avatarFile : null,
-       allowedExtensions : ['jpg', 'jpeg', 'bmp', 'gif', 'png', 'svg', 'webp'],
-       availableTabs : ['basicUserDataTab', 'avatarTab', 'passwordTab', 'otherTab'],
-       currentExpectDecorationLabel : undefined,
-       imageURL : "",
-       hiddenIcon : false,
-       showDeleteAvatarButton : true
+    data() {
+       return {
+         tabIndex : 0,
+         verificationInProgress : false,
+         showMyBirthday : false,
+         csrfToken : undefined,
+         basicUserDataEditableFields : {
+            email : {
+               initialValue : undefined
+            },
+  
+            sexual_orientation_id : {
+               initialValue : undefined
+            },
+  
+            user_type_id : {
+               initialValue : undefined
+            }
+         },
+         avatarFileName : "",
+         avatarFile : null,
+         allowedExtensions : ['jpg', 'jpeg', 'bmp', 'gif', 'png', 'svg', 'webp'],
+         availableTabs : ['basicUserDataTab', 'avatarTab', 'passwordTab', 'otherTab'],
+         currentExpectDecorationLabel : undefined,
+         imageURL : "",
+         hiddenIcon : false,
+         showDeleteAvatarButton : true
+       }
+       
     },
    
     methods : {
@@ -488,7 +471,7 @@ new Vue({
 
         showNotification(text, type="no-error"){
            const header = type === "no-error" ? "information" : "error";
-           EventBus.$emit('showNotification', {notificationText : text, notificationType : type, headerText : header});
+           EventBus.emit('showNotification', {notificationText : text, notificationType : type, headerText : header});
         }
    },
 
@@ -539,4 +522,24 @@ new Vue({
 
  }
    
-});
+};
+
+const app = createApp(settings);
+BasicElements.registerBasicComponents(app);
+app.component('textarea-combo', TextareaCombo);
+app.component('described-select', DescribedSelect);
+app.component('date-picker', DatePicker);
+app.component('expect-circle', ExpectCircle);
+app.component('accept-button', AcceptButton);
+app.component('user-notification', UserNotification);
+app.component('icon-confirm', IconConfirm);
+app.component('icon-stop', IconStop);
+app.component('success-information',SuccessInformation);
+app.component('edit-pen-icon', EditPenIcon);
+app.component('image-photography-icon', ImagePhotographyIcon);
+app.component('key-icon', KeyIcon);
+app.component('info-circle-icon', InfoCircleIcon);
+app.component('avatar-icon', AvatarIcon);
+app.component('server-storage-icon', ServerStorageIcon);
+app.component('backspace-erase-icon', BackspaceEraseIcon);
+app.mount("#app");

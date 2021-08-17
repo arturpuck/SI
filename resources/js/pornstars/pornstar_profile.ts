@@ -1,10 +1,11 @@
 
-import VueConstructor from '@jsmodules/basic.js';
+import BasicElements from '@jsmodules/basic.js';
+import { createApp } from 'vue';
 import MovieBox from '@jscomponents/movies/movie_box.vue';
 import StarRating from '@jscomponents/star_rating.vue';
 import { PornstarProfileTab } from '@js/enum/pornstar_profile_tab';
 import Translator from '@jsmodules/translator.js';
-import UserNotification from '@jscomponents/user_notification.vue';
+import UserNotification from '@jscomponents/user_notification';
 import TextAreaCombo from '@jscomponents-form-controls/textarea_combo.vue';
 import AcceptButton from '@jscomponents-form-controls/accept_button.vue';
 import RelativeShadowContainer from '@jscomponents/decoration/relative_shadow_container.vue';
@@ -21,31 +22,11 @@ import CommentIcon from "@svgicon/comment_icon.vue";
 import PodiumIcon from "@svgicon/podium_icon.vue";
 import StopHandIcon from "@svgicon/stop_hand_icon.vue";
 import BoxVotingIcon from "@svgicon/box_voting_icon.vue";
-import EventBus from "@jsmodules/event_bus.js";
-
-const Vue = VueConstructor.build();
-Vue.component('movie-box', MovieBox);
-Vue.component('star-rating', StarRating);
-Vue.component('user-notification', UserNotification);
-Vue.component('textarea-combo', TextAreaCombo);
-Vue.component('accept-button', AcceptButton);
-Vue.component('relative-shadow-container', RelativeShadowContainer);
-Vue.component('expect-circle', ExpectCircle);
-Vue.component('icon-stop', IconStop);
-Vue.component('icon-confirm', IconConfirm);
-Vue.component('comment-box', CommentBox);
-Vue.component('comment-body', CommentBody);
-Vue.component('links-box', LinksBox);
-Vue.component('movie-preview-complete', MoviePreviewComplete);
-Vue.component('camera-icon', CameraIcon);
-Vue.component('comment-icon', CommentIcon);
-Vue.component('podium-icon', PodiumIcon);
-Vue.component("stop-hand-icon", StopHandIcon);
-Vue.component('box-voting-icon', BoxVotingIcon);
+import EventEmitter from "mitt";
+const EventBus = EventEmitter();
 
 
-new Vue({
-  el: '#app',
+const settings = {
 
   data() {
     return {
@@ -77,10 +58,10 @@ new Vue({
       return pageNumber == this.currentCommentsPage;
     },
 
-    validateComment : CommentValidator,
+    validateComment: CommentValidator,
 
     resetCommentBox() {
-      EventBus.$emit('resetCommentBox');
+      EventBus.emit('resetCommentBox');
     },
 
     async saveComment(commentData: Comment) {
@@ -156,7 +137,6 @@ new Vue({
       let totalComments = parseInt(data['total_comments']);
 
       if (totalComments == 0) {
-        this.anyCommentsAvailable = true;
         this.currentCommentsPage = null;
         this.pornstarComments = {};
         this.totalComments = 0;
@@ -221,7 +201,7 @@ new Vue({
     showNotification(text, error = false) {
       const header = error ? "error" : "information";
       const type = error ? 'error' : 'no-error';
-      EventBus.$emit('showNotification', { notificationText: text, notificationType: type, headerText: header });
+      EventBus.emit('showNotification', { notificationText: text, notificationType: type, headerText: header });
     },
 
     async ratePornstar(data) {
@@ -316,10 +296,33 @@ new Vue({
   },
 
   mounted() {
-    this.$root.$on('showPreview', () => this.showsPreview = true);
-    this.$root.$on('closePreview', () => this.showsPreview = false);
+    EventBus.on('showPreview', () => this.showsPreview = true);
+    EventBus.on('closePreview', () => this.showsPreview = false);
     this.translator = Translator;
     this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
   },
 
-});
+};
+
+const app = createApp(settings);
+BasicElements.registerBasicComponents(app);
+app.component('movie-box', MovieBox);
+app.component('star-rating', StarRating);
+app.component('user-notification', UserNotification);
+app.component('textarea-combo', TextAreaCombo);
+app.component('accept-button', AcceptButton);
+app.component('relative-shadow-container', RelativeShadowContainer);
+app.component('expect-circle', ExpectCircle);
+app.component('icon-stop', IconStop);
+app.component('icon-confirm', IconConfirm);
+app.component('comment-box', CommentBox);
+app.component('comment-body', CommentBody);
+app.component('links-box', LinksBox);
+app.component('movie-preview-complete', MoviePreviewComplete);
+app.component('camera-icon', CameraIcon);
+app.component('comment-icon', CommentIcon);
+app.component('podium-icon', PodiumIcon);
+app.component("stop-hand-icon", StopHandIcon);
+app.component('box-voting-icon', BoxVotingIcon);
+
+app.mount("#app");
