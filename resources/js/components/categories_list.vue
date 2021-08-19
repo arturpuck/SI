@@ -3,11 +3,10 @@
     <div class="panel-bar">
       <div class="panel-bar__description">
         <span v-text="translations['categories_list']"></span>
-        <movie-tape-icon @click="testHandler" class="panel-bar__icon" />
+        <movie-tape-icon class="panel-bar__icon" />
       </div>
       <button-close
         v-on:click="hideCategories"
-        v-on:mouseover="testHandler"
         class="panel-bar__close-button"
       />
     </div>

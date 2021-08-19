@@ -4,7 +4,6 @@ import TextareaCombo from '@jscomponents-form-controls/textarea_combo.vue';
 import IconStop from '@jscomponents-decoration/icon_stop.vue';
 import IconConfirm from '@jscomponents-decoration/icon_confirm.vue';
 
-
   const settings = ({
 
     data() {
@@ -47,7 +46,7 @@ import IconConfirm from '@jscomponents-decoration/icon_confirm.vue';
    validateMessage(sender){
 
       const message  = sender.inputValue;
-
+     
       if(!message){
         sender.resetValidation();
       }

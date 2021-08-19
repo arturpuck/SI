@@ -242,11 +242,9 @@ import AvatarIcon from "@svgicon/avatar_icon";
 import SideBarVisibilityMixin from "@js/mixins/side_bar_visibility";
 import RollDownButton from "@jscomponents/form_controls/roll_down_button";
 import Translations from "@jsmodules/translations/components/navbar";
-import EventEmmiter from 'mitt';
 import { defineAsyncComponent } from 'vue';
 
-const categoriesList = defineAsyncComponent(() => import("@jscomponents/categories_list.vue"));
-const EventBus = EventEmmiter();
+const CategoriesList = defineAsyncComponent(() => import("@jscomponents/categories_list"));
 
 export default {
   name: "navbar",
@@ -290,7 +288,7 @@ export default {
   },
 
   components: {
-    CategoriesList : categoriesList,
+    CategoriesList,
     AdultIcon,
     ArrowUpIcon,
     MovieMediaPlayerIcon,
@@ -338,7 +336,7 @@ export default {
         "authenticatedUserSideBar"
       );
 
-      EventBus.emit(
+      this.emitter.emit(
         "sideBarVisibilityChanged",
         this.authenticatedUserSideBarIsVisible
       );
@@ -422,10 +420,11 @@ export default {
 
   mounted() {
     this.csrfToken = document.getElementById("csrf-token").content;
-    EventBus.on("hideSideBar", this.hideAuthenticatedUserSideBar);
-    EventBus.on("hide-content-bar", this.hideContentSideBar);
-    EventBus.on("show-movies-categories", this.showCategoriesList);
+    this.emitter.on("hideSideBar", this.hideAuthenticatedUserSideBar);
+    this.emitter.on("hideContentBar", this.hideContentSideBar);
+    this.emitter.on("showMoviesCategories", this.showCategoriesList);
   },
+
 };
 </script>
 

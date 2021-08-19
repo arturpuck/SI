@@ -39,9 +39,8 @@
 
 <script lang="ts">
 import PreviewMovieData from "@interfaces/movies/preview_movie_data";
-import EventEmmiter from "mitt";
 import Translations from "@jsmodules/translations/components/movie_preview"
-const EventBus = EventEmmiter();
+
 
 export default {
   data() {
@@ -60,7 +59,7 @@ export default {
     },
 
     hidePreview(): void {
-      EventBus.emit("closePreview");
+      this.emitter.emit("closePreview");
     },
   },
 
@@ -81,7 +80,7 @@ export default {
   },
 
   mounted() {
-    EventBus.on("showPreview", this.showMoviePreview);
+    this.emitter.on("showPreview", this.showMoviePreview);
   },
 };
 </script>

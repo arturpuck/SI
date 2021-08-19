@@ -7,10 +7,6 @@ import StarFullIcon from '@svgicon/star_full_icon.vue';
 import VideoPlaylistIcon from '@svgicon/video_playlist_icon.vue';
 import MagnifierIcon from '@svgicon/magnifier_icon.vue';
 import AddFileIcon from '@svgicon/add_file_icon.vue';
-import EventEmmiter from 'mitt';
-
-const EventBus = EventEmmiter();
-
 
 const settings = {
 
@@ -23,7 +19,7 @@ const settings = {
   methods: {
 
     showCategories(){
-      EventBus.emit('show-movies-categories');
+      this.emitter.emit('showMoviesCategories');
     }
 
   }

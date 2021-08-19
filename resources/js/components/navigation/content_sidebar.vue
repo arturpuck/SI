@@ -127,11 +127,13 @@ export default class ContentSideBar extends Vue {
   moviesSubMenuIsVisible: Boolean = false;
 
   showCategories() {
-    EventBus.emit("show-movies-categories");
+    //@ts-ignore
+    this.emitter.emit("showMoviesCategories");
   }
 
   hideSideBar() {
-    EventBus.emit("hide-content-bar");
+    //@ts-ignore
+    this.emitter.emit("hideContentBar");
   }
 
   toggleMoviesMenu() {

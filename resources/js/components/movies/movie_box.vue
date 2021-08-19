@@ -59,8 +59,6 @@ import StarYellowIcon from "@svgicon/star_yellow_icon";
 import Config from "@config/paths/movies";
 import ExpectShadowCircle from "@jscomponents-decoration/expect_shadow_circle";
 import Translations from "@jsmodules/translations/components/movie_box";
-import EventEmmiter from "mitt";
-const EventBus = EventEmmiter();
 
 @Options({
   name: "MovieBox",
@@ -115,7 +113,8 @@ export default class MovieBox extends Vue {
   private showsGIF = false;
 
   showPreview(event) {
-    EventBus.emit("showPreview", { id: this.id, title: this.title });
+    //@ts-ignore
+    this.emitter.emit("showPreview", { id: this.id, title: this.title });
   }
 
   getPornstarSlug(pornstarNickname) {

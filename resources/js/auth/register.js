@@ -7,7 +7,7 @@ import ExpectCircle  from '@jscomponents/decoration/expect_circle.vue';
 import DescribedSelect from '@jscomponents/form_controls/described_select.vue';
 import DatePicker from '@jscomponents/form_controls/date_picker.vue';
 
-  const settings = {
+const settings = {
 
    data() {
       return {

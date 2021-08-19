@@ -45,196 +45,208 @@
 import { Vue, Options, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator.js";
 
-@Options({name : 'TextareaCombo'})
-	export default class TextAreaCombo extends Vue {
+@Options({ name: "TextareaCombo" })
+export default class TextAreaCombo extends Vue {
+  @Prop({
+    type: String,
+    required: false,
+    default: "",
+  })
+  readonly initialValue: string;
 
-        @Prop({
-            type: String,
-            required: false,
-            default: "",
-        })
-        readonly initialValue: string;
+  @Prop({
+    type: String,
+    required: false,
+    default: "textarea_combo",
+  })
+  readonly textareaName: string;
 
-        @Prop({
-            type: String,
-            required: false,
-            default: "textarea_combo",
-        })
-        readonly textareaName: string;
+  @Prop({
+    type: Boolean,
+    required: false,
+    default: false,
+  })
+  readonly errorIconAvailable: boolean;
 
-        @Prop({
-            type: Boolean,
-            required: false,
-            default: false,
-        })
-        readonly errorIconAvailable: boolean;
+  @Prop({
+    type: Boolean,
+    required: false,
+    default: false,
+  })
+  readonly confirmationIconAvailable: boolean;
 
-        @Prop({
-            type: Boolean,
-            required: false,
-            default: false,
-        })
-        readonly confirmationIconAvailable: boolean;
+  @Prop({
+    type: Boolean,
+    required: false,
+    default: false,
+  })
+  readonly redBorderAvailable: boolean;
 
-        @Prop({
-            type: Boolean,
-            required: false,
-            default: false,
-        })
-        readonly redBorderAvailable: boolean;
+  @Prop({
+    type: Boolean,
+    required: false,
+    default: false,
+  })
+  readonly greenBorderAvailable: boolean;
 
-        @Prop({
-            type: Boolean,
-            required: false,
-            default: false,
-        })
-        readonly greenBorderAvailable: boolean;
+  @Prop({
+    type: Boolean,
+    required: false,
+    default: undefined,
+  })
+  readonly initialOk: boolean;
 
-        @Prop({
-            type: Boolean,
-            required: false,
-            default: undefined,
-        })
-        readonly initialOk: boolean;
+  @Prop({
+    type: Boolean,
+    required: false,
+    default: false,
+  })
+  readonly completeErrorDisplayAvailable: boolean;
 
-        @Prop({
-            type: Boolean,
-            required: false,
-            default: false,
-        })
-        readonly completeErrorDisplayAvailable: boolean;
+  @Prop({
+    type: Boolean,
+    required: false,
+    default: false,
+  })
+  readonly completeConfirmationDisplayAvailable: boolean;
 
-        @Prop({
-            type: Boolean,
-            required: false,
-            default: false,
-        })
-        readonly completeConfirmationDisplayAvailable: boolean;
+  @Prop({
+    type: Boolean,
+    required: false,
+    default: false,
+  })
+  readonly completeValidationDisplayAvailable: boolean;
 
-        @Prop({
-            type: Boolean,
-            required: false,
-            default: false,
-        })
-        readonly completeValidationDisplayAvailable: boolean;
+  @Prop({
+    type: Boolean,
+    required: false,
+    default: false,
+  })
+  readonly errorMessageBoxAvailable: boolean;
 
-        @Prop({
-            type: Boolean,
-            required: false,
-            default: false,
-        })
-        readonly errorMessageBoxAvailable: boolean;
+  @Prop({
+    type: String,
+    required: false,
+    default: undefined,
+  })
+  readonly initialErrorText: string;
 
-        @Prop({
-            type: String,
-            required: false,
-            default: undefined,
-        })
-        readonly initialErrorText: string;
+  @Prop({
+    type: Function,
+    required: false,
+    default: null,
+  })
+  readonly onBlurCallback: Function;
 
-        @Prop({
-            type: Function,
-            required: false,
-            default: null,
-        })
-        readonly onBlurCallback: Function;
+  @Prop({
+    type: String,
+    required: false,
+    default: "",
+  })
+  readonly placeholderText: string;
 
-        @Prop({
-            type: String,
-            required: false,
-            default: "",
-        })
-        readonly placeholderText: string;
+  @Prop({
+    type: Boolean,
+    required: false,
+    default: false,
+  })
+  readonly inputIsRequired: boolean;
 
-        @Prop({
-            type: Boolean,
-            required: false,
-            default: false,
-        })
-        readonly inputIsRequired: boolean;
+  @Prop({
+    type: Number,
+    required: false,
+    default: undefined,
+  })
+  readonly maxCharacters: number;
 
-        @Prop({
-            type: Number,
-            required: false,
-            default: undefined,
-        })
-        readonly maxCharacters: number;
+  @Prop({
+    type: Number,
+    required: false,
+    default: 6,
+  })
+  readonly rowsNumber: number;
 
-        @Prop({
-            type: Number,
-            required: false,
-            default: 6,
-        })
-        readonly rowsNumber: number;
+  @Prop({
+    type: Boolean,
+    required: false,
+    default: false,
+  })
+  readonly phantomLabel: boolean;
 
-        @Prop({
-            type: Boolean,
-            required: false,
-            default: false,
-        })
-        readonly phantomLabel: boolean;
+  private valueOK: boolean = null;
+  private errorMessage: string = '';
+  private inputValue = '';
+  private iconErrorCanBeDisplayed: boolean = false;
+  private iconConfirmationCanBeDisplayed: boolean = false;
+  private redBorderCanBeDisplayed: boolean = false;
+  private greenBorderCanBeDisplayed: boolean = false;
 
-       
-            private   valueOK : boolean = undefined;
-            private   errorMessage : string = undefined;
-            private   inputValue = undefined;
-            private   iconErrorCanBeDisplayed : boolean = undefined;
-            private   iconConfirmationCanBeDisplayed : boolean = undefined;
-            private   redBorderCanBeDisplayed : boolean = undefined;
-            private   greenBorderCanBeDisplayed : boolean = undefined;
-        
-              get displayIconError() {
-                 return (this.iconErrorCanBeDisplayed && (this.valueOK === false));
-              }
+  get displayIconError() {
+    return this.iconErrorCanBeDisplayed && this.valueOK === false;
+  }
 
-              get displayRedBorder(){
-                  return (this.redBorderCanBeDisplayed && (this.valueOK === false));
-              }
+  get displayRedBorder() {
+    return this.redBorderCanBeDisplayed && (this.valueOK === false);
+  }
 
-              get displayIconConfirmation(){
-                  return (this.iconConfirmationCanBeDisplayed && (this.valueOK === true));
-              }
+  get displayIconConfirmation() {
+    return this.iconConfirmationCanBeDisplayed && this.valueOK === true;
+  }
 
-              get displayGreenBorder(){
-                  return this.greenBorderCanBeDisplayed && (this.valueOK === true);
-              }
+  get displayGreenBorder() {
+    return this.greenBorderCanBeDisplayed && this.valueOK === true;
+  }
 
-         
+  showError(errorMessage = "") {
+    this.valueOK = false;
+    this.errorMessage = Translator.translate(errorMessage);
+  }
 
-             showError(errorMessage = ""){
-                const root = this.$root;
-                this.valueOK = false;
-                this.errorMessage = Translator.translate(errorMessage);
-             }
+  showValueIsOK() {
+    this.valueOK = true;
+    this.errorMessage = "";
+  }
 
-             showValueIsOK(){
-                 this.valueOK = true;
-                 this.errorMessage = "";
-             }
+  resetValidation() {
+    this.valueOK = undefined;
+    this.errorMessage = "";
+  }
 
-             resetValidation(){
-                 this.valueOK = undefined;
-                 this.errorMessage = "";
-             }
+  created() {
+    this.inputValue = this.initialValue;
+    this.errorMessage = this.initialErrorText;
 
+    this.iconErrorCanBeDisplayed =
+      this.errorIconAvailable ||
+      this.completeErrorDisplayAvailable ||
+      this.completeValidationDisplayAvailable;
 
-         created(){
-             this.inputValue = this.initialValue;
-             this.errorMessage = this.initialErrorText;
-             this.iconErrorCanBeDisplayed = (this.errorIconAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
-             this.iconConfirmationCanBeDisplayed = (this.confirmationIconAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
-             this.redBorderCanBeDisplayed = (this.redBorderAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
-             this.greenBorderCanBeDisplayed = (this.greenBorderAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
-             this.valueOK = this.initialOk;
-        }
-        
-        mounted(){
-            if(this.onBlurCallback){
-                (<HTMLElement>this.$refs.text_input).addEventListener('blur',() => this.onBlurCallback(this));
-            }
-        }
+    this.iconConfirmationCanBeDisplayed =
+      this.confirmationIconAvailable ||
+      this.completeConfirmationDisplayAvailable ||
+      this.completeValidationDisplayAvailable;
 
+    this.redBorderCanBeDisplayed =
+      this.redBorderAvailable ||
+      this.completeErrorDisplayAvailable ||
+      this.completeValidationDisplayAvailable;
+      
+    this.greenBorderCanBeDisplayed =
+      this.greenBorderAvailable ||
+      this.completeConfirmationDisplayAvailable ||
+      this.completeValidationDisplayAvailable;
+    this.valueOK = this.initialOk;
+    
+  }
+
+  mounted() {
+    if (this.onBlurCallback) {
+      (<HTMLElement>this.$refs.text_input).addEventListener("blur", () =>
+        this.onBlurCallback(this)
+      );
     }
+  }
+}
 </script>
 
 <style lang="scss">

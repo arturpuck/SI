@@ -8,6 +8,8 @@ import LabeledCheckbox from '@jscomponents/form_controls/labeled_checkbox.vue';
 import AuthenticatedUserSidebar from '@jscomponents/navigation/authenticated_user_sidebar.vue';
 import EmpireLogo from '@jscomponents/decoration/empire_logo.vue';
 import ContentSidebar from '@jscomponents/navigation/content_sidebar.vue';
+import EventEmmiter from 'mitt';
+const EventBus = EventEmmiter();
 
 /*async function checkCookiePolicy()
 {
@@ -31,6 +33,8 @@ export default {
 
    registerBasicComponents(app) {
       app.config.compilerOptions.whitespace = 'preserve';
+      app.config.globalProperties.emitter = EventBus;
+      app.config.globalProperties.translator = Translator;
       app.component('authenticated-user-sidebar', AuthenticatedUserSidebar);
       app.component('navbar', Navbar);
       app.component('text-input-combo', TextInputCombo);

@@ -43,6 +43,7 @@
 import PadlockIcon from "@svgicon/padlock_icon.vue";
 import IconStop from "@jscomponents-decoration/icon_stop.vue";
 import IconConfirm from "@jscomponents-decoration/icon_confirm.vue";
+import Translator from '@jsmodules/translator';
 
 export default {
   name: "text-input-combo",
@@ -62,6 +63,7 @@ export default {
       iconConfirmationCanBeDisplayed: undefined,
       redBorderCanBeDisplayed: undefined,
       greenBorderCanBeDisplayed: undefined,
+      translator : Translator
     };
   },
 
@@ -85,9 +87,8 @@ export default {
 
   methods: {
     showError(errorMessage = "") {
-      const root = this.$root;
       this.valueOK = false;
-      this.errorMessage = root.translator.translate(errorMessage);
+      this.errorMessage = this.translator.translate(errorMessage);
     },
 
     showValueIsOK() {
