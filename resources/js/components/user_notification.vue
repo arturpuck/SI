@@ -18,15 +18,7 @@
     </header>
     <p v-text="notificationText" class="notification-content"></p>
     <div class="notification-pseudo-footer">
-      <span
-        v-show="!showsError"
-        class="fas fa-info-circle icon-information"
-        aria-hidden="true"
-      ></span>
-      <span
-        v-show="showsError"
-        class="fas fa-exclamation-triangle icon-error"
-      ></span>
+      <component v-bind:class="decorationComponentClass" v-bind:is="decorationComponentName"></component>
     </div>
   </div>
 </template>
@@ -35,10 +27,11 @@
 import ButtonClose from "@jscomponents/form_controls/button_close.vue";
 import { Vue, Options } from "vue-property-decorator";
 import Translator from '@jsmodules/translator.js';
-import EventEmmiter from "mitt";
-const EventBus = EventEmmiter();
+import InfoCircleIcon from "@svgicon/info_circle_icon.vue";
+import ExclamationErrorIcon from "@svgicon/exclamation_error_icon.vue";
 
-@Options({ name: "UserNotification", components: { ButtonClose } })
+
+@Options({ name: "UserNotification", components: { ButtonClose, InfoCircleIcon, ExclamationErrorIcon } })
 export default class UserNotification extends Vue {
   private notificationText: string = "";
   private visible: boolean = false;
@@ -66,6 +59,7 @@ export default class UserNotification extends Vue {
     if (content["notificationType"]) {
       this.type = content["notificationType"];
     }
+    
     if (
       this.visible &&
       this.type === currentType &&
@@ -77,18 +71,47 @@ export default class UserNotification extends Vue {
     this.visible = true;
   }
 
-  showsError() {
+  get showsError() {
     return this.type === "error";
   }
 
+  get decorationComponentName() : string
+  {
+    return this.showsError ? 'exclamation-error-icon' : 'info-circle-icon';
+  }
+
+  get decorationComponentClass() : string
+  {
+     return this.showsError ? 'decoration-component--error' : 'decoration-component--info';
+  }
+
   mounted() {
-    EventBus.on("showNotification", this.showNotification);
+    //@ts-ignore
+    this.emitter.on("showNotification", this.showNotification);
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import "~sass/fonts";
+@import "~sass/responsive_icon";
+
+@mixin decoration-icon{
+   width: 1.5em;
+   height: auto;
+}
+
+.decoration-component{
+    &--error{
+      @include decoration-icon();
+      fill:rgba(255, 0, 0, 0.877);
+    }
+
+    &--info{
+      @include decoration-icon();
+      fill:#32880a;
+    }
+}
 
 .notification-pseudo-footer {
   padding: 2px;

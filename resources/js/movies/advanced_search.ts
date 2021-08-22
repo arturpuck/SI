@@ -26,8 +26,6 @@ import FingerPointIcon from '@svgicon/finger_point_icon.vue';
 import SideBarVisibilityMixin from "@js/mixins/side_bar_visibility";
 import ShutdownIcon from "@svgicon/shutdown_icon.vue";
 import InfoCircleIcon from "@svgicon/info_circle_icon.vue";
-import EventEmmiter from "mitt";
-const EventBus = EventEmmiter();
 
 const settings = {
 
@@ -219,7 +217,8 @@ const settings = {
 
         if (response.status == 200) {
           let pornstars = await response.json();
-          EventBus.emit('replaceAvailableOptionsForMultiselect', pornstars);
+          //@ts-ignore
+          this.emitter.emit('replaceAvailableOptionsForMultiselect', pornstars);
         }
         else {
           this.showNotification(SearchEngineTranslations['fetchingPornstarsFailed'], 'error');
@@ -305,8 +304,8 @@ const settings = {
         if (currentPage === 1) {
           window.scroll(0, 0);
         }
-
-        EventBus.emit('updateMoviesList', { moviesData, currentPage });
+        //@ts-ignore
+        this.emitter.emit('updateMoviesList', { moviesData, currentPage });
       }
       else {
         this.clearMoviesList();
@@ -319,7 +318,8 @@ const settings = {
     },
 
     clearMoviesList(): void {
-      EventBus.emit('updateMoviesList', { moviesData: { totalMovies: 0, movies: [] }, currentPage: 0 });
+      //@ts-ignore
+      this.emitter.emit('updateMoviesList', { moviesData: { totalMovies: 0, movies: [] }, currentPage: 0 });
     },
 
     async searchMovies(currentPage: number = 1) {
@@ -392,7 +392,7 @@ const settings = {
     this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
     this.fetchPornstars();
     this.initiateAditionalPanelSettings();
-    EventBus.on('pageHasBeenSelected', this.searchMovies);
+    this.emitter.on('pageHasBeenSelected', this.searchMovies);
   }
 
 };

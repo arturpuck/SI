@@ -134,6 +134,6 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, $user)
     {
-        session(['success' => 'Zostałeś zarejestrowany pomyślnie']);
+        session()->flash('success', __("you_have_been_successfully_registered"));
     }
 }

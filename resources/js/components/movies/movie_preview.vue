@@ -10,12 +10,6 @@
         aria-hidden="true"
         class="television-decoration green-light preview-control-element"
       ></div>
-      <button
-        v-bind:title="playButtonCaption"
-        class="preview-control-element play-button"
-      >
-        <span v-text="playButtonCaption" class="play-button-description"></span>
-      </button>
       <input
         v-model="currentFrame"
         min="1"
@@ -39,8 +33,7 @@
 
 <script lang="ts">
 import PreviewMovieData from "@interfaces/movies/preview_movie_data";
-import Translations from "@jsmodules/translations/components/movie_preview"
-
+import Translations from "@jsmodules/translations/components/movie_preview";
 
 export default {
   data() {
@@ -65,7 +58,7 @@ export default {
 
   computed: {
     movieAlt(): string {
-      return `${Translations['movieFrame']} : ${this.title}`;
+      return `${Translations["movieFrame"]} : ${this.title}`;
     },
 
     currentFramePath(): string {
@@ -75,7 +68,7 @@ export default {
     },
 
     playButtonCaption(): string {
-      return Translations['playMoviePreview'];
+      return Translations["playMoviePreview"];
     },
   },
 
@@ -101,8 +94,10 @@ $borders-difference: 0.8vw;
 @mixin trapeze-creator-borders($color, $gap: 0px) {
   border-left: calc(#{$transparent-border-width} + #{$gap}) solid transparent;
   border-right: calc(#{$transparent-border-width} + #{$gap}) solid transparent;
-  border-top: calc(#{$transparent-border-width} - #{$borders-difference} - #{$gap}) solid
-    $color;
+  border-top: calc(
+      #{$transparent-border-width} - #{$borders-difference} - #{$gap}
+    )
+    solid $color;
   @media (max-width: 450px) {
     border-top-width: calc(#{$transparent-border-width} + 5px);
   }
@@ -136,22 +131,6 @@ $borders-difference: 0.8vw;
   z-index: 1;
   left: 50%;
   white-space: nowrap;
-}
-
-.play-button {
-  display: inline-block;
-  border: none;
-  background: linear-gradient(#2af92a, #054006);
-  clip-path: polygon(0 0, 0 100%, 100% 50%);
-  @include television-decoration();
-  outline: none;
-  cursor: pointer;
-}
-
-.play-button-description {
-  position: absolute;
-  top: -9999px;
-  left: 0;
 }
 
 .preview-control-element {

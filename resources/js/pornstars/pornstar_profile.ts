@@ -22,8 +22,6 @@ import CommentIcon from "@svgicon/comment_icon.vue";
 import PodiumIcon from "@svgicon/podium_icon.vue";
 import StopHandIcon from "@svgicon/stop_hand_icon.vue";
 import BoxVotingIcon from "@svgicon/box_voting_icon.vue";
-import EventEmitter from "mitt";
-const EventBus = EventEmitter();
 
 
 const settings = {
@@ -61,7 +59,7 @@ const settings = {
     validateComment: CommentValidator,
 
     resetCommentBox() {
-      EventBus.emit('resetCommentBox');
+      this.emitter.emit('resetCommentBox');
     },
 
     async saveComment(commentData: Comment) {
@@ -201,7 +199,7 @@ const settings = {
     showNotification(text, error = false) {
       const header = error ? "error" : "information";
       const type = error ? 'error' : 'no-error';
-      EventBus.emit('showNotification', { notificationText: text, notificationType: type, headerText: header });
+      this.emitter.emit('showNotification', { notificationText: text, notificationType: type, headerText: header });
     },
 
     async ratePornstar(data) {
@@ -296,8 +294,6 @@ const settings = {
   },
 
   mounted() {
-    EventBus.on('showPreview', () => this.showsPreview = true);
-    EventBus.on('closePreview', () => this.showsPreview = false);
     this.translator = Translator;
     this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
   },

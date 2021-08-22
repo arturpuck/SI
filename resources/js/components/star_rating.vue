@@ -19,8 +19,7 @@
 <script lang="ts">
 import { Vue, Options, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator";
-import EventEmmiter from "mitt";
-const EventBus = EventEmmiter();
+
 
 @Options({ name: "StarRating" })
 export default class StarRating extends Vue {
@@ -135,7 +134,8 @@ export default class StarRating extends Vue {
 
   mounted() {
     this.selectedValue = this.initialValue;
-    EventBus.on(`${this.identifier}UpdateRate`, (rate: number) => this.selectedValue = rate);
+    //@ts-ignore
+    this.emitter.on(`${this.identifier}UpdateRate`, (rate: number) => this.selectedValue = rate);
   }
 }
 </script>

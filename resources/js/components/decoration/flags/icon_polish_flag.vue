@@ -26,7 +26,7 @@ export default class IconPolishFlag extends Vue {
 .icon-polish-flag {
   width: 2rem;
   height: 1rem;
-  z-index: 1;
+  z-index: 0;
   display: inline-block;
   background: linear-gradient(to bottom, white 0%, white 50%, red 50%, red 100%);
 }

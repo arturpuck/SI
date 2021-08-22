@@ -112,7 +112,7 @@ export default {
       the_shows_birthday_field_is_missing: "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom",
       the_shows_birthday_field_must_be_a_boolean_value: "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego",
       fetching_movies: "Pobieram filmy",
-      views: "Wyświetleń",
+      views: "Odsłon",
       preview: "Podgląd",
       pornstars: "Gwiazdy",
       scroll_previous_links: "Przewijaj listę podstron do tyłu",

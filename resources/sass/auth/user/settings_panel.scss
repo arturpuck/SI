@@ -5,6 +5,10 @@
 $imageFolder : user-settings;
 @include background-image(chick-in-bar,1);
 
+.show-age-checkbox{
+    padding:0 5px;
+}
+
 .information-icon{
     fill:#ef0244;
     width:1.7em;

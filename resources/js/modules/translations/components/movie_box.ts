@@ -7,7 +7,7 @@ const translations : {
 } = {
      views : Translator.translate('views'),
      preview : Translator.translate('preview'),
-     movieTranslatedToPolish : Translator.translate('movie_translated_to_polish')
+     movieTranslatedToPolish : Translator.translate('movie_translated_to_polish'),
 }
 
 export default translations;

@@ -8,7 +8,6 @@ import DatePicker from '@jscomponents/form_controls/date_picker.vue';
 import ExpectCircle  from '@jscomponents/decoration/expect_circle.vue';
 import AcceptButton from '@jscomponents/form_controls/accept_button.vue';
 import UserNotification from '@jscomponents/user_notification.vue';
-import SuccessInformation from '@jscomponents/decoration/success_information.vue';
 import EmailValidator from '@jsmodules/validators/email_validator.js';
 import EditPenIcon from "@svgicon/edit_pen_icon.vue";
 import ImagePhotographyIcon from "@svgicon/image_photography_icon.vue";
@@ -17,8 +16,6 @@ import InfoCircleIcon from "@svgicon/info_circle_icon.vue";
 import AvatarIcon from "@svgicon/avatar_icon.vue";
 import ServerStorageIcon from "@svgicon/server_storage_icon.vue";
 import BackspaceEraseIcon from "@svgicon/backspace_erase_icon.vue";
-import EventEmmiter from "mitt";
-const EventBus = EventEmmiter();
 
 const settings = {
    
@@ -471,7 +468,7 @@ const settings = {
 
         showNotification(text, type="no-error"){
            const header = type === "no-error" ? "information" : "error";
-           EventBus.emit('showNotification', {notificationText : text, notificationType : type, headerText : header});
+           this.emitter.emit('showNotification', {notificationText : text, notificationType : type, headerText : header});
         }
    },
 
@@ -534,7 +531,6 @@ app.component('accept-button', AcceptButton);
 app.component('user-notification', UserNotification);
 app.component('icon-confirm', IconConfirm);
 app.component('icon-stop', IconStop);
-app.component('success-information',SuccessInformation);
 app.component('edit-pen-icon', EditPenIcon);
 app.component('image-photography-icon', ImagePhotographyIcon);
 app.component('key-icon', KeyIcon);

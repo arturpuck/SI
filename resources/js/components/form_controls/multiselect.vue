@@ -57,8 +57,6 @@ import IconAddPlus from "@jscomponents/decoration/icons/icon_add_plus.vue";
 import LabeledCheckbox from "@jscomponents/form_controls/labeled_checkbox.vue";
 import { directive } from "vue3-click-away";
 import ButtonClose from "@jscomponents/form_controls/button_close.vue";
-import EventEmmiter from "mitt";
-const EventBus = EventEmmiter();
 
 @Options({
   name: "MultiSelect",
@@ -163,7 +161,8 @@ export default class MultiSelect extends Vue {
 
   created() {
     this.replaceAvailableOptions(this.options);
-    EventBus.on(`replaceAvailableOptionsFor${this.id}`, this.replaceAvailableOptions);
+    //@ts-ignore
+    this.emitter.on(`replaceAvailableOptionsFor${this.id}`, this.replaceAvailableOptions);
   }
 
   replaceAvailableOptions(options: Array<any>) {

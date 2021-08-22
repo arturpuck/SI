@@ -165,7 +165,7 @@
                <labeled-checkbox
                 name="shows_birthday"
                 v-model="showMyBirthday"
-                class="settings-panel-checkbox"
+                class="settings-panel-checkbox show-age-checkbox"
                 v-bind:checked-at-start="{{Auth::user()->shows_birthday ? 'true' : 'false'}}">
                   {{__('show_my_age_to_other_users')}}
                 </labeled-checkbox>

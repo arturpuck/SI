@@ -84,15 +84,15 @@ export default {
 
   cumshotType: {
     on_face: Translator.translate('on_face'),
-    cum_swallow: Translator.translate('creampie'),
-    creampie: Translator.translate('on_feet'),
+    cum_swallow: Translator.translate('cum_swallow'),
+    creampie: Translator.translate('creampie'),
     anal_creampie: Translator.translate('anal_creampie'),
     on_tits: Translator.translate('on_tits'),
     on_pussy: Translator.translate('on_pussy'),
     on_ass: Translator.translate('on_ass'),
     on_feet: Translator.translate('on_feet'),
     on_many_places: Translator.translate('on_many_places'),
-    on_other_body_parts: Translator.translate('on_feet'),
+    on_other_body_parts: Translator.translate('on_other_body_parts'),
     exclude: Translator.translate('exclude')
   },
 

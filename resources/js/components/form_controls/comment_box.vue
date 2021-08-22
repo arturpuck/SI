@@ -57,9 +57,6 @@ import UserPreview from "@jscomponents/user/user_preview.vue";
 import AvatarIcon from "@svgicon/avatar_icon.vue";
 import Comment from "@interfaces/Comment";
 import AddPlusIcon from "@svgicon/add_plus_icon.vue";
-import EventEmmiter from "mitt";
-
-const EventBus = EventEmmiter();
 
 @Options({ name: "CommentBox", components: { UserPreview, AvatarIcon, AddPlusIcon } })
 export default class CommentBox extends Vue {
@@ -135,7 +132,8 @@ export default class CommentBox extends Vue {
 
   created() {
     this.translator = Translator;
-    EventBus.on("resetCommentBox", this.resetCommentBox);
+    //@ts-ignore
+    this.emitter.on("resetCommentBox", this.resetCommentBox);
   }
 
   mounted() {

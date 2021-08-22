@@ -10,8 +10,13 @@
 </template>
 
 <script>
+import IconConfirm from "@jscomponents/decoration/icon_confirm.vue";
+
 	export default {
         name: 'success-information',
+        components : {
+            IconConfirm
+        },
 
         data(){
             return {

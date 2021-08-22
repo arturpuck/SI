@@ -41,6 +41,7 @@
 		</navbar>
 		<x-report />
 		{{$slot}}
+		<cookie-notification v-show="showCookiePolicyNotification"></cookie-notification>
 	</div>
 	<x-footer />
 	<script src="{{$jsFilePath}}"></script>

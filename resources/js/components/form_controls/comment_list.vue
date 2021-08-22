@@ -18,7 +18,7 @@
       v-text="translations['no_comments']"
       class="no-comments-info"
     ></div>
-    <ul clas="comments-list">
+    <ul class="comments-list">
       <comment-body
         v-for="comment in comments"
         v-bind:key="comment.id"
@@ -43,8 +43,6 @@ import PagesList from "@jscomponents/pages_list.vue";
 import Translations from "@jsmodules/translations/comments_list";
 import ShowCommentFormButton from "@jscomponents/form_controls/show_comment_form_button.vue";
 import CommentBox from "@jscomponents/form_controls/comment_box.vue";
-import EventEmmiter from "mitt";
-const EventBus = EventEmmiter();
 
 @Options({
   components: { ShowCommentFormButton, CommentBody, PagesList, CommentBox },
@@ -101,7 +99,8 @@ export default class CommentList extends Vue {
 
   mounted() {
     this.comments = this.initialComments;
-    EventBus.on("updateComments", this.updateComments); 
+    //@ts-ignore
+    this.emitter.on("updateComments", this.updateComments); 
     this.commentsPerPage = this.initialCommentsPerPage;
   }
 
@@ -121,7 +120,8 @@ export default class CommentList extends Vue {
       pagesNumber,
       currentPage: commentsUpdate.currentPage,
     };
-    EventBus.emit(`updatePagesList${this.uniqueIdentifier}`, pagesListStatus);
+    //@ts-ignore
+    this.emitter.emit(`updatePagesList${this.uniqueIdentifier}`, pagesListStatus);
   }
 
   calculateSubPagesNumber(totalComments: number, commentsPerPage: number): number {

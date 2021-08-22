@@ -28,6 +28,8 @@ mix.js('resources/js/test.js', 'public/js').vue()
    .ts('resources/js/pornstars/pornstar_profile.ts', 'public/js').vue()
    .ts('resources/js/pornstars/pornstars_list.ts', 'public/js').vue()
    .ts('resources/js/movies/single_movie.ts', 'public/js').vue()
+   .sass('resources/sass/auth/user/settings_panel.scss', 'public/css')
+   .sass('resources/sass/movies/single_movie.scss', 'public/css')
    .sourceMaps()
   .options({ processCssUrls: false })
   .babelConfig({

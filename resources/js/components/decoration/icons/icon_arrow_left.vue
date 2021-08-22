@@ -1,5 +1,5 @@
 <template>
-  <div aria-hidden="true" class="icon-arrow-left"></div>
+  <span aria-hidden="true" class="icon-arrow-left"></span>
 </template>
 
 <script lang="ts">

@@ -9,25 +9,23 @@ import AuthenticatedUserSidebar from '@jscomponents/navigation/authenticated_use
 import EmpireLogo from '@jscomponents/decoration/empire_logo.vue';
 import ContentSidebar from '@jscomponents/navigation/content_sidebar.vue';
 import EventEmmiter from 'mitt';
+import { defineAsyncComponent } from 'vue';
 const EventBus = EventEmmiter();
+const SuccessInformation = defineAsyncComponent(() => import("@jscomponents/decoration/success_information.vue"));
+const CookieNotification = defineAsyncComponent(() => import("@jscomponents/cookie_notification.vue"));
 
-/*async function checkCookiePolicy()
+
+function userHasAlreadyAcceptedCookies()
 {
-   function userHasAlreadyAcceptedCookies()
-   {
-      return localStorage.getItem('cookiesAccepted') == 'yes';
-   }
-
-   if(!userHasAlreadyAcceptedCookies())
-   {
-     const NotificationComponentModule =  await import("@jscomponents/cookie_notification.vue");
-     const CookieNotificationComponentClass = Vue.extend(NotificationComponentModule.default);
-     const cookieComponent =  new CookieNotificationComponentClass().mount();
-     document.getElementById('app').appendChild(cookieComponent.$el)
-   }
+   return localStorage.getItem('cookiesAccepted') == 'yes';
 }
 
-window.addEventListener('DOMContentLoaded', checkCookiePolicy); */
+function saveAcceptedCookiesInfo()
+{
+   localStorage.setItem('cookiesAccepted', 'no');
+}
+
+
 
 export default {
 
@@ -35,6 +33,7 @@ export default {
       app.config.compilerOptions.whitespace = 'preserve';
       app.config.globalProperties.emitter = EventBus;
       app.config.globalProperties.translator = Translator;
+      app.config.globalProperties.showCookiePolicyNotification = false;
       app.component('authenticated-user-sidebar', AuthenticatedUserSidebar);
       app.component('navbar', Navbar);
       app.component('text-input-combo', TextInputCombo);
@@ -44,6 +43,13 @@ export default {
       app.component('button-close', ButtonClose);
       app.component('empire-logo', EmpireLogo);
       app.component('content-sidebar', ContentSidebar);
+      app.component('success-information', SuccessInformation);
+      app.component('cookie-notification', CookieNotification);
+
+      if(!userHasAlreadyAcceptedCookies()){
+         app.config.globalProperties.showCookiePolicyNotification = true;
+         saveAcceptedCookiesInfo();
+      }
    }
 };
 

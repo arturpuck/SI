@@ -58,7 +58,7 @@
           v-on:click="navigatePageByDirection(pageDirection.previous)"
           class="pages-list__aditional-control-button"
         >
-          <icon-arrow-left class="pages-list__aditional-control-icon" />
+          <icon-arrow-left class="pages-list__aditional-control-icon--left-align" />
           <span v-text="descriptions.previous_page"></span>
         </button>
       </li>
@@ -67,7 +67,7 @@
           v-on:click="navigatePageByDirection(pageDirection.first)"
           class="pages-list__aditional-control-button"
         >
-          <fast-backward-icon class="pages-list__aditional-control-icon" />
+          <fast-backward-icon class="pages-list__aditional-control-icon--left-align" />
           <span v-text="descriptions.first_page"></span>
         </button>
       </li>
@@ -77,7 +77,7 @@
           class="pages-list__aditional-control-button"
         >
           <span v-text="descriptions.last_page"></span>
-          <fast-forward-icon class="pages-list__aditional-control-icon" />
+          <fast-forward-icon class="pages-list__aditional-control-icon--right-align" />
         </button>
       </li>
       <li v-show="pageIsNotLast" class="pages-list__aditional-control">
@@ -86,7 +86,7 @@
           class="pages-list__aditional-control-button"
         >
           <span v-text="descriptions.next_page"></span>
-          <icon-arrow-right class="pages-list__aditional-control-icon" />
+          <icon-arrow-right class="pages-list__aditional-control-icon--right-align" />
         </button>
       </li>
     </ul>
@@ -104,9 +104,6 @@ import IconArrowRight from "@jscomponents/decoration/icons/icon_arrow_right.vue"
 import PagesListBasicData from "@interfaces/pages_list_basic_data.ts";
 import FastBackwardIcon from "@svgicon/fast_backward_icon.vue";
 import FastForwardIcon from "@svgicon/fast_forward_icon.vue";
-import EventEmmiter from "mitt";
-
-const EventBus = EventEmmiter();
 
 @Options({
   components: {
@@ -161,7 +158,8 @@ export default class PagesList extends Vue {
 
   pageHasBeenSelected(pageNumber: number): void {
     this.currentPage = pageNumber;
-    EventBus.emit(`pageHasBeenSelected${this.uniqueIdentifier}`, pageNumber);
+    //@ts-ignore
+    this.emitter.emit(`pageHasBeenSelected${this.uniqueIdentifier}`, pageNumber);
   }
 
   navigatePageByDirection(pageDirection: PageDirection): void {
@@ -279,7 +277,8 @@ export default class PagesList extends Vue {
       this.currentPage - 1 >= maxOffset ? maxOffset : this.currentPage - 1;
     this.controlInterface();
     window.addEventListener("resize", () => this.controlInterface());
-    EventBus.on(`updatePagesList${this.uniqueIdentifier}`, this.updatePagesList);
+    //@ts-ignore
+    this.emitter.on(`updatePagesList${this.uniqueIdentifier}`, this.updatePagesList);
   }
 }
 </script>
@@ -298,6 +297,15 @@ export default class PagesList extends Vue {
   &:active {
     transform: scale(1.2);
   }
+}
+
+@mixin aditional-control-icon{
+   vertical-align: middle;
+    width: 1.3vw;
+    height: 1.3vw;
+    min-width: 12px;
+    min-height: 12px;
+    fill: white;
 }
 
 .pages-list {
@@ -435,12 +443,17 @@ export default class PagesList extends Vue {
   }
 
   &__aditional-control-icon {
-    vertical-align: middle;
-    width: 1.3vw;
-    height: 1.3vw;
-    min-width: 12px;
-    min-height: 12px;
-    fill: white;
+    &--left-align{
+       @include aditional-control-icon();
+        margin-right: 5px;
+    }
+
+    &--right-align{
+      @include aditional-control-icon();
+      margin-left: 5px;
+    }
+    
+
   }
 }
 </style>

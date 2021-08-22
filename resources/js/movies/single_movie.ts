@@ -31,10 +31,8 @@ import { MoviesCurrentPage } from "@interfaces/movies/MoviesCurrentPage.ts";
 import PageListUpdate from '@interfaces/PageListUpdate';
 import Comment from '@interfaces/Comment';
 import CommentValidator from '@jsmodules/validators/comment_validator';
-import EventEmmiter from "mitt";
 import Translator from "@jsmodules/translator.js";
 
-const EventBus = EventEmmiter();
 const settings = {
 
     data() {
@@ -345,7 +343,8 @@ const settings = {
         },
 
         loadComments(commentsPageListUpdate: PageListUpdate<Comment>): void {
-            EventBus.emit('updateComments', commentsPageListUpdate);
+            this.emitter.emit('updateComments', commentsPageListUpdate);
+            this.emitter.emit('resetCommentBox');
         },
 
         loadSimilarMovies(moviesList: MoviesListResponse, pageNumber: number): void {
@@ -354,8 +353,8 @@ const settings = {
                 moviesData: moviesList,
                 currentPage: pageNumber
             };
-            console.log(moviesList);
-            EventBus.emit('updateMoviesList', moviesListUpdate);
+        
+            this.emitter.emit('updateMoviesList', moviesListUpdate);
         },
 
         loadMovieData(movie: MovieBasicData): void {
@@ -399,7 +398,7 @@ const settings = {
 
         loadMovieRating(movieRating: MovieRating): void {
             this.rating = movieRating.overall_rating;
-            EventBus.emit('starRateUpdateRate', movieRating.user_rating);
+            this.emitter.emit('starRateUpdateRate', movieRating.user_rating);
         },
 
         loadMovieSpermatozoids(movieSpermatozoids: MovieSpermatozoids): void {
@@ -423,7 +422,7 @@ const settings = {
         this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
         this.fetchMovieData();
         this.fetchSimilarMovies();
-        EventBus.on('pageHasBeenSelectedMovieComments', this.fetchComments);
+        this.emitter.on('pageHasBeenSelectedMovieComments', this.fetchComments);
     },
 
     computed: {
@@ -454,7 +453,7 @@ const settings = {
 
         averageRatingLabel(): string {
             const label: string = this.translator.translate('movie_average_rating');
-            const value = this.movieRating || this.translator.translate('average_rate_not_available_yet');
+            const value = this.rating || this.translator.translate('average_rate_not_available_yet');
             return `${label} : ${value}`;
         },
 
