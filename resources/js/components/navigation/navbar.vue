@@ -44,7 +44,7 @@
         >
           <a class="navbar-link-main-manu" href="/rejestruj">
             <signup-icon class="navbar-icon navbar-icon-outer"></signup-icon>
-            Rejestruj
+            {{translations['register']}}
           </a>
         </li>
         <li
@@ -106,7 +106,7 @@
               v-show="moviesSubMenuIsVisible"
               class="navbar-icon navbar-icon-outer"
             ></arrow-up-icon>
-            <phantom-button> Filmy </phantom-button>
+            <phantom-button> {{translations['movies']}} </phantom-button>
           </div>
         </li>
         <li>
@@ -123,14 +123,14 @@
               class="sub-menu-list-element-intendation-second-level"
             >
               <folder-icon class="navbar-icon navbar-icon-second-level"></folder-icon>
-              Kategorie
+              {{translations['categories']}}
             </li>
             <li class="sub-menu-list-element-intendation-second-level">
               <a class="navbar-link-main-manu" href="/filmy/najnowsze/strona/1">
                 <expand-all-icon
                   class="navbar-icon navbar-icon-second-level--colored"
                 ></expand-all-icon>
-                Najnowsze
+                {{translations['the_latest']}}
               </a>
             </li>
             <li class="sub-menu-list-element-intendation-second-level">
@@ -138,7 +138,7 @@
                 <happy-tongue-icon
                   class="navbar-icon navbar-icon-second-level--colored"
                 ></happy-tongue-icon>
-                Najpopularniejsze
+                {{translations['the_most_popular']}}
               </a>
             </li>
             <li class="sub-menu-list-element-intendation-second-level">
@@ -146,7 +146,7 @@
                 <magnifier-icon
                   class="navbar-icon navbar-icon-second-level--colored"
                 ></magnifier-icon>
-                Szukanie zaawansowane
+                {{translations['advanced_search']}}
               </a>
             </li>
           </ul>
@@ -155,7 +155,7 @@
           <div class="sub-menu-level-one-item">
             <a class="navbar-link-main-manu" href="/gwiazdy-porno/lista">
               <star-full-icon class="navbar-icon navbar-icon-outer"></star-full-icon>
-              Gwiazdy porno
+              {{translations['pornstars_navbar_caption']}}
             </a>
           </div>
         </li>

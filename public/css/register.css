@@ -177,13 +177,13 @@
     font-size: 16px; } }
 
 .register-background-image-1 {
-  background-image: url("../../images/decoration/register/1.jpg"); }
+  background-image: url("/images/decoration/register/compressed/1.jpg"); }
 
 .register-background-image-2 {
-  background-image: url("../../images/decoration/register/2.jpg"); }
+  background-image: url("/images/decoration/register/compressed/2.jpg"); }
 
 .register-background-image-3 {
-  background-image: url("../../images/decoration/register/3.jpg"); }
+  background-image: url("/images/decoration/register/compressed/3.jpg"); }
 
 .main-panel {
   width: 60%;
