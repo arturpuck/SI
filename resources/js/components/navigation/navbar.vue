@@ -176,52 +176,7 @@
         'hidden-sidebar': !contentSideBarIsVisible,
       }"
     />
-    <div
-      v-if="!userIsAuthenticated"
-      v-show="loginPanelIsVisible"
-      class="login-form-container"
-    >
-      <form
-        action="/login"
-        method="POST"
-        id="login-form"
-        v-bind:class="{ 'visible-login-form': animatePanel }"
-        class="login-form"
-      >
-        <header class="login-panel-toolbar">
-          <span class="login-info">Zaloguj się do Sex-Imperium</span>
-          <button-close
-            v-on:click="toggleLoginPanel"
-            title="Zamknij okno logowania"
-            aria-label="Zamknij okno logowania"
-          ></button-close>
-        </header>
-        <input v-bind:value="csrfToken" type="hidden" name="_token" />
-        <label for="login" class="main-panel-label">Email lub login</label>
-        <text-input-combo
-          v-bind:input-is-required="true"
-          input-id="login"
-          inputType="text"
-          name="login-or-email"
-        >
-        </text-input-combo>
-        <label for="password" class="main-panel-label">Hasło</label>
-        <text-input-combo
-          v-bind:input-is-required="true"
-          input-id="password"
-          inputType="password"
-          name="password"
-        >
-        </text-input-combo>
-        <labeled-checkbox class="remember-me-checkbox" name="remember">
-          Zapamiętaj mnie
-        </labeled-checkbox>
-        <submit-button>Zaloguj</submit-button>
-        <a href="/haslo/resetuj/wyslij-link" class="forgot-password-link"
-          >Zapomniałem hasła</a
-        >
-      </form>
-    </div>
+    <login-form v-on:hide="toggleLoginPanel" v-if="loginPanelShouldBeVisible"></login-form>
     <categories-list v-on:hide="hideCategories" v-if="showCategories"></categories-list>
   </div>
 </template>
@@ -245,6 +200,7 @@ import Translations from "@jsmodules/translations/components/navbar";
 import { defineAsyncComponent } from 'vue';
 
 const CategoriesList = defineAsyncComponent(() => import("@jscomponents/categories_list"));
+const LoginForm = defineAsyncComponent(() => import("@jscomponents/user/login_form.vue"));
 
 export default {
   name: "navbar",
@@ -276,7 +232,7 @@ export default {
     return {
       pornSubMenuIsVisible: false,
       moviesSubMenuIsVisible: false,
-      loginPanelIsVisible: false,
+      userWantsToLogIn: false,
       csrfToken: "",
       animatePanel: false,
       userIsAuthenticated: undefined,
@@ -300,7 +256,8 @@ export default {
     SignupIcon,
     EnterIcon,
     AvatarIcon,
-    RollDownButton
+    RollDownButton,
+    LoginForm
   },
 
   methods: {
@@ -372,8 +329,7 @@ export default {
     },
 
     toggleLoginPanel() {
-      this.loginPanelIsVisible = !this.loginPanelIsVisible;
-      setTimeout(() => (this.animatePanel = !this.animatePanel), 300);
+      this.userWantsToLogIn = !this.userWantsToLogIn;
     },
 
     hideAllSubMenusExcept(except = "") {
@@ -405,6 +361,10 @@ export default {
     userAvatarDescription() {
       return this.translations["user_avatar_description"];
     },
+
+    loginPanelShouldBeVisible() {
+      return !this.userIsAuthenticated && this.userWantsToLogIn;
+    }
   },
 
   created() {
@@ -419,7 +379,6 @@ export default {
   },
 
   mounted() {
-    this.csrfToken = document.getElementById("csrf-token").content;
     this.emitter.on("hideSideBar", this.hideAuthenticatedUserSideBar);
     this.emitter.on("hideContentBar", this.hideContentSideBar);
     this.emitter.on("showMoviesCategories", this.showCategoriesList);
@@ -430,7 +389,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "~sass/fonts";
-@import "~sass/components/login_panel";
 @import "~sass/components/navbar/show_side_bar_button";
 @import "~sass/components/navbar/top_menu";
 
@@ -444,10 +402,6 @@ export default {
     @include show-sidebar-button();
     right: 0;
   }
-}
-
-.remember-me-checkbox {
-  color: white;
 }
 
 .phantom-text {
@@ -469,28 +423,6 @@ export default {
 
 .labeled-checkbox-description {
   color: white;
-}
-
-.main-panel-label {
-  display: block;
-  text-align: center;
-  padding: 4px;
-  @include responsive-font(1.3vw, 18px);
-  color: white;
-}
-
-.forgot-password-link {
-  display: block;
-  padding: 4px;
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  @include responsive-font(1.2vw, 17px);
-  &:hover {
-    text-decoration: underline;
-  }
-  border-radius: 0 0 7px 7px;
-  background: #242229;
 }
 
 .login-button-container {

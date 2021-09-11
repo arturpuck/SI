@@ -1,5 +1,5 @@
 <template>
-  <div ref="container" class="labeled-checkbox-container">
+  <div class="labeled-checkbox-container">
     <input
       v-bind:checked="modelValue"
       v-bind:value="checkboxValue"
@@ -81,6 +81,7 @@ export default class LabeledCheckbox extends Vue {
 .labeled-checkbox-description {
   position: relative;
   padding: 0 8px;
+  line-height: 1em;
   &:before {
     content: "";
     display: inline-block;
@@ -128,7 +129,8 @@ export default class LabeledCheckbox extends Vue {
 }
 
 .labeled-checkbox-container {
-  display: table;
+  display: inline-flex;
+  align-items: center;
 }
 
 .labeled-checkbox:hover + .labeled-checkbox-description:before {

@@ -45,6 +45,8 @@ export default {
 
    pl: {
       email_has_already_been_taken: "Adres email jest już zajęty",
+      i_forgot_password : "Zapomniałem hasła",
+      password : "Hasło",
       email_is_invalid: "Adres email jest nieprawidłowy",
       the_user_type_is_incorrect: "Niepoprawny typ użytkownika. Należy wybrać 1 opcję z listy",
       to_many_attempts: "Za dużo prób w ciągu jednej minuty",
@@ -67,6 +69,8 @@ export default {
       you_have_to_choose_one_option: "Należy wybrać jedną opcję",
       information: "Informacja",
       error: "Błąd",
+      log_in : "Zaloguj",
+      login_to_sex_empire : "Zaloguj się do Sex-Imperium",
       incorrect_image_dimensions: "Szerokość lub wysokość obrazu przekracza 128px",
       invalid_file_extension: "Niewłaściwe rozszerzenie pliku. Dozwolone rozszerzenia to : jpg, jpeg, svg, bmp, png, gif, webp",
       url_address: "Adres URL",
@@ -379,6 +383,8 @@ export default {
       the_latest : "Najnowsze",
       the_most_popular : "Najpopularniejsze",
       advanced_search : "Szukanie zaawansowane",
+      login_or_email : "Login lub email",
+      remember_me : "Zapamiętaj mnie",
       packages: {
          content_sidebar: {
             hide_side_bar_title: "Schowaj boczne menu",
