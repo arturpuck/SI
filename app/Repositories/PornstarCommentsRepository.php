@@ -34,13 +34,15 @@ Class PornstarCommentsRepository extends BaseRepository{
 
           $data = [
             'comment' => $request->get('body'),
-            'nickname' => $request->get('userNickname'),
             'pornstar_id' => $request->get('pornstar_id'),
             'parent_comment_id' => $request->get('parent_comment_id')
           ];
 
           if(\Auth::check()){
               $data['user_id'] = \Auth::user()->id;
+          }
+          else{
+            $data['nickname'] = $request->get('userNickname');
           }
 
           PornstarComment::create($data);

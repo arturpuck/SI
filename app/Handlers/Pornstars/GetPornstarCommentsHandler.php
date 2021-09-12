@@ -7,25 +7,32 @@ use App\PornstarComment;
 use App\Handlers\Pornstars\ShowPornstarProfileHandler;
 use App\Repositories\PornstarCommentsRepository;
 use App\Http\Requests\Pornstars\GetPornstarCommentsRequest;
+use App\Http\Resources\Comment\CommentCollection;
 use Symfony\Component\HttpFoundation\Response;
 
-Class GetPornstarCommentsHandler  {
+class GetPornstarCommentsHandler
+{
 
     private PornstarCommentsRepository $pornstarCommentsRepository;
 
-    public function __construct(PornstarCommentsRepository $pornstarCommentsRepository){
+    public function __construct(PornstarCommentsRepository $pornstarCommentsRepository)
+    {
 
         $this->pornstarCommentsRepository = $pornstarCommentsRepository;
-  }
+    }
 
-    public function handle(GetPornstarCommentsRequest $request) : Response{
+    public function handle(GetPornstarCommentsRequest $request): CommentCollection
+    {
+        $currentPage = $request->get('page');
+        $commentsPerPage = $request->get('comments_per_page');
 
         $comments = $this->pornstarCommentsRepository
-                            ->filterByPornstarId($request->get('id'))
-                            ->orderByAddDate()
-                            ->countSelectedCommentsAndFilterByPage($request->get('page'), $request->get('comments_per_page'));
+            ->with(['user'])
+            ->filterByPornstarId($request->get('id'))
+            ->orderByAddDate()
+            ->countSelectedCommentsAndFilterByPage($currentPage, $commentsPerPage);
 
-       return response()->json($comments,200);
-        
+
+        return new CommentCollection($comments['comments'], $comments['total_comments'], $currentPage);
     }
 }

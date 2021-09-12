@@ -382,6 +382,7 @@ export default {
     this.emitter.on("hideSideBar", this.hideAuthenticatedUserSideBar);
     this.emitter.on("hideContentBar", this.hideContentSideBar);
     this.emitter.on("showMoviesCategories", this.showCategoriesList);
+    this.csrfToken = document.getElementById("csrf-token").content; 
   },
 
 };

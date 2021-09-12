@@ -64,23 +64,23 @@ export default class CommentBox extends Vue {
     type: Boolean,
     default: false,
   })
-  readonly authenticatedUser: Boolean;
+  readonly authenticatedUser: boolean;
 
   @Prop({
     type: String,
     required: false,
     default: "",
   })
-  readonly avatarFilePath: String;
+  readonly avatarFilePath: string;
 
   @Prop({
     type: String,
     required: false,
   })
-  readonly authenticatedUserNickname: String;
+  readonly authenticatedUserNickname: string;
 
   private translator = null;
-  private unauthenticatedUserNickName: string = "";
+  private unauthenticatedUserNickName: string = '';
   private userComment: string = "";
   private textAreaHeightCSS: string = null;
   private paddingCSS: string = "2px";
@@ -120,14 +120,15 @@ export default class CommentBox extends Vue {
     const commentData: Comment = {
       userNickname: this.unauthenticatedUserNickName,
       body: this.userComment,
+      addedByAuthenticatedUser : this.authenticatedUser
     };
-
+ 
     this.$emit("send", commentData);
   }
 
   resetCommentBox() {
     this.userComment = "";
-    this.unauthenticatedUserNickName = "";
+    this.unauthenticatedUserNickName = '';
   }
 
   created() {

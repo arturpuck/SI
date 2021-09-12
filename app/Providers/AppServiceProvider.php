@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
 
@@ -32,5 +33,6 @@ class AppServiceProvider extends ServiceProvider
         function($attribute, $value, $parameters, $validator){
             return \Hash::check($value, auth()->user()->password);
         });
+        JsonResource::withoutWrapping();
     }
 }

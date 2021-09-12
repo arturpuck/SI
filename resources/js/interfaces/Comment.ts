@@ -1,5 +1,4 @@
 export default interface Comment {
-    id?: number
     userNickname: string
     body: string
     avatarFilePath?: string

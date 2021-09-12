@@ -9,6 +9,7 @@ interface CommentValidationResult
 export default function validateComment(commentData: Comment): CommentValidationResult {
 
     try {
+      const nicknameLength = commentData.userNickname.length;
 
       if (!commentData.body) {
         throw new Error('comment_text_is_missing');
@@ -18,8 +19,10 @@ export default function validateComment(commentData: Comment): CommentValidation
         throw new Error('comment_text_exceeds_1000_characters');
       }
 
-      if (commentData.userNickname.length > 20) {
-        throw new Error('nickname_exceeds_20_characters');
+      if(!commentData.addedByAuthenticatedUser){
+        if ((nicknameLength > 20) || (nicknameLength < 3)) {
+          throw new Error('the_nickname_must_be_between_2_and_20_characters');
+        }
       }
 
     }

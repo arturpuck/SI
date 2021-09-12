@@ -9,11 +9,14 @@ const settings = {
             requestedText: ''
         }
     },
+
+    components : {
+       PornstarsList
+    }
    
    
 };
 
 const app = createApp(settings);
 BasicElements.registerBasicComponents(app);
-app.component('pornstars-list', PornstarsList);
 app.mount("#app");

@@ -79,6 +79,7 @@ export default class AuthenticatedUserSidebar extends Vue {
     //@ts-ignore
     this.emitter.emit("hideSideBar");
   }
+
 }
 </script>
 

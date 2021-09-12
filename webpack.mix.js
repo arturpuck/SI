@@ -14,8 +14,7 @@ const webpack = require('webpack')
  */
 //mix.vue3("resources/js/test.js', 'public/js");
 
-mix.js('resources/js/test.js', 'public/js').vue()
-   .js('resources/js/mainpage.js', 'public/js').vue()
+mix.js('resources/js/mainpage.js', 'public/js').vue()
    .ts('resources/js/movies/category_specific.ts', 'public/js').vue()
    .ts('resources/js/movies/movies_set_complete.ts', 'public/js').vue()
    .ts('resources/js/movies/advanced_search.ts', 'public/js').vue()

@@ -22,6 +22,8 @@ import CommentIcon from "@svgicon/comment_icon.vue";
 import PodiumIcon from "@svgicon/podium_icon.vue";
 import StopHandIcon from "@svgicon/stop_hand_icon.vue";
 import BoxVotingIcon from "@svgicon/box_voting_icon.vue";
+import PageListUpdate from '@interfaces/PageListUpdate';
+import CommentList from '@jscomponents/form_controls/comment_list.vue';
 
 
 const settings = {
@@ -36,24 +38,36 @@ const settings = {
       pornstarCommentsHaveBeenFetched: false,
       expectCircleLabel: 'fetching_comments',
       commentsPerPage: 8,
-      pornstarComments: {},
-      pagesNumber: 0,
-      currentCommentsPage: null,
-      showCommentPanel: false,
       pornstarID: undefined,
-      totalComments: 0
     }
   },
 
+  components: {
+    MovieBox,
+    StarRating,
+    UserNotification,
+    TextAreaCombo,
+    AcceptButton,
+    RelativeShadowContainer,
+    ExpectCircle,
+    IconStop,
+    IconConfirm,
+    CommentBox,
+    CommentBody,
+    LinksBox,
+    MoviePreviewComplete,
+    CameraIcon,
+    CommentIcon,
+    PodiumIcon,
+    StopHandIcon,
+    BoxVotingIcon,
+    CommentList
+  },
 
   methods: {
 
     getAriaLabelAttributeValueForSubPageButton(pageNumber: number): string {
       return `${this.translator.translate('show_comments_sub_page_with_number')} : ${pageNumber}`;
-    },
-
-    checkCurrentPage(pageNumber: number): boolean {
-      return pageNumber == this.currentCommentsPage;
     },
 
     validateComment: CommentValidator,
@@ -90,8 +104,9 @@ const settings = {
 
           case 200:
             let responseBody = await response.json();
-            this.loadCommentsData(responseBody, 1);
+            this.loadCommentsData(responseBody);
             this.resetCommentBox();
+            this.showNotification(this.translator.translate('comment_added'));
             break;
 
           case 429:
@@ -122,33 +137,17 @@ const settings = {
       this.processingCommentsInProgress = false;
     },
 
-    showCommentForm() {
-      this.showCommentPanel = true;
-    },
-
     changeTab(event) {
       this.activeTab = event.target.id || event.target.parentElement.id;
     },
 
-    loadCommentsData(data, pageNumber) {
+    loadCommentsData(response: PageListUpdate<Comment>) : void {
 
-      let totalComments = parseInt(data['total_comments']);
-
-      if (totalComments == 0) {
-        this.currentCommentsPage = null;
-        this.pornstarComments = {};
-        this.totalComments = 0;
-      }
-      else {
-        this.pagesNumber = Math.ceil(totalComments / this.commentsPerPage);
-        this.pornstarComments[pageNumber] = data['comments'];
-        this.currentCommentsPage = pageNumber;
-        this.totalComments = totalComments;
-      }
+      this.emitter.emit('updateComments', response)
 
     },
 
-    async fetchPornstarComments(pageNumber: number, pornstarID: number = null) {
+    async fetchPornstarComments(pageNumber: number) {
 
       try {
 
@@ -159,16 +158,15 @@ const settings = {
           }
         };
         let pagesNumberQueryParam = '';
-        pornstarID = pornstarID ? pornstarID : this.pornstarID;
         this.showCommentsExpectationDecoration(this.translator.translate('fetching_comments'));
 
-        const response = await fetch(`/pornstar/comments?id=${pornstarID}&page=${pageNumber}&comments_per_page=${this.commentsPerPage}`, requestData);
+        const response = await fetch(`/pornstar/comments?id=${this.pornstarID}&page=${pageNumber}&comments_per_page=${this.commentsPerPage}`, requestData);
 
         switch (response.status) {
 
           case 200:
             let responseBody = await response.json();
-            this.loadCommentsData(responseBody, pageNumber);
+            this.loadCommentsData(responseBody);
             break;
 
           default:
@@ -192,7 +190,7 @@ const settings = {
 
       if (!this.pornstarCommentsHaveBeenFetched) {
         this.showCommentsExpectationDecoration(this.translator.translate('fetching_comments'));
-        this.fetchPornstarComments(1, pornstarID);
+        this.fetchPornstarComments(1);
       }
     },
 
@@ -242,20 +240,6 @@ const settings = {
       }
     },
 
-    validateUnauthenticatedUserNickname(sender) {
-
-      const value = sender.inputValue.trim();
-
-      if (value.length == 0) {
-        sender.resetValidation();
-        return;
-      }
-
-      if (value.length > 20) {
-        sender.showError('the_nickname_exceeds_20_characters');
-      }
-
-    }
   },
 
   computed: {
@@ -269,26 +253,6 @@ const settings = {
 
     pornstarRankingTabIsActive() {
       return this.activeTab == PornstarProfileTab.Rank;
-    },
-
-    linksBoxShouldBeDisplayed(): boolean {
-      return this.pagesNumber > 1;
-    },
-
-    amountOfCommentsCaption(): string {
-      return `${this.translator.translate('total_comments')} : ${this.totalComments}`;
-    },
-
-    anyCommentsAvailable(): boolean {
-      return this.totalComments > 0;
-    },
-
-    currentCommentsPageIsNotFirst(): boolean {
-      return this.currentCommentsPage > 1;
-    },
-
-    currentCommentsPageIsNotLast(): boolean {
-      return this.currentCommentsPage < this.pagesNumber;
     }
 
   },
@@ -296,29 +260,13 @@ const settings = {
   mounted() {
     this.translator = Translator;
     this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
+    this.emitter.on('pageHasBeenSelected', (pageNumber : number) => this.fetchPornstarComments(pageNumber));
   },
 
 };
 
 const app = createApp(settings);
 BasicElements.registerBasicComponents(app);
-app.component('movie-box', MovieBox);
-app.component('star-rating', StarRating);
-app.component('user-notification', UserNotification);
-app.component('textarea-combo', TextAreaCombo);
-app.component('accept-button', AcceptButton);
-app.component('relative-shadow-container', RelativeShadowContainer);
-app.component('expect-circle', ExpectCircle);
-app.component('icon-stop', IconStop);
-app.component('icon-confirm', IconConfirm);
-app.component('comment-box', CommentBox);
-app.component('comment-body', CommentBody);
-app.component('links-box', LinksBox);
-app.component('movie-preview-complete', MoviePreviewComplete);
-app.component('camera-icon', CameraIcon);
-app.component('comment-icon', CommentIcon);
-app.component('podium-icon', PodiumIcon);
-app.component("stop-hand-icon", StopHandIcon);
-app.component('box-voting-icon', BoxVotingIcon);
+
 
 app.mount("#app");
