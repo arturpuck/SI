@@ -3,5 +3,5 @@ export default interface Comment {
     body: string
     avatarFilePath?: string
     addedAgo?: string
-    addedByAuthenticatedUser?: boolean
+    addedByAuthenticatedUser: boolean
 }

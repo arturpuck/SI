@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\ModelShards\PageList;
 use App\MovieComment;
 use App\Services\ModelDataExtractors\Movie\MovieCommentsDataExtractor;
 
@@ -25,7 +24,7 @@ class MovieCommentsRepository extends BaseRepository
         return $this;
     }
 
-    public function getPageList(int $movieID, int $pageNumber, int $perPage = 10): PageList
+    public function getPageList(int $movieID, int $pageNumber, int $perPage = 10): array
     {
         $totalComments = $this->chronological()
             ->filterByMovieID($movieID)
@@ -35,6 +34,6 @@ class MovieCommentsRepository extends BaseRepository
             ->filterByPage($pageNumber, $perPage)
             ->get();
         
-        return MovieCommentsDataExtractor::createCommentsPageList($totalComments, $pageNumber, ...$comments);
+        return compact('totalComments', 'comments');
     }
 }

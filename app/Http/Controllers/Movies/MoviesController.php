@@ -23,6 +23,7 @@ use App\Handlers\Movies\GetTheMostPopularMoviesHandler;
 use App\Http\Requests\Movies\AddMovieCommentRequest;
 use App\Http\Requests\Movies\AddSpermatozoidRequest;
 use App\Http\Requests\Movies\GetMovieCommentsRequest;
+use App\Http\Resources\Comment\CommentCollection;
 use Illuminate\View\View;
 
 class MoviesController extends Controller
@@ -93,12 +94,12 @@ class MoviesController extends Controller
         return $handler->handle($movie);
     }
 
-    public function getMovieComments(GetMovieCommentsHandler $handler, GetMovieCommentsRequest $request): Response
+    public function getMovieComments(GetMovieCommentsHandler $handler, GetMovieCommentsRequest $request): CommentCollection
     {
         return $handler->handle($request);
     }
 
-    public function addMovieComment(AddMovieCommentHandler $addMovieCommentHandler, AddMovieCommentRequest $request): Response
+    public function addMovieComment(AddMovieCommentHandler $addMovieCommentHandler, AddMovieCommentRequest $request): CommentCollection
     {
         return $addMovieCommentHandler->handle($request);
     }

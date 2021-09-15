@@ -3,10 +3,10 @@
 namespace App\Handlers\Movies;
 
 use App\Http\Requests\Movies\AddMovieCommentRequest;
+use App\Http\Resources\Comment\CommentCollection;
 use App\MovieComment;
 use App\Repositories\MovieCommentsRepository;
 use App\Services\ModelDataExtractors\Movie\MovieCommentsDataExtractor;
-use Symfony\Component\HttpFoundation\Response;
 
 class AddMovieCommentHandler
 {
@@ -14,7 +14,7 @@ class AddMovieCommentHandler
     {
     }
 
-    public function handle(AddMovieCommentRequest $request): Response
+    public function handle(AddMovieCommentRequest $request): CommentCollection
     {
         $movieID = $request->get('movie_id');
         $userData = \Auth::check() ? ['user_id' => \Auth::user()->id] : ['nickname' => $request->get('userNickname')];
@@ -25,7 +25,8 @@ class AddMovieCommentHandler
             'comment' => $request->get('body')
         ], $userData));
 
-        $commentsShards = $this->movieCommentsRepository->getPageList($movieID, 1, $commentsPerPage);
-        return response()->json($commentsShards, 200);
+        $comments = $this->movieCommentsRepository->getPageList($movieID, 1, $commentsPerPage);
+
+        return new CommentCollection($comments['comments'], $comments['totalComments'],1);
     }
 }

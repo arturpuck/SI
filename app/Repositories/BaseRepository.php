@@ -5,7 +5,6 @@ namespace App\Repositories;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use App\ModelShards\PageList;
 
 abstract class BaseRepository
 {
@@ -71,16 +70,5 @@ abstract class BaseRepository
   {
 
     return $this->query->count();
-  }
-
-  public function getForPageList(int $pageNumber, int $perPage = 10): Pagelist
-  {
-
-    $total = $this->count();
-    $elements = $this->filterByPage($pageNumber, $perPage)
-      ->get()
-      ->all();
-
-    return new PageList($total, $pageNumber, ...$elements);
   }
 }
