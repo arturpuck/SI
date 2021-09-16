@@ -3,7 +3,7 @@ import { createApp } from 'vue';
 import SimpleLabeledSelect from '@jscomponents-form-controls/simple_labeled_select.vue';
 import UserNotification from '@jscomponents/user_notification';
 import NotificationFunction from '@jsmodules/notification_function.ts';
-import { MoviesListResponse } from '@interfaces/movies/MoviesListResponse.ts';
+import PageListUpdate from '@interfaces/PageListUpdate';
 import MultiSelect from '@jscomponents-form-controls/multiselect.vue';
 import Translator from '@jsmodules/translator.js';
 import SearchEngineTranslations from '@jsmodules/translations/search_engine_translations.js';
@@ -26,6 +26,7 @@ import FingerPointIcon from '@svgicon/finger_point_icon.vue';
 import SideBarVisibilityMixin from "@js/mixins/side_bar_visibility";
 import ShutdownIcon from "@svgicon/shutdown_icon.vue";
 import InfoCircleIcon from "@svgicon/info_circle_icon.vue";
+import { MovieBasicData } from '@interfaces/movies/MovieBasicData';
 
 const settings = {
 
@@ -296,30 +297,28 @@ const settings = {
       return selectedOptions;
     },
 
-    loadMovies(moviesData: MoviesListResponse, currentPage: number = 1): void {
-      this.totalMoviesFound = moviesData.totalMovies;
+    loadMovies(moviesList : PageListUpdate<MovieBasicData>): void {
+      this.totalMoviesFound = moviesList.totalElements
 
-      if (moviesData.totalMovies > 0) {
+      if (moviesList.totalElements > 0) {
 
-        if (currentPage === 1) {
+        if (moviesList.currentPage === 1) {
           window.scroll(0, 0);
         }
         //@ts-ignore
-        this.emitter.emit('updateMoviesList', { moviesData, currentPage });
+        this.emitter.emit('updateMoviesList', moviesList);
       }
       else {
         this.clearMoviesList();
       }
 
-      this.totalMoviesFound = moviesData.totalMovies;
       this.advancedSearchPanelIsVisible = false;
-
 
     },
 
     clearMoviesList(): void {
       //@ts-ignore
-      this.emitter.emit('updateMoviesList', { moviesData: { totalMovies: 0, movies: [] }, currentPage: 0 });
+      this.emitter.emit('clearMoviesList');
     },
 
     async searchMovies(currentPage: number = 1) {
@@ -340,7 +339,7 @@ const settings = {
         switch (response.status) {
 
           case 200:
-            const movies: MoviesListResponse = await response.json();
+            const movies: PageListUpdate<MovieBasicData> = await response.json();
             this.loadMovies(movies, currentPage);
             break;
 

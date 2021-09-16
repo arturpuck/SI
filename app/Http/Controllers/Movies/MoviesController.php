@@ -24,6 +24,7 @@ use App\Http\Requests\Movies\AddMovieCommentRequest;
 use App\Http\Requests\Movies\AddSpermatozoidRequest;
 use App\Http\Requests\Movies\GetMovieCommentsRequest;
 use App\Http\Resources\Comment\CommentCollection;
+use App\Http\Resources\Movie\MovieCollection;
 use Illuminate\View\View;
 
 class MoviesController extends Controller
@@ -53,7 +54,7 @@ class MoviesController extends Controller
         ]);
     }
 
-    public function advancedSearch(Request $request, AdvancedSearchHandler $handler): Response
+    public function advancedSearch(Request $request, AdvancedSearchHandler $handler): MovieCollection
     {
         return $handler->handle($request);
     }
@@ -89,7 +90,7 @@ class MoviesController extends Controller
         return $handler->handle($movieID);
     }
 
-    public function getSimilarMovies(Movie $movie, GetSimilarMoviesHandler $handler): Response
+    public function getSimilarMovies(Movie $movie, GetSimilarMoviesHandler $handler): MovieCollection
     {
         return $handler->handle($movie);
     }

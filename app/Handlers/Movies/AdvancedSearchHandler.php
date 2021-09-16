@@ -6,13 +6,13 @@ use App\Repositories\MoviesRepository;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Helpers\Validators\MoviesAdvancedSearchValidator;
-
+use App\Http\Resources\Movie\MovieCollection;
 
 Class AdvancedSearchHandler {
 
     public function __construct(private MoviesRepository $moviesRepository){}
 
-    public function handle(Request $request):Response{
+    public function handle(Request $request) : MovieCollection{
 
         $validationResult = MoviesAdvancedSearchValidator::validate($request);
 
@@ -40,7 +40,8 @@ Class AdvancedSearchHandler {
             
             $this->moviesRepository->filterByPage($page);
             $movies = $this->moviesRepository->get();
-            return response()->json(['totalMovies' => $totalMatchingMovies, 'movies' => $movies],200);
+            //return response()->json(['totalMovies' => $totalMatchingMovies, 'movies' => $movies],200);
+            return new MovieCollection($movies, $totalMatchingMovies,$page);
         }
         else{
             return $validationResult;

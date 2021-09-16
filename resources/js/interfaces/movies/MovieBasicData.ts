@@ -1,5 +1,3 @@
-type numericBoolean = 0 | 1;
-
 import { BasicPornstarData } from '@interfaces/pornstars/BasicPornstarData';
 import { MovieRating } from '@interfaces/movies/MovieRating';
 import { MovieSpermatozoids } from '@interfaces/movies/MovieSpermatozoids';
@@ -9,7 +7,7 @@ export interface MovieBasicData {
     created_at: string,
     duration: string,
     id?: number,
-    is_translated_to_polish?: numericBoolean,
+    isTranslatedToPolish: boolean,
     pornstars?: BasicPornstarData[],
     title: string,
     views: number,

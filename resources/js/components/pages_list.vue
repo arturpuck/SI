@@ -269,6 +269,10 @@ export default class PagesList extends Vue {
     this.scrollOffset = pagesDelta > 0 ? pagesDelta : 0;
   }
 
+  clearPagesList() {
+    this.pagesNumber = 0;
+  }
+
   mounted() {
     this.currentPage = this.initialCurrentPage;
     this.pagesNumber = Number(this.initialPages);
@@ -279,6 +283,8 @@ export default class PagesList extends Vue {
     window.addEventListener("resize", () => this.controlInterface());
     //@ts-ignore
     this.emitter.on(`updatePagesList${this.uniqueIdentifier}`, this.updatePagesList);
+    //@ts-ignore
+    this.emitter.on('clearPagesList', this.clearPagesList)
   }
 }
 </script>

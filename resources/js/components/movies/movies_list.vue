@@ -7,7 +7,7 @@
         v-bind:title="movie.title"
         v-bind:id="movie.id"
         v-bind:views="movie.views"
-        v-bind:is-translated-to-polish="Boolean(movie.is_translated_to_polish)"
+        v-bind:is-translated-to-polish="Boolean(movie.isTranslatedToPolish)"
         v-bind:pornstars="extractPornstars(movie.pornstars)"
         v-bind:duration="movie.duration"
       ></movie-box>
@@ -28,6 +28,7 @@ import { MoviesCurrentPage } from "@interfaces/movies/MoviesCurrentPage.ts";
 import { BasicPornstarData } from "@interfaces/pornstars/BasicPornstarData.ts";
 import PagesListBasicData from "@interfaces/pages_list_basic_data.ts";
 import MoviePreviewComplete from "@jscomponents/movies/movie_preview_complete.vue";
+import PageListUpdate from '@interfaces/PageListUpdate';
 
 @Options({
   components: { MovieBox, PagesList, MoviePreviewComplete },
@@ -68,15 +69,24 @@ export default class MoviesList extends Vue {
     }
   //@ts-ignore
     this.emitter.on("updateMoviesList", this.updateMoviesList);
+    //@ts-ignore
+    this.emitter.on('clearMoviesList', this.clearMoviesList)
   }
 
-  updateMoviesList(response: MoviesCurrentPage): void {
-    this.totalMovies = response.moviesData.totalMovies;
-    this.movies = response.moviesData.movies;
+  clearMoviesList(){
+    this.totalMovies = 0;
+    this.movies = [];
+    //@ts-ignore
+    this.emitter.emit('clearPagesList');
+  }
+
+  updateMoviesList(moviesList: PageListUpdate<MovieBasicData>): void {
+    this.totalMovies = moviesList.totalElements
+    this.movies = moviesList.content
     const amountOfSubPages: number = Math.ceil(this.totalMovies / this.moviesPerPage);
     this.updatePagesList({
       pagesNumber: amountOfSubPages,
-      currentPage: response.currentPage,
+      currentPage: moviesList.currentPage,
     });
   }
 

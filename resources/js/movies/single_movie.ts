@@ -26,7 +26,6 @@ import { MovieRating } from "@interfaces/movies/MovieRating";
 import { MovieSpermatozoids } from "@interfaces/movies/MovieSpermatozoids";
 import { MovieLikes } from "@interfaces/movies/MovieLikes";
 import { MovieTheatreTab } from "@js/enum/movie_theatre_tab";
-import { MoviesListResponse } from "@interfaces/movies/MoviesListResponse.ts";
 import { MoviesCurrentPage } from "@interfaces/movies/MoviesCurrentPage.ts";
 import PageListUpdate from '@interfaces/PageListUpdate';
 import Comment from '@interfaces/Comment';
@@ -297,8 +296,8 @@ const settings = {
                 const response = await fetch(`/movie/similar/${this.movie_id}`, requestData);
 
                 if (response.status == 200) {
-                    const moviesList: MoviesListResponse = await response.json();
-                    this.loadSimilarMovies(moviesList, pageNumber);
+                    const moviesList: PageListUpdate<MovieBasicData> = await response.json();
+                    this.loadSimilarMovies(moviesList);
                 } else {
                     throw new Error('failed_to_load_similar_movies');
                 }
@@ -347,14 +346,9 @@ const settings = {
             this.emitter.emit('resetCommentBox');
         },
 
-        loadSimilarMovies(moviesList: MoviesListResponse, pageNumber: number): void {
-
-            const moviesListUpdate: MoviesCurrentPage = {
-                moviesData: moviesList,
-                currentPage: pageNumber
-            };
+        loadSimilarMovies(moviesList: PageListUpdate<MovieBasicData>): void {
         
-            this.emitter.emit('updateMoviesList', moviesListUpdate);
+            this.emitter.emit('updateMoviesList', moviesList);
         },
 
         loadMovieData(movie: MovieBasicData): void {
