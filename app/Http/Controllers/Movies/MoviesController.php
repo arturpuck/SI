@@ -59,7 +59,7 @@ class MoviesController extends Controller
         return $handler->handle($request);
     }
 
-    public function getMoviesByCategory(string $categoryName, int $pageNumber = 1, GetMoviesByCategoryHandler $categoriesHandler)
+    public function getMoviesByCategory(GetMoviesByCategoryHandler $categoriesHandler, string $categoryName, int $pageNumber = 1)
     {
         return $categoriesHandler->handle($categoryName, $pageNumber);
     }
