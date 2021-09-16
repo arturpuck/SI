@@ -47,12 +47,20 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root' => match(env('APP_ENV')){
+                'local' => storage_path('app'),
+                'staging' => env('STAGING_STORAGE'),
+                'production' => env('PRODUCTION_STORAGE')
+            }   
         ],
 
         'public' => [
             'driver' => 'local',
-            'root' => base_path('public'),
+            'root' => match(env('APP_ENV')){
+                'local' => base_path('public'),
+                'staging' => env('STAGING_ROOT'),
+                'production' => env('PRODUCTION_ROOT')
+            }, 
             'url' => env('APP_URL'),
             'visibility' => 'public',
         ],
