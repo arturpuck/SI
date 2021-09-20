@@ -11,19 +11,17 @@ class SimpleEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private $sender;
-    private $msg;
+    private string $sender;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(String $msg, String $subject = "Brak tematu", String $sender = "undefined@email.com")
+    public function __construct(public string $msg, string $subject = "Brak tematu", public string $userEmail = 'none')
     {
-        $this->subject = $subject;
-        $this->sender = $sender;
-        $this->msg = $msg;
+       $this->sender = config('mail.management_email');
+       $this->subject = $subject;
     }
 
     /**

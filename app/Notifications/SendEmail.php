@@ -27,6 +27,7 @@ class SendEmail implements Sender
             }
             catch(\Exception $exception){
                 $response['success'] = false;
+                dd($exception->getMessage());
                 array_push($response['failed_emails'], $receipient);
             }
          }
