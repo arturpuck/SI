@@ -46,7 +46,7 @@ class SendPasswordResetLink extends Notification
 
         return (new MailMessage)
                      ->view('mails.password_reset', ['link' => $link])
-                     ->from('administracja@sex-imperium.pl')
+                     ->from(config('mail.management_email'))
                      ->subject('Resetowanie hasła do sex-imperium');
     }
 
