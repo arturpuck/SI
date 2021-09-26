@@ -7,12 +7,13 @@
         v-on:mousedown="scrollLinksByMouseDown(leftScrollDirection)"
         v-on:mouseup="stopScrollingFromMouseDown"
         v-bind:title="descriptions['previousLinksDescription']"
-        class="pages-list__scroll-pages-button--arrow-left"
+        class="pages-list__scroll-pages-button"
       >
         <span
           v-text="descriptions['previousLinksDescription']"
           class="pages-list__button-description"
         ></span>
+        <left-arrow-icon class="pages-list__scroll-pages-icon" />
       </button>
       <div class="pages-list__outer-container">
         <ul
@@ -44,12 +45,13 @@
         v-on:mousedown="scrollLinksByMouseDown(rightScrollDirection)"
         v-on:mouseup="stopScrollingFromMouseDown"
         v-bind:title="descriptions['nextLinksDescription']"
-        class="pages-list__scroll-pages-button--arrow-right"
+        class="pages-list__scroll-pages-button"
       >
         <span
           v-text="descriptions['nextLinksDescription']"
           class="pages-list__button-description"
         ></span>
+         <right-arrow-icon class="pages-list__scroll-pages-icon" />
       </button>
     </div>
     <ul class="pages-list__aditional-controls">
@@ -58,7 +60,7 @@
           v-on:click="navigatePageByDirection(pageDirection.previous)"
           class="pages-list__aditional-control-button"
         >
-          <icon-arrow-left class="pages-list__aditional-control-icon--left-align" />
+          <left-arrow-icon class="pages-list__aditional-control-icon--left-align" />
           <span v-text="descriptions.previous_page"></span>
         </button>
       </li>
@@ -86,7 +88,7 @@
           class="pages-list__aditional-control-button"
         >
           <span v-text="descriptions.next_page"></span>
-          <icon-arrow-right class="pages-list__aditional-control-icon--right-align" />
+          <right-arrow-icon class="pages-list__aditional-control-icon--right-align" />
         </button>
       </li>
     </ul>
@@ -99,16 +101,16 @@ import Translator from "@jsmodules/translator.js";
 import { LinkListScrollDirection } from "@js/enum/movies/scroll_types";
 import { PageDirection } from "@js/enum/page_direction";
 import Descriptions from "@jsmodules/translations/components/pages_list.ts";
-import IconArrowLeft from "@jscomponents/decoration/icons/icon_arrow_left.vue";
-import IconArrowRight from "@jscomponents/decoration/icons/icon_arrow_right.vue";
+import LeftArrowIcon from "@jscomponents/decoration/icons/svg/left_arrow_icon.vue";
+import RightArrowIcon from "@jscomponents/decoration/icons/svg/right_arrow_icon.vue";
 import PagesListBasicData from "@interfaces/pages_list_basic_data.ts";
 import FastBackwardIcon from "@svgicon/fast_backward_icon.vue";
 import FastForwardIcon from "@svgicon/fast_forward_icon.vue";
 
 @Options({
   components: {
-    IconArrowLeft,
-    IconArrowRight,
+    LeftArrowIcon,
+    RightArrowIcon,
     FastForwardIcon,
     FastBackwardIcon,
   },
@@ -292,19 +294,6 @@ export default class PagesList extends Vue {
 <style lang="scss" scoped>
 @import "~sass/fonts";
 
-@mixin pages-list-scroll-pages-button {
-  cursor: pointer;
-  border: none;
-  outline: none;
-  border-radius: 5px;
-  flex-basis: 4%;
-  min-width: 35px;
-  background: linear-gradient(#17f117, #09501b);
-  &:active {
-    transform: scale(1.2);
-  }
-}
-
 @mixin aditional-control-icon{
    vertical-align: middle;
     width: 1.3vw;
@@ -327,15 +316,20 @@ export default class PagesList extends Vue {
     color: white;
   }
 
-  &__scroll-pages-button {
-    &--arrow-left {
-      @include pages-list-scroll-pages-button();
-      clip-path: polygon(40% 0%, 40% 25%, 100% 25%, 100% 75%, 40% 75%, 40% 100%, 0% 50%);
-    }
+  &__scroll-pages-icon {
+     fill:#23af23;
+  }
 
-    &--arrow-right {
-      @include pages-list-scroll-pages-button();
-      clip-path: polygon(0% 25%, 60% 25%, 60% 0%, 100% 50%, 60% 100%, 60% 75%, 0% 75%);
+  &__scroll-pages-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    border-radius: 5px;
+    flex-basis: 6%;
+    min-width: 35px;
+    &:active {
+      transform: scale(1.2);
     }
   }
 

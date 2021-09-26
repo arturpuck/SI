@@ -1,3 +1,350 @@
-.empire-footer{background:#000;color:#fff;font-family:Aldrich,sans-serif;font-size:2vw;padding:10px;position:relative;text-align:center;width:100%;z-index:4}@media (max-width:1200px){.empire-footer{font-size:30px}}.contact-us-link{color:#fff;margin:0 18px;text-decoration:none}.contact-us-link:hover{text-decoration:underline}.footer-icon{fill:#eb091c;height:auto;vertical-align:middle;width:1em}.icon-error-close{background:#fff;-webkit-clip-path:polygon(20% 0,0 20%,30% 50%,0 80%,20% 100%,50% 70%,80% 100%,100% 80%,70% 50%,100% 20%,80% 0,50% 30%);clip-path:polygon(20% 0,0 20%,30% 50%,0 80%,20% 100%,50% 70%,80% 100%,100% 80%,70% 50%,100% 20%,80% 0,50% 30%);display:inline-block;font-size:0;height:65%;left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);width:65%}.icon-error-cross-container{background:#ef0244;border:3px solid #ef0244;border-radius:50%;display:inline-block;font-size:0;height:2.3vw;min-height:30px;min-width:30px;position:relative;width:2.3vw}.error-information-container{border:2px solid #ef0244;border-radius:9px;box-shadow:2px 2px 4px 3px #000;color:#fff;display:table;font-family:Exo\ 2,sans-serif;font-size:1.2vw;margin:calc(25px + 1.6vw) auto;max-width:75%;min-width:310px;overflow:hidden;position:relative;text-align:center}@media (max-width:1200px){.error-information-container{font-size:16px}}.error-header{align-items:center;background:rgba(0,0,0,.9);display:flex;flex-wrap:nowrap;justify-content:space-evenly;padding:7px}.information-container{border:1px solid #000;border-radius:6px;color:#fff;display:table;margin:calc(25px + 1.6vw) auto;max-width:75%;min-width:310px;position:relative;text-align:center}.error-list{background:#ef0244eb;list-style-type:none;margin:0;padding:0;text-align:left}.error-list-element{padding:6px}.information-container,.success-information{font-family:Exo\ 2,sans-serif;font-size:1.2vw}@media (max-width:1200px){.information-container,.success-information{font-size:16px}}.error-list-element:before{content:" \25CF ";margin:0 5px}*{box-sizing:border-box}.full-body{background-attachment:fixed;background-position:50%;background-size:cover;border-top:1px solid transparent;margin:0;padding:0}.aplication-container{border-bottom:1px solid transparent;border-top:1px solid transparent;margin-top:calc(35px + 1.5vw);min-height:calc(100vh - 85px - 1.5vw)}@media (min-width:1200px){.aplication-container{min-height:calc(100vh - 55px - 3.5vw)}}.shadow-container{align-items:center;background:rgba(0,0,0,.95);display:flex;height:100%;justify-content:center;left:0;position:absolute;top:0;width:100%;z-index:3}@media (min-width:2000px){.empire-background-image-1{background-image:url(/images/decoration/user-settings/background-images/compressed/chick-in-bar-m-2000-min.jpg)}}@media (min-width:1200px) and (max-width:1999px){.empire-background-image-1{background-image:url(/images/decoration/user-settings/background-images/compressed/chick-in-bar-m-1200-min.jpg)}}@media (max-width:1199px){.empire-background-image-1{background-image:url(/images/decoration/user-settings/background-images/compressed/chick-in-bar-m-0-min.jpg)}}.show-age-checkbox{padding:0 5px}.information-icon{fill:#ef0244;display:block;height:auto;margin:5px auto;width:1.7em}.user-settings-panel{background:rgba(0,0,0,.9);border-radius:8px;box-shadow:2px 2px 2px 2px #000;margin:10px auto;min-width:320px;width:30%}.user-settings-tab-list{align-items:baseline;display:flex;list-style-type:none;margin:0;padding:0}.user-settings-tab{background:#000;border-radius:8px 8px 0 0;color:#fff;cursor:pointer;font-family:Exo\ 2,sans-serif;font-size:1.3vw;line-height:180%;line-height:170%;margin:0;padding:0 8px;text-align:center;transition:background 1s}@media (max-width:1200px){.user-settings-tab{font-size:14px}}.active-tab{background:#242229;color:#fff}.tab-icon{fill:#fff;height:auto;margin:0 2px;vertical-align:text-bottom;width:1em}.first-tab{margin-left:5%}.user-settings{padding-bottom:10px}.arrows-container{background:#242229;font-family:Exo\ 2,sans-serif;font-size:1.6vw;padding:3px}@media (max-width:1200px){.arrows-container{font-size:19px}}.arrow-icon{border-radius:50%;color:#fff;cursor:pointer;padding:7px}.arrow-icon:hover{background:#000}.settings-controls-container{position:relative}.avatar-settings{text-align:center}.avatar-image,.undefined-avatar{border-radius:8px;display:block;height:128px;margin:10px auto;width:128px}.undefined-avatar{fill:#eb091c;border:2px solid #000}.information-for-user{color:#fff;font-family:Exo\ 2,sans-serif;font-size:1.2vw;margin:0;padding:5px;text-align:center}@media (max-width:1200px){.information-for-user{font-size:16px}}.icon-information-container{padding:5px;text-align:center}.avatar-notification{background:#242229}.choose-avatar-button{background:linear-gradient(#e7ec07,#8e7109);border-radius:5px;color:#000;cursor:pointer;display:flex;font-family:Exo\ 2,sans-serif;font-size:1.2vw;justify-content:space-between;margin:0 auto 5px;padding:4px;width:95%}@media (max-width:1200px){.choose-avatar-button{font-size:16px}}.choose-avatar-button:hover{background:#ef0244;color:#fff}.avatar-file{left:0;position:absolute;top:-9999px}.avatar-file-name{word-wrap:break-word;color:#fff;font-family:Exo\ 2,sans-serif;font-size:1.1vw;line-height:1.5em;max-height:4.5em;min-height:1.5em;overflow:hidden;padding:2px;text-align:center}@media (max-width:1200px){.avatar-file-name{font-size:13px}}.delete-avatar-icon{fill:#fff;height:auto;width:1.5em}.upload-from-disc-icon{fill:#040404;height:auto;width:1.5em}.delete-avatar-button{background:linear-gradient(#ff0707,#520d02);border:none;border-radius:5px;color:#fff;cursor:pointer;display:flex;font-family:Exo\ 2,sans-serif;font-size:1.2vw;justify-content:space-between;margin:0 auto 5px;outline:none;padding:5px;width:95%}.delete-avatar-button:hover{background:red}@media (max-width:1200px){.delete-avatar-button{font-size:16px}}.other-settings{font-family:Exo\ 2,sans-serif;font-size:1.2vw}@media (max-width:1200px){.other-settings{font-size:16px}}.settings-panel-checkbox{color:#fff}
+.empire-footer {
+  width: 100%;
+  padding: 10px;
+  background: black;
+  font-size: 2vw;
+  font-family: Aldrich, sans-serif;
+  color: white;
+  text-align: center;
+  position: relative;
+  z-index: 4; }
+  @media (max-width: 1200px) {
+    .empire-footer {
+      font-size: 30px; } }
 
-/*# sourceMappingURL=settings_panel.css.map*/
+.contact-us-link {
+  text-decoration: none;
+  color: white;
+  margin: 0 18px; }
+  .contact-us-link:hover {
+    text-decoration: underline; }
+
+.footer-icon {
+  fill: #eb091c;
+  width: 1em;
+  height: auto;
+  vertical-align: middle; }
+
+.icon-error-close {
+  display: inline-block;
+  background: white;
+  width: 65%;
+  height: 65%;
+  position: absolute;
+  font-size: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+          clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%); }
+
+.icon-error-cross-container {
+  position: relative;
+  background: #ef0244;
+  border-radius: 50%;
+  border: 3px solid #ef0244;
+  font-size: 0;
+  min-width: 30px;
+  min-height: 30px;
+  width: 2.3vw;
+  height: 2.3vw;
+  display: inline-block; }
+
+.error-information-container {
+  border-radius: 9px;
+  overflow: hidden;
+  box-shadow: 2px 2px 4px 3px black;
+  border: 2px solid #ef0244;
+  margin: calc(25px + 1.6vw) auto;
+  text-align: center;
+  color: white;
+  display: table;
+  position: relative;
+  max-width: 75%;
+  min-width: 310px;
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif; }
+  @media (max-width: 1200px) {
+    .error-information-container {
+      font-size: 16px; } }
+
+.error-header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: nowrap;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 7px; }
+
+.information-container {
+  margin: calc(25px + 1.6vw) auto;
+  text-align: center;
+  border-radius: 6px;
+  color: white;
+  display: table;
+  border: 1px solid black;
+  position: relative;
+  max-width: 75%;
+  min-width: 310px; }
+
+.error-list {
+  text-align: left;
+  margin: 0;
+  padding-left: 25px;
+  list-style-type: none;
+  padding: 0;
+  background: #ef0244eb; }
+
+.error-list-element {
+  padding: 6px; }
+
+.success-information, .information-container {
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif; }
+  @media (max-width: 1200px) {
+    .success-information, .information-container {
+      font-size: 16px; } }
+
+.error-list-element:before {
+  content: ' \25CF ';
+  margin: 0 5px; }
+
+* {
+  box-sizing: border-box; }
+
+.full-body {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid transparent;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; }
+
+.aplication-container {
+  min-height: calc(100vh - 2*10px - 30px - 35px - 1.5vw);
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  margin-top: calc(35px + 1.5vw); }
+  @media (min-width: 1200px) {
+    .aplication-container {
+      min-height: calc(100vh - 2*10px - 2vw - 35px - 1.5vw); } }
+
+.shadow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  height: 100%;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+@media (min-width: 2000px) {
+  .empire-background-image-1 {
+    background-image: url("/images/decoration/user-settings/background-images/compressed/chick-in-bar-m-2000-min.jpg"); } }
+
+@media (min-width: 1200px) and (max-width: 1999px) {
+  .empire-background-image-1 {
+    background-image: url("/images/decoration/user-settings/background-images/compressed/chick-in-bar-m-1200-min.jpg"); } }
+
+@media (max-width: 1199px) {
+  .empire-background-image-1 {
+    background-image: url("/images/decoration/user-settings/background-images/compressed/chick-in-bar-m-0-min.jpg"); } }
+
+.show-age-checkbox {
+  padding: 0 5px; }
+
+.information-icon {
+  fill: #ef0244;
+  width: 1.7em;
+  height: auto;
+  display: block;
+  margin: 5px auto; }
+
+.user-settings-panel {
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px 2px black;
+  min-width: 320px;
+  width: 30%;
+  margin: 10px auto; }
+
+.user-settings-tab-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: baseline; }
+
+.user-settings-tab {
+  text-align: center;
+  font-size: 1.3vw;
+  font-family: "Exo 2", sans-serif;
+  line-height: 180%;
+  margin: 0;
+  color: white;
+  background: black;
+  transition: background 1s;
+  cursor: pointer;
+  padding: 0 8px;
+  line-height: 170%;
+  border-radius: 8px 8px 0 0; }
+  @media (max-width: 1200px) {
+    .user-settings-tab {
+      font-size: 14px; } }
+
+.active-tab {
+  background: #242229;
+  color: white; }
+
+.tab-icon {
+  margin: 0 2px;
+  width: 1em;
+  height: auto;
+  fill: white;
+  vertical-align: text-bottom; }
+
+.first-tab {
+  margin-left: 5%; }
+
+.user-settings {
+  padding-bottom: 10px; }
+
+.arrows-container {
+  background: #242229;
+  padding: 3px;
+  font-size: 1.6vw;
+  font-family: "Exo 2", sans-serif; }
+  @media (max-width: 1200px) {
+    .arrows-container {
+      font-size: 19px; } }
+
+.arrow-icon {
+  border-radius: 50%;
+  padding: 7px;
+  color: white;
+  cursor: pointer; }
+  .arrow-icon:hover {
+    background: black; }
+
+.settings-controls-container {
+  position: relative; }
+
+.avatar-settings {
+  text-align: center; }
+
+.avatar-image {
+  border-radius: 8px;
+  display: block;
+  margin: 10px auto;
+  width: 128px;
+  height: 128px; }
+
+.undefined-avatar {
+  border-radius: 8px;
+  border: 2px solid black;
+  display: block;
+  margin: 10px auto;
+  width: 128px;
+  height: 128px;
+  fill: #eb091c; }
+
+.information-for-user {
+  padding: 5px;
+  color: white;
+  margin: 0;
+  text-align: center;
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif; }
+  @media (max-width: 1200px) {
+    .information-for-user {
+      font-size: 16px; } }
+
+.icon-information-container {
+  padding: 5px;
+  text-align: center; }
+
+.avatar-notification {
+  background: #242229; }
+
+.choose-avatar-button {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif;
+  border-radius: 5px;
+  cursor: pointer;
+  color: black;
+  padding: 4px;
+  margin: 0 auto 5px auto;
+  background: linear-gradient(#e7ec07, #8e7109); }
+  @media (max-width: 1200px) {
+    .choose-avatar-button {
+      font-size: 16px; } }
+  .choose-avatar-button:hover {
+    background: #ef0244;
+    color: white; }
+
+.avatar-file {
+  position: absolute;
+  top: -9999px;
+  left: 0; }
+
+.avatar-file-name {
+  text-align: center;
+  padding: 2px;
+  font-size: 1.1vw;
+  font-family: "Exo 2", sans-serif;
+  min-height: 1.5em;
+  max-height: 4.5em;
+  line-height: 1.5em;
+  overflow: hidden;
+  word-wrap: break-word;
+  color: white; }
+  @media (max-width: 1200px) {
+    .avatar-file-name {
+      font-size: 13px; } }
+
+.delete-avatar-icon {
+  width: 1.5em;
+  height: auto;
+  fill: white; }
+
+.upload-from-disc-icon {
+  fill: #040404;
+  width: 1.5em;
+  height: auto; }
+
+.delete-avatar-button {
+  background: linear-gradient(#ff0707, #520d02);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 0 auto 5px auto;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 95%;
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif; }
+  .delete-avatar-button:hover {
+    background: red; }
+  @media (max-width: 1200px) {
+    .delete-avatar-button {
+      font-size: 16px; } }
+
+.other-settings {
+  font-size: 1.2vw;
+  font-family: "Exo 2", sans-serif; }
+  @media (max-width: 1200px) {
+    .other-settings {
+      font-size: 16px; } }
+
+.settings-panel-checkbox {
+  color: white; }
+

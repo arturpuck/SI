@@ -14,10 +14,11 @@ use App\Http\Requests\User\ChangeUserPasswordRequest;
 use App\Http\Requests\User\ChangeOtherUserSettingsRequest;
 use App\Http\Requests\Pornstars\RatePornstarRequest;
 use App\PornstarRate;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasFactory;
 
     /**
      * The attributes that are mass assignable.

@@ -6,11 +6,32 @@
         v-for="starNumber in starCount"
         v-bind:key="starNumber"
         v-on:mouseover="setHoverValue(starNumber)"
-        v-bind:class="[getStarColorClassName(starNumber)]"
         v-on:click="valueHasBeenSelected(starNumber)"
         class="star-rate"
-        v-text="starNumber"
-      ></button>
+        
+      >
+        <svg
+          id="Layer_1"
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 122.88 117.1"
+          v-bind:class="[getStarColorClassName(starNumber)]"
+        >
+          <defs>
+                <linearGradient xmlns="http://www.w3.org/2000/svg" id="half-gold-star">
+                  <stop offset="0%" stop-color="gold"/>
+                  <stop offset="50%" stop-color="gold"/>
+                  <stop offset="51%" stop-color="white"/>
+                  <stop offset="100%" stop-color="white"/>
+                </linearGradient>
+          </defs>
+          <title v-text="starNumber"></title>
+          <path
+            class="cls-1"
+            d="M64.42,2,80.13,38.7,120,42.26a3.2,3.2,0,0,1,1.82,5.62h0L91.64,74.18l8.9,39A3.19,3.19,0,0,1,98.12,117a3.27,3.27,0,0,1-2.46-.46L61.41,96.1,27.07,116.64a3.18,3.18,0,0,1-4.38-1.09,3.14,3.14,0,0,1-.37-2.38h0l8.91-39L1.09,47.88a3.24,3.24,0,0,1-.32-4.52,3.32,3.32,0,0,1,2.29-1l39.72-3.56L58.49,2a3.24,3.24,0,0,1,5.93,0Z"
+          />
+        </svg>
+      </button>
     </div>
     <div v-if="showNumber" v-text="displayedValue" class="rate-value"></div>
   </div>
@@ -20,14 +41,13 @@
 import { Vue, Options, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator";
 
-
 @Options({ name: "StarRating" })
 export default class StarRating extends Vue {
   private selectedValue: number = 0;
   private valueOnHover: number = 0;
   private translations = Translator.getPackage("star_rating");
 
-  emits = ['selected'];
+  emits = ["selected"];
 
   @Prop({
     type: Number,
@@ -109,7 +129,8 @@ export default class StarRating extends Vue {
 
   getStarColorClassName(starNumber: number): string {
     const primaryValue = this.valueOnHover || this.selectedValue;
-    const differenceBetweenSelectedValueAndStarIndex = primaryValue - starNumber;
+    const differenceBetweenSelectedValueAndStarIndex =
+      primaryValue - starNumber;
 
     if (differenceBetweenSelectedValueAndStarIndex >= 0) {
       return "completly-gold-star-rate";
@@ -129,18 +150,21 @@ export default class StarRating extends Vue {
       return "half-gold-star-rate";
     }
 
-    return "";
+    return "empty-star";
   }
 
   mounted() {
     this.selectedValue = this.initialValue;
     //@ts-ignore
-    this.emitter.on(`${this.identifier}UpdateRate`, (rate: number) => this.selectedValue = rate);
+    this.emitter.on(
+      `${this.identifier}UpdateRate`,
+      (rate: number) => (this.selectedValue = rate)
+    );
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "~sass/fonts";
 
 .star-rate-label {
@@ -173,23 +197,13 @@ export default class StarRating extends Vue {
   margin: 0 8px;
   min-width: 20px;
   min-height: 20px;
-  background: white;
+  background: transparent;
+  border:none;
   color: transparent;
+  padding:0;
   @media (max-width: 500px) {
     margin: 0 3px;
   }
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
 
   &:hover {
     cursor: pointer;
@@ -197,10 +211,21 @@ export default class StarRating extends Vue {
 }
 
 .completly-gold-star-rate {
-  background: gold;
+  fill: #ffd401;
 }
 
 .half-gold-star-rate {
-  background: linear-gradient(to right, gold 0%, gold 50%, white 50%, white 100%);
+  fill: url(#half-gold-star);
+}
+
+.st0 {
+  clip-path: url(#SVGID_2_);
+}
+.st1 {
+  fill: #ffd401;
+}
+
+.empty-star{
+  fill: grey;
 }
 </style>
