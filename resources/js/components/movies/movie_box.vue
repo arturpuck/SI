@@ -32,7 +32,7 @@
       <div v-if="aditionalInformation" class="movie-details-and-controls">
         <span v-if="pornstars">
           <span v-for="pornstar in pornstars" v-bind:key="pornstar">
-            <star-yellow-icon class="star-icon"></star-yellow-icon>
+            <star-full-icon class="star-icon"></star-full-icon>
             <a
               v-bind:href="`/gwiazda-porno/profil/${getPornstarSlug(pornstar)}`"
               class="pornstar-profile-link"
@@ -55,7 +55,7 @@ import IconPolishFlag from "@jscomponents-decoration/flags/icon_polish_flag.vue"
 import Slugifier from "@jsmodules/slugifier";
 import PlayRoundIcon from "@svgicon/play_round_icon.vue";
 import MagnifierIcon from "@svgicon/magnifier_icon";
-import StarYellowIcon from "@svgicon/star_yellow_icon";
+import StarFullIcon from "@svgicon/star_full_icon";
 import Config from "@config/paths/movies";
 import ExpectShadowCircle from "@jscomponents-decoration/expect_shadow_circle";
 import Translations from "@jsmodules/translations/components/movie_box";
@@ -66,7 +66,7 @@ import Translations from "@jsmodules/translations/components/movie_box";
     IconPolishFlag,
     PlayRoundIcon,
     MagnifierIcon,
-    StarYellowIcon,
+    StarFullIcon,
     ExpectShadowCircle,
   },
 })
