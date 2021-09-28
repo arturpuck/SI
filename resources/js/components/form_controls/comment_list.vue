@@ -30,6 +30,7 @@
       >
       </comment-body>
     </ul>
+    <pages-list v-bind:unique-identifier="uniqueIdentifier"></pages-list>
   </div>
 </template>
 

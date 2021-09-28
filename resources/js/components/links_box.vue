@@ -6,10 +6,14 @@
         v-on:click="scrollLinks(leftScrollDirection)"
         v-on:mousedown="scrollLinksByMouseDown(leftScrollDirection)"
         v-on:mouseup="stopScrollingFromMouseDown"
-        v-bind:title="previousLinksDescription"
-        class="scroll-links-button scroll-previous-links-button-decoration"
+        v-bind:title="translations.previousLinksDescription"
+        class="scroll-links-button"
       >
-        <span v-text="previousLinksDescription" class="links-button-description"></span>
+        <left-arrow-icon class="big-arrow-icon"></left-arrow-icon>
+        <span
+          v-text="translations.previousLinksDescription"
+          class="links-button-description"
+        ></span>
       </button>
       <div class="links-container-outer">
         <ul
@@ -18,7 +22,23 @@
           v-bind:class="{ 'content-in-center': !arrowsShouldBeDisplayed }"
           class="content-container-slider"
         >
-          <slot name="pages-list"></slot>
+          <li
+            v-for="(link, index) in links"
+            v-bind:key="link"
+            class="pagination-link-list-element"
+          >
+            <a
+              v-if="index + 1 == initialCurrentPage"
+              v-text="index + 1"
+              class="pagination-link current-page-link"
+            ></a>
+            <a
+              v-else
+              v-bind:href="link"
+              v-text="index + 1"
+              class="pagination-link"
+            ></a>
+          </li>
         </ul>
       </div>
       <button
@@ -26,24 +46,98 @@
         v-on:click="scrollLinks(rightScrollDirection)"
         v-on:mousedown="scrollLinksByMouseDown(rightScrollDirection)"
         v-on:mouseup="stopScrollingFromMouseDown"
-        v-bind:title="nextLinksDescription"
-        class="scroll-links-button scroll-next-links-button-decoration"
+        v-bind:title="translations.nextLinksDescription"
+        class="scroll-links-button"
       >
-        <span v-text="nextLinksDescription" class="links-button-description"></span>
+        <right-arrow-icon class="big-arrow-icon"></right-arrow-icon>
+        <span
+          v-text="translations.nextLinksDescription"
+          class="links-button-description"
+        ></span>
       </button>
     </div>
     <ul class="aditional-links">
-      <slot name="aditional-links"></slot>
+      <li v-if="pageIsNotFirst" class="aditional-link-list-element">
+        <left-arrow-icon class="aditional-link-icon"></left-arrow-icon>
+        <a
+          v-bind:href="previousPage"
+          v-text="translations.previous_page"
+          class="aditional-link"
+        ></a>
+      </li>
+
+      <li v-if="pageIsNotFirst" class="aditional-link-list-element">
+        <fast-backward-icon class="aditional-link-icon"></fast-backward-icon>
+        <a
+          v-bind:href="links[0]"
+          v-text="translations.first_page"
+          class="aditional-link"
+        ></a>
+      </li>
+      <li v-if="pageIsNotLast" class="aditional-link-list-element">
+        <a
+          v-bind:href="links[getamountOfElementsInBox() - 1]"
+          v-text="translations.last_page"
+          class="aditional-link"
+        ></a>
+        <fast-forward-icon class="aditional-link-icon"></fast-forward-icon>
+      </li>
+
+      <li v-if="pageIsNotLast" class="aditional-link-list-element">
+        <a
+          v-bind:href="nextPage"
+          v-text="translations.next_page"
+          class="aditional-link"
+        ></a>
+        <right-arrow-icon class="aditional-link-icon"></right-arrow-icon>
+      </li>
+    </ul>
+  </nav>
+  <nav v-if="showFixedShortcuts" v-show="fixedShortcutsAreVisible" class="fixed-shortcuts">
+    <ul class="fixed-shortcuts__list">
+      <li v-if="pageIsNotFirst">
+        <a v-bind:href="previousPage" class="fixed-shortcuts__link--back">
+          <left-arrow-icon class="aditional-link-icon"></left-arrow-icon>
+          <span
+            v-text="translations.back"
+            class="fixed-shortcuts__description"
+          ></span>
+        </a>
+      </li>
+      <li v-if="pageIsNotLast">
+        <a v-bind:href="nextPage" class="fixed-shortcuts__link--further">
+          <span
+            v-text="translations.further"
+            class="fixed-shortcuts__description"
+          ></span>
+          <right-arrow-icon class="aditional-link-icon"></right-arrow-icon>
+        </a>
+      </li>
+      <li>
+        <button v-on:click="scrollUp" class="fixed-shortcuts__up-button">
+          <span
+            class="fixed-shortcuts__description"
+            v-text="translations.up"
+          ></span>
+          <angle-top-icon class="aditional-link-icon"></angle-top-icon>
+        </button>
+      </li>
     </ul>
   </nav>
 </template>
 
 <script lang="ts">
 import { Vue, Options, Prop } from "vue-property-decorator";
-import Translator from "@jsmodules/translator.js";
+import Translations from "@jsmodules/translations/components/pages_list";
 import { LinkListScrollDirection } from "@js/enum/movies/scroll_types";
+import LeftArrowIcon from "@jscomponents/decoration/icons/svg/left_arrow_icon.vue";
+import RightArrowIcon from "@jscomponents/decoration/icons/svg/right_arrow_icon.vue";
+import AngleTopIcon from "@jscomponents/decoration/icons/svg/angle_top_icon.vue";
 
-@Options({ name: "LinksBox" })
+@Options({
+  name: "LinksBox",
+  components: { LeftArrowIcon, RightArrowIcon, AngleTopIcon },
+})
 export default class LinksBox extends Vue {
   @Prop({
     type: Number,
@@ -52,10 +146,19 @@ export default class LinksBox extends Vue {
   })
   readonly initialCurrentPage: number;
 
-  private previousLinksDescription: string = Translator.translate(
-    "scroll_previous_links"
-  );
-  private nextLinksDescription: string = Translator.translate("scroll_next_links");
+  @Prop({
+    type: Array,
+    required: true,
+  })
+  readonly links: string[];
+
+  @Prop({
+    type: Boolean,
+    required: false,
+    default: false,
+  })
+  readonly showFixedShortcuts: boolean;
+
   private scrollOffset: number = 0;
   private leftScrollDirection = LinkListScrollDirection.Left;
   private rightScrollDirection = LinkListScrollDirection.Right;
@@ -64,9 +167,15 @@ export default class LinksBox extends Vue {
   private linksAmount: number = undefined;
   private arrowsShouldBeDisplayed: boolean = false;
   private currentPage: number = null;
+  private translations = Translations;
+  private fixedShortcutsAreVisible = false;
+
+  scrollUp(): void {
+    window.scrollTo(0, 0);
+  }
 
   getamountOfElementsInBox(): number {
-    return document.querySelectorAll(".pagination-link-list-element").length;
+    return this.links.length;
   }
 
   chechIfArrowsShouldBeDisplayed() {
@@ -97,7 +206,9 @@ export default class LinksBox extends Vue {
     switch (direction) {
       case LinkListScrollDirection.Left:
         this.scrollOffset =
-          this.scrollOffset - linksToSkip <= 0 ? 0 : this.scrollOffset - linksToSkip;
+          this.scrollOffset - linksToSkip <= 0
+            ? 0
+            : this.scrollOffset - linksToSkip;
         break;
 
       case LinkListScrollDirection.Right:
@@ -129,6 +240,13 @@ export default class LinksBox extends Vue {
       this.currentPage - 1 >= maxOffset ? maxOffset : this.currentPage - 1;
     this.controlInterface();
     window.addEventListener("resize", () => this.controlInterface());
+    this.controlFixedShortcuts();
+    window.addEventListener("scroll", this.controlFixedShortcuts);
+
+  }
+
+  controlFixedShortcuts(): void {
+    this.fixedShortcutsAreVisible = (window.scrollY > 400);
   }
 
   recomputeOffset() {
@@ -148,22 +266,86 @@ export default class LinksBox extends Vue {
   resetScrollOffset(): void {
     this.scrollOffset = 0;
   }
+
+  get pageIsNotFirst(): boolean {
+    return this.initialCurrentPage !== 1;
+  }
+
+  get pageIsNotLast(): boolean {
+    return this.initialCurrentPage !== this.getamountOfElementsInBox();
+  }
+
+  get nextPage(): string {
+    return this.links[this.initialCurrentPage];
+  }
+
+  get previousPage(): string {
+    return this.links[this.initialCurrentPage - 2];
+  }
 }
 </script>
 
 <style lang="scss">
 @import "~sass/fonts";
 
+@mixin shortcut-link {
+  text-decoration: none;
+  margin: 5px;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+  border-radius: 3px;
+  color: white;
+  height: 1.5em;
+}
+
+.fixed-shortcuts {
+  position: fixed;
+  top: calc(1.5vw + 25px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  border-radius: 6px;
+  z-index: 1;
+  border: 1px solid #61595c;
+  @include responsive-font();
+
+  &__up-button {
+    @include shortcut-link();
+    @include responsive-font();
+    border: none;
+    background: #1d42d2;
+    cursor: pointer;
+  }
+
+  &__description {
+    line-height: 1em;
+    margin: 0 5px;
+  }
+
+  &__list {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-evenly;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__link {
+    &--back {
+      @include shortcut-link();
+      background: linear-gradient(to right, #b31f45, #da1047);
+    }
+
+    &--further {
+      @include shortcut-link();
+      background: linear-gradient(#17f117, #09501b);
+    }
+  }
+}
+
 .content-in-center {
   justify-content: center;
-}
-
-.scroll-previous-links-button-decoration {
-  clip-path: polygon(40% 0%, 40% 25%, 100% 25%, 100% 75%, 40% 75%, 40% 100%, 0% 50%);
-}
-
-.scroll-next-links-button-decoration {
-  clip-path: polygon(0% 25%, 60% 25%, 60% 0%, 100% 50%, 60% 100%, 60% 75%, 0% 75%);
 }
 
 .aditional-link-list-element {
@@ -177,6 +359,7 @@ export default class LinksBox extends Vue {
   &:hover {
     box-shadow: 1px 1px 3px 1px black;
   }
+  display: inline-flex;
 }
 
 .links-button-description {
@@ -284,16 +467,23 @@ export default class LinksBox extends Vue {
   cursor: pointer;
   border: none;
   outline: none;
+  background: none;
   border-radius: 5px;
   flex-basis: 4%;
   min-width: 35px;
-  background: linear-gradient(#17f117, #09501b);
   &:active {
     transform: scale(1.2);
   }
 }
 
 .aditional-link-icon {
-  @include responsive-font(1.3vw, 13px, "");
+  fill: white;
+  min-width: 15px;
+  height: auto;
+  width: 1.5vw;
+}
+
+.big-arrow-icon {
+  fill: rgb(39, 168, 39);
 }
 </style>

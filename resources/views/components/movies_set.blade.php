@@ -1,5 +1,9 @@
 <movie-preview-complete></movie-preview-complete>
 
+@if($movies->hasPages())
+<links-box v-bind:show-fixed-shortcuts="true" v-bind:links="{{json_encode($links, true)}}" v-bind:initial-current-page="{{$movies->pageNumber()}}"></links-box>
+@endif
+
 <ul class="movies-container">
     @foreach($movies->items() as $movie)
         <movie-box
@@ -18,5 +22,5 @@
 </ul>
 
 @if($movies->hasPages())
-   <x-links-container :elements="$movies"/></links-container>
+<links-box v-bind:links="{{json_encode($links, true)}}" v-bind:initial-current-page="{{$movies->pageNumber()}}"></links-box>
 @endif

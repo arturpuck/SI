@@ -25,10 +25,13 @@ use App\Http\Requests\Movies\AddSpermatozoidRequest;
 use App\Http\Requests\Movies\GetMovieCommentsRequest;
 use App\Http\Resources\Comment\CommentCollection;
 use App\Http\Resources\Movie\MovieCollection;
+use App\Traits\LinkFactory;
 use Illuminate\View\View;
 
 class MoviesController extends Controller
 {
+    use LinkFactory;
+
     public function getLatestMoviesPage(Request $request, MoviesRepository $moviesRepository, $pageNumber)
     {
 
@@ -42,6 +45,7 @@ class MoviesController extends Controller
             'title' => 'the_latest_movies',
             'description' => 'the_latest_movies_page_description',
             'movies' => $movies,
+            'links' => $this->generateLinks(route('movies.new').'/{}', range(1,$movies->numberOfPages()))
         ]);
     }
 
