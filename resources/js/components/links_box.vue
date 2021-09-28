@@ -63,7 +63,7 @@
           class="aditional-link"
         >
           <left-arrow-icon class="aditional-link-icon"></left-arrow-icon>
-          <span v-text="translations.previous_page" class="aditional-link-description"></span>
+          <span v-text="translations.back" class="aditional-link-description"></span>
         </a>
       </li>
       <li v-if="pageIsNotFirst" class="aditional-link-list-element">
@@ -90,7 +90,7 @@
           v-bind:href="nextPage"
           class="aditional-link"
         >
-          <span v-text="translations.next_page" class="aditional-link-description"></span>
+          <span v-text="translations.further" class="aditional-link-description"></span>
           <right-arrow-icon class="aditional-link-icon"></right-arrow-icon>
         </a>
       </li>
@@ -384,7 +384,7 @@ export default class LinksBox extends Vue {
 
 .links-box {
   display: block;
-  margin: 10px auto;
+  margin: 25px auto;
 }
 
 .links-container-outer {
@@ -426,6 +426,9 @@ export default class LinksBox extends Vue {
   display: flex;
   align-items: center;
   @include responsive-font(1.3vw, 13px);
+   @media (max-width: 380px){
+     flex-direction: column;
+   }
 }
 
 .scrollable-controls {

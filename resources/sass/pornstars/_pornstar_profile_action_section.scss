@@ -29,7 +29,7 @@
 
 .pornstar-profile-tab{
     @include responsive-font(1.4vw,19px, Aldrich);
-    padding:1vw;
+    padding:calc(1vw + 3px);
     color:white;
     text-align: center;
     border-radius:7px 7px 0 0;
