@@ -38,7 +38,7 @@ class PornstarCommentFactory extends Factory
             'user_id' => $addedByAuthenticatedUser ? $this->faker->randomElement($this->usersIDs)  : null,
             'pornstar_id' => 1,
             'parent_comment_id' => null,
-            'nickname' => $addedByAuthenticatedUser ? null : $this->faker->name
+            'nickname' => $addedByAuthenticatedUser ? null : substr($this->faker->text, 0, 20)
         ];
     }
 }
