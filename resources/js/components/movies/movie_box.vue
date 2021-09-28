@@ -242,6 +242,7 @@ export default class MovieBox extends Vue {
   width: 16px;
   height: auto;
   margin:0 3px;
+  fill: gold;
 }
 
 .preview-control {
