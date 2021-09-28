@@ -3,18 +3,20 @@
 namespace App\Handlers\Movies;
 
 use App\Repositories\MoviesRepository;
+use App\Traits\LinkFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 
-
 class GetMoviesByCategoryHandler
 {
+    use LinkFactory;
 
     public function __construct(private MoviesRepository $moviesRepository)
     {
     }
 
-    public function handle(string $categoryName, int $pageNumber = 1){
+    public function handle(string $categoryName, int $pageNumber = 1)
+    {
 
         $categoryIdentifier = Lang::get("categories.$categoryName", [], 'en');
         $displayedCategoryName = $this->getDisplayedCategoryName($categoryName);
@@ -23,162 +25,163 @@ class GetMoviesByCategoryHandler
 
             case 'big-tits':
                 $this->moviesRepository->filterByTitsSize('big');
-            break;
+                break;
 
             case 'anal':
                 $this->moviesRepository->filterByAnalAmount('maximum');
-            break;
+                break;
 
             case 'blowjob':
                 $this->moviesRepository->filterByBlowjobAmount('maximum');
-            break;
+                break;
 
             case 'handjob':
                 $this->moviesRepository->filterByHandjobAmount('maximum');
-            break;
+                break;
 
             case 'blondes':
-              $this->moviesRepository->filterByHairColor('blonde');
-            break;
+                $this->moviesRepository->filterByHairColor('blonde');
+                break;
 
             case 'titfuck':
-               $this->moviesRepository->filterByTitfuckAmount('maximum');
-            break;
+                $this->moviesRepository->filterByTitfuckAmount('maximum');
+                break;
 
-            case 'pussy-licking' :
+            case 'pussy-licking':
                 $this->moviesRepository->filterByPussyLickingAmount('maximum');
-            break;
+                break;
 
-            case 'feet' :
+            case 'feet':
                 $this->moviesRepository->filterByFeetPettingAmount('maximum');
-            break;
+                break;
 
-            case 'bukkake' : 
+            case 'bukkake':
                 $this->moviesRepository->filterByAbundanceType('bukkake');
-            break;
+                break;
 
-            case 'femdom' : 
+            case 'femdom':
                 $this->moviesRepository->filterByIsFemaleDomination(true);
-            break;
+                break;
 
-            case 'bdsm' :
+            case 'bdsm':
                 $this->moviesRepository->filterByIsSadisticOrMasochistic(true);
-            break;
+                break;
 
-            case 'brunettes' :
+            case 'brunettes':
                 $this->moviesRepository->filterByHairColor('dark');
-            break;
+                break;
 
-            case 'redheads' : 
+            case 'redheads':
                 $this->moviesRepository->filterByHairColor('red');
-            break;
+                break;
 
-            case 'matures' :
+            case 'matures':
                 $this->moviesRepository->filterByAgeRange('mature');
-            break;
+                break;
 
-            case 'teenagers' :
+            case 'teenagers':
                 $this->moviesRepository->filterByAgeRange('teenagers');
-            break;
+                break;
 
-            case 'amateur' :
+            case 'amateur':
                 $this->moviesRepository->filterByProfessionalismLevel('amateur');
-            break;
+                break;
 
-            case 'asians' :
+            case 'asians':
                 $this->moviesRepository->filterByRace('asian');
-            break;
+                break;
 
-            case 'latinas' :
+            case 'latinas':
                 $this->moviesRepository->filterByRace('latin');
-            break;
+                break;
 
-            case 'ebonies' :
+            case 'ebonies':
                 $this->moviesRepository->filterByRace('ebony');
-            break;
+                break;
 
-            case 'GangBang' :
+            case 'GangBang':
                 $this->moviesRepository->filterByAbundanceType('GangBang');
-            break;
+                break;
 
-            case 'lesbians' :
+            case 'lesbians':
                 $this->moviesRepository->filterByAbundanceType('lesbian');
-            break;
+                break;
 
-            case 'group' :
+            case 'group':
                 $this->moviesRepository->filterByAbundanceType('group');
-            break;
+                break;
 
-            case 'cumshot-compilations' :
-              $this->moviesRepository->filterByIsCumshotCompilation(true);
-            break;
+            case 'cumshot-compilations':
+                $this->moviesRepository->filterByIsCumshotCompilation(true);
+                break;
 
-            case 'cum-on-face' :
+            case 'cum-on-face':
                 $this->moviesRepository->filterByCumshotType('on_face');
-            break;
+                break;
 
-            case 'cum-swallow' :
+            case 'cum-swallow':
                 $this->moviesRepository->filterByCumshotType('cum_swallow');
-            break;
+                break;
 
-            case 'cum-on-feet' :
+            case 'cum-on-feet':
                 $this->moviesRepository->filterByCumshotType('on_feet');
-            break;
+                break;
 
-            case 'creampie' :
+            case 'creampie':
                 $this->moviesRepository->filterByCumshotType('creampie');
-            break;
+                break;
 
-            case 'cum-in-ass' :
+            case 'cum-in-ass':
                 $this->moviesRepository->filterByCumshotType('anal_creampie');
-            break;
+                break;
 
-            case 'cum-on-tits' :
+            case 'cum-on-tits':
                 $this->moviesRepository->filterByCumshotType('on_tits');
-            break;
+                break;
 
-            case 'pantyhose' :
+            case 'pantyhose':
                 $this->moviesRepository->filterByShowPantyhose(true);
-            break;
+                break;
 
-            case 'high-heels' :
+            case 'high-heels':
                 $this->moviesRepository->filterByShowHighHeels(true);
-            break;
+                break;
 
-            case 'nurses' :
+            case 'nurses':
                 $this->moviesRepository->filterByStoryOrCostume('nurse');
-            break;
+                break;
 
-            case 'female-teachers' :
+            case 'female-teachers':
                 $this->moviesRepository->filterByStoryOrCostume('female_teacher');
-            break;
+                break;
 
-            case 'japanese' :
+            case 'japanese':
                 $this->moviesRepository->filterByNationality('japanese');
-            break;
+                break;
 
-            case 'POV' :
+            case 'POV':
                 $this->moviesRepository->filterByCameraStyle('POV');
-            break;
+                break;
 
-            case 'russians' :
+            case 'russians':
                 $this->moviesRepository->filterByNationality('russian');
-            break;
+                break;
 
-            case 'pornstars' :
+            case 'pornstars':
                 $this->moviesRepository->withAnyPornstar();
-            break;
+                break;
         }
-
+        $currentRoute = route('movies.category.specific', ['categoryName' => $categoryName]);
         $movies = $this->moviesRepository->withBasicPornstarList()
-            ->paginate($pageNumber, route('movies.category.specific', ['categoryName' => $categoryName]));
+            ->paginate($pageNumber, $currentRoute);
 
         return view('movies.category_specific')->with([
             'displayedCategoryName' => $displayedCategoryName,
             'categoryIdentifier' => $categoryIdentifier,
             'movies' => $movies,
             'title' => $this->getTitle($displayedCategoryName),
-            'description' => $this->getDescription($displayedCategoryName)
+            'description' => $this->getDescription($displayedCategoryName),
+            'links' => $this->generateLinks($currentRoute . '/{}', range(1, $movies->numberOfPages()))
         ]);
     }
 

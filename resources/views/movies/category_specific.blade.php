@@ -5,5 +5,5 @@
       <oh-icon class="category-header__icon"></oh-icon>
     </span>
   </h1>
-  <x-movies-set :movies="$movies" />
+  <x-movies-set :links="$links" :movies="$movies" />
 </x-base>

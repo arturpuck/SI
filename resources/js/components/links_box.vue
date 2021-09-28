@@ -58,38 +58,41 @@
     </div>
     <ul class="aditional-links">
       <li v-if="pageIsNotFirst" class="aditional-link-list-element">
-        <left-arrow-icon class="aditional-link-icon"></left-arrow-icon>
         <a
           v-bind:href="previousPage"
-          v-text="translations.previous_page"
           class="aditional-link"
-        ></a>
+        >
+          <left-arrow-icon class="aditional-link-icon"></left-arrow-icon>
+          <span v-text="translations.previous_page" class="aditional-link-description"></span>
+        </a>
       </li>
-
       <li v-if="pageIsNotFirst" class="aditional-link-list-element">
-        <fast-backward-icon class="aditional-link-icon"></fast-backward-icon>
         <a
           v-bind:href="links[0]"
-          v-text="translations.first_page"
           class="aditional-link"
-        ></a>
+        >
+          <fast-backward-icon class="aditional-link-icon"></fast-backward-icon>
+          <span v-text="translations.first_page" class="aditional-link-description"></span>
+        </a>
       </li>
       <li v-if="pageIsNotLast" class="aditional-link-list-element">
         <a
           v-bind:href="links[getamountOfElementsInBox() - 1]"
-          v-text="translations.last_page"
           class="aditional-link"
-        ></a>
-        <fast-forward-icon class="aditional-link-icon"></fast-forward-icon>
+        >
+        <span v-text="translations.last_page" class="aditional-link-description"></span>
+         <fast-forward-icon class="aditional-link-icon"></fast-forward-icon>
+        </a>
       </li>
 
       <li v-if="pageIsNotLast" class="aditional-link-list-element">
         <a
           v-bind:href="nextPage"
-          v-text="translations.next_page"
           class="aditional-link"
-        ></a>
-        <right-arrow-icon class="aditional-link-icon"></right-arrow-icon>
+        >
+          <span v-text="translations.next_page" class="aditional-link-description"></span>
+          <right-arrow-icon class="aditional-link-icon"></right-arrow-icon>
+        </a>
       </li>
     </ul>
   </nav>
@@ -133,10 +136,13 @@ import { LinkListScrollDirection } from "@js/enum/movies/scroll_types";
 import LeftArrowIcon from "@jscomponents/decoration/icons/svg/left_arrow_icon.vue";
 import RightArrowIcon from "@jscomponents/decoration/icons/svg/right_arrow_icon.vue";
 import AngleTopIcon from "@jscomponents/decoration/icons/svg/angle_top_icon.vue";
+import FastBackwardIcon from "@svgicon/fast_backward_icon.vue";
+import FastForwardIcon from "@svgicon/fast_forward_icon.vue";
+
 
 @Options({
   name: "LinksBox",
-  components: { LeftArrowIcon, RightArrowIcon, AngleTopIcon },
+  components: { LeftArrowIcon, RightArrowIcon, AngleTopIcon, FastBackwardIcon, FastForwardIcon },
 })
 export default class LinksBox extends Vue {
   @Prop({
@@ -362,6 +368,10 @@ export default class LinksBox extends Vue {
   display: inline-flex;
 }
 
+.aditional-link-description{
+  margin:0 4px;
+}
+
 .links-button-description {
   position: absolute;
   left: 0;
@@ -413,7 +423,8 @@ export default class LinksBox extends Vue {
   color: white;
   text-decoration: none;
   padding: 4px;
-  display: inline-block;
+  display: flex;
+  align-items: center;
   @include responsive-font(1.3vw, 13px);
 }
 

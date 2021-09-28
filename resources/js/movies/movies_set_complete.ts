@@ -6,17 +6,10 @@ import LinksBox from '@jscomponents/links_box.vue';
 import MoviePreviewComplete from '@jscomponents/movies/movie_preview_complete.vue';
 import LeftArrowIcon from "@jscomponents/decoration/icons/svg/left_arrow_icon.vue";
 import RightArrowIcon from "@jscomponents/decoration/icons/svg/right_arrow_icon.vue";
-import FastBackwardIcon from "@svgicon/fast_backward_icon.vue";
-import FastForwardIcon from "@svgicon/fast_forward_icon.vue";
 
 const app = createApp({});
 BasicElements.registerBasicComponents(app);
 app.component('movie-box', MovieBox);
-app.component('icon-polish-flag', IconPolishFlag);
 app.component('links-box', LinksBox);
 app.component('movie-preview-complete', MoviePreviewComplete);
-app.component('left-arrow-icon', LeftArrowIcon);
-app.component('right-arrow-icon', RightArrowIcon);
-app.component('fast-backward-icon', FastBackwardIcon);
-app.component('fast-forward-icon', FastForwardIcon);
 app.mount("#app");
