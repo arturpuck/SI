@@ -45,7 +45,7 @@
 }
 </style>
 
-<script lang="ts" scoped>
+<script lang="ts">
 import { Vue, Options } from "vue-property-decorator";
 
 @Options({ name: "HappyTongueIcon" })

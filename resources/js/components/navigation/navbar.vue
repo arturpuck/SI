@@ -237,7 +237,7 @@ export default {
       animatePanel: false,
       userIsAuthenticated: undefined,
       authenticatedUserSideBarIsVisible: true,
-      contentSideBarIsVisible: true,
+      contentSideBarIsVisible: false,
       showCategories: false,
       translations: Translations,
     };
@@ -273,7 +273,6 @@ export default {
 
     showContentSideBar() {
       this.contentSideBarIsVisible = true;
-      this.setSideBarVisibilityInformation(true, "contentSideBar");
     },
 
     hideAuthenticatedUserSideBar() {
@@ -283,7 +282,6 @@ export default {
 
     hideContentSideBar() {
       this.contentSideBarIsVisible = false;
-      this.setSideBarVisibilityInformation(false, "contentSideBar");
     },
 
     toggleAuthenticatedUserSideBar() {
@@ -375,7 +373,6 @@ export default {
         "authenticatedUserSideBar"
       );
     }
-    this.contentSideBarIsVisible = this.isSideBarVisible("contentSideBar");
   },
 
   mounted() {
