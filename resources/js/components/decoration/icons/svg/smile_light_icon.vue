@@ -20,13 +20,13 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Options, Prop } from "vue-property-decorator";
 
-@Component
-export default class StarFullIcon extends Vue {}
+@Options({name : 'SmileLightIcon'})
+export default class SmileLightIcon extends Vue {}
 </script>
 
-<style type="text/css">
+<style type="text/css" scoped>
 .st0 {
   fill-rule: evenodd;
   clip-rule: evenodd;

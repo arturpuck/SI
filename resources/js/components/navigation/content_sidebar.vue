@@ -63,7 +63,7 @@
             class="content-sidebar-list-element hoverable-element"
           >
             <a href="/filmy/najpopularniejsze/strona/1" class="sub-menu-link">
-              <happy-tongue-icon class="content-sidebar-icon-nested"></happy-tongue-icon>
+              <smile-light-icon class="content-sidebar-icon-nested"></smile-light-icon>
               <span
                 v-text="translations['the_most_popular_porn_movies_caption']"
                 class="content-sidebar-description"
@@ -104,8 +104,8 @@ import AngleTopIcon from "@svgicon/angle_top_icon";
 import MovieMediaPlayerIcon from "@svgicon/movie_media_player_icon";
 import FolderIcon from "@svgicon/folder_icon";
 import ExpandAllIcon from "@svgicon/expand_all_icon";
-import HappyTongueIcon from "@svgicon/happy_tongue_icon";
 import MagnifierIcon from "@svgicon/magnifier_icon";
+import SmileLightIcon from "@svgicon/smile_light_icon";
 import StarFullIcon from "@svgicon/star_full_icon";
 import EventEmmiter from "mitt";
 const EventBus = EventEmmiter();
@@ -116,7 +116,7 @@ const EventBus = EventEmmiter();
     MovieMediaPlayerIcon,
     FolderIcon,
     ExpandAllIcon,
-    HappyTongueIcon,
+    SmileLightIcon,
     MagnifierIcon,
     StarFullIcon,
   },
