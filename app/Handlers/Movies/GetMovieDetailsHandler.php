@@ -2,16 +2,16 @@
 
 namespace App\Handlers\Movies;
 
-use Symfony\Component\HttpFoundation\Response;
 use App\Repositories\MoviesRepository;
 use App\Services\ModelDataExtractors\Movie\MovieDataExtractor;
+use App\Http\Resources\Movie\MovieDetailResource;
 
 
 Class GetMovieDetailsHandler {
 
     public function __construct(private MoviesRepository $moviesRepository){}
 
-    public function handle(int $movieID) : Response{
+    public function handle(int $movieID) : MovieDetailResource{
       
       $movie = $this->moviesRepository->filterById($movieID)
                                        ->withBasicPornstarList()
@@ -19,9 +19,9 @@ Class GetMovieDetailsHandler {
                                        ->get()
                                        ->first();
       
-        $movieDetails = MovieDataExtractor::getBasicData($movie);
+      //  $movieDetails = MovieDataExtractor::getBasicData($movie);
 
-        return response()->json($movieDetails, 200);
+        return new MovieDetailResource($movie);
     }
     
 }

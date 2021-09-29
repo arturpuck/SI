@@ -59,7 +59,7 @@ Route::namespace ('Movies')->name('movies.')->group(function () {
                ->name('get.comments');
 
     Route::put('/movie/add-comment', 'MoviesController@addMovieComment')
-              ->name('add.comment');
+              ->name('add.comment')->middleware('throttle:2,1');
 });
 
 Route::namespace ('Pornstars')->name('pornstars.')->group(function () {
@@ -77,6 +77,8 @@ Route::namespace ('Pornstars')->name('pornstars.')->group(function () {
 
     Route::get('/pornstar/comments', 'PornstarsController@getPornstarComments');
     Route::post('/pornstar/comments/add', 'PornstarsController@addPornstarComment')->middleware('throttle:2,1');
+    Route::get('pornstar/rating', 'PornstarsController@getPornstarRating')
+          ->name('rating');
 });
 
 Route::namespace ('Auth')->name('auth.')->group(function () {

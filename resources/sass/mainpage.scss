@@ -50,7 +50,6 @@ $imageFolder: mainpage;
     height: min-content;
     min-height: 360px;
     justify-content: stretch;
-    overflow: hidden;
 }
 
 .introductory-content {
@@ -163,6 +162,7 @@ $imageFolder: mainpage;
     .introductory-content {
         width: 100%;
         border-right: none;
+        min-width: 290px;
     }
 
     .news-header {

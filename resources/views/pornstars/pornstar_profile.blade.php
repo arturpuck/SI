@@ -1,5 +1,5 @@
 <x-base title="{{__('pornstar_profile_page_title')}} {{$pornstar->nickname}}" description="{{__('pornstar_profile_description', ['nickname' => $pornstar->nickname])}}">
-   <main class="pornstar-profile-container">
+   <main id="pornstar-profile-container" data-pornstar-id="{{$pornstar->id}}" class="pornstar-profile-container">
       <section class="pornstar-personal-data-container">
          <img src="/images/decoration/pornstars/profile-small/{{str_replace(' ','_',$pornstar->nickname)}}.jpg" alt="{{__('pornstar_profile_image_description', ['nickname' => $pornstar->nickname])}}" class="pornstar-profile-image">
          <article class="pornstar-personal-data">
@@ -56,7 +56,7 @@
             <camera-icon class="tab-icon"></camera-icon>
             {{__('movies')}}
          </li>
-         <li class="pornstar-profile-tab" id="comments-tab" v-bind:class="{'active-tab' : pornstarCommentsTabIsActive}" v-on:click="showComments({{$pornstar->id}})" v-bind:aria-selected="pornstarCommentsTabIsActive" aria-controls="comments-section">
+         <li class="pornstar-profile-tab" id="comments-tab" v-bind:class="{'active-tab' : pornstarCommentsTabIsActive}" v-on:click="showComments" v-bind:aria-selected="pornstarCommentsTabIsActive" aria-controls="comments-section">
             <comment-icon class="tab-icon"></comment-icon>
             {{__('comments')}}
          </li>
@@ -79,18 +79,18 @@
       </section>
       <section id="ranking-section" v-show="pornstarRankingTabIsActive" class="action-section rank-section">
          @if($pornstar->has_any_votes)
-         <div class="current-rating">
+         <div v-if="pornstarHasAnyVotes" class="current-rating">
             <div class="pornstar-current-rating">
-               <span class="pornstar-votes-data">{{__('current_number_of_votes')}} : </span>
-               <span class="pornstar-votes-data">{{$pornstar->amount_of_votes}}</span>
+               <span v-text="translations.currentNumberOfVotes" class="pornstar-votes-data"></span>
+               <span v-text="numberOfVotes" class="pornstar-votes-data"></span>
             </div>
             <div class="rate-container">
-               <div class="pornstar-votes-data">{{__('votes_average')}} : {{$pornstar->votes_average}}</div>
-               <star-rating v-bind:initial-value="{{$pornstar->votes_average}}" v-bind:fixed-value="true"></star-rating>
+               <div v-text="averageRatingLabel" class="pornstar-votes-data"></div>
+               <star-rating v-bind:fixed-value="true"></star-rating>
             </div>
          </div>
          @else
-         <div class="no-data-info">
+         <div v-else class="no-data-info">
             {{__('this_pornstar_has_no_votes')}}
          </div>
          @endif
@@ -99,11 +99,7 @@
             <box-voting-icon class="voting-icon"></box-voting-icon>
             <div class="pornstar-votes-data">{{__('your_rate')}}</div>
             <div class="user-vote-element">
-               <star-rating v-bind:rated-element-id="{{$pornstar->id}}" v-on:selected="ratePornstar" @if($pornstar->has_been_rated_by_current_user)
-                  v-bind:initial-value="{{$pornstar->current_user_rate}}"
-                  @endif
-                  v-bind:show-number="true">
-               </star-rating>
+               <star-rating v-bind:rated-element-id="{{$pornstar->id}}" v-on:selected="ratePornstar" v-bind:show-number="true"></star-rating>
             </div>
          </div>
          @else

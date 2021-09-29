@@ -15,6 +15,8 @@ use App\Http\Requests\Pornstars\GetPornstarCommentsRequest;
 use App\Http\Requests\Pornstars\AddPornstarCommentRequest;
 use App\Http\Resources\Comment\CommentCollection;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Requests\Pornstars\GetPornstarRatingRequest;
+use App\Handlers\Pornstars\GetPornstarRatingHandler;
 
 
 class PornstarsController extends Controller
@@ -50,6 +52,11 @@ class PornstarsController extends Controller
 
     public function getPornstarListForAdvancedSearch(GetPornstarListForAdvancedSearchHandler $handler){
          return $handler->handle();
+    }
+
+    public function getPornstarRating(GetPornstarRatingRequest $request, GetPornstarRatingHandler $pornstarRatingHandler) : Response
+    {
+        return $pornstarRatingHandler->handle($request);
     }
 
 }

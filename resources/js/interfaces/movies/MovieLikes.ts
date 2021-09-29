@@ -1,4 +1,4 @@
 export interface MovieLikes {
-    total_likes: number,
-    user_likes_movie: boolean
+    totalLikes: number,
+    userLikesMovie: boolean
 }

@@ -27,6 +27,7 @@ use App\Http\Resources\Comment\CommentCollection;
 use App\Http\Resources\Movie\MovieCollection;
 use App\Traits\LinkFactory;
 use Illuminate\View\View;
+use App\Http\Resources\Movie\MovieDetailResource;
 
 class MoviesController extends Controller
 {
@@ -89,7 +90,7 @@ class MoviesController extends Controller
         return $handler->handle($request);
     }
 
-    public function getMovieDetails(int $movieID, GetMovieDetailsHandler $handler): Response
+    public function getMovieDetails(int $movieID, GetMovieDetailsHandler $handler) : MovieDetailResource 
     {
         return $handler->handle($movieID);
     }

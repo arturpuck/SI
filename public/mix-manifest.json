@@ -16,5 +16,6 @@
     "/css/register.css": "/css/register.css",
     "/css/settings_panel.css": "/css/settings_panel.css",
     "/css/password_reset_confirmation.css": "/css/password_reset_confirmation.css",
-    "/css/password_reset.css": "/css/password_reset.css"
+    "/css/password_reset.css": "/css/password_reset.css",
+    "/css/mainpage.css": "/css/mainpage.css"
 }

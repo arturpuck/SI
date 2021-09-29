@@ -24,6 +24,8 @@ import StopHandIcon from "@svgicon/stop_hand_icon.vue";
 import BoxVotingIcon from "@svgicon/box_voting_icon.vue";
 import PageListUpdate from '@interfaces/PageListUpdate';
 import CommentList from '@jscomponents/form_controls/comment_list.vue';
+import { PornstarRating } from '@interfaces/pornstars/PornstarRating';
+import Translations from '@jsmodules/translations/pornstar_profile';
 
 
 const settings = {
@@ -32,13 +34,16 @@ const settings = {
     return {
       showsPreview: false,
       activeTab: PornstarProfileTab.Movies,
-      translations: null,
       csrfToken: null,
       processingCommentsInProgress: false,
       pornstarCommentsHaveBeenFetched: false,
       expectCircleLabel: 'fetching_comments',
       commentsPerPage: 8,
       pornstarID: undefined,
+      numberOfVotes : undefined,
+      overallRating : undefined,
+      userRating : undefined,
+      translations : Translations
     }
   },
 
@@ -141,7 +146,7 @@ const settings = {
       this.activeTab = event.target.id || event.target.parentElement.id;
     },
 
-    loadCommentsData(response: PageListUpdate<Comment>) : void {
+    loadCommentsData(response: PageListUpdate<Comment>): void {
 
       this.emitter.emit('updateComments', response)
 
@@ -181,12 +186,10 @@ const settings = {
         this.hideCommentsExpectationDecoration();
       }
 
-
     },
 
-    showComments(pornstarID: number) {
+    showComments() {
       this.activeTab = "comments-tab";
-      this.pornstarID = pornstarID;
 
       if (!this.pornstarCommentsHaveBeenFetched) {
         this.showCommentsExpectationDecoration(this.translator.translate('fetching_comments'));
@@ -198,6 +201,43 @@ const settings = {
       const header = error ? "error" : "information";
       const type = error ? 'error' : 'no-error';
       this.emitter.emit('showNotification', { notificationText: text, notificationType: type, headerText: header });
+    },
+
+    loadPornstarRating(pornstarRating : PornstarRating): void 
+    {
+      
+    },
+
+    async getPornstarRating() {
+
+      const requestData = {
+        method: 'GET',
+        headers: {
+          'X-CSRF-TOKEN': this.csrfToken,
+          'Content-type': 'application/json; charset=UTF-8'
+        },
+      };
+
+      try {
+        const response = await fetch(`/pornstar/rating?id=${this.pornstarID}`, requestData);
+
+        switch (response.status) {
+          case 200:
+             const rating : PornstarRating = await response.json();
+             this.loadPornstarRating(rating);
+          break;
+
+          default:
+            throw new Error('an_error_occured_while_fetching_pornstar_rating');
+            break;
+
+        }
+
+      }
+      catch (exception) {
+        this.showNotification(this.translator.translate(exception.message), true);
+      }
+
     },
 
     async ratePornstar(data) {
@@ -243,16 +283,26 @@ const settings = {
   },
 
   computed: {
-    pornstarMoviesTabIsActive() {
+    pornstarMoviesTabIsActive() : boolean {
       return this.activeTab == PornstarProfileTab.Movies;
     },
 
-    pornstarCommentsTabIsActive() {
+    pornstarCommentsTabIsActive() : boolean {
       return this.activeTab == PornstarProfileTab.Comments;
     },
 
-    pornstarRankingTabIsActive() {
+    pornstarRankingTabIsActive() : boolean {
       return this.activeTab == PornstarProfileTab.Rank;
+    },
+
+    pornstarHasAnyVotes() : boolean {
+       return this.numberOfVotes > 0;
+    },
+
+    averageRatingLabel() : string
+    {
+      const core = this.translations.movieAverageRating;
+      return this.overallRating ? `${core} : ${this.overallRating}` : `${core} : ${this.translations.averageRateNotAvailableYet}`;
     }
 
   },
@@ -260,7 +310,9 @@ const settings = {
   mounted() {
     this.translator = Translator;
     this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
-    this.emitter.on('pageHasBeenSelected', (pageNumber : number) => this.fetchPornstarComments(pageNumber));
+    this.emitter.on('pageHasBeenSelected', (pageNumber: number) => this.fetchPornstarComments(pageNumber));
+    this.pornstarID = parseInt(document.getElementById('pornstar-profile-container').getAttribute('data-pornstar-id'));
+    this.getPornstarRating();
   },
 
 };

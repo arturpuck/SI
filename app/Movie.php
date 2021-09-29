@@ -6,17 +6,17 @@ use App\Location;
 use App\Nationality;
 use App\Pornstar;
 use App\StoryOrCostumeType;
+use App\Traits\Models\MovieDataExtractor;
 use App\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
+
 
 class Movie extends Model
 {
-    use HasFactory;
+    use HasFactory, MovieDataExtractor;
 
     protected $hidden = ['pivot'];
-
     public $timestamps = false;
 
     private const SEX_TYPES_COLUMNS = [
@@ -24,10 +24,6 @@ class Movie extends Model
         'feet_petting', 'position_69',
     ];
 
-    public function getDurationAttribute($value)
-    {
-        return Str::startsWith($value, "00") ? Str::substr($value, 3, 5) : $value;
-    }
 
     public function pornstars()
     {
@@ -58,21 +54,4 @@ class Movie extends Model
     {
         return $this->hasMany(MovieRating::class);
     }
-
-    public function getSpecificSexTypesAttribute()
-    {
-        $matchingTypes = [];
-
-        foreach (self::SEX_TYPES_COLUMNS as $sexType) {
-
-            $propertyName = $sexType . '_percentage';
-            if ($this->$propertyName > 90) {
-                $matchingTypes[] = $propertyName;
-            }
-        }
-
-        return count($matchingTypes) > 0 ? $matchingTypes : false;
-    }
-
-
 }

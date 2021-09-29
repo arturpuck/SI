@@ -45,6 +45,9 @@ export default {
 
    pl: {
       email_has_already_been_taken: "Adres email jest już zajęty",
+      current_number_of_votes : "Liczba oddanych głosów",
+
+      an_error_occured_while_fetching_pornstar_rating : "Podczas próby pobrania rankingu gwiazdy pojawił się niespodziewany bład",
       i_forgot_password : "Zapomniałem hasła",
       password : "Hasło",
       email_is_invalid: "Adres email jest nieprawidłowy",
@@ -364,6 +367,7 @@ export default {
       movie_views: "Liczba wyświetleń",
       movie_added_at: "Data dodania",
       movie_average_rating: "Średnia ocen",
+      this_pornstar_has_no_votes : "Na tę gwiazdę jeszcze nikt nie zagłosował",
       average_rate_not_available_yet: "jeszcze niedostępna",
       ammount_of_spermatozoids: "Liczba plemników",
       your_spermatozoids: "twoich",

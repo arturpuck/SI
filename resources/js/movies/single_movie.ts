@@ -101,6 +101,10 @@ const settings = {
                         throw new Error('the_requested_data_is_probably_ok_but_a_server_error_occured');
                         break;
 
+                    case 429: 
+                       throw new Error('because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute');
+                    break;
+
                     default:
                         throw new Error('undefined_error');
                         break;
@@ -391,18 +395,18 @@ const settings = {
         },
 
         loadMovieRating(movieRating: MovieRating): void {
-            this.rating = movieRating.overall_rating;
-            this.emitter.emit('starRateUpdateRate', movieRating.user_rating);
+            this.rating = movieRating.overallRating;
+            this.emitter.emit('starRateUpdateRate', movieRating.userRating);
         },
 
         loadMovieSpermatozoids(movieSpermatozoids: MovieSpermatozoids): void {
-            this.ammountOfSpermatozoids = movieSpermatozoids.total_spermatozoids;
-            this.ammountOfSpermatozoidsAssignedByUser = movieSpermatozoids.user_spermatozoids;
+            this.ammountOfSpermatozoids = movieSpermatozoids.totalSpermatozoids;
+            this.ammountOfSpermatozoidsAssignedByUser = movieSpermatozoids.userSpermatozoids;
         },
 
         loadMovieLikes(movieLikes: MovieLikes): void {
-            this.ammountOfLikes = movieLikes.total_likes;
-            this.userLikesMovie = movieLikes.user_likes_movie;
+            this.ammountOfLikes = movieLikes.totalLikes;
+            this.userLikesMovie = movieLikes.userLikesMovie;
         },
 
         getTabClassName(isActive: boolean): string {

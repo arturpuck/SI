@@ -268,8 +268,7 @@
   height: -moz-min-content;
   height: min-content;
   min-height: 360px;
-  justify-content: stretch;
-  overflow: hidden; }
+  justify-content: stretch; }
 
 .introductory-content {
   width: 30%;
@@ -402,7 +401,8 @@
     height: auto; }
   .introductory-content {
     width: 100%;
-    border-right: none; }
+    border-right: none;
+    min-width: 290px; }
   .news-header {
     border-top: 1px solid silver; }
   .news-all {
