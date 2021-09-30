@@ -17,7 +17,7 @@ use App\Http\Resources\Comment\CommentCollection;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\Pornstars\GetPornstarRatingRequest;
 use App\Handlers\Pornstars\GetPornstarRatingHandler;
-
+use App\Handlers\Pornstars\RatePornstarHandler;
 
 class PornstarsController extends Controller
 {
@@ -38,8 +38,8 @@ class PornstarsController extends Controller
                    ->with(['pornstar' => $pornstarProfileHandler->handle($request)]);
     }
 
-    public function ratePornstar(RatePornstarRequest $request){
-        return \Auth::user()->ratePornstar($request);
+    public function ratePornstar(RatePornstarRequest $request, RatePornstarHandler $ratePornstarHandler){
+        return $ratePornstarHandler->handle($request);
     }
 
     public function getPornstarComments(GetPornstarCommentsRequest $request,GetPornstarCommentsHandler $getPornstarCommentsHandler) : CommentCollection{

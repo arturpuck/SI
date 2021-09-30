@@ -40,7 +40,7 @@ const settings = {
       expectCircleLabel: 'fetching_comments',
       commentsPerPage: 8,
       pornstarID: undefined,
-      numberOfVotes : undefined,
+      numberOfVotes : 0,
       overallRating : 0,
       userRating : undefined,
       translations : Translations,
@@ -278,6 +278,8 @@ const settings = {
 
         switch (response.status) {
           case 200:
+            const refreshedRate : PornstarRating = await response.json();
+            this.loadPornstarRating(refreshedRate);
             this.showNotification(this.translator.translate('element_has_been_rated'));
             break;
 
