@@ -63,7 +63,7 @@
             class="content-sidebar-list-element hoverable-element"
           >
             <a href="/filmy/najpopularniejsze/strona/1" class="sub-menu-link">
-            <!--  <smile-light-icon class="content-sidebar-icon-nested"></smile-light-icon> -->
+            <smile-light-icon class="content-sidebar-icon-nested"></smile-light-icon> 
               <span
                 v-text="translations['the_most_popular_porn_movies_caption']"
                 class="content-sidebar-description"
