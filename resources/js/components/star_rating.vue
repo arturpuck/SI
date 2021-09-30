@@ -153,12 +153,12 @@ export default class StarRating extends Vue {
     return "empty-star";
   }
 
-  mounted() {
+  created() {
     this.selectedValue = this.initialValue;
     //@ts-ignore
     this.emitter.on(
       `${this.identifier}UpdateRate`,
-      (rate: number) => (this.selectedValue = rate)
+      (rate: number) =>  this.selectedValue = rate 
     );
   }
 }

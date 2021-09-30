@@ -323,7 +323,7 @@
 .pornstar-profile-tab {
   font-size: 1.4vw;
   font-family: Aldrich, sans-serif;
-  padding: 1vw;
+  padding: calc(1vw + 3px);
   color: white;
   text-align: center;
   border-radius: 7px 7px 0 0;
@@ -464,4 +464,7 @@
   @media (max-width: 1200px) {
     .aditional-link-button {
       font-size: 13px; } }
+
+.rank-section {
+  position: relative; }
 

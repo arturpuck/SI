@@ -41,9 +41,10 @@ const settings = {
       commentsPerPage: 8,
       pornstarID: undefined,
       numberOfVotes : undefined,
-      overallRating : undefined,
+      overallRating : 0,
       userRating : undefined,
-      translations : Translations
+      translations : Translations,
+      fetchingRatingInProgress : true,
     }
   },
 
@@ -70,6 +71,11 @@ const settings = {
   },
 
   methods: {
+
+    showRating() : void {
+      this.activeTab = PornstarProfileTab.Rank; 
+      this.getPornstarRating();
+    },
 
     getAriaLabelAttributeValueForSubPageButton(pageNumber: number): string {
       return `${this.translator.translate('show_comments_sub_page_with_number')} : ${pageNumber}`;
@@ -205,7 +211,18 @@ const settings = {
 
     loadPornstarRating(pornstarRating : PornstarRating): void 
     {
+      this.numberOfVotes = pornstarRating.numberOfVotes;
+      this.overallRating = pornstarRating.overallRating;
+      this.userRating = pornstarRating.userRating;
       
+      if(this.userHasRatedPornstar){
+        this.emitter.emit('userUpdateRate', this.userRating);
+      }
+
+      if(this.pornstarHasAverageRate){
+        this.emitter.emit('averageUpdateRate', this.overallRating);
+      }
+      this.fetchingRatingInProgress = false;
     },
 
     async getPornstarRating() {
@@ -295,14 +312,23 @@ const settings = {
       return this.activeTab == PornstarProfileTab.Rank;
     },
 
-    pornstarHasAnyVotes() : boolean {
-       return this.numberOfVotes > 0;
+    pornstarHasAverageRate() : boolean {
+       return typeof this.overallRating == 'number';
+    },
+
+    userHasRatedPornstar() : boolean {
+      return Number.isInteger(this.userRating);
     },
 
     averageRatingLabel() : string
     {
       const core = this.translations.movieAverageRating;
       return this.overallRating ? `${core} : ${this.overallRating}` : `${core} : ${this.translations.averageRateNotAvailableYet}`;
+    },
+
+    numberOfVotesLabel() : string 
+    {
+       return `${this.translations.currentNumberOfVotes} : ${this.numberOfVotes}`;
     }
 
   },
@@ -312,7 +338,6 @@ const settings = {
     this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
     this.emitter.on('pageHasBeenSelected', (pageNumber: number) => this.fetchPornstarComments(pageNumber));
     this.pornstarID = parseInt(document.getElementById('pornstar-profile-container').getAttribute('data-pornstar-id'));
-    this.getPornstarRating();
   },
 
 };

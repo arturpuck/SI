@@ -12,10 +12,11 @@
     "/js/pornstar_profile.js": "/js/pornstar_profile.js",
     "/js/pornstars_list.js": "/js/pornstars_list.js",
     "/js/single_movie.js": "/js/single_movie.js",
-    "/css/single_movie.css": "/css/single_movie.css",
     "/css/register.css": "/css/register.css",
+    "/css/pornstar_profile.css": "/css/pornstar_profile.css",
     "/css/settings_panel.css": "/css/settings_panel.css",
     "/css/password_reset_confirmation.css": "/css/password_reset_confirmation.css",
     "/css/password_reset.css": "/css/password_reset.css",
-    "/css/mainpage.css": "/css/mainpage.css"
+    "/css/mainpage.css": "/css/mainpage.css",
+    "/css/single_movie.css": "/css/single_movie.css"
 }

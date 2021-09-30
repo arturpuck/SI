@@ -4,30 +4,24 @@ namespace Database\Factories;
 
 use App\MovieRating;
 use App\User;
+use App\Traits\Factories\CommonFactoryCases;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MovieRatingFactory extends Factory
 {
+    use CommonFactoryCases;
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
     protected $model = MovieRating::class;
-    protected ?array $usersIDs = null;
 
     /**
      * Define the model's default state.
      *
      * @return array
      */
-
-    private function initiateUsers()
-    {
-        if (!$this->usersIDs) {
-            $this->usersIDs = User::pluck('id')->toArray();
-        }
-    }
 
     public function definition()
     {

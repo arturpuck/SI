@@ -60,7 +60,7 @@
             <comment-icon class="tab-icon"></comment-icon>
             {{__('comments')}}
          </li>
-         <li class="pornstar-profile-tab" id="rank-tab" v-bind:class="{'active-tab' : pornstarRankingTabIsActive}" v-on:click="changeTab" v-bind:aria-selected="pornstarRankingTabIsActive" aria-controls="ranking-section">
+         <li class="pornstar-profile-tab" id="rank-tab" v-bind:class="{'active-tab' : pornstarRankingTabIsActive}" v-on:click="showRating" v-bind:aria-selected="pornstarRankingTabIsActive" aria-controls="ranking-section">
             <podium-icon class="tab-icon"></podium-icon>
             {{__('ranking')}}
          </li>
@@ -78,28 +78,25 @@
          </ul>
       </section>
       <section id="ranking-section" v-show="pornstarRankingTabIsActive" class="action-section rank-section">
-         @if($pornstar->has_any_votes)
-         <div v-if="pornstarHasAnyVotes" class="current-rating">
-            <div class="pornstar-current-rating">
-               <span v-text="translations.currentNumberOfVotes" class="pornstar-votes-data"></span>
-               <span v-text="numberOfVotes" class="pornstar-votes-data"></span>
+      <relative-shadow-container v-show="fetchingRatingInProgress">
+            <expect-circle v-bind:label="translations.fetchingRatingInProgress"></expect-circle>
+         </relative-shadow-container>
+         <div class="pornstar-current-rating">
+               <span v-text="numberOfVotesLabel" class="pornstar-votes-data"></span>
             </div>
+         <div v-if="pornstarHasAverageRate" class="current-rating">
             <div class="rate-container">
                <div v-text="averageRatingLabel" class="pornstar-votes-data"></div>
-               <star-rating v-bind:fixed-value="true"></star-rating>
+               <star-rating identifier="average" v-bind:fixed-value="true"></star-rating>
             </div>
          </div>
-         @else
-         <div v-else class="no-data-info">
-            {{__('this_pornstar_has_no_votes')}}
-         </div>
-         @endif
+         <div v-else v-text="translations.thisPornstarDoesNotHaveEnoughVotesToCalculateAverageRate" class="no-data-info"></div>
          @if(Auth::check())
          <div class="voting-all">
             <box-voting-icon class="voting-icon"></box-voting-icon>
             <div class="pornstar-votes-data">{{__('your_rate')}}</div>
             <div class="user-vote-element">
-               <star-rating v-bind:rated-element-id="{{$pornstar->id}}" v-on:selected="ratePornstar" v-bind:show-number="true"></star-rating>
+               <star-rating v-bind:rated-element-id="{{$pornstar->id}}" identifier="user" v-on:selected="ratePornstar" v-bind:show-number="true"></star-rating>
             </div>
          </div>
          @else

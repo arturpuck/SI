@@ -19,7 +19,7 @@ class PornstarCommentsSeeder extends Seeder
 
               PornstarComment::factory()
                                ->count(90)
-                               ->create(['pornstar_id' => $pornstar->id]);
+                               ->create(['pornstar_id' => $pornstar->id]); //kind of slow - consider refactoring in free time
         }
        
     }

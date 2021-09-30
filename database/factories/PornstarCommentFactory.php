@@ -3,18 +3,18 @@
 namespace Database\Factories;
 
 use App\PornstarComment;
-use App\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Traits\Factories\CommonFactoryCases;
 
 class PornstarCommentFactory extends Factory
 {
+    use CommonFactoryCases;
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
     protected $model = PornstarComment::class;
-    protected ?array $usersIDs = null;
 
     /**
      * Define the model's default state.
@@ -22,12 +22,6 @@ class PornstarCommentFactory extends Factory
      * @return array
      */
 
-     public function initiateUsers() : void 
-     {
-        if(!$this->usersIDs){
-           $this->usersIDs = User::pluck('id')->toArray();
-        }
-     }
     public function definition()
     {
         $this->initiateUsers();
