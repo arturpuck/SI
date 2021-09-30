@@ -25,6 +25,7 @@
             class="content-sidebar-description"
           ></span>
         </phantom-button>
+        <!--
         <ul
           v-bind:aria-hidden="!moviesSubMenuIsVisible"
           class="nested-user-sidebar-list"
@@ -82,7 +83,7 @@
               ></span>
             </a>
           </li>
-        </ul>
+        </ul> -->
       </li>
       <li class="content-sidebar-list-element hoverable-element">
         <a href="/gwiazdy-porno/lista" class="sub-menu-link">
@@ -93,7 +94,7 @@
           ></span>
         </a>
       </li>
-    </ul>
+    </ul> 
   </nav>
 </template>
 
