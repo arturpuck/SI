@@ -1,5 +1,6 @@
 {
     "private": true,
+    "browserslist": "cover 99.5%",
     "scripts": {
         "development": "mix",
         "watch": "mix watch",
@@ -11,7 +12,7 @@
         "@babel/core": "^7.12.16",
         "@babel/helper-compilation-targets": "^7.12.16",
         "@babel/plugin-syntax-jsx": "^7.12.13",
-        "@babel/preset-env": "^7.12.16",
+        "@babel/preset-env": "^7.15.6",
         "@babel/preset-react": "^7.12.13",
         "@types/webpack-env": "^1.16.2",
         "@vue/compiler-sfc": "^3.2.4",

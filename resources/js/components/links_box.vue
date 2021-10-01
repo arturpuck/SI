@@ -17,7 +17,7 @@
       </button>
       <div class="links-container-outer">
         <ul
-          v-bind:style="{ left: leftOffsetStyle }"
+          v-bind:style="{ left: leftOffsetStyle }" 
           ref="slider_container"
           v-bind:class="{ 'content-in-center': !arrowsShouldBeDisplayed }"
           class="content-container-slider"
@@ -28,15 +28,10 @@
             class="pagination-link-list-element"
           >
             <a
-              v-if="index + 1 == initialCurrentPage"
-              v-text="index + 1"
-              class="pagination-link current-page-link"
-            ></a>
-            <a
-              v-else
               v-bind:href="link"
               v-text="index + 1"
               class="pagination-link"
+              v-bind:class="{'current-page-link' : index + 1 == initialCurrentPage}"
             ></a>
           </li>
         </ul>

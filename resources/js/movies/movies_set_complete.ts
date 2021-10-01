@@ -11,5 +11,5 @@ const app = createApp({});
 BasicElements.registerBasicComponents(app);
 app.component('movie-box', MovieBox);
 app.component('links-box', LinksBox);
-app.component('movie-preview-complete', MoviePreviewComplete);
+app.component('movie-preview-complete', MoviePreviewComplete); 
 app.mount("#app");
