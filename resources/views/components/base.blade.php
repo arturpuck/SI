@@ -1,5 +1,4 @@
-<!DOCTYPE svg PUBLIC “-//W3C//DTD SVG 1.1//EN”
-“http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd”>
+<!DOCTYPE html>
 <html lang="{{App::getLocale()}}">
 
 <head>
@@ -29,7 +28,6 @@
 	<meta name="theme-color" content="#ffffff">
 	<link href="https://fonts.googleapis.com/css?family=Exo+2|Aldrich|Oxanium|Teko|Play&display=swap" rel="stylesheet">
 	@isset($fonts) {{fonts}} @endisset
-	<script src="https://kit.fontawesome.com/df4e1e2dba.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="full-body @isset($customBodyClass){{$customBodyClass}}@endisset">

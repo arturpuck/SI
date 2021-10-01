@@ -34,6 +34,7 @@ mix.js('resources/js/mainpage.js', 'public/js').vue()
    .sass('resources/sass/mainpage.scss', 'public/css')
    .sass('resources/sass/auth/password_reset.scss', 'public/css')
    .sass('resources/sass/auth/password_reset_confirmation.scss', 'public/css')
+   .sass('resources/sass/pornstars/pornstars_list.scss', 'public/css')
    .sourceMaps()
   .options({ processCssUrls: false })
   .babelConfig({

@@ -1,6 +1,7 @@
 import BasicElements from '@jsmodules/basic.js';
 import { createApp } from 'vue';
 import PornstarsList from '@jscomponents/pornstars/pornstars_list.vue';
+import StarFullIcon from '@jscomponents/decoration/icons/svg/star_full_icon.vue'
 
 const settings = {
 
@@ -11,7 +12,8 @@ const settings = {
     },
 
     components : {
-       PornstarsList
+       PornstarsList,
+       StarFullIcon,
     }
    
    

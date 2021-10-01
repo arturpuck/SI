@@ -147,10 +147,8 @@
       font-size: 17px; } }
 
 .header-icon {
-  color: gold;
+  fill: gold;
   margin: 0 4px;
-  font-size: 1.7vw; }
-  @media (max-width: 1200px) {
-    .header-icon {
-      font-size: 19px; } }
+  width: 1.2em;
+  height: auto; }
 
