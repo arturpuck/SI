@@ -186,7 +186,7 @@ export default class MultiSelect extends Vue {
 
   parseOptionValueToObjectProperty(value): string {
     const str = value.toString();
-    return `_${str.replaceAll(" ", "_").replaceAll("-", "_")}`;
+    return `_${str.replace(/ /g, "_").replace(/-/g, "_")}`;
   }
 
   searchForValue(event) {

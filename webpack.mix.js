@@ -38,7 +38,7 @@ mix.js('resources/js/mainpage.js', 'public/js').vue()
    .sourceMaps()
   .options({ processCssUrls: false })
   .babelConfig({
-    plugins: ['@babel/plugin-syntax-dynamic-import', "@babel/plugin-transform-modules-commonjs"],
+    plugins: ['@babel/plugin-syntax-dynamic-import',  "@babel/plugin-transform-modules-commonjs"],
     presets: ["@babel/env"]
   })
   .webpackConfig({

@@ -118,7 +118,7 @@ export default class MovieBox extends Vue {
   }
 
   getPornstarSlug(pornstarNickname) {
-    return pornstarNickname.replaceAll(" ", "-");
+    return pornstarNickname.replace(/ /g, "-");
   }
 
   toggleImages() {
