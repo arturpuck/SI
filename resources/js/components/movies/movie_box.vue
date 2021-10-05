@@ -4,6 +4,7 @@
       v-bind:href="movieURL"
       v-on:mouseenter="toggleImages"
       v-on:mouseleave="toggleImages"
+      v-on:touchstart="showInfo"
       class="movie-link"
     >
       <img
@@ -117,11 +118,16 @@ export default class MovieBox extends Vue {
     this.emitter.emit("showPreview", { id: this.id, title: this.title });
   }
 
+  showInfo(){
+    console.log('odpalono event touchstart');
+  }
+
   getPornstarSlug(pornstarNickname) {
     return pornstarNickname.replace(/ /g, "-");
   }
 
   toggleImages() {
+    console.log('odpalono mouseenter/mouseleave');
     this.fetchingInProgress = true;
     this.showsGIF = !this.showsGIF;
   }
