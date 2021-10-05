@@ -123,6 +123,7 @@ export default class MovieBox extends Vue {
   }
 
   touchStartHandler() {
+    console.log('touchstart odpalono');
     //@ts-ignore
     this.emitter.emit("anotherBoxShowsShortcut", this.id);
     this.ontouchStarted = true;
@@ -132,10 +133,11 @@ export default class MovieBox extends Vue {
 
   anotherBoxShowsShortcutHandler(movieID: number) {
     if (movieID != this.id) {
+      console.log(movieID, this.id);
       this.showsGIF = false;
       this.fetchingInProgress = false;
     }
-  }
+  } 
 
   showPreview(event) {
     //@ts-ignore
@@ -148,12 +150,14 @@ export default class MovieBox extends Vue {
 
   hideShortcut() {
     if (!this.ontouchStarted) {
+      console.log('hideShortcut odpalono');
       this.fetchingInProgress = false;
       this.showsGIF = false;
     }
   }
   showShortcut() {
     if (!this.ontouchStarted) {
+      console.log("showShortcutOdpalono");
       this.fetchingInProgress = true;
       this.showsGIF = true;
     }
