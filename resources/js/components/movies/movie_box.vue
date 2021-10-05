@@ -117,7 +117,7 @@ export default class MovieBox extends Vue {
   private showsGIF = false;
   private ontouchStarted = false;
 
-  created() {
+  mounted() {
     //@ts-ignore
     this.emitter.on("anotherBoxShowsShortcut", this.anotherBoxShowsShortcutHandler);
     (<HTMLElement>this.$refs.movieBox).addEventListener('touchstart', this.touchStartHandler); //somehow vue currently does not provide v-on:touchstart
