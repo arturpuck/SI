@@ -114,6 +114,7 @@ export default class CommentBody extends Vue {
 }
 
 .date-confirmed-icon {
-  @include responsive-icon();
+  width: 1.4em;
+  height: 1.4em;
 }
 </style>
