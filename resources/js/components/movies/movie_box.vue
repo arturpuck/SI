@@ -144,7 +144,7 @@ export default class MovieBox extends Vue {
   }
 
   getPornstarSlug(pornstarNickname) {
-    return pornstarNickname.replace(/ /g, "-");
+    return pornstarNickname.replace(/ /g, "-"); 
   }
 
   hideShortcut() {
@@ -154,7 +154,6 @@ export default class MovieBox extends Vue {
   }
   showShortcut() {
     if (!this.ontouchStarted) {
-      console.log('ustawiam na true')
       this.fetchingInProgress = true;
       this.showsGIF = true;
     }
@@ -162,7 +161,7 @@ export default class MovieBox extends Vue {
 
   imageHasBeenLoaded() {
     
-    setTimeout(() => {this.fetchingInProgress = false; console.log('obrazek niby znika')},0);
+    setTimeout(() => this.fetchingInProgress = false, 0);
   }
 
   get movieURL() {
