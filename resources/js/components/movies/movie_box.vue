@@ -2,9 +2,9 @@
   <li class="movie-box">
     <a
       v-bind:href="movieURL"
-      v-on:mouseenter="toggleImages"
-      v-on:mouseleave="toggleImages"
-      v-on:touchstart="showInfo"
+      v-on:mouseenter="showShortcut"
+      v-on:mouseleave="hideShortcut"
+      v-on:touchstart="tochstartHandler"
       class="movie-link"
     >
       <img
@@ -21,11 +21,14 @@
       <div class="movie-details-and-controls">
         <span class="movie-details-row">
           <play-round-icon class="play-icon"></play-round-icon>
-          <span  v-text="translator['views']"></span>
-          <span class="detail-separator">:</span> 
+          <span v-text="translator['views']"></span>
+          <span class="detail-separator">:</span>
           <span v-text="views"></span>
         </span>
-        <span v-on:click="showPreview" class="preview-control movie-details-row">
+        <span
+          v-on:click="showPreview"
+          class="preview-control movie-details-row"
+        >
           <magnifier-icon class="magnifier-icon"></magnifier-icon>
           <span v-text="translator['preview']"></span>
         </span>
@@ -88,7 +91,7 @@ export default class MovieBox extends Vue {
     type: Number,
     required: true,
   })
-  readonly id: string;
+  readonly id: number;
 
   @Prop({
     type: Number,
@@ -112,24 +115,48 @@ export default class MovieBox extends Vue {
   private translator = Translations;
   private fetchingInProgress = false;
   private showsGIF = false;
+  private ontouchStarted = false;
+
+  created() {
+    //@ts-ignore
+    this.emitter.on("anotherBoxShowsShortcut", this.anotherBoxShowsShortcutHandler);
+  }
+
+  touchStartHandler() {
+    //@ts-ignore
+    this.emitter.emit("anotherBoxShowsShortcut", this.id);
+    this.ontouchStarted = true;
+    this.fetchingInProgress = true;
+    this.showsGIF = true;
+  }
+
+  anotherBoxShowsShortcutHandler(movieID: number) {
+    if (movieID != this.id) {
+      this.showsGIF = false;
+      this.fetchingInProgress = false;
+    }
+  }
 
   showPreview(event) {
     //@ts-ignore
     this.emitter.emit("showPreview", { id: this.id, title: this.title });
   }
 
-  showInfo(){
-    console.log('odpalono event touchstart');
-  }
-
   getPornstarSlug(pornstarNickname) {
     return pornstarNickname.replace(/ /g, "-");
   }
 
-  toggleImages() {
-    console.log('odpalono mouseenter/mouseleave');
-    this.fetchingInProgress = true;
-    this.showsGIF = !this.showsGIF;
+  hideShortcut() {
+    if (!this.ontouchStarted) {
+      this.fetchingInProgress = false;
+      this.showsGIF = false;
+    }
+  }
+  showShortcut() {
+    if (!this.ontouchStarted) {
+      this.fetchingInProgress = true;
+      this.showsGIF = true;
+    }
   }
 
   imageHasBeenLoaded() {
@@ -155,8 +182,8 @@ export default class MovieBox extends Vue {
 <style lang="scss" scoped>
 @import "~sass/fonts";
 
-.detail-separator{
-  margin:0 5px;
+.detail-separator {
+  margin: 0 5px;
 }
 
 .movie-image {
@@ -247,7 +274,7 @@ export default class MovieBox extends Vue {
 .star-icon {
   width: 16px;
   height: auto;
-  margin:0 3px;
+  margin: 0 3px;
   fill: gold;
 }
 
