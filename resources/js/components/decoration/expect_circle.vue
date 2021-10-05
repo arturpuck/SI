@@ -45,8 +45,8 @@ export default class ExpectCircle extends Vue {
 .expect-circles-inner-container {
   min-width: 100px;
   min-height: 100px;
-  width: 10vw;
-  height: 10vw;
+  width: 50%;
+  height: auto;
   position: relative;
   margin: 0 auto;
 }

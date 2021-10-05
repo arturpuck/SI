@@ -14,7 +14,7 @@
         v-bind:alt="title"
       />
       <time v-text="duration" class="movie-duration"></time>
-      <expect-shadow-circle v-show="fetchingInProgress"></expect-shadow-circle>
+      <expect-shadow-circle v-if="fetchingInProgress"></expect-shadow-circle>
     </a>
     <div class="movie-data">
       <a v-bind:href="movieURL" v-text="title" class="movie-description"></a>
@@ -124,7 +124,6 @@ export default class MovieBox extends Vue {
   }
 
   touchStartHandler() {
-    console.log('touchstart odpalono');
     //@ts-ignore
     this.emitter.emit("anotherBoxShowsShortcut", this.id);
     this.ontouchStarted = true;
@@ -134,7 +133,6 @@ export default class MovieBox extends Vue {
 
   anotherBoxShowsShortcutHandler(movieID: number) {
     if (movieID != this.id) {
-      console.log(movieID, this.id);
       this.showsGIF = false;
       this.fetchingInProgress = false;
     }
@@ -151,21 +149,17 @@ export default class MovieBox extends Vue {
 
   hideShortcut() {
     if (!this.ontouchStarted) {
-      console.log('hideShortcut odpalono');
-      this.fetchingInProgress = false;
       this.showsGIF = false;
     }
   }
   showShortcut() {
     if (!this.ontouchStarted) {
-      console.log("showShortcutOdpalono");
-      this.fetchingInProgress = true;
       this.showsGIF = true;
     }
   }
 
   imageHasBeenLoaded() {
-    this.fetchingInProgress = false;
+    setTimeout(() => this.fetchingInProgress = false,0);
   }
 
   get movieURL() {
@@ -201,11 +195,6 @@ export default class MovieBox extends Vue {
 .expect-bar {
   margin: 0;
   width: 100%;
-}
-
-.expect-circles-inner-container {
-  width: 10%;
-  height: 10%;
 }
 
 .movie-details-row {
