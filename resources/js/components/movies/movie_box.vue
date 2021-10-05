@@ -14,7 +14,7 @@
         v-bind:alt="title"
       />
       <time v-text="duration" class="movie-duration"></time>
-      <expect-shadow-circle v-if="fetchingInProgress"></expect-shadow-circle>
+      <expect-shadow-circle class="fetching-decoration" v-if="fetchingInProgress" />
     </a>
     <div class="movie-data">
       <a v-bind:href="movieURL" v-text="title" class="movie-description"></a>
@@ -154,12 +154,15 @@ export default class MovieBox extends Vue {
   }
   showShortcut() {
     if (!this.ontouchStarted) {
+      console.log('ustawiam na true')
+      this.fetchingInProgress = true;
       this.showsGIF = true;
     }
   }
 
   imageHasBeenLoaded() {
-    setTimeout(() => this.fetchingInProgress = false,0);
+    
+    setTimeout(() => {this.fetchingInProgress = false; console.log('obrazek niby znika')},0);
   }
 
   get movieURL() {
@@ -183,6 +186,10 @@ export default class MovieBox extends Vue {
 
 .detail-separator {
   margin: 0 5px;
+}
+
+.fetching-decoration{
+  pointer-events: none;
 }
 
 .movie-image {
