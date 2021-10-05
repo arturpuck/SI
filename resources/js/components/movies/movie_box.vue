@@ -4,7 +4,7 @@
       v-bind:href="movieURL"
       v-on:mouseenter="showShortcut"
       v-on:mouseleave="hideShortcut"
-      v-on:touchstart="tochstartHandler"
+      ref="movieBox"
       class="movie-link"
     >
       <img
@@ -120,6 +120,7 @@ export default class MovieBox extends Vue {
   created() {
     //@ts-ignore
     this.emitter.on("anotherBoxShowsShortcut", this.anotherBoxShowsShortcutHandler);
+    (<HTMLElement>this.$refs.movieBox).addEventListener('touchstart', this.touchStartHandler); //somehow vue currently does not provide v-on:touchstart
   }
 
   touchStartHandler() {
