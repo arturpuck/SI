@@ -340,14 +340,14 @@
           border-radius: 1vw;
   padding: 6px;
   margin: 0;
-  border: 2px solid black; }
+  border: 2px solid #35363a; }
   .panel-group--relative {
     -webkit-border-radius: 1vw;
        -moz-border-radius: 1vw;
             border-radius: 1vw;
     padding: 6px;
     margin: 0;
-    border: 2px solid black;
+    border: 2px solid #35363a;
     position: relative; }
 
 .panel-group-legend {
@@ -407,25 +407,19 @@
   top: 5%;
   height: 95%; }
 
-.range-selection__label {
+.range-selection {
+  margin: 10px; }
+
+.range-selection-description {
   text-align: center;
   font-size: 1.2vw;
   font-family: "Exo 2", sans-serif;
   color: white;
   display: block;
-  padding-bottom: 7px; }
+  padding: 7px; }
   @media (max-width: 1200px) {
-    .range-selection__label {
+    .range-selection-description {
       font-size: 16px; } }
-
-.range-selection__value {
-  text-align: center;
-  font-size: 1.1vw;
-  font-family: "Exo 2", sans-serif;
-  color: #3d9c16; }
-  @media (max-width: 1200px) {
-    .range-selection__value {
-      font-size: 13px; } }
 
 .range-selection__input {
   -webkit-appearance: none;

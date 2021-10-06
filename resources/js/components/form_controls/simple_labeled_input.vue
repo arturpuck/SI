@@ -7,7 +7,7 @@
       :required="inputIsRequired"
       v-bind:placeholder="placeholderText"
       class="container__input"
-      v-model="inputValue"
+      v-bind:value="modelValue"
       v-on:input="updateModel"
       v-bind:type="inputType"
     />
@@ -49,11 +49,10 @@ export default class SimpleLabeledInput extends Vue {
   readonly inputIsRequired: boolean;
 
   @Prop({
-    type: String,
     required: false,
     default: "",
   })
-  readonly modelValue: string;
+  readonly modelValue: string | number;
 
   @Prop({
     type: String,
@@ -79,7 +78,6 @@ export default class SimpleLabeledInput extends Vue {
   border-radius: 8px;
   color: white;
   width: 95%;
-  margin: 0 auto;
   border: 2px solid transparent;
   position: relative;
   height: 2em;

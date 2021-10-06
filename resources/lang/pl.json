@@ -222,8 +222,8 @@
     "pornstar_selection_info": "Po zaznaczeniu więcej niż 1 gwiazdy, wyszukane zostaną tylko filmy, w których dane aktorki występują razem",
     "chose_from_pornstars_list": "Wybierz z listy gwiazd",
     "time_and_other_settings": "Czas i inne opcje",
-    "min_time_in_minutes": "Minimalny czas(minuty)",
-    "max_time_in_minutes": "Maksymalny czas(minuty)",
+    "min_time": "Minimalny czas",
+    "max_time": "Maksymalny czas",
     "minimum_views": "Minimum wyświetleń",
     "maximum_views": "Maksimum wyświetleń",
     "polish_language_version": "polska wersja językowa",
@@ -284,5 +284,6 @@
     "the_most_popular_movies" : "Najpopularniejsze filmy porno",
     "your_avatar" : "twój avatar",
     "you_have_been_successfully_registered" : "Zostałeś zarejestrowany pomyślnie",
-    "back_to_search_panel_short" : "szukaj"
+    "back_to_search_panel_short" : "szukaj",
+    "time_in_minutes" : "Czas podany jest w minutach"
 }

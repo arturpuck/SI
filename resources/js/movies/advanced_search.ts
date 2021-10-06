@@ -64,10 +64,10 @@ const settings = {
       multiselectValues: [],
       translator: Translator,
       fetchingPornstarsInProgress: true,
-      minimumMovieTimeRaw: 0,
-      maximumMovieTimeRaw: 0,
-      minimumMovieViewsRaw: 0,
-      maximumMovieViewsRaw: 0,
+      minimumMovieTimeRaw: "",
+      maximumMovieTimeRaw: "",
+      minimumMovieViewsRaw: "",
+      maximumMovieViewsRaw: "",
       userWantsToDisplayControlsShortcut: undefined,
       abundanceType: "",
       titsSize: "",
@@ -142,7 +142,12 @@ const settings = {
     },
 
     minimumMovieTime(): number {
-      return parseInt(this.minimumMovieTimeRaw);
+      const parsedValue = parseInt(this.minimumMovieTimeRaw);
+      if(parsedValue < 0){
+        this.minimumMovieTimeRaw = '';
+        return 0;
+      }  
+      return parsedValue;
     },
 
     maximumMovieTime(): number {
@@ -401,7 +406,7 @@ const settings = {
       });
 
       SearchEngineVariables['viewsAndTimeOptions'].forEach(propertyName => {
-        this[propertyName] = 0;
+        this[propertyName] = '';
       });
 
       this.pornstarsList = [];

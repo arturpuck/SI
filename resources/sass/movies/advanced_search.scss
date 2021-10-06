@@ -8,7 +8,7 @@
     border-radius: 1vw;
     padding: 6px;
     margin: 0;
-    border: 2px solid black;
+    border: 2px solid #35363a;;
 }
 
 @mixin control-panel-button-icon {
@@ -133,20 +133,16 @@
     height: 95%;
 }
 
-.range-selection {
-    &__label {
-        text-align: center;
-        @include responsive-font();
-        color: white;
-        display: block;
-        padding-bottom: 7px;
-    }
+.range-selection{ 
+    margin: 10px;
+}
 
-    &__value {
-        text-align: center;
-        @include responsive-font(1.1vw, 13px);
-        color: #3d9c16;
-    }
+.range-selection-description {
+    text-align: center;
+    @include responsive-font();
+    color: white;
+    display: block;
+    padding: 7px;
 }
 
 @include standard-slider(".range-selection__input");

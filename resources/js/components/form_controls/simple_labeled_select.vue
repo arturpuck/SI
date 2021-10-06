@@ -48,11 +48,10 @@ export default class SimpleLabeledSelect extends Vue {
   readonly inputIsRequired: boolean;
 
   @Prop({
-    type: String,
     required: false,
     default: "",
   })
-  readonly modelValue: string;
+  readonly modelValue: string | number;
 
   @Prop({
     type: String,

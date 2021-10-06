@@ -16,7 +16,6 @@ const variables: {
     movieViewsOptions: string[],
     groupNames: string[],
     viewsAndTimeOptions: string[]
-    getIgnoreIfFalsy(): string[]
 } = {
 
     initialValueIsEmptyString: ['abundanceType', 'titsSize', 'assSize', 'thicknessSize', 'ageRange', 'hairColor', 'race',
@@ -42,9 +41,6 @@ const variables: {
     pornstarsList: "pornstarsList",
     groupNames: ['initialValueIsEmptyString', 'initialValueIsFalse', 'movieTimeOptions', 'movieViewsOptions'],
 
-    getIgnoreIfFalsy(): string[] {
-        return this.initialValueIsEmptyString.concat(this.initialValueIsFalse, this.initialValueIsZero);
-    }
 }
 
 

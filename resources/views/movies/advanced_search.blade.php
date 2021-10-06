@@ -148,29 +148,11 @@
          <legend class="panel-group-legend">
             {{__('time_and_views')}}
          </legend>
-         <div class="range-selection">
-            <simple-labeled-input v-model="minimumMovieTimeRaw" input-type="number">{{__('min_time_in_minutes')}}</simple-labeled-input>
-         <div class="range-selection">
-            <label for="maximum-movie-duration" class="range-selection__label">
-               {{__('max_time_in_minutes')}}
-            </label>
-            <input type="range" v-model="maximumMovieTimeRaw" min="0" max="180" step="1" class="range-selection__input" name="maximum-movie-duration" id="maximum-movie-duration" />
-            <div v-text="maximumMovieTimeLabel" class="range-selection__value"></div>
-         </div>
-         <div class="range-selection">
-            <label for="min-movie-views" class="range-selection__label">
-               {{__('minimum_views')}}
-            </label>
-            <input type="range" v-model="minimumMovieViewsRaw" min="0" max="100000" step="100" class="range-selection__input" name="minimum-movie-views" id="min-movie-views" />
-            <div v-text="minimumMovieViewsLabel" class="range-selection__value"></div>
-         </div>
-         <div class="range-selection">
-            <label for="max-movie-views" class="range-selection__label">
-               {{__('maximum_views')}}
-            </label>
-            <input type="range" v-model="maximumMovieViewsRaw" min="0" max="100000" step="100" class="range-selection__input" name="max-movie-views" id="max-movie-views" />
-            <div v-text="maximumMovieViewsLabel" class="range-selection__value"></div>
-         </div>
+         <simple-labeled-input class="range-selection" v-model="maximumMovieViewsRaw" input-type="number">{{__('maximum_views')}} : </simple-labeled-input>   
+         <simple-labeled-input class="range-selection" v-model="minimumMovieViewsRaw" input-type="number">{{__('minimum_views')}} : </simple-labeled-input>
+         <div class="range-selection-description"> {{__('time_in_minutes')}}</div>
+         <simple-labeled-input class="range-selection" v-model="minimumMovieTimeRaw" input-type="number">{{__('min_time')}} : </simple-labeled-input>
+         <simple-labeled-input class="range-selection" v-model="maximumMovieTimeRaw" input-type="number">{{__('max_time')}} : </simple-labeled-input>
       </fieldset>
       <fieldset class="panel-group">
          <legend class="panel-group-legend">
