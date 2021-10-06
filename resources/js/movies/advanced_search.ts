@@ -40,10 +40,10 @@ const settings = {
       multiselectValues: [],
       translator: Translator,
       fetchingPornstarsInProgress: true,
-      minimumMovieTime: 0,
-      maximumMovieTime: 0,
-      minimumMovieViews: 0,
-      maximumMovieViews: 0,
+      minimumMovieTimeRaw: 0,
+      maximumMovieTimeRaw: 0,
+      minimumMovieViewsRaw: 0,
+      maximumMovieViewsRaw: 0,
       showControlsShortcut: undefined,
       abundanceType: "",
       titsSize: "",
@@ -91,6 +91,22 @@ const settings = {
   },
 
   computed: {
+
+    minimumMovieTime() : number {
+      return parseInt(this.minimumMovieTimeRaw);
+    },
+
+    maximumMovieTime() : number {
+      return parseInt(this.maximumMovieTimeRaw);
+    },
+
+    minimumMovieViews() : number {
+      return parseInt(this.minimumMovieViewsRaw);
+    },
+
+    maximumMovieViews() : number {
+      return parseInt(this.maximumMovieViewsRaw);
+    },
 
     minimumMovieTimeLabel(): string {
       return (this.minimumMovieTime == 0) ?
@@ -377,7 +393,7 @@ const settings = {
         this[propertyName] = false;
       });
 
-      SearchEngineVariables['initialValueIsZero'].forEach(propertyName => {
+      SearchEngineVariables['viewsAndTimeOptions'].forEach(propertyName => {
         this[propertyName] = 0;
       });
 

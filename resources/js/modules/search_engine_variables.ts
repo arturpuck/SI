@@ -14,7 +14,8 @@ const variables: {
     initialValueIsZero: string[],
     movieTimeOptions: string[],
     movieViewsOptions: string[],
-    groupNames: string[]
+    groupNames: string[],
+    viewsAndTimeOptions: string[]
     getIgnoreIfFalsy(): string[]
 } = {
 
@@ -26,6 +27,13 @@ const variables: {
     initialValueIsFalse: ['isCumshotCompilation', 'recordedBySpamCamera', 'isSadisticOrMasochistic', 'isFemaleDomination',
         'isTranslatedToPolish', 'showPantyhose', 'showStockings', 'showGlasses', 'showHighHeels', 'showHugeCock',
         'showWhips', 'showSexToys'
+    ],
+
+    viewsAndTimeOptions : [
+        'minimumMovieTimeRaw',
+        'maximumMovieTimeRaw',
+        'minimumMovieViewsRaw',
+        'maximumMovieViewsRaw'
     ],
 
     initialValueIsZero: [...movieTimeOptions, ...movieViewsOptions],
