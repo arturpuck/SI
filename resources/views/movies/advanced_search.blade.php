@@ -1,6 +1,6 @@
 <x-base title="{{__($title)}}" customBodyClass="standard-background" description="{{__($description)}}">
    <form class="advanced-search-panel" v-bind:class="{'advanced-search-panel--hidden' : !advancedSearchPanelIsVisible}">
-      <fieldset v-bind:class="{'aditional-control-panel--hidden' : !showControlsShortcut}" class="aditional-control-panel">
+      <fieldset v-bind:class="{'aditional-control-panel--hidden' : !controlsShortcutSholdBeDisplayed}" class="aditional-control-panel">
          <legend class="aditional-control-panel__description">{{__('controls')}}</legend>
          <button type="button" v-show="advancedSearchPanelIsVisible" v-on:click="firstSearch" class="aditional-control-panel__button--green">
             <magnifier-icon class="control-panel-button__icon"></magnifier-icon>
@@ -8,14 +8,19 @@
          </button>
          <button v-on:click="resetPanel" v-show="advancedSearchPanelIsVisible" type="reset" class="aditional-control-panel__button--red">
             {{__('fixed_panel_reset_caption')}}
+            <shutdown-icon class="control-panel-button__icon--reset"></shutdown-icon>
          </button>
          <button type="button" v-show="!advancedSearchPanelIsVisible" v-on:click="showSearchPanel" class="aditional-control-panel__button--green">
-            <exit-arrow-icon class="control-panel-button__icon"></exit-arrow-icon>
-            {{__('back_to_search_panel_button_caption')}}
+            <magnifier-icon class="control-panel-button__icon"></magnifier-icon>
+            {{__('back_to_search_panel_short')}}
          </button>
-         <button type="button" v-on:click="hideAditionalPanel" class="aditional-control-panel__button--arrow-down">
-            <arrow-down-icon class="control-panel-button__icon--arrow-down"></arrow-down-icon>
-            {{__('hide_fixed_control_panel_caption')}}
+         <button type="button" v-show="buttonPreviousShouldBeDisplayed" v-on:click="searchMovies(currentPage - 1)"  class="aditional-control-panel__button--light-red">
+            <arrow-left-icon class="control-panel-button__icon"></arrow-left-icon>
+            {{__('back')}}
+         </button>
+         <button type="button" v-show="buttonNextPageShouldBeDisplayed" v-on:click="searchMovies(currentPage + 1)"  class="aditional-control-panel__button--green">
+            {{__('further')}}
+            <arrow-right-icon class="control-panel-button__icon"></arrow-right-icon>
          </button>
       </fieldset>
       <fieldset class="panel-group">
@@ -144,12 +149,7 @@
             {{__('time_and_views')}}
          </legend>
          <div class="range-selection">
-            <label for="minimum-movie-duration" class="range-selection__label">
-               {{__('min_time_in_minutes')}}
-            </label>
-            <input type="range" v-model="minimumMovieTimeRaw" min="0" max="180" step="1" class="range-selection__input" name="minimum-movie-duration" id="minimum-movie-duration" />
-            <div v-text="minimumMovieTimeLabel" class="range-selection__value"></div>
-         </div>
+            <simple-labeled-input v-model="minimumMovieTimeRaw" input-type="number">{{__('min_time_in_minutes')}}</simple-labeled-input>
          <div class="range-selection">
             <label for="maximum-movie-duration" class="range-selection__label">
                {{__('max_time_in_minutes')}}
@@ -184,11 +184,11 @@
             <shutdown-icon class="control-panel-button__icon--bigger"></shutdown-icon>
             {{__('reset_panel')}}
          </reset-button>
-         <labeled-checkbox v-on:click="savePanelSettings" v-model="showControlsShortcut" class="labeled_checkbox--aditional-margin" name="show-controls-shortcut">{{__('show_controls_shortcut')}}</labeled-checkbox>
+         <labeled-checkbox v-on:click="savePanelSettings" v-model="userWantsToDisplayControlsShortcut" class="labeled_checkbox--aditional-margin" name="show-controls-shortcut">{{__('show_controls_shortcut')}}</labeled-checkbox>
       </fieldset>
    </form>
    <section v-show="!advancedSearchPanelIsVisible" class="search-results">
-      <header class="search-results__summary">
+      <header  class="search-results__summary">
          <div class="search-results__header--crimson">
             {{__('search_results')}}
             <improvement-performance-icon class="search-results__icon--crimson"></improvement-performance-icon>
@@ -202,9 +202,9 @@
          </ul>
          <div v-text="totalMoviesFoundCaption" class="search-results__header"></div>
       </header>
-      <button type="button" v-on:click="showSearchPanel" class="search-results__back-to-search-panel-button">
+      <button  type="button" v-on:click="showSearchPanel" class="search-results__back-to-search-panel-button">
          <exit-arrow-icon class="control-panel-button__icon"></exit-arrow-icon>
-         {{__('back_to_search_panel')}}
+         {{__('back_to_search_panel_button_caption')}}
       </button>
       <movies-list></movies-list>
    </section>

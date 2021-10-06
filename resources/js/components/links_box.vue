@@ -302,7 +302,7 @@ export default class LinksBox extends Vue {
 
 .fixed-shortcuts {
   position: fixed;
-  top: calc(1.5vw + 25px);
+  top: calc(0.8vw + 35px);
   left: 50%;
   transform: translateX(-50%);
   background: black;

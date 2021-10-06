@@ -8,6 +8,7 @@
       v-bind:placeholder="placeholderText"
       class="container__input"
       v-model="inputValue"
+      v-on:input="updateModel"
       v-bind:type="inputType"
     />
   </label>
@@ -52,7 +53,18 @@ export default class SimpleLabeledInput extends Vue {
     required: false,
     default: "",
   })
-  readonly value: string;
+  readonly modelValue: string;
+
+  @Prop({
+    type: String,
+    required: false,
+    default: "text",
+  })
+  readonly inputType: string;
+
+  updateModel(event){
+     this.$emit("update:modelValue", event.target.value);
+  }
 }
 </script>
 

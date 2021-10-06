@@ -4,7 +4,7 @@ import SimpleLabeledSelect from '@jscomponents-form-controls/simple_labeled_sele
 import UserNotification from '@jscomponents/user_notification';
 import NotificationFunction from '@jsmodules/notification_function.ts';
 import PageListUpdate from '@interfaces/PageListUpdate';
-import MultiSelect from '@jscomponents-form-controls/multiselect.vue';
+import Multiselect from '@jscomponents-form-controls/multiselect.vue';
 import Translator from '@jsmodules/translator.js';
 import SearchEngineTranslations from '@jsmodules/translations/search_engine_translations.js';
 import RelativeShadowContainer from '@jscomponents/decoration/relative_shadow_container.vue';
@@ -27,10 +27,34 @@ import SideBarVisibilityMixin from "@js/mixins/side_bar_visibility";
 import ShutdownIcon from "@svgicon/shutdown_icon.vue";
 import InfoCircleIcon from "@svgicon/info_circle_icon.vue";
 import { MovieBasicData } from '@interfaces/movies/MovieBasicData';
+import ArrowRightIcon from '@svgicon/right_arrow_icon.vue';
+import ArrowLeftIcon from '@svgicon/left_arrow_icon.vue';
+import SimpleLabeledInput from '@jscomponents-form-controls/simple_labeled_input.vue';
 
 const settings = {
 
   mixins: [SideBarVisibilityMixin],
+
+  components: {
+    SimpleLabeledSelect,
+    SimpleLabeledInput,
+    UserNotification,
+    Multiselect,
+    RelativeShadowContainer,
+    ExpectCircle,
+    AcceptButton,
+    ResetButton,
+    FixedShadowContainer,
+    MoviesList, MagnifierIcon,
+    ExitArrowIcon,
+    ArrowDownIcon,
+    ImprovementPerformanceIcon,
+    FingerPointIcon,
+    ShutdownIcon,
+    InfoCircleIcon,
+    ArrowRightIcon,
+    ArrowLeftIcon,
+  },
 
   data() {
 
@@ -44,7 +68,7 @@ const settings = {
       maximumMovieTimeRaw: 0,
       minimumMovieViewsRaw: 0,
       maximumMovieViewsRaw: 0,
-      showControlsShortcut: undefined,
+      userWantsToDisplayControlsShortcut: undefined,
       abundanceType: "",
       titsSize: "",
       assSize: "",
@@ -86,25 +110,50 @@ const settings = {
       advancedSearchPanelIsVisible: true,
       selectedOptionsVisibleForUser: [],
       totalMoviesFound: undefined,
+      scrollYreactiveProperty: 0,
+      currentPage: undefined,
     }
 
   },
 
   computed: {
 
-    minimumMovieTime() : number {
+    controlsShortcutSholdBeDisplayed(): boolean {
+      if (this.userWantsToDisplayControlsShortcut) {
+        return this.advancedSearchPanelIsVisible ? true : this.scrollYreactiveProperty > 400;
+      }
+      return false;
+    },
+
+    buttonNextPageShouldBeDisplayed(): boolean {
+      return (this.numberOfSubPages > 1) && this.pageIsNotLast && !this.advancedSearchPanelIsVisible;
+    },
+
+    buttonPreviousShouldBeDisplayed(): boolean {
+      return (this.currentPage > 1) && !this.advancedSearchPanelIsVisible;
+    },
+
+    numberOfSubPages(): number {
+      return Math.ceil(this.totalMoviesFound / 100);
+    },
+
+    pageIsNotLast(): boolean {
+      return this.currentPage < this.numberOfSubPages;
+    },
+
+    minimumMovieTime(): number {
       return parseInt(this.minimumMovieTimeRaw);
     },
 
-    maximumMovieTime() : number {
+    maximumMovieTime(): number {
       return parseInt(this.maximumMovieTimeRaw);
     },
 
-    minimumMovieViews() : number {
+    minimumMovieViews(): number {
       return parseInt(this.minimumMovieViewsRaw);
     },
 
-    maximumMovieViews() : number {
+    maximumMovieViews(): number {
       return parseInt(this.maximumMovieViewsRaw);
     },
 
@@ -162,18 +211,9 @@ const settings = {
     savePanelSettings(event): void {
 
       setTimeout(() => {
-        this.setAditionalPanelPreferences(this.showControlsShortcut);
+        this.setAditionalPanelPreferences(this.userWantsToDisplayControlsShortcut);
       }, 0);
 
-    },
-
-    hideAditionalPanel(): void {
-      this.showControlsShortcut = false;
-      this.setAditionalPanelPreferences(false);
-    },
-
-    windowIsNarrowEnoughToSetDefaultAditionalPanelVisible(): boolean {
-      return window.innerWidth <= 700;
     },
 
     firstSearch(): void {
@@ -182,41 +222,11 @@ const settings = {
 
     initiateAditionalPanelSettings(): void {
 
-      if (this.userHasAditionalPanelPreferences()) {
-        this.showControlsShortcut = this.userWantsToDisplayAditionalPanel();
-      }
-      else {
-        this.showControlsShortcut = this.windowIsNarrowEnoughToSetDefaultAditionalPanelVisible();
-      }
-
-      window.addEventListener('resize', () => {
-
-        if (!this.userHasAditionalPanelPreferences()) {
-          this.showControlsShortcut = this.windowIsNarrowEnoughToSetDefaultAditionalPanelVisible();
-        }
-
-      });
-
+      this.userWantsToDisplayControlsShortcut = this.userWantsToDisplayAditionalPanel();
     },
 
     userWantsToDisplayAditionalPanel(): boolean {
-      const setting = localStorage.getItem('showAditionalPanel');
-
-      switch (setting) {
-
-        case 'true':
-          return true;
-          break;
-
-        case 'false':
-          return false;
-          break;
-
-        case null:
-          return undefined;
-          break;
-
-      }
+      return localStorage.getItem('showAditionalPanel') !== 'false';
     },
 
     async fetchPornstars() {
@@ -313,21 +323,18 @@ const settings = {
       return selectedOptions;
     },
 
-    loadMovies(moviesList : PageListUpdate<MovieBasicData>): void {
+    loadMovies(moviesList: PageListUpdate<MovieBasicData>): void {
       this.totalMoviesFound = moviesList.totalElements
+      window.scroll(0, 0);
 
       if (moviesList.totalElements > 0) {
-
-        if (moviesList.currentPage === 1) {
-          window.scroll(0, 0);
-        }
         //@ts-ignore
         this.emitter.emit('updateMoviesList', moviesList);
       }
       else {
         this.clearMoviesList();
       }
-
+      this.currentPage = moviesList.currentPage;
       this.advancedSearchPanelIsVisible = false;
 
     },
@@ -408,27 +415,13 @@ const settings = {
     this.fetchPornstars();
     this.initiateAditionalPanelSettings();
     this.emitter.on('pageHasBeenSelected', this.searchMovies);
+    window.addEventListener("scroll", () => this.scrollYreactiveProperty = window.scrollY);
   }
 
 };
 
 const app = createApp(settings);
 BasicElements.registerBasicComponents(app);
-app.component('simple-labeled-select', SimpleLabeledSelect);
-app.component('user-notification', UserNotification);
-app.component('multiselect', MultiSelect);
-app.component('relative-shadow-container', RelativeShadowContainer);
-app.component('expect-circle', ExpectCircle);
-app.component('accept-button', AcceptButton);
-app.component('reset-button', ResetButton);
-app.component('fixed-shadow-container', FixedShadowContainer);
-app.component('movies-list', MoviesList);
-app.component('magnifier-icon', MagnifierIcon);
-app.component('exit-arrow-icon', ExitArrowIcon);
-app.component('arrow-down-icon', ArrowDownIcon);
-app.component('improvement-performance-icon', ImprovementPerformanceIcon);
-app.component('finger-point-icon', FingerPointIcon);
-app.component('shutdown-icon', ShutdownIcon);
-app.component('info-circle-icon', InfoCircleIcon);
+
 app.mount("#app");
 

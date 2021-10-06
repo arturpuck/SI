@@ -231,14 +231,15 @@
     "controls": "Sterowanie",
     "search_button_caption": "szukaj",
     "reset_panel": "resetuj panel",
+    "further" : "dalej",
     "show_controls_shortcut": "Pokazuj przyciski wyszukiwania i reset zawsze na górze ekranu",
     "fixed_panel_reset_caption": "reset",
     "hide_fixed_control_panel_caption": "chowaj",
     "you_have_selected_the_following_options": "Wybrano następujące opcje",
     "search_results": "Wyniki wyszukiwania",
     "total_movies_found": "Ilość znalezionych filmów",
-    "back_to_search_panel": "Powrót do panelu",
-    "back_to_search_panel_button_caption": "powrót",
+    "back" : "wstecz",
+    "back_to_search_panel_button_caption": "powrót do panelu wyszukiwania",
     "search_panel_information_detailed": "W przypadku filmów z większą ilością kobiet brane są pod uwagę tylko te tytuły w których co najmniej znaczna większość aktorek spełnia podane wymagania. Wybór kilku gwiazd jednocześnie jest interpretowany następująco : znajdź filmy w których dane aktorki występują razem.",
     "movies_in_category": "Filmy porno w kategorii",
     "categories_description_beginning": "Starannie wyselekcjonowane filmy porno w kategorii",
@@ -282,5 +283,6 @@
     "argentinian_nationality" : "argentyńska",
     "the_most_popular_movies" : "Najpopularniejsze filmy porno",
     "your_avatar" : "twój avatar",
-    "you_have_been_successfully_registered" : "Zostałeś zarejestrowany pomyślnie"
+    "you_have_been_successfully_registered" : "Zostałeś zarejestrowany pomyślnie",
+    "back_to_search_panel_short" : "szukaj"
 }

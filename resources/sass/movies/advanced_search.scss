@@ -23,13 +23,13 @@
     border: none;
     outline: none;
     display: block;
-    width: 30%;
     padding: 3px;
     text-align: center;
-    margin: 4px auto;
+    margin: 0 4px;
     border-radius: 4px;
     cursor: pointer;
-    @include responsive-font(1.1vw, 14px);
+    white-space: nowrap;
+    @include responsive-font(1.1vw, 13px);
     line-height: 1.5em;
     color: white;
     &:hover {
@@ -181,6 +181,11 @@
         @include control-panel-button-icon();
         width: 15%;
     }
+
+    &--reset {
+        @include control-panel-button-icon();
+        width:1.5em;
+    }
 }
 
 .aditional-control-panel {
@@ -189,11 +194,9 @@
     transform: translateX(-50%);
     display: flex;
     top: calc(35px + 1vw);
-    min-width: 260px;
-    padding: 0;
-    width: 30vw;
+    padding: 4px 0;
     box-shadow: 1px 1px 1px 1px black;
-    z-index: 2;
+    z-index: 1;
     border: 1px solid black;
     border-radius: 5px 0 0 5px;
     overflow: hidden;
@@ -225,6 +228,11 @@
         &--arrow-down {
             @include fixed-control-control-panel-button();
             background: #1d42d2;
+        }
+
+        &--light-red{
+            @include fixed-control-control-panel-button();
+            background: linear-gradient(to right, #b31f45, #da1047);
         }
     }
 }

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <pages-list></pages-list>
     <ul class="movies-container">
       <movie-box
         v-for="movie in movies"

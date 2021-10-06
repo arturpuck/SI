@@ -384,7 +384,7 @@ export default {
       cookie_notification_body : `Poprzez dalsze korzystanie z portalu lub naciśnięcie przycisku "Akceptuję" wyrażasz zgodę na przechowywanie plików cookie na Twej maszynie`,
       accept_button_caption : "Akceptuję - zamknij",
       show_content_side_bar_title : "Rozwiń nawigację strony dla wersji mobilnej",
-      show_content_side_bar_caption : "Nawigacja",
+      show_content_side_bar_caption : "Menu",
       show_authenticated_user_sidebar_title : "Rozwiń menu użytkownika, ustawienia profilu, wylogowanie itp.",
       show_authenticated_user_sidebar_caption : "Profil",
       the_latest : "Najnowsze",

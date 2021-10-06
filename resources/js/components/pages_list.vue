@@ -1,5 +1,5 @@
 <template>
-  <nav v-show="pagesListShoulBeDisplayed" class="pages-list">
+  <nav v-if="pagesListShoulBeDisplayed" class="pages-list">
     <div class="pages-list__scrollable-controls">
       <button
         v-if="arrowsShouldBeDisplayed"
