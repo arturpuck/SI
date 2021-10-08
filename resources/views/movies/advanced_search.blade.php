@@ -23,7 +23,7 @@
             <arrow-right-icon class="control-panel-button__icon"></arrow-right-icon>
          </button>
          <button type="button" v-show="!advancedSearchPanelIsVisible" v-on:click="scrollPageToTop"  class="aditional-control-panel__button--up">
-            <span class="aditional-control-panel__description">{{__('scroll_page_up')}}</span>
+            {{__('up')}}
             <angle-top-icon class="control-panel-button__icon"></angle-top-icon>
          </button>
          
@@ -153,11 +153,11 @@
          <legend class="panel-group-legend">
             {{__('time_and_views')}}
          </legend>
-         <simple-labeled-input class="range-selection" v-model="maximumMovieViewsRaw" input-type="number">{{__('maximum_views')}} : </simple-labeled-input>   
-         <simple-labeled-input class="range-selection" v-model="minimumMovieViewsRaw" input-type="number">{{__('minimum_views')}} : </simple-labeled-input>
+         <simple-labeled-input class="range-selection" v-model="maximumMovieViewsRaw" minimum-value="0" input-type="number">{{__('maximum_views')}} : </simple-labeled-input>   
+         <simple-labeled-input class="range-selection" v-model="minimumMovieViewsRaw" minimum-value="0" input-type="number">{{__('minimum_views')}} : </simple-labeled-input>
          <div class="range-selection-description"> {{__('time_in_minutes')}}</div>
-         <simple-labeled-input class="range-selection" v-model="minimumMovieTimeRaw" input-type="number">{{__('min_time')}} : </simple-labeled-input>
-         <simple-labeled-input class="range-selection" v-model="maximumMovieTimeRaw" input-type="number">{{__('max_time')}} : </simple-labeled-input>
+         <simple-labeled-input class="range-selection" v-model="minimumMovieTimeRaw" minimum-value="0" input-type="number">{{__('min_time')}} : </simple-labeled-input>
+         <simple-labeled-input class="range-selection" v-model="maximumMovieTimeRaw" minimum-value="0" input-type="number">{{__('max_time')}} : </simple-labeled-input>
       </fieldset>
       <fieldset class="panel-group">
          <legend class="panel-group-legend">

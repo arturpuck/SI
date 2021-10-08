@@ -295,7 +295,7 @@ export default class LinksBox extends Vue {
   display: inline-flex;
   align-items: center;
   padding: 3px;
-  border-radius: 3px;
+  border-radius: 0;
   color: white;
   height: 1.5em;
 }

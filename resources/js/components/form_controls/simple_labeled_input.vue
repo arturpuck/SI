@@ -10,6 +10,8 @@
       v-bind:value="modelValue"
       v-on:input="updateModel"
       v-bind:type="inputType"
+      v-bind:min="minimumValue"
+      v-bind:max="maximumValue"
     />
   </label>
 </template>
@@ -60,6 +62,20 @@ export default class SimpleLabeledInput extends Vue {
     default: "text",
   })
   readonly inputType: string;
+
+  @Prop({
+    type: Number,
+    required: false,
+    default: null,
+  })
+  readonly minimumValue: number;
+
+  @Prop({
+    type: Number,
+    required: false,
+    default: null,
+  })
+  readonly maximumValue: number;
 
   updateModel(event){
      this.$emit("update:modelValue", event.target.value);

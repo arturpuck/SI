@@ -32,6 +32,8 @@ import ArrowLeftIcon from '@svgicon/left_arrow_icon.vue';
 import SimpleLabeledInput from '@jscomponents-form-controls/simple_labeled_input.vue';
 import AngleTopIcon from "@svgicon/angle_top_icon.vue";
 
+type NumberOrString = string | number;
+
 const settings = {
 
   mixins: [SideBarVisibilityMixin],
@@ -144,44 +146,19 @@ const settings = {
     },
 
     minimumMovieTime(): number {
-      const parsedValue = parseInt(this.minimumMovieTimeRaw);
-      if(parsedValue < 0){
-        this.minimumMovieTimeRaw = '';
-        return 0;
-      }  
-      return parsedValue;
+      return  parseInt(this.minimumMovieTimeRaw);
     },
-
+    
     maximumMovieTime(): number {
-      return parseInt(this.maximumMovieTimeRaw);
+      return  parseInt(this.maximumMovieTimeRaw);
     },
-
+    
     minimumMovieViews(): number {
-      return parseInt(this.minimumMovieViewsRaw);
+      return  parseInt(this.minimumMovieViewsRaw);
     },
-
+    
     maximumMovieViews(): number {
-      return parseInt(this.maximumMovieViewsRaw);
-    },
-
-    minimumMovieTimeLabel(): string {
-      return (this.minimumMovieTime == 0) ?
-        this.searchEngineTranslations['notSelected'] : `${this.minimumMovieTime} ${this.searchEngineTranslations['selectedTimeLabel']}`;
-    },
-
-    maximumMovieTimeLabel(): string {
-      return (this.maximumMovieTime == 0) ?
-        this.searchEngineTranslations['notSelected'] : `${this.maximumMovieTime} ${this.searchEngineTranslations['selectedTimeLabel']}`;
-    },
-
-    minimumMovieViewsLabel(): string {
-      return (this.minimumMovieViews == 0) ?
-        this.searchEngineTranslations['notSelected'] : `${this.minimumMovieViews} ${this.searchEngineTranslations['selectedViewsLabel']}`;
-    },
-
-    maximumMovieViewsLabel(): string {
-      return (this.maximumMovieViews == 0) ?
-        this.searchEngineTranslations['notSelected'] : `${this.maximumMovieViews} ${this.searchEngineTranslations['selectedViewsLabel']}`;
+      return  parseInt(this.maximumMovieViewsRaw);
     },
 
     totalMoviesFoundCaption(): string {
