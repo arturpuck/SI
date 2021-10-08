@@ -22,6 +22,11 @@
             {{__('further')}}
             <arrow-right-icon class="control-panel-button__icon"></arrow-right-icon>
          </button>
+         <button type="button" v-show="!advancedSearchPanelIsVisible" v-on:click="scrollPageToTop"  class="aditional-control-panel__button--up">
+            <span class="aditional-control-panel__description">{{__('scroll_page_up')}}</span>
+            <angle-top-icon class="control-panel-button__icon"></angle-top-icon>
+         </button>
+         
       </fieldset>
       <fieldset class="panel-group">
          <legend class="panel-group-legend">

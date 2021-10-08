@@ -13,7 +13,7 @@
 
 @mixin control-panel-button-icon {
     vertical-align: middle;
-    margin-right: 5px;
+    margin:0 2px;
     min-width: 12px;
     fill: white;
     height: auto;
@@ -23,9 +23,9 @@
     border: none;
     outline: none;
     display: block;
-    padding: 3px;
+    padding: 2px;
     text-align: center;
-    margin: 0 4px;
+    margin: 0 2px;
     border-radius: 4px;
     cursor: pointer;
     white-space: nowrap;
@@ -221,7 +221,7 @@
             background: linear-gradient(#ec1515, #8a240a);
         }
 
-        &--arrow-down {
+        &--up {
             @include fixed-control-control-panel-button();
             background: #1d42d2;
         }
@@ -229,6 +229,10 @@
         &--light-red{
             @include fixed-control-control-panel-button();
             background: linear-gradient(to right, #b31f45, #da1047);
+        }
+
+        &--up{
+
         }
     }
 }

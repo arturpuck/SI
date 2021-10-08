@@ -589,27 +589,27 @@
 .control-panel-button__icon {
   width: 1em;
   vertical-align: middle;
-  margin-right: 5px;
+  margin: 0 2px;
   min-width: 12px;
   fill: white;
   height: auto; }
   .control-panel-button__icon--bigger {
     width: 1.5em;
     vertical-align: middle;
-    margin-right: 5px;
+    margin: 0 2px;
     min-width: 12px;
     fill: white;
     height: auto; }
   .control-panel-button__icon--arrow-down {
     vertical-align: middle;
-    margin-right: 5px;
+    margin: 0 2px;
     min-width: 12px;
     fill: white;
     height: auto;
     width: 15%; }
   .control-panel-button__icon--reset {
     vertical-align: middle;
-    margin-right: 5px;
+    margin: 0 2px;
     min-width: 12px;
     fill: white;
     height: auto;
@@ -657,9 +657,9 @@
     border: none;
     outline: none;
     display: block;
-    padding: 3px;
+    padding: 2px;
     text-align: center;
-    margin: 0 4px;
+    margin: 0 2px;
     -webkit-border-radius: 4px;
        -moz-border-radius: 4px;
             border-radius: 4px;
@@ -684,9 +684,9 @@
     border: none;
     outline: none;
     display: block;
-    padding: 3px;
+    padding: 2px;
     text-align: center;
-    margin: 0 4px;
+    margin: 0 2px;
     -webkit-border-radius: 4px;
        -moz-border-radius: 4px;
             border-radius: 4px;
@@ -707,13 +707,13 @@
     .aditional-control-panel__button--red:hover {
       -webkit-filter: saturate(1.7);
               filter: saturate(1.7); }
-  .aditional-control-panel__button--arrow-down {
+  .aditional-control-panel__button--up {
     border: none;
     outline: none;
     display: block;
-    padding: 3px;
+    padding: 2px;
     text-align: center;
-    margin: 0 4px;
+    margin: 0 2px;
     -webkit-border-radius: 4px;
        -moz-border-radius: 4px;
             border-radius: 4px;
@@ -725,18 +725,18 @@
     color: white;
     background: #1d42d2; }
     @media (max-width: 1200px) {
-      .aditional-control-panel__button--arrow-down {
+      .aditional-control-panel__button--up {
         font-size: 13px; } }
-    .aditional-control-panel__button--arrow-down:hover {
+    .aditional-control-panel__button--up:hover {
       -webkit-filter: saturate(1.7);
               filter: saturate(1.7); }
   .aditional-control-panel__button--light-red {
     border: none;
     outline: none;
     display: block;
-    padding: 3px;
+    padding: 2px;
     text-align: center;
-    margin: 0 4px;
+    margin: 0 2px;
     -webkit-border-radius: 4px;
        -moz-border-radius: 4px;
             border-radius: 4px;

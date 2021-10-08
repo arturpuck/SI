@@ -30,6 +30,7 @@ import { MovieBasicData } from '@interfaces/movies/MovieBasicData';
 import ArrowRightIcon from '@svgicon/right_arrow_icon.vue';
 import ArrowLeftIcon from '@svgicon/left_arrow_icon.vue';
 import SimpleLabeledInput from '@jscomponents-form-controls/simple_labeled_input.vue';
+import AngleTopIcon from "@svgicon/angle_top_icon.vue";
 
 const settings = {
 
@@ -54,6 +55,7 @@ const settings = {
     InfoCircleIcon,
     ArrowRightIcon,
     ArrowLeftIcon,
+    AngleTopIcon
   },
 
   data() {
@@ -199,6 +201,10 @@ const settings = {
 
     showNotification: NotificationFunction,
 
+    scrollPageToTop() : void {
+      window.scroll(0, 0);
+    },
+
     showSearchPanel(): void {
       this.resetPanel();
       this.advancedSearchPanelIsVisible = true;
@@ -330,7 +336,7 @@ const settings = {
 
     loadMovies(moviesList: PageListUpdate<MovieBasicData>): void {
       this.totalMoviesFound = moviesList.totalElements
-      window.scroll(0, 0);
+      this.scrollPageToTop();
 
       if (moviesList.totalElements > 0) {
         //@ts-ignore
