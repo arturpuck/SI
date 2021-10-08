@@ -16,8 +16,7 @@ Class AddMovieLikeHandler  {
                                               'user_id'  => \Auth::user()->id]);
       $movieRating->user_assigned_like = true;
       $movieRating->save();
-      $movieLikes = MovieRatingsDataExtractor::getAmmountOfLikes(\Auth::user(), ...$movieRating->movie->votes);
-      return response()->json($movieLikes, 200);
+      return response()->json($movieRating->movie->getLikesData(userLikesMovie:true), 200);
     }
     
 }

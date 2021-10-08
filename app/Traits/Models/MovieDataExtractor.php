@@ -13,7 +13,7 @@ trait MovieDataExtractor
         return Str::startsWith($value, "00") ? Str::substr($value, 3, 5) : $value;
     }
 
-    public function getLikesData(?int $userID = null): array
+    public function getLikesData(?int $userID = null, ?bool $userLikesMovie = null): array
     {
         $data = [
             'totalLikes' => intval($this->votes?->where('user_assigned_like', true)?->count()),
@@ -23,6 +23,10 @@ trait MovieDataExtractor
             $data['userLikesMovie'] = boolval($this->votes?->where('user_id', $userID)
                 ->where('user_assigned_like', true)
                 ->isNotEmpty());
+        }
+
+        if($userLikesMovie !== null){
+            $data['userLikesMovie'] = $userLikesMovie;
         }
         return $data;
     }
@@ -72,4 +76,5 @@ trait MovieDataExtractor
 
         return count($matchingTypes) > 0 ? $matchingTypes : false;
     }
+
 }
