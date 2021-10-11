@@ -385,6 +385,7 @@ export default {
       accept_button_caption : "Akceptuję - zamknij",
       show_content_side_bar_title : "Rozwiń nawigację strony dla wersji mobilnej",
       show_content_side_bar_caption : "Menu",
+      cancel_like : "cofnij like'a",
       show_authenticated_user_sidebar_title : "Rozwiń menu użytkownika, ustawienia profilu, wylogowanie itp.",
       show_authenticated_user_sidebar_caption : "Profil",
       the_latest : "Najnowsze",

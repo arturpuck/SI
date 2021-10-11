@@ -122,7 +122,7 @@
                 @endif
                 <label  class="choose-avatar-button">
                     {{__('choose_avatar')}}
-                    <input type="file" v-on:change="processImageFromHardDrive" name="avatar_from_hard_drive" class="avatar-file">
+                    <input type="file" accept="image/*" v-on:change="processImageFromHardDrive" name="avatar_from_hard_drive" class="avatar-file">
                     <server-storage-icon class="upload-from-disc-icon"></server-storage-icon>
                 </label>
                 <div v-text="avatarFileName" class="avatar-file-name"></div>

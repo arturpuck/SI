@@ -170,6 +170,11 @@
     }
 }
 
+.glowing-element{
+    filter: drop-shadow(0px 0px 18px rgb(0,200,0));
+}
+
+
 .movie-voting{
     padding: 2.5vw 1vw 1vw;
     display:flex;
@@ -200,36 +205,6 @@
         color:white;
     }
 
-    &__vote-icon{
-
-        &--spermatozoid-icon{
-            
-            @include responsive-icon(0 5px, 5vw, 50px);
-            @include vote-icon();
-            fill:white;
-            &:hover {
-                cursor: pointer;
-                fill:#d22d2d;
-             }
-    
-             &:active{
-                 animation: increase-size 0.5s;
-             }
-        }
-
-        &--like-background-icon{
-            @include responsive-icon(0 5px, 4vw, 50px);
-            @include vote-icon();
-            &:hover {
-                cursor: pointer;
-             }
-             &:active{
-                animation: increase-size 0.5s;
-            }
-        }
-    }
-
-
     &__information-container{
         width:100%;
         @include responsive-font();
@@ -256,4 +231,41 @@
         fill: #1ebb19;
         flex-shrink: 0;
     }
+}
+
+.vote-icon{
+
+    &--spermatozoid{
+        
+        @include responsive-icon(0 5px, 5vw, 50px);
+        @include vote-icon();
+        fill:white;
+        &:hover {
+            cursor: pointer;
+            fill:#d22d2d;
+         }
+
+         &:active{
+             animation: increase-size 0.5s;
+         }
+    }
+
+    &--like-background{
+        @include responsive-icon(5px auto, 4vw, 50px);
+        @include vote-icon();
+        border-radius:50%;
+        &:hover {
+            cursor: pointer;
+         }
+         &:active{
+            animation: increase-size 0.5s;
+        }
+    }
+
+}
+
+.like-button-box{
+    text-align: center;
+    color:white;
+    @include responsive-font(1.1vw,12px);
 }

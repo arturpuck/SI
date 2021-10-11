@@ -5,9 +5,9 @@ namespace App\Http\Requests\Movies;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use App\Rules\Movies\UserHasNotAddedLikeToMovie;
+use Illuminate\Validation\Rule;
 
-class AddMovieLikeRequest extends FormRequest
+class ToggleMovieLikeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -16,7 +16,7 @@ class AddMovieLikeRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return \Auth::check();
     }
 
     /**
@@ -27,7 +27,8 @@ class AddMovieLikeRequest extends FormRequest
     public function rules()
     {
         return [
-            'movie_id' => ['exists:movies,id', new UserHasNotAddedLikeToMovie()]
+            'movie_id' => ['required', 'exists:movies,id'],
+            'user_likes_movie' => ['required', 'boolean']
         ];
     }
 

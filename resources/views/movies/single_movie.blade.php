@@ -25,7 +25,7 @@
                <time v-bind:datetime="addedAtLabel" v-text="addedAtLabel" class="movie-information__detail-value"></time>
             </span>
 
-            <span v-if="moviePornstars" class="movie-information__detail">
+            <span v-if="anyPornstarsPlayRole" class="movie-information__detail">
                <star-full-icon class="movie-information__icon--star"></star-full-icon>
                <span class="movie-information__detail-key">{{__('pornstars_movie_caption')}} :</span>
                <a v-for="pornstar in moviePornstars" v-bind:href="`/gwiazda-porno/profil/${getPornstarSlug(pornstar.nickname)}`" v-text="`${pornstar.nickname} `" class="movie-information__pornstar-profile-link"></a>
@@ -57,8 +57,11 @@
             <star-rating label="{{__('your_rate')}}" v-bind:show-number="true" v-on:selected="rateMovie">
             </star-rating>
 
-            <spermatozoid-icon v-on:click="addSpermatozoid" role="button" class="movie-voting__vote-icon--spermatozoid-icon"></spermatozoid-icon>
-            <like-background-icon v-on:click="addLike" role="button" class="movie-voting__vote-icon--like-background-icon"></like-background-icon>
+            <spermatozoid-icon v-on:click="addSpermatozoid" role="button" class="vote-icon--spermatozoid"></spermatozoid-icon>
+            <div class="like-button-box">
+               <span v-if="userLikesMovie" v-text="cancelLike"></span>
+               <like-background-icon v-on:click="toggleLike" role="button" v-bind:class="{'glowing-element' : userLikesMovie}" class="vote-icon--like-background"></like-background-icon>
+            </div>
             @else
             <div class="movie-voting__registered-users-only-info">
                <unknown-person-icon class="movie-voting__icon"></unknown-person-icon>

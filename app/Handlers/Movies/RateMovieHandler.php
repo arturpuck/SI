@@ -19,8 +19,7 @@ class RateMovieHandler
             ['user_vote' => $request->get('user_vote')]
         );
        
-        $movieRating = MovieRatingsDataExtractor::getRating(\Auth::user(), ...$movieRating->movie->votes);
-        return response()->json($movieRating, 200);
+        return response()->json($movieRating->movie->getRatings(\Auth::user()?->id), 200);
     }
 
 }

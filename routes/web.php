@@ -46,7 +46,7 @@ Route::namespace ('Movies')->name('movies.')->group(function () {
     Route::put('/add/spermatozoid', 'MoviesController@addSpermatozoid')
         ->name('rate.spermatozoid')->middleware('auth');
 
-    Route::put('/movie/add-like', 'MoviesController@addLike')
+    Route::put('/movie/toggle-like', 'MoviesController@toggleLike')
         ->name('add.like')->middleware('auth');
 
     Route::get('/movie/similar/{movie}', 'MoviesController@getSimilarMovies')

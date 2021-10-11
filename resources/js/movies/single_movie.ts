@@ -118,15 +118,12 @@ const settings = {
 
         },
 
-        async addLike() {
+        async toggleLike() {
 
-            if (this.userLikesMovie) {
-                this.showNotification(this.translator.translate('you_already_like_this_movie'));
-                return;
-            }
 
             const requestBody = {
-                movie_id: this.movie_id
+                movie_id: this.movie_id,
+                user_likes_movie : Number(!this.userLikesMovie)
             };
 
             const requestData = {
@@ -139,13 +136,12 @@ const settings = {
             };
 
             try {
-                const response = await fetch('/movie/add-like', requestData);
+                const response = await fetch('/movie/toggle-like', requestData);
 
                 switch (response.status) {
                     case 200:
                         const movieLikesData: MovieLikes = await response.json();
                         this.loadMovieLikes(movieLikesData);
-                        this.showNotification(this.translator.translate('you_like_it'));
                         break;
 
                     case 400:
@@ -427,6 +423,14 @@ const settings = {
 
         similarMoviesTabIsSelected(): boolean {
             return this.selectedTab === MovieTheatreTab.SimilarMovies;
+        },
+
+        anyPornstarsPlayRole() : boolean {
+           return this.moviePornstars && (this.moviePornstars.length > 0);
+        },
+
+        cancelLike() : string {
+           return this.translator.translate('cancel_like');
         },
 
         movieCommentsTabIsSelected(): boolean {

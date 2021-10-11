@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\MoviesRepository;
 use App\Handlers\Movies\RateMovieHandler;
-use App\Handlers\Movies\AddMovieLikeHandler;
+use App\Handlers\Movies\ToggleMovieLikeHandler;
 use App\Handlers\Movies\AdvancedSearchHandler;
 use App\Http\Requests\Movies\RateMovieRequest;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +17,7 @@ use App\Handlers\Movies\GetMovieDetailsHandler;
 use App\Handlers\Movies\ShowSingleMovieHandler;
 use App\Handlers\Movies\GetMovieCommentsHandler;
 use App\Handlers\Movies\GetSimilarMoviesHandler;
-use App\Http\Requests\Movies\AddMovieLikeRequest;
+use App\Http\Requests\Movies\ToggleMovieLikeRequest;
 use App\Handlers\Movies\GetMoviesByCategoryHandler;
 use App\Handlers\Movies\GetTheMostPopularMoviesHandler;
 use App\Http\Requests\Movies\AddMovieCommentRequest;
@@ -85,7 +85,7 @@ class MoviesController extends Controller
         return $handler->handle($request);
     }
 
-    public function addLike(AddMovieLikeHandler $handler, AddMovieLikeRequest $request): Response
+    public function toggleLike(ToggleMovieLikeHandler $handler, ToggleMovieLikeRequest $request): Response
     {
         return $handler->handle($request);
     }
