@@ -113,7 +113,7 @@ const settings = {
       },
 
       fileIsToBig(file) {
-         return (file.size / 1000) > 300;
+         return (file.size / 1000) > 2048;
       },
 
       readFile(file) {

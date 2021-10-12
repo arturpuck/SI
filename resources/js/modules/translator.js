@@ -46,7 +46,7 @@ export default {
    pl: {
       email_has_already_been_taken: "Adres email jest już zajęty",
       current_number_of_votes : "Liczba oddanych głosów",
-      file_size_exceeds_limit : "Rozmiar pliku przekracza dopuszczalny limit (300 kB)",
+      file_size_exceeds_limit : "Rozmiar pliku przekracza dopuszczalny limit (2 MB)",
       an_error_occured_while_fetching_pornstar_rating : "Podczas próby pobrania rankingu gwiazdy pojawił się niespodziewany bład",
       i_forgot_password : "Zapomniałem hasła",
       password : "Hasło",

@@ -26,7 +26,7 @@ class ChangeAvatarRequest extends FormRequest
     public function rules()
     {
         return [
-            'avatar_from_hard_drive' => ['required','image', 'mimes:jpeg,png,jpg,gif,svg,webp,bmp', 'min:1', 'max:300']
+            'avatar_from_hard_drive' => ['required','image', 'mimes:jpeg,png,jpg,gif,svg,webp,bmp', 'min:1', 'max:2048']
         ];
     }
 
@@ -37,7 +37,7 @@ class ChangeAvatarRequest extends FormRequest
             'avatar_from_hard_drive.mimes' => 'invalid_image_extension',
             'avatar_from_hard_drive.dimensions' => 'invalid_image_dimensions',
             'avatar_from_hard_drive.image' => 'the_file_selected_from_hard_drive_is_not_an_image',
-            'avatar_from_hard_drive.max' => 'the_file_selected_from_hard_drive_exceeds_300_kilobytes',
+            'avatar_from_hard_drive.max' => 'the_file_selected_from_hard_drive_exceeds_2_Mb',
         ];
     }
 }
