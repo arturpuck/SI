@@ -127,9 +127,6 @@ Route::middleware(['auth'])->name('auth.user.')->namespace('Auth\User')->group(f
     Route::put('user/profile/settings/avatar', 'UserSettingsController@changeAvatar')
         ->name('upload.avatar')->middleware('api');
 
-    Route::get('/validate/avatar', 'UserSettingsController@validateAvatar')
-        ->name('validate.avatar')->middleware('api');
-
     Route::delete('user/profile/settings/avatar/delete', 'UserSettingsController@deleteAvatar')
         ->name('delete.avatar')->middleware('api');
 

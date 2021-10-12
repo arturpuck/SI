@@ -32,7 +32,7 @@
 <body class="full-body @isset($customBodyClass){{$customBodyClass}}@endisset">
 	<div class="aplication-container" id="app">
 		<navbar @auth v-bind:user-id="{{Auth::user()->id}}" user-name="{{Auth::user()->login}}" @if(Auth::user()->has_avatar)
-			avatar-file-name="{{Auth::user()->avatar_file_name}}"
+			initial-avatar-file-name="{{Auth::user()->avatar_file_name}}"
 			@endif
 			@endauth
 			>

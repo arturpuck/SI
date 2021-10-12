@@ -46,7 +46,7 @@ export default {
    pl: {
       email_has_already_been_taken: "Adres email jest już zajęty",
       current_number_of_votes : "Liczba oddanych głosów",
-
+      file_size_exceeds_limit : "Rozmiar pliku przekracza dopuszczalny limit (300 kB)",
       an_error_occured_while_fetching_pornstar_rating : "Podczas próby pobrania rankingu gwiazdy pojawił się niespodziewany bład",
       i_forgot_password : "Zapomniałem hasła",
       password : "Hasło",
@@ -98,7 +98,6 @@ export default {
       email_has_already_been_taken: "Email jest już zajęty",
       email_seems_to_be_incorrect: "Email wygląda na nieprawidłowy",
       you_are_under_18: "Nie ukończyłeś 18 lat",
-      avatar_has_been_deleted_successfully: "Pomyślnie usunięto avatar, zmiany będą widoczne po odświeżeniu strony",
       the_user_has_no_avatar: "Użytkownik nie posiada avataru",
       password_change_attempt: "Próba zmiany hasła",
       password_changed_successfully: "Pomyślnie zmieniono hasło",
@@ -388,6 +387,9 @@ export default {
       cancel_like : "cofnij like'a",
       show_authenticated_user_sidebar_title : "Rozwiń menu użytkownika, ustawienia profilu, wylogowanie itp.",
       show_authenticated_user_sidebar_caption : "Profil",
+      selected_avatar : "Nowy avatar",
+      no_avatar_has_been_choosen : "Nie wybrano avataru",
+      current_avatar : "Wybrany avatar",
       the_latest : "Najnowsze",
       the_most_popular : "Najpopularniejsze",
       advanced_search : "Szukanie zaawansowane",

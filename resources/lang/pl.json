@@ -104,10 +104,8 @@
     "data": "Dane",
     "save_data": "Zapisz dane",
     "password_is_required_for_any_changes": "Aby wprowadzić zmiany należy podać hasło",
-    "no_avatar_has_been_choosen": "Nie zatwierdzono jeszcze avataru",
-    "current_avatar": "Aktualny avatar",
     "choose_avatar": "Wybierz plik z dysku",
-    "avatar_requirements_information": "Maksymalne rozmiary avataru to 128 x 128 pikseli. Dozwolone rozszerzenia : jpg, jpeg, png, bmp, svg, gif, webp",
+    "avatar_requirements_information": "Maksymalny rozmiar avataru to 300 kB. Dozwolone rozszerzenia : jpg, jpeg, png, bmp, svg, gif, webp",
     "url_address": "Adres URL",
     "accept_avatar": "Zatwierdź",
     "avatar_changed_successfully": "Pomyślnie zmieniono avatar",
@@ -286,5 +284,7 @@
     "your_avatar" : "twój avatar",
     "you_have_been_successfully_registered" : "Zostałeś zarejestrowany pomyślnie",
     "back_to_search_panel_short" : "szukaj",
-    "time_in_minutes" : "Czas podany jest w minutach"
+    "time_in_minutes" : "Czas podany jest w minutach",
+    "the_file_selected_from_hard_drive_exceeds_300_kilobytes" : "Wybrany plik przekracza 300 kB",
+    "no_image_has_been_selected" : "Nie wybrano żadnego obrazu"
 }

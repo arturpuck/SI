@@ -15,16 +15,16 @@
                   {{__('password')}}
                 </li>
                 <li role="tab" v-bind:aria-selected="otherTabIsActive" aria-controls="other-panel"  v-on:click="showApropriateContent('otherTab')" v-bind:class="{'active-tab' : otherTabIsActive}" class="user-settings-tab">
-                  <span class="fas fa-cogs tab-icon"></span>
+                  <settings-icon class="tab-icon"></settings-icon>
                   {{__('other')}}
                 </li>
            </ul>
            <div class="arrows-container">
                <phantom-button v-on:click="previousTab" label="{{__('previous_tab')}}">
-                  <span class="fas fa-arrow-left arrow-icon"></span>
+                   <left-arrow-icon class="arrow-icon"></left-arrow-icon>
                </phantom-button>
                <phantom-button v-on:click="nextTab" label="{{__('next_tab')}}">
-                  <span class="fas fa-arrow-right arrow-icon"></span>
+                  <right-arrow-icon class="arrow-icon"></right-arrow-icon>
                </phantom-button>
            </div>
        </nav>
@@ -94,38 +94,25 @@
                 </text-input-combo>
                 <accept-button v-on:click="tryToEditUserData">{{__('save_data')}}</accept-button>
             </form>
-            <form id="avatar-panel" action="{{route('auth.user.upload.avatar')}}" method="POST" v-show="avatarTabIsActive" enctype="multipart/form-data" class="avatar-settings user-settings">
+            <form id="avatar-panel" ref="avatarPanel" data-user-has-avatar="{{Auth::user()->has_avatar}}" data-avatar-file-name="{{Auth::user()->avatar_file_name}}" action="{{route('auth.user.upload.avatar')}}" method="POST" v-show="avatarTabIsActive" enctype="multipart/form-data" class="avatar-settings user-settings">
                 @method('PUT')    
                 @csrf
                 <p class="information-for-user">
                     {{__('avatar_requirements_information')}}
                 </p>
                
-                <div class="information-for-user avatar-notification">
-                    @if(Auth::user()->has_avatar)
-                        {{__('current_avatar')}}
-                    @else
-                        {{__('no_avatar_has_been_choosen')}}
-                    @endif
-                </div>
-                @if(Auth::user()->has_avatar)
-                     <img src="{{Auth::user()->avatar_file_path}}" class="avatar-image" alt="{{__('your_avatar')}}">
-                @else
-                       <avatar-icon class="undefined-avatar"></avatar-icon>
-                @endif
-                
-                @if(Auth::user()->has_avatar)
-                <button v-on:click="deleteAvatar" v-show="showDeleteAvatarButton" class="delete-avatar-button" type="button">
+                <div v-text="userAvatarNotification" class="information-for-user avatar-notification"></div>
+                     <img v-bind:src="avatarFileSource" v-bind:class="{'custom-avatar' : newAvatarFileName}" class="avatar-image" alt="{{__('your_avatar')}}">
+                <button v-on:click="deleteAvatar" v-if="userHasApprovedAvatar" class="delete-avatar-button" type="button">
                     {{__('delete_my_avatar')}}
                     <backspace-erase-icon class="delete-avatar-icon"></trash-can-icon>
                 </button>
-                @endif
-                <label  class="choose-avatar-button">
+                <label class="choose-avatar-button">
                     {{__('choose_avatar')}}
                     <input type="file" accept="image/*" v-on:change="processImageFromHardDrive" name="avatar_from_hard_drive" class="avatar-file">
                     <server-storage-icon class="upload-from-disc-icon"></server-storage-icon>
                 </label>
-                <div v-text="avatarFileName" class="avatar-file-name"></div>
+                <div v-text="newAvatarFileName" class="avatar-file-name"></div>
                 <submit-button>{{__('accept_avatar')}}</submit-button>
             </form>
             <form id="password-panel" v-show="passwordTabIsActive" class="user-settings">

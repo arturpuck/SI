@@ -205,7 +205,7 @@
     background-image: url("/images/decoration/user-settings/background-images/compressed/chick-in-bar-m-0-min.jpg"); } }
 
 .show-age-checkbox {
-  padding: 0 5px; }
+  padding: 5%; }
 
 .information-icon {
   fill: #ef0244;
@@ -254,7 +254,7 @@
   -moz-transition: background 1s;
   transition: background 1s;
   cursor: pointer;
-  padding: 0 8px;
+  padding: 5px 8px;
   line-height: 170%;
   -webkit-border-radius: 8px 8px 0 0;
      -moz-border-radius: 8px 8px 0 0;
@@ -269,10 +269,10 @@
 
 .tab-icon {
   margin: 0 2px;
-  width: 1em;
+  width: 1.3em;
   height: auto;
   fill: white;
-  vertical-align: text-bottom; }
+  vertical-align: middle; }
 
 .first-tab {
   margin-left: 5%; }
@@ -293,11 +293,15 @@
   -webkit-border-radius: 50%;
      -moz-border-radius: 50%;
           border-radius: 50%;
-  padding: 7px;
-  color: white;
+  fill: white;
+  width: 2vw;
+  margin: 5px;
   cursor: pointer; }
+  @media (max-width: 1200px) {
+    .arrow-icon {
+      width: 25px; } }
   .arrow-icon:hover {
-    background: black; }
+    fill: #dfe218; }
 
 .settings-controls-container {
   position: relative; }
@@ -312,7 +316,12 @@
   display: block;
   margin: 10px auto;
   width: 128px;
-  height: 128px; }
+  height: 128px;
+  -o-object-fit: cover;
+     object-fit: cover; }
+
+.custom-avatar {
+  border: 1px solid silver; }
 
 .undefined-avatar {
   -webkit-border-radius: 8px;

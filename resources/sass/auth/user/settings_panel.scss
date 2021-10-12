@@ -1,12 +1,13 @@
 @import '~sass/basic';
 @import '~sass/background_images';
 @import '~sass/shadow_container';
+@import '~sass/responsive_icon';
 
 $imageFolder : user-settings;
 @include background-image(chick-in-bar,1);
 
 .show-age-checkbox{
-    padding:0 5px;
+    padding:5%;
 }
 
 .information-icon{
@@ -43,7 +44,7 @@ $imageFolder : user-settings;
     background:black;
     transition: background 1s;
     cursor:pointer;
-    padding:0 8px;
+    padding:5px 8px;
     line-height: 170%;
     border-radius:8px 8px 0 0;
 }
@@ -55,10 +56,10 @@ $imageFolder : user-settings;
 
 .tab-icon{
     margin:0 2px;
-    width:1em;
+    width:1.3em;
     height:auto;
     fill:white;
-    vertical-align: text-bottom;
+    vertical-align: middle;
 }
 
 .first-tab{
@@ -77,11 +78,11 @@ $imageFolder : user-settings;
 
 .arrow-icon{
     border-radius:50%;
-    padding:7px;
-    color:white;
+    fill:white;
+    @include responsive-icon(5px, 2vw, 25px);
 
     &:hover{
-        background:black;
+        fill:#dfe218;
     }
     cursor:pointer;
 }
@@ -100,7 +101,12 @@ $imageFolder : user-settings;
     margin:10px auto;
     width:128px;
     height:128px;
+    object-fit: cover;
 } 
+
+.custom-avatar{
+    border : 1px solid silver; 
+}
 
 .undefined-avatar{
     border-radius:8px;

@@ -27,10 +27,6 @@ class UserSettingsController extends Controller
          return auth()->user()->modifyBasicData($request);
     }
 
-    public function validateAvatar(AvatarValidationRequest $request){
-        return response('success', 200)->header('Content-Type', 'text/plain');
-    }
-
     public function changeAvatar(ChangeAvatarRequest $request){
         return auth()->user()->changeAvatar($request);
     }

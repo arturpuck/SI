@@ -63,16 +63,12 @@
           v-if="userIsAuthenticated"
           class="navigation-element-main navbar-element-user"
         >
-          <avatar-icon
-            v-if="!avatarFileName"
-            class="navbar-icon navbar-icon-outer"
-          ></avatar-icon>
           <span v-text="userName" class="user-nick"></span>
           <img
-            v-if="avatarFileName"
             v-bind:src="avatarFilePath"
             v-bind:alt="userAvatarDescription"
             class="user-avatar"
+            v-bind:class="{'custom-avatar' : userHasCustomAvatar}"
           />
           <roll-down-button
             v-bind:class="{
@@ -197,6 +193,7 @@ import AvatarIcon from "@svgicon/avatar_icon";
 import SideBarVisibilityMixin from "@js/mixins/side_bar_visibility";
 import RollDownButton from "@jscomponents/form_controls/roll_down_button";
 import Translations from "@jsmodules/translations/components/navbar";
+import AvatarConfig from "@config/paths/avatar";
 import { defineAsyncComponent } from 'vue';
 
 const CategoriesList = defineAsyncComponent(() => import("@jscomponents/categories_list"));
@@ -222,10 +219,10 @@ export default {
       default: "",
     },
 
-    avatarFileName: {
+    initialAvatarFileName: {
       required: false,
       type: String,
-      default: "",
+      default: AvatarConfig.defaultAvatarFileName,
     },
   },
   data() {
@@ -240,6 +237,7 @@ export default {
       contentSideBarIsVisible: false,
       showCategories: false,
       translations: Translations,
+      avatarFileName : ''
     };
   },
 
@@ -261,6 +259,10 @@ export default {
   },
 
   methods: {
+
+    resetAvatar(){
+       this.avatarFileName = AvatarConfig.defaultAvatarFileName;
+    },
    
     showCategoriesList() {
       this.resetNavbar();
@@ -348,12 +350,16 @@ export default {
   },
 
   computed: {
+    userHasCustomAvatar(){
+      return this.avatarFileName != AvatarConfig.defaultAvatarFileName;
+    },
+
     anySubMenuIsVisible() {
       return this.pornSubMenuIsVisible;
     },
 
     avatarFilePath() {
-      return `/images/decoration/users/avatars/${this.avatarFileName}`;
+      return `${AvatarConfig.avatarRootDirectory}${this.avatarFileName}`;
     },
 
     userAvatarDescription() {
@@ -376,9 +382,11 @@ export default {
   },
 
   mounted() {
+    this.avatarFileName = this.initialAvatarFileName;
     this.emitter.on("hideSideBar", this.hideAuthenticatedUserSideBar);
     this.emitter.on("hideContentBar", this.hideContentSideBar);
     this.emitter.on("showMoviesCategories", this.showCategoriesList);
+    this.emitter.on('resetAvatar', this.resetAvatar)
     this.csrfToken = document.getElementById("csrf-token").content; 
   },
 

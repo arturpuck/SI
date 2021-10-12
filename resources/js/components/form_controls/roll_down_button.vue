@@ -24,7 +24,7 @@ export default class RollDownButton extends Vue {
 @import "~sass/fonts";
 
 .roll-down-button {
-  background: #2b282b;
+  background: black;
   cursor: pointer;
   padding: 4px 2px;
   text-align: center;
