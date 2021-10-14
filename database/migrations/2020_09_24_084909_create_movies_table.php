@@ -15,7 +15,7 @@ class CreateMoviesTable extends Migration
     {
         try{
 
-            \DB::unprepared(file_get_contents('database/dumps/movies_latest.sql'));
+            \DB::unprepared(\DB::raw(file_get_contents('database/dumps/movies_latest.sql')));
         }
         catch(\Exception $exception){
             dump($exception->getMessage());
