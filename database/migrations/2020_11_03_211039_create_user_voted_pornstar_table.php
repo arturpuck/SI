@@ -16,9 +16,9 @@ class CreateUserVotedPornstarTable extends Migration
         Schema::create('user_voted_pornstar', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('pornstar_id');
-            $table->foreign('pornstar_id')->references('id')->on('pornstars');
+            $table->foreign('pornstar_id')->references('id')->on('pornstars')->onDelete('cascade');
             $table->unsignedTinyInteger('rate');
             $table->timestamps();
         });

@@ -83,7 +83,7 @@ class User extends Authenticatable
         return isset($this->avatar_file_name) and $this->has_avatar_file_stored;
     }
 
-    private function deletePreviousAvatarFileFromStorage(){
+    public function deletePreviousAvatarFileFromStorage(){
 
         try{
               if($this->has_avatar){

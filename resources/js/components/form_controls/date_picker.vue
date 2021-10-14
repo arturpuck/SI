@@ -90,12 +90,16 @@
 <script>
 import MonthsInDifferentLanguages from "@jsmodules/months_in_different_languages.js";
 import PadlockIcon from "@svgicon/padlock_icon.vue";
+import IconStop from '@jscomponents/decoration/icon_stop.vue';
+import IconConfirm from '@jscomponents/decoration/icon_confirm.vue';
 
 export default {
   name: "date-picker",
 
   components: {
     PadlockIcon,
+    IconStop,
+    IconConfirm
   },
 
   methods: {

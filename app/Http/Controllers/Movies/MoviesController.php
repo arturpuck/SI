@@ -59,7 +59,7 @@ class MoviesController extends Controller
         ]);
     }
 
-    public function advancedSearch(Request $request, AdvancedSearchHandler $handler): MovieCollection
+    public function advancedSearch(Request $request, AdvancedSearchHandler $handler)
     {
         return $handler->handle($request);
     }

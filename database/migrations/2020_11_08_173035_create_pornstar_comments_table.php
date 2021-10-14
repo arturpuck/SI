@@ -16,7 +16,7 @@ class CreatePornstarCommentsTable extends Migration
         Schema::create('pornstar_comments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('pornstar_id');
             $table->foreign('pornstar_id')->references('id')->on('pornstars');
             $table->unsignedBigInteger('parent_comment_id')->nullable();

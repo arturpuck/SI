@@ -12,7 +12,7 @@ Class AdvancedSearchHandler {
 
     public function __construct(private MoviesRepository $moviesRepository){}
 
-    public function handle(Request $request) : MovieCollection{
+    public function handle(Request $request) {
 
         $validationResult = MoviesAdvancedSearchValidator::validate($request);
 
@@ -21,14 +21,7 @@ Class AdvancedSearchHandler {
             $page = $request->get('page');
             $request->request->remove('page');
 
-            $this->moviesRepository->select([
-                'movies.id',
-                'title',
-                'views',
-                'created_at',
-                'is_translated_to_polish',
-                'duration'
-            ])->withBasicPornstarList();
+            $this->moviesRepository->withBasicPornstarList();
 
             foreach($request->all() as $fieldName => $value){
 
@@ -40,7 +33,6 @@ Class AdvancedSearchHandler {
             
             $this->moviesRepository->filterByPage($page);
             $movies = $this->moviesRepository->get();
-            //return response()->json(['totalMovies' => $totalMatchingMovies, 'movies' => $movies],200);
             return new MovieCollection($movies, $totalMatchingMovies,$page);
         }
         else{

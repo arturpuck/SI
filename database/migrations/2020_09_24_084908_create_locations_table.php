@@ -25,7 +25,7 @@ class CreateLocationsTable extends Migration
             ['name' => 'bathroom'],
             ['name' => 'office'],
             ['name' => 'school'],
-            ['name' => 'public place'],
+            ['name' => 'public_place'],
             ['name' => 'car'],
             ['name' => 'nature'],
             ['name' => 'solarium'],

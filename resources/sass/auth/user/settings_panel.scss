@@ -208,5 +208,21 @@ $imageFolder : user-settings;
     color:white;
 }
 
+.delete-account{
+    display:block;
+    text-align:center;
+    color:white;
+    background: linear-gradient(to bottom, #e61a1a, #9e1010);
+    @include responsive-font(1.4vw, 18px);
+    width: 90%;
+    border: 1px solid red;
+    border-radius: 3px;
+    margin:0 auto;
+    cursor:pointer;
+    &:hover{
+        filter:drop-shadow(0 0 5px red);
+    }
+}
+
 
 

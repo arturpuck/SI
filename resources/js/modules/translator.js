@@ -44,6 +44,9 @@ export default {
    },
 
    pl: {
+      delete : 'usuń',
+      cancel : 'anuluj',
+      account_deletion_warning : "Czy na pewno chcesz usunąć konto? Znikną wszystkie komentarze i wystawione oceny. Nie będzie można tego cofnąć. Jeżeli jesteś pewny/a wpisz hasło i kliknij usuń",
       email_has_already_been_taken: "Adres email jest już zajęty",
       current_number_of_votes : "Liczba oddanych głosów",
       file_size_exceeds_limit : "Rozmiar pliku przekracza dopuszczalny limit (2 MB)",

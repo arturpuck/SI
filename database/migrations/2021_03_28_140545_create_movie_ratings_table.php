@@ -16,9 +16,9 @@ class CreateMovieRatingsTable extends Migration
         Schema::create('movie_ratings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('movie_id');
-            $table->foreign('movie_id')->references('id')->on('movies');
+            $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');;
             $table->tinyInteger('user_vote')->nullable()->default(null);
             $table->smallInteger('ammount_of_spermatozoids')->unsigned()->default(0);
             $table->boolean('user_assigned_like')->default(false);

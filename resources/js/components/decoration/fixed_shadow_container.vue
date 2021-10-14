@@ -14,13 +14,13 @@
 
 .fixed-shadow-container{
     position:fixed;
-    width:100vw;
+    width:100%;
     height:100vh;
     background:rgba(0,0,0,0.7);
     display:flex;
     justify-content: center;
     align-items: center;
-    z-index: 1;
+    z-index: 6;
     top: 0;
     left: 0;
 }

@@ -459,3 +459,28 @@
 .settings-panel-checkbox {
   color: white; }
 
+.delete-account {
+  display: block;
+  text-align: center;
+  color: white;
+  background: -webkit-gradient(linear, left top, left bottom, from(#e61a1a), to(#9e1010));
+  background: -webkit-linear-gradient(top, #e61a1a, #9e1010);
+  background: -moz-linear-gradient(top, #e61a1a, #9e1010);
+  background: -o-linear-gradient(top, #e61a1a, #9e1010);
+  background: linear-gradient(to bottom, #e61a1a, #9e1010);
+  font-size: 1.4vw;
+  font-family: "Exo 2", sans-serif;
+  width: 90%;
+  border: 1px solid red;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  margin: 0 auto;
+  cursor: pointer; }
+  @media (max-width: 1200px) {
+    .delete-account {
+      font-size: 18px; } }
+  .delete-account:hover {
+    -webkit-filter: drop-shadow(0 0 5px red);
+            filter: drop-shadow(0 0 5px red); }
+

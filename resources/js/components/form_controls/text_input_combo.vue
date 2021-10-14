@@ -13,7 +13,10 @@
       }"
       class="text-input-combo-value-label"
     >
-      <padlock-icon v-if="isDisabled" class="disabled-input-icon"></padlock-icon>
+      <padlock-icon
+        v-if="isDisabled"
+        class="disabled-input-icon"
+      ></padlock-icon>
       <icon-stop
         v-bind:attached-icon="true"
         v-if="iconErrorCanBeDisplayed"
@@ -43,7 +46,7 @@
 import PadlockIcon from "@svgicon/padlock_icon.vue";
 import IconStop from "@jscomponents-decoration/icon_stop.vue";
 import IconConfirm from "@jscomponents-decoration/icon_confirm.vue";
-import Translator from '@jsmodules/translator';
+import Translator from "@jsmodules/translator";
 
 export default {
   name: "text-input-combo",
@@ -51,7 +54,7 @@ export default {
   components: {
     PadlockIcon,
     IconStop,
-    IconConfirm
+    IconConfirm,
   },
 
   data() {
@@ -63,7 +66,7 @@ export default {
       iconConfirmationCanBeDisplayed: undefined,
       redBorderCanBeDisplayed: undefined,
       greenBorderCanBeDisplayed: undefined,
-      translator : Translator
+      translator: Translator,
     };
   },
 
@@ -126,7 +129,9 @@ export default {
 
   mounted() {
     if (this.onBlurCallback) {
-      this.$refs.text_input.addEventListener("blur", () => this.onBlurCallback(this));
+      this.$refs.text_input.addEventListener("blur", () =>
+        this.onBlurCallback(this)
+      );
     }
 
     if (this.inputId) {
@@ -306,6 +311,21 @@ export default {
   flex-grow: 10;
   padding-left: 4px;
   box-shadow: 0 0 0 1000px #242229 inset;
+  &:-webkit-autofill {
+    -webkit-text-fill-color: white;
+    font: inherit;
+    border:none;
+  }
+
+  &:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    font: inherit;
+  }
+  &:-webkit-autofill:hover {
+    -webkit-text-fill-color: white;
+    font: inherit;
+  }
+
 }
 
 .text-input-combo-value,

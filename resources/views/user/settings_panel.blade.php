@@ -156,6 +156,8 @@
                 v-bind:checked-at-start="{{Auth::user()->shows_birthday ? 'true' : 'false'}}">
                   {{__('show_my_age_to_other_users')}}
                 </labeled-checkbox>
+                <button type="button" v-on:click="toggleDeleteAccountDialogBox"  class="delete-account">{{__('delete_account')}}</button>
+                <account-deletion v-if="deleteAccountDialogBoxIsVisible" v-on:close="toggleDeleteAccountDialogBox"></account-deletion>
                 <text-input-combo ref="current_password_other_settings"
                  v-bind:complete-error-display-available="true"
                  name="password"

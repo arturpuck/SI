@@ -121,20 +121,25 @@ Route::middleware(['auth'])->name('auth.user.')->namespace('Auth\User')->group(f
     Route::get('profil/ustawienia', 'UserSettingsController@showPanel')
         ->name('settings.show.panel');
 
-    Route::patch('user/profile/settings/basic', 'UserSettingsController@updateBasicSettings')
-        ->name('update.basic.settings')->middleware('api');
+    Route::group(['prefix' => 'user/profile/settings/'], function() {
 
-    Route::put('user/profile/settings/avatar', 'UserSettingsController@changeAvatar')
-        ->name('upload.avatar')->middleware('api');
+        Route::patch('basic', 'UserSettingsController@updateBasicSettings')
+            ->name('update.basic.settings')->middleware('throttle:5,1');
 
-    Route::delete('user/profile/settings/avatar/delete', 'UserSettingsController@deleteAvatar')
-        ->name('delete.avatar')->middleware('api');
+        Route::put('avatar', 'UserSettingsController@changeAvatar')
+            ->name('upload.avatar');
 
-    Route::patch('user/profile/settings/password/change', 'UserSettingsController@changePassword')
-        ->name('change.password')->middleware('api');
+        Route::delete('avatar/delete', 'UserSettingsController@deleteAvatar')
+            ->name('delete.avatar');
 
-    Route::patch('user/profile/settings/other/change', 'UserSettingsController@changeOtherSettings')
-        ->name('change.other')->middleware('api');
+        Route::patch('password/change', 'UserSettingsController@changePassword')
+            ->name('change.password')->middleware('throttle:3,1');
 
-    
+        Route::patch('other/change', 'UserSettingsController@changeOtherSettings')
+            ->name('change.other')->middleware('throttle:5,1');
+
+    });
+
+    Route::delete('/delete/account', 'DeleteAccountController@deleteAccount')
+         ->name('delete.account');
 });

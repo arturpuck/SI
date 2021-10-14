@@ -1,8 +1,6 @@
 import BasicElements from '@jsmodules/basic.js';
 import { createApp } from 'vue';
 import TextareaCombo from '@jscomponents/form_controls/textarea_combo.vue';
-import IconStop from '@jscomponents/decoration/icon_stop.vue';
-import IconConfirm from '@jscomponents/decoration/icon_confirm.vue';
 import DescribedSelect from '@jscomponents/form_controls/described_select.vue';
 import DatePicker from '@jscomponents/form_controls/date_picker.vue';
 import ExpectCircle from '@jscomponents/decoration/expect_circle.vue';
@@ -20,6 +18,8 @@ import AvatarConfig from "@config/paths/avatar";
 import LeftArrowIcon from "@svgicon/left_arrow_icon.vue";
 import RightArrowIcon from "@svgicon/right_arrow_icon.vue";
 import SettingsIcon from "@svgicon/settings_icon.vue";
+import { defineAsyncComponent } from 'vue';
+const AccountDeletion = defineAsyncComponent(() => import("@jscomponents/user/account_deletion.vue"));
 
 const settings = {
 
@@ -30,8 +30,6 @@ const settings = {
       ExpectCircle,
       AcceptButton,
       UserNotification,
-      IconConfirm,
-      IconStop,
       EditPenIcon,
       ImagePhotographyIcon,
       KeyIcon,
@@ -42,6 +40,7 @@ const settings = {
       LeftArrowIcon,
       RightArrowIcon,
       SettingsIcon,
+      AccountDeletion
    },
 
    data() {
@@ -70,7 +69,8 @@ const settings = {
          currentExpectDecorationLabel: undefined,
          hiddenIcon: false,
          userHasApprovedAvatar: undefined,
-         avatarFileSource: undefined
+         avatarFileSource: undefined,
+         deleteAccountDialogBoxIsVisible : false
       }
 
    },
@@ -79,6 +79,10 @@ const settings = {
 
       emailExists: EmailValidator.emailExists,
       emailhasCorrectFormat: EmailValidator.emailhasCorrectFormat,
+
+      toggleDeleteAccountDialogBox() { 
+         this.deleteAccountDialogBoxIsVisible = !this.deleteAccountDialogBoxIsVisible;
+      },
 
       nextTab() {
          const lastTabIndex = this.availableTabs.length - 1;

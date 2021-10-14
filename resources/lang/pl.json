@@ -13,6 +13,7 @@
     "birth_date": "Data urodzenia",
     "register": "Rejestruj",
     "password": "Hasło",
+    "incorrect_password" : "Błędne hasło",
     "email": "Email",
     "login": "Login",
     "male_i": "mężczyzną",
@@ -286,5 +287,7 @@
     "back_to_search_panel_short" : "szukaj",
     "time_in_minutes" : "Czas podany jest w minutach",
     "the_file_selected_from_hard_drive_exceeds_2_Mb" : "Wybrany plik przekracza 2 Mb",
-    "no_image_has_been_selected" : "Nie wybrano żadnego obrazu"
+    "no_image_has_been_selected" : "Nie wybrano żadnego obrazu",
+    "delete_account" : "usuń konto użytkownika",
+    "your_account_and_all_related_data_has_been_deleted" : "Twoje konto, wszystkie powiązane komentarze i głosy zostały usunięte"
 }

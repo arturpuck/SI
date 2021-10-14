@@ -28,7 +28,7 @@ import ButtonClose from "@jscomponents/form_controls/button_close.vue";
 import { Vue, Options } from "vue-property-decorator";
 import Translator from '@jsmodules/translator.js';
 import InfoCircleIcon from "@svgicon/info_circle_icon.vue";
-import ExclamationErrorIcon from "@svgicon/exclamation_error_icon.vue";
+import ExclamationErrorIcon from "@svgicon/exclamation_icon.vue";
 
 
 @Options({ name: "UserNotification", components: { ButtonClose, InfoCircleIcon, ExclamationErrorIcon } })
