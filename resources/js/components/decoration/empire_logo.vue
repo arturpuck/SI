@@ -56,7 +56,7 @@ export default {
   width: 0.9em;
   margin-right: 2px;
   fill: #eb091c;
-  vertical-align: text-top;
+  vertical-align: baseline;
 }
 
 .logo-description-short {

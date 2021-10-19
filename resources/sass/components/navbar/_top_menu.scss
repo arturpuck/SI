@@ -189,6 +189,10 @@ $border-color: black;
 
 .user-nick{
 	margin:0 4px;
+	@media(max-width:570px){
+		max-width:150px;
+		overflow: hidden;
+	}
 }
 
 .user-avatar{
