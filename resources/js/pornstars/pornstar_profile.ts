@@ -346,6 +346,4 @@ const settings = {
 
 const app = createApp(settings);
 BasicElements.registerBasicComponents(app);
-
-
 app.mount("#app");

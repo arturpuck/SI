@@ -13,14 +13,7 @@ class CreateMovieHasPornstarTable extends Migration
      */
     public function up()
     {
-        Schema::create('movie_has_pornstar', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('movie_id');
-            $table->foreign('movie_id')->references('id')->on('movies');
-            $table->unsignedBigInteger('pornstar_id');
-            $table->foreign('pornstar_id')->references('id')->on('pornstars');
-            $table->engine = 'InnoDB';
-        });
+        \DB::unprepared(\DB::raw(file_get_contents('database/dumps/movie_has_pornstar.sql')));
     }
 
     /**
