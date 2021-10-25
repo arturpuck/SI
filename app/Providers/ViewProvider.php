@@ -31,7 +31,8 @@ class ViewProvider extends ServiceProvider
                 'pornstar_profile',
                 'advanced_search',
                 'category_specific',
-                'single_movie'
+                'single_movie',
+                'session_expired'
             ];
 
             $viewName = Str::afterLast($view->getName(), ".");

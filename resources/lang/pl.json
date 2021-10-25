@@ -289,5 +289,9 @@
     "the_file_selected_from_hard_drive_exceeds_2_Mb" : "Wybrany plik przekracza 2 Mb",
     "no_image_has_been_selected" : "Nie wybrano żadnego obrazu",
     "delete_account" : "usuń konto użytkownika",
-    "your_account_and_all_related_data_has_been_deleted" : "Twoje konto, wszystkie powiązane komentarze i głosy zostały usunięte"
+    "your_account_and_all_related_data_has_been_deleted" : "Twoje konto, wszystkie powiązane komentarze i głosy zostały usunięte",
+    "session_expired" : "Sesja wygasła",
+    "session_expired_description" : "Z powodu braku aktywności przez okres czasu większy niż :minutes minut ważność straciły zabezpieczenia formularzy. Jeżeli byłeś zalogowany nastąpiło wylogowanie. Aby ponowić próbę wystarczy przejść ponownie na porządaną stronę bez wykorzystywania przycisku przeglądarki \"wstecz\".",
+    "back_to_previous_page" : "Kliknij tutaj aby powrócić do poprzedniej strony",
+    "back_to_main_page" : "Kliknij tutaj aby powrócić do strony głównej"
 }

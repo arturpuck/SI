@@ -27,6 +27,7 @@ mix.js('resources/js/mainpage.js', 'public/js').vue()
    .ts('resources/js/pornstars/pornstar_profile.ts', 'public/js').vue()
    .ts('resources/js/pornstars/pornstars_list.ts', 'public/js').vue()
    .ts('resources/js/movies/single_movie.ts', 'public/js').vue()
+   .ts('resources/js/auth/session_expired.ts', 'public/js').vue()
    .sass('resources/sass/auth/user/settings_panel.scss', 'public/css')
    .sass('resources/sass/pornstars/pornstar_profile.scss', 'public/css')
    .sass('resources/sass/auth/register.scss', 'public/css')
@@ -36,6 +37,7 @@ mix.js('resources/js/mainpage.js', 'public/js').vue()
    .sass('resources/sass/auth/password_reset_confirmation.scss', 'public/css')
    .sass('resources/sass/pornstars/pornstars_list.scss', 'public/css')
    .sass('resources/sass/movies/advanced_search.scss', 'public/css')
+   .sass('resources/sass/auth/session_expired.scss', 'public/css')
    .sourceMaps()
   .options({ processCssUrls: false })
   .babelConfig({
@@ -43,6 +45,7 @@ mix.js('resources/js/mainpage.js', 'public/js').vue()
     presets: ["@babel/env"]
   })
   .webpackConfig({
+    
     plugins: [
       new webpack.DefinePlugin({
         __VUE_OPTIONS_API__: true,
