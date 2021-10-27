@@ -38,7 +38,6 @@ mix.js('resources/js/mainpage.js', 'public/js').vue()
    .sass('resources/sass/pornstars/pornstars_list.scss', 'public/css')
    .sass('resources/sass/movies/advanced_search.scss', 'public/css')
    .sass('resources/sass/auth/session_expired.scss', 'public/css')
-   .sourceMaps()
   .options({ processCssUrls: false })
   .babelConfig({
     plugins: ['@babel/plugin-syntax-dynamic-import',  "@babel/plugin-transform-modules-commonjs"],

@@ -148,6 +148,7 @@ export default {
       logout: "Wyloguj",
       porn: "Porno",
       user_avatar_description: "Avatar użytkownika o nicku",
+      default_avatar : "Domyślny avatar, przedstawia bliżej niezidentyfikowanego użytkownika", 
       hide: "Schowaj",
       element_has_been_rated: "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie.",
       pornstar_rate_data_is_invalid: "Niepoprawne dane oceny lub gwiazdy",

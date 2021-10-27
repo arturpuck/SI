@@ -363,7 +363,8 @@ export default {
     },
 
     userAvatarDescription() {
-      return this.translations["user_avatar_description"];
+      return this.userHasCustomAvatar ? `${this.translations['user_avatar_description']} : ${this.userName}` : 
+       this.translations['default_avatar'];
     },
 
     loginPanelShouldBeVisible() {

@@ -12,7 +12,9 @@ const translations : {
     the_latest : string,
     the_most_popular : string,
     advanced_search : string,
-    pornstars_navbar_caption : string
+    pornstars_navbar_caption : string,
+    default_avatar : string,
+    user_avatar_description : string
     
 } = {
     showContentSideBarButtonTitle : Translator.translate('show_content_side_bar_title'),
@@ -27,6 +29,8 @@ const translations : {
     the_most_popular : Translator.translate('the_most_popular'),
     advanced_search : Translator.translate('advanced_search'),
     pornstars_navbar_caption : Translator.translate('pornstars_navbar_caption'),
+    default_avatar : Translator.translate('default_avatar'),
+    user_avatar_description : Translator.translate('user_avatar_description'),
 };
 
 export default translations;
