@@ -183,6 +183,7 @@ $borders-difference: 0.8vw;
 
 .green-light {
   background: linear-gradient(#2af92a, #054006);
+  flex-shrink: 0;
 }
 
 .preview-close-icon {

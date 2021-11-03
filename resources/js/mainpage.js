@@ -7,8 +7,25 @@ import StarFullIcon from '@svgicon/star_full_icon.vue';
 import VideoPlaylistIcon from '@svgicon/video_playlist_icon.vue';
 import MagnifierIcon from '@svgicon/magnifier_icon.vue';
 import AddFileIcon from '@svgicon/add_file_icon.vue';
+import MovieMediaPlayerIcon from "@svgicon/movie_media_player_icon";
+import HorizontalScrollList from "@jscomponents/movies/horizontal_scroll_list"
+import MovieBox from "@jscomponents/movies/movie_box.vue";
+import MoviePreviewComplete from "@jscomponents/movies/movie_preview_complete.vue";
 
 const settings = {
+
+  components : {
+    SmileInGlassesIcon,
+    RocketLaunchIcon,
+    StarFullIcon,
+    VideoPlaylistIcon,
+    MagnifierIcon,
+    AddFileIcon,
+    MovieMediaPlayerIcon,
+    HorizontalScrollList,
+    MovieBox,
+    MoviePreviewComplete
+  },
 
   data() {
      return {
@@ -28,11 +45,5 @@ const settings = {
 
 const app = createApp(settings);
 BasicElements.registerBasicComponents(app);
-app.component('smile-in-glasses-icon', SmileInGlassesIcon);
-app.component('rocket-launch-icon', RocketLaunchIcon);
-app.component('star-full-icon', StarFullIcon);
-app.component('video-playlist-icon', VideoPlaylistIcon);
-app.component('magnifier-icon', MagnifierIcon);
-app.component('add-file-icon', AddFileIcon);
 app.mount("#app");
 

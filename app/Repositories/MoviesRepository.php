@@ -59,6 +59,13 @@ class MoviesRepository extends BaseRepository
         return $this;
     }
 
+    public function filterByAmmountOfTheLatest(int $ammountOfLatestMovies): MoviesRepository
+    {
+        $this->chronological();
+        $this->query = $this->query->take($ammountOfLatestMovies);
+        return $this;
+    }
+
     public function sortByTheMostPopular(): MoviesRepository
     {
         $this->query = $this->query->orderBy('views', 'desc');

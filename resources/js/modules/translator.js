@@ -399,6 +399,8 @@ export default {
       advanced_search : "Szukanie zaawansowane",
       login_or_email : "Login lub email",
       remember_me : "Zapamiętaj mnie",
+      scroll_movies_list_left : "Przewiń listę filmów w lewo",
+      scroll_movies_list_right : "Przewiń listę filmów w prawo",
       packages: {
          content_sidebar: {
             hide_side_bar_title: "Schowaj boczne menu",

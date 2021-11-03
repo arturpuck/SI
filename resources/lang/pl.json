@@ -293,5 +293,6 @@
     "session_expired" : "Sesja wygasła",
     "session_expired_description" : "Z powodu braku aktywności przez okres czasu większy niż :minutes minut ważność straciły zabezpieczenia formularzy. Jeżeli byłeś zalogowany nastąpiło wylogowanie. Aby ponowić próbę wystarczy przejść ponownie na porządaną stronę bez wykorzystywania przycisku przeglądarki \"wstecz\".",
     "back_to_previous_page" : "Kliknij tutaj aby powrócić do poprzedniej strony",
-    "back_to_main_page" : "Kliknij tutaj aby powrócić do strony głównej"
+    "back_to_main_page" : "Kliknij tutaj aby powrócić do strony głównej",
+    "new_movies" : "Nowe filmy"
 }

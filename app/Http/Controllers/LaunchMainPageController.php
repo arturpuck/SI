@@ -1,28 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Repositories\NewsRepository;
 
-use Illuminate\Http\Request;
+use App\Handlers\MainPageHandler;
 
 class LaunchMainPageController extends Controller
 {
-    public function showMainPage(NewsRepository $newsRepository)
+    public function showMainPage(MainPageHandler $mainPageHandler)
     {
-       
-        $news = $newsRepository
-                ->filterByPage(1)
-                ->chronological()
-                ->get();
-        
-        return view('mainpage')->with([
-            'customBodyClass' => 'empire-background-image-'.rand(1,4),
-            'news' => $news
-        ]);
+       return $mainPageHandler->handle();
     }
 
-    public function test()
-    {
-       return view('test');
-    }
 }

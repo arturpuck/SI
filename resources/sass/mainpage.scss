@@ -38,15 +38,20 @@ $imageFolder: mainpage;
     @include responsive-font(1vw, 16px, "Exo 2", 1400px);
 }
 
-.main-content {
+.main-content{
+    margin: calc(40px + 1vw) auto;
+    width: 75%;
+    box-shadow: 2px 2px 3px 3px black;
+    border-radius: 3px;
+}
+
+.main-content__info {
     display: flex;
     background: rgba(0, 0, 0, 0.85);
     flex-wrap: nowrap;
     flex-direction: row;
-    border-radius: 8px;
-    box-shadow: 2px 2px 3px 3px black;
-    margin: calc(40px + 1vw) auto;
-    width: 75%;
+    border-radius: 8px 8px 0 0;
+    width: 100%;
     height: min-content;
     min-height: 360px;
     justify-content: stretch;
@@ -90,7 +95,7 @@ $imageFolder: mainpage;
 .quick-start-header {
     @include responsive-font(1.3vw, 18px, Aldrich);
     @include news-header-basic();
-    background: #211e1e;
+    background: #131111;
 }
 
 .quickstart-options-list {
@@ -101,24 +106,33 @@ $imageFolder: mainpage;
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background: black;
+    background: #131111;
+}
+
+.quickstart-option:first-child {
+    background:#242229;
+}
+
+.quickstart-option:not(:first-child) {
+    background:black;
 }
 
 .quickstart-option {
     text-align: center;
     cursor: pointer;
-    margin: 0;
     padding: 0;
     flex-grow: 1;
     transition: background 1.5s;
+    margin: 5px 0 0 10px;
+    border-radius: 5px 5px 0 0;
     &:hover {
-        background: #ef0244;
+        background: #242229
+    }
+    @media(max-width: 800px){
+        margin: 5px 0 0 5px;
     }
 }
 
-.quickstart-option:hover .quickstart-option-icon {
-    fill: white;
-}
 
 .quickstart-option-icon {
     @include news-icon-basic();
@@ -129,7 +143,7 @@ $imageFolder: mainpage;
 .quickstart-option-description {
     display: block;
     text-align: center;
-    @include responsive-font(0.9vw, 15px, "Exo 2", 1500px);
+    @include responsive-font(1.3vw, 12px, "Exo 2", 1200px);
     color: white;
     padding: 3px 0;
 }
@@ -142,6 +156,14 @@ $imageFolder: mainpage;
 .quickstart-link {
     display: block;
     text-decoration: none;
+}
+
+.movie-box{
+    margin:0 6px;
+    width:min-content;
+    @media(max-width:470px){
+        margin: 10px 0;
+    }
 }
 
 @media (max-width: 1200px) {
@@ -165,14 +187,28 @@ $imageFolder: mainpage;
         min-width: 290px;
     }
 
-    .news-header {
-        border-top: 1px solid silver;
-    }
-
     .news-all {
         min-height: 250px;
         max-height: 50vh;
         overflow:auto;
     }
     @include nice-scrollbar(".news-all");
+}
+
+@media(max-width: 700px){
+
+    .main-content__info{
+        flex-direction: column;
+    }
+
+    .news-introduction{
+        max-height: 120px;
+        overflow:auto;
+    }
+
+    .default-news-content{
+        max-height: 170px;
+    }
+
+    @include nice-scrollbar(".news-introduction");
 }
