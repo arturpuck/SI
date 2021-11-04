@@ -1,7 +1,6 @@
 
 import { createApp } from 'vue';
 import BasicElements from '@jsmodules/basic.js';
-import SmileInGlassesIcon from '@svgicon/smile_in_glasses_icon.vue';
 import RocketLaunchIcon from '@svgicon/rocket_launch_icon.vue';
 import StarFullIcon from '@svgicon/star_full_icon.vue';
 import VideoPlaylistIcon from '@svgicon/video_playlist_icon.vue';
@@ -15,7 +14,6 @@ import MoviePreviewComplete from "@jscomponents/movies/movie_preview_complete.vu
 const settings = {
 
   components : {
-    SmileInGlassesIcon,
     RocketLaunchIcon,
     StarFullIcon,
     VideoPlaylistIcon,

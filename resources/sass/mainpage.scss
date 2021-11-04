@@ -31,13 +31,6 @@ $imageFolder: mainpage;
     fill:#ef0244;
 }
 
-.news-introduction {
-    padding: 3px 5px;
-    margin: 0;
-    flex-grow: 10;
-    @include responsive-font(1vw, 16px, "Exo 2", 1400px);
-}
-
 .main-content{
     margin: calc(40px + 1vw) auto;
     width: 75%;
@@ -57,27 +50,10 @@ $imageFolder: mainpage;
     justify-content: stretch;
 }
 
-.introductory-content {
-    width: 30%;
-    min-width: 320px;
-    @include responsive-font(1vw, 16px, "Exo 2", 1300px);
-    color: white;
-    border-right: 1px solid silver;
-    display: flex;
-    flex-direction: column;
-}
-
-.introductory-header,
 .news-header {
     @include responsive-font(2vw, 25px, Aldrich);
     @include news-header-basic();
     background: black;
-}
-
-.introductory-header-icon {
-    fill: #ef0244;
-    @include responsive-icon(0 5px, 2vw, 25px);
-    vertical-align: middle;
 }
 
 .quick-start-icon {
@@ -85,11 +61,6 @@ $imageFolder: mainpage;
     transition: fill 1.5s;
     @include responsive-icon(0 3px, 1.6vw, 20px);
     vertical-align: middle;
-}
-
-.news-container {
-    flex-grow: 100;
-    margin-top: 7px;
 }
 
 .quick-start-header {
@@ -150,7 +121,6 @@ $imageFolder: mainpage;
 
 .news-container {
     overflow: auto;
-    height: calc(100% - 14px - 1.4vw);
 }
 
 .quickstart-link {
@@ -159,18 +129,13 @@ $imageFolder: mainpage;
 }
 
 .movie-box{
-    margin:0 6px;
+    margin:20px 6px;
     width:min-content;
     @media(max-width:470px){
         margin: 10px 0;
     }
 }
 
-@media (max-width: 1200px) {
-    .news-container {
-        height: calc(100% - 55px);
-    }
-}
 
 @media (max-width: 830px) {
     .main-content {
@@ -181,11 +146,6 @@ $imageFolder: mainpage;
         height: auto;
     }
 
-    .introductory-content {
-        width: 100%;
-        border-right: none;
-        min-width: 290px;
-    }
 
     .news-all {
         min-height: 250px;
@@ -207,7 +167,7 @@ $imageFolder: mainpage;
     }
 
     .default-news-content{
-        max-height: 170px;
+        max-height: 270px;
     }
 
     @include nice-scrollbar(".news-introduction");
