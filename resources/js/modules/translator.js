@@ -325,7 +325,7 @@ export default {
       teachers: 'nauczycielki',
       japanese: 'japonki',
       russian: 'rosjanki',
-      pornstars: 'gwiazdy',
+      pornstars: 'gwiazdy porno',
       blowjobAmount: 'obciąganie',
       handjobAmount: 'walenie konika',
       doublePenetrationamount: "wtyczka",

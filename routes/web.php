@@ -11,6 +11,8 @@
 |
  */
 
+Route::get('sitemap.xml', 'SiteMapGeneratorController@generateSiteMap');
+
 Route::get('/', 'LaunchMainPageController@showMainPage')
     ->name('main.page');
 Route::get('/kontakt', 'ContactFormController@showContactForm')
@@ -18,7 +20,6 @@ Route::get('/kontakt', 'ContactFormController@showContactForm')
 Route::post('/contact/send-message', 'ContactFormController@sendMessageFromUser')
     ->name('contact.send.message');
 
-Route::get('/test', 'LaunchMainPageController@test');
 
 Route::namespace ('Movies')->name('movies.')->group(function () {
 
@@ -37,7 +38,7 @@ Route::namespace ('Movies')->name('movies.')->group(function () {
     Route::get('/filmy/kategoria/{categoryName}/{pageNumber?}', 'MoviesController@getMoviesByCategory')
         ->name('category.specific');
 
-    Route::get('/film/{slug}', 'MoviesController@showSingleMovie')
+    Route::get('/film-{movieID}/{slug}', 'MoviesController@showSingleMovie')
         ->name('show.single');
 
     Route::put('/rate/movie', 'MoviesController@rateMovie')

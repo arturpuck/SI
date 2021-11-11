@@ -38,5 +38,5 @@ return [
     'japonki' => 'japanese',
     'POV' => 'POV',
     'rosjanki' => 'russians',
-    'gwiazdy' => 'pornstars'
+    'gwiazdy-porno' => 'pornstars'
 ];

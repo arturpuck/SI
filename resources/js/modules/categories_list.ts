@@ -2,7 +2,7 @@ import CategoryData from '@interfaces/movies/category_data.ts';
 import Translator from '@jsmodules/translator.js';
 
 type categoryType = 'theMostPopularCategories' | 'otherCategories'
-
+// if you add any catgory remember to also add it to sitemap generator!!
 const categoriesData: {
     theMostPopularCategories: string[]
     getTheMostPopular(): CategoryData[]

@@ -1,13 +1,6 @@
 <x-base title="{{__('sex_empire_main_page')}}" customBodyClass="{{$customBodyClass}}" description="{{__('sex_empire_main_page_description')}}">
    <main class="main-content">
        <div class="main-content__info">
-      <!-- <header class="introductory-content">
-         <h1 class="introductory-header">
-             {{__('welcome')}}
-             <smile-in-glasses-icon class="introductory-header-icon"/>
-        </h1>
-         <p class="news-introduction">{{__('news_introduction')}}</p>
-        </header> -->
         <div class="news-all">
             <h1 class="news-header">{{__('news_header')}}</h1>
             <div class="news-container">

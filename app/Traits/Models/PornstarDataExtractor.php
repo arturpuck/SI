@@ -2,21 +2,27 @@
 
 namespace App\Traits\Models;
 
+use App\Traits\NiceURLGenerator;
+
 trait PornstarDataExtractor
 {
-   public function getRating(?int $userID = null) : array
-   {
-       
 
-       return [
-           'overallRating' => $this->getAverageRating(),
-           'userRating' => $userID ? $this->votes->where('userID', $userID)->first()->rate : null
-       ];
-   }
+  use NiceURLGenerator;
 
-   public function getAverageRating() : ?float 
-   {
-     $ammountOfVotes = intval($this->votes?->count());
-     return $ammountOfVotes > 9 ? round($this->votes->sum('rate') / $ammountOfVotes, 2) : null
-   }
+  public function getProfileLink() : string 
+  {
+      $nickname = ucwords($this->nickname);
+      $nickname = str_replace(' ', '-', $nickname);
+      return $this->generateNiceURL('pornstars.profile', compact('nickname'));
+  }
+
+  public function getImageFileName() : string 
+  {
+     return str_replace(' ', '_', $this->nickname).".jpg";
+  }
+
+  public function getImageURL() : string
+  {
+      return url(self::SMALL_PROFILE_IMAGE_PATH.$this->getImageFileName());
+  }
 }

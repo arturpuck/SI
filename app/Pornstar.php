@@ -10,10 +10,13 @@ use Carbon\Carbon;
 use App\PornstarRate;
 use App\PornstarComment;
 use App\Traits\Slugifier;
+use App\Traits\Models\PornstarDataExtractor;
 
 class Pornstar extends Model
 {
-    use HasFactory, Slugifier;
+    use HasFactory, Slugifier, PornstarDataExtractor;
+
+    public const SMALL_PROFILE_IMAGE_PATH = 'images/decoration/pornstars/profile-small/';
 
     public int $userRate;
     public bool $limitComments = true;

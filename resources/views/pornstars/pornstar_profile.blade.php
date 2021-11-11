@@ -37,7 +37,7 @@
                   <div class="pornstar-data-key-value-pair">
                      <dt class="pornstar-data-key pornstar-data-list-element">{{__('pornstar_official_website')}} : </dt>
                      <dl class="pornstar-data-value pornstar-data-list-element">
-                        <a class="neutral-link" href="http://www.{{$pornstar->official_website}}">{{$pornstar->official_website}}</a>
+                        <a class="neutral-link" target="_blank" href="http://{{$pornstar->official_website}}">{{$pornstar->official_website}}</a>
                      </dl>
                   </div>
                   @endif
