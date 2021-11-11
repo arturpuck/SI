@@ -16,7 +16,9 @@
         "laravel/telescope": "^4.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
-        "league/flysystem-aws-s3-v3": "^1.0"
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "spatie/browsershot": "^3.52",
+        "spatie/laravel-sitemap": "^6.0"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",

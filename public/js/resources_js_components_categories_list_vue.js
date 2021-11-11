@@ -133,7 +133,8 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 
-var translator_js_1 = __importDefault(__webpack_require__(/*! @jsmodules/translator.js */ "./resources/js/modules/translator.js"));
+var translator_js_1 = __importDefault(__webpack_require__(/*! @jsmodules/translator.js */ "./resources/js/modules/translator.js")); // if you add any catgory remember to also add it to sitemap generator!!
+
 
 var categoriesData = {
   theMostPopularCategories: ['big_titts', 'anal', 'blowjob', 'handjob', 'blondes', 'tittfuck', 'pussy_licking', 'feet', 'bukkake', 'femdom', 'BDSM', 'brunettes', 'redheads', 'milfs', 'teenagers', 'amateur', 'asian', 'latins', 'ebony', 'GangBang', 'lesbians', 'group', 'cumshot_compilations', 'cum_on_face', 'cum_swallow', 'cum_on_feet', 'creampie', 'cum_in_ass', 'cum_on_titts', 'pantyhose', 'high_heels', 'nurses', 'teachers', 'japanese', 'POV', 'russian', 'pornstars'],

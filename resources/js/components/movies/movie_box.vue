@@ -165,7 +165,7 @@ export default class MovieBox extends Vue {
   }
 
   get movieURL() {
-    return `/film/${Slugifier(this.title)}`;
+    return `/film-${this.id}/${Slugifier(this.title)}`;
   }
 
   get movieImageURL() {

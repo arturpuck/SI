@@ -11,9 +11,11 @@ Class ShowSingleMovieHandler {
 
     public function __construct(private MoviesRepository $moviesRepository){}
 
-    public function handle(string $slug){
+    public function handle(string $movieID){
 
-       $movie = $this->moviesRepository->filterBySlug($slug)
+       $id = intval($movieID);
+
+       $movie = $this->moviesRepository->filterById($id)
                                         ->get()
                                         ->first();
         ++$movie->views;
