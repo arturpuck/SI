@@ -31,8 +31,31 @@ import PageListUpdate from '@interfaces/PageListUpdate';
 import Comment from '@interfaces/Comment';
 import CommentValidator from '@jsmodules/validators/comment_validator';
 import Translator from "@jsmodules/translator.js";
+import MovieHint from "@jscomponents/movies/movie_hint.vue";
 
 const settings = {
+
+    components : {
+        MovieRollIcon,
+        TelevisionIcon,
+        DateConfirmedIcon,
+        StarFullIcon,
+        ChartGrowthIcon,
+        SpermatozoidIcon,
+        DownloadIcon,
+        StarRating,
+        UnknownPersonIcon,
+        LikeIcon,
+        UserNotification,
+        LikeBackgroundIcon,
+        InfoCircleIcon,
+        RelativeShadowContainer,
+        ExpectCircle,
+        CommentPenIcon,
+        MoviesList,
+        CommentList,
+        MovieHint
+    },
 
     data() {
 
@@ -53,7 +76,12 @@ const settings = {
             selectedTab: MovieTheatreTab.SimilarMovies,
             showCommentsFetchingDecoration: true,
             commentsPerPage: 10,
-            translator : Translator
+            translator : Translator,
+            movieTitle : '',
+            currentFrameForMovieHint : 1,
+            showMovieHint : false,
+            movieFrameCoordinances : {x : 0, y : 0},
+            movieFrame : undefined,
         }
     },
 
@@ -355,6 +383,7 @@ const settings = {
             this.views = movie.views;
             this.addedAt = movie.created_at;
             this.moviePornstars = movie.pornstars;
+            this.movieTitle = movie.title;
             this.loadMovieRating(movie.rating);
             this.loadMovieSpermatozoids(movie.spermatozoids);
             this.loadMovieLikes(movie.likes);
@@ -407,6 +436,21 @@ const settings = {
 
         getTabClassName(isActive: boolean): string {
             return isActive ? 'tablist__element--active' : 'tablist__element';
+        },
+
+        movieProgressBarHandler(event) : void {
+            this.currentFrameForMovieHint = Math.floor(Number(event.target.getAttribute('seek-value')));
+            const y =  event.clientY + window.scrollY -  this.movieFrame.offsetHeight - 10;
+            const x = event.clientX + window.scrollX - Math.floor(0.5 * this.movieFrame.offsetWidth);
+            this.movieFrameCoordinances = {x, y};
+        },
+
+        initiateImageHintForMovieProgressBar() {
+            const progressBar = document.querySelector("[data-plyr='seek']");
+            this.movieFrame = document.getElementById('movie-hint');
+            progressBar.addEventListener('mousemove', this.movieProgressBarHandler);
+            progressBar.addEventListener('mouseenter', () => this.showMovieHint = true);
+            progressBar.addEventListener('mouseleave', () => this.showMovieHint = false);
         }
     },
 
@@ -417,9 +461,15 @@ const settings = {
         this.fetchMovieData();
         this.fetchSimilarMovies();
         this.emitter.on('pageHasBeenSelectedMovieComments', this.fetchComments);
+        this.initiateImageHintForMovieProgressBar();
     },
 
     computed: {
+
+
+        movieFrameDescription() : string {
+            return `${Translator.translate('movie_frame')} : ${this.movieTitle}`;
+        },
 
         similarMoviesTabIsSelected(): boolean {
             return this.selectedTab === MovieTheatreTab.SimilarMovies;
@@ -480,22 +530,4 @@ const settings = {
 
 const app = createApp(settings);
 BasicElements.registerBasicComponents(app);
-app.component('movie-roll-icon', MovieRollIcon);
-app.component('television-icon', TelevisionIcon);
-app.component('date-confirmed-icon', DateConfirmedIcon);
-app.component('star-full-icon', StarFullIcon);
-app.component('chart-growth-icon', ChartGrowthIcon);
-app.component('spermatozoid-icon', SpermatozoidIcon);
-app.component('download-icon', DownloadIcon);
-app.component('star-rating', StarRating);
-app.component('unknown-person-icon', UnknownPersonIcon);
-app.component('like-icon', LikeIcon);
-app.component('user-notification', UserNotification);
-app.component('like-background-icon', LikeBackgroundIcon);
-app.component('info-circle-icon', InfoCircleIcon);
-app.component('relative-shadow-container', RelativeShadowContainer);
-app.component('expect-circle', ExpectCircle);
-app.component('comment-pen-icon', CommentPenIcon);
-app.component('movies-list', MoviesList);
-app.component('comment-list', CommentList);
 app.mount("#app");

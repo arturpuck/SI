@@ -4,6 +4,14 @@
          <video id="player" ref="player" data-movie-id="{{$movie->id}}" playsinline controls>
             <source src="/movies/{{$movie->id}}.mp4" type="video/mp4" />
          </video>
+         <movie-hint
+            ref="movieHint"
+            v-show="showMovieHint" 
+            v-bind:movie-id="movie_id" 
+            v-bind:current-frame="currentFrameForMovieHint" 
+            v-bind:position-coordinances="movieFrameCoordinances"
+            v-bind:movie-description="movieFrameDescription">
+        </movie-hint>
       </div>
       <section class="movie-desktop">
          <relative-shadow-container v-show="showMovieDesktopFetchingDecoration">
@@ -11,8 +19,7 @@
          </relative-shadow-container>
          <h1 class="movie-desktop__header">
             <movie-roll-icon class="movie-desktop__icon--movie-roll"></movie-roll-icon>
-            <span class="movie-desktop__title">
-               {{$movie->title}}
+            <span v-text="movieTitle" class="movie-desktop__title">
             </span>
          </h1>
          <div class="movie-information__details">
