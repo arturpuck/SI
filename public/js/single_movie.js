@@ -21355,6 +21355,9 @@ exports.default = {
     positionCoordinances: {
       required: true,
       type: Object
+    },
+    currentTime: {
+      required: true
     }
   },
   computed: {
@@ -26391,18 +26394,29 @@ var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundl
 
 (0, _vue.pushScopeId)("data-v-ced05672");
 var _hoisted_1 = ["src", "alt"];
+var _hoisted_2 = ["textContent"];
 (0, _vue.popScopeId)();
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("img", {
+  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", {
     id: "movie-hint",
-    "class": "movie-hint",
+    "aria-hidden": "true",
     style: (0, _vue.normalizeStyle)($options.positionStyle),
+    "class": "movie-hint__container"
+  }, [(0, _vue.createElementVNode)("img", {
+    "class": "movie-hint__image",
     src: $options.imageSource,
     alt: $props.movieDescription
-  }, null, 12
-  /* STYLE, PROPS */
-  , _hoisted_1);
+  }, null, 8
+  /* PROPS */
+  , _hoisted_1), (0, _vue.createElementVNode)("time", {
+    textContent: (0, _vue.toDisplayString)($props.currentTime),
+    "class": "movie-hint__time"
+  }, null, 8
+  /* PROPS */
+  , _hoisted_2)], 4
+  /* STYLE */
+  );
 }
 
 /***/ }),
@@ -28609,7 +28623,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".movie-hint[data-v-ced05672] {\n  position: absolute;\n  min-width: 150px;\n  width: 10vw;\n  height: auto;\n  border: 1px solid silver;\n  z-index: 4;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".movie-hint__container[data-v-ced05672] {\n  width: -webkit-min-content;\n  width: -moz-min-content;\n  width: min-content;\n  position: absolute;\n  height: auto;\n  border: 1px solid silver;\n  z-index: 4;\n  font-size: 0;\n}\n.movie-hint__image[data-v-ced05672] {\n  min-width: 232px;\n  width: 10vw;\n}\n.movie-hint__time[data-v-ced05672] {\n  position: absolute;\n  top: 100%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -100%);\n     -moz-transform: translate(-50%, -100%);\n      -ms-transform: translate(-50%, -100%);\n       -o-transform: translate(-50%, -100%);\n          transform: translate(-50%, -100%);\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n  background: rgba(0, 0, 0, 0.7);\n  -webkit-border-radius: 4px;\n     -moz-border-radius: 4px;\n          border-radius: 4px;\n  padding: 4px;\n}\n@media (max-width: 1200px) {\n.movie-hint__time[data-v-ced05672] {\n      font-size: 16px;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -36892,7 +36906,9 @@ var settings = {
         x: 0,
         y: 0
       },
-      movieFrame: undefined
+      movieFrame: undefined,
+      duration: '00:00:00',
+      movieFrameCurrentTime: '00:00:00'
     };
   },
   methods: {
@@ -37490,6 +37506,7 @@ var settings = {
       this.addedAt = movie.created_at;
       this.moviePornstars = movie.pornstars;
       this.movieTitle = movie.title;
+      this.duration = movie.duration;
       this.loadMovieRating(movie.rating);
       this.loadMovieSpermatozoids(movie.spermatozoids);
       this.loadMovieLikes(movie.likes);
@@ -37532,8 +37549,31 @@ var settings = {
     getTabClassName: function getTabClassName(isActive) {
       return isActive ? 'tablist__element--active' : 'tablist__element';
     },
+    convertTimeStringToSeconds: function convertTimeStringToSeconds(timeString) {
+      timeString = timeString.padStart(8, '00:');
+      var timeIngridients = timeString.split(":");
+      var summary = 0;
+      var numbersOfSeconds = [3600, 60, 1];
+      timeIngridients.forEach(function (element, arrayIndex) {
+        summary += Number(element) * numbersOfSeconds[arrayIndex];
+      });
+      return summary;
+    },
+    convertSecondsToTimeString: function convertSecondsToTimeString(seconds) {
+      var date = new Date(0);
+      date.setSeconds(seconds);
+      var timeString = date.toISOString().substring(11, 19);
+      var ingridients = timeString.split(":");
+
+      if (ingridients.length === 3 && ingridients[0] == '00') {
+        timeString = timeString.substring(3, 8);
+      }
+
+      return timeString;
+    },
     movieProgressBarHandler: function movieProgressBarHandler(event) {
       this.currentFrameForMovieHint = Math.floor(Number(event.target.getAttribute('seek-value')));
+      this.setTimeForMovieFrame();
       var y = event.clientY + window.scrollY - this.movieFrame.offsetHeight - 10;
       var x = event.clientX + window.scrollX - Math.floor(0.5 * this.movieFrame.offsetWidth);
       this.movieFrameCoordinances = {
@@ -37541,9 +37581,15 @@ var settings = {
         y: y
       };
     },
+    setTimeForMovieFrame: function setTimeForMovieFrame() {
+      var numberOfSeconds = this.convertTimeStringToSeconds(this.duration);
+      var currentTime = Math.floor(numberOfSeconds * this.currentFrameForMovieHint / 100);
+      this.movieFrameCurrentTime = this.convertSecondsToTimeString(currentTime);
+    },
     initiateImageHintForMovieProgressBar: function initiateImageHintForMovieProgressBar() {
       var _this = this;
 
+      document.getElementsByClassName('plyr__tooltip')[0].remove();
       var progressBar = document.querySelector("[data-plyr='seek']");
       this.movieFrame = document.getElementById('movie-hint');
       progressBar.addEventListener('mousemove', this.movieProgressBarHandler);
@@ -37557,7 +37603,7 @@ var settings = {
   },
   mounted: function mounted() {
     var player = new plyr_1["default"]('#player');
-    this.movie_id = this.$refs.player.getAttribute('data-movie-id');
+    this.movie_id = Number(this.$refs.player.getAttribute('data-movie-id'));
     this.csrfToken = document.getElementById("csrf-token").content;
     this.fetchMovieData();
     this.fetchSimilarMovies();

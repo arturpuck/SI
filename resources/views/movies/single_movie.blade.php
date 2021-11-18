@@ -10,6 +10,7 @@
             v-bind:movie-id="movie_id" 
             v-bind:current-frame="currentFrameForMovieHint" 
             v-bind:position-coordinances="movieFrameCoordinances"
+            v-bind:current-time="movieFrameCurrentTime"
             v-bind:movie-description="movieFrameDescription">
         </movie-hint>
       </div>

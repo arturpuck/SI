@@ -1,5 +1,8 @@
 <template>
-  <img id="movie-hint" class="movie-hint" v-bind:style="positionStyle" v-bind:src="imageSource" v-bind:alt="movieDescription"/>
+<div id="movie-hint" aria-hidden="true" v-bind:style="positionStyle" class="movie-hint__container">
+  <img class="movie-hint__image"  v-bind:src="imageSource" v-bind:alt="movieDescription"/>
+  <time v-text="currentTime" class="movie-hint__time"></time>
+</div>
 </template>
 
 <script lang="ts">
@@ -27,6 +30,10 @@ export default {
       positionCoordinances : {
           required : true,
           type : Object
+      },
+
+      currentTime : {
+          required : true
       }
   },
 
@@ -53,13 +60,36 @@ export default {
 
 <style lang="scss" scoped>
 
+@import "~sass/fonts";
+
 .movie-hint{
-    position: absolute;
-    min-width:150px;
-    width: 10vw;
-    height:auto;
-    border: 1px solid silver;
-    z-index: 4;
+
+    &__container{
+        width:min-content;
+        position: absolute;
+        height:auto;
+        border: 1px solid silver;
+        z-index: 4;
+        font-size:0;
+    }
+
+    &__image{
+        min-width:232px;
+        width: 10vw;
+    }
+
+    &__time {
+        position: absolute;
+        top:100%;
+        left:50%;
+        transform:translate(-50%, -100%);
+        @include responsive-font();
+        color:white;
+        background : rgba(0,0,0,0.7);
+        border-radius: 4px;
+        padding:4px;
+    }
 }
+
 
 </style>

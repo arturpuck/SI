@@ -13,7 +13,7 @@ import StarRating from '@jscomponents/star_rating.vue';
 import UnknownPersonIcon from '@svgicon/unknown_person_icon.vue';
 import InfoCircleIcon from '@svgicon/info_circle_icon.vue'
 import LikeIcon from '@svgicon/like_icon.vue';
-import CommentPenIcon from '@svgicon/comment_pen_icon.vue';
+import CommentPenIcon from '@svgicon/comment_pen_icon.vue'; 
 import StarRate from '@interfaces/StarRate';
 import UserNotification from '@jscomponents/user_notification';
 import NotificationFunction from '@jsmodules/notification_function';
@@ -82,6 +82,8 @@ const settings = {
             showMovieHint : false,
             movieFrameCoordinances : {x : 0, y : 0},
             movieFrame : undefined,
+            duration : '00:00:00',
+            movieFrameCurrentTime : '00:00:00'
         }
     },
 
@@ -384,6 +386,7 @@ const settings = {
             this.addedAt = movie.created_at;
             this.moviePornstars = movie.pornstars;
             this.movieTitle = movie.title;
+            this.duration = movie.duration;
             this.loadMovieRating(movie.rating);
             this.loadMovieSpermatozoids(movie.spermatozoids);
             this.loadMovieLikes(movie.likes);
@@ -438,14 +441,45 @@ const settings = {
             return isActive ? 'tablist__element--active' : 'tablist__element';
         },
 
+        convertTimeStringToSeconds(timeString : string) : number {
+           timeString = timeString.padStart(8,'00:');
+           const timeIngridients = timeString.split(":");
+           let summary = 0;
+           const numbersOfSeconds = [3600, 60, 1];
+           timeIngridients.forEach((element, arrayIndex) => {
+              summary += Number(element) *  numbersOfSeconds[arrayIndex];
+           });
+           return summary;
+
+        },
+
+        convertSecondsToTimeString(seconds : number) : string {
+            let date = new Date(0);
+            date.setSeconds(seconds); 
+            let timeString = date.toISOString().substring(11, 19);
+            const ingridients = timeString.split(":");
+            if((ingridients.length === 3) && (ingridients[0] == '00')){
+                timeString = timeString.substring(3, 8);
+            }
+            return timeString;
+        },
+
         movieProgressBarHandler(event) : void {
             this.currentFrameForMovieHint = Math.floor(Number(event.target.getAttribute('seek-value')));
+            this.setTimeForMovieFrame();
             const y =  event.clientY + window.scrollY -  this.movieFrame.offsetHeight - 10;
             const x = event.clientX + window.scrollX - Math.floor(0.5 * this.movieFrame.offsetWidth);
             this.movieFrameCoordinances = {x, y};
         },
 
+        setTimeForMovieFrame() : void {
+           const numberOfSeconds = this.convertTimeStringToSeconds(this.duration);
+           const currentTime = Math.floor(numberOfSeconds * this.currentFrameForMovieHint / 100 );
+           this.movieFrameCurrentTime = this.convertSecondsToTimeString(currentTime);
+        },
+
         initiateImageHintForMovieProgressBar() {
+            document.getElementsByClassName('plyr__tooltip')[0].remove();
             const progressBar = document.querySelector("[data-plyr='seek']");
             this.movieFrame = document.getElementById('movie-hint');
             progressBar.addEventListener('mousemove', this.movieProgressBarHandler);
@@ -456,7 +490,7 @@ const settings = {
 
     mounted() {
         const player = new Plyr('#player');
-        this.movie_id = this.$refs.player.getAttribute('data-movie-id');
+        this.movie_id = Number(this.$refs.player.getAttribute('data-movie-id'));
         this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
         this.fetchMovieData();
         this.fetchSimilarMovies();
