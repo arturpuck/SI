@@ -83,7 +83,8 @@ const settings = {
             movieFrameCoordinances : {x : 0, y : 0},
             movieFrame : undefined,
             duration : '00:00:00',
-            movieFrameCurrentTime : '00:00:00'
+            movieFrameCurrentTime : '00:00:00',
+            movieTimeInSeconds : 0
         }
     },
 
@@ -390,6 +391,7 @@ const settings = {
             this.loadMovieRating(movie.rating);
             this.loadMovieSpermatozoids(movie.spermatozoids);
             this.loadMovieLikes(movie.likes);
+            this.initiateImageHintForMovieProgressBar();
         },
 
         getPornstarSlug(pornstarNickname): string {
@@ -464,22 +466,33 @@ const settings = {
             return timeString;
         },
 
+        setCurrentFrameForMovieHint(seekValue : string) : void {
+          let result = Math.floor(Number(seekValue));
+          result = (result > 0) ? result : 1;
+          result = (result > 100) ? 100 : result;
+          this.currentFrameForMovieHint = result;
+        },
+
         movieProgressBarHandler(event) : void {
-            this.currentFrameForMovieHint = Math.floor(Number(event.target.getAttribute('seek-value')));
+            this.setCurrentFrameForMovieHint(event.target.getAttribute('seek-value'));
             this.setTimeForMovieFrame();
-            const y =  event.clientY + window.scrollY -  this.movieFrame.offsetHeight - 10;
-            const x = event.clientX + window.scrollX - Math.floor(0.5 * this.movieFrame.offsetWidth);
+            let yOffset =  window.innerWidth < 800 ? 15 : '1.5vw'
+            let y  : string | number=  event.clientY + window.scrollY -  this.movieFrame.offsetHeight - 30;
+            let x : string | number = event.clientX + window.scrollX - Math.floor(0.5 * this.movieFrame.offsetWidth);
+            x = (x < 0) ? 0 : x;
+            x = `${x}px`;
+            y = `${y}px`;
             this.movieFrameCoordinances = {x, y};
         },
 
         setTimeForMovieFrame() : void {
-           const numberOfSeconds = this.convertTimeStringToSeconds(this.duration);
-           const currentTime = Math.floor(numberOfSeconds * this.currentFrameForMovieHint / 100 );
+           const currentTime = Math.floor(this.movieTimeInSeconds * this.currentFrameForMovieHint / 100 );
            this.movieFrameCurrentTime = this.convertSecondsToTimeString(currentTime);
         },
 
         initiateImageHintForMovieProgressBar() {
-            document.getElementsByClassName('plyr__tooltip')[0].remove();
+            this.movieTimeInSeconds = this.convertTimeStringToSeconds(this.duration);
+            document.getElementsByClassName('plyr__tooltip')[0].remove(); //yeah I know this soulution is not the most elegant one however this is a temporary situation
             const progressBar = document.querySelector("[data-plyr='seek']");
             this.movieFrame = document.getElementById('movie-hint');
             progressBar.addEventListener('mousemove', this.movieProgressBarHandler);
@@ -495,7 +508,6 @@ const settings = {
         this.fetchMovieData();
         this.fetchSimilarMovies();
         this.emitter.on('pageHasBeenSelectedMovieComments', this.fetchComments);
-        this.initiateImageHintForMovieProgressBar();
     },
 
     computed: {
