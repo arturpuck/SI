@@ -21,7 +21,7 @@
       />
       <button-close
         class="preview-close-icon"
-        title="close_movie_preview"
+        v-bind:title="closeButtonCaption"
         v-on:click="hidePreview"
       />
     </div>
@@ -70,6 +70,10 @@ export default {
     playButtonCaption(): string {
       return Translations["playMoviePreview"];
     },
+
+    closeButtonCaption() : string {
+      return Translations["closeMoviePreview"];
+    }
   },
 
   mounted() {
