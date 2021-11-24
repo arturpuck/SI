@@ -130,6 +130,8 @@ export default {
       movie_frame: "Kadr z filmu",
       close_movie_preview: "Zamknij podgląd filmu",
       play_movie_preview: "Uruchom podgląd filmu",
+      launching_in_progress : "Trwa uruchamianie",
+      click_to_play_the_video : "Kliknij aby uruchomić film",
       sex_empire: "Sex-Imperium",
       movie_translated_to_polish: "Film przetłumaczony na język polski",
       scroll_next_links: "Przewijaj listę podstron do przodu",

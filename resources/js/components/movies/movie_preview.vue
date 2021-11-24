@@ -1,17 +1,26 @@
 <template>
   <div class="movie-preview-container">
-    <img
-      v-bind:src="currentFramePath"
-      v-bind:alt="movieAlt"
-      class="movie-preview-frame"
-    />
+    <div class="image-container">
+       <video v-on:playing="hideShadow" v-if="movieIsPlayedInVideoPlayer" autoplay >
+            <source v-bind:src="moviePath" type="video/mp4" />
+       </video>
+      <expect-shadow-circle v-bind:circle-label="circleLabel" class="darker-shadow" v-show="showShadow"></expect-shadow-circle>
+      <img
+        v-bind:src="currentFramePath"
+        v-bind:alt="movieAlt"
+        class="movie-preview-frame"
+        v-show="!movieIsPlayedInVideoPlayer"
+      />
+    </div>
     <div class="movie-preview-controls-and-decoration">
       <div
         aria-hidden="true"
-        class="television-decoration green-light preview-control-element"
+        class="television-control-or-decoration green-light preview-control-element"
       ></div>
+      <play-button v-on:click="launchVideoPlayer" v-bind:button-tittle="playButtonTittle" class="television-control-or-decoration play-button"></play-button>
       <input
         v-model="currentFrame"
+        v-on:click="rangeInputHandler"
         min="1"
         max="100"
         type="range"
@@ -34,6 +43,9 @@
 <script lang="ts">
 import PreviewMovieData from "@interfaces/movies/preview_movie_data";
 import Translations from "@jsmodules/translations/components/movie_preview";
+import PlayButton from "@jscomponents/movies/play_button.vue";
+import ExpectShadowCircle from "@jscomponents-decoration/expect_shadow_circle";
+
 
 export default {
   data() {
@@ -41,24 +53,58 @@ export default {
       movieID: 0,
       currentFrame: 1,
       title: "",
+      showShadow : false,
+      movieIsPlayedInVideoPlayer : false,
     };
   },
 
+  components : {
+      PlayButton,
+      ExpectShadowCircle
+  },
+
   methods: {
+    hideShadow() : void {
+      this.showShadow = false;
+    },
+
     showMoviePreview(movie: PreviewMovieData): void {
       this.currentFrame = 1;
       this.movieID = movie.id;
       this.title = movie.title;
     },
 
+    handleRangeInputWhenMovieIsNotPlayedInVideoPlayer(event: Event): void  {
+        console.log(event.target);
+    },
+
     hidePreview(): void {
       this.emitter.emit("closePreview");
     },
+
+    launchVideoPlayer() : void {
+      this.showShadow = true;
+      this.movieIsPlayedInVideoPlayer = true;
+
+    }
+
   },
 
-  computed: {
+  watch : {
+      currentFrame() : void {
+         if(this.movieIsPlayedInVideoPlayer){
+
+         }
+      }
+  },
+
+  computed: {  //this is rather stupid approach however I don't have time to work with this
     movieAlt(): string {
       return `${Translations["movieFrame"]} : ${this.title}`;
+    },
+
+    moviePath() : string {
+        return `/movies/${this.movieID}.mp4`;
     },
 
     currentFramePath(): string {
@@ -73,6 +119,14 @@ export default {
 
     closeButtonCaption() : string {
       return Translations["closeMoviePreview"];
+    },
+
+    circleLabel() : string {
+       return Translations['circleLabelCaption']
+    },
+
+    playButtonTittle() : string {
+      return Translations['playButtonTittle']
     }
   },
 
@@ -84,7 +138,8 @@ export default {
 
 <style lang="scss" scoped>
 @import "~sass/fonts";
-@mixin television-decoration {
+@import "~sass/components/movies/television_control_or_decoration";
+@mixin television-control-or-decoration {
   margin-left: 5px;
   min-width: 20px;
   min-height: 20px;
@@ -105,6 +160,29 @@ $borders-difference: 0.8vw;
   @media (max-width: 450px) {
     border-top-width: calc(#{$transparent-border-width} + 5px);
   }
+}
+
+@mixin shining {
+    filter: drop-shadow(0px 0px 4px #00c800) brightness(1.5);
+}
+
+.play-button{
+  margin-right: 5px;
+  &:hover{
+    @include shining();
+  }
+}
+
+.darker-shadow {
+      background: rgba(0, 0, 0, 0.9);
+}
+
+.image-container{
+  position: relative;
+}
+
+.shining{
+      filter: drop-shadow(0px 0px 4px #00c800) brightness(1.5);
 }
 
 .trapeze-decoration {
@@ -173,9 +251,8 @@ $borders-difference: 0.8vw;
   padding: 0.5vw 0;
 }
 
-.television-decoration {
-  @include television-decoration();
-  border-radius: 50%;
+.television-control-or-decoration {
+  @include television-control-or-decoration();
 }
 
 .preview-close-icon {
@@ -188,6 +265,8 @@ $borders-difference: 0.8vw;
 .green-light {
   background: linear-gradient(#2af92a, #054006);
   flex-shrink: 0;
+  border-radius: 50%;
+
 }
 
 .preview-close-icon {

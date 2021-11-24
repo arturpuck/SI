@@ -17306,6 +17306,12 @@ var ExpectShadowCircle = function (_super) {
     return _super !== null && _super.apply(this, arguments) || this;
   }
 
+  __decorate([vue_property_decorator_1.Prop({
+    type: String,
+    required: false,
+    "default": ""
+  })], ExpectShadowCircle.prototype, "circleLabel", void 0);
+
   ExpectShadowCircle = __decorate([vue_property_decorator_1.Options({
     name: "ExpectShadowCircle",
     components: {
@@ -20117,27 +20123,55 @@ Object.defineProperty(exports, "__esModule", ({
 
 var movie_preview_1 = __importDefault(__webpack_require__(/*! @jsmodules/translations/components/movie_preview */ "./resources/js/modules/translations/components/movie_preview.ts"));
 
+var play_button_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/movies/play_button.vue */ "./resources/js/components/movies/play_button.vue"));
+
+var expect_shadow_circle_1 = __importDefault(__webpack_require__(/*! @jscomponents-decoration/expect_shadow_circle */ "./resources/js/components/decoration/expect_shadow_circle.vue"));
+
 exports.default = {
   data: function data() {
     return {
       movieID: 0,
       currentFrame: 1,
-      title: ""
+      title: "",
+      showShadow: false,
+      movieIsPlayedInVideoPlayer: false
     };
   },
+  components: {
+    PlayButton: play_button_vue_1["default"],
+    ExpectShadowCircle: expect_shadow_circle_1["default"]
+  },
   methods: {
+    hideShadow: function hideShadow() {
+      this.showShadow = false;
+    },
     showMoviePreview: function showMoviePreview(movie) {
       this.currentFrame = 1;
       this.movieID = movie.id;
       this.title = movie.title;
     },
+    handleRangeInputWhenMovieIsNotPlayedInVideoPlayer: function handleRangeInputWhenMovieIsNotPlayedInVideoPlayer(event) {
+      console.log(event.target);
+    },
     hidePreview: function hidePreview() {
       this.emitter.emit("closePreview");
+    },
+    launchVideoPlayer: function launchVideoPlayer() {
+      this.showShadow = true;
+      this.movieIsPlayedInVideoPlayer = true;
+    }
+  },
+  watch: {
+    currentFrame: function currentFrame() {
+      if (this.movieIsPlayedInVideoPlayer) {}
     }
   },
   computed: {
     movieAlt: function movieAlt() {
       return movie_preview_1["default"]["movieFrame"] + " : " + this.title;
+    },
+    moviePath: function moviePath() {
+      return "/movies/" + this.movieID + ".mp4";
     },
     currentFramePath: function currentFramePath() {
       return "/images/movies/preview/" + this.movieID + "/" + this.movieID + " " + String(this.currentFrame).padStart(3, "0") + ".jpg";
@@ -20147,6 +20181,12 @@ exports.default = {
     },
     closeButtonCaption: function closeButtonCaption() {
       return movie_preview_1["default"]["closeMoviePreview"];
+    },
+    circleLabel: function circleLabel() {
+      return movie_preview_1["default"]['circleLabelCaption'];
+    },
+    playButtonTittle: function playButtonTittle() {
+      return movie_preview_1["default"]['playButtonTittle'];
     }
   },
   mounted: function mounted() {
@@ -20698,7 +20738,9 @@ var translator_js_1 = __importDefault(__webpack_require__(/*! @jsmodules/transla
 var translations = {
   movieFrame: translator_js_1["default"].translate('movie_frame'),
   playMoviePreview: translator_js_1["default"].translate('play_movie_preview'),
-  closeMoviePreview: translator_js_1["default"].translate('close_movie_preview')
+  closeMoviePreview: translator_js_1["default"].translate('close_movie_preview'),
+  circleLabelCaption: translator_js_1["default"].translate('launching_in_progress'),
+  playButtonTittle: translator_js_1["default"].translate('click_to_play_the_video')
 };
 exports.default = translations;
 
@@ -21081,6 +21123,33 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./resources/js/components/movies/play_button.vue?vue&type=script&lang=js":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./resources/js/components/movies/play_button.vue?vue&type=script&lang=js ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+var _default = {
+  props: {
+    buttonTittle: {
+      required: false,
+      type: String,
+      "default": null
+    }
+  },
+  name: "play-button"
+};
+exports.default = _default;
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./resources/js/components/navigation/navbar.vue?vue&type=script&lang=js":
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./resources/js/components/navigation/navbar.vue?vue&type=script&lang=js ***!
@@ -21403,7 +21472,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0, _vue.openBlock)(), (0, _vue.createBlock)(_component_relative_shadow_container, null, {
     "default": (0, _vue.withCtx)(function () {
-      return [(0, _vue.createVNode)(_component_expect_circle)];
+      return [(0, _vue.createVNode)(_component_expect_circle, {
+        label: _ctx.circleLabel
+      }, null, 8
+      /* PROPS */
+      , ["label"])];
     }),
     _: 1
     /* STABLE */
@@ -23351,38 +23424,73 @@ var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundl
 var _hoisted_1 = {
   "class": "movie-preview-container"
 };
-var _hoisted_2 = ["src", "alt"];
-var _hoisted_3 = {
+var _hoisted_2 = {
+  "class": "image-container"
+};
+var _hoisted_3 = ["src"];
+var _hoisted_4 = ["src", "alt"];
+var _hoisted_5 = {
   "class": "movie-preview-controls-and-decoration"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0, _vue.createElementVNode)("div", {
+var _hoisted_6 = /*#__PURE__*/(0, _vue.createElementVNode)("div", {
   "aria-hidden": "true",
-  "class": "television-decoration green-light preview-control-element"
+  "class": "television-control-or-decoration green-light preview-control-element"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_5 = {
+var _hoisted_7 = {
   "aria-hidden": "true",
   "class": "trapeze-decoration"
 };
 (0, _vue.popScopeId)();
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_expect_shadow_circle = (0, _vue.resolveComponent)("expect-shadow-circle");
+
+  var _component_play_button = (0, _vue.resolveComponent)("play-button");
+
   var _component_button_close = (0, _vue.resolveComponent)("button-close");
 
   var _component_empire_logo = (0, _vue.resolveComponent)("empire-logo");
 
-  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [(0, _vue.createElementVNode)("img", {
+  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [(0, _vue.createElementVNode)("div", _hoisted_2, [$data.movieIsPlayedInVideoPlayer ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("video", {
+    key: 0,
+    onPlaying: _cache[0] || (_cache[0] = function () {
+      return $options.hideShadow && $options.hideShadow.apply($options, arguments);
+    }),
+    autoplay: ""
+  }, [(0, _vue.createElementVNode)("source", {
+    src: $options.moviePath,
+    type: "video/mp4"
+  }, null, 8
+  /* PROPS */
+  , _hoisted_3)], 32
+  /* HYDRATE_EVENTS */
+  )) : (0, _vue.createCommentVNode)("v-if", true), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_expect_shadow_circle, {
+    "circle-label": $options.circleLabel,
+    "class": "darker-shadow"
+  }, null, 8
+  /* PROPS */
+  , ["circle-label"]), [[_vue.vShow, $data.showShadow]]), (0, _vue.withDirectives)((0, _vue.createElementVNode)("img", {
     src: $options.currentFramePath,
     alt: $options.movieAlt,
     "class": "movie-preview-frame"
   }, null, 8
   /* PROPS */
-  , _hoisted_2), (0, _vue.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0, _vue.withDirectives)((0, _vue.createElementVNode)("input", {
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+  , _hoisted_4), [[_vue.vShow, !$data.movieIsPlayedInVideoPlayer]])]), (0, _vue.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0, _vue.createVNode)(_component_play_button, {
+    onClick: $options.launchVideoPlayer,
+    "button-tittle": $options.playButtonTittle,
+    "class": "television-control-or-decoration play-button"
+  }, null, 8
+  /* PROPS */
+  , ["onClick", "button-tittle"]), (0, _vue.withDirectives)((0, _vue.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.currentFrame = $event;
+    }),
+    onClick: _cache[2] || (_cache[2] = function () {
+      return _ctx.rangeInputHandler && _ctx.rangeInputHandler.apply(_ctx, arguments);
     }),
     min: "1",
     max: "100",
@@ -23398,7 +23506,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: $options.hidePreview
   }, null, 8
   /* PROPS */
-  , ["title", "onClick"])]), (0, _vue.createElementVNode)("div", _hoisted_5, [(0, _vue.createVNode)(_component_empire_logo, {
+  , ["title", "onClick"])]), (0, _vue.createElementVNode)("div", _hoisted_7, [(0, _vue.createVNode)(_component_empire_logo, {
     "class": "empire-logo--modified"
   })])]);
 }
@@ -23436,6 +23544,37 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 512
   /* NEED_PATCH */
   )), [[_vue.vShow, _ctx.showPreview]]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./resources/js/components/movies/play_button.vue?vue&type=template&id=629f7adc&scoped=true":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./resources/js/components/movies/play_button.vue?vue&type=template&id=629f7adc&scoped=true ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.render = render;
+
+var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+(0, _vue.pushScopeId)("data-v-629f7adc");
+var _hoisted_1 = ["title"];
+(0, _vue.popScopeId)();
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("button", {
+    title: $props.buttonTittle,
+    "class": "play-button"
+  }, null, 8
+  /* PROPS */
+  , _hoisted_1);
 }
 
 /***/ }),
@@ -24279,7 +24418,7 @@ var _default = {
     login_has_already_been_taken: "Login jest już zajęty",
     login_contains_less_then_3_characters: "Login ma mniej niż 3 znaki",
     login_contains_more_then_20_characters: "Login ma więcej niż 20 znaków"
-  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "movies", "Filmy"), _defineProperty(_pl, "views", "Odsłon"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "pornstars_navbar_caption", "Gwiazdy porno"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "previous_page", "poprzednia"), _defineProperty(_pl, "next_page", "następna"), _defineProperty(_pl, "further", "dalej"), _defineProperty(_pl, "back", "wstecz"), _defineProperty(_pl, "up", "góra"), _defineProperty(_pl, "first_page", "pierwsza"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "default_avatar", "Domyślny avatar, przedstawia bliżej niezidentyfikowanego użytkownika"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "element_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "movie_rate_data_is_invalid", "Niepoprawne dane oceny lub filmu"), _defineProperty(_pl, "nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "add_comment", "Dodaj komentarz"), _defineProperty(_pl, "add", "dodaj"), _defineProperty(_pl, "comment_added", "Dodano komentarz"), _defineProperty(_pl, "unregistered_user", "Niezarejestrowany"), _defineProperty(_pl, "register", "Rejestruj"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "adding_comment", "Dodaję komentarz"), _defineProperty(_pl, "fetching_comments", "Pobieram komentarze"), _defineProperty(_pl, "comment_text_is_missing", "Nie podano treści komentarza"), _defineProperty(_pl, "comment_text_exceeds_1000_characters", "Treść komentarza przekracza 1000 znaków"), _defineProperty(_pl, "the_nickname_must_be_between_2_and_20_characters", "Pseudonim musi mieć minimum 2 znaki ale nie więcej niż 20"), _defineProperty(_pl, "no_comments_available", "Brak komentarzy"), _defineProperty(_pl, "because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute", "Z powodów bezpieczeństwa ograniczono liczbę dodawanych komentarzy do 2 na minutę"), _defineProperty(_pl, "total_comments", "Liczba wszystkich komentarzy"), _defineProperty(_pl, "publish_comment", "Opublikuj komentarz"), _defineProperty(_pl, "show_comments_sub_page_with_number", "Pokaż podstronę komentarzy o numerze"), _defineProperty(_pl, "sex_empire_short", "SI"), _defineProperty(_pl, "small_ass", "mały"), _defineProperty(_pl, "medium_ass", "średni"), _defineProperty(_pl, "big_ass", "duży"), _defineProperty(_pl, "small_tits", "małe"), _defineProperty(_pl, "medium_tits", "średnie"), _defineProperty(_pl, "big_tits", "duże"), _defineProperty(_pl, "skinny_tchickness", "chuda"), _defineProperty(_pl, "medium_tchickness", "średnia"), _defineProperty(_pl, "fat_tchickness", "gruba"), _defineProperty(_pl, "teenagers", "nastolatki(18 - 19)"), _defineProperty(_pl, "age_range_young", "młode (20 -29)"), _defineProperty(_pl, "age_range_mature", "dojrzałe(30 - 50)"), _defineProperty(_pl, "dark_hair", "czarny"), _defineProperty(_pl, "blonde_hair", "blond"), _defineProperty(_pl, "brown_hair", "brązowy"), _defineProperty(_pl, "red_hair", "rudy"), _defineProperty(_pl, "white_race", "biała"), _defineProperty(_pl, "asian_race", "azjatki"), _defineProperty(_pl, "ebony_race", "murzynki"), _defineProperty(_pl, "latin_race", "latynoski"), _defineProperty(_pl, "arabic_race", "arabki"), _defineProperty(_pl, "yes", "tak"), _defineProperty(_pl, "no", "nie"), _defineProperty(_pl, "one_male_one_female", "facet i kobieta"), _defineProperty(_pl, "bukkake", "bukkake"), _defineProperty(_pl, "single_female", "kobieta solo"), _defineProperty(_pl, "lesbians", "lesbijki"), _defineProperty(_pl, "group_sex", "grupowy"), _defineProperty(_pl, "one_male_many_females", "facet i wiele kobiet"), _defineProperty(_pl, "GangBang", "GangBang"), _defineProperty(_pl, "one_female_two_males", "Na 2 baty"), _defineProperty(_pl, "lesbian_group_sex", "Lesbijki grupowo"), _defineProperty(_pl, "only", "tylko i wyłącznie"), _defineProperty(_pl, "maximum", "maximum"), _defineProperty(_pl, "a_lot", "dużo"), _defineProperty(_pl, "medium", "średnio"), _defineProperty(_pl, "a_little", "trochę"), _defineProperty(_pl, "exclude", "wyklucz"), _defineProperty(_pl, "on_face", "na twarz"), _defineProperty(_pl, "cum_swallow", "z połykiem"), _defineProperty(_pl, "creampie", "w cipkę"), _defineProperty(_pl, "anal_creampie", "w dupkę"), _defineProperty(_pl, "on_tits", "na cycki"), _defineProperty(_pl, "on_pussy", "na cipkę"), _defineProperty(_pl, "on_ass", "na dupkę"), _defineProperty(_pl, "on_feet", "na stopy"), _defineProperty(_pl, "on_many_places", "na wiele miejsc"), _defineProperty(_pl, "on_other_body_parts", "na inne miejsca"), _defineProperty(_pl, "american_nationality", "amerykańska"), _defineProperty(_pl, "japanese_nationality", "japońska"), _defineProperty(_pl, "german_nationality", "niemiecka"), _defineProperty(_pl, "czech_nationality", "czeska"), _defineProperty(_pl, "russian_nationality", "rosyjska"), _defineProperty(_pl, "british_nationality", "brytyjska"), _defineProperty(_pl, "swedish_nationality", "szwedzka"), _defineProperty(_pl, "ukrainian_nationality", "ukraińska"), _defineProperty(_pl, "slovac_nationality", "słowacka"), _defineProperty(_pl, "hanguarian_nationality", "węgierska"), _defineProperty(_pl, "polish_nationality", "polska"), _defineProperty(_pl, "dutch_nationality", "holenderska"), _defineProperty(_pl, "hindu_nationality", "hinduska"), _defineProperty(_pl, "french_nationality", "francuska"), _defineProperty(_pl, "spanish_nationality", "hiszpańska"), _defineProperty(_pl, "italian_nationality", "włoska"), _defineProperty(_pl, "canadian_nationality", "kanadyjska"), _defineProperty(_pl, "argentinian_nationality", "argentyńska"), _defineProperty(_pl, "house", "dom"), _defineProperty(_pl, "bathroom", "łazienka"), _defineProperty(_pl, "office", "biuro"), _defineProperty(_pl, "school", "szkoła"), _defineProperty(_pl, "public_place", "miejsca publiczne"), _defineProperty(_pl, "car", "samochód"), _defineProperty(_pl, "nature", "łono natury"), _defineProperty(_pl, "solarium", "solarium"), _defineProperty(_pl, "elevator", "winda"), _defineProperty(_pl, "beach", "plaża"), _defineProperty(_pl, "gym", "siłownia"), _defineProperty(_pl, "POV", "POV"), _defineProperty(_pl, "outside_camera_style", "z zewnątrz"), _defineProperty(_pl, "mixed_camera_style", "mieszane"), _defineProperty(_pl, "female_pupil", "uczennica"), _defineProperty(_pl, "female_employee", "pracownica"), _defineProperty(_pl, "female_student", "studentka"), _defineProperty(_pl, "wife", "żona"), _defineProperty(_pl, "female_teacher", "nauczycielka"), _defineProperty(_pl, "nurse", "pielęgniarka"), _defineProperty(_pl, "female_slave", "niewolnica"), _defineProperty(_pl, "nun", "zakonnica"), _defineProperty(_pl, "female_police_officer", "policjantka"), _defineProperty(_pl, "prostitute", "prostytutka"), _defineProperty(_pl, "female_boss", "szefowa"), _defineProperty(_pl, "cleaner", "sprzątaczka"), _defineProperty(_pl, "mommy", "mamusia"), _defineProperty(_pl, "amateur", "amatorski"), _defineProperty(_pl, "professional", "profesjonalny"), _defineProperty(_pl, "choose_options", "wybierz opcje"), _defineProperty(_pl, "search", "szukaj"), _defineProperty(_pl, "remove_option", "usuń opcję"), _defineProperty(_pl, "close", "zamknij"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę"), _defineProperty(_pl, "fetching_pornstars", "Pobieram listę gwiazd"), _defineProperty(_pl, "not_selected", "nie wybrano"), _defineProperty(_pl, "minutes_inflected", "minut(y)"), _defineProperty(_pl, "views_inflected", "wyświetleń"), _defineProperty(_pl, "unexpected_error_occured", "Pojawił się bliżej niezidentyfikowany błąd"), _defineProperty(_pl, "titsSize", "rozmiar cycków"), _defineProperty(_pl, "assSize", "rozmiar dupci"), _defineProperty(_pl, "thicknessSize", "tusza"), _defineProperty(_pl, "ageRange", "przedział wiekowy"), _defineProperty(_pl, "hairColor", "kolor włosów"), _defineProperty(_pl, "race", "rasa"), _defineProperty(_pl, "abundanceType", "liczebność"), _defineProperty(_pl, "cumshotType", "typ wytrysku"), _defineProperty(_pl, "nationality", "narodowość"), _defineProperty(_pl, "location", "lokalizacja"), _defineProperty(_pl, "cameraStyle", "ujęcie kamery"), _defineProperty(_pl, "storyOrCostume", "motyw fabularno kostiumowy"), _defineProperty(_pl, "professionalismLevel", "poziom filmu"), _defineProperty(_pl, "shavedPussy", "wygolona cipka"), _defineProperty(_pl, "analAmount", "anal"), _defineProperty(_pl, "blowjob", "obciąganie"), _defineProperty(_pl, "handjob", "walenie konika"), _defineProperty(_pl, "blondes", "blondynki"), _defineProperty(_pl, "tittfuck", "na hiszpana"), _defineProperty(_pl, "pussy_licking", "minetka"), _defineProperty(_pl, "feet", "stopy"), _defineProperty(_pl, "femdom", "kobieca dominacja"), _defineProperty(_pl, "brunettes", "brunetki"), _defineProperty(_pl, "redheads", "rude"), _defineProperty(_pl, "milfs", "dojrzałe"), _defineProperty(_pl, "teens", 'nastolatki'), _defineProperty(_pl, "amateur", "amatorskie"), _defineProperty(_pl, "asian", 'azjatki'), _defineProperty(_pl, "latins", 'latynoski'), _defineProperty(_pl, "ebony", 'murzynki'), _defineProperty(_pl, "lesbians", 'lesbijki'), _defineProperty(_pl, "group", 'grupowy'), _defineProperty(_pl, "cumshot_compilation", 'kompilacja wytrysków'), _defineProperty(_pl, "cumshot_compilations", 'kompilacje wytrysków'), _defineProperty(_pl, "cum_on_face", 'wytrysk na twarz'), _defineProperty(_pl, "cum_swallow", 'połykanie spermy'), _defineProperty(_pl, "cum_on_feet", 'wytrysk na stopy'), _defineProperty(_pl, "creampie", 'wytrysk w cipkę'), _defineProperty(_pl, "cum_in_ass", 'wytrysk w dupkę'), _defineProperty(_pl, "cum_on_titts", 'wytrysk na cycki'), _defineProperty(_pl, "pantyhose", 'rajstopki'), _defineProperty(_pl, "high_heels", 'szpile'), _defineProperty(_pl, "nurses", 'pielęgniarki'), _defineProperty(_pl, "teachers", 'nauczycielki'), _defineProperty(_pl, "japanese", 'japonki'), _defineProperty(_pl, "russian", 'rosjanki'), _defineProperty(_pl, "pornstars", 'gwiazdy porno'), _defineProperty(_pl, "blowjobAmount", 'obciąganie'), _defineProperty(_pl, "handjobAmount", 'walenie konika'), _defineProperty(_pl, "doublePenetrationamount", "wtyczka"), _defineProperty(_pl, "vaginalamount", "waginalny"), _defineProperty(_pl, "pussyLickingAmount", 'minetka'), _defineProperty(_pl, "feetPettingAmount", 'pieszczenie stóp'), _defineProperty(_pl, "position69amount", 'pozycja 69'), _defineProperty(_pl, "titfuckAmount", "na hiszpana"), _defineProperty(_pl, "isCumshotCompilation", 'kompilacja wytrysków'), _defineProperty(_pl, "recordedBySpamCamera", 'nagrany kamerą szpiegowską'), _defineProperty(_pl, "isSadisticOrMasochistic", 'sado-masochostyczny'), _defineProperty(_pl, "isFemaleDomination", 'kobieca dominacja'), _defineProperty(_pl, "isTranslatedToPolish", 'polska wersja językowa'), _defineProperty(_pl, "showPantyhose", 'rajstopy'), _defineProperty(_pl, "showStockings", 'pończochy'), _defineProperty(_pl, "showGlasses", 'okulary'), _defineProperty(_pl, "showHighHeels", 'szpile'), _defineProperty(_pl, "showHugeCock", 'wielki kutas'), _defineProperty(_pl, "showWhips", 'bicze'), _defineProperty(_pl, "showSexToys", 'sex-zabawki'), _defineProperty(_pl, "minimumMovieTime", "minimalny czas"), _defineProperty(_pl, "maximumMovieTime", "maksymalny czas"), _defineProperty(_pl, "minimumMovieViews", 'minimalna liczba wyświetleń'), _defineProperty(_pl, "maximumMovieViews", 'maksymalna liczba wyświetleń'), _defineProperty(_pl, "hasStory", 'zawiera fabułę'), _defineProperty(_pl, "total_movies_found", "Ilość znalezionych filmów"), _defineProperty(_pl, "movie_with_following_pornstars", "występują jednocześnie następujące gwiazdy"), _defineProperty(_pl, "last_page", "ostatnia"), _defineProperty(_pl, "movie_with_pornstar", "Film w którym występuje"), _defineProperty(_pl, "no_movies_have_been_found", "Nie znaleziono żadnych filmów pasujących do wybranych kryteriów"), _defineProperty(_pl, "no_options_have_been_selected", "Nie wybrano żadnych opcji"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd"), _defineProperty(_pl, "because_of_security_reasons_search_was_blocked", "Ze względów bezpieczeństwa ilość zapytań do wyszukiwarki w ciągu minuty jest ograniczona. Prosimy zaczekać chwilę i spróbować ponownie."), _defineProperty(_pl, "popular_categories", "Popularne kategorie"), _defineProperty(_pl, "categories_list", "Lista kategorii"), _defineProperty(_pl, "big_titts", "duże cycki"), _defineProperty(_pl, "categories", "Kategorie"), _defineProperty(_pl, "teenagers", "nastolatki"), _defineProperty(_pl, "spermatozoid_has_been_asigned", "Przyznano plemnika. Musisz odczekać minimum pół godziny aby przyznać kolejnego."), _defineProperty(_pl, "you_have_exceeded_cum_limit", "Możesz przyznać maksymalnie jednego plemnika na pół godziny niezależnie od filmu"), _defineProperty(_pl, "spermatozoid_rate_data_is_incorrect", "Niepoprawne dane filmu"), _defineProperty(_pl, "movie_views", "Liczba wyświetleń"), _defineProperty(_pl, "movie_added_at", "Data dodania"), _defineProperty(_pl, "movie_average_rating", "Średnia ocen"), _defineProperty(_pl, "this_pornstar_does_not_have_enough_votes_to_calculate_average", "Ta gwiazda ma za mało głosów aby policzyć średnią (wymagane minimum to 10)"), _defineProperty(_pl, "fetching_rating_in_progress", "Pobieram dane rankingu"), _defineProperty(_pl, "average_rate_not_available_yet", "jeszcze niedostępna"), _defineProperty(_pl, "ammount_of_spermatozoids", "Liczba plemników"), _defineProperty(_pl, "your_spermatozoids", "twoich"), _defineProperty(_pl, "number_of_likes", "Polubień"), _defineProperty(_pl, "failed_to_load_movie_data", "Nie udało się pobrać szczegółowych danych filmu"), _defineProperty(_pl, "failed_to_load_similar_movies", "Nie udało się załadować podobnych filmów"), _defineProperty(_pl, "you_like_it", "Lubisz to"), _defineProperty(_pl, "you_already_like_this_movie", "Już wcześniej polubiłeś ten film"), _defineProperty(_pl, "you_and", "Ty i"), _defineProperty(_pl, "people_like_it", "osób lubi to"), _defineProperty(_pl, "no_comments", "Brak komentarzy"), _defineProperty(_pl, "cookie_notification_header", "Ta strona wykorzystuje pliki cookie"), _defineProperty(_pl, "cookie_notification_body", "Poprzez dalsze korzystanie z portalu lub naci\u015Bni\u0119cie przycisku \"Akceptuj\u0119\" wyra\u017Casz zgod\u0119 na przechowywanie plik\xF3w cookie na Twej maszynie"), _defineProperty(_pl, "accept_button_caption", "Akceptuję - zamknij"), _defineProperty(_pl, "show_content_side_bar_title", "Rozwiń nawigację strony dla wersji mobilnej"), _defineProperty(_pl, "show_content_side_bar_caption", "Menu"), _defineProperty(_pl, "cancel_like", "cofnij like'a"), _defineProperty(_pl, "show_authenticated_user_sidebar_title", "Rozwiń menu użytkownika, ustawienia profilu, wylogowanie itp."), _defineProperty(_pl, "show_authenticated_user_sidebar_caption", "Profil"), _defineProperty(_pl, "selected_avatar", "Nowy avatar"), _defineProperty(_pl, "no_avatar_has_been_choosen", "Nie wybrano avataru"), _defineProperty(_pl, "current_avatar", "Wybrany avatar"), _defineProperty(_pl, "the_latest", "Najnowsze"), _defineProperty(_pl, "the_most_popular", "Najpopularniejsze"), _defineProperty(_pl, "advanced_search", "Szukanie zaawansowane"), _defineProperty(_pl, "login_or_email", "Login lub email"), _defineProperty(_pl, "remember_me", "Zapamiętaj mnie"), _defineProperty(_pl, "scroll_movies_list_left", "Przewiń listę filmów w lewo"), _defineProperty(_pl, "scroll_movies_list_right", "Przewiń listę filmów w prawo"), _defineProperty(_pl, "packages", {
+  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "movies", "Filmy"), _defineProperty(_pl, "views", "Odsłon"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "pornstars_navbar_caption", "Gwiazdy porno"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "launching_in_progress", "Trwa uruchamianie"), _defineProperty(_pl, "click_to_play_the_video", "Kliknij aby uruchomić film"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "previous_page", "poprzednia"), _defineProperty(_pl, "next_page", "następna"), _defineProperty(_pl, "further", "dalej"), _defineProperty(_pl, "back", "wstecz"), _defineProperty(_pl, "up", "góra"), _defineProperty(_pl, "first_page", "pierwsza"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "default_avatar", "Domyślny avatar, przedstawia bliżej niezidentyfikowanego użytkownika"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "element_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "movie_rate_data_is_invalid", "Niepoprawne dane oceny lub filmu"), _defineProperty(_pl, "nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "add_comment", "Dodaj komentarz"), _defineProperty(_pl, "add", "dodaj"), _defineProperty(_pl, "comment_added", "Dodano komentarz"), _defineProperty(_pl, "unregistered_user", "Niezarejestrowany"), _defineProperty(_pl, "register", "Rejestruj"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "adding_comment", "Dodaję komentarz"), _defineProperty(_pl, "fetching_comments", "Pobieram komentarze"), _defineProperty(_pl, "comment_text_is_missing", "Nie podano treści komentarza"), _defineProperty(_pl, "comment_text_exceeds_1000_characters", "Treść komentarza przekracza 1000 znaków"), _defineProperty(_pl, "the_nickname_must_be_between_2_and_20_characters", "Pseudonim musi mieć minimum 2 znaki ale nie więcej niż 20"), _defineProperty(_pl, "no_comments_available", "Brak komentarzy"), _defineProperty(_pl, "because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute", "Z powodów bezpieczeństwa ograniczono liczbę dodawanych komentarzy do 2 na minutę"), _defineProperty(_pl, "total_comments", "Liczba wszystkich komentarzy"), _defineProperty(_pl, "publish_comment", "Opublikuj komentarz"), _defineProperty(_pl, "show_comments_sub_page_with_number", "Pokaż podstronę komentarzy o numerze"), _defineProperty(_pl, "sex_empire_short", "SI"), _defineProperty(_pl, "small_ass", "mały"), _defineProperty(_pl, "medium_ass", "średni"), _defineProperty(_pl, "big_ass", "duży"), _defineProperty(_pl, "small_tits", "małe"), _defineProperty(_pl, "medium_tits", "średnie"), _defineProperty(_pl, "big_tits", "duże"), _defineProperty(_pl, "skinny_tchickness", "chuda"), _defineProperty(_pl, "medium_tchickness", "średnia"), _defineProperty(_pl, "fat_tchickness", "gruba"), _defineProperty(_pl, "teenagers", "nastolatki(18 - 19)"), _defineProperty(_pl, "age_range_young", "młode (20 -29)"), _defineProperty(_pl, "age_range_mature", "dojrzałe(30 - 50)"), _defineProperty(_pl, "dark_hair", "czarny"), _defineProperty(_pl, "blonde_hair", "blond"), _defineProperty(_pl, "brown_hair", "brązowy"), _defineProperty(_pl, "red_hair", "rudy"), _defineProperty(_pl, "white_race", "biała"), _defineProperty(_pl, "asian_race", "azjatki"), _defineProperty(_pl, "ebony_race", "murzynki"), _defineProperty(_pl, "latin_race", "latynoski"), _defineProperty(_pl, "arabic_race", "arabki"), _defineProperty(_pl, "yes", "tak"), _defineProperty(_pl, "no", "nie"), _defineProperty(_pl, "one_male_one_female", "facet i kobieta"), _defineProperty(_pl, "bukkake", "bukkake"), _defineProperty(_pl, "single_female", "kobieta solo"), _defineProperty(_pl, "lesbians", "lesbijki"), _defineProperty(_pl, "group_sex", "grupowy"), _defineProperty(_pl, "one_male_many_females", "facet i wiele kobiet"), _defineProperty(_pl, "GangBang", "GangBang"), _defineProperty(_pl, "one_female_two_males", "Na 2 baty"), _defineProperty(_pl, "lesbian_group_sex", "Lesbijki grupowo"), _defineProperty(_pl, "only", "tylko i wyłącznie"), _defineProperty(_pl, "maximum", "maximum"), _defineProperty(_pl, "a_lot", "dużo"), _defineProperty(_pl, "medium", "średnio"), _defineProperty(_pl, "a_little", "trochę"), _defineProperty(_pl, "exclude", "wyklucz"), _defineProperty(_pl, "on_face", "na twarz"), _defineProperty(_pl, "cum_swallow", "z połykiem"), _defineProperty(_pl, "creampie", "w cipkę"), _defineProperty(_pl, "anal_creampie", "w dupkę"), _defineProperty(_pl, "on_tits", "na cycki"), _defineProperty(_pl, "on_pussy", "na cipkę"), _defineProperty(_pl, "on_ass", "na dupkę"), _defineProperty(_pl, "on_feet", "na stopy"), _defineProperty(_pl, "on_many_places", "na wiele miejsc"), _defineProperty(_pl, "on_other_body_parts", "na inne miejsca"), _defineProperty(_pl, "american_nationality", "amerykańska"), _defineProperty(_pl, "japanese_nationality", "japońska"), _defineProperty(_pl, "german_nationality", "niemiecka"), _defineProperty(_pl, "czech_nationality", "czeska"), _defineProperty(_pl, "russian_nationality", "rosyjska"), _defineProperty(_pl, "british_nationality", "brytyjska"), _defineProperty(_pl, "swedish_nationality", "szwedzka"), _defineProperty(_pl, "ukrainian_nationality", "ukraińska"), _defineProperty(_pl, "slovac_nationality", "słowacka"), _defineProperty(_pl, "hanguarian_nationality", "węgierska"), _defineProperty(_pl, "polish_nationality", "polska"), _defineProperty(_pl, "dutch_nationality", "holenderska"), _defineProperty(_pl, "hindu_nationality", "hinduska"), _defineProperty(_pl, "french_nationality", "francuska"), _defineProperty(_pl, "spanish_nationality", "hiszpańska"), _defineProperty(_pl, "italian_nationality", "włoska"), _defineProperty(_pl, "canadian_nationality", "kanadyjska"), _defineProperty(_pl, "argentinian_nationality", "argentyńska"), _defineProperty(_pl, "house", "dom"), _defineProperty(_pl, "bathroom", "łazienka"), _defineProperty(_pl, "office", "biuro"), _defineProperty(_pl, "school", "szkoła"), _defineProperty(_pl, "public_place", "miejsca publiczne"), _defineProperty(_pl, "car", "samochód"), _defineProperty(_pl, "nature", "łono natury"), _defineProperty(_pl, "solarium", "solarium"), _defineProperty(_pl, "elevator", "winda"), _defineProperty(_pl, "beach", "plaża"), _defineProperty(_pl, "gym", "siłownia"), _defineProperty(_pl, "POV", "POV"), _defineProperty(_pl, "outside_camera_style", "z zewnątrz"), _defineProperty(_pl, "mixed_camera_style", "mieszane"), _defineProperty(_pl, "female_pupil", "uczennica"), _defineProperty(_pl, "female_employee", "pracownica"), _defineProperty(_pl, "female_student", "studentka"), _defineProperty(_pl, "wife", "żona"), _defineProperty(_pl, "female_teacher", "nauczycielka"), _defineProperty(_pl, "nurse", "pielęgniarka"), _defineProperty(_pl, "female_slave", "niewolnica"), _defineProperty(_pl, "nun", "zakonnica"), _defineProperty(_pl, "female_police_officer", "policjantka"), _defineProperty(_pl, "prostitute", "prostytutka"), _defineProperty(_pl, "female_boss", "szefowa"), _defineProperty(_pl, "cleaner", "sprzątaczka"), _defineProperty(_pl, "mommy", "mamusia"), _defineProperty(_pl, "amateur", "amatorski"), _defineProperty(_pl, "professional", "profesjonalny"), _defineProperty(_pl, "choose_options", "wybierz opcje"), _defineProperty(_pl, "search", "szukaj"), _defineProperty(_pl, "remove_option", "usuń opcję"), _defineProperty(_pl, "close", "zamknij"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę"), _defineProperty(_pl, "fetching_pornstars", "Pobieram listę gwiazd"), _defineProperty(_pl, "not_selected", "nie wybrano"), _defineProperty(_pl, "minutes_inflected", "minut(y)"), _defineProperty(_pl, "views_inflected", "wyświetleń"), _defineProperty(_pl, "unexpected_error_occured", "Pojawił się bliżej niezidentyfikowany błąd"), _defineProperty(_pl, "titsSize", "rozmiar cycków"), _defineProperty(_pl, "assSize", "rozmiar dupci"), _defineProperty(_pl, "thicknessSize", "tusza"), _defineProperty(_pl, "ageRange", "przedział wiekowy"), _defineProperty(_pl, "hairColor", "kolor włosów"), _defineProperty(_pl, "race", "rasa"), _defineProperty(_pl, "abundanceType", "liczebność"), _defineProperty(_pl, "cumshotType", "typ wytrysku"), _defineProperty(_pl, "nationality", "narodowość"), _defineProperty(_pl, "location", "lokalizacja"), _defineProperty(_pl, "cameraStyle", "ujęcie kamery"), _defineProperty(_pl, "storyOrCostume", "motyw fabularno kostiumowy"), _defineProperty(_pl, "professionalismLevel", "poziom filmu"), _defineProperty(_pl, "shavedPussy", "wygolona cipka"), _defineProperty(_pl, "analAmount", "anal"), _defineProperty(_pl, "blowjob", "obciąganie"), _defineProperty(_pl, "handjob", "walenie konika"), _defineProperty(_pl, "blondes", "blondynki"), _defineProperty(_pl, "tittfuck", "na hiszpana"), _defineProperty(_pl, "pussy_licking", "minetka"), _defineProperty(_pl, "feet", "stopy"), _defineProperty(_pl, "femdom", "kobieca dominacja"), _defineProperty(_pl, "brunettes", "brunetki"), _defineProperty(_pl, "redheads", "rude"), _defineProperty(_pl, "milfs", "dojrzałe"), _defineProperty(_pl, "teens", 'nastolatki'), _defineProperty(_pl, "amateur", "amatorskie"), _defineProperty(_pl, "asian", 'azjatki'), _defineProperty(_pl, "latins", 'latynoski'), _defineProperty(_pl, "ebony", 'murzynki'), _defineProperty(_pl, "lesbians", 'lesbijki'), _defineProperty(_pl, "group", 'grupowy'), _defineProperty(_pl, "cumshot_compilation", 'kompilacja wytrysków'), _defineProperty(_pl, "cumshot_compilations", 'kompilacje wytrysków'), _defineProperty(_pl, "cum_on_face", 'wytrysk na twarz'), _defineProperty(_pl, "cum_swallow", 'połykanie spermy'), _defineProperty(_pl, "cum_on_feet", 'wytrysk na stopy'), _defineProperty(_pl, "creampie", 'wytrysk w cipkę'), _defineProperty(_pl, "cum_in_ass", 'wytrysk w dupkę'), _defineProperty(_pl, "cum_on_titts", 'wytrysk na cycki'), _defineProperty(_pl, "pantyhose", 'rajstopki'), _defineProperty(_pl, "high_heels", 'szpile'), _defineProperty(_pl, "nurses", 'pielęgniarki'), _defineProperty(_pl, "teachers", 'nauczycielki'), _defineProperty(_pl, "japanese", 'japonki'), _defineProperty(_pl, "russian", 'rosjanki'), _defineProperty(_pl, "pornstars", 'gwiazdy porno'), _defineProperty(_pl, "blowjobAmount", 'obciąganie'), _defineProperty(_pl, "handjobAmount", 'walenie konika'), _defineProperty(_pl, "doublePenetrationamount", "wtyczka"), _defineProperty(_pl, "vaginalamount", "waginalny"), _defineProperty(_pl, "pussyLickingAmount", 'minetka'), _defineProperty(_pl, "feetPettingAmount", 'pieszczenie stóp'), _defineProperty(_pl, "position69amount", 'pozycja 69'), _defineProperty(_pl, "titfuckAmount", "na hiszpana"), _defineProperty(_pl, "isCumshotCompilation", 'kompilacja wytrysków'), _defineProperty(_pl, "recordedBySpamCamera", 'nagrany kamerą szpiegowską'), _defineProperty(_pl, "isSadisticOrMasochistic", 'sado-masochostyczny'), _defineProperty(_pl, "isFemaleDomination", 'kobieca dominacja'), _defineProperty(_pl, "isTranslatedToPolish", 'polska wersja językowa'), _defineProperty(_pl, "showPantyhose", 'rajstopy'), _defineProperty(_pl, "showStockings", 'pończochy'), _defineProperty(_pl, "showGlasses", 'okulary'), _defineProperty(_pl, "showHighHeels", 'szpile'), _defineProperty(_pl, "showHugeCock", 'wielki kutas'), _defineProperty(_pl, "showWhips", 'bicze'), _defineProperty(_pl, "showSexToys", 'sex-zabawki'), _defineProperty(_pl, "minimumMovieTime", "minimalny czas"), _defineProperty(_pl, "maximumMovieTime", "maksymalny czas"), _defineProperty(_pl, "minimumMovieViews", 'minimalna liczba wyświetleń'), _defineProperty(_pl, "maximumMovieViews", 'maksymalna liczba wyświetleń'), _defineProperty(_pl, "hasStory", 'zawiera fabułę'), _defineProperty(_pl, "total_movies_found", "Ilość znalezionych filmów"), _defineProperty(_pl, "movie_with_following_pornstars", "występują jednocześnie następujące gwiazdy"), _defineProperty(_pl, "last_page", "ostatnia"), _defineProperty(_pl, "movie_with_pornstar", "Film w którym występuje"), _defineProperty(_pl, "no_movies_have_been_found", "Nie znaleziono żadnych filmów pasujących do wybranych kryteriów"), _defineProperty(_pl, "no_options_have_been_selected", "Nie wybrano żadnych opcji"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd"), _defineProperty(_pl, "because_of_security_reasons_search_was_blocked", "Ze względów bezpieczeństwa ilość zapytań do wyszukiwarki w ciągu minuty jest ograniczona. Prosimy zaczekać chwilę i spróbować ponownie."), _defineProperty(_pl, "popular_categories", "Popularne kategorie"), _defineProperty(_pl, "categories_list", "Lista kategorii"), _defineProperty(_pl, "big_titts", "duże cycki"), _defineProperty(_pl, "categories", "Kategorie"), _defineProperty(_pl, "teenagers", "nastolatki"), _defineProperty(_pl, "spermatozoid_has_been_asigned", "Przyznano plemnika. Musisz odczekać minimum pół godziny aby przyznać kolejnego."), _defineProperty(_pl, "you_have_exceeded_cum_limit", "Możesz przyznać maksymalnie jednego plemnika na pół godziny niezależnie od filmu"), _defineProperty(_pl, "spermatozoid_rate_data_is_incorrect", "Niepoprawne dane filmu"), _defineProperty(_pl, "movie_views", "Liczba wyświetleń"), _defineProperty(_pl, "movie_added_at", "Data dodania"), _defineProperty(_pl, "movie_average_rating", "Średnia ocen"), _defineProperty(_pl, "this_pornstar_does_not_have_enough_votes_to_calculate_average", "Ta gwiazda ma za mało głosów aby policzyć średnią (wymagane minimum to 10)"), _defineProperty(_pl, "fetching_rating_in_progress", "Pobieram dane rankingu"), _defineProperty(_pl, "average_rate_not_available_yet", "jeszcze niedostępna"), _defineProperty(_pl, "ammount_of_spermatozoids", "Liczba plemników"), _defineProperty(_pl, "your_spermatozoids", "twoich"), _defineProperty(_pl, "number_of_likes", "Polubień"), _defineProperty(_pl, "failed_to_load_movie_data", "Nie udało się pobrać szczegółowych danych filmu"), _defineProperty(_pl, "failed_to_load_similar_movies", "Nie udało się załadować podobnych filmów"), _defineProperty(_pl, "you_like_it", "Lubisz to"), _defineProperty(_pl, "you_already_like_this_movie", "Już wcześniej polubiłeś ten film"), _defineProperty(_pl, "you_and", "Ty i"), _defineProperty(_pl, "people_like_it", "osób lubi to"), _defineProperty(_pl, "no_comments", "Brak komentarzy"), _defineProperty(_pl, "cookie_notification_header", "Ta strona wykorzystuje pliki cookie"), _defineProperty(_pl, "cookie_notification_body", "Poprzez dalsze korzystanie z portalu lub naci\u015Bni\u0119cie przycisku \"Akceptuj\u0119\" wyra\u017Casz zgod\u0119 na przechowywanie plik\xF3w cookie na Twej maszynie"), _defineProperty(_pl, "accept_button_caption", "Akceptuję - zamknij"), _defineProperty(_pl, "show_content_side_bar_title", "Rozwiń nawigację strony dla wersji mobilnej"), _defineProperty(_pl, "show_content_side_bar_caption", "Menu"), _defineProperty(_pl, "cancel_like", "cofnij like'a"), _defineProperty(_pl, "show_authenticated_user_sidebar_title", "Rozwiń menu użytkownika, ustawienia profilu, wylogowanie itp."), _defineProperty(_pl, "show_authenticated_user_sidebar_caption", "Profil"), _defineProperty(_pl, "selected_avatar", "Nowy avatar"), _defineProperty(_pl, "no_avatar_has_been_choosen", "Nie wybrano avataru"), _defineProperty(_pl, "current_avatar", "Wybrany avatar"), _defineProperty(_pl, "the_latest", "Najnowsze"), _defineProperty(_pl, "the_most_popular", "Najpopularniejsze"), _defineProperty(_pl, "advanced_search", "Szukanie zaawansowane"), _defineProperty(_pl, "login_or_email", "Login lub email"), _defineProperty(_pl, "remember_me", "Zapamiętaj mnie"), _defineProperty(_pl, "scroll_movies_list_left", "Przewiń listę filmów w lewo"), _defineProperty(_pl, "scroll_movies_list_right", "Przewiń listę filmów w prawo"), _defineProperty(_pl, "packages", {
     content_sidebar: {
       hide_side_bar_title: "Schowaj boczne menu",
       hide_side_bar_caption: "Schowaj",
@@ -24888,7 +25027,28 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".trapeze-decoration[data-v-57e96238] {\n  position: absolute;\n  top: 100%;\n  left: 50%;\n  -webkit-transform: translate(-50%);\n     -moz-transform: translate(-50%);\n      -ms-transform: translate(-50%);\n       -o-transform: translate(-50%);\n          transform: translate(-50%);\n  border-left: -webkit-calc(3vw + 0px) solid transparent;\n  border-left: -moz-calc(3vw + 0px) solid transparent;\n  border-left: calc(3vw + 0px) solid transparent;\n  border-right: -webkit-calc(3vw + 0px) solid transparent;\n  border-right: -moz-calc(3vw + 0px) solid transparent;\n  border-right: calc(3vw + 0px) solid transparent;\n  border-top: -webkit-calc( 3vw - 0.8vw - 0px) solid #2b2929;\n  border-top: -moz-calc( 3vw - 0.8vw - 0px) solid #2b2929;\n  border-top: calc( 3vw - 0.8vw - 0px) solid #2b2929;\n  width: 70%;\n}\n@media (max-width: 450px) {\n.trapeze-decoration[data-v-57e96238] {\n      border-top-width: -webkit-calc(3vw + 5px);\n      border-top-width: -moz-calc(3vw + 5px);\n      border-top-width: calc(3vw + 5px);\n}\n}\n.trapeze-decoration[data-v-57e96238]::after {\n  content: \"\";\n  width: -webkit-calc(100% - 2px);\n  width: -moz-calc(100% - 2px);\n  width: calc(100% - 2px);\n  display: block;\n  position: absolute;\n  border-left: -webkit-calc(3vw + 1px) solid transparent;\n  border-left: -moz-calc(3vw + 1px) solid transparent;\n  border-left: calc(3vw + 1px) solid transparent;\n  border-right: -webkit-calc(3vw + 1px) solid transparent;\n  border-right: -moz-calc(3vw + 1px) solid transparent;\n  border-right: calc(3vw + 1px) solid transparent;\n  border-top: -webkit-calc( 3vw - 0.8vw - 1px) solid #0e0e0e;\n  border-top: -moz-calc( 3vw - 0.8vw - 1px) solid #0e0e0e;\n  border-top: calc( 3vw - 0.8vw - 1px) solid #0e0e0e;\n  top: -2px;\n  left: -3vw;\n  -webkit-transform: translateY(-100%);\n     -moz-transform: translateY(-100%);\n      -ms-transform: translateY(-100%);\n       -o-transform: translateY(-100%);\n          transform: translateY(-100%);\n}\n@media (max-width: 450px) {\n.trapeze-decoration[data-v-57e96238]::after {\n      border-top-width: -webkit-calc(3vw + 5px);\n      border-top-width: -moz-calc(3vw + 5px);\n      border-top-width: calc(3vw + 5px);\n}\n}\n.empire-logo--modified[data-v-57e96238] {\n  font-size: 1.5vw;\n  position: absolute;\n  -webkit-transform: translate(-50%, -webkit-calc(-100% - 1vw));\n     -moz-transform: translate(-50%, -moz-calc(-100% - 1vw));\n      -ms-transform: translate(-50%, calc(-100% - 1vw));\n       -o-transform: translate(-50%, calc(-100% - 1vw));\n          transform: translate(-50%, calc(-100% - 1vw));\n  z-index: 1;\n  left: 50%;\n  white-space: nowrap;\n}\n@media (max-width: 780px) {\n.empire-logo--modified[data-v-57e96238] {\n      font-size: 13px;\n}\n}\n.preview-control-element[data-v-57e96238] {\n  margin-right: 7px;\n}\n.movie-preview-container[data-v-57e96238] {\n  position: absolute;\n  display: inline-block;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n     -moz-transform: translate(-50%, -50%);\n      -ms-transform: translate(-50%, -50%);\n       -o-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  max-width: 90%;\n  -webkit-box-shadow: 2px 2px 2px 2px black;\n     -moz-box-shadow: 2px 2px 2px 2px black;\n          box-shadow: 2px 2px 2px 2px black;\n  background: #0e0e0e;\n  border: 1px solid #2b2929;\n  min-width: 300px;\n  padding: 3vw 3vw 1vw;\n}\n.movie-preview-frame[data-v-57e96238] {\n  display: block;\n  width: 100%;\n  height: auto;\n  -webkit-box-shadow: 2px 2px 2px 2px black;\n     -moz-box-shadow: 2px 2px 2px 2px black;\n          box-shadow: 2px 2px 2px 2px black;\n}\n.movie-title[data-v-57e96238] {\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  overflow: hidden;\n  white-space: nowrap;\n  color: white;\n}\n@media (max-width: 1200px) {\n.movie-title[data-v-57e96238] {\n      font-size: 16px;\n}\n}\n.movie-preview-bar[data-v-57e96238] {\n  padding: 0.5vw 0;\n}\n.television-decoration[data-v-57e96238] {\n  margin-left: 5px;\n  min-width: 20px;\n  min-height: 20px;\n  width: 2vw;\n  height: 2vw;\n  -webkit-border-radius: 50%;\n     -moz-border-radius: 50%;\n          border-radius: 50%;\n}\n.preview-close-icon[data-v-57e96238] {\n  min-width: 25px;\n  min-height: 25px;\n  width: 2.1vw;\n  height: 2.1vw;\n}\n.green-light[data-v-57e96238] {\n  background: -webkit-gradient(linear, left top, left bottom, from(#2af92a), to(#054006));\n  background: -webkit-linear-gradient(#2af92a, #054006);\n  background: -moz-linear-gradient(#2af92a, #054006);\n  background: -o-linear-gradient(#2af92a, #054006);\n  background: linear-gradient(#2af92a, #054006);\n  -webkit-flex-shrink: 0;\n      -ms-flex-negative: 0;\n          flex-shrink: 0;\n}\n.preview-close-icon[data-v-57e96238] {\n  margin-left: 7px;\n}\n.movie-icon[data-v-57e96238] {\n  color: white;\n  margin-right: 8px;\n}\n.movie-frame-selection[data-v-57e96238] {\n  -webkit-box-flex: 100;\n  -webkit-flex-grow: 100;\n     -moz-box-flex: 100;\n      -ms-flex-positive: 100;\n          flex-grow: 100;\n  width: 100%;\n  margin: 0 auto;\n  -webkit-appearance: none;\n  outline: none;\n  height: 2vh;\n}\n.movie-frame-selection[data-v-57e96238]::-webkit-slider-thumb {\n  -webkit-appearance: none;\n  border: 1px solid #000000;\n  height: 3vh;\n  width: 5%;\n  -webkit-border-radius: 1vh;\n          border-radius: 1vh;\n  background: #06a306;\n  cursor: pointer;\n  margin-top: -0.5vh;\n  margin-bottom: -0.5vh;\n  -webkit-box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n          box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\n.movie-frame-selection[data-v-57e96238]::-moz-range-thumb {\n  border: 1px solid #000000;\n  height: 3vh;\n  width: 5%;\n  -moz-border-radius: 1vh;\n       border-radius: 1vh;\n  background: #06a306;\n  cursor: pointer;\n  margin-top: -0.5vh;\n  margin-bottom: -0.5vh;\n  -moz-box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n       box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\n.movie-frame-selection[data-v-57e96238]::-webkit-slider-runnable-track {\n  background: black;\n  height: 2vh;\n}\n.movie-frame-selection[data-v-57e96238]::-moz-range-track {\n  background: black;\n  height: 2vh;\n  color: black;\n}\n.movie-preview-controls-and-decoration[data-v-57e96238] {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-wrap: nowrap;\n      -ms-flex-wrap: nowrap;\n          flex-wrap: nowrap;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 1vw 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".play-button[data-v-57e96238] {\n  margin-right: 5px;\n}\n.play-button[data-v-57e96238]:hover {\n    -webkit-filter: drop-shadow(0px 0px 4px #00c800) brightness(1.5);\n            filter: drop-shadow(0px 0px 4px #00c800) brightness(1.5);\n}\n.darker-shadow[data-v-57e96238] {\n  background: rgba(0, 0, 0, 0.9);\n}\n.image-container[data-v-57e96238] {\n  position: relative;\n}\n.shining[data-v-57e96238] {\n  -webkit-filter: drop-shadow(0px 0px 4px #00c800) brightness(1.5);\n          filter: drop-shadow(0px 0px 4px #00c800) brightness(1.5);\n}\n.trapeze-decoration[data-v-57e96238] {\n  position: absolute;\n  top: 100%;\n  left: 50%;\n  -webkit-transform: translate(-50%);\n     -moz-transform: translate(-50%);\n      -ms-transform: translate(-50%);\n       -o-transform: translate(-50%);\n          transform: translate(-50%);\n  border-left: -webkit-calc(3vw + 0px) solid transparent;\n  border-left: -moz-calc(3vw + 0px) solid transparent;\n  border-left: calc(3vw + 0px) solid transparent;\n  border-right: -webkit-calc(3vw + 0px) solid transparent;\n  border-right: -moz-calc(3vw + 0px) solid transparent;\n  border-right: calc(3vw + 0px) solid transparent;\n  border-top: -webkit-calc( 3vw - 0.8vw - 0px) solid #2b2929;\n  border-top: -moz-calc( 3vw - 0.8vw - 0px) solid #2b2929;\n  border-top: calc( 3vw - 0.8vw - 0px) solid #2b2929;\n  width: 70%;\n}\n@media (max-width: 450px) {\n.trapeze-decoration[data-v-57e96238] {\n      border-top-width: -webkit-calc(3vw + 5px);\n      border-top-width: -moz-calc(3vw + 5px);\n      border-top-width: calc(3vw + 5px);\n}\n}\n.trapeze-decoration[data-v-57e96238]::after {\n  content: \"\";\n  width: -webkit-calc(100% - 2px);\n  width: -moz-calc(100% - 2px);\n  width: calc(100% - 2px);\n  display: block;\n  position: absolute;\n  border-left: -webkit-calc(3vw + 1px) solid transparent;\n  border-left: -moz-calc(3vw + 1px) solid transparent;\n  border-left: calc(3vw + 1px) solid transparent;\n  border-right: -webkit-calc(3vw + 1px) solid transparent;\n  border-right: -moz-calc(3vw + 1px) solid transparent;\n  border-right: calc(3vw + 1px) solid transparent;\n  border-top: -webkit-calc( 3vw - 0.8vw - 1px) solid #0e0e0e;\n  border-top: -moz-calc( 3vw - 0.8vw - 1px) solid #0e0e0e;\n  border-top: calc( 3vw - 0.8vw - 1px) solid #0e0e0e;\n  top: -2px;\n  left: -3vw;\n  -webkit-transform: translateY(-100%);\n     -moz-transform: translateY(-100%);\n      -ms-transform: translateY(-100%);\n       -o-transform: translateY(-100%);\n          transform: translateY(-100%);\n}\n@media (max-width: 450px) {\n.trapeze-decoration[data-v-57e96238]::after {\n      border-top-width: -webkit-calc(3vw + 5px);\n      border-top-width: -moz-calc(3vw + 5px);\n      border-top-width: calc(3vw + 5px);\n}\n}\n.empire-logo--modified[data-v-57e96238] {\n  font-size: 1.5vw;\n  position: absolute;\n  -webkit-transform: translate(-50%, -webkit-calc(-100% - 1vw));\n     -moz-transform: translate(-50%, -moz-calc(-100% - 1vw));\n      -ms-transform: translate(-50%, calc(-100% - 1vw));\n       -o-transform: translate(-50%, calc(-100% - 1vw));\n          transform: translate(-50%, calc(-100% - 1vw));\n  z-index: 1;\n  left: 50%;\n  white-space: nowrap;\n}\n@media (max-width: 780px) {\n.empire-logo--modified[data-v-57e96238] {\n      font-size: 13px;\n}\n}\n.preview-control-element[data-v-57e96238] {\n  margin-right: 7px;\n}\n.movie-preview-container[data-v-57e96238] {\n  position: absolute;\n  display: inline-block;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n     -moz-transform: translate(-50%, -50%);\n      -ms-transform: translate(-50%, -50%);\n       -o-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  max-width: 90%;\n  -webkit-box-shadow: 2px 2px 2px 2px black;\n     -moz-box-shadow: 2px 2px 2px 2px black;\n          box-shadow: 2px 2px 2px 2px black;\n  background: #0e0e0e;\n  border: 1px solid #2b2929;\n  min-width: 300px;\n  padding: 3vw 3vw 1vw;\n}\n.movie-preview-frame[data-v-57e96238] {\n  display: block;\n  width: 100%;\n  height: auto;\n  -webkit-box-shadow: 2px 2px 2px 2px black;\n     -moz-box-shadow: 2px 2px 2px 2px black;\n          box-shadow: 2px 2px 2px 2px black;\n}\n.movie-title[data-v-57e96238] {\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  overflow: hidden;\n  white-space: nowrap;\n  color: white;\n}\n@media (max-width: 1200px) {\n.movie-title[data-v-57e96238] {\n      font-size: 16px;\n}\n}\n.movie-preview-bar[data-v-57e96238] {\n  padding: 0.5vw 0;\n}\n.television-control-or-decoration[data-v-57e96238] {\n  margin-left: 5px;\n  min-width: 20px;\n  min-height: 20px;\n  width: 2vw;\n  height: 2vw;\n}\n.preview-close-icon[data-v-57e96238] {\n  min-width: 25px;\n  min-height: 25px;\n  width: 2.1vw;\n  height: 2.1vw;\n}\n.green-light[data-v-57e96238] {\n  background: -webkit-gradient(linear, left top, left bottom, from(#2af92a), to(#054006));\n  background: -webkit-linear-gradient(#2af92a, #054006);\n  background: -moz-linear-gradient(#2af92a, #054006);\n  background: -o-linear-gradient(#2af92a, #054006);\n  background: linear-gradient(#2af92a, #054006);\n  -webkit-flex-shrink: 0;\n      -ms-flex-negative: 0;\n          flex-shrink: 0;\n  -webkit-border-radius: 50%;\n     -moz-border-radius: 50%;\n          border-radius: 50%;\n}\n.preview-close-icon[data-v-57e96238] {\n  margin-left: 7px;\n}\n.movie-icon[data-v-57e96238] {\n  color: white;\n  margin-right: 8px;\n}\n.movie-frame-selection[data-v-57e96238] {\n  -webkit-box-flex: 100;\n  -webkit-flex-grow: 100;\n     -moz-box-flex: 100;\n      -ms-flex-positive: 100;\n          flex-grow: 100;\n  width: 100%;\n  margin: 0 auto;\n  -webkit-appearance: none;\n  outline: none;\n  height: 2vh;\n}\n.movie-frame-selection[data-v-57e96238]::-webkit-slider-thumb {\n  -webkit-appearance: none;\n  border: 1px solid #000000;\n  height: 3vh;\n  width: 5%;\n  -webkit-border-radius: 1vh;\n          border-radius: 1vh;\n  background: #06a306;\n  cursor: pointer;\n  margin-top: -0.5vh;\n  margin-bottom: -0.5vh;\n  -webkit-box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n          box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\n.movie-frame-selection[data-v-57e96238]::-moz-range-thumb {\n  border: 1px solid #000000;\n  height: 3vh;\n  width: 5%;\n  -moz-border-radius: 1vh;\n       border-radius: 1vh;\n  background: #06a306;\n  cursor: pointer;\n  margin-top: -0.5vh;\n  margin-bottom: -0.5vh;\n  -moz-box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n       box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\n.movie-frame-selection[data-v-57e96238]::-webkit-slider-runnable-track {\n  background: black;\n  height: 2vh;\n}\n.movie-frame-selection[data-v-57e96238]::-moz-range-track {\n  background: black;\n  height: 2vh;\n  color: black;\n}\n.movie-preview-controls-and-decoration[data-v-57e96238] {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-wrap: nowrap;\n      -ms-flex-wrap: nowrap;\n          flex-wrap: nowrap;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 1vw 0;\n}\n", ""]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./resources/js/components/movies/play_button.vue?vue&type=style&index=0&id=629f7adc&lang=scss&scoped=true":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./resources/js/components/movies/play_button.vue?vue&type=style&index=0&id=629f7adc&lang=scss&scoped=true ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".play-button[data-v-629f7adc] {\n  display: inline-block;\n  border: none;\n  background: -webkit-gradient(linear, left top, left bottom, from(#2af92a), to(#054006));\n  background: -webkit-linear-gradient(#2af92a, #054006);\n  background: -moz-linear-gradient(#2af92a, #054006);\n  background: -o-linear-gradient(#2af92a, #054006);\n  background: linear-gradient(#2af92a, #054006);\n  -webkit-clip-path: polygon(0 0, 0 100%, 100% 50%);\n          clip-path: polygon(0 0, 0 100%, 100% 50%);\n  margin-left: 5px;\n  min-width: 20px;\n  min-height: 20px;\n  width: 2vw;\n  height: 2vw;\n  outline: none;\n  cursor: pointer;\n}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -25772,6 +25932,33 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_25_use_0_movie_preview_vue_vue_type_style_index_0_id_57e96238_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./resources/js/components/movies/play_button.vue?vue&type=style&index=0&id=629f7adc&lang=scss&scoped=true":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./resources/js/components/movies/play_button.vue?vue&type=style&index=0&id=629f7adc&lang=scss&scoped=true ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_25_use_0_play_button_vue_vue_type_style_index_0_id_629f7adc_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./play_button.vue?vue&type=style&index=0&id=629f7adc&lang=scss&scoped=true */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./resources/js/components/movies/play_button.vue?vue&type=style&index=0&id=629f7adc&lang=scss&scoped=true");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_25_use_0_play_button_vue_vue_type_style_index_0_id_629f7adc_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_25_use_0_play_button_vue_vue_type_style_index_0_id_629f7adc_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
@@ -27860,6 +28047,36 @@ _movie_preview_complete_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__
 
 /***/ }),
 
+/***/ "./resources/js/components/movies/play_button.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/movies/play_button.vue ***!
+  \********************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _play_button_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.__esModule; }
+/* harmony export */ });
+/* harmony import */ var _play_button_vue_vue_type_template_id_629f7adc_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./play_button.vue?vue&type=template&id=629f7adc&scoped=true */ "./resources/js/components/movies/play_button.vue?vue&type=template&id=629f7adc&scoped=true");
+/* harmony import */ var _play_button_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./play_button.vue?vue&type=script&lang=js */ "./resources/js/components/movies/play_button.vue?vue&type=script&lang=js");
+/* harmony import */ var _play_button_vue_vue_type_style_index_0_id_629f7adc_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./play_button.vue?vue&type=style&index=0&id=629f7adc&lang=scss&scoped=true */ "./resources/js/components/movies/play_button.vue?vue&type=style&index=0&id=629f7adc&lang=scss&scoped=true");
+
+
+
+
+;
+_play_button_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _play_button_vue_vue_type_template_id_629f7adc_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render
+_play_button_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__scopeId = "data-v-629f7adc"
+/* hot reload */
+if (false) {}
+
+_play_button_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/components/movies/play_button.vue"
+
+/* harmony default export */ __webpack_exports__["default"] = (_play_button_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
 /***/ "./resources/js/components/navigation/authenticated_user_sidebar.vue":
 /*!***************************************************************************!*\
   !*** ./resources/js/components/navigation/authenticated_user_sidebar.vue ***!
@@ -28697,6 +28914,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/movies/play_button.vue?vue&type=script&lang=js":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/movies/play_button.vue?vue&type=script&lang=js ***!
+  \********************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_25_use_0_play_button_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default; },
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_25_use_0_play_button_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.__esModule; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_25_use_0_play_button_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./play_button.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./resources/js/components/movies/play_button.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/navigation/navbar.vue?vue&type=script&lang=js":
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/navigation/navbar.vue?vue&type=script&lang=js ***!
@@ -29428,6 +29662,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/movies/play_button.vue?vue&type=template&id=629f7adc&scoped=true":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/movies/play_button.vue?vue&type=template&id=629f7adc&scoped=true ***!
+  \**************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_25_use_0_play_button_vue_vue_type_template_id_629f7adc_scoped_true__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
+/* harmony export */   "render": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_25_use_0_play_button_vue_vue_type_template_id_629f7adc_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_25_use_0_play_button_vue_vue_type_template_id_629f7adc_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./play_button.vue?vue&type=template&id=629f7adc&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./resources/js/components/movies/play_button.vue?vue&type=template&id=629f7adc&scoped=true");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/navigation/authenticated_user_sidebar.vue?vue&type=template&id=a04b05d0&scoped=true":
 /*!*********************************************************************************************************************!*\
   !*** ./resources/js/components/navigation/authenticated_user_sidebar.vue?vue&type=template&id=a04b05d0&scoped=true ***!
@@ -29826,6 +30077,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_25_use_0_movie_preview_vue_vue_type_style_index_0_id_57e96238_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./movie_preview.vue?vue&type=style&index=0&id=57e96238&lang=scss&scoped=true */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./resources/js/components/movies/movie_preview.vue?vue&type=style&index=0&id=57e96238&lang=scss&scoped=true");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/movies/play_button.vue?vue&type=style&index=0&id=629f7adc&lang=scss&scoped=true":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/components/movies/play_button.vue?vue&type=style&index=0&id=629f7adc&lang=scss&scoped=true ***!
+  \*****************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_22_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_22_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_22_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_25_use_0_play_button_vue_vue_type_style_index_0_id_629f7adc_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./play_button.vue?vue&type=style&index=0&id=629f7adc&lang=scss&scoped=true */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[25].use[0]!./resources/js/components/movies/play_button.vue?vue&type=style&index=0&id=629f7adc&lang=scss&scoped=true");
 
 
 /***/ }),
