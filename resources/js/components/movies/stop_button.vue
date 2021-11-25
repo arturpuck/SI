@@ -1,5 +1,5 @@
 <template>
-  <button v-bind:title="buttonTittle" class="play-button"></button>
+  <button v-bind:title="buttonTittle" class="stop-button"></button>
 </template>
 
 <script lang="ts">
@@ -11,18 +11,17 @@ export default {
        default : null
      }
   },
-  name: "play-button",
+  name: "stop-button",
 };
 </script>
 
 <style lang="scss" scoped>
 @import "~sass/components/movies/television_control_or_decoration";
 
-.play-button {
+.stop-button {
   display: inline-block;
   border: none;
-  background: linear-gradient(#2af92a, #054006);
-  clip-path: polygon(0 0, 0 100%, 100% 50%);
+  background: linear-gradient(#e32c3c, #360808);
   @include television-control-or-decoration();
   outline: none;
   cursor: pointer;

@@ -132,6 +132,7 @@ export default {
       play_movie_preview: "Uruchom podgląd filmu",
       launching_in_progress : "Trwa uruchamianie",
       click_to_play_the_video : "Kliknij aby uruchomić film",
+      stop_movie_preview : "Zatrzymaj odtwarzanie podglądu filmu",
       sex_empire: "Sex-Imperium",
       movie_translated_to_polish: "Film przetłumaczony na język polski",
       scroll_next_links: "Przewijaj listę podstron do przodu",

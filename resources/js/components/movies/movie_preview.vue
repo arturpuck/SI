@@ -1,7 +1,7 @@
 <template>
   <div class="movie-preview-container">
     <div class="image-container">
-       <video v-on:playing="hideShadow" v-if="movieIsPlayedInVideoPlayer" autoplay >
+       <video ref="video" v-on:play="initiateVideoPlayer" v-if="movieIsPlayedInVideoPlayer" autoplay >
             <source v-bind:src="moviePath" type="video/mp4" />
        </video>
       <expect-shadow-circle v-bind:circle-label="circleLabel" class="darker-shadow" v-show="showShadow"></expect-shadow-circle>
@@ -14,10 +14,12 @@
     </div>
     <div class="movie-preview-controls-and-decoration">
       <div
+        v-bind:class="televisionLightStyleObject"
         aria-hidden="true"
         class="television-control-or-decoration green-light preview-control-element"
       ></div>
-      <play-button v-on:click="launchVideoPlayer" v-bind:button-tittle="playButtonTittle" class="television-control-or-decoration play-button"></play-button>
+      <play-button v-if="!movieIsPlayedInVideoPlayer" v-on:click="launchVideoPlayer" v-bind:button-tittle="playButtonTittle" class="television-button"></play-button>
+      <stop-button v-if="movieIsPlayedInVideoPlayer" v-bind:button-tittle="stopButtonTittle" v-on:click="stopVideoPlayer" class="television-button"></stop-button>
       <input
         v-model="currentFrame"
         v-on:click="rangeInputHandler"
@@ -44,6 +46,7 @@
 import PreviewMovieData from "@interfaces/movies/preview_movie_data";
 import Translations from "@jsmodules/translations/components/movie_preview";
 import PlayButton from "@jscomponents/movies/play_button.vue";
+import StopButton from "@jscomponents/movies/stop_button";
 import ExpectShadowCircle from "@jscomponents-decoration/expect_shadow_circle";
 
 
@@ -55,15 +58,28 @@ export default {
       title: "",
       showShadow : false,
       movieIsPlayedInVideoPlayer : false,
+      movieHasStarted : false
     };
   },
 
   components : {
       PlayButton,
-      ExpectShadowCircle
+      ExpectShadowCircle,
+      StopButton,
   },
 
   methods: {
+    initiateVideoPlayer() : void {
+       this.movieHasStarted = true;
+       this.hideShadow();
+       this.seekForSelectedTime();
+    },
+
+    seekForSelectedTime() : void {
+        const video = this.$refs.video;
+        video.currentTime = Math.floor(video.duration * (this.currentFrame / 100));
+    },
+
     hideShadow() : void {
       this.showShadow = false;
     },
@@ -74,26 +90,29 @@ export default {
       this.title = movie.title;
     },
 
-    handleRangeInputWhenMovieIsNotPlayedInVideoPlayer(event: Event): void  {
-        console.log(event.target);
-    },
-
     hidePreview(): void {
       this.emitter.emit("closePreview");
+      this.movieIsPlayedInVideoPlayer = false;
+      this.hideShadow();
     },
 
     launchVideoPlayer() : void {
       this.showShadow = true;
       this.movieIsPlayedInVideoPlayer = true;
+    },
 
+    stopVideoPlayer() : void {
+      this.hideShadow();
+      this.movieIsPlayedInVideoPlayer = false;
+      this.movieHasStarted = false;
     }
 
   },
 
   watch : {
       currentFrame() : void {
-         if(this.movieIsPlayedInVideoPlayer){
-
+         if(this.movieIsPlayedInVideoPlayer && this.movieHasStarted){
+            this.seekForSelectedTime();
          }
       }
   },
@@ -127,6 +146,18 @@ export default {
 
     playButtonTittle() : string {
       return Translations['playButtonTittle']
+    },
+
+    televisionLightStyleObject() : object {
+       return {'shining-control' : this.movieIsPlayedInVideoPlayer}
+    },
+
+    moviePreviewImageStyleObject() : object {
+      return {'invisible-image' : this.movieIsPlayedInVideoPlayer}
+    },
+
+    stopButtonTittle() : string {
+      return Translations.stopButtonTittle;
     }
   },
 
@@ -166,10 +197,14 @@ $borders-difference: 0.8vw;
     filter: drop-shadow(0px 0px 4px #00c800) brightness(1.5);
 }
 
-.play-button{
+.shining-control {
+  @include shining();
+}
+
+.television-button{
   margin-right: 5px;
   &:hover{
-    @include shining();
+    filter:brightness(1.6);
   }
 }
 
