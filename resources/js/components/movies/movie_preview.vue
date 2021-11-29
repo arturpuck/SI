@@ -1,7 +1,7 @@
 <template>
   <div class="movie-preview-container">
     <div class="image-container">
-       <video ref="video" v-on:play="initiateVideoPlayer" v-if="movieIsPlayedInVideoPlayer" autoplay >
+       <video ref="video" v-on:play="initiateVideoPlayer" class="video" v-if="movieIsPlayedInVideoPlayer" autoplay >
             <source v-bind:src="moviePath" type="video/mp4" />
        </video>
       <expect-shadow-circle v-bind:circle-label="circleLabel" class="darker-shadow" v-show="showShadow"></expect-shadow-circle>
@@ -168,6 +168,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.video{
+  width : 100%;
+}
+
 @import "~sass/fonts";
 @import "~sass/components/movies/television_control_or_decoration";
 @mixin television-control-or-decoration {
