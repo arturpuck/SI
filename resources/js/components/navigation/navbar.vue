@@ -33,7 +33,7 @@
           ></adult-icon>
           <arrow-up-icon
             v-show="pornSubMenuIsVisible"
-            class="fas navbar-icon navbar-icon-outer fa-arrow-up"
+            class="navbar-icon navbar-icon-outer"
           >
           </arrow-up-icon>
           <phantom-button class="phantom-button"> Porno </phantom-button>
@@ -155,6 +155,14 @@
             </a>
           </div>
         </li>
+        <li class="sub-menu-list-element intendation-first-level">
+          <div class="sub-menu-level-one-item">
+            <a class="navbar-link-main-manu" href="/porno-słownik">
+              <dictionary-icon class="navbar-icon navbar-icon-outer"></dictionary-icon>
+              {{translations['porn_dictionary']}}
+            </a>
+          </div>
+        </li>
       </ul>
     </nav>
     <authenticated-user-sidebar
@@ -194,6 +202,7 @@ import SideBarVisibilityMixin from "@js/mixins/side_bar_visibility";
 import RollDownButton from "@jscomponents/form_controls/roll_down_button";
 import Translations from "@jsmodules/translations/components/navbar";
 import AvatarConfig from "@config/paths/avatar";
+import DictionaryIcon from "@svgicon/dictionary_icon";
 import { defineAsyncComponent } from 'vue';
 
 const CategoriesList = defineAsyncComponent(() => import("@jscomponents/categories_list"));
@@ -255,6 +264,7 @@ export default {
     EnterIcon,
     AvatarIcon,
     RollDownButton,
+    DictionaryIcon,
     LoginForm
   },
 
