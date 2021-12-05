@@ -120,7 +120,7 @@ export default class MovieBox extends Vue {
   mounted() {
     //@ts-ignore
     this.emitter.on("anotherBoxShowsShortcut", this.anotherBoxShowsShortcutHandler);
-    (<HTMLElement>this.$refs.movieBox).addEventListener('touchstart', this.touchStartHandler); //somehow vue currently does not provide v-on:touchstart
+    (<HTMLElement>this.$refs.movieBox).addEventListener('touchstart', this.touchStartHandler, {passive : true}); //somehow vue currently does not provide v-on:touchstart
   }
 
   touchStartHandler() {
