@@ -4,7 +4,7 @@ namespace App\Traits;
 
 trait NiceURLGenerator
 {
-   public function generateNiceURL(string $routeName, array $routeParameters, bool $withoutHTTPS = true) : string 
+   public function generateNiceURL(string $routeName, array $routeParameters) : string 
    {
       $blankParameters = [];
       $counter = 1;
@@ -13,8 +13,6 @@ trait NiceURLGenerator
          ++$counter;
       }
       $routeParameters = array_map(fn($value) => str_replace(' ', '-', $value), array_values($routeParameters));
-      $result = str_replace($blankParameters, $routeParameters, route($routeName, $blankParameters));
-      $result = $withoutHTTPS ? str_replace('https', 'http', $result) : $result;
-      return $result;
+      return str_replace($blankParameters, $routeParameters, route($routeName, $blankParameters));
    }
 }
