@@ -54,6 +54,10 @@ class SiteMapGeneratorHandler
         'pornstars'
     ];
 
+    public function withoutHTTPS(string $URI) : string{
+        return str_replace('https', 'http', $URI);
+    }
+
     public function handle() : Response
     {
         $movies = Movie::all();
@@ -62,7 +66,8 @@ class SiteMapGeneratorHandler
         return response()->view('sitemap', [
              'movies' => $movies,
              'pornstars' => $pornstars,
-             'categoriesURLs' => $this->generateCategoriesURLs()
+             'categoriesURLs' => $this->generateCategoriesURLs(),
+             'trimer' => $this
         ])->header('Content-Type', 'text/xml');
     }
 
