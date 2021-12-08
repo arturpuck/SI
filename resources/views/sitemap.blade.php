@@ -30,7 +30,7 @@
 @endforeach
 
 <url>
-   <loc> {{route('pornstars.list')}}</loc>
+   <loc>{{route('pornstars.list')}}</loc>
    <changefreq>monthly</changefreq>
    
    @foreach($pornstars as $pornstar)
