@@ -1,0 +1,57 @@
+@import "~sass/basic";
+@import "~sass/fonts";
+@import "~sass/responsive_icon";
+
+.main-content{
+   color:white;
+}
+
+.full-body{
+   background:#0e0e0e;
+}
+
+.dictionary-header{
+    text-align:center;
+    @include responsive-font(2vw, 22px);
+    padding: 10px;
+    background: #383333;
+    margin: 20px 0 0;
+}
+
+.dictionary-introduction{
+    @include responsive-font(1.2vw, 17px);
+    margin:0;
+    padding:10px;
+    background:#8b0b2d;
+}
+
+.header-icon{
+    @include responsive-icon();
+    vertical-align: middle;
+    fill: #b11a39;
+}
+
+.info-icon{
+    display:block;
+    @include responsive-icon(0 auto, 2vw, 20px);
+    fill:#ddf106;
+    height:auto;
+}
+
+.dictionary{
+    margin: 0;
+    padding: 10px 5px 0 20px;
+
+    &__term{
+       color:white;
+       font-weight:bold;
+       @include responsive-font(1.8vw, 20px);
+       margin: 10px 0 0 0;
+    }
+    
+    &__description{
+        @include responsive-font(1.4vw, 18px);
+        padding-left:40px;
+        margin:0;
+    }
+}

@@ -15,7 +15,7 @@ const translations : {
     pornstars_navbar_caption : string,
     default_avatar : string,
     user_avatar_description : string
-    porn_dictionary : string
+    dictionary : string
     
 } = {
     showContentSideBarButtonTitle : Translator.translate('show_content_side_bar_title'),
@@ -32,7 +32,7 @@ const translations : {
     pornstars_navbar_caption : Translator.translate('pornstars_navbar_caption'),
     default_avatar : Translator.translate('default_avatar'),
     user_avatar_description : Translator.translate('user_avatar_description'),
-    porn_dictionary : Translator.translate('porn_dictionary'),
+    dictionary : Translator.translate('dictionary'),
 };
 
 export default translations;

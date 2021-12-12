@@ -15,10 +15,14 @@ Route::get('sitemap.xml', 'SiteMapGeneratorController@generateSiteMap');
 
 Route::get('/', 'LaunchMainPageController@showMainPage')
     ->name('main.page');
+
 Route::get('/kontakt', 'ContactFormController@showContactForm')
     ->name('contact.show.form');
+
 Route::post('/contact/send-message', 'ContactFormController@sendMessageFromUser')
     ->name('contact.send.message');
+
+Route::get('porno-słownik', 'PornDictionaryController@showDictionary');
 
 
 Route::namespace ('Movies')->name('movies.')->group(function () {

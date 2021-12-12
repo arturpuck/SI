@@ -159,7 +159,7 @@
           <div class="sub-menu-level-one-item">
             <a class="navbar-link-main-manu" href="/porno-słownik">
               <dictionary-icon class="navbar-icon navbar-icon-outer"></dictionary-icon>
-              {{translations['porn_dictionary']}}
+              {{translations['dictionary']}}
             </a>
           </div>
         </li>
