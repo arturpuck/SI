@@ -20,6 +20,12 @@ class CreatePornDictionaryTermsTable extends Migration
             $table->timestamps();
         });
 
+        $this->insertTerms();
+
+    }
+
+    protected function insertTerms() : void {
+
         PornDictionaryTerm::insert([
             ['name' => '69'],
             ['name' => 'Amateur'],
@@ -42,6 +48,7 @@ class CreatePornDictionaryTermsTable extends Migration
             ['name' => 'FootJob'],
             ['name' => 'Femdom'],
             ['name' => 'GangBang'],
+            ['name' => 'GILF'],
             ['name' => 'Glory hole'],
             ['name' => 'Golden Shower'],
             ['name' => 'Mature'],

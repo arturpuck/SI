@@ -25,9 +25,23 @@ class CreatePornDictionaryTermTranslationsTable extends Migration
             $table->timestamps();
         });
 
+        $this->insertTranslations();
+
+        
+    }
+    
+    protected function getTranslatedTerm(string $term, string $appendedString = '') : ?string
+    {
+        $termKey = "porn_dictionary_terms.{$term}{$appendedString}";
+        $translated = __(key:"porn_dictionary_terms.{$term}", locale:'pl');
+        return $translated == $termKey ? null : $translated;
+    }
+    
+    protected function insertTranslations() : void {
+
         $pornDictionaryTerms = PornDictionaryTerm::all();
         $translations = [];
-
+    
         foreach($pornDictionaryTerms as $pornDictionaryTerm){
             $translations[] = [
                 'porn_dictionary_term_id' => $pornDictionaryTerm->id,
@@ -37,13 +51,6 @@ class CreatePornDictionaryTermTranslationsTable extends Migration
             ];
         }
 
-    }
-
-    protected function getTranslatedTerm(string $term, string $appendedString = '') : ?string
-    {
-        $termKey = "porn_dictionary_terms.{$term}{$appendedString}";
-        $translated = __(key:"porn_dictionary_terms.{$term}", locale:'pl');
-        return $translated == $termKey ? null : $translated;
     }
 
     /**
