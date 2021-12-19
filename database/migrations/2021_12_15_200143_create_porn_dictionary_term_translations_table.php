@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\PornDictionaryTerm;
+use App\PornDictionaryTermTranslation;
 
 class CreatePornDictionaryTermTranslationsTable extends Migration
 {
@@ -18,11 +19,11 @@ class CreatePornDictionaryTermTranslationsTable extends Migration
     {
         Schema::create('porn_dictionary_term_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(PornDictionaryTerm::class);
+            $table->unsignedBigInteger('term_id');
+            $table->foreign('term_id')->references('id')->on('porn_dictionary_terms');
             $table->string('language_shortcut',3);
-            $table->string('translated_name',40)->nullable();
-            $table->string('translated_description');
-            $table->timestamps();
+            $table->string('translated_name', 40)->nullable();
+            $table->text('translated_description');
         });
 
         $this->insertTranslations();
@@ -33,7 +34,7 @@ class CreatePornDictionaryTermTranslationsTable extends Migration
     protected function getTranslatedTerm(string $term, string $appendedString = '') : ?string
     {
         $termKey = "porn_dictionary_terms.{$term}{$appendedString}";
-        $translated = __(key:"porn_dictionary_terms.{$term}", locale:'pl');
+        $translated = __(key:$termKey, locale:'pl');
         return $translated == $termKey ? null : $translated;
     }
     
@@ -44,13 +45,17 @@ class CreatePornDictionaryTermTranslationsTable extends Migration
     
         foreach($pornDictionaryTerms as $pornDictionaryTerm){
             $translations[] = [
-                'porn_dictionary_term_id' => $pornDictionaryTerm->id,
+                'term_id' => $pornDictionaryTerm->id,
                 'language_shortcut' => 'pl', 
-                'translated_name' => $this->getTranslatedTerm($pornDictionaryTerm),
-                'translated_description' => $this->getTranslatedTerm($pornDictionaryTerm, '_description')
+                'translated_name' => $this->getTranslatedTerm($pornDictionaryTerm->name),
+                'translated_description' => $this->getTranslatedTerm($pornDictionaryTerm->name, '_description')
             ];
+             if($this->getTranslatedTerm($pornDictionaryTerm->name, '_description') === null){
+                 dd($pornDictionaryTerm->name);
+             }
         }
 
+        PornDictionaryTermTranslation::insert($translations);
     }
 
     /**

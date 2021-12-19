@@ -17,7 +17,6 @@ class CreatePornDictionaryTermsTable extends Migration
         Schema::create('porn_dictionary_terms', function (Blueprint $table) {
             $table->id();
             $table->string('name', 40);
-            $table->timestamps();
         });
 
         $this->insertTerms();
@@ -35,7 +34,7 @@ class CreatePornDictionaryTermsTable extends Migration
             ['name' => 'BDSM'],
             ['name' => 'Bukkake'],
             ['name' => 'BlowBang'],
-            ['name' => 'BlowJob'],
+            ['name' => 'Blowjob'],
             ['name' => 'Cum Swapping'],
             ['name' => 'Creampie'],
             ['name' => 'Cumshot'],
@@ -50,7 +49,7 @@ class CreatePornDictionaryTermsTable extends Migration
             ['name' => 'GangBang'],
             ['name' => 'GILF'],
             ['name' => 'Glory hole'],
-            ['name' => 'Golden Shower'],
+            ['name' => 'Golden shower'],
             ['name' => 'Mature'],
             ['name' => 'MILF'],
             ['name' => 'Mistress'],
