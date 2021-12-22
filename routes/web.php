@@ -22,7 +22,7 @@ Route::get('/kontakt', 'ContactFormController@showContactForm')
 Route::post('/contact/send-message', 'ContactFormController@sendMessageFromUser')
     ->name('contact.send.message');
 
-Route::get('porno-słownik', 'PornDictionaryController@showDictionary');
+Route::get('porno-słownik/{range?}', 'PornDictionaryController@showDictionary');
 
 
 Route::namespace ('Movies')->name('movies.')->group(function () {

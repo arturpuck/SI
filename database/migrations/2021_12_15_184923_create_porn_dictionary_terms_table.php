@@ -26,7 +26,6 @@ class CreatePornDictionaryTermsTable extends Migration
     protected function insertTerms() : void {
 
         PornDictionaryTerm::insert([
-            ['name' => '69'],
             ['name' => 'Amateur'],
             ['name' => 'Anal'],
             ['name' => 'BBC'],
@@ -55,6 +54,7 @@ class CreatePornDictionaryTermsTable extends Migration
             ['name' => 'Mistress'],
             ['name' => 'Money shot'],
             ['name' => 'Oral'],
+            ['name' => 'Position 69'],
             ['name' => 'Rimming'],
             ['name' => 'Softcore'],
             ['name' => 'Shemale'],

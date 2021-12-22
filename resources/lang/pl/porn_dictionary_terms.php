@@ -1,8 +1,7 @@
 <?php
 
 return [
-   '69' => 'Pozycja 69',
-   '69_description' => 'Pozycja w której 2 partnerów ustami pieści swe genitalia jednocześnie. Zazwyczaj wygląda to tak, że mężczyzna leży na plecach, podczas gdy kobieta leżąc na brzuchu smyra go cipką po twarzy jednocześnie zajmując się jego mieczem',
+   
    'Amateur' => 'Amatorskie filmy',
    'Amateur_description' => "Ciężko podać precyzyjną definicję czym dokładnie są amatorskie filmy XXX. Zazwyczaj w ten sposób określa się materiały wytwarzane przez osoby, które na co dzień nie pracują w branży porno. Ponadto filmy takie zazwyczaj kręcone są bez specjalnego oświetlenia i przy pomocy popularnych, powszechnie dostępnych kamer (np. w smartfonach). Najczęściej nie angażuje się kamerzysty i korzysta się z np. statywu lub kręci się w tzw. \"POV\" (objaśnienie poniżej). Popularne jest wytwarzanie takich filmów przez osoby będące w związku, chcące się dzielić przeżyciami w sypialni z publicznością. Nietrudno natknąć się na materiały, które zamieszczono w ramach zemsty (zazwyczaj to rozgniewany mężczyzna udostępnia treści po burzliwym rozstaniu, bez wiedzy kobiety). Istnieje też znaczna ilość filmów kręconych ukrytą kamerą.",
    'Anal_description' => "Typ seksu w którym penis penetruje nie waginę, ale odbyt. Część osób czerpie z niego przyjemność, a część nie. W przeciwieństwie do tradycyjnej penetracji nie zachodzi tu naturalne \"smarowanie\" - co za tym idzie zaleca się korzystanie ze specjalnych nawilżaczy.",
@@ -48,6 +47,8 @@ return [
    'Mistress_description' => 'W branży XXX terminem tym określa się kobiety pewne siebie, dominujące, sprawujące kontrolę nad uległymi im osobami. Domina często jest wyposażona w bicze, lateksowe stroje, buty na wysokich obcasach. Sługusy dominy często chodzą na smyczy albo dostają manto na różne sposoby(są oblewani woskiem, związywani, obrywają pejczem po dupsku). Warto zaznaczyć, że odbiorcami tego typu treści są przede wszystkim mężczyźni fantazjujący o tym aby być traktowanym w ten sposób, a nie kobiety chcące podporządkować sobie mężczyznę.',
    'Money shot_description' => 'Scena/ujęcie w której męski aktor spuszcza się.',
    'Oral_description' => 'Inaczej seks oralny, forma seksu w której narządy płciowe pieszczone są ustami lub języczkiem',
+   'Position 69' => 'Pozycja 69',
+   'Position 69_description' => 'Pozycja w której 2 partnerów ustami pieści swe genitalia jednocześnie. Zazwyczaj wygląda to tak, że mężczyzna leży na plecach, podczas gdy kobieta leżąc na brzuchu smyra go cipką po twarzy jednocześnie zajmując się jego mieczem',
    'Rimming_description' => 'Inaczej lizanie, całowanie odbytu',
    'Softcore_description' => 'Lżejsza forma pornografii, nie ukazująca penetracji/ aktu seksualnego',
    'Shemale_description' => 'Owe słowo to połączenie angielskich wyrażeń She(ona) i Male(męski, mężczyzna). Terminem tym określa się przede wsystkim osoby transseksualne urodzone jako mężczyźni, które zmieniły płeć na żeńską. Osoby takie lubią zaskakiwać : najpierw widzimy atrakcyjną kobietę po czym okazuje się, iż posiada kutasa . . .',
