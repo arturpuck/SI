@@ -40,18 +40,44 @@
 
 .dictionary{
     margin: 0;
-    padding: 10px 5px 0 20px;
+    padding: 10px 5px 15px 20px;
 
     &__term{
-       color:white;
+       color:#db1e5a;
        font-weight:bold;
        @include responsive-font(1.8vw, 20px);
        margin: 10px 0 0 0;
     }
     
     &__description{
-        @include responsive-font(1.4vw, 18px);
-        padding-left:40px;
+        @include responsive-font(1.3vw, 16px);
+        line-height: 1.4;
+        padding:0 0 0 3vw;
         margin:0;
     }
+}
+
+.current-dictionary-range{
+    text-align:center;
+    @include responsive-font(1.8vw, 20px);
+    line-height: 1.5;
+}
+
+.ranges-list{
+    list-style-type: none;
+    display:flex;
+    justify-content:center;
+
+}
+
+.current-range{
+    color:#db1e5a;
+}
+
+.dictionary-range-link{
+    color:#db1e5a;
+    text-decoration: none;
+    font-weight: bold;
+    padding:0 7px;
+    @include responsive-font(1.8vw, 20px);
 }

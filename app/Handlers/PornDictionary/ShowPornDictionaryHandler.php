@@ -10,14 +10,15 @@ class ShowPornDictionaryHandler
 {
     public function handle(ShowPornDictionaryRequest $request) //: View
     {
-       $rangeSymbols = $request->route('range') ?? 'a-c';
-       $rangeSymbols = explode('-', $rangeSymbols);
+       $range = $request->route('range') ?? 'a-c';
+       $range = strtoupper($range);
+       $rangeSymbols = explode('-', $range);
        $pornDictionaryTerms = PornDictionaryTerm::query()
                                                  ->filterByFirstLetterInAlphabeticalRange($rangeSymbols[0])
                                                  ->filterByLastLetterInAlphabeticalRange($rangeSymbols[1])
                                                  ->withTranslationsInCurrentLanguage()
                                                  ->get();
         
-       dd($pornDictionaryTerms);
+       return view('porn_dictionary')->with(compact('range', 'pornDictionaryTerms'));
     }
 }

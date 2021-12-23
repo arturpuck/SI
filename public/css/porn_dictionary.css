@@ -216,9 +216,9 @@
 
 .dictionary {
   margin: 0;
-  padding: 10px 5px 0 20px; }
+  padding: 10px 5px 15px 20px; }
   .dictionary__term {
-    color: white;
+    color: #db1e5a;
     font-weight: bold;
     font-size: 1.8vw;
     font-family: "Exo 2", sans-serif;
@@ -227,11 +227,48 @@
       .dictionary__term {
         font-size: 20px; } }
   .dictionary__description {
-    font-size: 1.4vw;
+    font-size: 1.3vw;
     font-family: "Exo 2", sans-serif;
-    padding-left: 40px;
+    line-height: 1.4;
+    padding: 0 0 0 3vw;
     margin: 0; }
     @media (max-width: 1200px) {
       .dictionary__description {
-        font-size: 18px; } }
+        font-size: 16px; } }
+
+.current-dictionary-range {
+  text-align: center;
+  font-size: 1.8vw;
+  font-family: "Exo 2", sans-serif;
+  line-height: 1.5; }
+  @media (max-width: 1200px) {
+    .current-dictionary-range {
+      font-size: 20px; } }
+
+.ranges-list {
+  list-style-type: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.current-range {
+  color: #db1e5a; }
+
+.dictionary-range-link {
+  color: #db1e5a;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0 7px;
+  font-size: 1.8vw;
+  font-family: "Exo 2", sans-serif; }
+  @media (max-width: 1200px) {
+    .dictionary-range-link {
+      font-size: 20px; } }
 

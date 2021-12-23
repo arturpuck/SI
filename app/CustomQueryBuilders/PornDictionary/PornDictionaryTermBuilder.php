@@ -14,16 +14,16 @@ class PornDictionaryTermBuilder extends Builder
 
     public function filterByLastLetterInAlphabeticalRange(string $lastLetter) : self
     {
-        if($lastLetter == 'z'){ //somehow it does not work as expected you have to switch to next letter
-            return $this;
-        }
-        $this->where('name', '<=', ++$lastLetter);
+        //somehow it does not work as expected you have to switch to next letter
+        $lastLetter = ucfirst($lastLetter);
+        $lastLetter = $lastLetter === 'Z' ? $lastLetter : ++$lastLetter;
+        $this->where('name', '<=', $lastLetter);
         return $this;
     }
 
     public function withTranslationsInCurrentLanguage() : self
     {
-        $this->with('translationsInCurrentLanguage');
+        $this->with('translationInCurrentLanguage');
         return $this;
     }
 
