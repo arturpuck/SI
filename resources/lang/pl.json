@@ -328,5 +328,7 @@
     "porn_dictionary_header" : "Porno słowniczek - podstawowe pojęcia",
     "porn_dictionary_introduction" : "Z racji, iż bardzo często terminy branżowe występują w języku angielskim, lista została posortowana alfabetycznie z uwzględnieniem tegoż języka. Tam gdzie jest to konieczne obok podano polskie tłumaczenie. Jeżeli uważasz, że czegoś brakuje lub się nie zgadza zachęcamy do kontaktu poprzez formularz kontaktowy znajdujący się w stopce witryny. Miłej lektury ;)",
     "you_are_currently_browsing_terms_in_range" : "Aktualnie przeglądasz pozycje z zakresu",
-    "select_term_ranges" : "Przeglądaj pozycje z zakresu"
+    "select_term_ranges" : "Przeglądaj pozycje z zakresu",
+    "from" : "od",
+    "up_to" : "do"
 }

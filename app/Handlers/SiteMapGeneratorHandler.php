@@ -7,11 +7,9 @@ use App\Movie;
 use App\Pornstar;
 use App\Repositories\MoviesRepository;
 use Illuminate\Http\Response;
-use App\Traits\NiceURLGenerator;
 
 class SiteMapGeneratorHandler
 {
-   use NiceURLGenerator;
 
 
     public const CATEGORIES_LIST = [
@@ -70,7 +68,7 @@ class SiteMapGeneratorHandler
     {
         $result = [];
         foreach(self::CATEGORIES_LIST as $category){
-            $result[] = $this->generateNiceURL('movies.category.specific', ['categoryName' => __($category)]);
+            $result[] = urldecode(route('movies.category.specific', ['categoryName' => __($category)]));
         }
         return $result;
     }

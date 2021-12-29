@@ -11,7 +11,12 @@
         </p>
      </header>
      <div class="current-dictionary-range">
-        <div>{{__('you_are_currently_browsing_terms_in_range')}} : <span class="current-range">{{$range}}</span></div>
+        <div>
+            {{__('you_are_currently_browsing_terms_in_range')}} : {{__('from')}} 
+            <span class="current-range"> {{$rangeSymbols[0]}}</span> 
+            {{__('up_to')}}
+            <span class="current-range"> {{$rangeSymbols[1]}}</span>
+        </div> 
         <div>{{__('select_term_ranges')}}</div>
      </div>
      <nav>

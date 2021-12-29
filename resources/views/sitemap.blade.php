@@ -19,6 +19,17 @@
       <changefreq>weekly</changefreq>
 </url>
 @endforeach
+<!-- porn dictionary  currently hardcoded ranges -->
+
+<url>
+   <loc>{{urldecode(route('dictionary.list', ['range' => 'a-c']))}}</loc>
+   <loc>{{urldecode(route('dictionary.list', ['range' => 'd-g']))}}</loc>
+   <loc>{{urldecode(route('dictionary.list', ['range' => 'h-z']))}}</loc>
+   <changefreq>monthly</changefreq>
+</url>
+
+
+
 <!-- movies  -->
 
  @foreach($movies as $movie)
