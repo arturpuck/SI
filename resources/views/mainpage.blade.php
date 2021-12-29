@@ -1,15 +1,11 @@
 <x-base title="{{__('sex_empire_main_page')}}" customBodyClass="{{$customBodyClass}}" description="{{__('sex_empire_main_page_description')}}">
    <main class="main-content">
-       <div class="main-content__info">
         <div class="news-all">
             <h1 class="news-header">{{__('news_header')}}</h1>
-            <div class="news-container">
                 @foreach($news as $article)
                 @include('news.'.$article->template_name)
                 @endforeach
-            </div>
         </div>
-    </div>
     <h2 class="quick-start-header">
         {{__('quick_start')}}
         <rocket-launch-icon class="quick-start-icon"/>

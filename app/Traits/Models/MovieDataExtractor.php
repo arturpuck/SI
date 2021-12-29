@@ -4,11 +4,9 @@ namespace App\Traits\Models;
 
 use App\Pornstar;
 use Illuminate\Support\Str;
-use App\Traits\NiceURLGenerator;
 
 trait MovieDataExtractor
 {
-    use NiceURLGenerator;
 
     public function getDurationAttribute($value)
     {
@@ -86,7 +84,7 @@ trait MovieDataExtractor
 
    public function getLink() : string 
    {
-       return $this->generateNiceURL('movies.show.single', ['movieID' => $this->id, 'slug' => $this->getSlug()]);
+       return urldecode(route('movies.show.single', ['movieID' => $this->id, 'slug' => $this->getSlug()]));
    }
 
 }

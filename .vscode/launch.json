@@ -8,9 +8,11 @@
             "name": "Listen for XDebug",
             "type": "php",
             "request": "launch",
-            "port": 9000,
+            "port": 9003,
+            "log" : true,
+            "url" : "http://localhost/",
             "pathMappings": {
-                "/var/www/html/sex-imperium/public": "${workspaceFolder}"
+                "/var/www/html/sex-imperium": "${workspaceFolder}"
             }
         }
 
