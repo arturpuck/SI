@@ -419,7 +419,8 @@ export default {
             advanced_search_caption: "Szukanie precyzyjne",
             advanced_search_title: "Użyj wyszukiwarki do precyzyjnego odnajdywania filmów porno",
             movies_caption: "Filmy",
-            pornstars: "Gwiazdy porno"
+            pornstars: "Gwiazdy porno",
+            dictionary : "Słownik"
          },
 
          authenticated_user_sidebar: {

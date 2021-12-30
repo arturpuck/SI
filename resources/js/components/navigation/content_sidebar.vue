@@ -93,6 +93,15 @@
           ></span>
         </a>
       </li>
+      <li class="content-sidebar-list-element hoverable-element">
+        <a href="/porno-słownik" class="sub-menu-link">
+          <dictionary-icon class="content-sidebar-icon"></dictionary-icon>
+          <span
+            v-text="translations['dictionary']"
+            class="content-sidebar-description"
+          ></span>
+        </a>
+      </li>
     </ul>
   </nav>
 </template>
@@ -107,6 +116,7 @@ import ExpandAllIcon from "@svgicon/expand_all_icon";
 import MagnifierIcon from "@svgicon/magnifier_icon";
 import SmileLightIcon from "@svgicon/smile_light_icon";
 import StarFullIcon from "@svgicon/star_full_icon";
+import DictionaryIcon from "@svgicon/dictionary_icon";
 import EventEmmiter from "mitt";
 const EventBus = EventEmmiter();
 
@@ -119,6 +129,7 @@ const EventBus = EventEmmiter();
     SmileLightIcon,
     MagnifierIcon,
     StarFullIcon,
+    DictionaryIcon,
   },
   name: "ContentSideBar",
 })
