@@ -20,6 +20,20 @@
 </url>
 @endforeach
 
+<!-- porn dictionary  currently hardcoded ranges -->
+
+<url>
+   <loc>{{$trimer->withoutHTTPS(urldecode(route('dictionary.list', ['range' => 'a-c'])))}}</loc>
+   <changefreq>monthly</changefreq>
+</url>
+<url>
+   <loc>{{$trimer->withoutHTTPS(urldecode(route('dictionary.list', ['range' => 'd-g'])))}}</loc>
+   <changefreq>monthly</changefreq>
+</url>
+<url>
+   <loc>{{$trimer->withoutHTTPS(urldecode(route('dictionary.list', ['range' => 'h-z'])))}}</loc>
+   <changefreq>monthly</changefreq>
+</url>
 
 <!-- pornstars -->
 @foreach($pornstars as $pornstar)

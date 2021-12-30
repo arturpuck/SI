@@ -1,0 +1,84 @@
+@import "~sass/basic";
+@import "~sass/fonts";
+@import "~sass/responsive_icon";
+
+.main-content{
+   color:white;
+}
+
+.full-body{
+   background:#0e0e0e;
+}
+
+.dictionary-header{
+    text-align:center;
+    @include responsive-font(2vw, 22px);
+    padding: 10px;
+    background: #383333;
+    margin: 20px 0 0;
+}
+
+.dictionary-introduction{
+    @include responsive-font(1.2vw, 17px);
+    margin:0;
+    padding:10px;
+    background:#8b0b2d;
+}
+
+.header-icon{
+    @include responsive-icon();
+    vertical-align: middle;
+    fill: #b11a39;
+}
+
+.info-icon{
+    display:block;
+    @include responsive-icon(0 auto, 2vw, 20px);
+    fill:#ddf106;
+    height:auto;
+}
+
+.dictionary{
+    margin: 0 auto;
+    padding: 10px 5px 15px 20px;
+    max-width: 1300px;
+
+    &__term{
+       color:#db1e5a;
+       font-weight:bold;
+       @include responsive-font(1.8vw, 20px);
+       margin: 10px 0 0 0;
+    }
+    
+    &__description{
+        @include responsive-font(1.3vw, 16px);
+        line-height: 1.4;
+        padding:0 0 0 3vw;
+        margin:0;
+    }
+}
+
+.current-dictionary-range{
+    text-align:center;
+    @include responsive-font(1.8vw, 20px);
+    line-height: 1.5;
+}
+
+.ranges-list{
+    list-style-type: none;
+    display:flex;
+    justify-content:center;
+
+}
+
+.current-range{
+    color:#db1e5a;
+}
+
+.dictionary-range-link{
+    color:#db1e5a;
+    text-decoration: none;
+    font-weight: bold;
+    padding:0 7px;
+    @include responsive-font(1.8vw, 20px);
+}
