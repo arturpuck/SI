@@ -6,15 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use App\Http\Requests\User\AJAXLoginValidationRequest;
-use App\Http\Requests\User\AJAXEmailValidationRequest;
+use App\Http\Requests\User\CheckIfLoginExistsRequest;
+use App\Http\Requests\User\CheckIfEmailExistsRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\UserType;
 use App\SexualOrientation;
-use Symfony\Component\HttpFoundation\Response;
+use App\Handlers\User\CheckIfLoginAlreadyExistsHandler;
+use App\Handlers\User\CheckIfEmailAlreadyExistsHandler;
+use Illuminate\Http\JsonResponse;
 
 class RegisterController extends Controller
 {
@@ -71,14 +73,14 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    function checkIfLoginAlreadyExists(AJAXLoginValidationRequest $request, $login)
+    function checkIfLoginAlreadyExists(CheckIfLoginExistsRequest $request, CheckIfLoginAlreadyExistsHandler $handler) : JsonResponse
     {
-       return response('valid', 200)->header('Content-Type', 'text/plain');    
+      return $handler->handle($request);
     }
 
-    function checkIfEmailAlreadyExists(AJAXEmailValidationRequest $request, $email)
+    function checkIfEmailAlreadyExists(CheckIfEmailExistsRequest $request, CheckIfEmailAlreadyExistsHandler $handler) : JsonResponse
     {
-      return response('valid', 200)->header('Content-Type', 'text/plain');           
+      return $handler->handle($request);        
     }
 
     public function showRegistrationForm()

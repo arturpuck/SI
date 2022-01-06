@@ -31,6 +31,7 @@
       <input
         v-bind:disabled="isDisabled"
         ref="text_input"
+        v-on:blur="emitBlur"
         v-bind:name="name"
         :required="inputIsRequired"
         v-bind:placeholder="placeholderText"
@@ -42,14 +43,18 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import PadlockIcon from "@svgicon/padlock_icon.vue";
 import IconStop from "@jscomponents-decoration/icon_stop.vue";
 import IconConfirm from "@jscomponents-decoration/icon_confirm.vue";
-import Translator from "@jsmodules/translator";
+import ComboInputBasicFunctionality from "@mixins/components/comboInputs/comboInputBasicFunctionality";
 
 export default {
   name: "text-input-combo",
+
+  mixins: [ComboInputBasicFunctionality],
+
+  emits: ["blur"],
 
   components: {
     PadlockIcon,
@@ -66,7 +71,6 @@ export default {
       iconConfirmationCanBeDisplayed: undefined,
       redBorderCanBeDisplayed: undefined,
       greenBorderCanBeDisplayed: undefined,
-      translator: Translator,
     };
   },
 
@@ -88,52 +92,12 @@ export default {
     },
   },
 
-  methods: {
-    showError(errorMessage = "") {
-      this.valueOK = false;
-      this.errorMessage = this.translator.translate(errorMessage);
-    },
-
-    showValueIsOK() {
-      this.valueOK = true;
-      this.errorMessage = "";
-    },
-
-    resetValidation() {
-      this.valueOK = undefined;
-      this.errorMessage = "";
-    },
-  },
-
   created() {
-    this.inputValue = this.initialValue;
-    this.errorMessage = this.initialErrorText;
-    this.iconErrorCanBeDisplayed =
-      this.errorIconAvailable ||
-      this.completeErrorDisplayAvailable ||
-      this.completeValidationDisplayAvailable;
-    this.iconConfirmationCanBeDisplayed =
-      this.confirmationIconAvailable ||
-      this.completeConfirmationDisplayAvailable ||
-      this.completeValidationDisplayAvailable;
-    this.redBorderCanBeDisplayed =
-      this.redBorderAvailable ||
-      this.completeErrorDisplayAvailable ||
-      this.completeValidationDisplayAvailable;
-    this.greenBorderCanBeDisplayed =
-      this.greenBorderAvailable ||
-      this.completeConfirmationDisplayAvailable ||
-      this.completeValidationDisplayAvailable;
-    this.valueOK = this.initialOk;
+    this.initiateSettings();
+    this.attachEventListeners();
   },
 
   mounted() {
-    if (this.onBlurCallback) {
-      this.$refs.text_input.addEventListener("blur", () =>
-        this.onBlurCallback(this)
-      );
-    }
-
     if (this.inputId) {
       this.$refs.text_input.id = this.inputId;
     }
@@ -143,6 +107,34 @@ export default {
         this.$refs[key].classList.add(this.aditionalClasses[key])
       );
     }
+  },
+
+  methods: {
+    emitBlur() {
+      this.$emit("blur", this.inputValue);
+    },
+
+    initiateSettings(): void {
+      this.inputValue = this.initialValue;
+      this.errorMessage = this.initialErrorText;
+      this.iconErrorCanBeDisplayed =
+        this.errorIconAvailable ||
+        this.completeErrorDisplayAvailable ||
+        this.completeValidationDisplayAvailable;
+      this.iconConfirmationCanBeDisplayed =
+        this.confirmationIconAvailable ||
+        this.completeConfirmationDisplayAvailable ||
+        this.completeValidationDisplayAvailable;
+      this.redBorderCanBeDisplayed =
+        this.redBorderAvailable ||
+        this.completeErrorDisplayAvailable ||
+        this.completeValidationDisplayAvailable;
+      this.greenBorderCanBeDisplayed =
+        this.greenBorderAvailable ||
+        this.completeConfirmationDisplayAvailable ||
+        this.completeValidationDisplayAvailable;
+      this.valueOK = this.initialOk;
+    },
   },
 
   props: {
@@ -259,6 +251,12 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    uniqueId: {
+      required: false,
+      type: String,
+      default: "",
+    },
   },
 };
 </script>
@@ -314,7 +312,7 @@ export default {
   &:-webkit-autofill {
     -webkit-text-fill-color: white;
     font: inherit;
-    border:none;
+    border: none;
   }
 
   &:-webkit-autofill:focus {
@@ -325,7 +323,6 @@ export default {
     -webkit-text-fill-color: white;
     font: inherit;
   }
-
 }
 
 .text-input-combo-value,

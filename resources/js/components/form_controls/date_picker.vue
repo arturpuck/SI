@@ -8,7 +8,10 @@
     />
     <div class="date-picker-description">
       <slot></slot>
-      <padlock-icon v-if="isDisabled" class="disabled-input-icon"></padlock-icon>
+      <padlock-icon
+        v-if="isDisabled"
+        class="disabled-input-icon"
+      ></padlock-icon>
     </div>
     <div
       v-bind:class="{
@@ -39,7 +42,9 @@
           class="time-span-select"
         >
           <option value="0">--{{ descriptions["day"] }}--</option>
-          <option v-for="day in numberOfDaysInMonth" v-bind:value="day">{{ day }}</option>
+          <option v-for="day in numberOfDaysInMonth" v-bind:value="day">
+            {{ day }}
+          </option>
         </select>
       </div>
 
@@ -68,6 +73,7 @@
         <select
           v-bind:disabled="isDisabled"
           v-on:change="adjustDays"
+          v-on:select="dateHasBeenSelected"
           v-model="selectedYear"
           id="date-picker-year"
           class="time-span-select"
@@ -87,77 +93,17 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import MonthsInDifferentLanguages from "@jsmodules/months_in_different_languages.js";
 import PadlockIcon from "@svgicon/padlock_icon.vue";
-import IconStop from '@jscomponents/decoration/icon_stop.vue';
-import IconConfirm from '@jscomponents/decoration/icon_confirm.vue';
+import IconStop from "@jscomponents/decoration/icon_stop.vue";
+import IconConfirm from "@jscomponents/decoration/icon_confirm.vue";
+import ComboInputBasicFunctionality from "@mixins/components/comboInputs/comboInputBasicFunctionality";
 
 export default {
   name: "date-picker",
 
-  components: {
-    PadlockIcon,
-    IconStop,
-    IconConfirm
-  },
-
-  methods: {
-    adjustDays() {
-      const selectedMonth = this.selectedMonth;
-      if (selectedMonth != "0") {
-        const months31 = [1, 3, 5, 7, 8, 10, 12];
-        const months30 = [4, 6, 9, 11];
-        const selectedYear = this.selectedYear;
-
-        if (months31.includes(selectedMonth)) {
-          this.numberOfDaysInMonth = 31;
-        } else if (months30.includes(selectedMonth)) {
-          this.numberOfDaysInMonth = 30;
-        } else {
-          this.numberOfDaysInMonth =
-            selectedYear % 4 === 0 && selectedYear !== 0 ? 29 : 28;
-        }
-
-        this.selectedDay =
-          this.selectedDay > this.numberOfDaysInMonth
-            ? this.numberOfDaysInMonth
-            : this.selectedDay;
-
-        if (selectedYear != "0" && this.selectedDay != "0" && this.onDateSelectCallback) {
-          this.onDateSelectCallback(this);
-        }
-      } else {
-        this.numberOfDaysInMonth = 31;
-      }
-    },
-
-    showError(errorMessage = "") {
-      const root = this.$root;
-      this.valueOK = false;
-      this.errorMessage = root.translator.translate(errorMessage);
-    },
-
-    showValueIsOK() {
-      this.valueOK = true;
-      this.errorMessage = "";
-    },
-
-    invokeCallback() {
-      if (this.selectedDay != "0" && this.selectedMonth != 0 && this.selectedYear != 0) {
-        this.onDateSelectCallback(this);
-      }
-    },
-
-    initiateDate() {
-      if (this.initialValue !== "00-00-00") {
-        const splittedDate = this.initialValue.split("-");
-        this.selectedYear = splittedDate[0].replace("0", "");
-        this.selectedMonth = splittedDate[1].replace("0", "");
-        this.selectedDay = splittedDate[2].replace("0", "");
-      }
-    },
-  },
+  mixins: [ComboInputBasicFunctionality],
 
   props: {
     language: {
@@ -250,16 +196,106 @@ export default {
       default: undefined,
     },
 
-    onDateSelectCallback: {
-      required: false,
-      type: Function,
-      default: null,
-    },
-
     isDisabled: {
       required: false,
       type: Boolean,
       default: false,
+    },
+  },
+
+  components: {
+    PadlockIcon,
+    IconStop,
+    IconConfirm,
+  },
+
+  methods: {
+    dateHasBeenSelected(): void {
+      if (
+        this.selectedDay != "0" &&
+        this.selectedMonth != 0 &&
+        this.selectedYear != 0
+      ) {
+        this.emitter.emit("dateHasBeenSelected", this.dateString);
+      }
+    },
+
+    adjustDays() {
+      const selectedMonth = this.selectedMonth;
+      if (selectedMonth != "0") {
+        const months31 = [1, 3, 5, 7, 8, 10, 12];
+        const months30 = [4, 6, 9, 11];
+        const selectedYear = this.selectedYear;
+
+        if (months31.includes(selectedMonth)) {
+          this.numberOfDaysInMonth = 31;
+        } else if (months30.includes(selectedMonth)) {
+          this.numberOfDaysInMonth = 30;
+        } else {
+          this.numberOfDaysInMonth =
+            selectedYear % 4 === 0 && selectedYear !== 0 ? 29 : 28;
+        }
+
+        this.selectedDay =
+          this.selectedDay > this.numberOfDaysInMonth
+            ? this.numberOfDaysInMonth
+            : this.selectedDay;
+
+        if (
+          selectedYear != "0" &&
+          this.selectedDay != "0" &&
+          this.onDateSelectCallback
+        ) {
+          this.onDateSelectCallback(this);
+        }
+      } else {
+        this.numberOfDaysInMonth = 31;
+      }
+    },
+
+    invokeCallback() {
+      if (
+        this.selectedDay != "0" &&
+        this.selectedMonth != 0 &&
+        this.selectedYear != 0
+      ) {
+        this.onDateSelectCallback(this);
+      }
+    },
+
+    initiateDate() {
+      if (this.initialValue !== "00-00-00") {
+        const splittedDate = this.initialValue.split("-");
+        this.selectedYear = splittedDate[0].replace("0", "");
+        this.selectedMonth = splittedDate[1].replace("0", "");
+        this.selectedDay = splittedDate[2].replace("0", "");
+      }
+    },
+
+    initiateSettings(): void {
+      this.months = MonthsInDifferentLanguages[this.language]["months"];
+      this.errorMessage = this.initialErrorText;
+      this.iconErrorCanBeDisplayed =
+        this.errorIconAvailable ||
+        this.completeErrorDisplayAvailable ||
+        this.completeValidationDisplayAvailable;
+      this.iconConfirmationCanBeDisplayed =
+        this.confirmationIconAvailable ||
+        this.completeConfirmationDisplayAvailable ||
+        this.completeValidationDisplayAvailable;
+      this.redBorderCanBeDisplayed =
+        this.redBorderAvailable ||
+        this.completeErrorDisplayAvailable ||
+        this.completeValidationDisplayAvailable;
+      this.greenBorderCanBeDisplayed =
+        this.greenBorderAvailable ||
+        this.completeConfirmationDisplayAvailable ||
+        this.completeValidationDisplayAvailable;
+      this.timespan = this.lastYear - this.sinceYear + 1;
+      this.descriptions =
+        MonthsInDifferentLanguages[this.language]["timeSpanNames"];
+      this.valueOK = this.initialOk;
+      this.initiateDate();
     },
   },
 
@@ -278,34 +314,8 @@ export default {
   },
 
   created() {
-    this.months = MonthsInDifferentLanguages[this.language]["months"];
-    this.errorMessage = this.initialErrorText;
-    this.iconErrorCanBeDisplayed =
-      this.errorIconAvailable ||
-      this.completeErrorDisplayAvailable ||
-      this.completeValidationDisplayAvailable;
-    this.iconConfirmationCanBeDisplayed =
-      this.confirmationIconAvailable ||
-      this.completeConfirmationDisplayAvailable ||
-      this.completeValidationDisplayAvailable;
-    this.redBorderCanBeDisplayed =
-      this.redBorderAvailable ||
-      this.completeErrorDisplayAvailable ||
-      this.completeValidationDisplayAvailable;
-    this.greenBorderCanBeDisplayed =
-      this.greenBorderAvailable ||
-      this.completeConfirmationDisplayAvailable ||
-      this.completeValidationDisplayAvailable;
-    this.timespan = this.lastYear - this.sinceYear + 1;
-    this.descriptions = MonthsInDifferentLanguages[this.language]["timeSpanNames"];
-    this.valueOK = this.initialOk;
-    this.initiateDate();
-  },
-
-  mounted() {
-    if (this.onDateSelectCallback) {
-      this.$refs.day_select.addEventListener("change", this.invokeCallback.bind(this));
-    }
+    this.initiateSettings();
+    this.attachEventListeners();
   },
 
   computed: {

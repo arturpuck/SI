@@ -19,11 +19,11 @@ mix.js('resources/js/mainpage.js', 'public/js').vue()
    .ts('resources/js/movies/movies_set_complete.ts', 'public/js').vue()
    .ts('resources/js/movies/advanced_search.ts', 'public/js').vue()
    .js('resources/js/contact.js', 'public/js').vue()
-   .js('resources/js/auth/register.js', 'public/js').vue()
    .js('resources/js/auth/request_password_reset_link.js', 'public/js').vue()
    .js('resources/js/auth/user/settings_panel.js', 'public/js').vue()
    .js('resources/js/auth/password_reset.js', 'public/js').vue()
    .js('resources/js/auth/password_reset_confirmation.js', 'public/js').vue()
+   .ts('resources/js/auth/register.ts', 'public/js').vue()
    .ts('resources/js/pornstars/pornstar_profile.ts', 'public/js').vue()
    .ts('resources/js/pornstars/pornstars_list.ts', 'public/js').vue()
    .ts('resources/js/movies/single_movie.ts', 'public/js').vue()
@@ -65,6 +65,7 @@ mix.js('resources/js/mainpage.js', 'public/js').vue()
         '@interfaces': path.resolve('resources/js/interfaces'),
         '@svgicon': path.resolve('resources/js/components/decoration/icons/svg'),
         '@config' : path.resolve('resources/js/config'),
+        '@mixins' : path.resolve('resources/js/mixins')
       },
       extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx", ".svg"]
     },

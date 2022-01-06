@@ -5,6 +5,8 @@
 					@csrf
 					<input type="hidden" value="register-form" name="register-form-has-been-used">
 					<text-input-combo
+					    v-on:blur="validateLogin"
+						unique-Id="Login"
 					@if(old('register-form-has-been-used'))
 						@error('login')
 						  v-bind:initial-ok="false"
@@ -18,7 +20,6 @@
 					@endif
 
                         v-bind:input-is-required="true"
-						v-bind:on-blur-callback="validateLogin"
 						v-bind:complete-validation-display-available="true"
 						name="login"
 						v-bind:error-message-box-available="true">
@@ -37,8 +38,9 @@
 							initial-value="{{old('email')}}"
 						@endif
                     @endif
+					    unique-id="Email"
 						v-bind:input-is-required="true"
-						v-bind:on-blur-callback="validateEmail"
+						v-on:blur="validateEmail"
 						v-bind:complete-validation-display-available="true"
 						name="email"
 						input-type="email"
@@ -57,8 +59,9 @@
 							initial-value="{{old('password')}}"
 						@endif
                     @endif
+					    unique-id="Password"
 						v-bind:input-is-required="true"
-						v-bind:on-blur-callback="validatePassword"
+						v-on:blur="validatePassword"
 						v-bind:complete-validation-display-available="true"
 						input-type="password"
 						name="password"
@@ -80,8 +83,9 @@
 					@endif	
 						v-bind:visible-options-list="['--{{__('choose')}}--',@foreach($userTypes as $userType) '{{__($userType->user_type_name.'_i')}}', @endforeach '{{__('i_dont_want_to_tell')}}']"
 						v-bind:option-values="['not-selected', @foreach($userTypes as $userType) '{{$userType->id}}', @endforeach '']"
-						v-bind:on-change-callback="validateSelect"
+						v-on:blur="validateUserTypeSelect"
 						v-bind:error-message-box-available="true"
+						unique-id="UserType"
 						v-bind:complete-validation-display-available="true"
 						name="user_type_id">
 							{{ucfirst(__('i_am'))}} : 
@@ -101,7 +105,8 @@
                     @endif
 						v-bind:visible-options-list="['--{{__('choose')}}--',@foreach($sexualOrientations as $sexualOrientation) '{{__($sexualOrientation->sexual_orientation_name)}}', @endforeach '{{__('i_dont_want_to_tell')}}']"
 						v-bind:option-values="['not-selected', @foreach($sexualOrientations as $sexualOrientation) '{{$sexualOrientation->id}}', @endforeach '']"
-						v-bind:on-change-callback="validateSelect"
+						v-on:blur="validateSexualOrientationSelect"
+						unique-id="SexualOrientation"
 						v-bind:error-message-box-available="true"
 						v-bind:complete-validation-display-available="true"
 						name="sexual_orientation_id">
@@ -122,7 +127,8 @@
                     @endif
 					   v-bind:error-message-box-available="true"
 					   name="birth_date"
-					   v-bind:on-date-select-callback="checkIfUserIsAdault"
+					   unique-id="UserBirthDate"
+					   v-on:dateHasBeenSelected="checkIfUserIsAdault"
 					   v-bind:complete-validation-display-available="true">
 					{{ucfirst(__('birth_date'))}}
 					</date-picker>

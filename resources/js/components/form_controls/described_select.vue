@@ -1,236 +1,268 @@
 <template>
-<div class="described-select-container">
-<div v-if="errorMessageBoxAvailable" v-text="errorMessage" class="error-message-box">
-	
-</div>
-<label class="select-label" v-bind:class="{'incorrect-value' : displayRedBorder, 'correct-value' : displayGreenBorder}" >
-    <icon-stop v-bind:attached-icon="true" v-if="iconErrorCanBeDisplayed" v-show="displayIconError"/>
-    <icon-confirm v-bind:attached-icon="true" v-if="iconConfirmationCanBeDisplayed" v-show="displayIconConfirmation"/>
-	<span class="select-description"><slot></slot></span>
-	<select v-bind:name="name" ref="select_value" v-model="inputValue" class="described-select">
-            <option v-for="(option, index) in visibleOptionsList" v-bind:value="optionsValuesInternal[index]">{{option}}</option>
-	</select>
-</label>
-</div>
+  <div class="described-select-container">
+    <div
+      v-if="errorMessageBoxAvailable"
+      v-text="errorMessage"
+      class="error-message-box"
+    ></div>
+    <label
+      class="select-label"
+      v-bind:class="{
+        'incorrect-value': displayRedBorder,
+        'correct-value': displayGreenBorder,
+      }"
+    >
+      <icon-stop
+        v-bind:attached-icon="true"
+        v-if="iconErrorCanBeDisplayed"
+        v-show="displayIconError"
+      />
+      <icon-confirm
+        v-bind:attached-icon="true"
+        v-if="iconConfirmationCanBeDisplayed"
+        v-show="displayIconConfirmation"
+      />
+      <span class="select-description"><slot></slot></span>
+      <select
+        v-bind:name="name"
+        ref="select_value"
+        v-model="inputValue"
+        v-on:select="valueHasBeenSelected"
+        class="described-select"
+      >
+        <option
+          v-bind:key="index"
+          v-for="(option, index) in visibleOptionsList"
+          v-bind:value="optionsValuesInternal[index]"
+        >
+          {{ option }}
+        </option>
+      </select>
+    </label>
+  </div>
 </template>
 
-<script>
-import IconStop from '@jscomponents-decoration/icon_stop.vue';
-import IconConfirm from  '@jscomponents-decoration/icon_confirm.vue';
+<script lang="ts">
+import IconStop from "@jscomponents-decoration/icon_stop.vue";
+import IconConfirm from "@jscomponents-decoration/icon_confirm.vue";
+import ComboInputBasicFunctionality from "@mixins/components/comboInputs/comboInputBasicFunctionality";
 
-	export default {
-        name: 'described-select',
+export default {
+  emits: ["valueHasBeenSelected"],
+  name: "described-select",
+  mixins: [ComboInputBasicFunctionality],
 
-        components: {
-            IconStop,
-            IconConfirm
-        },
+  components: {
+    IconStop,
+    IconConfirm,
+  },
 
-        data() {
-		 	return {
-                 valueOK : undefined,
-                 errorMessage : undefined,
-                 inputValue : undefined,
-                 iconErrorCanBeDisplayed : undefined,
-                 iconConfirmationCanBeDisplayed : undefined,
-                 redBorderCanBeDisplayed : undefined,
-                 greenBorderCanBeDisplayed : undefined,
-                 optionsValuesInternal : undefined
-             };
-             
-         },
+  props: {
+    uniqueID: {
+      required: false,
+      type: String,
+      default: "",
+    },
 
-         computed : {
-              displayIconError() {
-                 return (this.iconErrorCanBeDisplayed && (this.valueOK === false));
-              },
+    visibleOptionsList: {
+      required: true,
+      type: Array,
+    },
 
-              displayRedBorder(){
-                  return (this.redBorderCanBeDisplayed && (this.valueOK === false));
-              },
+    optionValues: {
+      required: false,
+      type: Array,
+      default: undefined,
+    },
 
-              displayIconConfirmation(){
-                  return (this.iconConfirmationCanBeDisplayed && (this.valueOK === true));
-              },
+    name: {
+      required: false,
+      type: String,
+      default: "described_select",
+    },
 
-              displayGreenBorder(){
-                  return this.greenBorderCanBeDisplayed && (this.valueOK === true);
-              }
+    initialValue: {
+      required: false,
+      type: String,
+      default: "not-selected",
+    },
 
-         },
+    errorIconAvailable: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
 
-         created(){
-             this.inputValue = this.initialValue;
-             this.errorMessage = this.initialErrorText;
-             this.iconErrorCanBeDisplayed = (this.errorIconAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
-             this.iconConfirmationCanBeDisplayed = (this.confirmationIconAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
-             this.redBorderCanBeDisplayed = (this.redBorderAvailable || this.completeErrorDisplayAvailable || this.completeValidationDisplayAvailable);
-             this.greenBorderCanBeDisplayed = (this.greenBorderAvailable || this.completeConfirmationDisplayAvailable || this.completeValidationDisplayAvailable);
-             this.optionsValuesInternal = (this.optionValues === undefined) ? this.visibleOptionsList : this.optionValues;
-             this.valueOK = this.initialOk;   
-        },
-        
-        mounted(){
-            if(this.onChangeCallback){
-                this.$refs.select_value.addEventListener('change',() => this.onChangeCallback(this));
-            }
-        },
+    confirmationIconAvailable: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
 
-        props : {
-            visibleOptionsList : {
-                required : true,
-                type : Array
-            },
+    redBorderAvailable: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
 
-            optionValues : {
-                required : false,
-                type : Array,
-                default : undefined
-            },
+    greenBorderAvailable: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
 
-            name : {
-                 required : false,
-                 type : String,
-                 default : "described_select"
-             },
+    initialOk: {
+      required: false,
+      type: Boolean,
+      default: undefined,
+    },
 
-            initialValue : {
-                 required : false,
-                 type : String,
-                 default : "not-selected"
-             },
+    completeErrorDisplayAvailable: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
 
-             errorIconAvailable : {
-                 required : false,
-                 type : Boolean,
-                 default : false
-             },
+    completeConfirmationDisplayAvailable: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
 
-             confirmationIconAvailable : {
-                 required : false,
-                 type : Boolean,
-                 default : false
-             },
+    completeValidationDisplayAvailable: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
 
-             redBorderAvailable : {
-                 required : false,
-                 type : Boolean,
-                 default : false
-             },
+    errorMessageBoxAvailable: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
 
-             greenBorderAvailable : {
-                 required : false,
-                 type : Boolean,
-                 default : false
-             },
+    initialErrorText: {
+      required: false,
+      type: String,
+      default: undefined,
+    },
+  },
 
-             initialOk : {
-                 required : false,
-                 type : Boolean,
-                 default : undefined
-             },
+  data() {
+    return {
+      valueOK: undefined,
+      errorMessage: undefined,
+      inputValue: undefined,
+      iconErrorCanBeDisplayed: undefined,
+      iconConfirmationCanBeDisplayed: undefined,
+      redBorderCanBeDisplayed: undefined,
+      greenBorderCanBeDisplayed: undefined,
+      optionsValuesInternal: undefined,
+    };
+  },
 
-             completeErrorDisplayAvailable : {
-                 required : false,
-                 type : Boolean,
-                 default : false
-             },
+  computed: {
+    displayIconError() {
+      return this.iconErrorCanBeDisplayed && this.valueOK === false;
+    },
 
-             completeConfirmationDisplayAvailable : {
-                 required : false,
-                 type : Boolean,
-                 default : false
-             },
+    displayRedBorder() {
+      return this.redBorderCanBeDisplayed && this.valueOK === false;
+    },
 
-             completeValidationDisplayAvailable : {
-                 required : false,
-                 type : Boolean,
-                 default : false
-             },
+    displayIconConfirmation() {
+      return this.iconConfirmationCanBeDisplayed && this.valueOK === true;
+    },
 
-             errorMessageBoxAvailable : {
-                 required : false,
-                 type : Boolean,
-                 default : false
-             },
+    displayGreenBorder() {
+      return this.greenBorderCanBeDisplayed && this.valueOK === true;
+    },
+  },
 
-             initialErrorText : {
-                 required : false,
-                 type : String,
-                 default : undefined
-             },
+  created() {
+    this.initiateSettings();
+    this.attachEventListeners();
+  },
 
-             onChangeCallback : {
-                 required : false,
-                 type : Function,
-                 default : null
-             }
-        },
+  methods: {
+    initiateSettings(): void {
+      this.inputValue = this.initialValue;
+      this.errorMessage = this.initialErrorText;
+      this.iconErrorCanBeDisplayed =
+        this.errorIconAvailable ||
+        this.completeErrorDisplayAvailable ||
+        this.completeValidationDisplayAvailable;
 
-        methods : {
+      this.iconConfirmationCanBeDisplayed =
+        this.confirmationIconAvailable ||
+        this.completeConfirmationDisplayAvailable ||
+        this.completeValidationDisplayAvailable;
 
-            showError(errorMessage = ""){
-                const root = this.$root;
-                this.valueOK = false;
-                this.errorMessage = root.translator.translate(errorMessage);
-             },
+      this.redBorderCanBeDisplayed =
+        this.redBorderAvailable ||
+        this.completeErrorDisplayAvailable ||
+        this.completeValidationDisplayAvailable;
 
-             showValueIsOK(){
-                 this.valueOK = true;
-                 this.errorMessage = "";
-             },
+      this.greenBorderCanBeDisplayed =
+        this.greenBorderAvailable ||
+        this.completeConfirmationDisplayAvailable ||
+        this.completeValidationDisplayAvailable;
 
-             resetValidation(){
-                 this.valueOK = undefined;
-                 this.errorMessage = "";
-             }
-        },
-
-    }
+      this.optionsValuesInternal =
+        this.optionValues === undefined
+          ? this.visibleOptionsList
+          : this.optionValues;
+      this.valueOK = this.initialOk;
+    },
+    valueHasBeenSelected(selectedValue: string): void {
+      this.$emit("valueHasBeenSelected", selectedValue);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
+@import "~sass/error_message_box";
+@import "~sass/fonts";
 
-@import '~sass/error_message_box';
-@import '~sass/fonts';
-
-.select-label{
-	display:flex;
-	align-items: baseline;
-	border-radius:7px;
-	padding: 3px 10px;
-	color:white;
-	width:95%;
-	margin:0 auto;
-	background:#242229;
-	position:relative;
-    border: 2px solid transparent;
-    height: 2em;
+.select-label {
+  display: flex;
+  align-items: baseline;
+  border-radius: 7px;
+  padding: 3px 10px;
+  color: white;
+  width: 95%;
+  margin: 0 auto;
+  background: #242229;
+  position: relative;
+  border: 2px solid transparent;
+  height: 2em;
 }
 
-.select-description{
-	white-space: nowrap;
+.select-description {
+  white-space: nowrap;
 }
 
-.described-select{
-	width:1%;
-	flex-grow: 10;
-	color:white;
-	border: none;
-	background:#242229;
-	outline:none;
+.described-select {
+  width: 1%;
+  flex-grow: 10;
+  color: white;
+  border: none;
+  background: #242229;
+  outline: none;
 }
 
-.described-select, .select-description, .select-label{
-    @include responsive-font;
+.described-select,
+.select-description,
+.select-label {
+  @include responsive-font;
 }
 
-.incorrect-value{
-    border: 2px solid red;
+.incorrect-value {
+  border: 2px solid red;
 }
 
-.correct-value{
-    border: 2px solid green;
+.correct-value {
+  border: 2px solid green;
 }
-
 </style>
