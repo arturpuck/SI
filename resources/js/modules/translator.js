@@ -100,6 +100,7 @@ export default {
       login_contains_more_then_20_characters: "Login ma więcej niż 20 znaków",
       email_has_already_been_taken: "Email jest już zajęty",
       email_seems_to_be_incorrect: "Email wygląda na nieprawidłowy",
+      subject_exceeds_40_characters: "Temat przekracza 40 znaków",
       you_are_under_18: "Nie ukończyłeś 18 lat",
       the_user_has_no_avatar: "Użytkownik nie posiada avataru",
       password_change_attempt: "Próba zmiany hasła",

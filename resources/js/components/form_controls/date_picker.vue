@@ -36,6 +36,7 @@
         }}</label>
         <select
           v-bind:disabled="isDisabled"
+          v-on:change="adjustDays"
           ref="day_select"
           v-model="selectedDay"
           id="date-picker-day"
@@ -73,7 +74,6 @@
         <select
           v-bind:disabled="isDisabled"
           v-on:change="adjustDays"
-          v-on:select="dateHasBeenSelected"
           v-model="selectedYear"
           id="date-picker-year"
           class="time-span-select"
@@ -102,6 +102,8 @@ import ComboInputBasicFunctionality from "@mixins/components/comboInputs/comboIn
 
 export default {
   name: "date-picker",
+
+  emits : ['selected'],
 
   mixins: [ComboInputBasicFunctionality],
 
@@ -201,6 +203,12 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    uniqueId: {
+      required: false,
+      type: String,
+      default: "",
+    },
   },
 
   components: {
@@ -210,13 +218,12 @@ export default {
   },
 
   methods: {
-    dateHasBeenSelected(): void {
-      if (
-        this.selectedDay != "0" &&
-        this.selectedMonth != 0 &&
-        this.selectedYear != 0
-      ) {
-        this.emitter.emit("dateHasBeenSelected", this.dateString);
+    considerEmittingEvent(): void {
+      if (this.eventShouldBeEmitted) {
+          this.$emit("selected", this.dateString);
+      }
+      else { 
+        this.resetValidation();
       }
     },
 
@@ -241,32 +248,16 @@ export default {
             ? this.numberOfDaysInMonth
             : this.selectedDay;
 
-        if (
-          selectedYear != "0" &&
-          this.selectedDay != "0" &&
-          this.onDateSelectCallback
-        ) {
-          this.onDateSelectCallback(this);
-        }
       } else {
         this.numberOfDaysInMonth = 31;
       }
-    },
-
-    invokeCallback() {
-      if (
-        this.selectedDay != "0" &&
-        this.selectedMonth != 0 &&
-        this.selectedYear != 0
-      ) {
-        this.onDateSelectCallback(this);
-      }
+        this.considerEmittingEvent();
     },
 
     initiateDate() {
       if (this.initialValue !== "00-00-00") {
         const splittedDate = this.initialValue.split("-");
-        this.selectedYear = splittedDate[0].replace("0", "");
+        this.selectedYear = splittedDate[0];
         this.selectedMonth = splittedDate[1].replace("0", "");
         this.selectedDay = splittedDate[2].replace("0", "");
       }
@@ -333,6 +324,10 @@ export default {
 
     displayGreenBorder() {
       return this.greenBorderCanBeDisplayed && this.valueOK === true;
+    },
+
+    eventShouldBeEmitted() : boolean {
+      return this.selectedDay != "0" && this.selectedMonth != "0" && this.selectedYear != "0"
     },
 
     dateString() {

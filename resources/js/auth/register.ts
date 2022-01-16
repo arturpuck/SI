@@ -6,7 +6,7 @@ import IconConfirm from '@jscomponents/decoration/icon_confirm.vue';
 import ExpectCircle from '@jscomponents/decoration/expect_circle.vue';
 import DescribedSelect from '@jscomponents/form_controls/described_select.vue';
 import DatePicker from '@jscomponents/form_controls/date_picker.vue';
-import InputComboState from '@interfaces/InputComboState';
+import ContactingComboInputs from '@mixins/components/comboInputs/contactingComboInputs';
 
 const settings = {
 
@@ -17,16 +17,18 @@ const settings = {
 
    },
 
-   methods: {
+   components : {
+      TextareaCombo,
+      IconStop,
+      IconConfirm,
+      ExpectCircle,
+      DescribedSelect,
+      DatePicker
+   },
 
-      notifyComboInputAboutState(receiver: string, errorMessage: string = undefined): void {
-         const valueIsCorrect = !Boolean(errorMessage);
-         let comboInputStatus: InputComboState = { valueIsCorrect };
-         if (!valueIsCorrect) {
-            comboInputStatus.errorMessage = errorMessage;
-         }
-         this.emitter.emit(`showIfValueIsOK${receiver}`, comboInputStatus);
-      },
+   mixins : [ContactingComboInputs],
+
+   methods: {
 
       processCorrectLoginResponse(response: string): void {
 
@@ -47,15 +49,11 @@ const settings = {
          }
       },
 
-      resetComboInput(receiver: string): void {
-         this.emmiter.emit(`resetValidation${receiver}`);
-      },
-
       setVerificationDecorationVisibility(visible : boolean): void {
          this.verificationInProgress = visible;
       },
 
-      async  checkIfLoginExists(login: string) {
+      async checkIfLoginExists(login: string) {
 
          login = encodeURI(login);
 
@@ -69,15 +67,15 @@ const settings = {
                   break;
 
                case 400:
-                  throw "login_is_required";
+                  throw new Error("login_is_required") ;
                   break;
 
                case 429:
-                  throw "to_many_attemts_during_one_minute";
+                  throw Error("to_many_attemts_during_one_minute");
                   break;
 
                default:
-                  throw "undefined_error";
+                  throw Error("undefined_error");
                   break;
             }
          }
@@ -88,29 +86,31 @@ const settings = {
             this.setVerificationDecorationVisibility(false);
          }
       },
-
+      
       validateLogin(login: string) {
-
-         this.setVerificationDecorationVisibility(true);
-
+         
          if (login === '') {
             this.resetComboInput('Login');
+            this.setVerificationDecorationVisibility(false);
             return;
          }
-
+         this.setVerificationDecorationVisibility(true);
+         
          try {
-            
             if (login.length < 3) {
-               throw "login_contains_less_then_3_characters";
+               throw new Error("login_contains_less_then_3_characters");
             }
-
+            
             if (login.length > 20) {
-               throw "login_contains_more_then_20_characters";
+               throw new Error("login_contains_more_then_20_characters");
             }
             this.checkIfLoginExists(login);
          }
          catch (error) {
             this.notifyComboInputAboutState('Login', error.message);
+         }
+         finally{
+            this.setVerificationDecorationVisibility(false);
          }
 
       },
@@ -129,15 +129,15 @@ const settings = {
                   break;
 
                case 400:
-                  throw responseData;
+                  throw new Error(responseData);
                   break;
 
                case 429:
-                  throw "to_many_attemts_during_one_minute";
+                  throw new Error("to_many_attemts_during_one_minute");
                   break;
 
                default:
-                  throw "undefined_error";
+                  throw new Error("undefined_error");
                   break;
             }
          }
@@ -155,14 +155,14 @@ const settings = {
 
       validateEmail(email: string) {
          
-         this.setVerificationDecorationVisibility(true);
-
          if (email === '') {
+            this.setVerificationDecorationVisibility(false);
             this.resetComboInput('Email');
             return;
          }
-
-            if (!this.emailhasCorrectFormat(email)) {
+         
+         if (!this.emailhasCorrectFormat(email)) {
+               this.setVerificationDecorationVisibility(false);
                this.notifyComboInputAboutState('Email', "email_seems_to_be_incorrect");
             }
             else{
@@ -180,11 +180,11 @@ const settings = {
             }
 
             if (password.length < 3) {
-               throw "password_has_less_then_3_characters";
+               throw new Error("password_has_less_then_3_characters");
             }
 
             if (password.length > 20) {
-               throw "password_has_more_then_20_characters";
+               throw new Error("password_has_more_then_20_characters");
             }
             this.notifyComboInputAboutState('Password');
          }
@@ -193,21 +193,13 @@ const settings = {
          }
       },
 
-      validateUserTypeSelect(selectedValue : string){
-          this.validateSelect('UserType', selectedValue);
-      },
+      validateSelect(labeledValue : {value : string, uniqueId : string}) {
 
-      validateSexualOrientationSelect(selectedValue : string){
-          this.validateSelect('SexualOrientation', selectedValue);
-      },
-
-      validateSelect(uniqueID : string, selectedValue : string) {
-
-         if (selectedValue === 'not-selected') {
-            this.notifyComboInputAboutState(uniqueID, 'the_user_type_is_incorrect');
+         if (labeledValue.value === 'not-selected') {
+            this.notifyComboInputAboutState(labeledValue.uniqueId, 'you_have_to_choose_one_option');
          }
          else {
-            this.notifyComboInputAboutState(uniqueID)
+            this.notifyComboInputAboutState(labeledValue.uniqueId);
          }
       },
 
@@ -216,12 +208,12 @@ const settings = {
          const date18yearsAgo = dateNow.setFullYear(dateNow.getFullYear() - 18);
          const dateShards  = dateString.split('-');
          const userSelectedDate = {
-            day : Number(dateShards[0]),
+            year : Number(dateShards[0]),
             month : Number(dateShards[1]),
-            year : Number(dateShards[2])
+            day : Number(dateShards[2])
          };
-         const formatedDate = new Date(userSelectedDate.year, userSelectedDate.month - 1, userSelectedDate.year).getTime() / 1000;
-         if (formatedDate <= date18yearsAgo) {
+         const chosenDate = new Date(userSelectedDate.year, userSelectedDate.month - 1, userSelectedDate.day).getTime();
+         if (chosenDate <= date18yearsAgo) {
              this.notifyComboInputAboutState('UserBirthDate');
          }
          else {
@@ -234,10 +226,4 @@ const settings = {
 
 const app = createApp(settings);
 BasicElements.registerBasicComponents(app);
-app.component('textarea-combo', TextareaCombo);
-app.component('icon-stop', IconStop);
-app.component('icon-confirm', IconConfirm);
-app.component('expect-circle', ExpectCircle);
-app.component('described-select', DescribedSelect);
-app.component('date-picker', DatePicker);
 app.mount("#app");

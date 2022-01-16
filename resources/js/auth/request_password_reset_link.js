@@ -4,8 +4,11 @@ import BasicElements from '@jsmodules/basic.js';
 import IconStop from '@jscomponents/decoration/icon_stop.vue';
 import IconConfirm from '@jscomponents/decoration/icon_confirm.vue';
 import ExpectBar from '@jscomponents/decoration/expect_bar.vue';
+import ContactingComboInputs from '@mixins/components/comboInputs/contactingComboInputs';
 
 const settings = {
+
+   mixins : [ContactingComboInputs],
 
    data() {
 
@@ -16,48 +19,60 @@ const settings = {
    },
 
    methods: {
-      validateEmail(sender) {
 
-         async function checkIfEmailExists(email) {
-            try {
-               const response = await fetch(`/verify-email/${email}`);
-               email = encodeURI(email);
+      async checkIfEmailExists(email)  {
 
-               switch (response.status) {
-                  case 200:
-                     throw "this_email_address_does_not_exist";
-                     break;
+         email = encodeURI(email);
 
-                  case 400:
-                     sender.showValueIsOK();
-                     break;
+         try {
+            const response = await fetch(`/verify-email/${email}`);
 
-                  case 429:
-                     throw "to_many_attemts_during_one_minute";
-                     break;
+            switch (response.status) {
+               case 200:
+                  const responseData = await response.json();
+                  this.processCorrectEmailResponse(responseData);
+                  break;
 
-                  default:
-                     throw "undefined_error";
-                     break;
-               }
-            }
-            catch (error) {
-               sender.showError(error);
+               case 400:
+                  throw new Error(responseData);
+                  break;
+
+               case 429:
+                  throw new Error("to_many_attemts_during_one_minute");
+                  break;
+
+               default:
+                  throw new Error("undefined_error");
+                  break;
             }
          }
+         catch (error) {
+            this.notifyComboInputAboutState('Email', error.message);
+         }
+         finally{
+            this.verificationInProgress = false;
+         }
+      },
 
-         const email = sender.inputValue;
-         const root = this.$root;
+      validateEmail(email) {
 
          if (!email) {
-            sender.resetValidation();
+            this.resetComboInput();
          }
          else {
-            root.verificationInProgress = true;
-            checkIfEmailExists(email);
-            root.verificationInProgress = false;
+            this.verificationInProgress = true;
+            this.checkIfEmailExists(email);
          }
-      }
+      },
+
+      processCorrectEmailResponse(response) {
+         if (response === 'exists') {
+            this.notifyComboInputAboutState();
+         }
+         else {
+            this.notifyComboInputAboutState('', "this_email_address_does_not_exist");
+         }
+      },
 
    }
 

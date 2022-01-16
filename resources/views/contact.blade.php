@@ -13,8 +13,9 @@
 				v-bind:initial-ok="true"
 				initial-value="{{old('email')}}"
 			@endif
-			input-type="email"			
-			v-bind:on-blur-callback="validateEmail"
+			input-type="email"
+			unique-id="Email"
+			v-on:blur="validateEmail"		
 			v-bind:complete-error-display-available="true"
 			name="email"
 			placeholder-text="{{__('not_required')}}"
@@ -32,8 +33,9 @@
 				v-bind:initial-ok="true"
 				initial-value="{{old('subject')}}"
 			@endif
-            
-			v-bind:on-blur-callback="validateSubject"			
+
+            unique-id="Subject"
+			v-on:blur="validateSubject"
 			v-bind:complete-error-display-available="true"
 			name="subject"
 			placeholder-text="{{__('not_required').', '.__('max_40_characters')}}"

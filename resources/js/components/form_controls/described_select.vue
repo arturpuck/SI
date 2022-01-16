@@ -27,7 +27,7 @@
         v-bind:name="name"
         ref="select_value"
         v-model="inputValue"
-        v-on:select="valueHasBeenSelected"
+        v-on:change="valueHasBeenSelected"
         class="described-select"
       >
         <option
@@ -48,7 +48,7 @@ import IconConfirm from "@jscomponents-decoration/icon_confirm.vue";
 import ComboInputBasicFunctionality from "@mixins/components/comboInputs/comboInputBasicFunctionality";
 
 export default {
-  emits: ["valueHasBeenSelected"],
+  emits: ["selected"],
   name: "described-select",
   mixins: [ComboInputBasicFunctionality],
 
@@ -58,7 +58,7 @@ export default {
   },
 
   props: {
-    uniqueID: {
+    uniqueId: {
       required: false,
       type: String,
       default: "",
@@ -214,8 +214,8 @@ export default {
           : this.optionValues;
       this.valueOK = this.initialOk;
     },
-    valueHasBeenSelected(selectedValue: string): void {
-      this.$emit("valueHasBeenSelected", selectedValue);
+    valueHasBeenSelected(): void {
+      this.$emit("selected", {value : this.inputValue, uniqueId : this.uniqueId});
     },
   },
 };

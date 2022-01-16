@@ -1,5 +1,5 @@
 <template>
-  <div ref="container" class="text-input-combo-container">
+  <div class="text-input-combo-container">
     <div
       v-if="errorMessageBoxAvailable"
       v-text="errorMessage"
@@ -29,8 +29,8 @@
       />
       <span class="text-input-description"><slot></slot></span>
       <input
+        v-bind:id="inputId"
         v-bind:disabled="isDisabled"
-        ref="text_input"
         v-on:blur="emitBlur"
         v-bind:name="name"
         :required="inputIsRequired"
@@ -97,18 +97,6 @@ export default {
     this.attachEventListeners();
   },
 
-  mounted() {
-    if (this.inputId) {
-      this.$refs.text_input.id = this.inputId;
-    }
-
-    if (this.aditionalClasses) {
-      Object.keys(this.aditionalClasses).forEach((key) =>
-        this.$refs[key].classList.add(this.aditionalClasses[key])
-      );
-    }
-  },
-
   methods: {
     emitBlur() {
       this.$emit("blur", this.inputValue);
@@ -138,6 +126,12 @@ export default {
   },
 
   props: {
+    
+    modelValue : {
+      required: false,
+      default : null
+    },
+
     initialValue: {
       required: false,
       type: String,
@@ -216,12 +210,6 @@ export default {
       default: undefined,
     },
 
-    onBlurCallback: {
-      required: false,
-      type: Function,
-      default: null,
-    },
-
     placeholderText: {
       required: false,
       type: String,
@@ -237,13 +225,7 @@ export default {
     inputId: {
       required: false,
       type: String,
-      default: undefined,
-    },
-
-    aditionalClasses: {
-      required: false,
-      type: Object,
-      default: undefined,
+      default: null,
     },
 
     isDisabled: {

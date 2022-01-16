@@ -15,9 +15,8 @@
 							v-bind:initial-ok="false"
 							initial-value="{{old('email')}}"
 						@enderror
-
 						v-bind:input-is-required="true"
-						v-bind:on-blur-callback="validateEmail"
+						v-on:blur="validateEmail"
 						v-bind:complete-validation-display-available="true"
 						name="email"
 						input-type="email"

@@ -15,7 +15,14 @@
 			{{ucfirst(__('email'))}} :
 		</text-input-combo>
 
-		<text-input-combo ref="password" v-bind:input-is-required="true" v-bind:on-blur-callback="checkPassword" v-bind:complete-validation-display-available="true" input-type="password" name="password" v-bind:error-message-box-available="true">
+		<text-input-combo ref="password" 
+		    v-bind:input-is-required="true" 
+			v-on:blur="checkPassword" 
+			unique-id="Password"
+			v-bind:complete-validation-display-available="true" 
+			input-type="password" 
+			name="password" 
+		    v-bind:error-message-box-available="true">
 			{{ucfirst(__('password'))}} :
 		</text-input-combo>
 

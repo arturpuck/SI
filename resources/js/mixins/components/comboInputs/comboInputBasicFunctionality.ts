@@ -4,7 +4,6 @@ import Translator from "@jsmodules/translator";
 const comboInputBasicFunctionality = {
    methods: {
       showIfValueIsCorrect(currentStatus: InputComboState): void {
-         alert('no tu pokazuję');
          this.valueOK = currentStatus.valueIsCorrect;
          this.errorMessage = Translator.translate(currentStatus.errorMessage);
       },

@@ -2,9 +2,12 @@ import { createApp } from 'vue';
 import BasicElements from '@jsmodules/basic.js';
 import IconStop from '@jscomponents/decoration/icon_stop.vue';
 import IconConfirm from '@jscomponents/decoration/icon_confirm.vue';
+import ContactingComboInputs from '@mixins/components/comboInputs/contactingComboInputs';
 
 
 const settings = {
+
+   mixins : [ContactingComboInputs],
 
    methods: {
 
