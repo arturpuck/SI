@@ -48,7 +48,8 @@
 		  textarea-name="message"
 		  v-bind:error-message-box-available="true"
 		  placeholder-text="{{__('required_between_3_and_1000')}}"
-		  v-bind:on-blur-callback="validateMessage"
+		  v-on:blur="validateMessage"
+		  unique-id="Message"
 		  v-bind:complete-error-display-available="true"
 		  @error('message')
 				v-bind:initial-ok="false"

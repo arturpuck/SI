@@ -44,21 +44,19 @@ import ContactingComboInputs from '@mixins/components/comboInputs/contactingComb
     
    },
 
-   validateMessage(sender){
-
-      const message  = sender.inputValue;
-     
+   validateMessage(message){
+  
       if(!message){
-        sender.resetValidation();
+        this.resetComboInput('Message');
       }
       else if(message.length > 1000){
-        sender.showError("Wiadomość przekracza 1000 znaków");
+        this.notifyComboInputAboutState('Message', 'message_exceeds_1000_characters');
       }
       else if(message.length < 3){
-          sender.showError("Wiadomość ma mniej niż 3 znaki");
+        this.notifyComboInputAboutState('Message', 'message_contains_less_then_3_characters');
       }
       else{
-        sender.resetValidation();
+        this.resetComboInput('Message');
       }
       
    }

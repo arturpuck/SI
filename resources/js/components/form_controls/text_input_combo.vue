@@ -32,6 +32,7 @@
         v-bind:id="inputId"
         v-bind:disabled="isDisabled"
         v-on:blur="emitBlur"
+        v-on:input="updateModel"
         v-bind:name="name"
         :required="inputIsRequired"
         v-bind:placeholder="placeholderText"
@@ -60,6 +61,12 @@ export default {
     PadlockIcon,
     IconStop,
     IconConfirm,
+  },
+
+  watch : {
+    modelValue(){
+      this.inputValue = this.modelValue;
+    }
   },
 
   data() {
@@ -100,6 +107,10 @@ export default {
   methods: {
     emitBlur() {
       this.$emit("blur", this.inputValue);
+    },
+
+    updateModel() : void {
+      this.$emit('update:modelValue', this.inputValue);
     },
 
     initiateSettings(): void {

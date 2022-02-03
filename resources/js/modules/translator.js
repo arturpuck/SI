@@ -90,6 +90,8 @@ export default {
       changing_user_data: "Pracuję nad zmianą danych",
       invalid_image_url_or_another_error: "Prawdopodobnie adres URL jest nieprawidłowy lub wystąpił inny bliżej niezidentyfikowany problem",
       deleting_the_avatar: "Usuwam avatar",
+      message_exceeds_1000_characters : "Wiadomość przekracza 1000 znaków",
+      message_contains_less_then_3_characters : "Wiadomość zawiera mniej niż 3 znaki",
       this_email_address_does_not_exist: "Taki adres email nie istnieje",
       to_many_attemts_during_one_minute: "Za dużo prób w ciągu 1 minuty",
       password_has_less_then_3_characters: "Hasło ma mniej niż 3 znaki",
