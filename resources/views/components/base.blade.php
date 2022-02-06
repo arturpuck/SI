@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{App::getLocale()}}">
-
 <head>
 	<meta charset="UTF-8">
 	<title>{{$title}}</title>
@@ -18,7 +17,7 @@
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
-	@isset($fonts) {{fonts}} @endisset
+	@isset($metadata) {{$metadata}} @endisset
 </head>
 
 <body class="full-body @isset($customBodyClass){{$customBodyClass}}@endisset">

@@ -69,7 +69,7 @@
          <movie-preview-complete></movie-preview-complete>
          <ul class="movies-container">
             @foreach($pornstar->movies as $movie)
-            <movie-box duration="{{$movie->duration}}" title="{{$movie->title}}" v-bind:views="{{$movie->views}}" @if($movie->is_translated_to_polish)
+            <movie-box duration="{{$movie->getDurationForHumans()}}" title="{{$movie->title}}" v-bind:views="{{$movie->views}}" @if($movie->is_translated_to_polish)
                v-bind:is-translated-to-polish="true"
                @endif
                v-bind:id="{{$movie->id}}">

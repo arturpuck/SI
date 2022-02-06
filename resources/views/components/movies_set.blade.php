@@ -7,7 +7,7 @@
 <ul class="movies-container">
     @foreach($movies->items() as $movie)
         <movie-box
-            duration="{{$movie->duration}}"
+            duration="{{$movie->getDurationForHumans()}}"
             title="{{$movie->title}}"
             v-bind:views="{{$movie->views}}"
             @if(!$movie->pornstars->isEmpty())

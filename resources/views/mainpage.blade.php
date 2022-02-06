@@ -35,7 +35,7 @@
       <horizontal-scroll-list>
           @foreach($latestMovies as $movie)
             <movie-box class="movie-box"
-                duration="{{$movie->duration}}"
+                duration="{{$movie->getDurationForHumans()}}"
                 title="{{$movie->title}}"
                 v-bind:views="{{$movie->views}}"
                 @if(!$movie->pornstars->isEmpty())

@@ -36,7 +36,7 @@ Class MovieDataExtractor{
       $pornstarsListShard = self::getPornstarsList($movie);
       $movieID = $movie->movie_id ?? $movie->id;
       $movieDetails = new MovieBasicDataShard($movieID,
-                                              $movie->duration,
+                                              $movie->getDurationForHumans(),
                                               $movie->title,
                                               $movie->views,
                                               $movie->created_at,
