@@ -19,7 +19,7 @@ class MovieDetailResource extends JsonResource
             'created_at' => $this->created_at,
             'duration' => $this->getDurationForHumans(),
             'id' => $this->id,
-            'likes' => $this->getLikesData(\Auth::user()?->id),
+            'likes' => $this->getComplexLikesData(\Auth::user()?->id),
             'pornstars' => PornstarResource::collection($this->whenLoaded('pornstars')),
             'rating' => $this->getRatings(\Auth::user()?->id),
             'spermatozoids' => $this->getSpermatozoids(\Auth::user()?->id),
