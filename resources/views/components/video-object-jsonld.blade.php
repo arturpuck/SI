@@ -7,6 +7,21 @@
    "thumbnailUrl" : ["{{$movie->getThumbnailUrl()}}"],
    "uploadDate" : "{{$movie->getUploadDate()}}",
    "contentUrl" : "{{$movie->getContentUrl()}}",
-   "duration" : "{{$movie->getDurationInISO8601()}}"
+   "duration" : "{{$movie->getDurationInISO8601()}}",
+   "interactionStatistic":
+   [
+      {
+       "@type": "InteractionCounter",
+       "interactionType": { "@type": "WatchAction" },
+       "userInteractionCount": {{$movie->getViews()}}
+      },
+
+      {
+       "@type": "InteractionCounter",
+       "interactionType": { "@type": "LikeAction" },
+       "userInteractionCount": {{$movie->getNumberOfLikes()}}
+      }
+   ]
+     
 }
 </script>

@@ -14,10 +14,10 @@ trait MovieDataExtractor
         return Str::startsWith($duration, "00") ? Str::substr($duration, 3, 5) : $duration;
     }
 
-    public function getLikesData(?int $userID = null, ?bool $userLikesMovie = null): array
+    public function getComplexLikesData(?int $userID = null, ?bool $userLikesMovie = null): array
     {
         $data = [
-            'totalLikes' => intval($this->votes?->where('user_assigned_like', true)?->count()),
+            'totalLikes' => $this->getNumberOfLikes(),
         ];
 
         if ($userID) {
@@ -30,6 +30,11 @@ trait MovieDataExtractor
             $data['userLikesMovie'] = $userLikesMovie;
         }
         return $data;
+    }
+
+    public function getNumberOfLikes() : int 
+    {
+        return intval($this->votes?->where('user_assigned_like', true)?->count());
     }
 
     public function getPornstarsList(): ?array

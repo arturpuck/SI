@@ -94,4 +94,9 @@ trait MovieAccessors
         return $this->duration;
     }
 
+    public function getViews() : int 
+    {
+        return $this->views;
+    }
+
 }
