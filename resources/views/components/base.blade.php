@@ -7,6 +7,7 @@
 	<meta name="author" content="Neuro-Boost">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta id="csrf-token" name="csrf-token" content="{{ csrf_token() }}">
+	<meta name="rating" content="adult" />
 	<link rel="stylesheet" href="{{$cssFilePath}}">
 	<link rel="preload" href="{{$jsFilePath}}" as="script">
 	<link href="https://fonts.googleapis.com/css?family=Exo+2|Aldrich|Oxanium|Teko|Play&display=swap" rel="preload stylesheet" as="style">

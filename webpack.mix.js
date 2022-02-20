@@ -40,6 +40,9 @@ mix.js('resources/js/mainpage.js', 'public/js').vue()
    .sass('resources/sass/movies/advanced_search.scss', 'public/css')
    .sass('resources/sass/auth/session_expired.scss', 'public/css')
    .sass('resources/sass/porn_dictionary.scss', 'public/css')
+   .sass('resources/sass/category_specific.scss', 'public/css')
+   .sass('resources/sass/contact.scss', 'public/css')
+   .sass('resources/sass/movies/movies_set_complete.scss', 'public/css')
   .options({ processCssUrls: false })
   .babelConfig({
     plugins: ['@babel/plugin-syntax-dynamic-import',  "@babel/plugin-transform-modules-commonjs"],
