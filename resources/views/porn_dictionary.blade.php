@@ -1,6 +1,6 @@
 <x-base title="{{__('porn_dictionary_title')}}" description="{{__('porn_dictionary_description')}}">
  <main class="main-content">
-     <header>
+     <header class="introductory-content">
          <h1 class="dictionary-header">
              {{__('porn_dictionary_header')}} 
              <dictionary-icon class="header-icon"></dictionary-icon>
