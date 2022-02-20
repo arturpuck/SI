@@ -1,4 +1,7 @@
 <x-base title="{{$title}}" customBodyClass="standard-background" description="{{$description}}">
+<x-slot name="metadata">
+   <x-video-object-jsonld :movie="$movie"/>
+</x-slot>
    <main class="movie-block">
       <div class="player-container">
          <video id="player" ref="player" data-movie-id="{{$movie->id}}" playsinline controls>

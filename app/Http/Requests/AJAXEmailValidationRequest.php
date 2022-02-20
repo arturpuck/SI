@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class AJAXEmailValidationRequest extends FormRequest
+class CheckIfEmailExistsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

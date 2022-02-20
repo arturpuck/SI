@@ -3,10 +3,12 @@
 namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class AJAXLoginValidationRequest extends FormRequest
+class CheckIfEmailExistsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,10 +21,8 @@ class AJAXLoginValidationRequest extends FormRequest
     }
 
     public function all($keys = null)
-   {
-       $data = parent::all();
-       $data['login'] = \Request::segment(2);
-       return $data;
+    {
+        return ['email' => $this->route('email')];
     }
 
     /**
@@ -33,12 +33,20 @@ class AJAXLoginValidationRequest extends FormRequest
     public function rules()
     {
         return [
-            'login' => 'unique:users'
+            'email' => ['required', 'email']
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'email.required' => __('email_is_missing'),
+            'email.email' => __('email_has_incorrect_format')
         ];
     }
 
     public function failedValidation(Validator $validator)
     {
-       throw new HttpResponseException(response('invalid', 400)->header('Content-Type', 'text/plain'));
+        throw new HttpResponseException(response($validator->errors->all(), 400)->header('Content-Type', 'text/plain'));
     }
 }

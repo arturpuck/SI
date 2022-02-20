@@ -3,10 +3,11 @@
 		@csrf
 		<input type="hidden" value="{{$token}}" name="token">
 		<div class="user-information">{{__('please_fill_the_form_below_and_submit_it')}}</div>
-		<text-input-combo @if($errors->has('email'))
-			initial-value="{{old('email')}}"
+		<text-input-combo class="input"
+		    @if($errors->has('email'))
+			   initial-value="{{old('email')}}"
 			@else
-			initial-value="{{$email}}"
+			   initial-value="{{$email}}"
 			@endif
 
 			v-bind:input-is-required="true"
@@ -15,11 +16,16 @@
 			{{ucfirst(__('email'))}} :
 		</text-input-combo>
 
-		<text-input-combo ref="password" v-bind:input-is-required="true" v-bind:on-blur-callback="checkPassword" v-bind:complete-validation-display-available="true" input-type="password" name="password" v-bind:error-message-box-available="true">
+		<text-input-combo class="input"
+		    v-bind:input-is-required="true" 
+			input-type="password" 
+			name="password" >
 			{{ucfirst(__('password'))}} :
 		</text-input-combo>
 
-		<text-input-combo ref="password_confirmation" v-bind:input-is-required="true" v-bind:on-blur-callback="checkPassword" v-bind:complete-validation-display-available="true" input-type="password" name="password_confirmation" v-bind:error-message-box-available="true">
+		<text-input-combo class="input"
+			input-type="password" 
+			name="password_confirmation"  >
 			{{ucfirst(__('password_confirmation'))}} :
 		</text-input-combo>
 		<div class="checkbox-outer-container">

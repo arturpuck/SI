@@ -32,8 +32,8 @@
       <change beforePath="$PROJECT_DIR$/app/Http/Middleware/TrimStrings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/TrimStrings.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/AJAXEmailValidationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/AJAXEmailValidationRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/AJAXLoginValidationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/AJAXLoginValidationRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CheckIfEmailExistsRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CheckIfEmailExistsRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CheckIfLoginExistsRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CheckIfLoginExistsRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Requests/SendMessageToManagementRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/SendMessageToManagementRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Requests/ShowPasswordResetConfirmationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/ShowPasswordResetConfirmationRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Interfaces/Notifier.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Interfaces/Notifier.php" afterDir="false" />

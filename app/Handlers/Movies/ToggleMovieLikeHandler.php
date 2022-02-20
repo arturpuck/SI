@@ -18,7 +18,7 @@ Class ToggleMovieLikeHandler  {
 
       $movieRating->user_assigned_like = $userLikesMovie;
       $movieRating->save();
-      return response()->json($movieRating->movie->getLikesData(userLikesMovie:$userLikesMovie), 200);
+      return response()->json($movieRating->movie->getComplexLikesData(userLikesMovie:$userLikesMovie), 200);
     }
     
 }

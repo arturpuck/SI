@@ -1,5 +1,5 @@
 <template>
-  <div ref="container" class="text-input-combo-container">
+  <div class="text-input-combo-container">
     <div
       v-if="errorMessageBoxAvailable"
       v-text="errorMessage"
@@ -29,8 +29,10 @@
       />
       <span class="text-input-description"><slot></slot></span>
       <input
+        v-bind:id="inputId"
         v-bind:disabled="isDisabled"
-        ref="text_input"
+        v-on:blur="emitBlur"
+        v-on:input="updateModel"
         v-bind:name="name"
         :required="inputIsRequired"
         v-bind:placeholder="placeholderText"
@@ -42,19 +44,29 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import PadlockIcon from "@svgicon/padlock_icon.vue";
 import IconStop from "@jscomponents-decoration/icon_stop.vue";
 import IconConfirm from "@jscomponents-decoration/icon_confirm.vue";
-import Translator from "@jsmodules/translator";
+import ComboInputBasicFunctionality from "@mixins/components/comboInputs/comboInputBasicFunctionality";
 
 export default {
   name: "text-input-combo",
+
+  mixins: [ComboInputBasicFunctionality],
+
+  emits: ["blur"],
 
   components: {
     PadlockIcon,
     IconStop,
     IconConfirm,
+  },
+
+  watch : {
+    modelValue(){
+      this.inputValue = this.modelValue;
+    }
   },
 
   data() {
@@ -66,7 +78,6 @@ export default {
       iconConfirmationCanBeDisplayed: undefined,
       redBorderCanBeDisplayed: undefined,
       greenBorderCanBeDisplayed: undefined,
-      translator: Translator,
     };
   },
 
@@ -88,64 +99,50 @@ export default {
     },
   },
 
-  methods: {
-    showError(errorMessage = "") {
-      this.valueOK = false;
-      this.errorMessage = this.translator.translate(errorMessage);
-    },
-
-    showValueIsOK() {
-      this.valueOK = true;
-      this.errorMessage = "";
-    },
-
-    resetValidation() {
-      this.valueOK = undefined;
-      this.errorMessage = "";
-    },
-  },
-
   created() {
-    this.inputValue = this.initialValue;
-    this.errorMessage = this.initialErrorText;
-    this.iconErrorCanBeDisplayed =
-      this.errorIconAvailable ||
-      this.completeErrorDisplayAvailable ||
-      this.completeValidationDisplayAvailable;
-    this.iconConfirmationCanBeDisplayed =
-      this.confirmationIconAvailable ||
-      this.completeConfirmationDisplayAvailable ||
-      this.completeValidationDisplayAvailable;
-    this.redBorderCanBeDisplayed =
-      this.redBorderAvailable ||
-      this.completeErrorDisplayAvailable ||
-      this.completeValidationDisplayAvailable;
-    this.greenBorderCanBeDisplayed =
-      this.greenBorderAvailable ||
-      this.completeConfirmationDisplayAvailable ||
-      this.completeValidationDisplayAvailable;
-    this.valueOK = this.initialOk;
+    this.initiateSettings();
+    this.attachEventListeners();
   },
 
-  mounted() {
-    if (this.onBlurCallback) {
-      this.$refs.text_input.addEventListener("blur", () =>
-        this.onBlurCallback(this)
-      );
-    }
+  methods: {
+    emitBlur() {
+      this.$emit("blur", this.inputValue);
+    },
 
-    if (this.inputId) {
-      this.$refs.text_input.id = this.inputId;
-    }
+    updateModel() : void {
+      this.$emit('update:modelValue', this.inputValue);
+    },
 
-    if (this.aditionalClasses) {
-      Object.keys(this.aditionalClasses).forEach((key) =>
-        this.$refs[key].classList.add(this.aditionalClasses[key])
-      );
-    }
+    initiateSettings(): void {
+      this.inputValue = this.initialValue;
+      this.errorMessage = this.initialErrorText;
+      this.iconErrorCanBeDisplayed =
+        this.errorIconAvailable ||
+        this.completeErrorDisplayAvailable ||
+        this.completeValidationDisplayAvailable;
+      this.iconConfirmationCanBeDisplayed =
+        this.confirmationIconAvailable ||
+        this.completeConfirmationDisplayAvailable ||
+        this.completeValidationDisplayAvailable;
+      this.redBorderCanBeDisplayed =
+        this.redBorderAvailable ||
+        this.completeErrorDisplayAvailable ||
+        this.completeValidationDisplayAvailable;
+      this.greenBorderCanBeDisplayed =
+        this.greenBorderAvailable ||
+        this.completeConfirmationDisplayAvailable ||
+        this.completeValidationDisplayAvailable;
+      this.valueOK = this.initialOk;
+    },
   },
 
   props: {
+    
+    modelValue : {
+      required: false,
+      default : null
+    },
+
     initialValue: {
       required: false,
       type: String,
@@ -224,12 +221,6 @@ export default {
       default: undefined,
     },
 
-    onBlurCallback: {
-      required: false,
-      type: Function,
-      default: null,
-    },
-
     placeholderText: {
       required: false,
       type: String,
@@ -245,19 +236,19 @@ export default {
     inputId: {
       required: false,
       type: String,
-      default: undefined,
-    },
-
-    aditionalClasses: {
-      required: false,
-      type: Object,
-      default: undefined,
+      default: null,
     },
 
     isDisabled: {
       required: false,
       type: Boolean,
       default: false,
+    },
+
+    uniqueId: {
+      required: false,
+      type: String,
+      default: "",
     },
   },
 };
@@ -314,7 +305,7 @@ export default {
   &:-webkit-autofill {
     -webkit-text-fill-color: white;
     font: inherit;
-    border:none;
+    border: none;
   }
 
   &:-webkit-autofill:focus {
@@ -325,7 +316,6 @@ export default {
     -webkit-text-fill-color: white;
     font: inherit;
   }
-
 }
 
 .text-input-combo-value,

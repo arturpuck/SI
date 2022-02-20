@@ -3,8 +3,12 @@ import BasicElements from '@jsmodules/basic.js';
 import TextareaCombo from '@jscomponents-form-controls/textarea_combo.vue';
 import IconStop from '@jscomponents-decoration/icon_stop.vue';
 import IconConfirm from '@jscomponents-decoration/icon_confirm.vue';
+import ContactingComboInputs from '@mixins/components/comboInputs/contactingComboInputs';
+
 
   const settings = ({
+
+    mixins : [ContactingComboInputs],
 
     data() {
         return{
@@ -13,51 +17,46 @@ import IconConfirm from '@jscomponents-decoration/icon_confirm.vue';
     },
 
  methods : {
-   validateEmail(sender){
 
-    function emailhasCorrectFormat (email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-    }
+  emailhasCorrectFormat(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  },
 
-    const email  = sender.inputValue; 
+   validateEmail(email){
 
-    if(!email || emailhasCorrectFormat(email)){
-      sender.resetValidation();
+    if(!email || this.emailhasCorrectFormat(email)){
+      this.resetComboInput('Email');
     }
     else{
-      sender.showError("Email wygląda na nieprawidłowy");
+      this.notifyComboInputAboutState('Email', 'email_seems_to_be_incorrect');
     }
 
    },
 
-   validateSubject(sender){
-
-    const subject  = sender.inputValue;
+   validateSubject(subject){
 
     if(subject.length > 40){
-      sender.showError("Temat przekracza 40 znaków");
+      this.notifyComboInputAboutState('Subject',"subject_exceeds_40_characters");
     }
     else{
-      sender.resetValidation();
+      this.resetComboInput('Subject');
     }
     
    },
 
-   validateMessage(sender){
-
-      const message  = sender.inputValue;
-     
+   validateMessage(message){
+  
       if(!message){
-        sender.resetValidation();
+        this.resetComboInput('Message');
       }
       else if(message.length > 1000){
-        sender.showError("Wiadomość przekracza 1000 znaków");
+        this.notifyComboInputAboutState('Message', 'message_exceeds_1000_characters');
       }
       else if(message.length < 3){
-          sender.showError("Wiadomość ma mniej niż 3 znaki");
+        this.notifyComboInputAboutState('Message', 'message_contains_less_then_3_characters');
       }
       else{
-        sender.resetValidation();
+        this.resetComboInput('Message');
       }
       
    }

@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Symfony\Component\HttpFoundation\Response;
-use App\Http\Requests\AJAXLoginValidationRequest;
+use App\Http\Requests\CheckIfLoginExistsRequest;
 
 class AJAXLoginValidationController extends Controller
 {
-    function checkIfLoginAlreadyExists(AJAXLoginValidationRequest $request)
+    function checkIfLoginAlreadyExists(CheckIfLoginExistsRequest $request)
     {
        return response('valid', 200)->header('Content-Type', 'text/plain');    
     }

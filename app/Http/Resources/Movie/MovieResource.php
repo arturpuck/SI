@@ -17,7 +17,7 @@ class MovieResource extends JsonResource
     {
         return [
            'id' => $this->id,
-           'duration' => $this->duration,
+           'duration' => $this->getDurationForHumans(),
            'isTranslatedToPolish' => boolval($this->is_translated_to_polish),
            'pornstars' => PornstarResource::collection($this->whenLoaded('pornstars')),
            'title' => $this->title,

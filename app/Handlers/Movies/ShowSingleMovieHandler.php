@@ -3,8 +3,6 @@
 namespace App\Handlers\Movies;
 
 use App\Repositories\MoviesRepository;
-use Symfony\Component\HttpFoundation\Response;
-use App\Helpers\Validators\MoviesAdvancedSearchValidator;
 
 
 Class ShowSingleMovieHandler {

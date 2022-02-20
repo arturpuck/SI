@@ -7,6 +7,8 @@ use App\Nationality;
 use App\Pornstar;
 use App\StoryOrCostumeType;
 use App\Traits\Models\MovieDataExtractor;
+use App\Traits\Models\MovieAccessors;
+use App\Traits\Models\MovieCategoriesExtractor;
 use App\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
-    use HasFactory, MovieDataExtractor;
+    use HasFactory, MovieDataExtractor, MovieAccessors, MovieCategoriesExtractor;
 
     protected $hidden = ['pivot'];
     public $timestamps = false;

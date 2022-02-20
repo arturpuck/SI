@@ -18,8 +18,8 @@
         v-show="displayIconConfirmation"
       />
       <textarea
-        ref="text_input"
         v-model="inputValue"
+        v-on:blur="emitBlur"
         v-bind:max="maxCharacters"
         v-bind:placeholder="placeholderText"
         :required="inputIsRequired"
@@ -42,10 +42,10 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options, Prop } from "vue-property-decorator";
-import Translator from "@jsmodules/translator.js";
+import { Vue, Options, Prop, Emit } from "vue-property-decorator";
+import ComboInputBasicFunctionality from "@mixins/components/comboInputs/comboInputBasicFunctionality";
 
-@Options({ name: "TextareaCombo" })
+@Options({ name: "TextareaCombo", mixins : [ComboInputBasicFunctionality], emits : ['blur'] })
 export default class TextAreaCombo extends Vue {
   @Prop({
     type: String,
@@ -132,13 +132,6 @@ export default class TextAreaCombo extends Vue {
   readonly initialErrorText: string;
 
   @Prop({
-    type: Function,
-    required: false,
-    default: null,
-  })
-  readonly onBlurCallback: Function;
-
-  @Prop({
     type: String,
     required: false,
     default: "",
@@ -173,6 +166,13 @@ export default class TextAreaCombo extends Vue {
   })
   readonly phantomLabel: boolean;
 
+  @Prop({
+    type: String,
+    required: false,
+    default: '',
+  })
+  readonly uniqueId: boolean;
+
   private valueOK: boolean = null;
   private errorMessage: string = '';
   private inputValue = '';
@@ -197,19 +197,8 @@ export default class TextAreaCombo extends Vue {
     return this.greenBorderCanBeDisplayed && this.valueOK === true;
   }
 
-  showError(errorMessage = "") {
-    this.valueOK = false;
-    this.errorMessage = Translator.translate(errorMessage);
-  }
-
-  showValueIsOK() {
-    this.valueOK = true;
-    this.errorMessage = "";
-  }
-
-  resetValidation() {
-    this.valueOK = undefined;
-    this.errorMessage = "";
+  emitBlur(){
+    this.$emit("blur", this.inputValue);
   }
 
   created() {
@@ -240,11 +229,8 @@ export default class TextAreaCombo extends Vue {
   }
 
   mounted() {
-    if (this.onBlurCallback) {
-      (<HTMLElement>this.$refs.text_input).addEventListener("blur", () =>
-        this.onBlurCallback(this)
-      );
-    }
+    //@ts-ignore
+    this.attachEventListeners();
   }
 }
 </script>
