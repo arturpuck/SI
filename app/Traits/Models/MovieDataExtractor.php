@@ -135,5 +135,11 @@ trait MovieDataExtractor
         return "PT".$timeIngridients[0].'H'.$timeIngridients[1].'M'.$timeIngridients[2].'S';
     }
 
+    public function getDurationInSeconds() : int
+    {
+        $ingridients = explode(':', $this->getDuration());
+        return intval($ingridients[0]) * 3600 + intval($ingridients[1]) * 60 + intval($ingridients[2]);
+    }
+
    
 }
