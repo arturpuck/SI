@@ -8,9 +8,8 @@
     <comment-box
       v-show="commentFormIsVisible"
       v-bind:authenticated-user="authenticatedUser"
-      v-bind:avatar-file-path="avatarFilePath"
-      v-bind:authenticated-user-nickname="authenticatedUserNickname"
-      v-on:send="sendComment"
+      v-bind:avatar-file-path="currentUserAvatarFilePath"
+      v-bind:user-nickname="userNickname"
     ></comment-box>
     <pages-list v-bind:unique-identifier="uniqueIdentifier"></pages-list>
     <div
@@ -18,24 +17,24 @@
       v-text="translations['no_comments']"
       class="no-comments-info"
     ></div>
-    <ul class="comments-list">
+    <div class="comments-list">
       <comment-body
         v-for="comment in comments"
         v-bind:key="comment.id"
+        v-bind:id="comment.id"
         v-bind:comment-body="comment.body"
-        v-bind:authenticated-user="comment.addedByAuthenticatedUser"
+        v-bind:added-by-authenticated-user="comment.addedByAuthenticatedUser"
         v-bind:avatar-file-path="comment.avatarFilePath"
         v-bind:added-ago="comment.addedAgo"
         v-bind:user-nickname="comment.userNickname"
       >
       </comment-body>
-    </ul>
+    </div>
     <pages-list v-bind:unique-identifier="uniqueIdentifier"></pages-list>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Options, Prop } from "vue-property-decorator";
 import CommentBody from "@jscomponents/form_controls/comment_body.vue";
 import Comment from "@interfaces/Comment";
 import PageListUpdate from "@interfaces/PageListUpdate";
@@ -45,108 +44,133 @@ import Translations from "@jsmodules/translations/comments_list";
 import ShowCommentFormButton from "@jscomponents/form_controls/show_comment_form_button.vue";
 import CommentBox from "@jscomponents/form_controls/comment_box.vue";
 
-@Options({
-  components: { ShowCommentFormButton, CommentBody, PagesList, CommentBox },
-  name: "CommentList",
-})
-export default class CommentList extends Vue {
-  @Prop({
-    type: Array,
-    required: false,
-    default: () => [],
-  })
-  readonly initialComments: Comment[];
+export default {
+  name: "comment-list",
 
-  @Prop({
-    type: Boolean,
-    required: false,
-    default: false,
-  })
-  readonly authenticatedUser: boolean;
+  provide() {
+     return {
+       currentUserIsAuthenticated : this.authenticatedUser,
+       currentUserNickname : this.userNickname,
+       currentUserAvatarFilePath : this.currentUserAvatarFilePath,
+     };
+  },
 
-  @Prop({
-    type: String,
-    required: false,
-    default: "",
-  })
-  readonly authenticatedUserNickname: string;
+  props: {
+    initialComments: {
+      type: Array,
+      required: false,
+      default: () => [],
+    },
 
-  @Prop({
-    type: String,
-    required: false,
-    default: "",
-  })
-  readonly avatarFilePath: string;
+    authenticatedUser: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
 
-  @Prop({
-    type: Number,
-    required: false,
-    default: 10,
-  })
-  readonly initialCommentsPerPage: number;
+    userNickname: {
+      type: String,
+      required: false,
+      default: "",
+    },
 
-  @Prop({
-    type: String,
-    required: false,
-    default: "",
-  })
-  readonly uniqueIdentifier: string;
+    currentUserAvatarFilePath : {
+      type: String,
+      required: false,
+      default: "",
+    },
 
-  private comments: Comment[] = [];
-  private commentFormIsVisible = false;
-  private translations = Translations;
-  private commentsPerPage: number;
-  private totalCommentsAvailable: number = 0;
+    initialCommentsPerPage: {
+      type: Number,
+      required: false,
+      default: 10,
+    },
+
+    uniqueIdentifier: {
+      type: String,
+      required: false,
+      default: "",
+    },
+  },
+
+  components: {
+    CommentBody,
+    Comment,
+    PagesList,
+    ShowCommentFormButton,
+    CommentBox,
+  },
+
+  data() {
+    return {
+      comments: [],
+      commentFormIsVisible: false,
+      translations: Translations,
+      commentsPerPage: 10,
+      totalCommentsAvailable: 0,
+    };
+  },
+
+  methods: {
+    updateComments(commentsUpdate: PageListUpdate<Comment>): void {
+      this.updatePagesList(commentsUpdate);
+      this.comments = commentsUpdate.content;
+      this.totalCommentsAvailable = commentsUpdate.totalElements;
+    },
+
+    updatePagesList(commentsUpdate: PageListUpdate<Comment>): void {
+      const pagesNumber = this.calculateSubPagesNumber(
+        commentsUpdate.totalElements,
+        this.commentsPerPage
+      );
+
+      const pagesListStatus: PagesListBasicData = {
+        pagesNumber,
+        currentPage: commentsUpdate.currentPage,
+      };
+      //@ts-ignore
+      this.emitter.emit(
+        `updatePagesList${this.uniqueIdentifier}`,
+        pagesListStatus
+      );
+    },
+
+    calculateSubPagesNumber(
+      totalComments: number,
+      commentsPerPage: number
+    ): number {
+      return Math.ceil(totalComments / commentsPerPage);
+    },
+
+    showCommentForm(): void {
+      this.commentFormIsVisible = true;
+    },
+
+    hideCommentForm(): void {
+       this.commentFormIsVisible = false;
+    }
+  },
 
   mounted() {
     this.comments = this.initialComments;
     //@ts-ignore
-    this.emitter.on("updateComments", this.updateComments); 
+    this.emitter.on("updateComments", this.updateComments);
+    this.emitter.on('hideCommentForm', this.hideCommentForm);
     this.commentsPerPage = this.initialCommentsPerPage;
-  }
+  },
 
-  updateComments(commentsUpdate: PageListUpdate<Comment>): void {
-    this.updatePagesList(commentsUpdate);
-    this.comments = commentsUpdate.content;
-    this.totalCommentsAvailable = commentsUpdate.totalElements;
-  }
+  computed: {
+    anyCommentsAvailable(): boolean {
+      return this.totalCommentsAvailable > 0;
+    },
 
-  updatePagesList(commentsUpdate: PageListUpdate<Comment>): void {
-    const pagesNumber = this.calculateSubPagesNumber(
-      commentsUpdate.totalElements,
-      this.commentsPerPage
-    );
-
-    const pagesListStatus: PagesListBasicData = {
-      pagesNumber,
-      currentPage: commentsUpdate.currentPage,
-    };
-    //@ts-ignore
-    this.emitter.emit(`updatePagesList${this.uniqueIdentifier}`, pagesListStatus);
-  }
-
-  calculateSubPagesNumber(totalComments: number, commentsPerPage: number): number {
-    return Math.ceil(totalComments / commentsPerPage);
-  }
-
-  get anyCommentsAvailable(): boolean {
-    return this.totalCommentsAvailable > 0;
-  }
-
-  showCommentForm(): void {
-    this.commentFormIsVisible = true;
-  }
-
-  sendComment(comment: Comment): void {
-    this.$emit("comment", comment);
-  }
-
-  get availableCommentsInformation(): string {
-    return this.anyCommentsAvailable
-      ? `${this.translations["total_comments"]} : ${this.totalCommentsAvailable}`
-      : this.translations["no_comments_available"];
-  }
-}
+    availableCommentsInformation(): string {
+      return this.anyCommentsAvailable
+        ? `${this.translations["total_comments"]} : ${this.totalCommentsAvailable}`
+        : this.translations["no_comments_available"];
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

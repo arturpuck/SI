@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\MovieComment;
-use App\Services\ModelDataExtractors\Movie\MovieCommentsDataExtractor;
 
 class MovieCommentsRepository extends BaseRepository
 {
@@ -19,7 +18,6 @@ class MovieCommentsRepository extends BaseRepository
 
     public function filterByMovieID(int $movieID): MovieCommentsRepository
     {
-
         $this->query = $this->query->where('movie_id', $movieID);
         return $this;
     }

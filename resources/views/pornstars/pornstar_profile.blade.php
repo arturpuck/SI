@@ -110,7 +110,7 @@
          <relative-shadow-container v-show="processingCommentsInProgress">
             <expect-circle v-bind:label="expectCircleLabel"></expect-circle>
          </relative-shadow-container>
-         <comment-list v-on:comment="saveComment" @auth v-bind:authenticated-user="true" authenticated-user-nickname="{{\Auth::user()->login}}" avatar-file-path="{{Auth::user()->avatar_file_path}}" @endauth></comment-list>
+         <comment-list v-on:comment="saveComment" @auth v-bind:authenticated-user="true" user-nickname="{{\Auth::user()->login}}" avatar-file-path="{{Auth::user()->avatar_file_path}}" @endauth></comment-list>
       </section>
    </main>
    <user-notification></user-notification>

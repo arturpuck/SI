@@ -105,13 +105,13 @@
             <relative-shadow-container v-show="showCommentsFetchingDecoration">
                <expect-circle label="{{__('fetching_comments')}}"></expect-circle>
             </relative-shadow-container>
-            <comment-list v-on:comment="saveMovieComment"
-                          unique-identifier="MovieComments"
-                          @auth 
-                             v-bind:authenticated-user="true" 
-                             authenticated-user-nickname="{{\Auth::user()->login}}" 
-                             avatar-file-path="{{Auth::user()->avatar_file_path}}" 
-                           @endauth >
+            <comment-list
+                  unique-identifier="MovieComments"
+                  @auth 
+                     v-bind:authenticated-user="true" 
+                     user-nickname="{{\Auth::user()->login}}" 
+                     avatar-file-path="{{Auth::user()->avatar_file_path}}" 
+                  @endauth >
             </comment-list>
          </div>
       </section>

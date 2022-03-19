@@ -343,7 +343,7 @@ const settings = {
   },
 
 };
-
+//@ts-ignore
 const app = createApp(settings);
 BasicElements.registerBasicComponents(app);
 app.mount("#app");

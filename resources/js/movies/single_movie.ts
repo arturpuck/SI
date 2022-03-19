@@ -26,7 +26,6 @@ import { MovieRating } from "@interfaces/movies/MovieRating";
 import { MovieSpermatozoids } from "@interfaces/movies/MovieSpermatozoids";
 import { MovieLikes } from "@interfaces/movies/MovieLikes";
 import { MovieTheatreTab } from "@js/enum/movie_theatre_tab";
-import { MoviesCurrentPage } from "@interfaces/movies/MoviesCurrentPage.ts";
 import PageListUpdate from '@interfaces/PageListUpdate';
 import Comment from '@interfaces/Comment';
 import CommentValidator from '@jsmodules/validators/comment_validator';
@@ -66,7 +65,7 @@ const settings = {
             addedAt: undefined,
             moviePornstars: undefined,
             rating: undefined,
-            movie_id: undefined,
+            movie_id: 0,
             showMovieDesktopFetchingDecoration: true,
             showSimilarMoviesFetchingDecoration: true,
             ammountOfSpermatozoids: undefined,
@@ -508,6 +507,7 @@ const settings = {
         this.fetchMovieData();
         this.fetchSimilarMovies();
         this.emitter.on('pageHasBeenSelectedMovieComments', this.fetchComments);
+        this.emitter.on('saveComment', this.saveMovieComment);
     },
 
     computed: {
@@ -573,7 +573,7 @@ const settings = {
     }
 
 };
-
+//@ts-ignore
 const app = createApp(settings);
 BasicElements.registerBasicComponents(app);
 app.mount("#app");

@@ -46,6 +46,7 @@ export default {
    pl: {
       delete : 'usuń',
       cancel : 'anuluj',
+      answear_comment : 'Odpowiedz',
       account_deletion_warning : "Czy na pewno chcesz usunąć konto? Znikną wszystkie komentarze i wystawione oceny. Nie będzie można tego cofnąć. Jeżeli jesteś pewny/a wpisz hasło i kliknij usuń",
       email_has_already_been_taken: "Adres email jest już zajęty",
       current_number_of_votes : "Liczba oddanych głosów",
@@ -162,12 +163,13 @@ export default {
       nickname_is_missing: "Nie podano pseudonimu",
       unexpected_error_occured_while_fetching_comments: "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy",
       nickname: "Pseudonim",
-      comment_text: "Treść komentarza",
       add_comment: "Dodaj komentarz",
       add: "dodaj",
+      contents : "Treść",
       comment_added : "Dodano komentarz",
       unregistered_user: "Niezarejestrowany",
       register : "Rejestruj",
+      add_comment_short : "Komentuj",
       comment_text: "Treść komentarza",
       adding_comment: "Dodaję komentarz",
       fetching_comments: "Pobieram komentarze",
@@ -408,6 +410,7 @@ export default {
       scroll_movies_list_left : "Przewiń listę filmów w lewo",
       scroll_movies_list_right : "Przewiń listę filmów w prawo",
       dictionary : "Słownik",
+      you_are_commenting_as : "komentujesz jako",
       packages: {
          content_sidebar: {
             hide_side_bar_title: "Schowaj boczne menu",

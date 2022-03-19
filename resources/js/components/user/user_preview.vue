@@ -1,25 +1,16 @@
 <template>
   <div class="user-preview">
-    <img
-      v-bind:src="avatarFilePath"
-      alt=""
-      v-if="avatarFileIsAvailable"
-      class="user-image"
-    />
-    <avatar-icon
-      class="unregistered-user-icon"
-      v-if="defaultUserImageShouldBeDisplayed"
-    ></avatar-icon>
+    <Avatar></Avatar>
     <span v-text="userLabel" class="user-nickname"></span>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Options, Prop } from "vue-property-decorator";
-import AvatarIcon from "@svgicon/avatar_icon.vue";
 import Translator from "@jsmodules/translator";
+import Avatar from '@jscomponents/user/avatar.vue';
 
-@Options({ name: "UserPreview", components: { AvatarIcon } })
+@Options({ name: "UserPreview", components: { Avatar } })
 export default class UserPreview extends Vue {
   @Prop({
     type: String,
@@ -42,14 +33,6 @@ export default class UserPreview extends Vue {
   readonly avatarFilePath: string;
 
   private translations = Translator;
-
-  get avatarFileIsAvailable(): boolean {
-    return this.avatarFilePath && this.authenticatedUser;
-  }
-
-  get defaultUserImageShouldBeDisplayed(): boolean {
-    return !this.authenticatedUser || !this.avatarFilePath;
-  }
 
   get userLabel(): string {
     return this.authenticatedUser

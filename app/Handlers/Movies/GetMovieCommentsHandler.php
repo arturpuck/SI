@@ -3,9 +3,9 @@
 namespace App\Handlers\Movies;
 
 use App\Repositories\MovieCommentsRepository;
-use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\Movies\GetMovieCommentsRequest;
 use App\Http\Resources\Comment\CommentCollection;
+use App\MovieComment;
 
 class GetMovieCommentsHandler
 {
@@ -17,11 +17,12 @@ class GetMovieCommentsHandler
 
   public function handle(GetMovieCommentsRequest $request): CommentCollection
   {
-
     $movieID = $request->get('movie_id');
     $currentPage = $request->get('page');
     $perPage = $request->get('per_page');
-    $comments = $this->movieCommentsRepository->getPageList($movieID, $currentPage, $perPage);
+    $comments = MovieComment::query()
+                              ->filterByDirectComments()
+                              ->getPageList($movieID, $currentPage, $perPage);
 
     return new CommentCollection($comments['comments'], $comments['totalComments'], $currentPage);
   }

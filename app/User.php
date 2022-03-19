@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\SendPasswordResetLink;
@@ -12,7 +11,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Http\Requests\User\ChangeUserPasswordRequest;
 use App\Http\Requests\User\ChangeOtherUserSettingsRequest;
-use App\PornstarRate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class User extends Authenticatable

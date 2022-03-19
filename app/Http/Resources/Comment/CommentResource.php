@@ -15,9 +15,10 @@ class CommentResource extends JsonResource
     public function toArray($request)
     {
         return [
+          'id' => $this->id,
           'userNickname' => $this->nickname ?? $this->user->login,
           'body' => $this->comment,
-          'avatarFilePath' => $this->avatar_file_path,
+          'avatarFilePath' => $this->user->avatar_file_path ?? '',
           'addedAgo' => $this->added_ago,
           'addedByAuthenticatedUser' => boolval($this->user)
         ];

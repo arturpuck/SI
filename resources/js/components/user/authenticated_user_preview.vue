@@ -1,6 +1,6 @@
 <template>
    <div class="authenticated-user-preview">
-      <span v-text="authenticatedUserNickname" class="authenticated-user-nickname"></span>
+      <span v-text="userNickname" class="user-nickname"></span>
       <img v-bind:src="avatarFilePath" alt="" v-if="avatarFileName" class="authenticated-user-image">
       <span class="fas fa-user authenticated-user-image"></span>
    </div>
@@ -16,7 +16,7 @@
     @Prop({
             type: String,
             required: true,
-    }) readonly authenticatedUserNickname: string;
+    }) readonly userNickname: string;
 
     @Prop({
             type: String,
@@ -41,7 +41,7 @@
     padding:4px;
 }
 
-.authenticated-user-nickname{
+.user-nickname{
     @include responsive-font();
     color:white;
 }
