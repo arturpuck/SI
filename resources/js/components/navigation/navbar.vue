@@ -68,7 +68,6 @@
             v-bind:src="avatarFilePath"
             v-bind:alt="userAvatarDescription"
             class="user-avatar"
-            v-bind:class="{'custom-avatar' : userHasCustomAvatar}"
           />
           <roll-down-button
             v-bind:class="{

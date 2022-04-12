@@ -22,7 +22,7 @@ class MovieCommentsRepository extends BaseRepository
         return $this;
     }
 
-    public function getPageList(int $movieID, int $pageNumber, int $perPage = 10): array
+    public function getForPageList(int $movieID, int $pageNumber, int $perPage = 10): array
     {
         $totalComments = $this->chronological()
             ->filterByMovieID($movieID)

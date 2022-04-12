@@ -44,6 +44,4 @@ class MovieComment extends Model
         return new MovieCommentQueryBuilder($query);
     }
 
-
-
 }

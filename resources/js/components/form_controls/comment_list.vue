@@ -27,6 +27,7 @@
         v-bind:avatar-file-path="comment.avatarFilePath"
         v-bind:added-ago="comment.addedAgo"
         v-bind:user-nickname="comment.userNickname"
+        v-bind:number-of-child-comments="comment.numberOfChildComments"
       >
       </comment-body>
     </div>
@@ -112,10 +113,20 @@ export default {
   },
 
   methods: {
-    updateComments(commentsUpdate: PageListUpdate<Comment>): void {
-      this.updatePagesList(commentsUpdate);
-      this.comments = commentsUpdate.content;
-      this.totalCommentsAvailable = commentsUpdate.totalElements;
+    updateComments(commentsUpdate: PageListUpdate<Comment> | Comment): void {
+      if("content" in commentsUpdate && "totalElements" in commentsUpdate){ 
+        this.comments = commentsUpdate.content;
+        this.totalCommentsAvailable = commentsUpdate.totalElements;
+        
+        this.updatePagesList({
+           totalElements: this.totalCommentsAvailable,
+           currentPage : commentsUpdate.currentPage
+        });
+      }
+      else {
+        this.comments = [commentsUpdate, ...this.comments];
+        ++this.totalCommentsAvailable;
+      }
     },
 
     updatePagesList(commentsUpdate: PageListUpdate<Comment>): void {

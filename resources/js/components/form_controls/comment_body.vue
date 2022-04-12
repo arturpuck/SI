@@ -1,5 +1,8 @@
 <template>
-  <section v-bind:style="sizeStyleObject" class="comment-container">
+  <section
+    v-bind:class="{ nested: isNested, notNested: !isNested }"
+    class="comment-container"
+  >
     <div class="actuall-comment">
       <div class="user-data">
         <user-preview
@@ -17,20 +20,45 @@
       </div>
       <div v-text="commentBody" class="comment-text"></div>
     </div>
+    <div class="sub-comments-section">
       <phantom-button
         v-on:click="toggleResponseCommentBox"
         v-show="!inResponseMode"
         class="answear-comment-button"
         >{{ Translator.translate("answear_comment") }}</phantom-button
       >
+      <phantom-button
+        v-bind:title="answearsLabel"
+        v-on:click="showChildComments"
+        v-if="showChildCommentsInfo"
+        class="show-child-comments-button"
+        >{{ childCommentsCaption }}</phantom-button
+      >
+    </div>
+
     <comment-box
       v-if="inResponseMode"
       v-bind:user-nickname="userNickname"
       v-bind:avatar-file-path="avatarFilePath"
       v-bind:nesting-level="childrenNestingLevel"
       v-bind:comment-id="id"
+      v-on:added-comment="toggleResponseCommentBox"
+      v-bind:parent-comment-id="passedToOffspringParentCommentId"
     >
     </comment-box>
+    <comment-body
+      v-bind:key="childComment.id"
+      v-for="childComment in childComments"
+      v-bind:id="childComment.id"
+      v-bind:comment-body="childComment.body"
+      v-bind:added-by-authenticated-user="childComment.addedByAuthenticatedUser"
+      v-bind:avatar-file-path="childComment.avatarFilePath"
+      v-bind:added-ago="childComment.addedAgo"
+      v-bind:user-nickname="childComment.userNickname"
+      v-bind:number-of-child-comments="childComment.numberOfChildComments"
+      v-bind:nesting-level="childrenNestingLevel"
+      v-bind:parent-comment-id="passedToOffspringParentCommentId"
+    ></comment-body>
   </section>
 </template>
 
@@ -40,65 +68,143 @@ import UserPreview from "@jscomponents/user/user_preview.vue";
 import DateConfirmedIcon from "@svgicon/date_confirmed_icon";
 import PhantomButton from "@jscomponents/form_controls/phantom_button.vue";
 import CommentBox from "@jscomponents-form-controls/comment_box.vue";
-
-const BASIC_BODY_SIZE = 50,
-  BASIC_MIN_WIDTH = 270,
-  BODY_SIZE_UNIT = "vw",
-  BODY_MIN_WIDTH_UNIT = "px";
+import Comment from "@interfaces/Comment";
+import CommentBody from "@jscomponents/form_controls/comment_body.vue";
+import PageListUpdate from "@interfaces/PageListUpdate";
 
 export default {
   name: "comment-body",
 
   provide() {
-    return { 
-      avatarFilePath : this.avatarFilePath
-    }
+    return {
+      avatarFilePath: this.avatarFilePath,
+    };
   },
 
   data() {
     return {
       Translator,
       inResponseMode: false,
+      currentChildCommentsPage: 0,
+      childCommentsPerPage: 5,
+      childComments: [],
+      numberOfVisibleChildComments: 0,
+      variableNumberOfChildComments : 0
     };
   },
 
   methods: {
     toggleResponseCommentBox() {
       this.inResponseMode = !this.inResponseMode;
-      if (this.inResponseMode) {
-        this.emitter.emit("hideCommentForm");
+    },
+
+    showChildComments(): void {
+      if (this.anyChildCommentsCanBeFetched) {
+        ++this.currentChildCommentsPage;
+        this.emitter.emit("showCommentAnswears", [
+          this.id,
+          this.currentChildCommentsPage,
+          this.childCommentsPerPage,
+        ]);
       }
+    },
+
+    displayChildComments(receivedUpdate: PageListUpdate<Comment> | Comment): void {
+      let commentsRefreshed;
+
+      if("totalElements" in receivedUpdate && "currentPage" in receivedUpdate) {
+        commentsRefreshed = [
+         ...this.childComments,
+         ...receivedUpdate.content,
+       ];
+        this.numberOfVisibleChildComments += receivedUpdate.content.length;
+      }
+      else { 
+        commentsRefreshed = [
+         ...this.childComments,
+         receivedUpdate
+       ];
+       ++this.numberOfVisibleChildComments;
+       ++this.variableNumberOfChildComments;
+      }
+      commentsRefreshed = commentsRefreshed.sort(
+        (commentA: Comment, commentB: Comment) =>
+          new Date(commentA.createdAt).getTime() -
+          new Date(commentB.createdAt).getTime()
+      );
+      this.childComments = commentsRefreshed;
     },
   },
 
+  mounted() {
+    this.emitter.on(
+      `childCommentsReceived${this.id}`,
+      this.displayChildComments
+    );
+  },
+
+  created(){
+    this.variableNumberOfChildComments = this.numberOfChildComments;
+  },
+
   computed: {
-    sizeStyleObject() {
-      return {
-        width: `${BASIC_BODY_SIZE - this.nestingLevel * 7}${BODY_SIZE_UNIT}`,
-        minWidth: `${
-          BASIC_MIN_WIDTH - this.nestingLevel * 7
-        }${BODY_MIN_WIDTH_UNIT}`,
-      };
+
+    anyChildCommentsCanBeFetched(): boolean {
+      return this.childCommentsRemaining > 0;
+    },
+
+    childCommentsRemaining(): number {
+      return this.variableNumberOfChildComments - this.numberOfVisibleChildComments;
+    },
+
+    isNested(): boolean {
+      return this.nestingLevel > 0;
     },
 
     childrenNestingLevel(): number {
       return this.nestingLevel in [0, 1] ? this.nestingLevel + 1 : 2;
     },
-  },
 
-  components: { UserPreview, DateConfirmedIcon, CommentBox, PhantomButton },
-
-  props: {
-
-    id : { 
-      required : true,
-      type : Number
+    showChildCommentsInfo(): boolean {
+      return (
+        this.variableNumberOfChildComments > 0 &&
+        (this.variableNumberOfChildComments != this.numberOfVisibleChildComments)
+      );
     },
 
-    avatarFilePath : { 
-       type: String,
-       required: true,
-       default : ''
+    childCommentsCaption(): string {
+      return `${Translator.translate("answears")} (${
+        this.childCommentsRemaining
+      })`;
+    },
+
+    passedToOffspringParentCommentId(): number {
+      return this.nestingLevel in [0, 1] ? this.id : this.parentCommentId;
+    },
+
+    answearsLabel() : string {
+      return Translator.translate('show_next_answears');
+    }
+  },
+
+  components: {
+    UserPreview,
+    DateConfirmedIcon,
+    CommentBox,
+    PhantomButton,
+    CommentBody,
+  },
+
+  props: {
+    id: {
+      required: true,
+      type: Number,
+    },
+
+    avatarFilePath: {
+      type: String,
+      required: true,
+      default: "",
     },
 
     addedByAuthenticatedUser: {
@@ -127,6 +233,18 @@ export default {
       required: false,
       default: 0,
     },
+
+    numberOfChildComments: {
+      required: false,
+      type: Number,
+      default: 0,
+    },
+
+    parentCommentId: {
+      required: false,
+      type: Number,
+      default: 0,
+    },
   },
 };
 </script>
@@ -135,9 +253,25 @@ export default {
 @import "~sass/fonts";
 @import "~sass/responsive_icon";
 
+.nested {
+  margin: 20px 0 20px auto;
+}
+
+.notNested {
+  margin: 20px auto;
+}
+
+.show-child-comments-button {
+  @include responsive-font();
+  color: white;
+  &:hover {
+    color: #e50c33;
+  }
+}
+
 .actuall-comment {
   border: 1px solid gray;
-  border-radius:1vw;
+  border-radius: 1vw;
 }
 
 .added-ago {
@@ -167,7 +301,7 @@ export default {
   align-items: center;
   background: #252222;
   justify-content: space-between;
-  @media (max-width: 520px) {
+  @media (max-width: 640px) {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -183,8 +317,10 @@ export default {
 
 .comment-container {
   border-radius: 1vw;
-  margin: 20px auto;
   position: relative;
+  width: 95%;
+  max-width:1000px;
+  min-width:250px;
 }
 
 .date-confirmed-icon {
@@ -192,11 +328,16 @@ export default {
   height: 1.4em;
 }
 
+.sub-comments-section {
+  display: flex;
+  justify-content: space-between;
+}
+
 .answear-comment-button {
-  width:10%;
-  min-width:100px;
-  display: block;
-  margin:0 0 0 10px;
+  width: 10%;
+  min-width: 100px;
+  display: inline-block;
+  margin: 0 0 0 10px;
   color: white;
   @include responsive-font();
   &:hover {

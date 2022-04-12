@@ -24,6 +24,7 @@ use App\Http\Requests\Movies\AddMovieCommentRequest;
 use App\Http\Requests\Movies\AddSpermatozoidRequest;
 use App\Http\Requests\Movies\GetMovieCommentsRequest;
 use App\Http\Resources\Comment\CommentCollection;
+use App\Http\Resources\Comment\CommentResource;
 use App\Http\Resources\Movie\MovieCollection;
 use App\Traits\LinkFactory;
 use Illuminate\View\View;
@@ -105,7 +106,7 @@ class MoviesController extends Controller
         return $handler->handle($request);
     }
 
-    public function addMovieComment(AddMovieCommentHandler $addMovieCommentHandler, AddMovieCommentRequest $request): CommentCollection
+    public function addMovieComment(AddMovieCommentHandler $addMovieCommentHandler, AddMovieCommentRequest $request): CommentResource | CommentCollection
     {
         return $addMovieCommentHandler->handle($request);
     }

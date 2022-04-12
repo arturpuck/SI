@@ -63,7 +63,7 @@ Route::namespace ('Movies')->name('movies.')->group(function () {
     Route::get('/movie/comments', 'MoviesController@getMovieComments')
                ->name('get.comments');
 
-    Route::put('/movie/add-comment', 'MoviesController@addMovieComment')
+    Route::post('/movie/add-comment', 'MoviesController@addMovieComment')
               ->name('add.comment')->middleware('throttle:2,1');
 });
 

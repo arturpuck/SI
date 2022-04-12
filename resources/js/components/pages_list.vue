@@ -397,7 +397,8 @@ export default class PagesList extends Vue {
     border: none;
     outline: none;
     color: white;
-    @include responsive-font(1.3vw, 13px);
+    @include responsive-font(1.3vw, 12px);
+    padding: 0;
     cursor: pointer;
   }
 

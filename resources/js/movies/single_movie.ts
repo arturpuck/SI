@@ -13,7 +13,7 @@ import StarRating from '@jscomponents/star_rating.vue';
 import UnknownPersonIcon from '@svgicon/unknown_person_icon.vue';
 import InfoCircleIcon from '@svgicon/info_circle_icon.vue'
 import LikeIcon from '@svgicon/like_icon.vue';
-import CommentPenIcon from '@svgicon/comment_pen_icon.vue'; 
+import CommentPenIcon from '@svgicon/comment_pen_icon.vue';
 import StarRate from '@interfaces/StarRate';
 import UserNotification from '@jscomponents/user_notification';
 import NotificationFunction from '@jsmodules/notification_function';
@@ -34,7 +34,7 @@ import MovieHint from "@jscomponents/movies/movie_hint.vue";
 
 const settings = {
 
-    components : {
+    components: {
         MovieRollIcon,
         TelevisionIcon,
         DateConfirmedIcon,
@@ -75,15 +75,15 @@ const settings = {
             selectedTab: MovieTheatreTab.SimilarMovies,
             showCommentsFetchingDecoration: true,
             commentsPerPage: 10,
-            translator : Translator,
-            movieTitle : '',
-            currentFrameForMovieHint : 1,
-            showMovieHint : false,
-            movieFrameCoordinances : {x : 0, y : 0},
-            movieFrame : undefined,
-            duration : '00:00:00',
-            movieFrameCurrentTime : '00:00:00',
-            movieTimeInSeconds : 0
+            translator: Translator,
+            movieTitle: '',
+            currentFrameForMovieHint: 1,
+            showMovieHint: false,
+            movieFrameCoordinances: { x: 0, y: 0 },
+            movieFrame: undefined,
+            duration: '00:00:00',
+            movieFrameCurrentTime: '00:00:00',
+            movieTimeInSeconds: 0
         }
     },
 
@@ -91,7 +91,7 @@ const settings = {
 
         showNotification: NotificationFunction,
 
-        validateComment : CommentValidator,
+        validateComment: CommentValidator,
 
         async saveMovieComment(comment: Comment) {
 
@@ -100,7 +100,7 @@ const settings = {
                 const validationResult = this.validateComment(comment);
 
                 if (!validationResult['success']) {
-                   throw new Error(validationResult['message']);
+                    throw new Error(validationResult['message']);
                 }
 
                 const requestBody = {
@@ -108,9 +108,11 @@ const settings = {
                     commentsPerPage: this.commentsPerPage,
                     ...comment
                 };
-    
+
+                const savingChildComment = comment.hasOwnProperty('parentCommentID');
+                
                 const requestData = {
-                    method: 'PUT',
+                    method: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': this.csrfToken,
                         'Content-type': 'application/json; charset=UTF-8'
@@ -121,9 +123,14 @@ const settings = {
                 const response = await fetch('/movie/add-comment', requestData);
 
                 switch (response.status) {
-                    case 200:
-                        const commentsUpdateList: PageListUpdate<Comment> = await response.json();
-                        this.loadComments(commentsUpdateList);
+                    case 200: case 201:
+                        const commentsUpdateList = await response.json();
+                        if(savingChildComment){
+                           this.loadChildComments(commentsUpdateList, comment.parentCommentID);
+                        }
+                        else {
+                            this.loadRootComments(commentsUpdateList);
+                        }
                         this.showNotification(this.translator.translate('comment_added'));
                         break;
 
@@ -131,9 +138,9 @@ const settings = {
                         throw new Error('the_requested_data_is_probably_ok_but_a_server_error_occured');
                         break;
 
-                    case 429: 
-                       throw new Error('because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute');
-                    break;
+                    case 429:
+                        throw new Error('because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute');
+                        break;
 
                     default:
                         throw new Error('undefined_error');
@@ -153,7 +160,7 @@ const settings = {
 
             const requestBody = {
                 movie_id: this.movie_id,
-                user_likes_movie : Number(!this.userLikesMovie)
+                user_likes_movie: Number(!this.userLikesMovie)
             };
 
             const requestData = {
@@ -342,25 +349,38 @@ const settings = {
 
         },
 
-        async fetchComments(pageNumber: number = 1) {
+        fetchRootComments(pageNumber: number = 1) : void{
+            const parameters = `movie_id=${this.movie_id}&page=${pageNumber}&per_page=${this.commentsPerPage}`;
+            this.fetchComments(parameters)
+                .then(comments => this.loadRootComments(comments));
+        },
 
+        fetchChildComments(parentCommentId: number, pageNumber: number = 1, commentsPerPage : number = 5) : void {
+            const parameters = `page=${pageNumber}&per_page=${commentsPerPage}&parent_comment_id=${parentCommentId}`;
+            this.fetchComments(parameters)
+                .then(comments => this.loadChildComments(comments, parentCommentId));
+        },
+
+        
+        async fetchComments(parametersList: string) {
+            
             const requestData = {
                 method: 'GET',
                 headers: {
                     'X-CSRF-TOKEN': this.csrfToken
                 }
             };
-            const parameters = `movie_id=${this.movie_id}&page=${pageNumber}&per_page=${this.commentsPerPage}`;
-            try {
-                const response = await fetch(`/movie/comments?${parameters}`, requestData);
 
+            try {
+                const response = await fetch(`/movie/comments?${parametersList}`, requestData);
+                
                 if (response.status == 200) {
                     const commentsPageListUpdate: PageListUpdate<Comment> = await response.json();
-                    this.loadComments(commentsPageListUpdate);
+                    return commentsPageListUpdate;
                 } else {
-                    throw new Error('');
+                    throw new Error('undefined_error');
                 }
-
+                
             }
             catch (exception) {
                 this.showNotification(this.translator.translate(exception.message), 'error');
@@ -368,16 +388,20 @@ const settings = {
             finally {
                 this.hideCommentsFetchingDecoration();
             }
-
+            
         },
 
-        loadComments(commentsPageListUpdate: PageListUpdate<Comment>): void {
-            this.emitter.emit('updateComments', commentsPageListUpdate);
+        loadChildComments(comments : PageListUpdate<Comment>, parentCommentId : number) : void {
+           this.emitter.emit(`childCommentsReceived${parentCommentId}`, comments);
+        },
+        
+        loadRootComments(commentsUpdate: PageListUpdate<Comment> | Comment): void {
+            this.emitter.emit('updateComments', commentsUpdate);
             this.emitter.emit('resetCommentBox');
         },
 
         loadSimilarMovies(moviesList: PageListUpdate<MovieBasicData>): void {
-        
+
             this.emitter.emit('updateMoviesList', moviesList);
         },
 
@@ -404,7 +428,7 @@ const settings = {
         showCommentsTab(): void {
             this.selectedTab = MovieTheatreTab.Comments;
             this.showCommentsDecoration();
-            this.fetchComments();
+            this.fetchRootComments();
         },
 
         hideMovieDesktopFetchingDecoration(): void {
@@ -442,51 +466,51 @@ const settings = {
             return isActive ? 'tablist__element--active' : 'tablist__element';
         },
 
-        convertTimeStringToSeconds(timeString : string) : number {
-           timeString = timeString.padStart(8,'00:');
-           const timeIngridients = timeString.split(":");
-           let summary = 0;
-           const numbersOfSeconds = [3600, 60, 1];
-           timeIngridients.forEach((element, arrayIndex) => {
-              summary += Number(element) *  numbersOfSeconds[arrayIndex];
-           });
-           return summary;
+        convertTimeStringToSeconds(timeString: string): number {
+            timeString = timeString.padStart(8, '00:');
+            const timeIngridients = timeString.split(":");
+            let summary = 0;
+            const numbersOfSeconds = [3600, 60, 1];
+            timeIngridients.forEach((element, arrayIndex) => {
+                summary += Number(element) * numbersOfSeconds[arrayIndex];
+            });
+            return summary;
 
         },
 
-        convertSecondsToTimeString(seconds : number) : string {
+        convertSecondsToTimeString(seconds: number): string {
             let date = new Date(0);
-            date.setSeconds(seconds); 
+            date.setSeconds(seconds);
             let timeString = date.toISOString().substring(11, 19);
             const ingridients = timeString.split(":");
-            if((ingridients.length === 3) && (ingridients[0] == '00')){
+            if ((ingridients.length === 3) && (ingridients[0] == '00')) {
                 timeString = timeString.substring(3, 8);
             }
             return timeString;
         },
 
-        setCurrentFrameForMovieHint(seekValue : string) : void {
-          let result = Math.floor(Number(seekValue));
-          result = (result > 0) ? result : 1;
-          result = (result > 100) ? 100 : result;
-          this.currentFrameForMovieHint = result;
+        setCurrentFrameForMovieHint(seekValue: string): void {
+            let result = Math.floor(Number(seekValue));
+            result = (result > 0) ? result : 1;
+            result = (result > 100) ? 100 : result;
+            this.currentFrameForMovieHint = result;
         },
 
-        movieProgressBarHandler(event) : void {
+        movieProgressBarHandler(event): void {
             this.setCurrentFrameForMovieHint(event.target.getAttribute('seek-value'));
             this.setTimeForMovieFrame();
-            let yOffset =  window.innerWidth < 800 ? 15 : '1.5vw'
-            let y  : string | number=  event.clientY + window.scrollY -  this.movieFrame.offsetHeight - 30;
-            let x : string | number = event.clientX + window.scrollX - Math.floor(0.5 * this.movieFrame.offsetWidth);
+            let yOffset = window.innerWidth < 800 ? 15 : '1.5vw'
+            let y: string | number = event.clientY + window.scrollY - this.movieFrame.offsetHeight - 30;
+            let x: string | number = event.clientX + window.scrollX - Math.floor(0.5 * this.movieFrame.offsetWidth);
             x = (x < 0) ? 0 : x;
             x = `${x}px`;
             y = `${y}px`;
-            this.movieFrameCoordinances = {x, y};
+            this.movieFrameCoordinances = { x, y };
         },
 
-        setTimeForMovieFrame() : void {
-           const currentTime = Math.floor(this.movieTimeInSeconds * this.currentFrameForMovieHint / 100 );
-           this.movieFrameCurrentTime = this.convertSecondsToTimeString(currentTime);
+        setTimeForMovieFrame(): void {
+            const currentTime = Math.floor(this.movieTimeInSeconds * this.currentFrameForMovieHint / 100);
+            this.movieFrameCurrentTime = this.convertSecondsToTimeString(currentTime);
         },
 
         initiateImageHintForMovieProgressBar() {
@@ -506,14 +530,15 @@ const settings = {
         this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
         this.fetchMovieData();
         this.fetchSimilarMovies();
-        this.emitter.on('pageHasBeenSelectedMovieComments', this.fetchComments);
+        this.emitter.on('pageHasBeenSelectedMovieComments', this.fetchRootComments);
         this.emitter.on('saveComment', this.saveMovieComment);
+        this.emitter.on('showCommentAnswears', (parameters : []) => this.fetchChildComments(...parameters));
     },
 
     computed: {
 
 
-        movieFrameDescription() : string {
+        movieFrameDescription(): string {
             return `${Translator.translate('movie_frame')} : ${this.movieTitle}`;
         },
 
@@ -521,12 +546,12 @@ const settings = {
             return this.selectedTab === MovieTheatreTab.SimilarMovies;
         },
 
-        anyPornstarsPlayRole() : boolean {
-           return this.moviePornstars && (this.moviePornstars.length > 0);
+        anyPornstarsPlayRole(): boolean {
+            return this.moviePornstars && (this.moviePornstars.length > 0);
         },
 
-        cancelLike() : string {
-           return this.translator.translate('cancel_like');
+        cancelLike(): string {
+            return this.translator.translate('cancel_like');
         },
 
         movieCommentsTabIsSelected(): boolean {

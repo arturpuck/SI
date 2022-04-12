@@ -2,7 +2,7 @@
   <div v-bind:class="nestingClassObject" class="container">
     <div class="main-comment">
       <div v-if="currentUserIsAuthenticated" class="user-nickname-label">
-        <Avatar 
+        <Avatar
           v-bind:superior-avatar-file-path="currentUserAvatarFilePath"
         ></Avatar>
         <label class="blank-label">
@@ -51,7 +51,10 @@
         ></textarea>
       </div>
     </div>
-    <add-button class="add-comment-button" v-on:click="saveComment"></add-button>
+    <add-button
+      class="add-comment-button"
+      v-on:click="saveComment"
+    ></add-button>
   </div>
 </template>
 
@@ -67,6 +70,8 @@ import AddButton from "@jscomponents-form-controls/add_button.vue";
 export default {
   name: "comment-box",
 
+  emits: ["addedComment"],
+
   props: {
     userNickname: {
       type: String,
@@ -80,11 +85,11 @@ export default {
       default: 0,
     },
 
-    commentId : {
-      required : false,
+    parentCommentId: {
+      required: false,
       type: Number,
-      default : undefined
-    }
+      default: undefined,
+    },
   },
 
   components: {
@@ -166,10 +171,15 @@ export default {
         userNickname: this.unauthenticatedUserNickName,
         body: this.userComment,
         addedByAuthenticatedUser: this.currentUserIsAuthenticated,
-        parentCommentID : this.commentId
       };
 
+      if (this.parentCommentId > 0) {
+        commentData["parentCommentID"] = this.parentCommentId;
+      }
+
       this.emitter.emit("saveComment", commentData);
+      this.resetCommentBox();
+      this.$emit("addedComment");
     },
 
     resetCommentBox() {
@@ -194,8 +204,8 @@ export default {
 @import "~sass/fonts";
 @import "~sass/responsive_icon";
 
-.add-comment-button{
-  margin:6px 0;
+.add-comment-button {
+  margin: 6px 0;
 }
 
 .unauthenticated-user-controls {
@@ -272,7 +282,7 @@ export default {
 .container {
   font-size: 0;
   width: 40vw;
-  min-width: 270px;
+  min-width: 250px;
   margin: 10px auto;
 }
 
