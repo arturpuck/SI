@@ -110,7 +110,7 @@
                   @auth 
                      v-bind:authenticated-user="true" 
                      user-nickname="{{\Auth::user()->login}}" 
-                     avatar-file-path="{{Auth::user()->avatar_file_path}}" 
+                     current-user-avatar-file-path="{{Auth::user()->avatar_file_path}}"
                   @endauth >
             </comment-list>
          </div>

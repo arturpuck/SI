@@ -133,13 +133,7 @@ export default {
     },
 
     placeholderText(): string {
-      return this.currentUserIsAuthenticated
-        ? `${this.translator.translate(
-            "contents"
-          )} - ${this.translator.translate("you_are_commenting_as")} : ${
-            this.currentUserNickname
-          }`
-        : this.translator.translate("comment_text");
+      return this.translator.translate("comment_text");
     },
 
     unauthenticatedUserNickNamePlaceholder(): string {
@@ -298,7 +292,7 @@ export default {
 .container {
   font-size: 0;
   width: 40vw;
-  min-width: 250px;
+  min-width: 270px;
   margin: 10px auto;
 }
 
