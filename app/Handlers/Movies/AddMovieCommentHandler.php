@@ -34,6 +34,7 @@ class AddMovieCommentHandler
     {
         $comments = MovieComment::query()
                            ->filterByDirectComments()
+                           ->filterByMovieID($this->movieID)
                            ->getForPageList(1, $this->commentsPerPage);
 
         return new CommentCollection($comments['comments'], $comments['totalComments'], 1);

@@ -26,6 +26,7 @@ import PageListUpdate from '@interfaces/PageListUpdate';
 import CommentList from '@jscomponents/form_controls/comment_list.vue';
 import { PornstarRating } from '@interfaces/pornstars/PornstarRating';
 import Translations from '@jsmodules/translations/pornstar_profile';
+import Comment from '@interfaces/Comment';
 
 
 const settings = {
@@ -38,13 +39,13 @@ const settings = {
       processingCommentsInProgress: false,
       pornstarCommentsHaveBeenFetched: false,
       expectCircleLabel: 'fetching_comments',
-      commentsPerPage: 8,
+      commentsPerPage: 10,
       pornstarID: undefined,
-      numberOfVotes : 0,
-      overallRating : 0,
-      userRating : undefined,
-      translations : Translations,
-      fetchingRatingInProgress : true,
+      numberOfVotes: 0,
+      overallRating: 0,
+      userRating: undefined,
+      translations: Translations,
+      fetchingRatingInProgress: true,
     }
   },
 
@@ -72,8 +73,8 @@ const settings = {
 
   methods: {
 
-    showRating() : void {
-      this.activeTab = PornstarProfileTab.Rank; 
+    showRating(): void {
+      this.activeTab = PornstarProfileTab.Rank;
       this.getPornstarRating();
     },
 
@@ -99,6 +100,7 @@ const settings = {
         this.showCommentsExpectationDecoration(this.translator.translate('adding_comment'));
 
         commentData['pornstar_id'] = this.pornstarID;
+        commentData['commentsPerPage'] = this.commentsPerPage;
 
         const requestData = {
           method: 'POST',
@@ -108,14 +110,20 @@ const settings = {
             'Content-type': 'application/json; charset=UTF-8'
           }
         };
+        const savingChildComment = commentData.hasOwnProperty('parentCommentID');
 
         const response = await fetch(`/pornstar/comments/add`, requestData);
 
         switch (response.status) {
 
-          case 200:
-            let responseBody = await response.json();
-            this.loadCommentsData(responseBody);
+          case 200: case 201:
+            const commentsUpdateList = await response.json();
+            if (savingChildComment) {
+              this.loadChildComments(commentsUpdateList, commentData.parentCommentID);
+            }
+            else {
+              this.loadRootComments(commentsUpdateList);
+            }
             this.resetCommentBox();
             this.showNotification(this.translator.translate('comment_added'));
             break;
@@ -139,6 +147,15 @@ const settings = {
 
     },
 
+    loadChildComments(comments : PageListUpdate<Comment>, parentCommentId : number) : void {
+      this.emitter.emit(`childCommentsReceived${parentCommentId}`, comments);
+   },
+   
+   loadRootComments(commentsUpdate: PageListUpdate<Comment> | Comment): void {
+       this.emitter.emit('updateComments', commentsUpdate);
+       this.emitter.emit('resetCommentBox');
+   },
+
     showCommentsExpectationDecoration(label: string) {
       this.expectCircleLabel = label;
       this.processingCommentsInProgress = true;
@@ -152,54 +169,55 @@ const settings = {
       this.activeTab = event.target.id || event.target.parentElement.id;
     },
 
-    loadCommentsData(response: PageListUpdate<Comment>): void {
+    fetchRootComments(pageNumber: number = 1) : void{
+      const parameters = `pornstar_id=${this.pornstarID}&page=${pageNumber}&comments_per_page=${this.commentsPerPage}`;
+      this.fetchComments(parameters)
+          .then(comments => this.loadRootComments(comments));
+  },
 
-      this.emitter.emit('updateComments', response)
+  fetchChildComments(parentCommentId: number, pageNumber: number = 1, commentsPerPage : number = 5) : void {
+      const parameters = `page=${pageNumber}&comments_per_page=${commentsPerPage}&parent_comment_id=${parentCommentId}`;
+      this.fetchComments(parameters)
+          .then(comments => this.loadChildComments(comments, parentCommentId));
+  },
 
-    },
-
-    async fetchPornstarComments(pageNumber: number) {
-
-      try {
-
-        const requestData = {
+  
+  async fetchComments(parametersList: string) {
+      
+      const requestData = {
           method: 'GET',
           headers: {
-            'X-CSRF-TOKEN': this.csrfToken
+              'X-CSRF-TOKEN': this.csrfToken
           }
-        };
-        let pagesNumberQueryParam = '';
-        this.showCommentsExpectationDecoration(this.translator.translate('fetching_comments'));
+      };
 
-        const response = await fetch(`/pornstar/comments?id=${this.pornstarID}&page=${pageNumber}&comments_per_page=${this.commentsPerPage}`, requestData);
-
-        switch (response.status) {
-
-          case 200:
-            let responseBody = await response.json();
-            this.loadCommentsData(responseBody);
-            break;
-
-          default:
-            this.showNotification(this.translator.translate('unexpected_error_occured_while_fetching_comments'), true);
-            break;
-        }
-
-      } catch (error) {
-        this.showNotification('unexpected_error_occured_while_fetching_comments', true);
+      try {
+          const response = await fetch(`/pornstar/comments?${parametersList}`, requestData);
+          
+          if (response.status == 200) {
+              const commentsPageListUpdate: PageListUpdate<Comment> = await response.json();
+              return commentsPageListUpdate;
+          } else {
+              throw new Error('undefined_error');
+          }
+          
+      }
+      catch (exception) {
+          this.showNotification(this.translator.translate(exception.message), 'error');
       }
       finally {
         this.hideCommentsExpectationDecoration();
       }
+      
+  },
 
-    },
 
     showComments() {
       this.activeTab = "comments-tab";
 
       if (!this.pornstarCommentsHaveBeenFetched) {
         this.showCommentsExpectationDecoration(this.translator.translate('fetching_comments'));
-        this.fetchPornstarComments(1);
+        this.fetchRootComments(1);
       }
     },
 
@@ -209,17 +227,16 @@ const settings = {
       this.emitter.emit('showNotification', { notificationText: text, notificationType: type, headerText: header });
     },
 
-    loadPornstarRating(pornstarRating : PornstarRating): void 
-    {
+    loadPornstarRating(pornstarRating: PornstarRating): void {
       this.numberOfVotes = pornstarRating.numberOfVotes;
       this.overallRating = pornstarRating.overallRating;
       this.userRating = pornstarRating.userRating;
-      
-      if(this.userHasRatedPornstar){
+
+      if (this.userHasRatedPornstar) {
         this.emitter.emit('userUpdateRate', this.userRating);
       }
 
-      if(this.pornstarHasAverageRate){
+      if (this.pornstarHasAverageRate) {
         this.emitter.emit('averageUpdateRate', this.overallRating);
       }
       this.fetchingRatingInProgress = false;
@@ -240,9 +257,9 @@ const settings = {
 
         switch (response.status) {
           case 200:
-             const rating : PornstarRating = await response.json();
-             this.loadPornstarRating(rating);
-          break;
+            const rating: PornstarRating = await response.json();
+            this.loadPornstarRating(rating);
+            break;
 
           default:
             throw new Error('an_error_occured_while_fetching_pornstar_rating');
@@ -278,7 +295,7 @@ const settings = {
 
         switch (response.status) {
           case 200:
-            const refreshedRate : PornstarRating = await response.json();
+            const refreshedRate: PornstarRating = await response.json();
             this.loadPornstarRating(refreshedRate);
             this.showNotification(this.translator.translate('element_has_been_rated'));
             break;
@@ -302,35 +319,33 @@ const settings = {
   },
 
   computed: {
-    pornstarMoviesTabIsActive() : boolean {
+    pornstarMoviesTabIsActive(): boolean {
       return this.activeTab == PornstarProfileTab.Movies;
     },
 
-    pornstarCommentsTabIsActive() : boolean {
+    pornstarCommentsTabIsActive(): boolean {
       return this.activeTab == PornstarProfileTab.Comments;
     },
 
-    pornstarRankingTabIsActive() : boolean {
+    pornstarRankingTabIsActive(): boolean {
       return this.activeTab == PornstarProfileTab.Rank;
     },
 
-    pornstarHasAverageRate() : boolean {
-       return typeof this.overallRating == 'number';
+    pornstarHasAverageRate(): boolean {
+      return typeof this.overallRating == 'number';
     },
 
-    userHasRatedPornstar() : boolean {
+    userHasRatedPornstar(): boolean {
       return Number.isInteger(this.userRating);
     },
 
-    averageRatingLabel() : string
-    {
+    averageRatingLabel(): string {
       const core = this.translations.movieAverageRating;
       return this.overallRating ? `${core} : ${this.overallRating}` : `${core} : ${this.translations.averageRateNotAvailableYet}`;
     },
 
-    numberOfVotesLabel() : string 
-    {
-       return `${this.translations.currentNumberOfVotes} : ${this.numberOfVotes}`;
+    numberOfVotesLabel(): string {
+      return `${this.translations.currentNumberOfVotes} : ${this.numberOfVotes}`;
     }
 
   },
@@ -338,8 +353,10 @@ const settings = {
   mounted() {
     this.translator = Translator;
     this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
-    this.emitter.on('pageHasBeenSelected', (pageNumber: number) => this.fetchPornstarComments(pageNumber));
+    this.emitter.on('pageHasBeenSelectedPornstarComments', this.fetchRootComments);
     this.pornstarID = parseInt(document.getElementById('pornstar-profile-container').getAttribute('data-pornstar-id'));
+    this.emitter.on('saveComment', this.saveComment);
+    this.emitter.on('showCommentAnswears', (parameters : []) => this.fetchChildComments(...parameters));
   },
 
 };

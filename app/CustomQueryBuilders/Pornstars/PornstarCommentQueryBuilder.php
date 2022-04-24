@@ -1,19 +1,20 @@
 <?php
 
-namespace App\CustomQueryBuilders\Movie;
+namespace App\CustomQueryBuilders\Pornstars;
 
 use Illuminate\Database\Eloquent\Builder;
 use App\CustomQueryBuilders\Traits\CommonQueryBuilderActions;
 use App\CustomQueryBuilders\Traits\CommentsFilters;
 
-class MovieCommentQueryBuilder extends Builder
+Class PornstarCommentQueryBuilder extends Builder
 {
 
     use CommonQueryBuilderActions, CommentsFilters;
 
-    public function filterByMovieID(int $movieID): self
+
+    public function filterByPornstarId(int $pornstarID) : self
     {
-        $this->where('movie_id', $movieID);
+        $this->where('pornstar_id', $pornstarID);
         return $this;
     }
 

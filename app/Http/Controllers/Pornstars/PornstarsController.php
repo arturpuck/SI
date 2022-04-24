@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Pornstars;
 
 use Illuminate\Http\Request;
-use App\Pornstar;
 use App\Handlers\Pornstars\ShowPornstarProfileHandler;
 use App\Handlers\Pornstars\GetPornstarCommentsHandler;
 use App\Handlers\Pornstars\AddPornstarCommentHandler;
@@ -18,45 +17,52 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\Pornstars\GetPornstarRatingRequest;
 use App\Handlers\Pornstars\GetPornstarRatingHandler;
 use App\Handlers\Pornstars\RatePornstarHandler;
+use App\Http\Resources\Comment\CommentResource;
+
 
 class PornstarsController extends Controller
 {
-    public function getPornstarsList(PornstarsRepository $pornstarsRepository){
+    public function getPornstarsList(PornstarsRepository $pornstarsRepository)
+    {
 
         $pornstars = $pornstarsRepository
-                     ->select(['nickname'])
-                     ->alphabeticalOrderByNickName()
-                     ->get();
+            ->select(['nickname'])
+            ->alphabeticalOrderByNickName()
+            ->get();
 
         return view('pornstars.pornstars_list')
-               ->with(['pornstarsNickNames' => $pornstars->pluck('nickname')->toArray()]);
+            ->with(['pornstarsNickNames' => $pornstars->pluck('nickname')->toArray()]);
     }
 
-    public function showPornstarProfile(Request $request, ShowPornstarProfileHandler $pornstarProfileHandler, $nickname){
+    public function showPornstarProfile(Request $request, ShowPornstarProfileHandler $pornstarProfileHandler, $nickname)
+    {
 
         return view('pornstars.pornstar_profile')
-                   ->with(['pornstar' => $pornstarProfileHandler->handle($request)]);
+            ->with(['pornstar' => $pornstarProfileHandler->handle($request)]);
     }
 
-    public function ratePornstar(RatePornstarRequest $request, RatePornstarHandler $ratePornstarHandler){
+    public function ratePornstar(RatePornstarRequest $request, RatePornstarHandler $ratePornstarHandler)
+    {
         return $ratePornstarHandler->handle($request);
     }
 
-    public function getPornstarComments(GetPornstarCommentsRequest $request,GetPornstarCommentsHandler $getPornstarCommentsHandler) : CommentCollection{
+    public function getPornstarComments(GetPornstarCommentsRequest $request, GetPornstarCommentsHandler $getPornstarCommentsHandler): CommentCollection
+    {
         return $getPornstarCommentsHandler->handle($request);
     }
 
-    public function addPornstarComment(AddPornstarCommentRequest $request, AddPornstarCommentHandler $pornstarCommentHandler) : CommentCollection{
+    public function addPornstarComment(AddPornstarCommentRequest $request, AddPornstarCommentHandler $pornstarCommentHandler): CommentCollection | CommentResource
+    {
         return $pornstarCommentHandler->handle($request);
     }
 
-    public function getPornstarListForAdvancedSearch(GetPornstarListForAdvancedSearchHandler $handler){
-         return $handler->handle();
+    public function getPornstarListForAdvancedSearch(GetPornstarListForAdvancedSearchHandler $handler)
+    {
+        return $handler->handle();
     }
 
-    public function getPornstarRating(GetPornstarRatingRequest $request, GetPornstarRatingHandler $pornstarRatingHandler) : Response
+    public function getPornstarRating(GetPornstarRatingRequest $request, GetPornstarRatingHandler $pornstarRatingHandler): Response
     {
         return $pornstarRatingHandler->handle($request);
     }
-
 }

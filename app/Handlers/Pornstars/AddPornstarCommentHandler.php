@@ -2,32 +2,41 @@
 
 namespace App\Handlers\Pornstars;
 
-use App\Handlers\Pornstars\ShowPornstarProfileHandler;
 use App\Http\Requests\Pornstars\AddPornstarCommentRequest;
-use App\Repositories\PornstarCommentsRepository;
 use App\Http\Resources\Comment\CommentCollection;
 use App\PornstarComment;
+use App\Http\Resources\Comment\CommentResource;
 
 Class AddPornstarCommentHandler  {
 
-    private PornstarCommentsRepository $pornstarCommentsRepository;
+    private ?int $pornstarID;
+    private ?int $commentsPerPage;
 
-    public function __construct(PornstarCommentsRepository $pornstarCommentsRepository){
+    public function handle(AddPornstarCommentRequest $request) : CommentCollection | CommentResource{
 
-          $this->pornstarCommentsRepository = $pornstarCommentsRepository;
+        $this->pornstarID = $request->get('pornstar_id');
+        $this->commentsPerPage = $request->get('commentsPerPage');
+        $userData = \Auth::check() ? ['user_id' => \Auth::user()->id] : ['nickname' => $request->get('userNickname')];
+        if($parentCommentID = $request->get('parentCommentID')){
+            $userData['parent_comment_id'] = $parentCommentID;
+        }
+
+        $addedComment =  PornstarComment::create(array_merge([
+            'pornstar_id' => $this->pornstarID,
+            'comment' => $request->get('body')
+        ], $userData));
+
+       return $parentCommentID ? new CommentResource($addedComment) : $this->getLatestComments();
+
     }
 
-    public function handle(AddPornstarCommentRequest $request) : CommentCollection{
+    private function getLatestComments() : CommentCollection
+    {
+        $comments = PornstarComment::query()
+                           ->filterByPornstarID($this->pornstarID)
+                           ->filterByDirectComments()
+                           ->getForPageList(1, $this->commentsPerPage);
 
-       $this->pornstarCommentsRepository->storeComment($request);
-       $this->pornstarCommentsRepository->resetQuery();
-
-       $lastComments = $this->pornstarCommentsRepository
-                            ->with(['user'])
-                            ->filterByPornstarId($request->get('pornstar_id'))
-                            ->orderByAddDate()
-                            ->countSelectedCommentsAndFilterByPage(1);
-
-        return new CommentCollection($lastComments['comments'], $lastComments['total_comments'], 1);
+        return new CommentCollection($comments['comments'], $comments['totalComments'], 1);
     }
 }

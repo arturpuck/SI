@@ -10,6 +10,7 @@
       v-bind:authenticated-user="authenticatedUser"
       v-bind:avatar-file-path="currentUserAvatarFilePath"
       v-bind:user-nickname="userNickname"
+      v-on:close-me="hideCommentForm"
     ></comment-box>
     <pages-list v-bind:unique-identifier="uniqueIdentifier"></pages-list>
     <div
@@ -159,6 +160,10 @@ export default {
 
     hideCommentForm(): void {
        this.commentFormIsVisible = false;
+    },
+
+    closeCommentForm(): void {
+      this.commentFormIsVisible = false;
     }
   },
 

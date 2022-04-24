@@ -1,5 +1,5 @@
 <template>
-  <div v-bind:class="nestingClassObject" class="container">
+  <section v-bind:class="nestingClassObject" class="container">
     <div class="main-comment">
       <div v-if="currentUserIsAuthenticated" class="user-nickname-label">
         <Avatar
@@ -51,11 +51,14 @@
         ></textarea>
       </div>
     </div>
+    <section class="action-controls">
     <add-button
       class="add-comment-button"
       v-on:click="saveComment"
     ></add-button>
-  </div>
+    <button-close v-on:click="emitCloseEvent"></button-close>
+    </section>
+  </section>
 </template>
 
 <script lang="ts">
@@ -66,11 +69,12 @@ import Comment from "@interfaces/Comment";
 import AddPlusIcon from "@svgicon/add_plus_icon.vue";
 import Avatar from "@jscomponents/user/avatar.vue";
 import AddButton from "@jscomponents-form-controls/add_button.vue";
+import ButtonClose from "@jscomponents/form_controls/button_close.vue";
 
 export default {
   name: "comment-box",
 
-  emits: ["addedComment"],
+  emits: ["addedComment", "commentInput", "closeMe"],
 
   props: {
     userNickname: {
@@ -98,6 +102,7 @@ export default {
     AddPlusIcon,
     Avatar,
     AddButton,
+    ButtonClose
   },
 
   data() {
@@ -143,6 +148,10 @@ export default {
   },
 
   methods: {
+    emitCloseEvent(){
+       this.$emit("closeMe");
+    },
+
     emitUserNickName(): void {
       this.$emit("nicknameInput", this.unauthenticatedUserNickName);
     },
@@ -204,8 +213,15 @@ export default {
 @import "~sass/fonts";
 @import "~sass/responsive_icon";
 
+.action-controls {
+  margin:0;
+  padding:0;
+  display: flex;
+  align-items: center;
+}
+
 .add-comment-button {
-  margin: 6px 0;
+  margin: 6px 6px 6px 0;
 }
 
 .unauthenticated-user-controls {

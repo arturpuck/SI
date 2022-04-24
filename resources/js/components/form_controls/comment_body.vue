@@ -18,7 +18,7 @@
           <span v-text="addedAgo" class="added-ago"></span>
         </div>
       </div>
-      <div v-text="commentBody" class="comment-text"></div>
+      <pre v-text="commentBody" class="comment-text"></pre>
     </div>
     <div class="sub-comments-section">
       <phantom-button
@@ -44,6 +44,7 @@
       v-bind:comment-id="id"
       v-on:added-comment="toggleResponseCommentBox"
       v-bind:parent-comment-id="passedToOffspringParentCommentId"
+      v-on:close-me="closeCommentBox"
     >
     </comment-box>
     <comment-body
@@ -98,6 +99,10 @@ export default {
       this.inResponseMode = !this.inResponseMode;
     },
 
+    closeCommentBox() : void {
+      this.inResponseMode = false;
+    },
+
     showChildComments(): void {
       if (this.anyChildCommentsCanBeFetched) {
         ++this.currentChildCommentsPage;
@@ -117,14 +122,12 @@ export default {
          ...this.childComments,
          ...receivedUpdate.content,
        ];
-        this.numberOfVisibleChildComments += receivedUpdate.content.length;
       }
       else { 
         commentsRefreshed = [
          ...this.childComments,
          receivedUpdate
        ];
-       ++this.numberOfVisibleChildComments;
        ++this.variableNumberOfChildComments;
       }
       commentsRefreshed = commentsRefreshed.sort(
@@ -132,6 +135,9 @@ export default {
           new Date(commentA.createdAt).getTime() -
           new Date(commentB.createdAt).getTime()
       );
+      
+      commentsRefreshed = Array.from(new Map(commentsRefreshed.map(comment => [comment.id, comment])).values());
+      this.numberOfVisibleChildComments = commentsRefreshed.length;
       this.childComments = commentsRefreshed;
     },
   },
@@ -313,6 +319,7 @@ export default {
   background: black;
   color: white;
   border-radius: 0 0 1vw 1vw;
+  margin:0;
 }
 
 .comment-container {
