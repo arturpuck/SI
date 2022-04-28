@@ -68,7 +68,6 @@ abstract class BaseRepository
 
   public function count(): int
   {
-
     return $this->query->count();
   }
 }

@@ -19,11 +19,11 @@ Class AdvancedSearchHandler {
         if($validationResult === true){
 
             $page = $request->get('page');
-            $request->request->remove('page');
 
             $this->moviesRepository->withBasicPornstarList();
-
-            foreach($request->all() as $fieldName => $value){
+            $filters = $request->all();
+            unset($filters['page']);
+            foreach($filters as $fieldName => $value){
 
                 $methodName = "filterBy".ucfirst($fieldName);
                 $this->moviesRepository->$methodName($value);
@@ -31,7 +31,7 @@ Class AdvancedSearchHandler {
            
             $totalMatchingMovies = $this->moviesRepository->count();
             
-            $this->moviesRepository->filterByPage($page);
+            $movies = $this->moviesRepository->filterByPage($page);
             $movies = $this->moviesRepository->get();
             return new MovieCollection($movies, $totalMatchingMovies,$page);
         }
