@@ -5,6 +5,7 @@
 .movie-block{
     width: 95%;
     margin: 0 auto;
+    max-width: 1500px;
 }
 
 .player-container{
@@ -268,4 +269,18 @@
     text-align: center;
     color:white;
     @include responsive-font(1.1vw,12px);
+}
+
+.movie-description{
+    color:white;
+    @include responsive-font(1.3vw,16px);
+    padding: 10px;
+    background: #141615;
+}
+
+.description-icon{
+    fill:#00c947;
+    float: left;
+    margin: 0 5px;
+    width: 2em;
 }

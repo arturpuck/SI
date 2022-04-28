@@ -26,6 +26,12 @@
             <span v-text="movieTitle" class="movie-desktop__title">
             </span>
          </h1>
+         @if($movie->hasDescription())
+           <section class="movie-description">
+              <description-icon class="description-icon"></description-icon>
+             {{ $movie->description }}
+           </section>
+         @endif
          <div class="movie-information__details">
             <span class="movie-information__detail">
                <television-icon class="movie-information__icon--smaller"></television-icon>

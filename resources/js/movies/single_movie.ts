@@ -31,6 +31,7 @@ import Comment from '@interfaces/Comment';
 import CommentValidator from '@jsmodules/validators/comment_validator';
 import Translator from "@jsmodules/translator.js";
 import MovieHint from "@jscomponents/movies/movie_hint.vue";
+import DescriptionIcon from "@svgicon/description_icon";
 
 const settings = {
 
@@ -53,7 +54,8 @@ const settings = {
         CommentPenIcon,
         MoviesList,
         CommentList,
-        MovieHint
+        MovieHint,
+        DescriptionIcon
     },
 
     data() {
