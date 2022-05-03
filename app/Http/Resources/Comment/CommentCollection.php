@@ -3,7 +3,6 @@
 namespace App\Http\Resources\Comment;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use App\PornstarComment;
 use Illuminate\Support\Collection;
 
 class CommentCollection extends ResourceCollection
@@ -15,10 +14,10 @@ class CommentCollection extends ResourceCollection
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
 
-    private static int $totalElements;
-    private static int $currentPage;
+    private static ?int $totalElements;
+    private static ?int $currentPage;
 
-    public function __construct(Collection $elements, int $totalElements, int $currentPage){
+    public function __construct(Collection $elements, ?int $totalElements = null, ?int $currentPage = null){
         parent::__construct($elements);
         self::$totalElements = $totalElements;
         self::$currentPage = $currentPage;

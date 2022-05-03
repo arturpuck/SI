@@ -1,5 +1,5 @@
 <template>
-  <button ref="button" class="phantom-button">
+  <button v-bind:title="title" class="phantom-button">
     <slot></slot>
     <span v-if="label" v-text="label" class="phantom-button-description"></span>
  </button>
@@ -19,13 +19,7 @@
             title : {
                 required : false,
                 type : String,
-                default: undefined
-            }
-        },
-
-        mounted(){
-            if(this.title){
-                this.$refs.button.setAttribute('title', this.title);
+                default: null
             }
         }
     }

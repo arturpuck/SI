@@ -141,5 +141,15 @@ trait MovieDataExtractor
         return intval($ingridients[0]) * 3600 + intval($ingridients[1]) * 60 + intval($ingridients[2]);
     }
 
+    public function hasDescription() : bool
+    {
+        return !is_null($this->description);
+    }
+
+    public function getMetaDescriptionTagContent() : ?string
+    {
+       return $this->hasDescription() ? substr($this->description,0, 160).' . . .' : null;
+    }
+
    
 }

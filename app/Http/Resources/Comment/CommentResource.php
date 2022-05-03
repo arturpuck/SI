@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Comment;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Comment\CommentCollection;
 
 class CommentResource extends JsonResource
 {
@@ -15,11 +16,15 @@ class CommentResource extends JsonResource
     public function toArray($request)
     {
         return [
+          'id' => $this->id,
           'userNickname' => $this->nickname ?? $this->user->login,
           'body' => $this->comment,
-          'avatarFilePath' => $this->avatar_file_path,
+          'avatarFilePath' => $this->user->avatar_file_path ?? '',
           'addedAgo' => $this->added_ago,
-          'addedByAuthenticatedUser' => boolval($this->user)
+          'addedByAuthenticatedUser' => boolval($this->user),
+          'numberOfChildComments' => intval($this->childComments?->count()),
+          'createdAt' => $this->created_at
         ];
+
     }
 }

@@ -2,37 +2,44 @@
 
 namespace App\Handlers\Pornstars;
 
-use Illuminate\Http\Request;
-use App\PornstarComment;
-use App\Handlers\Pornstars\ShowPornstarProfileHandler;
-use App\Repositories\PornstarCommentsRepository;
 use App\Http\Requests\Pornstars\GetPornstarCommentsRequest;
 use App\Http\Resources\Comment\CommentCollection;
-use Symfony\Component\HttpFoundation\Response;
+use App\PornstarComment;
 
 class GetPornstarCommentsHandler
 {
-
-    private PornstarCommentsRepository $pornstarCommentsRepository;
-
-    public function __construct(PornstarCommentsRepository $pornstarCommentsRepository)
-    {
-
-        $this->pornstarCommentsRepository = $pornstarCommentsRepository;
-    }
+    private ?int $pornstarID;
+    private int $currentPage;
+    private int $commentsPerPage;
+    private ?int $parrentCommentId;
 
     public function handle(GetPornstarCommentsRequest $request): CommentCollection
     {
-        $currentPage = $request->get('page');
-        $commentsPerPage = $request->get('comments_per_page');
+        $this->currentPage = $request->get('page');
+        $this->commentsPerPage = $request->get('comments_per_page');
+        $this->pornstarID = $request->get('pornstar_id');
 
-        $comments = $this->pornstarCommentsRepository
-            ->with(['user'])
-            ->filterByPornstarId($request->get('id'))
-            ->orderByAddDate()
-            ->countSelectedCommentsAndFilterByPage($currentPage, $commentsPerPage);
+        if ($this->parrentCommentId = $request->get('parent_comment_id')) {
+            $comments = $this->getChildComments();
+        } else {
+            $comments = $this->getRootComments();
+        }
 
+        return new CommentCollection($comments['comments'], $comments['totalComments'], $this->currentPage);
+    }
 
-        return new CommentCollection($comments['comments'], $comments['total_comments'], $currentPage);
+    private function getChildComments(): array
+    {
+        return PornstarComment::query()
+            ->filterByParentId($this->parrentCommentId)
+            ->getForPageList($this->currentPage, $this->commentsPerPage);
+    }
+
+    private function getRootComments(): array
+    {
+        return PornstarComment::query()
+            ->filterByDirectComments()
+            ->filterByPornstarID($this->pornstarID)
+            ->getForPageList($this->currentPage, $this->commentsPerPage);
     }
 }

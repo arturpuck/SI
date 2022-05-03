@@ -4,5 +4,5 @@
     @else
       <span class="fas fa-user authenticated-user-undefined-avatar"></span>
     @endif
-    <span class="authenticated-user-nickname">{{Auth::user()->login}}</span>
+    <span class="user-nickname">{{Auth::user()->login}}</span>
 </div>

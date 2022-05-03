@@ -26,9 +26,10 @@ class GetMovieCommentsRequest extends FormRequest
     public function rules()
     {
         return [
-            'movie_id' => ['required', 'exists:movies,id'],
+            'movie_id' => ['nullable', 'exists:movies,id'],
             'page' => ['required', 'integer', 'min:1'],
-            'per_page' => ['required', 'integer', 'min:1', 'max:100']
+            'per_page' => ['required', 'integer', 'min:1', 'max:100'],
+            'parent_comment_id' => ['nullable', 'exists:movie_comments,id']
         ];
     }
 

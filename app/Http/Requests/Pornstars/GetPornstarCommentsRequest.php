@@ -26,9 +26,10 @@ class GetPornstarCommentsRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => ['required', 'exists:pornstars,id'],
+            'pornstar_id' => ['nullable', 'exists:pornstars,id'],
             'page' => ['required', 'integer', 'min:1'],
             'comments_per_page' => ['required', 'integer', 'min:1'],
+            'parent_comment_id' => ['nullable', 'exists:pornstar_comments,id']
         ];
     }
 

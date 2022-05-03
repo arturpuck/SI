@@ -468,12 +468,6 @@ class MoviesRepository extends BaseRepository
         return $this;
     }
 
-    public function filterBySlug(string $slug): MoviesRepository
-    {
-        $this->query = $this->query->where('movies.slug', $slug);
-        return $this;
-    }
-
     public function withAnyPornstar(): MoviesRepository
     {
 

@@ -5,28 +5,39 @@ namespace App\Handlers\Movies;
 use App\Http\Requests\Movies\AddMovieCommentRequest;
 use App\Http\Resources\Comment\CommentCollection;
 use App\MovieComment;
-use App\Repositories\MovieCommentsRepository;
-use App\Services\ModelDataExtractors\Movie\MovieCommentsDataExtractor;
+use App\Http\Resources\Comment\CommentResource;
 
 class AddMovieCommentHandler
 {
-    public function __construct(public MovieCommentsRepository $movieCommentsRepository)
-    {
-    }
 
-    public function handle(AddMovieCommentRequest $request): CommentCollection
+    private ?int $movieID;
+    private ?int $commentsPerPage;
+
+    public function handle(AddMovieCommentRequest $request): Commentresource | CommentCollection
     {
-        $movieID = $request->get('movie_id');
+        $this->movieID = $request->get('movie_id');
+        $this->commentsPerPage = $request->get('commentsPerPage');
         $userData = \Auth::check() ? ['user_id' => \Auth::user()->id] : ['nickname' => $request->get('userNickname')];
-        $commentsPerPage = $request->get('commentsPerPage');
+        if($parentCommentID = $request->get('parentCommentID')){
+            $userData['parent_comment_id'] = $parentCommentID;
+        }
 
-        MovieComment::create(array_merge([
-            'movie_id' => $movieID,
+        $addedComment =  MovieComment::create(array_merge([
+            'movie_id' => $this->movieID,
             'comment' => $request->get('body')
         ], $userData));
 
-        $comments = $this->movieCommentsRepository->getPageList($movieID, 1, $commentsPerPage);
-
-        return new CommentCollection($comments['comments'], $comments['totalComments'],1);
+       return $parentCommentID ? new CommentResource($addedComment) : $this->getLatestComments();
     }
+
+    private function getLatestComments() : CommentCollection
+    {
+        $comments = MovieComment::query()
+                           ->filterByDirectComments()
+                           ->filterByMovieID($this->movieID)
+                           ->getForPageList(1, $this->commentsPerPage);
+
+        return new CommentCollection($comments['comments'], $comments['totalComments'], 1);
+    }
+
 }
