@@ -168,127 +168,32 @@
       min-height: -moz-calc(100vh - 2*10px - 2vw - 35px - 1.5vw);
       min-height: calc(100vh - 2*10px - 2vw - 35px - 1.5vw); } }
 
-.search-results__back-to-search-panel-button {
-  min-width: 200px;
-  margin: 10px auto;
-  width: 20%;
-  background: -webkit-gradient(linear, left top, left bottom, from(#0fe00b), to(#054004));
-  background: -webkit-linear-gradient(#0fe00b, #054004);
-  background: -moz-linear-gradient(#0fe00b, #054004);
-  background: -o-linear-gradient(#0fe00b, #054004);
-  background: linear-gradient(#0fe00b, #054004);
-  color: white;
-  font-size: 1.2vw;
-  font-family: "Exo 2", sans-serif;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
-  cursor: pointer;
-  display: block;
-  padding: 6px;
-  border: none; }
-  @media (max-width: 1200px) {
-    .search-results__back-to-search-panel-button {
-      font-size: 16px; } }
-  .search-results__back-to-search-panel-button:hover {
-    background: -webkit-gradient(linear, left top, left bottom, from(#d61436), to(#800c22));
-    background: -webkit-linear-gradient(#d61436, #800c22);
-    background: -moz-linear-gradient(#d61436, #800c22);
-    background: -o-linear-gradient(#d61436, #800c22);
-    background: linear-gradient(#d61436, #800c22); }
+.body {
+  background: #0e0e0e; }
 
-.search-results__icon--white {
-  fill: white;
-  width: 1.7vw;
-  height: 1.7vw;
-  min-width: 25px;
-  min-height: 25px;
-  vertical-align: bottom; }
+.sex-ammount {
+  margin: 10px 0; }
 
-.search-results__icon--crimson {
-  fill: crimson;
-  width: 1.7vw;
-  height: 1.7vw;
-  min-width: 25px;
-  min-height: 25px;
-  vertical-align: bottom; }
-
-.search-results__icon--exit {
-  fill: white;
-  width: 1.2vw;
-  height: 1.2vw;
-  min-width: 17px;
-  min-height: 17px;
-  vertical-align: bottom;
-  margin-right: 5px; }
-
-.search-results__options-list {
+.main-header {
   margin: 0;
-  padding: 0.4vw 0 1vw 6vw;
-  list-style-type: none; }
-
-.search-results__option {
-  color: white;
-  font-size: 1.2vw;
-  font-family: "Exo 2", sans-serif; }
-  @media (max-width: 1200px) {
-    .search-results__option {
-      font-size: 16px; } }
-  .search-results__option::before {
-    content: " ";
-    color: crimson;
-    background: crimson;
-    display: inline-block;
-    width: 0.5em;
-    height: 0.5em;
-    margin-right: 5px; }
-
-.search-results__summary {
-  width: 40%;
-  min-width: 300px;
-  margin: 0 auto;
-  border: 1px solid #d2cacb;
-  -webkit-box-shadow: 1px 1px 1px 1px black;
-     -moz-box-shadow: 1px 1px 1px 1px black;
-          box-shadow: 1px 1px 1px 1px black;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
-  background: black;
-  padding-bottom: 7px; }
-
-.search-results__header {
-  font-size: 1.2vw;
-  font-family: "Exo 2", sans-serif;
+  padding: 10px;
   text-align: center;
-  font-weight: bold;
+  font-size: 1.7vw;
+  font-family: "Exo 2", sans-serif;
   color: white; }
   @media (max-width: 1200px) {
-    .search-results__header {
-      font-size: 16px; } }
-  .search-results__header--extra-padding {
-    font-size: 1.2vw;
-    font-family: "Exo 2", sans-serif;
-    text-align: center;
-    font-weight: bold;
-    color: white;
-    padding: 6px; }
-    @media (max-width: 1200px) {
-      .search-results__header--extra-padding {
-        font-size: 16px; } }
-  .search-results__header--crimson {
-    text-align: center;
-    font-weight: bold;
-    padding: 6px;
-    font-size: 1.7vw;
-    font-family: "Exo 2", sans-serif;
-    color: crimson; }
-    @media (max-width: 1200px) {
-      .search-results__header--crimson {
-        font-size: 22px; } }
+    .main-header {
+      font-size: 20px; } }
 
 .full-body {
   background: #0e0e0e; }
+
+.movie-duration {
+  width: 100%;
+  background: #e1104a;
+  border: none;
+  color: white;
+  padding: 4px; }
 
 .advanced-search-panel {
   display: grid;
@@ -302,7 +207,6 @@
      -moz-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  overflow: hidden;
   max-height: 3000px;
   -webkit-transition: max-height 1s;
   -o-transition: max-height 1s;

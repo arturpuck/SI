@@ -12,10 +12,12 @@ use Illuminate\Support\Str;
 use App\Http\Requests\User\ChangeUserPasswordRequest;
 use App\Http\Requests\User\ChangeOtherUserSettingsRequest;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\Models\UserAttributes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasFactory;
+    use Notifiable, HasFactory, UserAttributes;
 
     /**
      * The attributes that are mass assignable.
@@ -49,6 +51,11 @@ class User extends Authenticatable
     ];
 
     protected $appends = ['avatar_file_path'];
+
+    public function userType() : BelongsTo
+    {
+        return $this->belongsTo(UserType::class);
+    }
 
     public function sendPasswordResetNotification($token)
     {

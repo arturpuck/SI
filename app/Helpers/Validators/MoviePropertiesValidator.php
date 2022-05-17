@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class MoviesAdvancedSearchValidator
+class MoviePropertiesValidator
 {
 
     private const ABUNDANCE_TYPES = [

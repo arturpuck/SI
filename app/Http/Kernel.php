@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use App\Http\Middleware\OnlyForEmployees;
 
 class Kernel extends HttpKernel
 {
@@ -62,7 +63,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'csrfprotection' => \App\Http\Middleware\VerifyCsrfToken::class,
-        'startsession' => \Illuminate\Session\Middleware\StartSession::class
+        'startsession' => \Illuminate\Session\Middleware\StartSession::class,
+        'employees' => OnlyForEmployees::class
     ];
 
     /**

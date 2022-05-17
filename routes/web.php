@@ -148,3 +148,12 @@ Route::middleware(['auth'])->name('auth.user.')->namespace('Auth\User')->group(f
     Route::delete('/delete/account', 'DeleteAccountController@deleteAccount')
          ->name('delete.account');
 });
+
+Route::middleware(['auth', 'employees'])->prefix('employee-panel/')->name('employee')->namespace('Employees')->group(function () {
+
+      Route::get('', 'MoviesAddedByEmployeeController@showMovieEditionPanel')
+            ->name('panel');
+
+      Route::post('movies', 'MoviesAddedByEmployeeController@addMovieForAcceptation')
+            ->name('panel');
+});

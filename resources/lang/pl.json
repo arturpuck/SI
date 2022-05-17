@@ -289,6 +289,7 @@
     "you_have_been_successfully_registered" : "Zostałeś zarejestrowany pomyślnie",
     "back_to_search_panel_short" : "szukaj",
     "time_in_minutes" : "Czas podany jest w minutach",
+    "movie_duration" : "Czas trwania filmu",
     "the_file_selected_from_hard_drive_exceeds_2_Mb" : "Wybrany plik przekracza 2 Mb",
     "no_image_has_been_selected" : "Nie wybrano żadnego obrazu",
     "delete_account" : "usuń konto użytkownika",
@@ -350,5 +351,8 @@
     "elevator" : "winda",
     "beach" : "plaża",
     "gym" : "siłownia",
-    "the following_pornstars_play_role_in_this_movie" : "Występujące gwiazdy to"
+    "the following_pornstars_play_role_in_this_movie" : "Występujące gwiazdy to",
+    "movie_add_edit_panel" : "Dodawanie/edycja filmu",
+    "added_movies_awaiting_confirmation" : "Dodane filmy oczekujące na zatwierdzenie",
+    "save_movie" : "Zapisz film"
 }

@@ -9,7 +9,6 @@ use App\StoryOrCostumeType;
 use App\Traits\Models\MovieDataExtractor;
 use App\Traits\Models\MovieAccessors;
 use App\Traits\Models\MovieCategoriesExtractor;
-use App\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

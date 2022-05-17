@@ -5,7 +5,7 @@ namespace App\Handlers\Movies;
 use App\Repositories\MoviesRepository;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Helpers\Validators\MoviesAdvancedSearchValidator;
+use App\Helpers\Validators\MoviePropertiesValidator;
 use App\Http\Resources\Movie\MovieCollection;
 
 Class AdvancedSearchHandler {
@@ -14,7 +14,7 @@ Class AdvancedSearchHandler {
 
     public function handle(Request $request) {
 
-        $validationResult = MoviesAdvancedSearchValidator::validate($request);
+        $validationResult = MoviePropertiesValidator::validate($request);
 
         if($validationResult === true){
 

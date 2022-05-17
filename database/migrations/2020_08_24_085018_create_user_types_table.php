@@ -24,7 +24,8 @@ class CreateUserTypesTable extends Migration
                          ['user_type_name'=>'female'], 
                          ['user_type_name' =>'hermaphrodite'], 
                          ['user_type_name' =>'transsexualist'], 
-                         ['user_type_name' =>'couple']]);
+                         ['user_type_name' =>'couple'],
+                         ['user_type_name' =>'employee']]);
         
                          Schema::enableForeignKeyConstraints();
     }
