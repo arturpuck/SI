@@ -1,7 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\API\Movies\RequiredMovieFilesVerificationController;
+use App\Http\Controllers\API\Movies\MovieCreatorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +14,5 @@ use App\Http\Controllers\API\Movies\RequiredMovieFilesVerificationController;
 */
 
 Route::middleware('api')->group(function(){
-    Route::get('/movie-verification', [RequiredMovieFilesVerificationController::class, 'verifyRequiredMovieFiles']);
+    Route::post('/movies', [MovieCreatorController::class, 'createMovie']);
 });

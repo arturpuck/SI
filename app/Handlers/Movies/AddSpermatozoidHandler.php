@@ -4,11 +4,8 @@ namespace App\Handlers\Movies;
 
 use Carbon\Carbon;
 use App\MovieRating;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\Movies\AddSpermatozoidRequest;
-use App\Services\ModelDataExtractors\Movie\MovieRatingsDataExtractor;
-
 
 
 Class AddSpermatozoidHandler {

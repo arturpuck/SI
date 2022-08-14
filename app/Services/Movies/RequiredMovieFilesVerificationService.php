@@ -1,44 +1,35 @@
 <?php
 
-namespace App\Handlers\API\Movies;
+namespace App\Services\Movies;
 
-use App\Http\Requests\API\Movies\RequiredMovieFilesValidationRequest;
 use App\Movie;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Storage;
-use Throwable;
+use App\Exceptions\FailedValidationException;
 
-Class RequiredMovieFilesVerificationHandler
+Class RequiredMovieFilesVerificationService
 {
 
-    public function handle(RequiredMovieFilesValidationRequest $request) : JsonResponse
+    public function verify(int $range, int $offset = 0) : void
     {
-        try
-        {
-            $range = $request->get('range');
-            $offset = intval($request->get('offset'));
-            $currentlyHighestMovieID = Movie::orderBy('id', 'DESC')->limit(1)->get()->first()->id;
-            $nextMovieID = $currentlyHighestMovieID + $offset + 1;
-            $maximumMovieID = $currentlyHighestMovieID + $range + $offset;
-            return $this->tryToCheckIfRequiredFilesExist($nextMovieID, $maximumMovieID);
-        } catch(Throwable $failure) {
-            return new JsonResponse(['errorMessage' => $failure->getMessage()], 500);
-        }
-       
+        $currentlyHighestMovieID = Movie::orderBy('id', 'DESC')->limit(1)->get()->first()->id;
+        $nextMovieID = $currentlyHighestMovieID + $offset + 1;
+        $maximumMovieID = $currentlyHighestMovieID + $range + $offset;
+        $this->examineMovieFilesByRange($nextMovieID, $maximumMovieID);
     }
 
-    private function tryToCheckIfRequiredFilesExist(int $nextMovieID, int $maximumMovieID) : JsonResponse
+    private function examineMovieFilesByRange(int $nextMovieID, int $maximumMovieID)
     {
         $errorReports = [];
         for($currentlyExaminedMovieID = $nextMovieID; $currentlyExaminedMovieID <= $maximumMovieID; ++$currentlyExaminedMovieID) 
         {
-            $this->checkIfRequiredFilesExist($currentlyExaminedMovieID, $errorReports);
+            $this->checkIfRequiredMovieFilesExist($currentlyExaminedMovieID, $errorReports);
         }
-        $message = count($errorReports) > 0 ? ['missingFiles' => $errorReports] : ['success' => true];
-        return new JsonResponse($message, 200);
+        if(count($errorReports) > 0) {
+          throw new FailedValidationException($errorReports);
+        }
     }
 
-    private function checkIfRequiredFilesExist(int $movieID, array &$errorReports) : void
+    private function checkIfRequiredMovieFilesExist(int $movieID, array &$errorReports) : void
     {
         $examinedPath = config('important_directories.movie_thumbnails_directory').$movieID.'.jpg';
         if(Storage::disk('public')->missing($examinedPath)) {

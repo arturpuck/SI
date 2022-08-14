@@ -5,8 +5,6 @@ namespace App\Handlers\Movies;
 use App\Http\Requests\Movies\RateMovieRequest;
 use App\MovieRating;
 use Symfony\Component\HttpFoundation\Response;
-use App\Services\ModelDataExtractors\Movie\MovieRatingsDataExtractor;
-
 
 class RateMovieHandler
 {
