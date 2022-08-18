@@ -73,7 +73,7 @@ Route::namespace ('Pornstars')->name('pornstars.')->group(function () {
         ->name('list');
 
     Route::get('/pornstars/advanced-search/list', 'PornstarsController@getPornstarListForAdvancedSearch')
-        ->name('all')->middleware('api');
+        ->name('all')->middleware('throttle:10,1');
 
     Route::get('/gwiazda-porno/profil/{nickname?}', 'PornstarsController@showPornstarProfile')
         ->name('profile');
@@ -115,7 +115,7 @@ Route::namespace ('Auth')->name('auth.')->group(function () {
     Route::get('/haslo/potwierdzenie-zmiany', 'ResetPasswordController@showConfirmation')
         ->name('password.reset.confirmation');
 
-    Route::group(['middleware' => ['api']], function () {
+    Route::group(['middleware' => ['throttle:10,1']], function () {
         Route::get('/verify-login/{login}', 'RegisterController@checkIfLoginAlreadyExists');
         Route::get('/verify-email/{email}', 'RegisterController@checkIfEmailAlreadyExists');
     });
