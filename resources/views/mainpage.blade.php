@@ -1,7 +1,7 @@
 <x-base title="{{__('sex_empire_main_page')}}" customBodyClass="{{$customBodyClass}}" description="{{__('sex_empire_main_page_description')}}">
    <main class="main-content">
+       <h1 class="news-header">{{__('news_header')}}</h1>
         <div class="news-all">
-            <h1 class="news-header">{{__('news_header')}}</h1>
                 @foreach($news as $article)
                 @include('news.'.$article->template_name)
                 @endforeach

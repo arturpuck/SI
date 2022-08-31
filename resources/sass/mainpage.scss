@@ -33,7 +33,11 @@ $imageFolder: mainpage;
 
 .news-all{
    overflow:auto;
+   min-height: 250px;
+   max-height: 40vh;
 }
+
+@include nice-scrollbar(".news-all");
 
 .main-content{
     margin: 20px auto;
@@ -138,13 +142,7 @@ $imageFolder: mainpage;
         max-height: none;
         height: auto;
     }
-
-
-    .news-all {
-        min-height: 250px;
-        max-height: 50vh;
-    }
-    @include nice-scrollbar(".news-all");
+    
 }
 
 @media(max-width: 700px){
@@ -156,10 +154,6 @@ $imageFolder: mainpage;
     .news-introduction{
         max-height: 120px;
         overflow:auto;
-    }
-
-    .default-news-content{
-        max-height: 270px;
     }
 
     @include nice-scrollbar(".news-introduction");
