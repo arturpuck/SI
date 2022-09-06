@@ -13,7 +13,7 @@ class CreatePornstarsTable extends Migration
      */
     public function up()
     {
-        \DB::unprepared(\DB::raw(file_get_contents('database/dumps/pornstars_latest.sql')));
+        \DB::unprepared(\DB::raw(file_get_contents('database/dumps/pornstars.sql')));
         
     }
 

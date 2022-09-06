@@ -40,7 +40,7 @@ class RegisterController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    protected $errorMessages = [
+    public const ERROR_MESSAGES = [
        'login.required' => 'login_is_missing',
        'login.string' => 'login_must_be_a_string',
        'login.min' => 'login_must_contain_at_least_3_characters',
@@ -112,7 +112,7 @@ class RegisterController extends Controller
             'user_type_id' => ['nullable', 'exists:user_types,id'],
             'sexual_orientation_id' => ['nullable', 'exists:sexual_orientations,id'],
             'birth_date' => ['required', 'date', 'before_or_equal:'.$date18YearsAgo, 'after_or_equal:'.$date120yearsAgo]
-        ], $this->errorMessages);
+        ], self::ERROR_MESSAGES);
     }
 
     /**

@@ -7,6 +7,7 @@ use App\User;
 use App\UserType;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class UserFactory extends Factory
 {
@@ -38,7 +39,7 @@ class UserFactory extends Factory
         $this->initiateUserTypes();
 
         return [
-            'login' => $this->faker->name,
+            'login' => Str::random(rand(3, 20)),
             'email' => $this->faker->email,
             'user_type_id' => $this->faker->randomElement($this->userTypesIDs),
             'sexual_orientation_id' => $this->faker->randomElement($this->sexualOrientationsIds),
