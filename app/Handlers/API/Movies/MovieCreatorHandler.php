@@ -77,6 +77,7 @@ class MovieCreatorHandler
         foreach($movieDetails as $propertyName => $detail) {
             $movie->$propertyName = $detail;
         }
+        $movie->created_at = date('Y-m-d');
         $movie->save();
         if(isset($pornstarsList)) {
             $this->assignPornstarsToMovie($movie, $pornstarsList);
