@@ -116,8 +116,8 @@ Route::namespace ('Auth')->name('auth.')->group(function () {
         ->name('password.reset.confirmation');
 
     Route::group(['middleware' => ['throttle:10,1']], function () {
-        Route::get('/verify-login/{login}', 'RegisterController@checkIfLoginAlreadyExists');
-        Route::get('/verify-email/{email}', 'RegisterController@checkIfEmailAlreadyExists');
+        Route::get('/verify-login/{login}', 'RegisterController@checkIfLoginAlreadyExists')->name('verify-login');
+        Route::get('/verify-email/{email}', 'RegisterController@checkIfEmailAlreadyExists')->name('verify-email');
     });
 });
 
