@@ -1,5 +1,7 @@
 <?php
 
+//This should be removed and replaced with custom query builders
+
 namespace App\Repositories;
 
 use App\Movie;

@@ -1,53 +1,47 @@
-<x-base title="{{__('sex_empire_main_page')}}" customBodyClass="{{$customBodyClass}}" description="{{__('sex_empire_main_page_description')}}">
+<x-base title="{{__('sex_empire_main_page')}}" description="{{__('sex_empire_main_page_description')}}">
    <main class="main-content">
-       <h1 class="news-header">{{__('news_header')}}</h1>
-        <div class="news-all">
-                @foreach($news as $article)
-                @include('news.'.$article->template_name)
-                @endforeach
-        </div>
-    <h2 class="quick-start-header">
-        {{__('quick_start')}}
-        <rocket-launch-icon class="quick-start-icon"/>
-   </h2>
-    <ul class="quickstart-options-list">
-        <li class="quickstart-option">
-                <span class="quickstart-option-description">{{__('new_movies')}}</span>
-                <movie-media-player-icon class="quickstart-option-icon" />
-        </li>
-        <li class="quickstart-option">
-            <a href="{{route('pornstars.list')}}" class="quickstart-link">
-                <span class="quickstart-option-description">{{__('pornstars_movie_caption')}}</span>
-                <star-full-icon class="quickstart-option-icon" />
-            </a>
-        </li>
-        <li v-on:click="showCategories" class="quickstart-option">
-            <span class="quickstart-option-description">{{__('categories')}}</span>
-            <video-playlist-icon class="quickstart-option-icon" />
-        </li>
-        <li class="quickstart-option">
-          <a href="{{route('movies.advanced.search.panel')}}" class="quickstart-link">
-            <span class="quickstart-option-description">{{__('search_engine')}}</span>
-            <magnifier-icon class="quickstart-option-icon" />
-          </a>
-        </li>
-      </ul>
-      <horizontal-scroll-list>
-          @foreach($latestMovies as $movie)
-            <movie-box class="movie-box"
-                duration="{{$movie->getDurationForHumans()}}"
-                title="{{$movie->title}}"
-                v-bind:views="{{$movie->views}}"
-                @if(!$movie->pornstars->isEmpty())
-                    v-bind:pornstars="{{json_encode($movie->pornstars_names)}}"
-                @endif
-                @if($movie->is_translated_to_polish)
-                    v-bind:is-translated-to-polish="true"
-                @endif
-                v-bind:id="{{$movie->id}}">
-            </movie-box>
-          @endforeach
-      </horizontal-scroll-list>
+    <h1 class="main-page-header">
+        {{__('the_most_popular_movies')}}
+        <achievement-medal-award-icon class="medal-icon"></achievement-medal-award-icon>
+    </h1>
+    <ul class="movies-container">
+    @foreach($theMostPopularMovies as $movie)
+        <movie-box
+            duration="{{$movie->getDurationForHumans()}}"
+            title="{{$movie->title}}"
+            v-bind:views="{{$movie->views}}"
+            @if(!$movie->pornstars->isEmpty())
+              v-bind:pornstars="{{json_encode($movie->pornstars_names)}}"
+            @endif
+            @if($movie->is_translated_to_polish)
+               v-bind:is-translated-to-polish="true"
+            @endif
+            v-bind:id="{{$movie->id}}">
+        </movie-box>
+    @endforeach
+</ul>
+<links-box v-bind:links="{{json_encode($linksForTheMostPopular, true)}}" v-bind:initial-current-page="1"></links-box> 
+<h2 class="main-page-header">
+    {{__('the_latest_movies')}}
+    <new-board-icon class="board-icon"></new-board-icon>
+</h2>
+<ul class="movies-container">
+    @foreach($latestMovies as $movie)
+        <movie-box
+            duration="{{$movie->getDurationForHumans()}}"
+            title="{{$movie->title}}"
+            v-bind:views="{{$movie->views}}"
+            @if(!$movie->pornstars->isEmpty())
+              v-bind:pornstars="{{json_encode($movie->pornstars_names)}}"
+            @endif
+            @if($movie->is_translated_to_polish)
+               v-bind:is-translated-to-polish="true"
+            @endif
+            v-bind:id="{{$movie->id}}">
+        </movie-box>
+    @endforeach
+</ul>
+<links-box v-bind:links="{{json_encode($linksForLatestMovies, true)}}" v-bind:initial-current-page="1"></links-box> 
    </main>
    <movie-preview-complete></movie-preview-complete>
 </x-base>

@@ -1,160 +1,36 @@
-@mixin news-header-basic {
-    padding: 7px 3px;
-    text-align: center;
-    display: block;
-    margin: 0;
-    color: white;
-}
-
-@mixin news-icon-basic {
-    fill: #ef0244;
-    transition: fill 1.5s;
-    height: auto;
-    @include responsive-icon(2px auto, 1.4vw, 20px);
-}
-
 @import "~sass/basic";
-@import "~sass/background_images";
-@import "~sass/news/default_news";
 @import "~sass/nice_scrollbar";
 @import "~sass/responsive_icon";
-$imageFolder: mainpage;
+@import '~sasscomponent/movies/movies_container';
 
-@include background-image(japanese-schoolgirl, 1, right);
-@include background-image(cute-girl, 2);
-@include background-image(car-date, 3, left);
-@include background-image(japanese-chick-in-lambo, 4);
-@include nice-scrollbar(".news-container");
-
-.news-header-icon{
-    @include responsive-icon();
-    fill:#ef0244;
+.full-body {
+    background: #0e0e0e;
 }
-
-.news-all{
-   overflow:auto;
-   min-height: 250px;
-   max-height: 40vh;
-}
-
-@include nice-scrollbar(".news-all");
 
 .main-content{
-    margin: 20px auto;
-    width: 75%;
-    box-shadow: 2px 2px 3px 3px black;
-    border-radius: 3px;
-    background: #000000d6;
-    max-width:1200px;
+  width:95%;
+  margin: 0 auto;
 }
 
-.news-header {
-    @include responsive-font(2vw, 25px, Aldrich);
-    @include news-header-basic();
-    background: black;
+.main-page-header {
+    color:white;
+    @include responsive-font(1.7vw, 20px);
+    padding:5px;
+    text-align:left;
+    background:#201f1f;
 }
 
-.quick-start-icon {
-    fill: #ef0244;
-    transition: fill 1.5s;
-    @include responsive-icon(0 3px, 1.6vw, 20px);
+.medal-icon {
+    width: 1em;
+    height: auto;
     vertical-align: middle;
+    margin:0 5px;
 }
 
-.quick-start-header {
-    @include responsive-font(1.3vw, 18px, Aldrich);
-    @include news-header-basic();
-    background: #131111;
-}
-
-.quickstart-options-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background: #131111;
-}
-
-.quickstart-option:first-child {
-    background:#242229;
-}
-
-.quickstart-option:not(:first-child) {
-    background:black;
-}
-
-.quickstart-option {
-    text-align: center;
-    cursor: pointer;
-    padding: 4px 0;
-    flex-grow: 1;
-    transition: background 1.5s;
-    margin: 5px 0 0 10px;
-    border-radius: 5px 5px 0 0;
-    &:hover {
-        background: #242229
-    }
-    @media(max-width: 800px){
-        margin: 5px 0 0 5px;
-    }
-}
-
-
-.quickstart-option-icon {
-    @include news-icon-basic();
-    padding-bottom: 3px;
+.board-icon{
+    width: 1.3em;
+    height: auto;
     vertical-align: middle;
-}
-
-.quickstart-option-description {
-    text-align: center;
-    @include responsive-font(1.3vw, 12px, "Exo 2", 1200px);
-    color: white;
-    padding: 3px 0;
-}
-
-.news-container {
-    overflow: auto;
-}
-
-.quickstart-link {
-    display: block;
-    text-decoration: none;
-}
-
-.movie-box{
-    margin:20px 6px;
-    width:min-content;
-    @media(max-width:470px){
-        margin: 10px 0;
-    }
-}
-
-
-@media (max-width: 830px) {
-    .main-content {
-        flex-direction: column;
-        min-width: 300px;
-        width: 80%;
-        max-height: none;
-        height: auto;
-    }
-    
-}
-
-@media(max-width: 700px){
-
-    .main-content__info{
-        flex-direction: column;
-    }
-
-    .news-introduction{
-        max-height: 120px;
-        overflow:auto;
-    }
-
-    @include nice-scrollbar(".news-introduction");
+    margin:0 5px;
+    fill:#53d318;
 }

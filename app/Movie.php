@@ -11,6 +11,7 @@ use App\Traits\Models\MovieAccessors;
 use App\Traits\Models\MovieCategoriesExtractor;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\CustomQueryBuilders\Movie\MovieQueryBuilder;
 
 
 class Movie extends Model
@@ -24,6 +25,11 @@ class Movie extends Model
         'anal', 'blowjob', 'pussy_fuck', 'handjob', 'tittfuck', 'pussy_licking',
         'feet_petting', 'position_69',
     ];
+
+    public function newEloquentBuilder($query) : MovieQueryBuilder
+    {
+        return new MovieQueryBuilder($query);
+    }
 
 
     public function pornstars()

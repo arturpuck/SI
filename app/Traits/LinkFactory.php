@@ -8,4 +8,13 @@ trait LinkFactory
     {
         return array_map(fn ($element) => str_replace('{}', $element, $pattern), $uniqueParts);
     }
+
+    public function generateLinksByRange(int $start, int $end, string $routeName): array
+    {
+        $result = [];
+        for($loopIndex = $start; $loopIndex <= $end; $loopIndex++) {
+            $result[] = route($routeName, $loopIndex);
+        }
+        return $result;
+    }
 }
