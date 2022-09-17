@@ -137,7 +137,7 @@
     "invalid_image_dimensions": "Niewłaściwe wymiary obrazu. Wysokość lub szerokość przekracza 128px",
     "invalid_image_extension": "Niewłaściwe rozszerzenie obrazu",
     "other_settings_information": "Zmiana ustawień może ujawniać poufne dane dlatego aby edytować profil należy podać hasło",
-    "the_latest_movies": "Najnowsze filmy porno",
+    "the_latest_movies": "Najnowsze filmy",
     "the_latest_movies_page_description": "Lista najnowszych filmów porno dodanych do kolekcji. Starannie dobrane egzemplarze w ciekawej formie",
     "previous_page": "Poprzednia",
     "next_page": "Następna",
@@ -284,7 +284,7 @@
     "italian_nationality" : "włoska",
     "canadian_nationality" : "kanadyjska",
     "argentinian_nationality" : "argentyńska",
-    "the_most_popular_movies" : "Najpopularniejsze filmy porno",
+    "the_most_popular_movies" : "Najpopularniejsze filmy",
     "your_avatar" : "twój avatar",
     "you_have_been_successfully_registered" : "Zostałeś zarejestrowany pomyślnie",
     "back_to_search_panel_short" : "szukaj",
@@ -350,5 +350,7 @@
     "elevator" : "winda",
     "beach" : "plaża",
     "gym" : "siłownia",
-    "the following_pornstars_play_role_in_this_movie" : "Występujące gwiazdy to"
+    "the following_pornstars_play_role_in_this_movie" : "Występujące gwiazdy to",
+    "news_title" : "Aktualności z życia imperium oraz świata seksu",
+    "news_description" : "Ciekawe wydarzenia ze świata porno, życie gwiazd, nowe trendy. Nowości i zmiany wprowadzone na portalu."
 }

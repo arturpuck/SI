@@ -24,6 +24,8 @@ Route::post('/contact/send-message', 'ContactFormController@sendMessageFromUser'
 
 Route::get('porno-słownik/{range?}', 'PornDictionaryController@showDictionary')->name('dictionary.list');
 
+Route::get('/aktualności/{pageNumber?}', 'NewsController@showNews')->name('news.list');
+
 
 Route::namespace ('Movies')->name('movies.')->group(function () {
 

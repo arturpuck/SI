@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\CustomQueryBuilders\News\NewsQueryBuilder;
 
 class News extends Model
 {
@@ -16,4 +17,9 @@ class News extends Model
         'added_at',
 
     ];
+
+    public function newEloquentBuilder($query) : NewsQueryBuilder
+    {
+        return new NewsQueryBuilder($query);
+    }
 }

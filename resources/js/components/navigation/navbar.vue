@@ -38,6 +38,10 @@
           </arrow-up-icon>
           <phantom-button class="phantom-button"> Porno </phantom-button>
         </li>
+        <li class="navigation-element-main navigation-element-main-has-content">
+          <add-file-icon class="navbar-icon navbar-icon-outer"></add-file-icon>
+          <a v-bind:href="routes.newsRoute" v-text="translations['current_news']" class="navbar-link-main-manu"></a>
+        </li>
         <li
           v-if="!userIsAuthenticated"
           class="navigation-element-main register-selection"
@@ -202,7 +206,10 @@ import RollDownButton from "@jscomponents/form_controls/roll_down_button";
 import Translations from "@jsmodules/translations/components/navbar";
 import AvatarConfig from "@config/paths/avatar";
 import DictionaryIcon from "@svgicon/dictionary_icon";
+import OhIcon from "@svgicon/oh_icon";
 import { defineAsyncComponent } from 'vue';
+import RoutesConfig from "@config/paths/routes";
+import AddFileIcon from "@svgicon/add_file_icon";
 
 const CategoriesList = defineAsyncComponent(() => import("@jscomponents/categories_list"));
 const LoginForm = defineAsyncComponent(() => import("@jscomponents/user/login_form.vue"));
@@ -245,7 +252,8 @@ export default {
       contentSideBarIsVisible: false,
       showCategories: false,
       translations: Translations,
-      avatarFileName : ''
+      avatarFileName : '',
+      routes : RoutesConfig
     };
   },
 
@@ -264,7 +272,9 @@ export default {
     AvatarIcon,
     RollDownButton,
     DictionaryIcon,
-    LoginForm
+    LoginForm,
+    OhIcon,
+    AddFileIcon,
   },
 
   methods: {

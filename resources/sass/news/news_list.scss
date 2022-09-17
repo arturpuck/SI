@@ -1,0 +1,16 @@
+@import '~sass/basic';
+@import '~sass/background_images';
+@import '~sass/news/default_news';
+$imageFolder : news;
+
+@include background-image(car-date, 1);
+@include background-image(cute-girl, 2);
+@include background-image(japanese-chick-in-lambo, 3);
+
+.news-list {
+    max-width: 1400px;
+    background:rgba(0,0,0,0.7);
+    border-radius:5px;
+    box-shadow:3px 3px 3px 3px black;
+    margin:0 auto;
+}
