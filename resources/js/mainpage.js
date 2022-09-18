@@ -6,6 +6,7 @@ import AddFileIcon from '@svgicon/add_file_icon.vue';
 import MovieBox from "@jscomponents/movies/movie_box.vue";
 import MoviePreviewComplete from "@jscomponents/movies/movie_preview_complete.vue";
 import LinksBox from '@jscomponents/links_box.vue';
+import NewBoardIcon from "@svgicon/new_board_icon.vue";
 
 const settings = {
 
@@ -14,7 +15,8 @@ const settings = {
     AddFileIcon,
     MovieBox,
     MoviePreviewComplete,
-    LinksBox
+    LinksBox,
+    NewBoardIcon
   },
 
   data() {
