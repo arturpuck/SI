@@ -1,9 +1,25 @@
+@mixin news-header-basic {
+    padding: 7px 3px;
+    text-align: center;
+    display: block;
+    margin: 0;
+    color: white;
+}
+
+@mixin news-icon-basic {
+    fill: #ef0244;
+    transition: fill 1.5s;
+    height: auto;
+    @include responsive-icon(2px auto, 1.4vw, 20px);
+}
+
 .default-news-header{
     @include news-header-basic();
     @include responsive-font(1.2vw,14px);
     display:flex;
     align-items: center;
-    background: #211e1e
+    background: #211e1e;
+    border-radius: 5px 5px 0 0;
 }
 
 .default-news-header-icon{
@@ -29,4 +45,9 @@
     .default-news-header-text{
         margin-left:5%;
     }
+}
+
+.news-header-icon {
+    width: 1.3em;
+    fill: #d3114b;
 }

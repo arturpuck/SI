@@ -16,9 +16,9 @@ Class ShowNewsByPageHandler
     public function handle(ShowNewsByPageRequest $request) : View
     {
         $pageNumber = $request->validated()['pageNumber'];
-        $news = News::filterByPage($pageNumber, self::NEWS_PER_PAGE)
+        $news = News::query()->filterByPage($pageNumber, self::NEWS_PER_PAGE)
+                    ->orderByAddedDate()
                     ->get();
-
 
         return view('news.news_list')->with([
             'news' => $news,
@@ -32,7 +32,6 @@ Class ShowNewsByPageHandler
     private function getLinks() : array
     {
         $numberOfPages = $this->getNumberOfTotalPages();
-        if($numberOfPages <= 1) return [];
         return $this->generateLinksByRange(1,$numberOfPages, 'news.list');
     }
 
