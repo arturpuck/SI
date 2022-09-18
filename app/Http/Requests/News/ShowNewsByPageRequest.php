@@ -41,7 +41,7 @@ class ShowNewsByPageRequest extends FormRequest
     public function validationData()
     {
         $pageNumberSegment = last($this->segments());
-        $pageNumber = is_numeric($pageNumberSegment) ? $pageNumberSegment : 1;
+        $pageNumber = is_numeric($pageNumberSegment) ? intval($pageNumberSegment) : 1;
         return compact('pageNumber');
     }
 
