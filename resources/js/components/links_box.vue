@@ -51,7 +51,7 @@
         ></span>
       </button>
     </div>
-    <ul class="aditional-links">
+    <ul v-if="displayAditionalLinks" class="aditional-links">
       <li v-if="pageIsNotFirst" class="aditional-link-list-element">
         <a
           v-bind:href="previousPage"
@@ -282,6 +282,11 @@ export default class LinksBox extends Vue {
 
   get previousPage(): string {
     return this.links[this.initialCurrentPage - 2];
+  }
+
+  get displayAditionalLinks() : boolean
+  {
+    return this.getamountOfElementsInBox() > 1;
   }
 }
 </script>

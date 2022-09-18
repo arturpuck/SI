@@ -20,7 +20,6 @@
         </movie-box>
     @endforeach
 </ul>
-<links-box v-bind:links="{{json_encode($linksForTheMostPopular, true)}}" v-bind:initial-current-page="1"></links-box> 
 <h2 class="main-page-header">
     {{__('the_latest_movies')}}
     <new-board-icon class="board-icon"></new-board-icon>

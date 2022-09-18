@@ -16,14 +16,16 @@ Class ShowNewsByPageHandler
     public function handle(ShowNewsByPageRequest $request) : View
     {
         $pageNumber = $request->validated()['pageNumber'];
-        $news = News::filterByPage($pageNumber, self::NEWS_PER_PAGE)
-                    ->get();
-
+        $news = News::query()->filterByPage($pageNumber, self::NEWS_PER_PAGE)
+                            ->orderByAddedDate()
+                            ->get();
+        $links = $this->getLinks();
+        $links = count($links) > 0 ? $links : null;
 
         return view('news.news_list')->with([
             'news' => $news,
             'pageNumber' => $pageNumber,
-            'links' => $this->getLinks(), 
+            'links' =>  $links,
             'backgroundNumber' => rand(1,3)
         ]);
 
@@ -32,12 +34,14 @@ Class ShowNewsByPageHandler
     private function getLinks() : array
     {
         $numberOfPages = $this->getNumberOfTotalPages();
-        if($numberOfPages <= 1) return [];
+        if($numberOfPages <= 1) {
+            return [];
+        }
         return $this->generateLinksByRange(1,$numberOfPages, 'news.list');
     }
 
     protected function getNumberOfTotalPages() : int 
      {
-        return ceil(News::count() /100);
+        return ceil(News::count() / self::NEWS_PER_PAGE);
      }
 }
