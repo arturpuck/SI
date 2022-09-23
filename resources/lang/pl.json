@@ -35,8 +35,8 @@
     "password_is_missing": "Nie podano hasła",
     "password_must_contain_at_least_3_characters": "Hasło musi zawierać co najmniej 3 znaki",
     "password_must_not_exceed_20_characters": "Hasło nie może przekraczać 20 znaków",
-    "user_type_option_has_not_been_selected": "Nie wybrano żadnej opcji typu/płci użytkownika",
-    "sexual_orientation_has_not_been_selected": "Nie wybrano żadnej opcji orientacji seksualnej",
+    "invalid_user_type_option_has_been_selected": "Wybrano niepoprawny typ użytkownika - nie znajdujący się na liście",
+    "invalid_sexual_orientation_has_been_selected": "Wybrano niepoprawną orientację seksualną - nie znajdującą się na liście",
     "birth_date_is_required": "Nie podano daty urodzenia",
     "birth_date_has_incorrect_format": "Data urodzenia ma niepoprawny format lub jest niekompletna",
     "you_have_to_be_at_least_18_years_old": "Nie ukończyłeś 18-ego roku życia",
@@ -137,7 +137,7 @@
     "invalid_image_dimensions": "Niewłaściwe wymiary obrazu. Wysokość lub szerokość przekracza 128px",
     "invalid_image_extension": "Niewłaściwe rozszerzenie obrazu",
     "other_settings_information": "Zmiana ustawień może ujawniać poufne dane dlatego aby edytować profil należy podać hasło",
-    "the_latest_movies": "Najnowsze filmy porno",
+    "the_latest_movies": "Najnowsze filmy",
     "the_latest_movies_page_description": "Lista najnowszych filmów porno dodanych do kolekcji. Starannie dobrane egzemplarze w ciekawej formie",
     "previous_page": "Poprzednia",
     "next_page": "Następna",
@@ -284,7 +284,7 @@
     "italian_nationality" : "włoska",
     "canadian_nationality" : "kanadyjska",
     "argentinian_nationality" : "argentyńska",
-    "the_most_popular_movies" : "Najpopularniejsze filmy porno",
+    "the_most_popular_movies" : "Najpopularniejsze filmy",
     "your_avatar" : "twój avatar",
     "you_have_been_successfully_registered" : "Zostałeś zarejestrowany pomyślnie",
     "back_to_search_panel_short" : "szukaj",
@@ -350,5 +350,7 @@
     "elevator" : "winda",
     "beach" : "plaża",
     "gym" : "siłownia",
-    "the following_pornstars_play_role_in_this_movie" : "Występujące gwiazdy to"
+    "the following_pornstars_play_role_in_this_movie" : "Występujące gwiazdy to",
+    "news_title" : "Aktualności z życia imperium oraz świata seksu",
+    "news_description" : "Ciekawe wydarzenia ze świata porno, życie gwiazd, nowe trendy. Nowości i zmiany wprowadzone na portalu."
 }

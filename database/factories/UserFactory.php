@@ -7,6 +7,7 @@ use App\User;
 use App\UserType;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class UserFactory extends Factory
 {
@@ -36,15 +37,23 @@ class UserFactory extends Factory
     public function definition()
     {
         $this->initiateUserTypes();
+        $userAge = rand(18,110);
 
         return [
-            'login' => $this->faker->name,
+            'login' => Str::random(rand(3, 20)),
             'email' => $this->faker->email,
             'user_type_id' => $this->faker->randomElement($this->userTypesIDs),
             'sexual_orientation_id' => $this->faker->randomElement($this->sexualOrientationsIds),
-            'password' => Hash::make('password'),
+            'password' => Hash::make(Str::random(rand(3, 20))),
             'shows_birthday' => true,
-            'birth_date' => $this->faker->date(max:'18 years ago')
+            'birth_date' => date('Y-m-d', strtotime("$userAge years ago"))
         ];
+    }
+
+    public function getRandomPayload()
+    {
+        $userDetails = $this->definition();
+        $userDetails['password'] = Str::random(rand(3, 20));
+        return $userDetails;
     }
 }

@@ -105,6 +105,7 @@ export default {
       email_has_already_been_taken: "Email jest już zajęty",
       email_seems_to_be_incorrect: "Email wygląda na nieprawidłowy",
       subject_exceeds_40_characters: "Temat przekracza 40 znaków",
+      current_news : 'Aktualności',
       you_are_under_18: "Nie ukończyłeś 18 lat",
       the_user_has_no_avatar: "Użytkownik nie posiada avataru",
       password_change_attempt: "Próba zmiany hasła",
@@ -428,7 +429,8 @@ export default {
             advanced_search_title: "Użyj wyszukiwarki do precyzyjnego odnajdywania filmów porno",
             movies_caption: "Filmy",
             pornstars: "Gwiazdy porno",
-            dictionary : "Słownik"
+            dictionary : "Słownik",
+            news_latest : "Aktualności"
          },
 
          authenticated_user_sidebar: {

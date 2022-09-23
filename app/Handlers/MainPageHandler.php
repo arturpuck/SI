@@ -3,29 +3,52 @@
 namespace App\Handlers;
 
 use Illuminate\View\View;
-use App\Repositories\NewsRepository;
-use App\Repositories\MoviesRepository;
+use App\Movie;
+use App\Traits\LinkFactory;
+use Illuminate\Support\Collection;
 
 Class MainPageHandler 
 {
-    public function __construct(private NewsRepository $newsRepository, private MoviesRepository $moviesRepository){}
+    use LinkFactory;
+
 
      public function handle() : View
      {
-        $news = $this->newsRepository
-                    ->filterByPage(1)
-                    ->chronological()
-                    ->get();
 
-        $latestMovies = $this->moviesRepository
-                        ->withBasicPornstarList()
-                        ->filterByAmmountOfTheLatest(15)
-                        ->get();
-        
+        $latestMovies = $this->getLatestMovies();
+        $theMostPopularMovies = $this->getTheMostPopularMovies();
+        $totalPages = $this->getNumberOfTotalPages();
+        $linksForTheMostPopular = $this->generateLinksByRange(1,$totalPages,'movies.the-most-popular');
+        $linksForLatestMovies = $this->generateLinksByRange(1,$totalPages,'movies.new');
+
         return view('mainpage')->with([
-            'customBodyClass' => 'empire-background-image-'.rand(1,4),
-            'news' => $news,
-            'latestMovies' => $latestMovies
+            'theMostPopularMovies' => $theMostPopularMovies,
+            'latestMovies' => $latestMovies,
+            'linksForTheMostPopular' => $linksForTheMostPopular,
+            'linksForLatestMovies' => $linksForLatestMovies
         ]); 
+     }
+
+     protected function getNumberOfTotalPages() : int 
+     {
+        return ceil(Movie::count() /100);
+     }
+
+     protected function getLatestMovies() : Collection
+     {
+         return Movie::query()
+         ->withBasicPornstarList()
+         ->sortByLastAdded()
+         ->take(50)
+         ->get();
+     }
+
+     protected function getTheMostPopularMovies() : Collection
+     {
+         return Movie::query()
+         ->withBasicPornstarList()
+         ->randomizedTheMostPopular()
+         ->get()
+         ->shuffle();
      }
 }

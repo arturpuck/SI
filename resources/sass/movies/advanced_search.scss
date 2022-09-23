@@ -189,7 +189,7 @@
     top: calc(35px + 1vw);
     padding: 4px 0;
     box-shadow: 1px 1px 1px 1px black;
-    z-index: 1;
+    z-index: 2;
     border: 1px solid black;
     border-radius: 5px 0 0 5px;
     overflow: hidden;
@@ -228,8 +228,5 @@
             background: linear-gradient(to right, #b31f45, #da1047);
         }
 
-        &--up{
-
-        }
     }
 }

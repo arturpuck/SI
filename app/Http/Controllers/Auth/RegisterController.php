@@ -40,7 +40,7 @@ class RegisterController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    protected $errorMessages = [
+    public const ERROR_MESSAGES = [
        'login.required' => 'login_is_missing',
        'login.string' => 'login_must_be_a_string',
        'login.min' => 'login_must_contain_at_least_3_characters',
@@ -54,8 +54,8 @@ class RegisterController extends Controller
        'password.required' => 'password_is_missing',
        'password.min' => 'password_must_contain_at_least_3_characters',
        'password.max' => 'password_must_not_exceed_20_characters',
-       'user_type_id.exists' => 'user_type_option_has_not_been_selected',
-       'sexual_orientation_id.exists' => 'sexual_orientation_has_not_been_selected',
+       'user_type_id.exists' => 'invalid_user_type_option_has_been_selected',
+       'sexual_orientation_id.exists' => 'invalid_sexual_orientation_has_been_selected',
        'birth_date.required' => 'birth_date_is_required',
        'birth_date.date' => 'birth_date_has_incorrect_format',
        'birth_date.before_or_equal' => 'you_have_to_be_at_least_18_years_old',
@@ -112,7 +112,7 @@ class RegisterController extends Controller
             'user_type_id' => ['nullable', 'exists:user_types,id'],
             'sexual_orientation_id' => ['nullable', 'exists:sexual_orientations,id'],
             'birth_date' => ['required', 'date', 'before_or_equal:'.$date18YearsAgo, 'after_or_equal:'.$date120yearsAgo]
-        ], $this->errorMessages);
+        ], self::ERROR_MESSAGES);
     }
 
     /**

@@ -14,6 +14,17 @@
           ></span>
         </phantom-button>
       </li>
+
+      <li class="content-sidebar-list-element hoverable-element">
+        <a v-bind:href="routes.newsRoute" class="sub-menu-link">
+          <add-file-icon class="content-sidebar-icon"></add-file-icon>
+          <span
+            v-text="translations['news_latest']"
+            class="content-sidebar-description"
+          ></span>
+        </a>
+      </li>
+
       <li class="content-sidebar-list-element">
         <phantom-button
           class="expandable-icon hoverable-element"
@@ -108,6 +119,7 @@
 
 <script lang="ts">
 import { Vue, Options, Prop } from "vue-property-decorator";
+import RoutesConfig from "@config/paths/routes";
 import Translator from "@jsmodules/translator.js";
 import AngleTopIcon from "@svgicon/angle_top_icon";
 import MovieMediaPlayerIcon from "@svgicon/movie_media_player_icon";
@@ -117,6 +129,7 @@ import MagnifierIcon from "@svgicon/magnifier_icon";
 import SmileLightIcon from "@svgicon/smile_light_icon";
 import StarFullIcon from "@svgicon/star_full_icon";
 import DictionaryIcon from "@svgicon/dictionary_icon";
+import AddFileIcon from "@svgicon/add_file_icon";
 import EventEmmiter from "mitt";
 const EventBus = EventEmmiter();
 
@@ -130,12 +143,14 @@ const EventBus = EventEmmiter();
     MagnifierIcon,
     StarFullIcon,
     DictionaryIcon,
+    AddFileIcon
   },
   name: "ContentSideBar",
 })
 export default class ContentSideBar extends Vue {
   private translations: Object = Translator.getPackage("content_sidebar");
   moviesSubMenuIsVisible: Boolean = false;
+  private routes = RoutesConfig;
 
   showCategories() {
     //@ts-ignore

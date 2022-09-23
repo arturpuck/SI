@@ -121,7 +121,7 @@ trait MovieDataExtractor
 
     public function getThumbnailUrl() : string 
     {
-       return URL()->to(config('important_directories.thumbnails_directory')).'/'.$this->id.'.jpg';
+       return URL()->to(config('important_directories.movie_thumbnails_directory')).'/'.$this->id.'.jpg';
     }
 
     public function getContentURL() : string

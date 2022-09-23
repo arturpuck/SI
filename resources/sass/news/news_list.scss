@@ -1,0 +1,39 @@
+@import '~sass/basic';
+@import '~sass/background_images';
+@import '~sass/news/default_news';
+@import "~sass/nice_scrollbar";
+
+$imageFolder : news;
+
+@include background-image(car-date, 1);
+@include background-image(cute-girl, 2);
+@include background-image(japanese-chick-in-lambo, 3);
+@include background-image(japanese-schoolgirl, 4);
+
+.news-all {
+    max-width: 1400px;
+    background:rgba(0,0,0,0.8);
+    border-radius:5px;
+    box-shadow:3px 3px 3px 3px black;
+    margin:0 auto 10px;
+    width:90%;
+}
+
+.news-list {
+    max-height:80vh;
+    overflow-y:auto;
+}
+
+
+.links-section {
+    background:black;
+    border-radius:0 0 5px 5px;
+    border: 1px solid black;
+    padding: 2px 0;
+}
+
+@include nice-scrollbar(".news-list");
+
+#app .links-box {
+    margin: 0 auto;
+}

@@ -47,6 +47,6 @@ class CheckIfEmailExistsRequest extends FormRequest
 
     public function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(response($validator->errors->all(), 400)->header('Content-Type', 'text/plain'));
+        throw new HttpResponseException(response($validator->messages()->all(), 400)->header('Content-Type', 'text/plain'));
     }
 }

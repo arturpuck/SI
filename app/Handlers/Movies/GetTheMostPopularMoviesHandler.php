@@ -14,12 +14,12 @@ class GetTheMostPopularMoviesHandler
     {
     }
 
-    public function handle(?int $pageNumber): View
+    public function handle(?int $pageNumber): View  
     {
         $pageNumber ??= 1;
         $movies = $this->moviesRepository->sortByTheMostPopular()
             ->paginate($pageNumber, route('movies.the-most-popular'));
-        $links = $this->generateLinks(route('movies.the-most-popular') . '/{}', range(1, $movies->numberOfPages()));
+        $links = $this->generateLinks(route('movies.the-most-popular') . '/{}', range(1, $movies->numberOfPages())); //I suck ...
 
         return view('movies.movies_set_complete')->with([
             'title' => 'the_most_popular_movies',
