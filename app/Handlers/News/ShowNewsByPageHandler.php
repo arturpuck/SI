@@ -33,15 +33,11 @@ Class ShowNewsByPageHandler
 
     private function getLinks() : array
     {
-        $numberOfPages = $this->getNumberOfTotalPages();
+        $numberOfPages = News::getNumberOfTotalPages(self::NEWS_PER_PAGE);
         if($numberOfPages <= 1) {
             return [];
         }
         return $this->generateLinksByRange(1,$numberOfPages, 'news.list');
     }
 
-    protected function getNumberOfTotalPages() : int 
-     {
-        return ceil(News::count() / self::NEWS_PER_PAGE);
-     }
 }

@@ -55,6 +55,14 @@
    @endforeach
 </url>
 
+<!--news -->
+@foreach($news as $newsLink)
+<url>
+   <loc>{{ $newsLink }}</loc>
+   <changefreq>monthly</changefreq>
+</url>
+@endforeach
+
 
 <!-- movies -->
 <url>

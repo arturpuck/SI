@@ -4,9 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\CustomQueryBuilders\News\NewsQueryBuilder;
+use App\Traits\Models\PageNumberCalculator;
 
 class News extends Model
 {
+    use PageNumberCalculator;
+    
     protected $table = 'news';
 
     public $timestamps = false;

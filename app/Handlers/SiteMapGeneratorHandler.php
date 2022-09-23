@@ -2,11 +2,12 @@
 
 namespace App\Handlers;
 
-use Illuminate\View\View;
 use App\Movie;
 use App\Pornstar;
 use App\Repositories\MoviesRepository;
 use Illuminate\Http\Response;
+use App\Handlers\News\ShowNewsByPageHandler;
+use App\News;
 
 class SiteMapGeneratorHandler
 {
@@ -61,6 +62,7 @@ class SiteMapGeneratorHandler
              'movies' => $movies,
              'pornstars' => $pornstars,
              'categoriesURLs' => $this->generateCategoriesURLs(),
+             'news' => $this->generateNewsURLs(),
         ])->header('Content-Type', 'text/xml');
     }
 
@@ -69,6 +71,16 @@ class SiteMapGeneratorHandler
         $result = [];
         foreach(self::CATEGORIES_LIST as $category){
             $result[] = urldecode(route('movies.category.specific', ['categoryName' => __($category)]));
+        }
+        return $result;
+    }
+
+    private function generateNewsURLs() : array
+    {
+        $result = [];
+        $numberOfPages = News::getNumberOfTotalPages(ShowNewsByPageHandler::NEWS_PER_PAGE);
+        for($I = 1; $I <= $numberOfPages; $I++) {
+            $result[] = urldecode(route('news.list', ['pageNumber' => $I]));
         }
         return $result;
     }
