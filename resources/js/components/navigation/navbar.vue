@@ -85,88 +85,7 @@
           ></roll-down-button>
         </li>
       </ul>
-      <ul
-        v-bind:aria-hidden="!pornSubMenuIsVisible"
-        v-bind:class="{
-          'visible-sub-menu': pornSubMenuIsVisible,
-          'hidden-sub-menu': !pornSubMenuIsVisible,
-        }"
-        class="sub-menu-list porn-sub-menu-list"
-      >
-        <li class="sub-menu-list-element intendation-first-level">
-          <div v-on:click="toggleMoviesSubMenu" class="sub-menu-level-one-item">
-            <movie-media-player-icon
-              v-show="!moviesSubMenuIsVisible"
-              class="navbar-icon navbar-icon-outer"
-            >
-            </movie-media-player-icon>
-
-            <arrow-up-icon
-              v-show="moviesSubMenuIsVisible"
-              class="navbar-icon navbar-icon-outer"
-            ></arrow-up-icon>
-            <phantom-button> {{translations['movies']}} </phantom-button>
-          </div>
-        </li>
-        <li>
-          <ul
-            v-bind:aria-hidden="!moviesSubMenuIsVisible"
-            class="sub-menu-list-nested-level-two"
-            v-bind:class="{
-              'visible-movies-sub-menu': moviesSubMenuIsVisible,
-              'hidden-movies-sub-menu': !moviesSubMenuIsVisible,
-            }"
-          >
-            <li
-              v-on:click="showCategoriesList"
-              class="sub-menu-list-element-intendation-second-level"
-            >
-              <folder-icon class="navbar-icon navbar-icon-second-level"></folder-icon>
-              {{translations['categories']}}
-            </li>
-            <li class="sub-menu-list-element-intendation-second-level">
-              <a class="navbar-link-main-manu" href="/filmy/najnowsze/strona/1">
-                <expand-all-icon
-                  class="navbar-icon navbar-icon-second-level--colored"
-                ></expand-all-icon>
-                {{translations['the_latest']}}
-              </a>
-            </li>
-            <li class="sub-menu-list-element-intendation-second-level">
-              <a class="navbar-link-main-manu" href="/filmy/najpopularniejsze/strona/1">
-                <happy-tongue-icon
-                  class="navbar-icon navbar-icon-second-level--colored"
-                ></happy-tongue-icon>
-                {{translations['the_most_popular']}}
-              </a>
-            </li>
-            <li class="sub-menu-list-element-intendation-second-level">
-              <a class="navbar-link-main-manu" href="/filmy/wyszukiwanie-zaawansowane">
-                <magnifier-icon
-                  class="navbar-icon navbar-icon-second-level--colored"
-                ></magnifier-icon>
-                {{translations['advanced_search']}}
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="sub-menu-list-element intendation-first-level">
-          <div class="sub-menu-level-one-item">
-            <a class="navbar-link-main-manu" href="/gwiazdy-porno/lista">
-              <star-full-icon class="navbar-icon navbar-icon-outer"></star-full-icon>
-              {{translations['pornstars_navbar_caption']}}
-            </a>
-          </div>
-        </li>
-        <li class="sub-menu-list-element intendation-first-level">
-          <div class="sub-menu-level-one-item">
-            <a class="navbar-link-main-manu" href="/porno-słownik">
-              <dictionary-icon class="navbar-icon navbar-icon-outer"></dictionary-icon>
-              {{translations['dictionary']}}
-            </a>
-          </div>
-        </li>
-      </ul>
+      <porn-sub-menu v-bind:porn-sub-menu-is-visible="visible"></porn-sub-menu>
     </nav>
     <authenticated-user-sidebar
       v-if="userIsAuthenticated"
@@ -192,11 +111,8 @@
 import { directive } from "vue3-click-away";
 import AdultIcon from "@svgicon/adult_icon";
 import ArrowUpIcon from "@svgicon/arrow_up_icon";
-import MovieMediaPlayerIcon from "@svgicon/movie_media_player_icon";
 import StarFullIcon from "@svgicon/star_full_icon";
-import FolderIcon from "@svgicon/folder_icon";
 import ExpandAllIcon from "@svgicon/expand_all_icon";
-import HappyTongueIcon from "@svgicon/happy_tongue_icon";
 import MagnifierIcon from "@svgicon/magnifier_icon";
 import SignupIcon from "@svgicon/signup_icon";
 import EnterIcon from "@svgicon/enter_icon";
@@ -205,11 +121,11 @@ import SideBarVisibilityMixin from "@js/mixins/side_bar_visibility";
 import RollDownButton from "@jscomponents/form_controls/roll_down_button";
 import Translations from "@jsmodules/translations/components/navbar";
 import AvatarConfig from "@config/paths/avatar";
-import DictionaryIcon from "@svgicon/dictionary_icon";
 import OhIcon from "@svgicon/oh_icon";
 import { defineAsyncComponent } from 'vue';
 import RoutesConfig from "@config/paths/routes";
 import AddFileIcon from "@svgicon/add_file_icon";
+import PornSubMenu from "@jscomponents/navigation/porn_sub_menu"
 
 const CategoriesList = defineAsyncComponent(() => import("@jscomponents/categories_list"));
 const LoginForm = defineAsyncComponent(() => import("@jscomponents/user/login_form.vue"));
@@ -261,7 +177,6 @@ export default {
     CategoriesList,
     AdultIcon,
     ArrowUpIcon,
-    MovieMediaPlayerIcon,
     StarFullIcon,
     FolderIcon,
     ExpandAllIcon,
@@ -275,6 +190,7 @@ export default {
     LoginForm,
     OhIcon,
     AddFileIcon,
+    PornSubMenu
   },
 
   methods: {
@@ -331,10 +247,6 @@ export default {
       this.pornSubMenuIsVisible = !this.pornSubMenuIsVisible;
       this.hideAllSubMenusExcept("pornSubMenuIsVisible");
       this.hideAllSecondLevelSubMenus();
-    },
-
-    toggleMoviesSubMenu() {
-      this.moviesSubMenuIsVisible = !this.moviesSubMenuIsVisible;
     },
 
     showPornSubMenu(event) {
