@@ -83,45 +83,6 @@ $border-color: black;
 	height: auto;
 }
 
-.navbar-icon-second-level{
-	@include navbar-icon-basic();
-	&--colored{
-		fill:yellow;
-		@include navbar-icon-basic();
-	}
-	
-}
-
-.sub-menu-list-element-intendation-second-level{
-	padding:5px 2px 5px 2vw;
-	border-bottom:1px solid black;
-	white-space: nowrap;
-	background:linear-gradient(to right,#0a0a0a, #2e2e2d);
-	&:hover{
-		background:black;
-		cursor:pointer;
-	}
-}
-
-.visible-movies-sub-menu{
-	max-height: 500px;
-}
-
-.hidden-movies-sub-menu{
-	max-height:0;
-}
-
-.sub-menu-level-one-item{
-	&:hover{
-		background:black;
-	}
-	padding: 5px 2px 5px 1vw;
-}
-
-.sum-menu-list-element:last-child{
-	border-radius: 0 0 8px 8px;
-}
-
 .navbar-icon{
 	margin:0 5px;
 	

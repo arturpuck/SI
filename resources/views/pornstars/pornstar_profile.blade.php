@@ -121,5 +121,4 @@
       </comment-list>
       </section>
    </main>
-   <user-notification></user-notification>
 </x-base>

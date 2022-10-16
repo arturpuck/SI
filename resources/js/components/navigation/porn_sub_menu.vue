@@ -1,9 +1,9 @@
 <template>
   <ul
-    v-bind:aria-hidden="!pornSubMenuIsVisible"
+    v-bind:aria-hidden="!visible"
     v-bind:class="{
-      'visible-sub-menu': pornSubMenuIsVisible,
-      'hidden-sub-menu': !pornSubMenuIsVisible,
+      'visible-sub-menu': visible,
+      'hidden-sub-menu': !visible,
     }"
     class="sub-menu-list porn-sub-menu-list"
   >
@@ -104,6 +104,13 @@ $border-color: black;
 	height: auto;
 }
 
+@mixin navbar-link($alignItems : baseline){
+	color:white;
+	text-decoration: none;
+	display:flex;
+	align-items: $alignItems;
+}
+
 .navbar-icon-second-level{
 	@include navbar-icon-basic();
 	&--colored{
@@ -116,12 +123,6 @@ $border-color: black;
 .hidden-sub-menu{
 	max-height:0;
 	transition:none;
-}
-
-.visible-sub-menu{
-	transition: max-height 1.5s;
-	max-height:1500px;
-	box-shadow: 2px 2px 4px 3px black;
 }
 
 .porn-sub-menu-list{
@@ -169,6 +170,60 @@ $border-color: black;
 	transition: max-height 0.7s;
 }
 
+.visible-sub-menu{
+	transition: max-height 1.5s;
+	max-height:1500px;
+	box-shadow: 2px 2px 4px 3px black;
+}
+
+.navbar-icon-second-level{
+	@include navbar-icon-basic();
+	&--colored{
+		fill:yellow;
+		@include navbar-icon-basic();
+	}
+	
+}
+
+.sub-menu-list-element-intendation-second-level{
+	padding:5px 2px 5px 2vw;
+	border-bottom:1px solid black;
+	white-space: nowrap;
+	background:linear-gradient(to right,#0a0a0a, #2e2e2d);
+	&:hover{
+		background:black;
+		cursor:pointer;
+	}
+}
+
+.visible-movies-sub-menu{
+	max-height: 500px;
+}
+
+.hidden-movies-sub-menu{
+	max-height:0;
+}
+
+.sub-menu-level-one-item{
+	&:hover{
+		background:black;
+	}
+	padding: 5px 2px 5px 1vw;
+}
+
+.sum-menu-list-element:last-child{
+	border-radius: 0 0 8px 8px;
+}
+
+.navbar-icon{
+	margin:0 5px;
+	
+}
+
+.navbar-link-main-manu{
+	@include navbar-link(center);
+}
+
 
 </style>
         
@@ -181,13 +236,15 @@ import DictionaryIcon from "@svgicon/dictionary_icon";
 import ExpandAllIcon from "@svgicon/expand_all_icon";
 import MagnifierIcon from "@svgicon/magnifier_icon";
 import Translations from "@jsmodules/translations/components/navbar";
+import StarFullIcon from "@svgicon/star_full_icon";
 
 export default {
   name: "porn-sub-menu",
 
   data() {
     return { 
-        moviesSubMenuIsVisible : false
+        moviesSubMenuIsVisible : false,
+        translations: Translations
     }
   },
 
@@ -199,6 +256,7 @@ export default {
     DictionaryIcon,
     ExpandAllIcon,
     MagnifierIcon,
+    StarFullIcon
   },
 
   props : {
@@ -210,9 +268,22 @@ export default {
   },
 
   methods : {
-    toggleMoviesSubMenu() {
+    toggleMoviesSubMenu() : void {
       this.moviesSubMenuIsVisible = !this.moviesSubMenuIsVisible;
     },
+
+    hideAllSubMenus() : void{
+      this.moviesSubMenuIsVisible = false;
+    },
+
+    registerEventListeners() : void {
+      this.emitter.on('hideAllSecondLevelSubMenus', this.hideAllSubMenus);
+    },
+
+  },
+  
+  mounted() : void {
+    this.registerEventListeners();
   }
 };
 </script>

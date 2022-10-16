@@ -195,7 +195,6 @@
       </button>
       <movies-list></movies-list>
    </section>
-   <user-notification></user-notification>
    <fixed-shadow-container v-show="fetchingMoviesInProgress">
       <expect-circle v-bind:label="searchEngineTranslations['fetchingMoviesLabel']"></expect-circle>
    </fixed-shadow-container>

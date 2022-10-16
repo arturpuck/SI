@@ -9,6 +9,7 @@ import AuthenticatedUserSidebar from '@jscomponents/navigation/authenticated_use
 import EmpireLogo from '@jscomponents/decoration/empire_logo.vue';
 import ContentSidebar from '@jscomponents/navigation/content_sidebar.vue';
 import EventEmmiter from 'mitt';
+import UserNotification from '@jscomponents/user_notification.vue';
 import { defineAsyncComponent } from 'vue';
 const EventBus = EventEmmiter();
 const SuccessInformation = defineAsyncComponent(() => import("@jscomponents/decoration/success_information.vue"));
@@ -45,6 +46,7 @@ export default {
       app.component('content-sidebar', ContentSidebar);
       app.component('success-information', SuccessInformation);
       app.component('cookie-notification', CookieNotification);
+      app.component('user-notification', UserNotification);
 
       if(!userHasAlreadyAcceptedCookies()){
          app.config.globalProperties.showCookiePolicyNotification = true;

@@ -16,7 +16,7 @@
       </li>
 
       <li class="content-sidebar-list-element hoverable-element">
-        <a v-bind:href="routes.newsRoute" class="sub-menu-link">
+        <a v-bind:href="routes.news" class="sub-menu-link">
           <add-file-icon class="content-sidebar-icon"></add-file-icon>
           <span
             v-text="translations['news_latest']"

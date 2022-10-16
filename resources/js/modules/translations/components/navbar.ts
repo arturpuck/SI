@@ -16,7 +16,10 @@ const translations : {
     default_avatar : string,
     user_avatar_description : string
     dictionary : string,
-    current_news : string
+    current_news : string,
+    prostitution : string,
+    add_notice : string,
+    notices_list : string
     
 } = {
     showContentSideBarButtonTitle : Translator.translate('show_content_side_bar_title'),
@@ -35,6 +38,9 @@ const translations : {
     user_avatar_description : Translator.translate('user_avatar_description'),
     dictionary : Translator.translate('dictionary'),
     current_news : Translator.translate('current_news'),
+    prostitution : Translator.translate('prostitution'),
+    add_notice : Translator.translate('add_notice'),
+    notices_list : Translator.translate('notices_list'),
 };
 
 export default translations;

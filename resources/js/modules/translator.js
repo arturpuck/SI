@@ -414,6 +414,10 @@ export default {
       scroll_movies_list_right : "Przewiń listę filmów w prawo",
       dictionary : "Słownik",
       comment_text : "Treść komentarza",
+      prostitution : "Prostytucja",
+      add_notice : "Dodaj ogłoszenie",
+      notices_list : "Lista ogłoszeń",
+      you_have_to_be_logged_in_to_add_notice : "Musisz być zalogowany aby dodać ogłoszenie",
       packages: {
          content_sidebar: {
             hide_side_bar_title: "Schowaj boczne menu",

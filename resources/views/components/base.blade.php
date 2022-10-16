@@ -53,6 +53,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<x-report />
 		{{$slot}}
 		<cookie-notification v-show="showCookiePolicyNotification"></cookie-notification>
+		<user-notification></user-notification>
 	</div>
 	<x-footer />
 	<script src="{{$jsFilePath}}"></script>

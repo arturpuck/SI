@@ -38,9 +38,25 @@
           </arrow-up-icon>
           <phantom-button class="phantom-button"> Porno </phantom-button>
         </li>
+        <li
+          v-on:click="toggleProstitutionSubMenuSubMenu"
+          v-on:mouseenter="showProstitutionSubMenu"
+          class="navigation-element-main navigation-element-main-has-content"
+        >
+          <money-bag-icon
+            class="navbar-icon navbar-icon-outer"
+            v-show="!prostitutionSubMenuIsVisible"
+          ></money-bag-icon>
+          <arrow-up-icon
+            v-show="prostitutionSubMenuIsVisible"
+            class="navbar-icon navbar-icon-outer"
+          >
+          </arrow-up-icon>
+          <phantom-button class="phantom-button"> {{translations['prostitution']}}</phantom-button>
+        </li>
         <li class="navigation-element-main navigation-element-main-has-content">
           <add-file-icon class="navbar-icon navbar-icon-outer"></add-file-icon>
-          <a v-bind:href="routes.newsRoute" v-text="translations['current_news']" class="navbar-link-main-manu"></a>
+          <a v-bind:href="routes.news" v-text="translations['current_news']" class="navbar-link-main-manu"></a>
         </li>
         <li
           v-if="!userIsAuthenticated"
@@ -85,7 +101,8 @@
           ></roll-down-button>
         </li>
       </ul>
-      <porn-sub-menu v-bind:porn-sub-menu-is-visible="visible"></porn-sub-menu>
+      <porn-sub-menu v-bind:visible="pornSubMenuIsVisible"></porn-sub-menu>
+      <prostitution-sub-menu v-bind:authenticated="userIsAuthenticated" v-bind:visible="prostitutionSubMenuIsVisible"></prostitution-sub-menu>
     </nav>
     <authenticated-user-sidebar
       v-if="userIsAuthenticated"
@@ -111,7 +128,6 @@
 import { directive } from "vue3-click-away";
 import AdultIcon from "@svgicon/adult_icon";
 import ArrowUpIcon from "@svgicon/arrow_up_icon";
-import StarFullIcon from "@svgicon/star_full_icon";
 import ExpandAllIcon from "@svgicon/expand_all_icon";
 import MagnifierIcon from "@svgicon/magnifier_icon";
 import SignupIcon from "@svgicon/signup_icon";
@@ -125,10 +141,16 @@ import OhIcon from "@svgicon/oh_icon";
 import { defineAsyncComponent } from 'vue';
 import RoutesConfig from "@config/paths/routes";
 import AddFileIcon from "@svgicon/add_file_icon";
-import PornSubMenu from "@jscomponents/navigation/porn_sub_menu"
+import PornSubMenu from "@jscomponents/navigation/porn_sub_menu";
+import ProstitutionSubMenu from "@jscomponents/navigation/prostitution_sub_menu";
+import MoneyBagIcon from "@svgicon/money_bag_icon";
+import { computed } from 'vue'
 
 const CategoriesList = defineAsyncComponent(() => import("@jscomponents/categories_list"));
 const LoginForm = defineAsyncComponent(() => import("@jscomponents/user/login_form.vue"));
+const PORN_SUB_MENU_VARIABLE_NAME = "pornSubMenuIsVisible";
+const PROSTITUTION_SUB_MENU_VARIABLE_NAME = 'prostitutionSubMenuIsVisible';
+const subMenusControlVariableNames = [PORN_SUB_MENU_VARIABLE_NAME, PROSTITUTION_SUB_MENU_VARIABLE_NAME];
 
 export default {
   name: "navbar",
@@ -163,13 +185,14 @@ export default {
       userWantsToLogIn: false,
       csrfToken: "",
       animatePanel: false,
-      userIsAuthenticated: undefined,
+      userIsAuthenticated: false,
       authenticatedUserSideBarIsVisible: true,
       contentSideBarIsVisible: false,
       showCategories: false,
       translations: Translations,
       avatarFileName : '',
-      routes : RoutesConfig
+      routes : RoutesConfig,
+      prostitutionSubMenuIsVisible : false,
     };
   },
 
@@ -177,20 +200,18 @@ export default {
     CategoriesList,
     AdultIcon,
     ArrowUpIcon,
-    StarFullIcon,
-    FolderIcon,
     ExpandAllIcon,
-    HappyTongueIcon,
     MagnifierIcon,
     SignupIcon,
     EnterIcon,
     AvatarIcon,
     RollDownButton,
-    DictionaryIcon,
     LoginForm,
     OhIcon,
     AddFileIcon,
-    PornSubMenu
+    PornSubMenu,
+    MoneyBagIcon,
+    ProstitutionSubMenu
   },
 
   methods: {
@@ -240,22 +261,33 @@ export default {
     },
 
     hideAllSecondLevelSubMenus() {
-      this.moviesSubMenuIsVisible = false;
+      this.emitter.emit("hideAllSecondLevelSubMenus");
     },
 
     togglePornSubMenu() {
       this.pornSubMenuIsVisible = !this.pornSubMenuIsVisible;
-      this.hideAllSubMenusExcept("pornSubMenuIsVisible");
+      this.hideAllSubMenusExcept(PORN_SUB_MENU_VARIABLE_NAME);
       this.hideAllSecondLevelSubMenus();
     },
 
-    showPornSubMenu(event) {
+    showPornSubMenu() {
       this.pornSubMenuIsVisible = true;
-      this.hideAllSubMenusExcept("pornSubMenuIsVisible");
+      this.hideAllSubMenusExcept(PORN_SUB_MENU_VARIABLE_NAME);
+    },
+
+    toggleProstitutionSubMenu() {
+      this.prostitutionSubMenuIsVisible = !this.prostitutionSubMenuIsVisible;
+      this.hideAllSubMenusExcept(PROSTITUTION_SUB_MENU_VARIABLE_NAME);
+      this.hideAllSecondLevelSubMenus();
+    },
+
+    showProstitutionSubMenu() {
+      this.prostitutionSubMenuIsVisible = true;
+      this.hideAllSubMenusExcept(PROSTITUTION_SUB_MENU_VARIABLE_NAME);
     },
 
     resetNavbar() {
-      this.hideAllSubMenusExcept();
+      this.hideAllSubMenus();
       this.hideAllSecondLevelSubMenus();
     },
 
@@ -263,14 +295,20 @@ export default {
       this.userWantsToLogIn = !this.userWantsToLogIn;
     },
 
-    hideAllSubMenusExcept(except = "") {
-      const subMenusControlVariableNames = ["pornSubMenuIsVisible"];
+    hideAllSubMenusExcept(except = "")  {
+      const filteredVariableNames = subMenusControlVariableNames.filter(variableName => variableName != except)
 
-      for (const variableName of subMenusControlVariableNames) {
+      for (const variableName of filteredVariableNames) {
         if (variableName != except) {
           this[variableName] = false;
         }
       }
+    },
+
+    hideAllSubMenus() {
+      for (const variableName of subMenusControlVariableNames) {
+          this[variableName] = false;
+        }
     },
 
     handleClickoutsideNavbar() {
@@ -286,7 +324,7 @@ export default {
     },
 
     anySubMenuIsVisible() {
-      return this.pornSubMenuIsVisible;
+      return this.pornSubMenuIsVisible || this.prostitutionSubMenuIsVisible;
     },
 
     avatarFilePath() {

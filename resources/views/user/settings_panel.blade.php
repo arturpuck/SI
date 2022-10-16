@@ -170,5 +170,4 @@
             </form>
        </div>
     </main>
-    <user-notification></user-notification>
 </x-base>

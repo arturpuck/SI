@@ -150,3 +150,10 @@ Route::middleware(['auth'])->name('auth.user.')->namespace('Auth\User')->group(f
     Route::delete('/delete/account', 'DeleteAccountController@deleteAccount')
          ->name('delete.account');
 });
+
+Route::namespace ('Prostitution')->prefix('prostytucja/')->name('prostitution.')->group(function () {
+
+    Route::get('dodaj-ogłoszenie', 'CreateProstitutionNoticeController@showCreatorPanel')
+        ->name('creator.panel');
+
+});
