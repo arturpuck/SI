@@ -172,104 +172,15 @@
   background: #0e0e0e; }
 
 .prostitution-offer-creator {
-  border: 2px solid #474350;
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
   width: 95%;
   max-width: 1300px;
   margin: 0 auto; }
 
-.offer-creator-header {
-  color: white;
-  padding: 0;
-  font-size: 1.7vw;
-  font-family: "Exo 2", sans-serif;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-     -moz-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-     -moz-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
-  @media (max-width: 1200px) {
-    .offer-creator-header {
-      font-size: 22px; } }
+.prostitution-notice-background {
+  background: url("/images/decoration/prostitution/add_notice-min.jpeg");
+  -moz-background-size: cover;
+       background-size: cover; }
 
-.section-header {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-     -moz-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-     -moz-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: white;
-  padding: 0;
-  font-size: 1.3vw;
-  font-family: "Exo 2", sans-serif; }
-  @media (max-width: 1200px) {
-    .section-header {
-      font-size: 19px; } }
-
-.important-description {
-  color: #f3246f;
-  font-size: 1.2vw;
-  font-family: "Exo 2", sans-serif; }
-  @media (max-width: 1200px) {
-    .important-description {
-      font-size: 15px; } }
-
-.offer-section {
-  padding: 5px 10px; }
-
-.link {
-  color: white;
-  text-decoration: none; }
-  .link:hover {
-    text-decoration: underline; }
-
-.controls-flex-container {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  -webkit-box-pack: space-evenly;
-  -webkit-justify-content: space-evenly;
-     -moz-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-     -moz-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
-
-.header-icon {
-  height: 1.3em;
-  margin: 0 5px;
-  width: auto; }
-
-.info-icon {
-  fill: #11c00b; }
+.offer-editor {
+  margin: 0 auto; }
 

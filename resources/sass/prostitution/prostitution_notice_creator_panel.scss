@@ -3,67 +3,74 @@
 @import "~sass/standard_background";
 
 .prostitution-offer-creator {
-    border : 2px solid #474350;
-    border-radius : 3px;
     width:95%;
     max-width:1300px;
     margin:0 auto;
 }
 
-@mixin header-standard {
-    color:white;
-    padding:0;
+.prostitution-notice-background {
+    background: url('/images/decoration/prostitution/add_notice-min.jpeg');
+    background-size:cover;
 }
 
-@mixin header-flex-centered {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.offer-editor {
+    margin: 0 auto;
 }
 
-.offer-creator-header {
-   @include header-standard();
-   @include responsive-font(1.7vw, 22px);
-   @include header-flex-centered;
-}
+// @mixin header-standard {
+//     color:white;
+//     padding:0;
+// }
 
-.section-header {
-    @include header-flex-centered;
-    @include header-standard();
-    @include responsive-font(1.3vw, 19px);
+// @mixin header-flex-centered {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+
+// .offer-creator-header {
+//    @include header-standard();
+//    @include responsive-font(1.7vw, 22px);
+//    @include header-flex-centered;
+// }
+
+// .section-header {
+//     @include header-flex-centered;
+//     @include header-standard();
+//     @include responsive-font(1.3vw, 19px);
     
-}
+// }
 
-.important-description {
-    color:#f3246f;
-    @include responsive-font(1.2vw, 15px);
-}
+// .important-description {
+//     color:#f3246f;
+//     @include responsive-font(1.2vw, 15px);
+// }
 
-.offer-section {
-    padding: 5px 10px;
-}
+// .offer-section {
+//     padding: 5px 10px;
+// }
 
-.link {
-    color: white;
-    text-decoration: none;
-    &:hover{
-        text-decoration: underline;
-    }
-}
+// .link {
+//     color: white;
+//     text-decoration: none;
+//     &:hover{
+//         text-decoration: underline;
+//     }
+// }
 
-.controls-flex-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:space-evenly;
-    align-items: center;
-}
+// .controls-flex-container{
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content:space-evenly;
+//     align-items: center;
+// }
 
-.header-icon {
-    height: 1.3em;
-    margin:0 5px;
-    width: auto;
-}
+// .header-icon {
+//     height: 1.3em;
+//     margin:0 5px;
+//     width: auto;
+// }
 
-.info-icon{
-    fill:rgb(17, 192, 11);
-}
+// .info-icon{
+//     fill:rgb(17, 192, 11);
+// }

@@ -55,7 +55,7 @@ export default {
 
   mixins: [ComboInputBasicFunctionality],
 
-  emits: ["blur"],
+  emits: ["blur", 'update:modelValue'],
 
   components: {
     PadlockIcon,

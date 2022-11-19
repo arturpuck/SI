@@ -156,4 +156,7 @@ Route::namespace ('Prostitution')->prefix('prostytucja/')->name('prostitution.')
     Route::get('dodaj-ogłoszenie', 'CreateProstitutionNoticeController@showCreatorPanel')
         ->name('creator.panel');
 
+    Route::get('notice-form-options', 'CreateProstitutionNoticeController@getNoticeFormOptions')
+        ->name('notice-form-options');
+
 });

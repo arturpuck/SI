@@ -20,9 +20,6 @@
 
 <script lang="ts">
 import { Vue, Options, Prop } from "vue-property-decorator";
-import Translator from "@jsmodules/translator.js";
-import EventEmmiter from "mitt";
-const EventBus = EventEmmiter();
 
 @Options({ name: "SimpleLabeledSelect" })
 export default class SimpleLabeledSelect extends Vue {
@@ -71,7 +68,8 @@ export default class SimpleLabeledSelect extends Vue {
 
   created() {
     this.selectOptions = this.options;
-    EventBus.on(`updateSelectValues${this.name}`, this.updateSelectValues); 
+    //@ts-ignore
+    this.emitter.on(`updateSelectValues${this.name}`, this.updateSelectValues); 
   }
 
   updateSelectValues(options: object) {
@@ -109,6 +107,7 @@ export default class SimpleLabeledSelect extends Vue {
   background: #242229;
   outline: none;
   margin-left: 4px;
+  flex-grow:100;
 }
 
 .select-container__select,

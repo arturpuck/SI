@@ -67,14 +67,14 @@
 							v-bind:initial-ok="true"
 							initial-value="{{old('user_type_id')}}"
 						@endif
-						v-bind:visible-options-list="['--{{__('choose')}}--',@foreach($userTypes as $userType) '{{__($userType->user_type_name.'_i')}}', @endforeach '{{__('i_dont_want_to_tell')}}']"
+						v-bind:visible-options-list="['--{{__('choose')}}--',@foreach($userTypes as $userType) '{{__($userType->user_type_name)}}', @endforeach '{{__('i_dont_want_to_tell')}}']"
 						v-bind:option-values="['not-selected', @foreach($userTypes as $userType) '{{$userType->id}}', @endforeach '']"
 						v-on:selected="validateSelect"
 						v-bind:error-message-box-available="true"
 						unique-id="UserType"
 						v-bind:complete-validation-display-available="true"
 						name="user_type_id">
-							{{ucfirst(__('i_am'))}} : 
+							{{ucfirst(__('type'))}} : 
 					</described-select>
 
 					<described-select
@@ -132,8 +132,8 @@
 							<dd class="input-description">{{__('email_requirements')}}</dd>
 							<dt class="input-name">{{__('password')}}</dt>
 							<dd class="input-description">{{__('password_requirements')}}</dd>
-							<dt class="input-name">{{__('who_you_are')}}</dt>
-							<dd class="input-description">{{__('it_is_about_user_sex')}} {{__('the_field_is_optional')}}.</dd>
+							<dt class="input-name">{{ucfirst(__('type'))}}</dt>
+							<dd class="input-description">{{__('account_type_explanation')}} {{__('the_field_is_optional')}}.</dd>
 							<dt class="input-name">{{__('orientation')}}</dt>
 							<dd class="input-description">{{__('sexual_orientation')}} {{__('the_field_is_optional')}}.</dd>
 							<dt class="input-name">{{__('birth_date')}}</dt>

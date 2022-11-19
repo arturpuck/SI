@@ -1,9 +1,12 @@
 const prostitutionRoutes = {
     addAnnouncement : '/prostytucja/dodaj-ogłoszenie',
-    announcementsList : '/prostytucja/ogłoszenia'
+    announcementsList : '/prostytucja/ogłoszenia',
+    noticeFormOptions : '/prostytucja/notice-form-options'
 }
 
 export default {
     news : '/aktualności',
-    ...prostitutionRoutes
+    ...prostitutionRoutes,
+    contact : '/kontakt',
+
 }
