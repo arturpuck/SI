@@ -17,5 +17,6 @@ export default translations;
 
 export const sections = {
         ProstitutionPolicyDescription : Translator.translate('notices_policy'),
-        ProstituteBasicInformation : Translator.translate('personalities')
+        ProstituteBasicInformation : Translator.translate('personalities'),
+        ProstituteServices : Translator.translate('services_range_and_pricing'),
 };

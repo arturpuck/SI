@@ -163,6 +163,8 @@ export default class MultiSelect extends Vue {
     this.replaceAvailableOptions(this.options);
     //@ts-ignore
     this.emitter.on(`replaceAvailableOptionsFor${this.id}`, this.replaceAvailableOptions);
+    this.selectedOptions = this.getOptionsWithObjectProperties(this.modelValue);
+    Object.keys(this.selectedOptions).forEach(key => this.optionsStates[key] = true);
   }
 
   replaceAvailableOptions(options: Array<any>) {

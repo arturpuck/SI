@@ -242,7 +242,7 @@
   .described-select,
   .select-description,
   .select-label {
-    @include responsive-font;
+    @include responsive-font(1vw, 16px);
   }
   
   .incorrect-value {

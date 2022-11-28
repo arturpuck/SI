@@ -93,7 +93,7 @@ const comboInputErrorState: InputComboState = {
 };
 
 export default {
-  name: "prostitute-basic",
+  name: "prostitute-personalities",
 
   emits : ['validated'],
 

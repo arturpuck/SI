@@ -4,6 +4,7 @@
         <span class="navbar-caption" v-text="navbarCaption"></span>
       <component
         class="navbar-section-icon"
+        v-bind:class="iconClass"
         :is="decorationComponentName"
       ></component>
     </div>
@@ -11,10 +12,14 @@
       v-on:validated="skipToNextSection"
       v-show="showPolicyDescription"
     ></prostitution-policy-description>
-    <prostitute-basic-information
+    <prostitute-personalities
       v-show="showBasicInformation"
       v-on:validated="skipToNextSection"
-    ></prostitute-basic-information>
+    ></prostitute-personalities>
+    <prostitute-services
+      v-show="showServices"
+      v-on:validated="skipToNextSection"
+    ></prostitute-services>
     <div class="bottom-navigation">
       <div
         class="navigation-description"
@@ -37,10 +42,12 @@ import Translations, {
 import SimpleLabeledSelect from "@jscomponents-form-controls/simple_labeled_select.vue";
 import SecureDocumentsIcon from "@svgicon/secure_documents_icon.vue";
 import ProstitutionPolicyDescription from "@jscomponents/prostitution/notice_editor/prostitution_policy_description";
-import ProstituteBasicInformation from "@jscomponents/prostitution/notice_editor/prostitute_basic_information";
+import ProstitutePersonalities from "@jscomponents/prostitution/notice_editor/prostitute_personalities";
+import ProstituteServices from "@jscomponents/prostitution/notice_editor/prostitute_services";
 import LeftArrowIcon from "@svgicon/left_arrow_icon.vue";
 import RightArrowIcon from "@svgicon/right_arrow_icon.vue";
 import IdCardIcon from "@svgicon/id_card_icon.vue";
+import OhIcon from "@svgicon/oh_icon.vue";
 
 enum Section {
   ProstitutionPolicyDescription = "ProstitutionPolicyDescription",
@@ -56,17 +63,19 @@ export default {
     SimpleLabeledSelect,
     SecureDocumentsIcon,
     ProstitutionPolicyDescription,
-    ProstituteBasicInformation,
+    ProstitutePersonalities,
     LeftArrowIcon,
     RightArrowIcon,
-    IdCardIcon
+    IdCardIcon,
+    OhIcon,
+    ProstituteServices
   },
 
   data() {
     return {
       translations: Translations,
       sections,
-      sectionIndex : 0,
+      sectionIndex : 2,
       orderedSections: [
         Section.ProstitutionPolicyDescription,
         Section.ProstituteBasicInformation,
@@ -95,7 +104,8 @@ export default {
     decorationComponentName(): string {
       const iconComponentNamesBySection = {
         ProstitutionPolicyDescription : "SecureDocumentsIcon",
-        ProstituteBasicInformation : "IdCardIcon"
+        ProstituteBasicInformation : "IdCardIcon",
+        ProstituteServices : "OhIcon"
       } 
       return iconComponentNamesBySection[this.currentSection];
     },
@@ -115,6 +125,19 @@ export default {
     showBasicInformation(): boolean {
       return this.currentSection === Section.ProstituteBasicInformation;
     },
+
+    showServices() : boolean {
+      return this.currentSection === Section.ProstituteServices;
+    },
+
+    iconClass() : string {
+      const classesNameBySection = {
+        ProstitutionPolicyDescription : "policy-section",
+        ProstituteBasicInformation : "personalities-section",
+        ProstituteServices : "services-section"
+      }
+      return classesNameBySection[this.currentSection];
+    }
   },
 
 };
@@ -123,14 +146,26 @@ export default {
   <style lang="scss" scoped>
 @import "~sass/fonts";
 
+.policy-section {
+  fill:white;
+}
+
+.services-section {
+  fill:#dd0d85;
+}
+
+.personalities-section {
+  fill: #2bd71b;
+}
+
+
 .outer-container {
   border-radius: 4px;
-  max-width: 800px;
+  max-width: 900px;
 }
 
 .navbar-section-icon {
   height: 1.5em;
-  fill:white;
 }
 
 .section-navbar-container {

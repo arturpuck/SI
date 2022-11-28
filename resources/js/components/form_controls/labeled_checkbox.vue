@@ -82,6 +82,7 @@ export default class LabeledCheckbox extends Vue {
   position: relative;
   padding: 0 8px;
   line-height: 1em;
+  color: white;
   &:before {
     content: "";
     display: inline-block;

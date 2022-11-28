@@ -18,7 +18,6 @@
 
 <script lang="ts">
 import { Vue, Options, Prop } from "vue-property-decorator";
-import Translator from "@jsmodules/translator.js";
 
 @Options({ name: "SimpleLabeledInput" })
 export default class SimpleLabeledInput extends Vue {
@@ -117,7 +116,7 @@ export default class SimpleLabeledInput extends Vue {
 .container__input,
 .container__description,
 .container {
-  @include responsive-font;
+  @include responsive-font(1vw, 16px);
 }
 
 .container__input:focus {
