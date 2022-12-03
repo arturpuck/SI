@@ -147,7 +147,7 @@
          <legend class="panel-group-legend">
             {{__('stars')}}
          </legend>
-         <multiselect v-model="pornstarsList" main-label="{{__('chose_from_pornstars_list')}}" v-bind:show-search-input="true"></multiselect>
+         <multiselect v-model="pornstarsList" v-bind:show-search-input="true">{{__('chose_from_pornstars_list')}}</multiselect>
       </fieldset>
       <fieldset class="panel-group">
          <legend class="panel-group-legend">

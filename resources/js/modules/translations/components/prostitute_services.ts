@@ -18,6 +18,7 @@ const translations : {
     kisses : string,
     cum_on_body : string,
     remaining_services_description : string,
+    click_to_chose_remaining_services : string,
 } = {
     classic_sex : Translator.translate('classic_sex'),
     money_amount : Translator.translate('money_amount'),
@@ -34,6 +35,7 @@ const translations : {
     kisses : Translator.translate('kisses'),
     cum_on_body : Translator.translate('cum_on_body'),
     remaining_services_description : Translator.translate('remaining_services_description'),
+    click_to_chose_remaining_services : Translator.translate('click_to_chose_remaining_services'),
 };
 
 export enum DefaultSexPreference {
@@ -62,6 +64,27 @@ export const BlowjobPreferencesOptionsList = {
     without_condom : Translator.translate('without_condom'),
     without_condom_with_aditional_payments : Translator.translate('without_condom_with_aditional_payments'),
     never : Translator.translate('never')
+}
+
+export const SecondaryServicesList = {
+    tittfuck : Translator.translate('tittfuck'),
+    handjob : Translator.translate('handjob'),
+    strapon : `strapon - ${Translator.translate('strapon')}`,
+    footjob : `footjob - (${Translator.translate('petting_with_feet')})`,
+    pissing : `pissing - (${Translator.translate('pissing')})`, 
+    spanking : Translator.translate('spanking'),
+    fingering : Translator.translate('fingering'),
+    69 : '69',
+    licking_balls : Translator.translate('licking_balls'),
+    stockings : Translator.translate('showStockings'),
+    pantyhose : Translator.translate('pantyhose'),
+    high_heels : Translator.translate('high_heels'),
+    insults : Translator.translate('insults'),
+    hugging : Translator.translate('hugging'),
+    shared_bath : Translator.translate('shared_bath'),
+    sex_with_2_males : Translator.translate('sex_with_2_males'),
+    GangBang : Translator.translate('GangBang'),
+    outside_together : Translator.translate('outside_together'),
 }
 
 

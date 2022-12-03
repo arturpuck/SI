@@ -2,8 +2,8 @@
   <div>
     <div v-click-away="hideMenu" class="multiselect">
       <div class="multiselect__label" v-on:click="showMenu">
-        <span v-text="mainLabel" class="multiselect__caption"></span>
-        <icon-add-plus></icon-add-plus>
+        <span class="multiselect__caption"><slot></slot></span>
+        <icon-add-plus class="add-icon"></icon-add-plus>
       </div>
       <div
         class="multiselect__menu"
@@ -15,7 +15,7 @@
             class="multiselect__search-input-caption"
           ></div>
           <input
-            v-on:input="searchForValue"
+            v-model="searchPhrase"
             class="multiselect__search-input"
             id=""
             type="search"
@@ -23,13 +23,13 @@
         </label>
         <ul class="multiselect__options">
           <li
-            v-for="(option, key) in totalOptions"
-            v-show="optionShouldBeDisplayed(key)"
+            v-for="(option, key) in displayedOptions"
+            v-bind:key="key"
             class="multiselect__option"
           >
             <labeled-checkbox
-              v-on:click="updateModel"
-              v-model="optionsStates[key]"
+              v-on:click="updateModel(key, $event)"
+              v-bind:model-value="optionIsChecked(key)"
               v-bind:name="key"
             >
               {{ option }}
@@ -39,10 +39,14 @@
       </div>
     </div>
     <ul class="multiselect__selected-options-list">
-      <li v-for="(option, key) in selectedOptions" class="multiselect__selected-option">
-        {{ option }}
+      <li
+        v-for="(value, key) in modelValue"
+        v-bind:key="key"
+        class="multiselect__selected-option"
+      >
+        {{ options[value] }}
         <button-close
-          v-on:click="removeSelectedOption(key)"
+          v-on:click="removeSelectedOption(value)"
           class="button-close--smaller"
         ></button-close>
       </li>
@@ -51,174 +55,113 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options, Prop, Watch } from "vue-property-decorator";
 import Translations from "@jsmodules/translations/components/form_controls/multiselect.js";
 import IconAddPlus from "@jscomponents/decoration/icons/icon_add_plus.vue";
 import LabeledCheckbox from "@jscomponents/form_controls/labeled_checkbox.vue";
 import { directive } from "vue3-click-away";
 import ButtonClose from "@jscomponents/form_controls/button_close.vue";
 
-@Options({
-  name: "MultiSelect",
+export default {
+  name: "Multiselect",
+
+  directives: { ClickAway: directive },
+
   components: { IconAddPlus, LabeledCheckbox, ButtonClose },
-  directives: { ClickAway : directive },
-})
-export default class MultiSelect extends Vue {
-  private displayedOptions: object = {};
-  private totalOptions: object = {};
-  private menuIsVisible: boolean = false;
-  private optionsStates: object = {};
-  private translations = Translations;
-  private selectedOptions: object = {};
 
-  @Prop({
-    type: Boolean,
-    required: false,
-    default: false,
-  })
-  readonly showSearchInput: boolean;
+  props: {
+    showSearchInput: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
 
-  @Prop({
-    type: Array,
-    required: false,
-    default: () => [],
-  })
-  readonly options: Array<any>;
+    initialOptions: {
+      type: Object,
+      required: false,
+      default: {},
+    },
 
-  @Prop({
-    type: String,
-    required: false,
-    default: Translations["defaultLabel"],
-  })
-  readonly mainLabel: string;
+    id: {
+      type: String,
+      required: false,
+      default: "Multiselect",
+    },
 
-  @Prop({
-    type: String,
-    required: false,
-    default: "Multiselect",
-  })
-  readonly id: string;
+    searchInputCaption: {
+      type: String,
+      required: false,
+      default: Translations["defaultSearchInputCaption"],
+    },
 
-  @Prop({
-    type: String,
-    required: false,
-    default: Translations["defaultSearchInputCaption"],
-  })
-  readonly searchInputCaption: string;
+    modelValue: {
+      type: Array,
+      required: false,
+      default: [],
+    },
+  },
 
-  @Prop({
-    type: Array,
-    required: false,
-    default: [],
-  })
-  readonly modelValue: Array<any>;
+  data() {
+    return {
+      menuIsVisible: false,
+      searchPhrase: "",
+      modifiedOptions : null
+    };
+  },
 
-  @Watch("modelValue", {deep : true})
-  modelChanged(modelValue: Array<any>, oldValue: Array<any>) {
-    let innerSelectedOptions: object = {};
+  methods: {
+    showMenu(): void {
+      this.menuIsVisible = true;
+    },
 
-    Object.keys(this.totalOptions).forEach((key) => {
-      const option = this.totalOptions[key];
-      const isSelected = modelValue.includes(option);
-      this.optionsStates[key] = isSelected;
-      if (isSelected) {
-        innerSelectedOptions[key] = option;
+    hideMenu(): void {
+      this.menuIsVisible = false;
+    },
+
+    optionIsChecked(key: string): boolean {
+      return this.modelValue.includes(key);
+    },
+
+    updateModel(value, event): void {
+      event.preventDefault();
+      const newModelValue = this.modelValue.includes(value)
+        ? this.modelValue.filter((selectedOption) => selectedOption != value)
+        : this.modelValue.concat([value]);
+      this.$emit("update:modelValue", newModelValue);
+    },
+
+    removeSelectedOption(value): void {
+      const newModelValue = this.modelValue.filter(
+        (selectedOption) => selectedOption != value
+      );
+      this.$emit("update:modelValue", newModelValue);
+    },
+
+  },
+
+  computed: {
+    displayedOptions() {
+      if (this.searchPhrase === "") {
+        return this.options;
       }
-    });
-
-    this.selectedOptions = innerSelectedOptions;
-  }
-
-  optionShouldBeDisplayed(key: string): boolean {
-    return this.displayedOptions.hasOwnProperty(key);
-  }
-
-  removeSelectedOption(key: string) {
-    this.optionsStates[key] = false;
-    delete this.selectedOptions[key];
-    this.updateModel();
-  }
-
-  updateModel() {
-    setTimeout(() => this.$emit("update:modelValue", this.getSelectedOptions(), 0));
-  }
-
-  getSelectedOptions(): Array<any> {
-    let selectedOptions: Array<any> = [];
-    let innerSelectedOptions: object = {};
-
-    Object.keys(this.optionsStates).forEach((key) => {
-      if (this.optionsStates[key]) {
-        let optionValue = this.totalOptions[key];
-        selectedOptions.push(optionValue);
-        innerSelectedOptions[key] = optionValue;
-      }
-    });
-    this.selectedOptions = innerSelectedOptions;
-
-    return selectedOptions;
-  }
-
-  created() {
-    this.replaceAvailableOptions(this.options);
-    //@ts-ignore
-    this.emitter.on(`replaceAvailableOptionsFor${this.id}`, this.replaceAvailableOptions);
-    this.selectedOptions = this.getOptionsWithObjectProperties(this.modelValue);
-    Object.keys(this.selectedOptions).forEach(key => this.optionsStates[key] = true);
-  }
-
-  replaceAvailableOptions(options: Array<any>) {
-    this.totalOptions = this.getOptionsWithObjectProperties(options);
-    this.displayedOptions = this.totalOptions;
-    Object.keys(this.displayedOptions).forEach((key) => {
-      this.optionsStates[key] = false;
-    });
-  }
-
-  getOptionsWithObjectProperties(options: Array<any>): object {
-    const optionsWithKeys: object = {};
-
-    options.forEach((option) => {
-      const identifier = this.parseOptionValueToObjectProperty(option);
-      optionsWithKeys[identifier] = option;
-    });
-
-    return optionsWithKeys;
-  }
-
-  parseOptionValueToObjectProperty(value): string {
-    const str = value.toString();
-    return `_${str.replace(/ /g, "_").replace(/-/g, "_")}`;
-  }
-
-  searchForValue(event) {
-    const value = event.target.value.toLowerCase();
-
-    if (value) {
-      let matchingValues: object = {};
-
-      Object.keys(this.totalOptions).forEach((key) => {
-        let optionLowercase = this.totalOptions[key].toLowerCase();
-
-        if (optionLowercase.includes(value)) {
-          matchingValues[key] = this.totalOptions[key];
+      const result = {};
+      Object.keys(this.options).forEach((key) => {
+        let value = String(this.options[key]);
+        if (value.includes(this.searchPhrase)) {
+          result[key] = this.options[key];
         }
       });
+      return result;
+    },
 
-      this.displayedOptions = matchingValues;
-    } else {
-      this.displayedOptions = this.totalOptions;
+    options() {
+      return this.modifiedOptions || this.initialOptions;
     }
-  }
+  },
 
-  showMenu(event) {
-    this.menuIsVisible = true;
+  mounted() {
+    this.emitter.on(`update${this.id}Options`, options => this.modifiedOptions = options);
   }
-
-  hideMenu() {
-    this.menuIsVisible = false;
-  }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -228,6 +171,10 @@ export default class MultiSelect extends Vue {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.add-icon {
+  margin-left:5px;
 }
 
 .multiselect {
@@ -247,6 +194,7 @@ export default class MultiSelect extends Vue {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @include responsive-font(1vw, 16px);
   }
 
   &__caption {

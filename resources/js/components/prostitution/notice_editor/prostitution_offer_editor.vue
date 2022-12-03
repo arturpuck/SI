@@ -200,7 +200,7 @@ export default {
 .bottom-navigation {
   background: black;
   color: #828181;
-  @include responsive-font(1.1vw, 13px);
+  @include responsive-font(1vw, 13px);
 }
 
 .navigation-description {

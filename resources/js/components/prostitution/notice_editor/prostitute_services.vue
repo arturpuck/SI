@@ -176,17 +176,15 @@
     <div v-text="translations.remaining_services_description" class="info"></div>
     <div class="service-container limited-width">
       <Multiselect
-      v-model="selectedRemainingServices"
-      mode="tags"
-      v-bind:searchable="true"
-      v-bind:close-on-select="false"
-      v-bind:options="remainingServicesList"
-    />
+      class="secondary-services-list"
+      v-model="selectedSecondaryServices"
+      v-bind:initial-options="SecondaryServicesList"
+      v-bind:showSearchInput="true"
+    >{{translations.click_to_chose_remaining_services}}</Multiselect>
     </div>
   </section>
 </template>
 
-<style src="@vueform/multiselect/themes/default.css"></style>
 
 <style lang="scss" scoped>
 @import "~sass/fonts";
@@ -223,7 +221,12 @@
   padding: 4px;
   color: white;
   text-align: center;
-  @include responsive-font(1vw, 13px);
+  font-size:14px;
+  font-family: "Exo 2", sans-serif;
+}
+
+.secondary-services-list {
+  width: 100%;
 }
 </style>
 
@@ -234,9 +237,10 @@ import { DefaultPreferencesOptionsList } from "@jsmodules/translations/component
 import { DefaultSexPreference } from "@jsmodules/translations/components/prostitute_services";
 import { BlowjobPreferencesOptionsList } from "@jsmodules/translations/components/prostitute_services";
 import { BlowjobPreference } from "@jsmodules/translations/components/prostitute_services";
+import { SecondaryServicesList } from "@jsmodules/translations/components/prostitute_services";
 import SimpleLabeledSelect from "@jscomponents-form-controls/simple_labeled_select.vue";
 import SimpleLabeledInput from "@jscomponents-form-controls/simple_labeled_input.vue";
-import Multiselect from '@vueform/multiselect'
+import Multiselect from '@jscomponents-form-controls/multiselect.vue';
 
 export default {
   name: "prostitute-services",
@@ -271,8 +275,8 @@ export default {
       clientRimmingAditionalPayment : 100,
       kissesAditionalPayment : 100,
       cumOnBodyAditionalPayment : 100,
-      selectedRemainingServices : null,
-      remainingServicesList : ['na hiszpana', 'strapon'],
+      selectedSecondaryServices : [],
+      SecondaryServicesList,
       DefaultPreferencesOptionsList,
       BlowjobPreferencesOptionsList,
     };
@@ -329,5 +333,6 @@ export default {
     }
 
   },
+
 };
 </script>

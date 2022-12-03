@@ -233,7 +233,7 @@ const settings = {
         if (response.status == 200) {
           let pornstars = await response.json();
           //@ts-ignore
-          this.emitter.emit('replaceAvailableOptionsForMultiselect', pornstars);
+          this.emitter.emit('updateMultiselectOptions', this.parsePornstarsListForMultiselectDisplay(pornstars));
         }
         else {
           this.showNotification(SearchEngineTranslations['fetchingPornstarsFailed'], 'error');
@@ -243,6 +243,19 @@ const settings = {
         this.fetchingPornstarsInProgress = false;
       }
 
+    },
+
+    parsePornstarsListForMultiselectDisplay(pornstars : string[]) {
+      let result = {};
+      pornstars.forEach(pornstarNickname => {
+        let keyName = pornstarNickname.replace(/ /g, '_');
+        result[keyName] = pornstarNickname;
+      })
+      return result;
+    },
+
+    parsePornstarsKeysToRealNicknames(pornstarsNicknamesKeys : string[]) {
+      return pornstarsNicknamesKeys.map(key => key.replace(/_/g,' '));
     },
 
     pushSelectedOptionListForUser(group: string, propertyName: string, value: any): void {
@@ -297,9 +310,9 @@ const settings = {
       let numberOfSelectedPornstars: number = this.pornstarsList.length;
 
       if (numberOfSelectedPornstars > 0) {
-        selectedOptions['pornstarsList'] = this.pornstarsList;
+        selectedOptions['pornstarsList'] = this.parsePornstarsKeysToRealNicknames(this.pornstarsList);
         let pornstarListPropertyName: string = (numberOfSelectedPornstars > 1) ? 'movie_with_following_pornstars' : 'movie_with_pornstar'
-        this.pushSelectedOptionListForUser('pornstarsList', pornstarListPropertyName, this.pornstarsList);
+        this.pushSelectedOptionListForUser('pornstarsList', pornstarListPropertyName, selectedOptions['pornstarsList']);
       }
       numberOfSelectedOptions += selectedOptions['pornstarsList'].length;
 
