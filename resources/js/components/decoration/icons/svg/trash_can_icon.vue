@@ -19,8 +19,8 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
 
-@Component
-export default class TrashCanIcon extends Vue {}
+export default {
+  name : "trash-can-icon"
+}
 </script>

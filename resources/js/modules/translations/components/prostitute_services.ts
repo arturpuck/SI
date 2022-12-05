@@ -19,6 +19,10 @@ const translations : {
     cum_on_body : string,
     remaining_services_description : string,
     click_to_chose_remaining_services : string,
+    trips : string,
+    prices_for_your_services_description : string,
+    add_payment_type : string,
+    remove_payment_type : string
 } = {
     classic_sex : Translator.translate('classic_sex'),
     money_amount : Translator.translate('money_amount'),
@@ -36,6 +40,10 @@ const translations : {
     cum_on_body : Translator.translate('cum_on_body'),
     remaining_services_description : Translator.translate('remaining_services_description'),
     click_to_chose_remaining_services : Translator.translate('click_to_chose_remaining_services'),
+    trips : Translator.translate('trips'),
+    prices_for_your_services_description : Translator.translate('prices_for_your_services_description'),
+    add_payment_type : Translator.translate('add_payment_type'),
+    remove_payment_type : Translator.translate('remove_payment_type')
 };
 
 export enum DefaultSexPreference {
@@ -85,6 +93,26 @@ export const SecondaryServicesList = {
     sex_with_2_males : Translator.translate('sex_with_2_males'),
     GangBang : Translator.translate('GangBang'),
     outside_together : Translator.translate('outside_together'),
+    streaptease : Translator.translate('streaptease'),
+    dancing : Translator.translate('dancing'),
+    double_penetration : Translator.translate('double_penetration'),
+}
+
+export const AvailableServiceFormsToPayFor = {
+    for_hour : Translator.translate('for_hour'),
+    for_30_minutes : Translator.translate('for_30_minutes'),
+    for_15_minutes : Translator.translate('for_15_minutes'),
+    for_night : Translator.translate('for_night'),
+    for_blowjob : Translator.translate('for_blowjob'),
+    until_first_cumshot : Translator.translate('until_first_cumshot'),
+    for_2_hours : Translator.translate('for_2_hours'),
+    for_3_hours : Translator.translate('for_3_hours')
+}
+
+export const BinaryPreferences = {
+    choose : BlankOption,
+    0 : Translator.translate('no'),
+    1 : Translator.translate('yes')
 }
 
 

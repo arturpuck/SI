@@ -173,6 +173,16 @@
         >{{ translations.money_amount }}(PLN) :</simple-labeled-input
       >
     </div>
+    <div class="limited-width service-container">
+      <select-combo
+        v-bind:select-options="BinaryPreferences"
+        v-bind:error-message-box-available="true"
+        v-bind:complete-error-display-available="true"
+        v-model="tripsPreference"
+        class="sex-preference-input"
+        >{{ translations.trips }} :</select-combo
+      >
+    </div>
     <div v-text="translations.remaining_services_description" class="info"></div>
     <div class="service-container limited-width">
       <Multiselect
@@ -182,12 +192,56 @@
       v-bind:showSearchInput="true"
     >{{translations.click_to_chose_remaining_services}}</Multiselect>
     </div>
+    <div v-text="translations.prices_for_your_services_description" class="info"></div>
+    <div class="service-container limited-width">
+      <simple-labeled-input
+        v-model="selectedServiceFormsToPayFor[0]['price']"
+        input-type="number"
+        class="money-amount"
+        >{{ translations.money_amount }}(PLN) :</simple-labeled-input
+      >
+      <select-combo
+        v-bind:select-options="AvailableServiceFormsToPayFor"
+        v-bind:error-message-box-available="true"
+        v-bind:complete-error-display-available="true"
+        v-model="selectedServiceFormsToPayFor[0]['unit']"
+        class="service-unit"
+        ></select-combo>
+    </div>
+    <div v-for="(selectedPaymentType, index) in addedServiceForms" v-bind:key="index" class="service-container limited-width">
+      <simple-labeled-input
+        v-model="selectedPaymentType['price']"
+        input-type="number"
+        class="money-amount"
+        >{{ translations.money_amount }}(PLN) :</simple-labeled-input
+      >
+      <select-combo
+        v-bind:select-options="AvailableServiceFormsToPayFor"
+        v-bind:error-message-box-available="true"
+        v-bind:complete-error-display-available="true"
+        v-model="selectedPaymentType['unit']"
+        class="service-unit"
+        ></select-combo>
+    </div>
+    <div class="other-controls limited-width">
+      <add-button v-on:click="addServicePaymentForm">{{translations.add_payment_type}}</add-button>
+      <remove-button v-on:click="removeServicePaymentForm">{{translations.remove_payment_type}}</remove-button>
+    </div>
   </section>
 </template>
 
 
 <style lang="scss" scoped>
 @import "~sass/fonts";
+
+.service-unit {
+  flex-grow:10;
+  margin-left:5px;
+}
+
+.other-controls {
+  padding: 5px 0;
+}
 .services-list {
   background: rgba(0, 0, 0, 0.7);
 }
@@ -238,9 +292,14 @@ import { DefaultSexPreference } from "@jsmodules/translations/components/prostit
 import { BlowjobPreferencesOptionsList } from "@jsmodules/translations/components/prostitute_services";
 import { BlowjobPreference } from "@jsmodules/translations/components/prostitute_services";
 import { SecondaryServicesList } from "@jsmodules/translations/components/prostitute_services";
+import { AvailableServiceFormsToPayFor } from "@jsmodules/translations/components/prostitute_services";
+import { BinaryPreferences } from "@jsmodules/translations/components/prostitute_services";
 import SimpleLabeledSelect from "@jscomponents-form-controls/simple_labeled_select.vue";
 import SimpleLabeledInput from "@jscomponents-form-controls/simple_labeled_input.vue";
 import Multiselect from '@jscomponents-form-controls/multiselect.vue';
+import LabeledCheckbox from "@jscomponents/form_controls/labeled_checkbox.vue";
+import AddButton from "@jscomponents-form-controls/add_button.vue";
+import RemoveButton from "@jscomponents-form-controls/remove_button.vue";
 
 export default {
   name: "prostitute-services",
@@ -250,6 +309,9 @@ export default {
     SimpleLabeledSelect,
     SimpleLabeledInput,
     Multiselect,
+    LabeledCheckbox,
+    RemoveButton,
+    AddButton,
   },
 
   data() {
@@ -265,6 +327,7 @@ export default {
       clientRimmingPreference : 0,
       kissingPreference : 0,
       cumOnBodyPreference : 0,
+      tripsPreference : "choose",
       analAditionalPayment : 100,
       vaginalSexAditionalPayment : 100,
       blowjobAditionalPayment : 100,
@@ -279,14 +342,24 @@ export default {
       SecondaryServicesList,
       DefaultPreferencesOptionsList,
       BlowjobPreferencesOptionsList,
+      AvailableServiceFormsToPayFor,
+      BinaryPreferences,
+      selectedServiceFormsToPayFor : [{unit : 'for_hour', price : 200}],
+      allServiceFormsUnits : Object.keys(AvailableServiceFormsToPayFor),
     };
   },
 
   computed: {
+
     showVaginalSexAditionalPayment(): boolean {
       return (
         this.vaginalSexPreference === DefaultSexPreference.aditional_payment
       );
+    },
+
+    addedServiceForms() : [] {
+      let [firstPayment, ...addedPayments] = this.selectedServiceFormsToPayFor;
+      return addedPayments; 
     },
 
     showBlowjobAditionalPayment(): boolean {
@@ -333,6 +406,20 @@ export default {
     }
 
   },
+
+  methods : {
+    addServicePaymentForm() : void {
+      const currentNumberOfElements = this.selectedServiceFormsToPayFor.length 
+      if(currentNumberOfElements >= this.AvailableServiceFormsToPayFor.length) {
+        return;
+      }
+      this.selectedServiceFormsToPayFor.push({unit : this.allServiceFormsUnits[currentNumberOfElements], price : 200});
+    },
+
+    removeServicePaymentForm() : void {
+      this.selectedServiceFormsToPayFor.pop();
+    }
+  }
 
 };
 </script>

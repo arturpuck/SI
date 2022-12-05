@@ -29,13 +29,6 @@ export default class LabeledCheckbox extends Vue {
   readonly name: string;
 
   @Prop({
-    type: Object,
-    required: false,
-    default: undefined,
-  })
-  readonly aditionalClasses: object;
-
-  @Prop({
     type: Boolean,
     required: false,
     default: false,
@@ -61,11 +54,6 @@ export default class LabeledCheckbox extends Vue {
   }
 
   mounted() {
-    if (this.aditionalClasses) {
-      Object.keys(this.aditionalClasses).forEach((key) =>
-        (<HTMLElement>this.$refs[key]).classList.add(this.aditionalClasses[key])
-      );
-    }
 
     (<HTMLInputElement>this.$refs.checkbox).checked = this.checkedAtStart;
     this.$emit("input", this.checkedAtStart);
@@ -74,6 +62,7 @@ export default class LabeledCheckbox extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import "~sass/fonts";
 .labeled-checkbox {
   opacity: 0;
 }
@@ -83,6 +72,7 @@ export default class LabeledCheckbox extends Vue {
   padding: 0 8px;
   line-height: 1em;
   color: white;
+  @include responsive-font(1vw, 16px);
   &:before {
     content: "";
     display: inline-block;

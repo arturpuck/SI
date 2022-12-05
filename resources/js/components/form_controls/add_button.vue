@@ -1,7 +1,7 @@
 <template>
  <button v-on:click="send" class="add-button">
-    <span v-text="Translator.translate('add_comment_short')"></span>
-    <add-plus-icon class="add-comment-decoration"></add-plus-icon>
+    <slot></slot>
+    <add-plus-icon class="add-button-decoration"></add-plus-icon>
 </button> 
 </template>
 
@@ -32,26 +32,26 @@ export default {
 
 .add-button {
   background: linear-gradient(#11ea11, #205a07);
-  border-radius: 0.7vw;
+  border-radius:5px;
   border: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   flex-wrap: nowrap;
   margin: 0 5px;
-  padding: 0.3vw;
+  padding: 4px;
   color: white;
   outline: none;
-  @include responsive-font();
+  @include responsive-font(1vw, 16px);
   cursor: pointer;
   &:active {
     transform: scale(1.05);
   }
   &:hover {
-    background: linear-gradient(#da3232, #3e0606);
+    filter: saturate(1.7);
   }
 }
 
-.add-comment-decoration {
+.add-button-decoration {
   margin: 0 4px;
   width: 1em;
   height: auto;

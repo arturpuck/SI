@@ -55,7 +55,7 @@
     <add-button
       class="add-comment-button"
       v-on:click="saveComment"
-    ></add-button>
+    >{{addButtonCaption}}</add-button>
     <button-close v-on:click="emitCloseEvent"></button-close>
     </section>
   </section>
@@ -112,6 +112,7 @@ export default {
       userComment: "",
       textAreaHeightCSS: "",
       paddingCSS: "2px",
+      addButtonCaption : Translator.translate('add_comment_short')
     };
   },
 

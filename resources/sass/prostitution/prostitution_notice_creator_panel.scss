@@ -5,12 +5,13 @@
 .prostitution-offer-creator {
     width:95%;
     max-width:1300px;
-    margin:0 auto;
+    margin:0 auto 50px;
 }
 
 .prostitution-notice-background {
     background: url('/images/decoration/prostitution/add_notice-min.jpeg');
     background-size:cover;
+    background-attachment: fixed;
 }
 
 .offer-editor {
