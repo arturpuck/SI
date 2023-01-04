@@ -167,6 +167,8 @@ export default {
 <style lang="scss" scoped>
 @import "~sass/fonts";
 @import "~sass/nice_scrollbar";
+@import "~sass/custom_inputs_font_size";
+
 @mixin naked-list {
   list-style-type: none;
   margin: 0;
@@ -182,6 +184,7 @@ export default {
   padding: 4px;
   border-radius: 7px;
   background: #242229;
+  border: 1px solid #4a4646;
   cursor: pointer;
   @include responsive-font();
 
@@ -194,7 +197,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    @include responsive-font(1vw, 16px);
+    @include custom-input-font-size();
   }
 
   &__caption {

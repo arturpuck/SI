@@ -212,6 +212,7 @@
   <style lang="scss" scoped>
   @import "~sass/error_message_box";
   @import "~sass/fonts";
+  @import "~sass/custom_inputs_font_size";
   
   .select-label {
     display: flex;
@@ -222,7 +223,7 @@
     margin: 0 auto;
     background: #242229;
     position: relative;
-    border: 2px solid transparent;
+    border: 1px solid #4a4646;
     height: 2em;
   }
   
@@ -242,15 +243,15 @@
   .described-select,
   .select-description,
   .select-label {
-    @include responsive-font(1vw, 16px);
+    @include custom-input-font-size();
   }
   
   .incorrect-value {
-    border: 2px solid red;
+    border: 1px solid red;
   }
   
   .correct-value {
-    border: 2px solid green;
+    border: 1px solid green;
   }
   </style>
 

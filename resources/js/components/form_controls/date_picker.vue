@@ -373,7 +373,7 @@ export default {
   justify-content: space-evenly;
   background: #242229;
   padding: 3px 7px;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   position: relative;
   width: 95%;
   height: 2em;
@@ -386,7 +386,7 @@ export default {
   border-radius: 4px;
   background: #242229;
   color: white;
-  border: 1px solid black;
+  border: 1px solid #4a4646;
   @include responsive-font(1vw, 14px);
 }
 
@@ -402,10 +402,10 @@ export default {
 }
 
 .incorrect-value {
-  border: 2px solid red;
+  border: 1px solid red;
 }
 
 .correct-value {
-  border: 2px solid green;
+  border: 1px solid green;
 }
 </style>

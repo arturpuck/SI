@@ -2,7 +2,7 @@
 
 .error-message-box{
 	display:block;
-	@include responsive-font(1vw,13px);
+	@include responsive-font(1vw,12px);
 	color:red;
 	padding:2px 2px 3px;
 	text-align: center;

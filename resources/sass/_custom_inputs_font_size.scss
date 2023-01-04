@@ -1,0 +1,5 @@
+@import 'fonts';
+
+@mixin custom-input-font-size {
+    @include responsive-font(1vw, 15px, "Exo 2", 1500px);
+}

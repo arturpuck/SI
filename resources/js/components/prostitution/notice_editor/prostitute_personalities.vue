@@ -83,26 +83,20 @@ import SimpleLabeledInput from "@jscomponents-form-controls/simple_labeled_input
 import SimpleLabeledSelect from "@jscomponents-form-controls/simple_labeled_select.vue";
 import SelectCombo from "@jscomponents/form_controls/select_combo.vue";
 import Routes from "@config/paths/routes";
-import InputComboState from "@interfaces/InputComboState";
 import checkIfUserIsAdult from "@jsmodules/helpers/adult_check";
 import checkIfUserExceedsMaximumPossibleAge from "@jsmodules/helpers/max_age_check";
 import { UserType } from "@js/enum/user_type";
+import ErrorOnComboForProstitueAnnouncements from "@mixins/components/prostitute_announcement_creator/error_on_combo_input";
 const blankOption = `--${Translations.choose_options}--`;
-const comboInputErrorState: InputComboState = {
-  valueIsCorrect: false,
-};
 
 export default {
   name: "prostitute-personalities",
 
+  mixins : [ErrorOnComboForProstitueAnnouncements],
+
   emits : ['validated'],
 
   methods: {
-    showErrorOnComboInput(id: string, errorMessage: string): void {
-      comboInputErrorState.errorMessage = errorMessage;
-      this.validationIsSuccessfull = false;
-      this.emitter.emit(`showIfValueIsOK${id}`, comboInputErrorState);
-    },
 
     validateSelectedOptions(): void {
       this.resetAllValidation();
@@ -264,7 +258,6 @@ export default {
       sexualOrientationsList: [],
       sexualOrientation: 0,
       hairColor: 0,
-      validationIsSuccessfull: true,
       birthDate: null,
       hairColorsList: {
         0: blankOption,

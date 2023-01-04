@@ -1,138 +1,110 @@
 <template>
-  <div class="labeled-checkbox-container">
-    <input
-      v-bind:checked="modelValue"
-      v-bind:value="checkboxValue"
-      v-on:input="updateModel"
-      ref="checkbox"
-      type="checkbox"
-      class="labeled-checkbox"
-      v-bind:name="name"
-      v-bind:id="name"
-    />
-    <label ref="label" v-bind:for="name" class="labeled-checkbox-description"
-      ><slot></slot
-    ></label>
+  <div
+    v-on:click="updateModel"
+    role="checkbox"
+    v-bind:aria-checked="checkboxIsChecked"
+    class="labeled-checkbox-container"
+  >
+    <input type="hidden" v-if="checkboxIsChecked" v-bind:name="name" />
+    <div
+      v-bind:class="{ 'checked-outer-decoration': checkboxIsChecked }"
+      class="checkbox-decoration"
+    >
+      <div
+        v-bind:class="{ 'checked-mark': checkboxIsChecked }"
+        class="check-mark"
+      ></div>
+    </div>
+    <span class="labeled-checkbox-description">
+      <slot></slot>
+    </span>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Options, Prop } from "vue-property-decorator";
+export default {
+  name: "labeled-checkbox",
 
-@Options({ name: "LabeledCheckbox" })
-export default class LabeledCheckbox extends Vue {
-  @Prop({
-    type: String,
-    required: false,
-    default: "labeled-checkbox",
-  })
-  readonly name: string;
+  data() {
+    return {
+      checkboxIsChecked: false,
+    };
+  },
 
-  @Prop({
-    type: Boolean,
-    required: false,
-    default: false,
-  })
-  readonly checkedAtStart: boolean;
+  props: {
+    name: {
+      type: String,
+      required: false,
+      default: "labeled-checkbox",
+    },
 
-  @Prop({
-    required: false,
-    default: false,
-  })
-  readonly modelValue;
+    modelValue: {
+      required: false,
+      default: false,
+    },
 
-  @Prop({
-    required: false,
-    default: 1,
-  })
-  readonly checkboxValue;
+    checkboxValue: {
+      required: false,
+      default: 1,
+    },
+  },
 
-  private checked: boolean = false;
+  methods: {
+    updateModel() {
+      this.checkboxIsChecked = !this.checkboxIsChecked;
+      this.$emit("update:modelValue", this.checkboxIsChecked);
+    },
+  },
 
-  updateModel(event) {
-    this.$emit("update:modelValue", event.target.checked);
-  }
+  watch : {
+    modelValue() {
+      this.checkboxIsChecked = this.modelValue;
+    }
+  },
 
   mounted() {
-
-    (<HTMLInputElement>this.$refs.checkbox).checked = this.checkedAtStart;
-    this.$emit("input", this.checkedAtStart);
+    this.checkboxIsChecked = this.modelValue;
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 @import "~sass/fonts";
-.labeled-checkbox {
-  opacity: 0;
-}
-
-.labeled-checkbox-description {
-  position: relative;
-  padding: 0 8px;
-  line-height: 1em;
-  color: white;
-  @include responsive-font(1vw, 16px);
-  &:before {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: -1.2vw;
-    width: 1.2vw;
-    height: 1.2vw;
-    cursor: pointer;
-    background: white;
-    border: none;
-    border-radius: 2px;
-    z-index: 1;
-  }
-  &:after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: -0.8vw;
-    width: 0.3vw;
-    height: 0.8vw;
-    cursor: pointer;
-    border-bottom: 2px solid white;
-    border-right: 2px solid white;
-    z-index: 2;
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-    opacity: 0;
-  }
-}
-
-@media (max-width: 1200px) {
-  .labeled-checkbox-description:before {
-    left: -16px;
-    width: 16px;
-    height: 16px;
-  }
-
-  .labeled-checkbox-description:after {
-    left: -11px;
-    width: 5px;
-    height: 12px;
-  }
-}
 
 .labeled-checkbox-container {
   display: inline-flex;
   align-items: center;
+  @include responsive-font(1vw, 16px);
+  cursor: pointer;
 }
 
-.labeled-checkbox:hover + .labeled-checkbox-description:before {
-  background: #e80e53;
+.checkbox-decoration {
+  width: 1.3em;
+  height: 1.3em;
+  border-radius: 4px;
+  background: white;
+  min-width: 20px;
+  min-height: 20px;
 }
 
-.labeled-checkbox:checked + .labeled-checkbox-description:before {
-  background: #e80e53;
+.check-mark {
+  clip-path: polygon(28% 38%, 41% 53%, 75% 24%, 86% 38%, 40% 78%, 15% 50%);
+  background: white;
+  display: none;
+  width: 100%;
+  height: 100%;
 }
 
-.labeled-checkbox:checked + .labeled-checkbox-description:after {
-  opacity: 1;
+.checked-outer-decoration {
+  background: rgb(240, 6, 123);
+}
+
+.checked-mark {
+  display: block;
+}
+
+.labeled-checkbox-description {
+  color: white;
+  margin-left: 5px;
 }
 </style>

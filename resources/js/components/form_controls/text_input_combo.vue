@@ -102,6 +102,7 @@ export default {
   created() {
     this.initiateSettings();
     this.attachEventListeners();
+    this.inputValue = this.modelValue;
   },
 
   methods: {
@@ -242,7 +243,7 @@ export default {
     isDisabled: {
       required: false,
       type: Boolean,
-      default: false,
+      default: false, 
     },
 
     uniqueId: {
@@ -257,6 +258,7 @@ export default {
 <style lang="scss" scoped>
 @import "~sass/error_message_box";
 @import "~sass/fonts";
+@import "~sass/custom_inputs_font_size";
 
 .icon-container {
   top: 0;
@@ -284,9 +286,9 @@ export default {
   color: white;
   width: 95%;
   margin: 0 auto;
-  border: 2px solid transparent;
   position: relative;
   height: 2em;
+  border: 1px solid #4a4646;
 }
 
 .text-input-description {
@@ -321,7 +323,7 @@ export default {
 .text-input-combo-value,
 .text-input-description,
 .text-input-combo-value-label {
-  @include responsive-font;
+  @include custom-input-font-size();
 }
 
 .text-input-combo-value:focus {
@@ -330,10 +332,10 @@ export default {
 }
 
 .incorrect-value {
-  border: 2px solid red;
+  border: 1px solid red;
 }
 
 .correct-value {
-  border: 2px solid green;
+  border: 1px solid green;
 }
 </style>

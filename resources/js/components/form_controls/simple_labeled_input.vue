@@ -84,6 +84,7 @@ export default class SimpleLabeledInput extends Vue {
 
 <style lang="scss">
 @import "~sass/fonts";
+@import "~sass/custom_inputs_font_size";
 
 .container {
   display: flex;
@@ -93,7 +94,7 @@ export default class SimpleLabeledInput extends Vue {
   border-radius: 8px;
   color: white;
   width: 95%;
-  border: 2px solid transparent;
+  border: 1px solid #4a4646;
   position: relative;
   height: 2em;
 }
@@ -116,7 +117,7 @@ export default class SimpleLabeledInput extends Vue {
 .container__input,
 .container__description,
 .container {
-  @include responsive-font(1vw, 16px);
+  @include custom-input-font-size();
 }
 
 .container__input:focus {

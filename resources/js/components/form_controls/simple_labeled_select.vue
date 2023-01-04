@@ -84,6 +84,7 @@ export default class SimpleLabeledSelect extends Vue {
 
 <style lang="scss" scoped>
 @import "~sass/fonts";
+@import "~sass/custom_inputs_font_size";
 
 .select-container {
   display: inline-flex;
@@ -93,7 +94,7 @@ export default class SimpleLabeledSelect extends Vue {
   color: white;
   background: #242229;
   position: relative;
-  border: 2px solid transparent;
+  border: 1px solid #4a4646;
   height: 2em;
 }
 
@@ -113,6 +114,6 @@ export default class SimpleLabeledSelect extends Vue {
 .select-container__select,
 .select-container__description,
 .select-container {
-  @include responsive-font;
+  @include custom-input-font-size();
 }
 </style>
