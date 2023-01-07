@@ -18,14 +18,15 @@
         v-show="displayIconConfirmation"
       />
       <textarea
-        v-model="inputValue"
         v-on:blur="emitBlur"
         v-bind:max="maxCharacters"
         v-bind:placeholder="placeholderText"
+        v-on:input="userEditedTextarea"
         :required="inputIsRequired"
         id="textarea-combo-message"
         v-bind:name="textareaName"
         v-bind:rows="rowsNumber"
+        v-bind:value="modelMediator"
         v-bind:class="{
           'incorrect-value': displayRedBorder,
           'correct-value': displayGreenBorder,
@@ -42,10 +43,12 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options, Prop, Emit } from "vue-property-decorator";
+import { Vue, Options, Prop, Watch } from "vue-property-decorator";
 import ComboInputBasicFunctionality from "@mixins/components/comboInputs/comboInputBasicFunctionality";
+import IconStop from '@jscomponents-decoration/icon_stop.vue';
+import IconConfirm from '@jscomponents-decoration/icon_confirm.vue';
 
-@Options({ name: "TextareaCombo", mixins : [ComboInputBasicFunctionality], emits : ['blur'] })
+@Options({ name: "TextareaCombo", components : {IconStop, IconConfirm}, mixins : [ComboInputBasicFunctionality], emits : ['blur'] })
 export default class TextAreaCombo extends Vue {
   @Prop({
     type: String,
@@ -173,13 +176,20 @@ export default class TextAreaCombo extends Vue {
   })
   readonly uniqueId: boolean;
 
+  @Prop({
+    type: String,
+    required: false,
+    default: '',
+  })
+  readonly modelValue: string;
+
   private valueOK: boolean = null;
   private errorMessage: string = '';
-  private inputValue = '';
   private iconErrorCanBeDisplayed: boolean = false;
   private iconConfirmationCanBeDisplayed: boolean = false;
   private redBorderCanBeDisplayed: boolean = false;
   private greenBorderCanBeDisplayed: boolean = false;
+  private modelMediator = '';
 
   get displayIconError() {
     return this.iconErrorCanBeDisplayed && this.valueOK === false;
@@ -198,11 +208,23 @@ export default class TextAreaCombo extends Vue {
   }
 
   emitBlur(){
-    this.$emit("blur", this.inputValue);
+    this.$emit("blur", this.modelMediator);
   }
 
+  @Watch("modelValue")
+  updateModel(newValue) {
+    console.log(`watch : ${newValue}`);
+    this.modelMediator = newValue;
+  }
+
+  userEditedTextarea(event) {
+    console.log(event.target.value);
+    this.$emit("update:modelValue", event.target.value);
+  }
+
+
   created() {
-    this.inputValue = this.initialValue;
+    this.modelMediator = this.initialValue || this.modelValue;
     this.errorMessage = this.initialErrorText;
 
     this.iconErrorCanBeDisplayed =
@@ -268,21 +290,21 @@ export default class TextAreaCombo extends Vue {
   border-radius: 8px;
   background: #242229;
   color: white;
-  border: 2px solid transparent;
+  border: 1px solid #4a4646;
   resize: none;
   color: white;
   @include responsive-font;
   &:focus {
     outline: none;
-    border: 2px solid #6e0d1a;
+    border: 1px solid #6e0d1a;
   }
 }
 
 .incorrect-value {
-  border: 2px solid red;
+  border: 1px solid red;
 }
 
 .correct-value {
-  border: 2px solid green;
+  border: 1px solid green;
 }
 </style>

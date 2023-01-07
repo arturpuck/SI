@@ -20,6 +20,10 @@
       v-show="showServices"
       v-on:validated="skipToNextSection"
     ></prostitute-services>
+    <prostitute-photos
+    v-on:validated="skipToNextSection"
+    v-show="showPhotos">
+    </prostitute-photos>
     <div class="bottom-navigation">
       <div
         class="navigation-description"
@@ -44,6 +48,7 @@ import SecureDocumentsIcon from "@svgicon/secure_documents_icon.vue";
 import ProstitutionPolicyDescription from "@jscomponents/prostitution/notice_editor/prostitution_policy_description";
 import ProstitutePersonalities from "@jscomponents/prostitution/notice_editor/prostitute_personalities";
 import ProstituteServices from "@jscomponents/prostitution/notice_editor/prostitute_services";
+import ProstitutePhotos from "@jscomponents/prostitution/notice_editor/prostitute_photos";
 import LeftArrowIcon from "@svgicon/left_arrow_icon.vue";
 import RightArrowIcon from "@svgicon/right_arrow_icon.vue";
 import IdCardIcon from "@svgicon/id_card_icon.vue";
@@ -53,6 +58,7 @@ enum Section {
   ProstitutionPolicyDescription = "ProstitutionPolicyDescription",
   ProstituteBasicInformation = "ProstituteBasicInformation",
   ProstituteServices = "ProstituteServices",
+  ProstitutePhotos = "ProstitutePhotos",
 }
 
 export default {
@@ -68,18 +74,20 @@ export default {
     RightArrowIcon,
     IdCardIcon,
     OhIcon,
-    ProstituteServices
+    ProstituteServices,
+    ProstitutePhotos
   },
 
   data() {
     return {
       translations: Translations,
       sections,
-      sectionIndex : 2,
+      sectionIndex : 3,
       orderedSections: [
         Section.ProstitutionPolicyDescription,
         Section.ProstituteBasicInformation,
-        Section.ProstituteServices
+        Section.ProstituteServices,
+        Section.ProstitutePhotos
       ]
     };
   },
@@ -128,6 +136,10 @@ export default {
 
     showServices() : boolean {
       return this.currentSection === Section.ProstituteServices;
+    },
+
+    showPhotos() : boolean {
+      return this.currentSection === Section.ProstitutePhotos;
     },
 
     iconClass() : string {

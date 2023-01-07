@@ -408,6 +408,8 @@ export default {
 
   mixins : [ErrorOnComboForProstitueAnnouncements],
 
+  emits : ['validated'],
+
   components: {
     SelectCombo,
     SimpleLabeledSelect,
@@ -541,6 +543,9 @@ export default {
       this.checkIfBasicRequiredOptionsAreSelected();
       this.validateAditionalPayments();
       this.validatePayments();
+      if(this.validationIsSuccessfull) {
+        this.$emit('validated');
+      }
     },
 
     validatePayments() : void {

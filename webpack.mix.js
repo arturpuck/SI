@@ -57,7 +57,7 @@ mix.js('resources/js/mainpage.js', 'public/js').vue()
     plugins: [
       new webpack.DefinePlugin({
         __VUE_OPTIONS_API__: true,
-        __VUE_PROD_DEVTOOLS__: true,
+        __VUE_PROD_DEVTOOLS__: false,
       }),
     ],
     resolve: {

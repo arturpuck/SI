@@ -29,6 +29,8 @@ const translations : {
     this_is_the_minimal_required_data : string,
     the_rest_is_optional : string,
     birth_date_restrictions : string,
+    announcement_description : string,
+    description_limitation : string,
 } = {
     nickname : Translator.translate('nickname'),
     birthday : Translator.translate('birthday'),
@@ -56,7 +58,9 @@ const translations : {
     phone_number : ucfirst(Translator.translate('phone_number')),
     this_is_the_minimal_required_data : ucfirst(Translator.translate('this_is_the_minimal_required_data')),
     the_rest_is_optional : ucfirst(Translator.translate('the_rest_is_optional')),
-    birth_date_restrictions : Translator.translate('birth_date_restrictions')
+    birth_date_restrictions : Translator.translate('birth_date_restrictions'),
+    announcement_description : Translator.translate('announcement_description'),
+    description_limitation : Translator.translate('maximum_2000_characters'),
 };
 
 export default translations;

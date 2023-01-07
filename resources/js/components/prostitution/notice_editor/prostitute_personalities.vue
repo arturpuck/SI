@@ -32,6 +32,16 @@
       v-bind:complete-error-display-available="true"
       >{{ translations.birthday }} :</text-input-combo
     >
+    <textarea-combo 
+      v-bind:placeholder-text="translations.description_limitation" 
+      rows-number="10"
+      unique-id="announcementDescription"
+      v-model="description"
+      v-bind:error-message-box-available="true"
+      v-bind:complete-error-display-available="true"
+      class="extended">
+      {{translations.announcement_description}}
+    </textarea-combo>
     <select-combo
       v-bind:select-options="userTypesList"
       v-bind:error-message-box-available="true"
@@ -87,6 +97,7 @@ import checkIfUserIsAdult from "@jsmodules/helpers/adult_check";
 import checkIfUserExceedsMaximumPossibleAge from "@jsmodules/helpers/max_age_check";
 import { UserType } from "@js/enum/user_type";
 import ErrorOnComboForProstitueAnnouncements from "@mixins/components/prostitute_announcement_creator/error_on_combo_input";
+import TextareaCombo from '@jscomponents-form-controls/textarea_combo.vue';
 const blankOption = `--${Translations.choose_options}--`;
 
 export default {
@@ -105,8 +116,15 @@ export default {
       this.validateUserType();
       this.validateTitsSize();
       this.validatePhoneNumber();
+      this.validateDescription();
       if(this.validationIsSuccessfull) {
         this.$emit('validated');
+      }
+    },
+
+    validateDescription() : void {
+      if(this.description.length > 2000) {
+        this.showErrorOnComboInput("announcementDescription", "the_description_exceeds_2000_characters");
       }
     },
 
@@ -130,6 +148,7 @@ export default {
       this.emitter.emit("resetValidationUserType");
       this.emitter.emit("resetValidationTitsSize");
       this.emitter.emit("resetValidationPhoneNumber");
+      this.emitter.emit("resetValidationannouncementDescription");
     },
 
     validateTitsSize(): void {
@@ -245,6 +264,7 @@ export default {
     SimpleLabeledInput,
     SimpleLabeledSelect,
     SelectCombo,
+    TextareaCombo
   },
 
   data() {
@@ -259,6 +279,7 @@ export default {
       sexualOrientation: 0,
       hairColor: 0,
       birthDate: null,
+      description : "",
       hairColorsList: {
         0: blankOption,
         blonde: "blond",
