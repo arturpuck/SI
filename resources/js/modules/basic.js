@@ -31,6 +31,7 @@ function saveAcceptedCookiesInfo()
 export default {
 
    registerBasicComponents(app) {
+      app.config.devtools = true;
       app.config.compilerOptions.whitespace = 'preserve';
       app.config.globalProperties.emitter = EventBus;
       app.config.globalProperties.translator = Translator;

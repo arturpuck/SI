@@ -1,5 +1,5 @@
 <template>
-  <div class="text-input-combo-container">
+  <div>
     <div
       v-if="errorMessageBoxAvailable"
       v-text="errorMessage"
