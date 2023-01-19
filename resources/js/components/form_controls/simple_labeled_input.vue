@@ -82,7 +82,7 @@ export default class SimpleLabeledInput extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "~sass/fonts";
 @import "~sass/custom_inputs_font_size";
 

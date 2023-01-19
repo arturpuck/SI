@@ -242,10 +242,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=template&id=0a577a4c":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=template&id=0a577a4c ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=template&id=0a577a4c&scoped=true":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=template&id=0a577a4c&scoped=true ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -257,6 +257,7 @@ exports.render = render;
 
 var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+(0, _vue.pushScopeId)("data-v-0a577a4c");
 var _hoisted_1 = {
   "class": "container"
 };
@@ -264,9 +265,10 @@ var _hoisted_2 = {
   "class": "container__description"
 };
 var _hoisted_3 = ["disabled", "name", "required", "placeholder", "value", "type", "min", "max"];
+(0, _vue.popScopeId)();
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("label", _hoisted_1, [(0, _vue.createElementVNode)("span", _hoisted_2, [(0, _vue.renderSlot)(_ctx.$slots, "default")]), (0, _vue.createElementVNode)("input", {
+  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("label", _hoisted_1, [(0, _vue.createElementVNode)("span", _hoisted_2, [(0, _vue.renderSlot)(_ctx.$slots, "default", {}, undefined, true)]), (0, _vue.createElementVNode)("input", {
     disabled: _ctx.isDisabled,
     name: _ctx.name,
     required: _ctx.inputIsRequired,
@@ -409,10 +411,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".fixed-shadow-container {\n  position:
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-28.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-28.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-28.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-28.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-28.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-28.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-28.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-28.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-28.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss&scoped=true":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-28.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-28.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-28.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss&scoped=true ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -422,7 +424,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".container {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: baseline;\n  -webkit-align-items: baseline;\n     -moz-box-align: baseline;\n      -ms-flex-align: baseline;\n          align-items: baseline;\n  background: #242229;\n  padding: 3px 10px;\n  -webkit-border-radius: 8px;\n     -moz-border-radius: 8px;\n          border-radius: 8px;\n  color: white;\n  width: 95%;\n  border: 1px solid #4a4646;\n  position: relative;\n  height: 2em;\n}\n.container__description {\n  white-space: nowrap;\n}\n.container__input {\n  background: #242229;\n  border: none;\n  border-bottom: 1px solid transparent;\n  color: #fff;\n  width: 1%;\n  -webkit-box-flex: 10;\n  -webkit-flex-grow: 10;\n     -moz-box-flex: 10;\n      -ms-flex-positive: 10;\n          flex-grow: 10;\n  padding-left: 4px;\n  -webkit-box-shadow: 0 0 0 1000px #242229 inset;\n     -moz-box-shadow: 0 0 0 1000px #242229 inset;\n          box-shadow: 0 0 0 1000px #242229 inset;\n}\n.container__input,\n.container__description,\n.container {\n  font-size: 1vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1500px) {\n.container__input,\n    .container__description,\n    .container {\n      font-size: 15px;\n}\n}\n.container__input:focus {\n  outline: none;\n  border-bottom: 1px solid #86838f;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".container[data-v-0a577a4c] {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: baseline;\n  -webkit-align-items: baseline;\n     -moz-box-align: baseline;\n      -ms-flex-align: baseline;\n          align-items: baseline;\n  background: #242229;\n  padding: 3px 10px;\n  -webkit-border-radius: 8px;\n     -moz-border-radius: 8px;\n          border-radius: 8px;\n  color: white;\n  width: 95%;\n  border: 1px solid #4a4646;\n  position: relative;\n  height: 2em;\n}\n.container__description[data-v-0a577a4c] {\n  white-space: nowrap;\n}\n.container__input[data-v-0a577a4c] {\n  background: #242229;\n  border: none;\n  border-bottom: 1px solid transparent;\n  color: #fff;\n  width: 1%;\n  -webkit-box-flex: 10;\n  -webkit-flex-grow: 10;\n     -moz-box-flex: 10;\n      -ms-flex-positive: 10;\n          flex-grow: 10;\n  padding-left: 4px;\n  -webkit-box-shadow: 0 0 0 1000px #242229 inset;\n     -moz-box-shadow: 0 0 0 1000px #242229 inset;\n          box-shadow: 0 0 0 1000px #242229 inset;\n}\n.container__input[data-v-0a577a4c],\n.container__description[data-v-0a577a4c],\n.container[data-v-0a577a4c] {\n  font-size: 1vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1500px) {\n.container__input[data-v-0a577a4c],\n    .container__description[data-v-0a577a4c],\n    .container[data-v-0a577a4c] {\n      font-size: 15px;\n}\n}\n.container__input[data-v-0a577a4c]:focus {\n  outline: none;\n  border-bottom: 1px solid #86838f;\n}\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -475,16 +477,16 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-28.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-28.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-28.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-28.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-28.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-28.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-28.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-28.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-28.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss&scoped=true":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-28.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-28.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-28.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss&scoped=true ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_28_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_28_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_28_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_simple_labeled_input_vue_vue_type_style_index_0_id_0a577a4c_lang_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-28.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-28.use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-28.use[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-28.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-28.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-28.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_28_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_28_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_28_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_simple_labeled_input_vue_vue_type_style_index_0_id_0a577a4c_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-28.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-28.use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-28.use[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss&scoped=true */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-28.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-28.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-28.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss&scoped=true");
 
             
 
@@ -493,11 +495,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_28_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_28_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_28_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_simple_labeled_input_vue_vue_type_style_index_0_id_0a577a4c_lang_scss__WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_28_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_28_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_28_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_simple_labeled_input_vue_vue_type_style_index_0_id_0a577a4c_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_28_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_28_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_28_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_simple_labeled_input_vue_vue_type_style_index_0_id_0a577a4c_lang_scss__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_28_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_28_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_28_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_simple_labeled_input_vue_vue_type_style_index_0_id_0a577a4c_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
@@ -565,15 +567,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "__esModule": function() { return /* reexport safe */ _simple_labeled_input_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__.__esModule; }
 /* harmony export */ });
-/* harmony import */ var _simple_labeled_input_vue_vue_type_template_id_0a577a4c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./simple_labeled_input.vue?vue&type=template&id=0a577a4c */ "./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=template&id=0a577a4c");
+/* harmony import */ var _simple_labeled_input_vue_vue_type_template_id_0a577a4c_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./simple_labeled_input.vue?vue&type=template&id=0a577a4c&scoped=true */ "./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=template&id=0a577a4c&scoped=true");
 /* harmony import */ var _simple_labeled_input_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./simple_labeled_input.vue?vue&type=script&lang=ts */ "./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=script&lang=ts");
-/* harmony import */ var _simple_labeled_input_vue_vue_type_style_index_0_id_0a577a4c_lang_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss */ "./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss");
+/* harmony import */ var _simple_labeled_input_vue_vue_type_style_index_0_id_0a577a4c_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss&scoped=true */ "./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss&scoped=true");
 
 
 
 
 ;
-_simple_labeled_input_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__.default.render = _simple_labeled_input_vue_vue_type_template_id_0a577a4c__WEBPACK_IMPORTED_MODULE_0__.render
+_simple_labeled_input_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__.default.render = _simple_labeled_input_vue_vue_type_template_id_0a577a4c_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render
+_simple_labeled_input_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__.default.__scopeId = "data-v-0a577a4c"
 /* hot reload */
 if (false) {}
 
@@ -676,18 +679,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=template&id=0a577a4c":
-/*!******************************************************************************************************!*\
-  !*** ./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=template&id=0a577a4c ***!
-  \******************************************************************************************************/
+/***/ "./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=template&id=0a577a4c&scoped=true":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=template&id=0a577a4c&scoped=true ***!
+  \******************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_simple_labeled_input_vue_vue_type_template_id_0a577a4c__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
-/* harmony export */   "render": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_simple_labeled_input_vue_vue_type_template_id_0a577a4c__WEBPACK_IMPORTED_MODULE_0__.render; }
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_simple_labeled_input_vue_vue_type_template_id_0a577a4c_scoped_true__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
+/* harmony export */   "render": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_simple_labeled_input_vue_vue_type_template_id_0a577a4c_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render; }
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_simple_labeled_input_vue_vue_type_template_id_0a577a4c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./simple_labeled_input.vue?vue&type=template&id=0a577a4c */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=template&id=0a577a4c");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_simple_labeled_input_vue_vue_type_template_id_0a577a4c_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./simple_labeled_input.vue?vue&type=template&id=0a577a4c&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=template&id=0a577a4c&scoped=true");
 
 
 /***/ }),
@@ -720,14 +723,14 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss":
-/*!*********************************************************************************************************************!*\
-  !*** ./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss ***!
-  \*********************************************************************************************************************/
+/***/ "./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss&scoped=true":
+/*!*********************************************************************************************************************************!*\
+  !*** ./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss&scoped=true ***!
+  \*********************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_28_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_28_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_28_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_simple_labeled_input_vue_vue_type_style_index_0_id_0a577a4c_lang_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-28.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-28.use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-28.use[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-28.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-28.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-28.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_28_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_28_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_28_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_simple_labeled_input_vue_vue_type_style_index_0_id_0a577a4c_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-28.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-28.use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-28.use[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss&scoped=true */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-28.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-28.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-28.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/form_controls/simple_labeled_input.vue?vue&type=style&index=0&id=0a577a4c&lang=scss&scoped=true");
 
 
 /***/ }),

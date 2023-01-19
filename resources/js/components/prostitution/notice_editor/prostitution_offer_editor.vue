@@ -14,6 +14,8 @@
     ></prostitution-policy-description>
     <prostitute-personalities
       v-show="showBasicInformation"
+      v-bind:user-types-list="userTypesList"
+      v-bind:sexual-orientations-list="sexualOrientationsList"
       v-on:validated="skipToNextSection"
     ></prostitute-personalities>
     <prostitute-services
@@ -22,8 +24,10 @@
     ></prostitute-services>
     <prostitute-photos
     v-on:validated="skipToNextSection"
+    v-bind:token="token"
     v-show="showPhotos">
     </prostitute-photos>
+    <prostitute-location-and-working-hours></prostitute-location-and-working-hours>
     <div class="bottom-navigation">
       <div
         class="navigation-description"
@@ -45,20 +49,24 @@ import Translations, {
 } from "@jsmodules/translations/components/prostitution_offer_editor";
 import SimpleLabeledSelect from "@jscomponents-form-controls/simple_labeled_select.vue";
 import SecureDocumentsIcon from "@svgicon/secure_documents_icon.vue";
+import Routes from "@config/paths/routes";
 import ProstitutionPolicyDescription from "@jscomponents/prostitution/notice_editor/prostitution_policy_description";
 import ProstitutePersonalities from "@jscomponents/prostitution/notice_editor/prostitute_personalities";
 import ProstituteServices from "@jscomponents/prostitution/notice_editor/prostitute_services";
 import ProstitutePhotos from "@jscomponents/prostitution/notice_editor/prostitute_photos";
+import ProstituteLocationAndWorkingHours from "@jscomponents/prostitution/notice_editor/prostitute_location_and_working_hours";
 import LeftArrowIcon from "@svgicon/left_arrow_icon.vue";
 import RightArrowIcon from "@svgicon/right_arrow_icon.vue";
 import IdCardIcon from "@svgicon/id_card_icon.vue";
 import OhIcon from "@svgicon/oh_icon.vue";
+import ImagePhotographyIcon from "@svgicon/image_photography_icon.vue";
 
 enum Section {
   ProstitutionPolicyDescription = "ProstitutionPolicyDescription",
   ProstituteBasicInformation = "ProstituteBasicInformation",
   ProstituteServices = "ProstituteServices",
   ProstitutePhotos = "ProstitutePhotos",
+  ProstituteLocationAndWorkingHours = "ProstituteLocationAndWorkingHours",
 }
 
 export default {
@@ -75,7 +83,9 @@ export default {
     IdCardIcon,
     OhIcon,
     ProstituteServices,
-    ProstitutePhotos
+    ProstituteLocationAndWorkingHours,
+    ProstitutePhotos,
+    ImagePhotographyIcon
   },
 
   data() {
@@ -87,8 +97,12 @@ export default {
         Section.ProstitutionPolicyDescription,
         Section.ProstituteBasicInformation,
         Section.ProstituteServices,
-        Section.ProstitutePhotos
-      ]
+        Section.ProstitutePhotos,
+        Section.ProstituteLocationAndWorkingHours
+      ],
+      userTypesList : [],
+      sexualOrientationsList : [],
+      token : ''
     };
   },
 
@@ -106,6 +120,61 @@ export default {
       this.sectionIndex = this.sectionIndex <= 0 ? 0 : this.sectionIndex - 1;
     },
 
+    prepareSelectValues(): void {
+      this.fetchAvailableOptions().then(this.updateSelects);
+    },
+
+    fetchAvailableOptions() {
+      const requestData = {
+        method: "GET",
+        headers: {
+          "X-CSRF-TOKEN": this.csrfToken,
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      };
+
+      return fetch(Routes.noticeFormOptions, requestData);
+    },
+
+    async updateSelects(response) {
+      if (response.status === 200) {
+        const availableOptions = await response.json();
+        const userTypesList = this.parseForSelectOptions(
+          availableOptions["userTypes"],
+          "user_type_name"
+        );
+        const sexualOrientationsList = this.parseForSelectOptions(
+          availableOptions["sexualOrientations"],
+          "sexual_orientation_name"
+        );
+        this.userTypesList = userTypesList;
+        this.sexualOrientationsList = sexualOrientationsList;
+        this.token = availableOptions["token"];
+      } else {
+        this.notifyUserAboutFetchError();
+      }
+    },
+
+    parseForSelectOptions(options, keyName: string): object {
+      const result = { 0: `--${Translations.choose_options}--` };
+      options.forEach((option) => {
+        result[option.id] = Translations[option[keyName]];
+      });
+      return result;
+    },
+
+    notifyUserAboutFetchError(): void {
+      this.emitter.emit("showNotification", {
+        notificationText: "an_error_occured_while_fetching_required_data",
+        notificationType: "error",
+        headerText: "error",
+      });
+    },
+
+  },
+
+  mounted() {
+    this.prepareSelectValues();
   },
 
   computed: {
@@ -113,7 +182,8 @@ export default {
       const iconComponentNamesBySection = {
         ProstitutionPolicyDescription : "SecureDocumentsIcon",
         ProstituteBasicInformation : "IdCardIcon",
-        ProstituteServices : "OhIcon"
+        ProstituteServices : "OhIcon",
+        ProstitutePhotos : "ImagePhotographyIcon"
       } 
       return iconComponentNamesBySection[this.currentSection];
     },
@@ -142,11 +212,16 @@ export default {
       return this.currentSection === Section.ProstitutePhotos;
     },
 
+    showLocationAndWorkingHours() : boolean {
+     return this.currentSection === Section.ProstituteLocationAndWorkingHours;
+    },
+
     iconClass() : string {
       const classesNameBySection = {
         ProstitutionPolicyDescription : "policy-section",
         ProstituteBasicInformation : "personalities-section",
-        ProstituteServices : "services-section"
+        ProstituteServices : "services-section",
+        ProstitutePhotos : "photos-section",
       }
       return classesNameBySection[this.currentSection];
     }
@@ -168,6 +243,11 @@ export default {
 
 .personalities-section {
   fill: #2bd71b;
+}
+
+.photos-section {
+  fill:#fbf7f8;
+  width: auto;
 }
 
 

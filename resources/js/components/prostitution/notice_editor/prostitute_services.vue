@@ -337,7 +337,7 @@
   padding: 5px 0;
 }
 .services-list {
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.85);
 }
 
 .limited-width {

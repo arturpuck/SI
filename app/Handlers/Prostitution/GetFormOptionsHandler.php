@@ -12,8 +12,12 @@ class GetFormOptionsHandler
 {
     public function handle() : JsonResponse
     {
-        $token = Str::random(rand(4,8));
-        Session::put('token', $token);
+        if(Session::has('token')) {
+            $token = Session::get('token');
+        } else {
+            $token = strtoupper(Str::random(rand(4,8)));
+            Session::put('token', $token);
+        }
         $formOptions = [
             'userTypes' => UserType::all(),
             'sexualOrientations' => SexualOrientation::all(),

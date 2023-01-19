@@ -92,7 +92,6 @@ import Translations from "@jsmodules/translations/components/prostitute_basic_in
 import SimpleLabeledInput from "@jscomponents-form-controls/simple_labeled_input.vue";
 import SimpleLabeledSelect from "@jscomponents-form-controls/simple_labeled_select.vue";
 import SelectCombo from "@jscomponents/form_controls/select_combo.vue";
-import Routes from "@config/paths/routes";
 import checkIfUserIsAdult from "@jsmodules/helpers/adult_check";
 import checkIfUserExceedsMaximumPossibleAge from "@jsmodules/helpers/max_age_check";
 import { UserType } from "@js/enum/user_type";
@@ -106,6 +105,21 @@ export default {
   mixins : [ErrorOnComboForProstitueAnnouncements],
 
   emits : ['validated'],
+
+  props : {
+    userTypesList : {
+      type : Array,
+      default : [],
+      required : true
+    },
+
+    sexualOrientationsList : {
+      type : Array,
+      default : [],
+      required : true
+    },
+
+  },
 
   methods: {
 
@@ -199,55 +213,6 @@ export default {
       }
     },
 
-    prepareSelectValues(): void {
-      this.fetchAvailableOptions().then(this.updateSelects);
-    },
-
-    fetchAvailableOptions() {
-      const requestData = {
-        method: "GET",
-        headers: {
-          "X-CSRF-TOKEN": this.csrfToken,
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      };
-
-      return fetch(Routes.noticeFormOptions, requestData);
-    },
-
-    async updateSelects(response) {
-      if (response.status === 200) {
-        const availableOptions = await response.json();
-        const userTypesList = this.parseForSelectOptions(
-          availableOptions["userTypes"],
-          "user_type_name"
-        );
-        const sexualOrientationsList = this.parseForSelectOptions(
-          availableOptions["sexualOrientations"],
-          "sexual_orientation_name"
-        );
-        this.userTypesList = userTypesList;
-        this.sexualOrientationsList = sexualOrientationsList;
-      } else {
-        this.notifyUserAboutFetchError();
-      }
-    },
-
-    parseForSelectOptions(options, keyName: string): object {
-      const result = { 0: `--${Translations.choose_options}--` };
-      options.forEach((option) => {
-        result[option.id] = Translations[option[keyName]];
-      });
-      return result;
-    },
-
-    notifyUserAboutFetchError(): void {
-      this.emitter.emit("showNotification", {
-        notificationText: "an_error_occured_while_fetching_required_data",
-        notificationType: "error",
-        headerText: "error",
-      });
-    },
   },
 
   computed: {
@@ -273,9 +238,7 @@ export default {
       nickname: "",
       phoneNumber: "",
       csrfToken: "",
-      userTypesList: [],
       userType: 0,
-      sexualOrientationsList: [],
       sexualOrientation: 0,
       hairColor: 0,
       birthDate: null,
@@ -297,7 +260,6 @@ export default {
   },
 
   mounted() {
-    this.prepareSelectValues();
     this.emitter.on(
       "prostituteBasicInformationValidator",
       this.validateSelectedOptions

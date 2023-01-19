@@ -1,6 +1,6 @@
 <template>
   <button
-    v-bind:title="translations['title']"
+    v-bind:title="buttonTitle"
     type="button"
     class="button-close"
   >
@@ -16,16 +16,31 @@
         d="M6,6H6a20.53,20.53,0,0,1,29,0l26.5,26.49L87.93,6a20.54,20.54,0,0,1,29,0h0a20.53,20.53,0,0,1,0,29L90.41,61.44,116.9,87.93a20.54,20.54,0,0,1,0,29h0a20.54,20.54,0,0,1-29,0L61.44,90.41,35,116.9a20.54,20.54,0,0,1-29,0H6a20.54,20.54,0,0,1,0-29L32.47,61.44,6,34.94A20.53,20.53,0,0,1,6,6Z"
       />
     </svg>
-    <span v-text="translations['label']" class="button-close__label"></span>
+    <span v-text="label" class="button-close__label"></span>
   </button>
 </template>
 
 <script lang="ts">
-import { Vue, Options } from "vue-property-decorator";
+import { Vue, Options, Prop } from "vue-property-decorator";
 import Translations from "@jsmodules/translations/components/form_controls/button_close";
 
 @Options({ name: "ButtonClose", inheritAttrs: true })
 export default class ButtonClose extends Vue {
+
+  @Prop({
+    type: String,
+    required: false,
+    default: Translations['label']
+  })
+  readonly label: string;
+
+  @Prop({
+    type: String,
+    required: false,
+    default: Translations['title']
+  })
+  readonly buttonTitle: string;
+
   private translations = Translations;
 }
 </script>
