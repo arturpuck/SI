@@ -9,7 +9,7 @@
     </div>
     <div class="token-info">
       <span v-text="Translations.your_photo_token"></span> :
-      <strong v-text="token"></strong>
+      <strong class="token" v-text="token"></strong>
     </div>
     <multifile-image-upload 
       v-on:number-of-images-limit-exceeded="notifyUserAboutToManyPhotos" 
@@ -105,6 +105,10 @@ export default {
 .added-images {
   width:90%;
   margin:5px auto;
+}
+
+.token {
+  letter-spacing:0.3em;
 }
 </style>
         

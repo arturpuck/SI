@@ -27,7 +27,12 @@
     v-bind:token="token"
     v-show="showPhotos">
     </prostitute-photos>
-    <prostitute-location-and-working-hours></prostitute-location-and-working-hours>
+    <prostitute-location-and-working-hours
+    v-show="showLocationAndWorkingHours"
+    v-on:validated="skipToNextSection"
+    >
+
+    </prostitute-location-and-working-hours>
     <div class="bottom-navigation">
       <div
         class="navigation-description"
@@ -60,6 +65,7 @@ import RightArrowIcon from "@svgicon/right_arrow_icon.vue";
 import IdCardIcon from "@svgicon/id_card_icon.vue";
 import OhIcon from "@svgicon/oh_icon.vue";
 import ImagePhotographyIcon from "@svgicon/image_photography_icon.vue";
+import TimeLateIcon from "@svgicon/time_late_icon.vue"; 
 
 enum Section {
   ProstitutionPolicyDescription = "ProstitutionPolicyDescription",
@@ -85,14 +91,15 @@ export default {
     ProstituteServices,
     ProstituteLocationAndWorkingHours,
     ProstitutePhotos,
-    ImagePhotographyIcon
+    ImagePhotographyIcon,
+    TimeLateIcon
   },
 
   data() {
     return {
       translations: Translations,
       sections,
-      sectionIndex : 3,
+      sectionIndex : 4,
       orderedSections: [
         Section.ProstitutionPolicyDescription,
         Section.ProstituteBasicInformation,
@@ -183,7 +190,9 @@ export default {
         ProstitutionPolicyDescription : "SecureDocumentsIcon",
         ProstituteBasicInformation : "IdCardIcon",
         ProstituteServices : "OhIcon",
-        ProstitutePhotos : "ImagePhotographyIcon"
+        ProstitutePhotos : "ImagePhotographyIcon",
+        ProstituteLocationAndWorkingHours : "TimeLateIcon"
+        
       } 
       return iconComponentNamesBySection[this.currentSection];
     },
@@ -222,6 +231,7 @@ export default {
         ProstituteBasicInformation : "personalities-section",
         ProstituteServices : "services-section",
         ProstitutePhotos : "photos-section",
+        ProstituteLocationAndWorkingHours : "location-and-working-hours"
       }
       return classesNameBySection[this.currentSection];
     }
@@ -301,8 +311,14 @@ export default {
 }
 
 .navbar-caption {
-  @include responsive-font(1.5vw, 21px);
+  @include responsive-font(1.5vw, 16px);
   color:white;
+}
+
+.location-and-working-hours {
+  width: 35px;
+  height: 35px;
+  fill: #22d31b
 }
 </style>
   

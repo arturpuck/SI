@@ -392,7 +392,7 @@ import { BlowjobPreferencesOptionsList } from "@jsmodules/translations/component
 import { BlowjobPreference } from "@jsmodules/translations/components/prostitute_services";
 import { SecondaryServicesList } from "@jsmodules/translations/components/prostitute_services";
 import { AvailableServiceFormsToPayFor } from "@jsmodules/translations/components/prostitute_services";
-import { BinaryPreferences } from "@jsmodules/translations/components/prostitute_services";
+import BinaryPreferences from "@jsmodules/translations/components/yes_no_options";
 import SimpleLabeledSelect from "@jscomponents-form-controls/simple_labeled_select.vue";
 import SimpleLabeledInput from "@jscomponents-form-controls/simple_labeled_input.vue";
 import Multiselect from '@jscomponents-form-controls/multiselect.vue';

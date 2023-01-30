@@ -53,6 +53,8 @@ mix.js('resources/js/mainpage.js', 'public/js').vue()
     presets: ["@babel/env"]
   })
   .webpackConfig({
+
+    devtool: 'source-map',
     
     plugins: [
       new webpack.DefinePlugin({
