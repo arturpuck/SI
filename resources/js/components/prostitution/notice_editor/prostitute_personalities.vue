@@ -97,7 +97,9 @@ import checkIfUserExceedsMaximumPossibleAge from "@jsmodules/helpers/max_age_che
 import { UserType } from "@js/enum/user_type";
 import ErrorOnComboForProstitueAnnouncements from "@mixins/components/prostitute_announcement_creator/error_on_combo_input";
 import TextareaCombo from '@jscomponents-form-controls/textarea_combo.vue';
-const blankOption = `--${Translations.choose_options}--`;
+import { EmptyInputValue} from "@jscomponents/empty_input_option";
+import { EmptyInputList } from "@jscomponents/empty_input_option";
+import { EmptyInputDescription } from "@jscomponents/empty_input_option";
 
 export default {
   name: "prostitute-personalities",
@@ -168,7 +170,7 @@ export default {
     validateTitsSize(): void {
       if (
         this.userTypeString === Translations[UserType.Male] &&
-        this.titsSize != 0
+        this.titsSize !== EmptyInputValue
       ) {
         this.showErrorOnComboInput(
           "TitsSize",
@@ -178,7 +180,7 @@ export default {
     },
 
     validateUserType(): void {
-      if (!this.userType) {
+      if (this.userType === EmptyInputValue) {
         this.showErrorOnComboInput("UserType", "user_type_is_required");
       }
     },
@@ -238,13 +240,13 @@ export default {
       nickname: "",
       phoneNumber: "",
       csrfToken: "",
-      userType: 0,
-      sexualOrientation: 0,
-      hairColor: 0,
+      userType: EmptyInputValue,
+      sexualOrientation: EmptyInputValue,
+      hairColor: EmptyInputValue,
       birthDate: null,
       description : "",
       hairColorsList: {
-        0: blankOption,
+        ...EmptyInputList,
         blonde: "blond",
         dark: "ciemny",
         bronze: "brązowy",
@@ -252,7 +254,7 @@ export default {
         red: "rudy",
         other: "inny",
       },
-      titsSizesList: [blankOption, 1, 2, 3, 4, 5, 6, 7, 8],
+      titsSizesList: [EmptyInputDescription, 1, 2, 3, 4, 5, 6, 7, 8],
       titsSize: 0,
       height: "",
       weight: "",

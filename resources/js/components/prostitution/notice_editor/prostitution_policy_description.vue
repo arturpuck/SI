@@ -3,7 +3,12 @@
   <div class="decoration-container">
     <info-circle-icon class="decoration"></info-circle-icon>
   </div>
-{{translations['policy_description']}} <a v-bind:href="routesConfig.contact" v-text="translations['clicking_here']" class="contact-form-link"></a>
+  <span v-text="translations['announcements_are_free']"></span>
+  <strong class="important-info" v-text="translations['dont_spam_with_announcements']"></strong>
+  <span v-text="translations['announcement_will_not_be_added_immidiatelly']"></span>
+  <strong class="important-info" v-text="translations['everyone_can_comment_a_prostitute']"></strong>
+  <span v-text="translations['in_case_of_a_problem_please_contact_us_using_the_contact_form']"></span>
+  <a v-bind:href="routesConfig.contact" v-text="translations['clicking_here']" class="contact-form-link"></a>
 </section>
 </template>
     
@@ -59,6 +64,10 @@ export default {
 
   .contact-form-link{
     color:inherit;
+  }
+
+  .important-info {
+    color:red;
   }
   
 

@@ -39,7 +39,6 @@ class Kernel extends HttpKernel
 
         'api' => [
             'throttle:10,1',
-            \App\Http\Middleware\APIKeyVerification::class
         ]
         
     ];
@@ -63,7 +62,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'csrfprotection' => \App\Http\Middleware\VerifyCsrfToken::class,
-        'startsession' => \Illuminate\Session\Middleware\StartSession::class
+        'startsession' => \Illuminate\Session\Middleware\StartSession::class,
+        'apiKeyVerification' => \App\Http\Middleware\APIKeyVerification::class
     ];
 
     /**

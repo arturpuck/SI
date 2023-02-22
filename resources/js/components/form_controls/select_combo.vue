@@ -204,6 +204,7 @@
       },
       valueHasBeenSelected(event): void {
         this.$emit("update:modelValue", event.target.value);
+        this.$emit('selected', event.target.value);
       },
     },
   };

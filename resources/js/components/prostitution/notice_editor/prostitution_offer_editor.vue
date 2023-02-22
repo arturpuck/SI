@@ -1,7 +1,7 @@
 <template>
   <div class="outer-container">
     <div class="section-navbar-container">
-        <span class="navbar-caption" v-text="navbarCaption"></span>
+        <h1 class="navbar-caption" v-text="navbarCaption"></h1>
       <component
         class="navbar-section-icon"
         v-bind:class="iconClass"
@@ -30,9 +30,13 @@
     <prostitute-location-and-working-hours
     v-show="showLocationAndWorkingHours"
     v-on:validated="skipToNextSection"
+    v-bind:voivodeships-list="voivodeshipsList"
     >
-
     </prostitute-location-and-working-hours>
+    <prostitute-save-notice
+    v-show="showSaveNotice"
+    >
+    </prostitute-save-notice>
     <div class="bottom-navigation">
       <div
         class="navigation-description"
@@ -60,12 +64,15 @@ import ProstitutePersonalities from "@jscomponents/prostitution/notice_editor/pr
 import ProstituteServices from "@jscomponents/prostitution/notice_editor/prostitute_services";
 import ProstitutePhotos from "@jscomponents/prostitution/notice_editor/prostitute_photos";
 import ProstituteLocationAndWorkingHours from "@jscomponents/prostitution/notice_editor/prostitute_location_and_working_hours";
+import ProstituteSaveNotice from "@jscomponents/prostitution/notice_editor/prostitute_save_notice";
 import LeftArrowIcon from "@svgicon/left_arrow_icon.vue";
 import RightArrowIcon from "@svgicon/right_arrow_icon.vue";
 import IdCardIcon from "@svgicon/id_card_icon.vue";
 import OhIcon from "@svgicon/oh_icon.vue";
 import ImagePhotographyIcon from "@svgicon/image_photography_icon.vue";
-import TimeLateIcon from "@svgicon/time_late_icon.vue"; 
+import TimeLateIcon from "@svgicon/time_late_icon.vue";
+import FloppyDiscIcon from "@svgicon/floppy_disc_icon.vue";
+import { EmptyInputList } from "@jscomponents/empty_input_option";
 
 enum Section {
   ProstitutionPolicyDescription = "ProstitutionPolicyDescription",
@@ -73,6 +80,7 @@ enum Section {
   ProstituteServices = "ProstituteServices",
   ProstitutePhotos = "ProstitutePhotos",
   ProstituteLocationAndWorkingHours = "ProstituteLocationAndWorkingHours",
+  ProstituteSaveNotice = "ProstituteSaveNotice"
 }
 
 export default {
@@ -92,7 +100,9 @@ export default {
     ProstituteLocationAndWorkingHours,
     ProstitutePhotos,
     ImagePhotographyIcon,
-    TimeLateIcon
+    TimeLateIcon,
+    ProstituteSaveNotice,
+    FloppyDiscIcon
   },
 
   data() {
@@ -105,10 +115,12 @@ export default {
         Section.ProstituteBasicInformation,
         Section.ProstituteServices,
         Section.ProstitutePhotos,
-        Section.ProstituteLocationAndWorkingHours
+        Section.ProstituteLocationAndWorkingHours,
+        Section.ProstituteSaveNotice
       ],
       userTypesList : [],
       sexualOrientationsList : [],
+      voivodeshipsList : [],
       token : ''
     };
   },
@@ -135,7 +147,6 @@ export default {
       const requestData = {
         method: "GET",
         headers: {
-          "X-CSRF-TOKEN": this.csrfToken,
           "Content-type": "application/json; charset=UTF-8",
         },
       };
@@ -146,16 +157,18 @@ export default {
     async updateSelects(response) {
       if (response.status === 200) {
         const availableOptions = await response.json();
-        const userTypesList = this.parseForSelectOptions(
+        this.userTypesList = this.parseForSelectOptions(
           availableOptions["userTypes"],
           "user_type_name"
         );
-        const sexualOrientationsList = this.parseForSelectOptions(
+        this.sexualOrientationsList = this.parseForSelectOptions(
           availableOptions["sexualOrientations"],
           "sexual_orientation_name"
         );
-        this.userTypesList = userTypesList;
-        this.sexualOrientationsList = sexualOrientationsList;
+        this.voivodeshipsList = this.parseForSelectOptions(
+          availableOptions["voivodeships"],
+          'name'
+        );
         this.token = availableOptions["token"];
       } else {
         this.notifyUserAboutFetchError();
@@ -163,16 +176,16 @@ export default {
     },
 
     parseForSelectOptions(options, keyName: string): object {
-      const result = { 0: `--${Translations.choose_options}--` };
+      const result = {...EmptyInputList};
       options.forEach((option) => {
-        result[option.id] = Translations[option[keyName]];
+        result[option.id] = Translations[option[keyName]] ?? option[keyName];
       });
       return result;
     },
 
     notifyUserAboutFetchError(): void {
       this.emitter.emit("showNotification", {
-        notificationText: "an_error_occured_while_fetching_required_data",
+        notificationText: "fetching_required_data_failed_it_is_impossible_to_complete_announcement_please_try_again",
         notificationType: "error",
         headerText: "error",
       });
@@ -191,7 +204,8 @@ export default {
         ProstituteBasicInformation : "IdCardIcon",
         ProstituteServices : "OhIcon",
         ProstitutePhotos : "ImagePhotographyIcon",
-        ProstituteLocationAndWorkingHours : "TimeLateIcon"
+        ProstituteLocationAndWorkingHours : "TimeLateIcon",
+        ProstituteSaveNotice : "FloppyDiscIcon"
         
       } 
       return iconComponentNamesBySection[this.currentSection];
@@ -221,6 +235,10 @@ export default {
       return this.currentSection === Section.ProstitutePhotos;
     },
 
+    showSaveNotice() : boolean {
+      return this.currentSection === Section.ProstituteSaveNotice;
+    },
+
     showLocationAndWorkingHours() : boolean {
      return this.currentSection === Section.ProstituteLocationAndWorkingHours;
     },
@@ -231,7 +249,8 @@ export default {
         ProstituteBasicInformation : "personalities-section",
         ProstituteServices : "services-section",
         ProstitutePhotos : "photos-section",
-        ProstituteLocationAndWorkingHours : "location-and-working-hours"
+        ProstituteLocationAndWorkingHours : "location-and-working-hours",
+        ProstituteSaveNotice : "save-notice"
       }
       return classesNameBySection[this.currentSection];
     }
@@ -242,6 +261,10 @@ export default {
   
   <style lang="scss" scoped>
 @import "~sass/fonts";
+
+.save-notice {
+  fill: #1edb0d;
+}
 
 .policy-section {
   fill:white;
@@ -313,6 +336,8 @@ export default {
 .navbar-caption {
   @include responsive-font(1.5vw, 16px);
   color:white;
+  padding:0;
+  margin:0;
 }
 
 .location-and-working-hours {

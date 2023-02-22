@@ -5,6 +5,7 @@ namespace App\Handlers\Prostitution;
 use Illuminate\Http\JsonResponse;
 use App\UserType;
 use App\SexualOrientation;
+use App\Voivodeship;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
 
@@ -22,6 +23,7 @@ class GetFormOptionsHandler
             'userTypes' => UserType::all(),
             'sexualOrientations' => SexualOrientation::all(),
             'token' => $token,
+            'voivodeships' => Voivodeship::all()
         ];
         return new JsonResponse($formOptions);
     }

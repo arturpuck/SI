@@ -1,5 +1,7 @@
 import Translator from '@jsmodules/translator.js';
 
+export const BlankOption = `--${Translator.translate('choose_options')}--`;
+
 const translations : {
     empire_policy_for_working_hours_of_prostitutes : string,
     do_you_want_to_set_precise_working_hours : string,
@@ -16,11 +18,18 @@ const translations : {
     saturday : string,
     sunday : string,
     show_each_single_day_from_monday_to_friday : string,
-    show_weekdays_as_one_row : string
+    show_weekdays_as_one_row : string,
+    working_hours : string,
+    location : string,
+    voivodeship : string,
+    city : string,
+    fetching_cities : string,
 } = {
     empire_policy_for_working_hours_of_prostitutes : Translator.translate('empire_policy_for_working_hours_of_prostitutes'),
     do_you_want_to_set_precise_working_hours : Translator.translate('do_you_want_to_set_precise_working_hours'),
     from_monday_to_friday : `${Translator.translate('monday')} - ${Translator.translate('friday')}`,
+    working_hours : Translator.translate('working_hours'),
+    location : Translator.translate('location'),
     since : Translator.translate('since'),
     until : Translator.translate('until'),
     whole_day : Translator.translate('whole_day'),
@@ -33,7 +42,10 @@ const translations : {
     saturday : Translator.translate('saturday'),
     sunday : Translator.translate('sunday'),
     show_each_single_day_from_monday_to_friday : Translator.translate('show_each_single_day_from_monday_to_friday'),
-    show_weekdays_as_one_row : Translator.translate('show_weekdays_as_one_row')
+    show_weekdays_as_one_row : Translator.translate('show_weekdays_as_one_row'),
+    voivodeship : Translator.translate('voivodeship'),
+    city : Translator.translate('city'),
+    fetching_cities : Translator.translate('fetching_cities'),
 }
 
 export default translations;

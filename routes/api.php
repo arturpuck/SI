@@ -14,5 +14,9 @@ use App\Http\Controllers\API\Movies\MovieCreatorController;
 */
 
 Route::middleware('api')->group(function(){
-    Route::post('/movies', [MovieCreatorController::class, 'createMovie']);
+
+    Route::middleware('apiKeyVerification')->group(function(){
+        Route::post('/movies', [MovieCreatorController::class, 'createMovie']);
+    });
+
 });

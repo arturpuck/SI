@@ -11,6 +11,7 @@
             "port": 9003,
             "log" : true,
             "url" : "http://localhost/",
+            "runtimeExecutable" : "/usr/bin/php8.1",
             "pathMappings": {
                 "/var/www/html/sex-imperium": "${workspaceFolder}"
             }

@@ -400,6 +400,7 @@ import LabeledCheckbox from "@jscomponents/form_controls/labeled_checkbox.vue";
 import AddButton from "@jscomponents-form-controls/add_button.vue";
 import RemoveButton from "@jscomponents-form-controls/remove_button.vue";
 import ErrorOnComboForProstitueAnnouncements from "@mixins/components/prostitute_announcement_creator/error_on_combo_input";
+import { EmptyInputValue} from "@jscomponents/empty_input_option";
 const kesThatDoNotRequireSpecialValidation = ServiceKeys.filter(key => key != 'swallow' && key != 'oralCreampie');
 const keysForAditionalPaymentsThatDoNotRequireSpecialValidation = kesThatDoNotRequireSpecialValidation.filter(key => key != 'trips')
 
@@ -423,18 +424,18 @@ export default {
   data() {
     return {
       translations: Translations,
-      massagePreference : "choose",
-      vaginalSexPreference: "choose",
-      blowjobPreference: "choose",
-      oralCreampiePreference : "choose",
-      cumSwallowPreference : "choose",
-      cumOnFacePreference : "choose",
-      analPreference : "choose",
-      pussyLickingPreference : "choose",
-      clientRimmingPreference : "choose",
-      kissingPreference : "choose",
-      cumOnBodyPreference : "choose",
-      tripsPreference : "choose",
+      massagePreference : EmptyInputValue,
+      vaginalSexPreference: EmptyInputValue,
+      blowjobPreference: EmptyInputValue,
+      oralCreampiePreference : EmptyInputValue,
+      cumSwallowPreference : EmptyInputValue,
+      cumOnFacePreference : EmptyInputValue,
+      analPreference : EmptyInputValue,
+      pussyLickingPreference : EmptyInputValue,
+      clientRimmingPreference : EmptyInputValue,
+      kissingPreference : EmptyInputValue,
+      cumOnBodyPreference : EmptyInputValue,
+      tripsPreference : EmptyInputValue,
       analAditionalPayment : 100,
       vaginalSexAditionalPayment : 100,
       blowjobAditionalPayment : 100,
@@ -644,7 +645,7 @@ export default {
     },
 
     simpleValidationOfMainInput(serviceName : string) : void {
-      if(this[serviceName] === 'choose') {
+      if(this[serviceName] === EmptyInputValue) {
         this.showErrorOnComboInput(serviceName, 'choose_option');
       }
     },

@@ -1,17 +1,22 @@
 <template>
-  <section class="photos-and-location">
+  <section class="location-and-hours">
+    <expect-shadow-circle
+      v-show="fetchingCitiesInProgress"
+      v-bind:circle-label="Translations['fetching_cities']"
+    ></expect-shadow-circle>
     <div
       v-text="Translations['empire_policy_for_working_hours_of_prostitutes']"
       class="info"
     ></div>
     <div>
+      <h2 v-text="Translations['working_hours']" class="subsection-header"></h2>
       <select-combo
         v-bind:error-message-box-available="true"
-        unique-id="precise-hours-decision"
+        unique-id="preciseHoursDecision"
         v-bind:select-options="YesNoOptions"
         v-model="preciseHoursDecision"
         v-bind:complete-error-display-available="true"
-        class="precise-hours-decision"
+        class="select"
       >
         {{ Translations["do_you_want_to_set_precise_working_hours"] }} :
       </select-combo>
@@ -47,7 +52,7 @@
         </text-input-combo>
         <labeled-checkbox
           v-on:update:modelValue="
-            (clean) => toggleHours(clean, 'mondayToFriday')
+            (clean) => toggleDayFreeOrBusy(clean, 'mondayToFriday')
           "
           class="shortcut-checkbox"
           >{{ Translations["day_of"] }}</labeled-checkbox
@@ -82,10 +87,10 @@
             {{ Translations["until"] }} :
           </text-input-combo>
           <labeled-checkbox
-          v-on:update:modelValue="(clean) => toggleHours(clean, weekday)"
-           class="shortcut-checkbox">{{
-            Translations["day_of"]
-          }}</labeled-checkbox>
+            v-on:update:modelValue="(clean) => toggleDayFreeOrBusy(clean, weekday)"
+            class="shortcut-checkbox"
+            >{{ Translations["day_of"] }}</labeled-checkbox
+          >
         </div>
       </div>
 
@@ -111,11 +116,11 @@
         >
           {{ Translations["until"] }} :
         </text-input-combo>
-        <labeled-checkbox 
-        v-on:update:modelValue="(clean) => toggleHours(clean, 'saturday')"
-        class="shortcut-checkbox">{{
-          Translations["day_of"]
-        }}</labeled-checkbox>
+        <labeled-checkbox
+          v-on:update:modelValue="(clean) => toggleDayFreeOrBusy(clean, 'saturday')"
+          class="shortcut-checkbox"
+          >{{ Translations["day_of"] }}</labeled-checkbox
+        >
       </div>
       <div class="time-period-details">
         <span v-text="Translations['sunday']"></span>
@@ -133,19 +138,41 @@
           v-bind:error-message-box-available="true"
           unique-id="sundayHourUntil"
           input-type="time"
-          v-model="workingHoursByPeriodOrDay['sunday']['since']"
+          v-model="workingHoursByPeriodOrDay['sunday']['until']"
           class="hours-range-edge"
           v-bind:complete-error-display-available="true"
         >
           {{ Translations["until"] }} :
         </text-input-combo>
-        <labeled-checkbox 
-        v-on:update:modelValue="(clean) => toggleHours(clean, 'sunday')"
-        class="shortcut-checkbox">{{
-          Translations["day_of"]
-        }}</labeled-checkbox>
+        <labeled-checkbox
+          v-on:update:modelValue="(clean) => toggleDayFreeOrBusy(clean, 'sunday')"
+          class="shortcut-checkbox"
+          >{{ Translations["day_of"] }}</labeled-checkbox
+        >
       </div>
     </div>
+    <h2 v-text="Translations['location']" class="subsection-header"></h2>
+    <select-combo
+      v-bind:error-message-box-available="true"
+      unique-id="voivodeship"
+      v-bind:select-options="voivodeshipsList"
+      v-model="voivodeship"
+      v-on:selected="getCitiesForVoivodeship"
+      class="select"
+      v-bind:complete-error-display-available="true"
+    >
+      {{ Translations["voivodeship"] }} :
+    </select-combo>
+    <select-combo
+      v-bind:error-message-box-available="true"
+      unique-id="city"
+      v-bind:select-options="citiesList"
+      v-model="city"
+      class="select"
+      v-bind:complete-error-display-available="true"
+    >
+      {{ Translations["city"] }} :
+    </select-combo>
   </section>
 </template>
         
@@ -154,20 +181,147 @@ import Translations from "@jsmodules/translations/components/prostitute_location
 import SelectCombo from "@jscomponents/form_controls/select_combo.vue";
 import YesNoOptions from "@jsmodules/translations/components/yes_no_options";
 import AddButton from "@jscomponents-form-controls/add_button.vue";
+import Routes from "@config/paths/routes";
+import ExpectShadowCircle from "@jscomponents-decoration/expect_shadow_circle";
 import { Weekdays } from "@js/enum/weekdays";
+import { DaysOfWeek } from "@js/enum/days_of_week";
+import { EmptyInputValue } from "@jscomponents/empty_input_option";
+import { EmptyInputList } from "@jscomponents/empty_input_option";
+import ErrorOnComboForProstitueAnnouncements from "@mixins/components/prostitute_announcement_creator/error_on_combo_input";
+import TimeStringValidator from "@jsmodules/helpers/time_string_validator";
 
 export default {
   name: "prostitute-location-and-working-hours",
 
+  mixins: [ErrorOnComboForProstitueAnnouncements],
+
   emits: ["validated"],
+
+  props: {
+    voivodeshipsList: {
+      required: true,
+      type: Object,
+    },
+  },
 
   components: {
     SelectCombo,
     AddButton,
+    ExpectShadowCircle,
   },
 
   methods: {
-    validateData(): void {},
+    resetValidation(): void {
+      this.emitter.emit("resetValidationpreciseHoursDecision");
+      Object.values(DaysOfWeek).forEach((dayOfWeek) => {
+        this.emitter.emit(`resetValidation${dayOfWeek}HourSince`);
+        this.emitter.emit(`resetValidation${dayOfWeek}HourUntil`);
+      });
+      this.emitter.emit(`resetValidationmondayToFridayHourSince`);
+      this.emitter.emit(`resetValidationmondayToFridayHourFrom`);
+      this.emitter.emit(`resetValidationvoivodeship`);
+      this.emitter.emit(`resetValidationcity`);
+      this.incorrectRelationBetweenHourOfStartAndEnd = false;
+      this.validationIsSuccessfull = true;
+    },
+
+    validateData(): void {
+      this.resetValidation();
+      this.validateWorkingHours();
+      this.validateLocation();
+      if(this.validationIsSuccessfull) {
+        this.$emit('validated');
+      }
+    },
+
+    validateLocation(): void {
+      if(this.voivodeship === EmptyInputValue) {
+        this.showErrorOnComboInput('voivodeship', 'choose_option');
+      }
+
+      if(this.city === EmptyInputValue) {
+        this.showErrorOnComboInput('city', 'choose_option');
+      }
+    },
+
+    validateWorkingHours(): void {
+      if (this.userMadeDecisionOnWorkingHours) {
+        if (this.showWeeklySchedule) {
+            this.validateWeekdays();
+            this.validateWeekends();
+            this.checkIfAnyRangeHasBeenProvided();
+        }
+      } else {
+        this.showErrorOnComboInput("preciseHoursDecision", "please_decide");
+      }
+
+      if(this.incorrectRelationBetweenHourOfStartAndEnd) {
+        this.emitter.emit("showNotification", {
+          notificationText: "time_since_must_be_earlier_than_time_until",
+          notificationType: "error",
+          headerText: "error",
+        });
+      }
+    },
+
+    checkIfAnyRangeHasBeenProvided() : void {
+      if(this.showEverySingleWeekday && this.freePeriods.length === 7) {
+          this.setFailedValidationAndShowError('no_working_period_has_been_provided');
+          return;
+      }
+
+      if(!this.showEverySingleWeekday && this.userSetAllDaysToFreeUsingShortWeekdays) {
+          this.setFailedValidationAndShowError('no_working_period_has_been_provided');
+        }
+
+    },
+
+    validateWeekdays(): void {
+      if (this.showEverySingleWeekday) {
+          this.weekdays.forEach(weekday => this.validateWorkingPeriod(weekday));
+      } else {
+        this.validateWorkingPeriod("mondayToFriday");
+      }
+    },
+
+    setFailedValidationAndShowError(errorMessage : string) : void {
+      this.validationIsSuccessfull = false;
+      this.emitter.emit("showNotification", {
+          notificationText: errorMessage,
+          notificationType: "error",
+          headerText: "error",
+        });
+    },
+
+    validateWeekends() : void {
+      this.validateWorkingPeriod('saturday');
+      this.validateWorkingPeriod('sunday');
+    },
+
+    validateWorkingPeriod(period: string): void {
+      if (this.userProvidedWorkingHours(period)) {
+        const timeSince = this.workingHoursByPeriodOrDay[period]["since"];
+        const timeUntil = this.workingHoursByPeriodOrDay[period]["until"];
+        let bothTimesAreValid = true;
+        if (!TimeStringValidator(timeSince)) {
+          this.showErrorOnComboInput(`${period}HourSince`,"invalid_time_format");
+          bothTimesAreValid = false;
+        }
+        if (!TimeStringValidator(timeUntil)) {
+          this.showErrorOnComboInput(`${period}HourUntil`,"invalid_time_format");
+          bothTimesAreValid = false;
+        }
+
+        if(bothTimesAreValid && (timeSince >= timeUntil)) {
+          this.showErrorOnComboInput(`${period}HourSince`);
+          this.incorrectRelationBetweenHourOfStartAndEnd = true;
+        }
+      }
+    },
+
+    userProvidedWorkingHours(period: string): boolean {
+      return !this.freePeriods.includes(period);
+    },
 
     initiateWorkingHours(): void {
       this.workingHoursByPeriodOrDay = {};
@@ -176,31 +330,82 @@ export default {
     },
 
     initiateWeekendHours(): void {
-      this.workingHoursByPeriodOrDay['saturday'] = this.getEmptyPeriod();
-      this.workingHoursByPeriodOrDay['sunday'] = this.getEmptyPeriod();
+      this.workingHoursByPeriodOrDay["saturday"] = this.getEmptyPeriod();
+      this.workingHoursByPeriodOrDay["sunday"] = this.getEmptyPeriod();
     },
 
     initiateWeekdays(): void {
       this.weekdays.forEach((weekday) => {
         this.workingHoursByPeriodOrDay[weekday] = this.getEmptyPeriod();
       });
-      this.workingHoursByPeriodOrDay['mondayToFriday'] = this.getEmptyPeriod();
+      this.workingHoursByPeriodOrDay["mondayToFriday"] = this.getEmptyPeriod();
     },
 
     getEmptyPeriod() {
       return {
-          since: "00:00",
-          until: "00:00",
-        };
+        since: "00:00",
+        until: "00:00",
+      };
     },
 
     toggleWeekdaysList(): void {
       this.showEverySingleWeekday = !this.showEverySingleWeekday;
     },
 
-    toggleHours(clean: boolean, period: string): void {
-        this.workingHoursByPeriodOrDay[period]['since'] = clean ? undefined : "00:00";
-        this.workingHoursByPeriodOrDay[period]['until'] = clean ? undefined : "00:00";
+    toggleDayFreeOrBusy(free: boolean, period: string): void {
+      if(free) {
+        this.workingHoursByPeriodOrDay[period]["since"] = undefined;
+        this.workingHoursByPeriodOrDay[period]["until"] = undefined;
+        this.freePeriods.push(period);
+      } else {
+        this.workingHoursByPeriodOrDay[period]["since"] = "00:00";
+        this.workingHoursByPeriodOrDay[period]["until"] = "00:00";
+        this.freePeriods = this.freePeriods.filter(freePeriods => freePeriods !== period);
+      }
+    },
+
+    getCitiesForVoivodeship(voivodeshipID: string) {
+      if (voivodeshipID !== EmptyInputValue) {
+        this.fetchingCitiesInProgress = true;
+        this.fetchCitiesForVoivodeship(voivodeshipID);
+      }
+      this.fetchingCitiesInProgress = false;
+    },
+
+    async fetchCitiesForVoivodeship(voivodeshipID: string) {
+      const requestData = {
+        method: "GET",
+        headers: {
+          "X-CSRF-TOKEN": this.csrfToken,
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      };
+
+      const URL = `${Routes.cities}?voivodeshipID=${voivodeshipID}`;
+      let response = await fetch(URL, requestData);
+      if (response.status === 200) {
+        response = await response.json();
+        this.loadCities(response);
+      } else {
+        this.notifyUserAboutFetchError();
+      }
+    },
+
+    loadCities(cities: any[]): void {
+      let loadedCities = { ...EmptyInputList };
+      cities.forEach((city) => {
+        loadedCities[city.id] = city.name;
+      });
+      this.citiesList = loadedCities;
+      this.city = EmptyInputValue;
+    },
+
+    notifyUserAboutFetchError(): void {
+      this.emitter.emit("showNotification", {
+        notificationText: "failed_to_fetch_cities_list_please_try_again",
+        notificationType: "error",
+        headerText: "error",
+      });
     },
   },
 
@@ -208,9 +413,18 @@ export default {
     return {
       Translations,
       YesNoOptions,
-      preciseHoursDecision: "choose",
+      preciseHoursDecision: EmptyInputValue,
       showEverySingleWeekday: false,
       workingHoursByPeriodOrDay: undefined,
+      citiesList: EmptyInputList,
+      city: EmptyInputValue,
+      voivodeship: EmptyInputValue,
+      token: "",
+      csrfToken: "",
+      test: EmptyInputList,
+      fetchingCitiesInProgress: false,
+      incorrectRelationBetweenHourOfStartAndEnd : false,
+      freePeriods : []
     };
   },
 
@@ -220,6 +434,9 @@ export default {
       this.validateData
     );
     this.initiateWorkingHours();
+    this.csrfToken = (<HTMLMetaElement>(
+      document.getElementById("csrf-token")
+    )).content;
   },
 
   computed: {
@@ -236,6 +453,16 @@ export default {
         ? Translations["show_weekdays_as_one_row"]
         : Translations["show_each_single_day_from_monday_to_friday"];
     },
+
+    userMadeDecisionOnWorkingHours() : boolean {
+      return this.preciseHoursDecision !== EmptyInputValue;
+    },
+
+    userSetAllDaysToFreeUsingShortWeekdays() : boolean {
+      return this.freePeriods.includes('saturday') && 
+              this.freePeriods.includes('sunday') && 
+              this.freePeriods.includes('mondayToFriday')
+    }
   },
 };
 </script>
@@ -267,15 +494,16 @@ export default {
   justify-content: flex-end;
 }
 
-.precise-hours-decision {
+.select {
   max-width: max-content;
   margin: 0 auto;
 }
 
-.photos-and-location {
+.location-and-hours {
   background: rgba(0, 0, 0, 0.87);
   color: white;
   padding: 5px;
+  position: relative;
 }
 
 .info {
@@ -283,8 +511,21 @@ export default {
   text-align: center;
 }
 
+.subsection-header {
+  color: white;
+  @include responsive-font(1.3vw, 18px);
+  text-align: center;
+  padding: 5px;
+  margin: 8px 0 0;
+  background: black;
+}
+
 .shortcut-checkbox {
   margin-left: 5px;
+}
+
+.relative-shadow-container {
+  background: rgba(0, 0, 0, 0.9);
 }
 </style>
         

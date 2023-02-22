@@ -13,7 +13,7 @@ export default {
 
     methods : {
         
-        showErrorOnComboInput(id: string, errorMessage: string): void {
+        showErrorOnComboInput(id: string, errorMessage: string = ''): void {
             comboInputErrorState.errorMessage = errorMessage;
             this.validationIsSuccessfull = false;
             this.emitter.emit(`showIfValueIsOK${id}`, comboInputErrorState);

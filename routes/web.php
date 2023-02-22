@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\CountryRegionsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -158,5 +160,10 @@ Route::namespace ('Prostitution')->prefix('prostytucja/')->name('prostitution.')
 
     Route::get('notice-form-options', 'CreateProstitutionNoticeController@getNoticeFormOptions')
         ->name('notice-form-options');
+
+});
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('/cities', [CountryRegionsController::class, 'getCities']);
 
 });
