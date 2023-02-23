@@ -38,10 +38,12 @@
     },
     "dependencies": {
         "@vueform/multiselect": "^2.5.7",
+        "ci": "^2.2.0",
         "image-to-blob": "^0.2.0",
         "laravel-mix-imgmin": "^0.1.1",
         "laravel-mix-svg-vue": "0.3.0",
         "mitt": "^3.0.0",
+        "pinia": "^2.0.32",
         "plyr": "^3.6.4",
         "postcss": "^8.2.6",
         "puppeteer": "^11.0.0",
