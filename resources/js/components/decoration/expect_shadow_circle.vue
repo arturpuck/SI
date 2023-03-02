@@ -5,23 +5,23 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options, Prop } from "vue-property-decorator";
 import RelativeShadowContainer from "@jscomponents/decoration/relative_shadow_container.vue";
 import ExpectCircle from "@jscomponents/decoration/expect_circle.vue";
 
-@Options({
-  name: "ExpectShadowCircle",
-  components: {
-    RelativeShadowContainer,
-    ExpectCircle,
-  },
-})
-export default class ExpectShadowCircle extends Vue {
-  @Prop({
-    type: String,
+export default {
+  name : 'expect-shadow-circle',
+
+  props : {
+    circleLabel : {
+      type: String,
     required: false,
     default: "",
-  })
-  readonly circleLabel: string;
+    }
+  },
+
+  components : {
+    RelativeShadowContainer,
+    ExpectCircle
+  }
 }
 </script>

@@ -15,7 +15,7 @@ import InfoCircleIcon from '@svgicon/info_circle_icon.vue'
 import LikeIcon from '@svgicon/like_icon.vue';
 import CommentPenIcon from '@svgicon/comment_pen_icon.vue';
 import StarRate from '@interfaces/StarRate';
-import UserNotification from '@jscomponents/user_notification';
+import UserNotification from '@jscomponents/user_notification.vue';
 import NotificationFunction from '@jsmodules/notification_function';
 import RelativeShadowContainer from '@jscomponents/decoration/relative_shadow_container.vue';
 import ExpectCircle from '@jscomponents/decoration/expect_circle.vue';
@@ -31,7 +31,7 @@ import Comment from '@interfaces/Comment';
 import CommentValidator from '@jsmodules/validators/comment_validator';
 import Translator from "@jsmodules/translator.js";
 import MovieHint from "@jscomponents/movies/movie_hint.vue";
-import DescriptionIcon from "@svgicon/description_icon";
+import DescriptionIcon from "@svgicon/description_icon.vue";
 
 const settings = {
 

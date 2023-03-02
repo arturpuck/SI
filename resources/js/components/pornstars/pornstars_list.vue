@@ -40,44 +40,49 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options, Prop, Watch } from "vue-property-decorator";
 import Translator from "@jsmodules/translator.js";
 import HintedSearchField from "@jscomponents/form_controls/hinted_search_field.vue";
 
-@Options({
-  components: {
-    HintedSearchField,
+export default {
+  name : 'pornstars-list',
+
+  components : {
+    HintedSearchField
   },
-  name: "PornstarsList",
-})
-export default class PornstarsList extends Vue {
-  @Prop({
+
+  props : {
+    allPornstarsNickNames :{
     type: Array,
     required: true,
-  })
-  readonly allPornstarsNickNames: Array<string>;
-
-  @Prop({
+  },
+ 
+  pornstarProfileRoute : {
     type: String,
     required: true,
-  })
-  readonly pornstarProfileRoute: string;
+  }, 
+},
 
-  @Watch("requestedText")
-  resetListIfValueIsEmpty(requestedText: string) {
-    if (!requestedText) {
-      this.displayedPornstars = this.allPornstarsNickNames;
-    }
+data() {
+  return {
+    translations:  Translator.getPackage("pornstars_list"),
+    requestedText: "",
+    displayedPornstars: [],
   }
+},
 
-  private translations: Object = Translator.getPackage("pornstars_list");
-  private requestedText: string = "";
-  private displayedPornstars: Array<string> = [];
-
-  created() {
+watch : {
+  requestedText(requestedText: string) {
+    if (!requestedText) {
     this.displayedPornstars = this.allPornstarsNickNames;
   }
+  }
+},
 
+created() {
+    this.displayedPornstars = this.allPornstarsNickNames;
+},
+
+methods : {
   findPornstar(nicknameSelectedByUser: string) {
     nicknameSelectedByUser = nicknameSelectedByUser.toLowerCase();
 
@@ -89,26 +94,29 @@ export default class PornstarsList extends Vue {
     });
 
     this.displayedPornstars = results;
-  }
+  },
 
   getPornstarImageFilePath(pornstarNickname: string): string {
     const pornstarFileName = pornstarNickname.replace(/ /g, "_");
     return `/images/decoration/pornstars/profile-small/${pornstarFileName}.jpg`;
-  }
+  },
 
   getPornstarProfileRoute(pornstarNickname: string): string {
     return `${this.pornstarProfileRoute}/${pornstarNickname.replace(/ /g, "-")}`;
-  }
+  },
 
   resetSearchInput() {
     this.requestedText = "";
   }
 
-  get showNoResultsInfo(): boolean {
-    return this.displayedPornstars.length === 0;
-  }
+},
 
-  get hintsList(): Array<string> {
+computed : {
+  showNoResultsInfo(): boolean {
+    return this.displayedPornstars.length === 0;
+  },
+
+  hintsList(): Array<string> {
     if (!this.requestedText) {
       return [];
     }
@@ -128,6 +136,7 @@ export default class PornstarsList extends Vue {
 
     return hints;
   }
+}
 }
 </script>
 

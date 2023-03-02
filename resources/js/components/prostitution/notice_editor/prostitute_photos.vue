@@ -22,7 +22,7 @@
 <script lang="ts">
 import Translations from "@jsmodules/translations/components/prostitution_offer_photos";
 import MultifileImageUpload from '@jscomponents/form_controls/multifile_image_upload.vue';
-import NotificationFunction from '@jsmodules/notification_function.ts';
+import NotificationFunction from '@jsmodules/notification_function';
 
 export default {
   name: "prostitute-photos",

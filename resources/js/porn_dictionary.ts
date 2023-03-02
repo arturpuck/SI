@@ -1,6 +1,6 @@
 import BasicElements from '@jsmodules/basic.js';
 import { createApp } from 'vue';
-import DictionaryIcon from "@svgicon/dictionary_icon";
+import DictionaryIcon from "@svgicon/dictionary_icon.vue";
 import InfoCircleIcon from '@svgicon/info_circle_icon.vue'
 
 

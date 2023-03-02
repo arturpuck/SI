@@ -1,8 +1,8 @@
 import BasicElements from '@jsmodules/basic.js';
 import { createApp } from 'vue';
 import SimpleLabeledSelect from '@jscomponents-form-controls/simple_labeled_select.vue';
-import UserNotification from '@jscomponents/user_notification';
-import NotificationFunction from '@jsmodules/notification_function.ts';
+import UserNotification from '@jscomponents/user_notification.vue';
+import NotificationFunction from '@jsmodules/notification_function';
 import PageListUpdate from '@interfaces/PageListUpdate';
 import Multiselect from '@jscomponents-form-controls/multiselect.vue';
 import Translator from '@jsmodules/translator.js';
@@ -11,11 +11,11 @@ import RelativeShadowContainer from '@jscomponents/decoration/relative_shadow_co
 import ExpectCircle from '@jscomponents/decoration/expect_circle.vue';
 import AcceptButton from '@jscomponents-form-controls/accept_button.vue';
 import ResetButton from '@jscomponents-form-controls/reset_button.vue';
-import SearchEngineVariables from '@jsmodules/search_engine_variables.ts';
-import { QueryBuilder, QueryParams } from '@jsmodules/query_builder.ts';
+import SearchEngineVariables from '@jsmodules/search_engine_variables';
+import { QueryBuilder, QueryParams } from '@jsmodules/query_builder';
 import { createTextChangeRange } from 'typescript';
 import { createDecorator } from 'vue-class-component';
-import { XHRRequestData } from '@interfaces/XHRRequestData.ts';
+import { XHRRequestData } from '@interfaces/XHRRequestData';
 import FixedShadowContainer from '@jscomponents/decoration/fixed_shadow_container.vue';
 import MoviesList from '@jscomponents/movies/movies_list.vue';
 import MagnifierIcon from '@svgicon/magnifier_icon.vue';

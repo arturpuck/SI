@@ -14,7 +14,10 @@
         v-bind:alt="title"
       />
       <time v-text="duration" class="movie-duration"></time>
-      <expect-shadow-circle class="fetching-decoration" v-if="fetchingInProgress" />
+      <expect-shadow-circle
+        class="fetching-decoration"
+        v-if="fetchingInProgress"
+      />
     </a>
     <div class="movie-data">
       <a v-bind:href="movieURL" v-text="title" class="movie-description"></a>
@@ -54,18 +57,18 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options, Prop } from "vue-property-decorator";
 import IconPolishFlag from "@jscomponents-decoration/flags/icon_polish_flag.vue";
 import Slugifier from "@jsmodules/slugifier";
 import PlayRoundIcon from "@svgicon/play_round_icon.vue";
-import MagnifierIcon from "@svgicon/magnifier_icon";
-import StarFullIcon from "@svgicon/star_full_icon";
+import MagnifierIcon from "@svgicon/magnifier_icon.vue";
+import StarFullIcon from "@svgicon/star_full_icon.vue";
 import Config from "@config/paths/movies";
-import ExpectShadowCircle from "@jscomponents-decoration/expect_shadow_circle";
+import ExpectShadowCircle from "@jscomponents-decoration/expect_shadow_circle.vue";
 import Translations from "@jsmodules/translations/components/movie_box";
 
-@Options({
-  name: "MovieBox",
+export default {
+  name: "movie-box",
+
   components: {
     IconPolishFlag,
     PlayRoundIcon,
@@ -73,111 +76,121 @@ import Translations from "@jsmodules/translations/components/movie_box";
     StarFullIcon,
     ExpectShadowCircle,
   },
-})
-export default class MovieBox extends Vue {
-  @Prop({
-    type: String,
-    required: true,
-  })
-  readonly duration: string;
 
-  @Prop({
-    type: String,
-    required: true,
-  })
-  readonly title: string;
+  props: {
+    duration: {
+      type: String,
+      required: true,
+    },
 
-  @Prop({
-    type: Number,
-    required: true,
-  })
-  readonly id: number;
+    title: {
+      type: String,
+      required: true,
+    },
 
-  @Prop({
-    type: Number,
-    required: true,
-  })
-  readonly views: number;
+    id: {
+      type: Number,
+      required: true,
+    },
 
-  @Prop({
-    type: Boolean,
-    required: false,
-    default: false,
-  })
-  readonly isTranslatedToPolish: boolean;
+    views: {
+      type: Number,
+      required: true,
+    },
 
-  @Prop({
-    required: false,
-    default: "",
-  })
-  readonly pornstars: string | string[];
+    isTranslatedToPolish: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
 
-  private translator = Translations;
-  private fetchingInProgress = false;
-  private showsGIF = false;
-  private ontouchStarted = false;
+    pornstars: {
+      required: false,
+      default: "",
+    },
+  },
+
+  data() {
+    return {
+      translator : Translations,
+      fetchingInProgress : false,
+      showsGIF : false,
+      ontouchStarted : false,
+    }
+  },
 
   mounted() {
     //@ts-ignore
-    this.emitter.on("anotherBoxShowsShortcut", this.anotherBoxShowsShortcutHandler);
-    (<HTMLElement>this.$refs.movieBox).addEventListener('touchstart', this.touchStartHandler, {passive : true}); //somehow vue currently does not provide v-on:touchstart
-  }
+    this.emitter.on(
+      "anotherBoxShowsShortcut",
+      this.anotherBoxShowsShortcutHandler
+    );
+    (<HTMLElement>this.$refs.movieBox).addEventListener(
+      "touchstart",
+      this.touchStartHandler,
+      { passive: true }
+    ); //somehow vue currently does not provide v-on:touchstart
+  },
 
-  touchStartHandler() {
+  methods : {
+    touchStartHandler() {
     //@ts-ignore
     this.emitter.emit("anotherBoxShowsShortcut", this.id);
     this.ontouchStarted = true;
     this.fetchingInProgress = true;
     this.showsGIF = true;
-  }
+  },
 
   anotherBoxShowsShortcutHandler(movieID: number) {
     if (movieID != this.id) {
       this.showsGIF = false;
       this.fetchingInProgress = false;
     }
-  } 
+  },
 
   showPreview(event) {
     //@ts-ignore
     this.emitter.emit("showPreview", { id: this.id, title: this.title });
-  }
+  },
 
   getPornstarSlug(pornstarNickname) {
-    return pornstarNickname.replace(/ /g, "-"); 
-  }
+    return pornstarNickname.replace(/ /g, "-");
+  },
 
   hideShortcut() {
     if (!this.ontouchStarted) {
       this.showsGIF = false;
     }
-  }
+  },
+
   showShortcut() {
     if (!this.ontouchStarted) {
       this.fetchingInProgress = true;
       this.showsGIF = true;
     }
-  }
+  },
 
   imageHasBeenLoaded() {
-    
-    setTimeout(() => this.fetchingInProgress = false, 0);
+    setTimeout(() => (this.fetchingInProgress = false), 0);
   }
+  },
 
-  get movieURL() {
+  computed : {
+    movieURL() {
     return `/film-${this.id}/${Slugifier(this.title)}`;
-  }
+  },
 
-  get movieImageURL() {
+  movieImageURL() {
     return this.showsGIF
       ? `${Config.moviePreviewFolder}${this.id}.gif`
       : `${Config.movieImagesFolder}${this.id}.jpg`;
-  }
+  },
 
-  get aditionalInformation() {
+  aditionalInformation() {
     return this.isTranslatedToPolish || this.pornstars;
   }
-}
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -187,7 +200,7 @@ export default class MovieBox extends Vue {
   margin: 0 5px;
 }
 
-.fetching-decoration{
+.fetching-decoration {
   pointer-events: none;
 }
 

@@ -1,7 +1,6 @@
 const mix = require('laravel-mix');
 var path = require('path');
 const webpack = require('webpack')
-
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -13,7 +12,6 @@ const webpack = require('webpack')
  |
  */
 //mix.vue3("resources/js/test.js', 'public/js");
-
 mix.js('resources/js/mainpage.js', 'public/js').vue()
    .ts('resources/js/movies/category_specific.ts', 'public/js').vue()
    .ts('resources/js/movies/movies_set_complete.ts', 'public/js').vue()
@@ -76,7 +74,7 @@ mix.js('resources/js/mainpage.js', 'public/js').vue()
         '@config' : path.resolve('resources/js/config'),
         '@mixins' : path.resolve('resources/js/mixins')
       },
-      extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx", ".svg"]
+      extensions: [".js", ".jsx", ".vue", ".ts", ".tsx", ".svg"]
     },
 
     module: {
@@ -103,3 +101,5 @@ mix.js('resources/js/mainpage.js', 'public/js').vue()
       ]
     }
   })
+
+console.log(mix.dumpWebpackConfig().alias())

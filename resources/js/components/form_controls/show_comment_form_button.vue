@@ -9,7 +9,7 @@
 import { Vue, Options } from "vue-property-decorator";
 import WritingCommentIcon from "@svgicon/writing_comment_icon.vue";
 import Translator from "@jsmodules/translator.js";
-
+//@ts-ignore
 @Options({ name: "ShowCommentFormButton", components: { WritingCommentIcon } })
 export default class ShowCommentFormButton extends Vue {
   private caption = Translator.translate("publish_comment");

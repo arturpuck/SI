@@ -23,7 +23,7 @@
 import AddButton from "@jscomponents-form-controls/add_button.vue";
 import ImagePhotographyIcon from "@svgicon/image_photography_icon.vue";
 import ButtonClose from "@jscomponents/form_controls/button_close.vue";
-import Translations from "@jsmodules/translations/components/multifile_image_upload.ts";
+import Translations from "@jsmodules/translations/components/multifile_image_upload";
   
   export default {
 

@@ -17,7 +17,7 @@
       </button>
       <div class="links-container-outer">
         <ul
-          v-bind:style="{ left: leftOffsetStyle }" 
+          v-bind:style="{ left: leftOffsetStyle }"
           ref="slider_container"
           v-bind:class="{ 'content-in-center': !arrowsShouldBeDisplayed }"
           class="content-container-slider"
@@ -31,7 +31,9 @@
               v-bind:href="link"
               v-text="index + 1"
               class="pagination-link"
-              v-bind:class="{'current-page-link' : index + 1 == initialCurrentPage}"
+              v-bind:class="{
+                'current-page-link': index + 1 == initialCurrentPage,
+              }"
             ></a>
           </li>
         </ul>
@@ -53,21 +55,21 @@
     </div>
     <ul v-if="displayAditionalLinks" class="aditional-links">
       <li v-if="pageIsNotFirst" class="aditional-link-list-element">
-        <a
-          v-bind:href="previousPage"
-          class="aditional-link"
-        >
+        <a v-bind:href="previousPage" class="aditional-link">
           <left-arrow-icon class="aditional-link-icon"></left-arrow-icon>
-          <span v-text="translations.back" class="aditional-link-description"></span>
+          <span
+            v-text="translations.back"
+            class="aditional-link-description"
+          ></span>
         </a>
       </li>
       <li v-if="pageIsNotFirst" class="aditional-link-list-element">
-        <a
-          v-bind:href="links[0]"
-          class="aditional-link"
-        >
+        <a v-bind:href="links[0]" class="aditional-link">
           <fast-backward-icon class="aditional-link-icon"></fast-backward-icon>
-          <span v-text="translations.first_page" class="aditional-link-description"></span>
+          <span
+            v-text="translations.first_page"
+            class="aditional-link-description"
+          ></span>
         </a>
       </li>
       <li v-if="pageIsNotLast" class="aditional-link-list-element">
@@ -75,23 +77,30 @@
           v-bind:href="links[getamountOfElementsInBox() - 1]"
           class="aditional-link"
         >
-        <span v-text="translations.last_page" class="aditional-link-description"></span>
-         <fast-forward-icon class="aditional-link-icon"></fast-forward-icon>
+          <span
+            v-text="translations.last_page"
+            class="aditional-link-description"
+          ></span>
+          <fast-forward-icon class="aditional-link-icon"></fast-forward-icon>
         </a>
       </li>
 
       <li v-if="pageIsNotLast" class="aditional-link-list-element">
-        <a
-          v-bind:href="nextPage"
-          class="aditional-link"
-        >
-          <span v-text="translations.further" class="aditional-link-description"></span>
+        <a v-bind:href="nextPage" class="aditional-link">
+          <span
+            v-text="translations.further"
+            class="aditional-link-description"
+          ></span>
           <right-arrow-icon class="aditional-link-icon"></right-arrow-icon>
         </a>
       </li>
     </ul>
   </nav>
-  <nav v-if="showFixedShortcuts" v-show="fixedShortcutsAreVisible" class="fixed-shortcuts">
+  <nav
+    v-if="showFixedShortcuts"
+    v-show="fixedShortcutsAreVisible"
+    class="fixed-shortcuts"
+  >
     <ul class="fixed-shortcuts__list">
       <li v-if="pageIsNotFirst">
         <a v-bind:href="previousPage" class="fixed-shortcuts__link--back">
@@ -125,7 +134,6 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options, Prop } from "vue-property-decorator";
 import Translations from "@jsmodules/translations/components/pages_list";
 import { LinkListScrollDirection } from "@js/enum/movies/scroll_types";
 import LeftArrowIcon from "@jscomponents/decoration/icons/svg/left_arrow_icon.vue";
@@ -134,104 +142,158 @@ import AngleTopIcon from "@jscomponents/decoration/icons/svg/angle_top_icon.vue"
 import FastBackwardIcon from "@svgicon/fast_backward_icon.vue";
 import FastForwardIcon from "@svgicon/fast_forward_icon.vue";
 
+export default {
+  name: "links-box",
 
-@Options({
-  name: "LinksBox",
-  components: { LeftArrowIcon, RightArrowIcon, AngleTopIcon, FastBackwardIcon, FastForwardIcon },
-})
-export default class LinksBox extends Vue {
-  @Prop({
-    type: Number,
-    required: false,
-    default: null,
-  })
-  readonly initialCurrentPage: number;
+  props: {
+    initialCurrentPage: {
+      type: Number,
+      required: false,
+      default: null,
+    },
 
-  @Prop({
-    type: Array,
-    required: true,
-  })
-  readonly links: string[];
+    links: {
+      type: Array,
+      required: true,
+    },
 
-  @Prop({
-    type: Boolean,
-    required: false,
-    default: false,
-  })
-  readonly showFixedShortcuts: boolean;
+    showFixedShortcuts: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
 
-  private scrollOffset: number = 0;
-  private leftScrollDirection = LinkListScrollDirection.Left;
-  private rightScrollDirection = LinkListScrollDirection.Right;
-  private mouseDown: boolean = false;
-  private interval = null;
-  private linksAmount: number = undefined;
-  private arrowsShouldBeDisplayed: boolean = false;
-  private currentPage: number = null;
-  private translations = Translations;
-  private fixedShortcutsAreVisible = false;
+  components: {
+    LeftArrowIcon,
+    RightArrowIcon,
+    AngleTopIcon,
+    FastBackwardIcon,
+    FastForwardIcon,
+  },
 
-  scrollUp(): void {
-    window.scrollTo(0, 0);
-  }
+  data() {
+    return {
+      scrollOffset: 0,
+      leftScrollDirection: LinkListScrollDirection.Left,
+      rightScrollDirection: LinkListScrollDirection.Right,
+      mouseDown: false,
+      interval: null,
+      linksAmount: undefined,
+      arrowsShouldBeDisplayed: false,
+      currentPage: null,
+      translations: Translations,
+      fixedShortcutsAreVisible: false,
+    };
+  },
 
-  getamountOfElementsInBox(): number {
-    return this.links.length;
-  }
+  methods: {
+    scrollUp(): void {
+      window.scrollTo(0, 0);
+    },
 
-  chechIfArrowsShouldBeDisplayed() {
-    this.arrowsShouldBeDisplayed =
-      this.getamountOfElementsInBox() > this.getamountOfVisibleLinksInBox();
-  }
+    getamountOfElementsInBox(): number {
+      return this.links.length;
+    },
 
-  get leftOffsetStyle(): string {
-    const linksInBox = this.getamountOfVisibleLinksInBox();
-    const unit = linksInBox === 5 ? "px" : "vw";
-    const offsetBase = linksInBox === 5 ? 48 : 5;
-    return `calc(${-1 * this.scrollOffset * offsetBase}${unit})`;
-  }
+    chechIfArrowsShouldBeDisplayed() {
+      this.arrowsShouldBeDisplayed =
+        this.getamountOfElementsInBox() > this.getamountOfVisibleLinksInBox();
+    },
 
-  getamountOfVisibleLinksInBox(): number {
-    return window.innerWidth <= 830 ? 5 : 10;
-  }
+    getamountOfVisibleLinksInBox(): number {
+      return window.innerWidth <= 830 ? 5 : 10;
+    },
 
-  getMaxOffset(): number {
-    return this.linksAmount > this.getamountOfVisibleLinksInBox()
-      ? this.linksAmount - this.getamountOfVisibleLinksInBox()
-      : 0;
-  }
+    getMaxOffset(): number {
+      return this.linksAmount > this.getamountOfVisibleLinksInBox()
+        ? this.linksAmount - this.getamountOfVisibleLinksInBox()
+        : 0;
+    },
 
-  scrollLinks(direction: LinkListScrollDirection) {
-    const linksToSkip = this.getamountOfVisibleLinksInBox();
+    scrollLinks(direction: LinkListScrollDirection) {
+      const linksToSkip = this.getamountOfVisibleLinksInBox();
 
-    switch (direction) {
-      case LinkListScrollDirection.Left:
-        this.scrollOffset =
-          this.scrollOffset - linksToSkip <= 0
-            ? 0
-            : this.scrollOffset - linksToSkip;
-        break;
+      switch (direction) {
+        case LinkListScrollDirection.Left:
+          this.scrollOffset =
+            this.scrollOffset - linksToSkip <= 0
+              ? 0
+              : this.scrollOffset - linksToSkip;
+          break;
 
-      case LinkListScrollDirection.Right:
-        const maxOffset = this.getMaxOffset();
-        this.scrollOffset =
-          this.scrollOffset + linksToSkip >= maxOffset
-            ? maxOffset
-            : this.scrollOffset + linksToSkip;
-        break;
-    }
-  }
+        case LinkListScrollDirection.Right:
+          const maxOffset = this.getMaxOffset();
+          this.scrollOffset =
+            this.scrollOffset + linksToSkip >= maxOffset
+              ? maxOffset
+              : this.scrollOffset + linksToSkip;
+          break;
+      }
+    },
 
-  scrollLinksByMouseDown(direction: LinkListScrollDirection) {
-    this.interval = setInterval(() => this.scrollLinks(direction), 300);
-  }
+    scrollLinksByMouseDown(direction: LinkListScrollDirection) {
+      this.interval = setInterval(() => this.scrollLinks(direction), 300);
+    },
 
-  stopScrollingFromMouseDown() {
-    if (this.interval) {
-      clearInterval(this.interval);
-      this.interval = null;
-    }
-  }
+    stopScrollingFromMouseDown() {
+      if (this.interval) {
+        clearInterval(this.interval);
+        this.interval = null;
+      }
+    },
+
+    controlFixedShortcuts(): void {
+      this.fixedShortcutsAreVisible = window.scrollY > 400;
+    },
+
+    recomputeOffset() {
+      const pagesDelta = this.currentPage - this.getamountOfVisibleLinksInBox();
+      this.scrollOffset = pagesDelta > 0 ? pagesDelta : 0;
+    },
+
+    controlInterface(): void {
+      this.chechIfArrowsShouldBeDisplayed();
+      if (!this.arrowsShouldBeDisplayed) {
+        this.resetScrollOffset();
+      } else {
+        this.recomputeOffset();
+      }
+    },
+
+    resetScrollOffset(): void {
+      this.scrollOffset = 0;
+    },
+  },
+
+  computed: {
+    leftOffsetStyle(): string {
+      const linksInBox = this.getamountOfVisibleLinksInBox();
+      const unit = linksInBox === 5 ? "px" : "vw";
+      const offsetBase = linksInBox === 5 ? 48 : 5;
+      return `calc(${-1 * this.scrollOffset * offsetBase}${unit})`;
+    },
+
+    pageIsNotFirst(): boolean {
+      return this.initialCurrentPage !== 1;
+    },
+
+    pageIsNotLast(): boolean {
+      return this.initialCurrentPage !== this.getamountOfElementsInBox();
+    },
+
+    nextPage(): string {
+      return this.links[this.initialCurrentPage];
+    },
+
+    previousPage(): string {
+      return this.links[this.initialCurrentPage - 2];
+    },
+
+    displayAditionalLinks(): boolean {
+      return this.getamountOfElementsInBox() > 1;
+    },
+  },
 
   mounted() {
     this.currentPage = this.initialCurrentPage ? this.initialCurrentPage : 1;
@@ -243,52 +305,8 @@ export default class LinksBox extends Vue {
     window.addEventListener("resize", () => this.controlInterface());
     this.controlFixedShortcuts();
     window.addEventListener("scroll", this.controlFixedShortcuts);
-
-  }
-
-  controlFixedShortcuts(): void {
-    this.fixedShortcutsAreVisible = (window.scrollY > 400);
-  }
-
-  recomputeOffset() {
-    const pagesDelta = this.currentPage - this.getamountOfVisibleLinksInBox();
-    this.scrollOffset = pagesDelta > 0 ? pagesDelta : 0;
-  }
-
-  controlInterface(): void {
-    this.chechIfArrowsShouldBeDisplayed();
-    if (!this.arrowsShouldBeDisplayed) {
-      this.resetScrollOffset();
-    } else {
-      this.recomputeOffset();
-    }
-  }
-
-  resetScrollOffset(): void {
-    this.scrollOffset = 0;
-  }
-
-  get pageIsNotFirst(): boolean {
-    return this.initialCurrentPage !== 1;
-  }
-
-  get pageIsNotLast(): boolean {
-    return this.initialCurrentPage !== this.getamountOfElementsInBox();
-  }
-
-  get nextPage(): string {
-    return this.links[this.initialCurrentPage];
-  }
-
-  get previousPage(): string {
-    return this.links[this.initialCurrentPage - 2];
-  }
-
-  get displayAditionalLinks() : boolean
-  {
-    return this.getamountOfElementsInBox() > 1;
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss">
@@ -368,8 +386,8 @@ export default class LinksBox extends Vue {
   display: inline-flex;
 }
 
-.aditional-link-description{
-  margin:0 4px;
+.aditional-link-description {
+  margin: 0 4px;
 }
 
 .links-button-description {
@@ -426,9 +444,9 @@ export default class LinksBox extends Vue {
   display: flex;
   align-items: center;
   @include responsive-font(1.3vw, 13px);
-   @media (max-width: 380px){
-     flex-direction: column;
-   }
+  @media (max-width: 380px) {
+    flex-direction: column;
+  }
 }
 
 .scrollable-controls {

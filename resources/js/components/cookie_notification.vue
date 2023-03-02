@@ -15,18 +15,29 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options } from "vue-property-decorator";
 import Translations from "@jsmodules/translations/components/cookie_notification";
 import AcceptButton from "@jscomponents/form_controls/accept_button.vue";
 
-@Options({ name: "CookieNotification", components: { AcceptButton } })
-export default class CookieNotification extends Vue {
-  private translations = Translations;
-  private showNotification = true;
 
-  acceptCookies(): void {
+export default {
+  name : 'cookie-notification',
+
+  components : {
+    AcceptButton
+  },
+
+  data() {
+    return {
+      translations : Translations,
+      showNotification : true
+    };
+  },
+
+  methods : {
+    acceptCookies(): void {
     localStorage.setItem("cookiesAccepted", "yes");
     this.showNotification = false;
+  }
   }
 }
 </script>

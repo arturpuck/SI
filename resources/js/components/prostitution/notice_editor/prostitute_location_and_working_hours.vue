@@ -182,13 +182,14 @@ import SelectCombo from "@jscomponents/form_controls/select_combo.vue";
 import YesNoOptions from "@jsmodules/translations/components/yes_no_options";
 import AddButton from "@jscomponents-form-controls/add_button.vue";
 import Routes from "@config/paths/routes";
-import ExpectShadowCircle from "@jscomponents-decoration/expect_shadow_circle";
+import ExpectShadowCircle from "@jscomponents-decoration/expect_shadow_circle.vue";
 import { Weekdays } from "@js/enum/weekdays";
 import { DaysOfWeek } from "@js/enum/days_of_week";
 import { EmptyInputValue } from "@jscomponents/empty_input_option";
 import { EmptyInputList } from "@jscomponents/empty_input_option";
 import ErrorOnComboForProstitueAnnouncements from "@mixins/components/prostitute_announcement_creator/error_on_combo_input";
 import TimeStringValidator from "@jsmodules/helpers/time_string_validator";
+import announcementDetails from "@jscomponents/prostitution/notice_editor/announcement_details";
 
 export default {
   name: "prostitute-location-and-working-hours",
@@ -424,7 +425,8 @@ export default {
       test: EmptyInputList,
       fetchingCitiesInProgress: false,
       incorrectRelationBetweenHourOfStartAndEnd : false,
-      freePeriods : []
+      freePeriods : [],
+      announcementDetails : announcementDetails()
     };
   },
 

@@ -47,6 +47,7 @@
   import IconStop from "@jscomponents-decoration/icon_stop.vue";
   import IconConfirm from "@jscomponents-decoration/icon_confirm.vue";
   import ComboInputBasicFunctionality from "@mixins/components/comboInputs/comboInputBasicFunctionality";
+  import Test from "@mixins/test";
   
   export default {
     emits: ["selected"],

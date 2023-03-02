@@ -46,8 +46,8 @@
 import PreviewMovieData from "@interfaces/movies/preview_movie_data";
 import Translations from "@jsmodules/translations/components/movie_preview";
 import PlayButton from "@jscomponents/movies/play_button.vue";
-import StopButton from "@jscomponents/movies/stop_button";
-import ExpectShadowCircle from "@jscomponents-decoration/expect_shadow_circle";
+import StopButton from "@jscomponents/movies/stop_button.vue";
+import ExpectShadowCircle from "@jscomponents-decoration/expect_shadow_circle.vue";
 
 
 export default {

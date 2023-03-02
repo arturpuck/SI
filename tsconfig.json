@@ -9,7 +9,7 @@
     "esModuleInterop": true,
     "paths": {
       "@js/*": [
-        "js/*"
+        "resources/js/*"
       ],
       "@jscomponents/*": [
         "resources/js/components/*"
@@ -25,6 +25,18 @@
       ],
       "@jsmodules/*": [
         "resources/js/modules/*"
+      ],
+
+      "@svgicon/*" : [
+        "resources/js/components/decoration/icons/svg/*"
+      ],
+
+      "@config/*": [
+        "resources/js/config/*"
+      ],
+
+      "@mixins/*" : [
+        "resources/js/mixins/*"
       ]
     }
   },

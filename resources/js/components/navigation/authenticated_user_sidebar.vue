@@ -1,49 +1,25 @@
 <template>
-  <nav
-    id="fixed-authenticated-user-sidebar"
-    class="fixed-sidebar authenticated-user-side-bar"
-  >
+  <nav id="fixed-authenticated-user-sidebar" class="fixed-sidebar authenticated-user-side-bar">
     <ul class="user-sidebar-list">
-      <li
-        v-on:click="hideSideBar"
-        v-bind:title="translations['hide_side_bar_title']"
-        class="authenticated-user-sidebar-list-element"
-      >
+      <li v-on:click="hideSideBar" v-bind:title="translations['hide_side_bar_title']"
+        class="authenticated-user-sidebar-list-element">
         <phantom-button>
           <angle-top-icon class="authenticated-user-sidebar-icon"></angle-top-icon>
-          <span
-            v-text="translations['hide_authenticated_user_sidebar_caption']"
-            class="sidebar-item-description"
-          ></span>
+          <span v-text="translations['hide_authenticated_user_sidebar_caption']" class="sidebar-item-description"></span>
         </phantom-button>
       </li>
-      <li
-        v-bind:title="translations['show_user_profile_settings_title']"
-        class="authenticated-user-sidebar-list-element"
-      >
+      <li v-bind:title="translations['show_user_profile_settings_title']" class="authenticated-user-sidebar-list-element">
         <a href="/profil/ustawienia" class="sub-menu-link">
           <settings-icon class="authenticated-user-sidebar-icon"></settings-icon>
-          <span
-            v-text="translations['show_user_profile_settings_caption']"
-            class="sidebar-item-description"
-          ></span>
+          <span v-text="translations['show_user_profile_settings_caption']" class="sidebar-item-description"></span>
         </a>
       </li>
       <li v-on:click="logout" class="authenticated-user-sidebar-list-element">
         <phantom-button>
           <exit-arrow-icon class="authenticated-user-sidebar-icon"></exit-arrow-icon>
-          <span
-            v-text="translations['logout_caption']"
-            class="sidebar-item-description"
-          ></span>
+          <span v-text="translations['logout_caption']" class="sidebar-item-description"></span>
         </phantom-button>
-        <form
-          aria-hidden="true"
-          id="logoutForm"
-          class="logout-form"
-          method="POST"
-          action="/wyloguj"
-        >
+        <form aria-hidden="true" id="logoutForm" class="logout-form" method="POST" action="/wyloguj">
           <input type="hidden" v-bind:value="csrfToken" name="_token" />
         </form>
       </li>
@@ -52,34 +28,45 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator.js";
-import AngleTopIcon from "@svgicon/angle_top_icon";
-import SettingsIcon from "@svgicon/settings_icon";
-import ExitArrowIcon from "@svgicon/exit_arrow_icon";
+import AngleTopIcon from "@svgicon/angle_top_icon.vue";
+import SettingsIcon from "@svgicon/settings_icon.vue";
+import ExitArrowIcon from "@svgicon/exit_arrow_icon.vue";
 
-@Options({
-  components: { AngleTopIcon, SettingsIcon, ExitArrowIcon },
-  name: "AuthenticatedUserSidebar",
-})
-export default class AuthenticatedUserSidebar extends Vue {
-  @Prop({
-    type: String,
-    required: true,
-  })
-  readonly csrfToken: String;
+export default {
+  name: 'authenticated-user-sidebar',
 
-  private translations = Translator.getPackage("authenticated_user_sidebar");
+  components: {
+    AngleTopIcon,
+    SettingsIcon,
+    ExitArrowIcon
+  },
 
-  logout() {
-    (<HTMLFormElement>document.getElementById("logoutForm")).submit();
+  props: {
+
+    csrfToken: {
+      type: String,
+      required: true,
+    }
+  },
+
+  data() {
+    return {
+      translations: Translator.getPackage("authenticated_user_sidebar")
+    }
+  },
+
+  methods: {
+
+    logout() {
+      (<HTMLFormElement>document.getElementById("logoutForm")).submit();
+    },
+
+    hideSideBar() {
+      //@ts-ignore
+      this.emitter.emit("hideSideBar");
+    }
   }
-
-  hideSideBar() {
-    //@ts-ignore
-    this.emitter.emit("hideSideBar");
-  }
-
 }
 </script>
 
@@ -97,6 +84,7 @@ export default class AuthenticatedUserSidebar extends Vue {
 .authenticated-user-sidebar-list-element {
   @include sidebar-list-element();
   padding: 4px 0;
+
   &:hover {
     background: #211e1e;
   }

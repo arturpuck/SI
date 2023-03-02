@@ -19,46 +19,49 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options, Prop } from "vue-property-decorator";
-import Translator from "@jsmodules/translator.js";
 import MovieBox from "@jscomponents/movies/movie_box.vue";
 import PagesList from "@jscomponents/pages_list.vue";
-import { MoviesListResponse } from "@interfaces/movies/MoviesListResponse.ts";
-import { MovieBasicData } from "@interfaces/movies/MovieBasicData.ts";
-import { MoviesCurrentPage } from "@interfaces/movies/MoviesCurrentPage.ts";
-import { BasicPornstarData } from "@interfaces/pornstars/BasicPornstarData.ts";
-import PagesListBasicData from "@interfaces/pages_list_basic_data.ts";
+import { MovieBasicData } from "@interfaces/movies/MovieBasicData";
+import { BasicPornstarData } from "@interfaces/pornstars/BasicPornstarData";
+import PagesListBasicData from "@interfaces/pages_list_basic_data";
 import MoviePreviewComplete from "@jscomponents/movies/movie_preview_complete.vue";
 import PageListUpdate from '@interfaces/PageListUpdate';
 
-@Options({
-  components: { MovieBox, PagesList, MoviePreviewComplete },
-  name: "MoviesList",
-})
-export default class MoviesList extends Vue {
-  @Prop({
+export default {
+  name : 'movies-list',
+
+  props : {
+    initialMoviesData : {
     type: Object,
     required: false,
     default: undefined,
-  })
-  readonly initialMoviesData: MoviesListResponse;
+  },
 
-  @Prop({
+  initialTotalMovies : {
     type: Number,
     required: false,
     default: undefined,
-  })
-  readonly initialTotalMovies: number;
+  },
 
-  @Prop({
+  moviesPerPage : {
     type: Number,
     required: false,
     default: 100,
-  })
-  readonly moviesPerPage: number;
+  }
+  },
 
-  private movies: MovieBasicData[] = [];
-  private totalMovies: number = undefined;
+  components : {
+     MovieBox, 
+     PagesList, 
+     MoviePreviewComplete
+  },
+
+  data() {
+    return {
+      movies: [],
+      totalMovies:  undefined,
+    }
+  },
 
   created() {
     if (this.initialMoviesData) {
@@ -72,14 +75,15 @@ export default class MoviesList extends Vue {
     this.emitter.on("updateMoviesList", this.updateMoviesList);
     //@ts-ignore
     this.emitter.on('clearMoviesList', this.clearMoviesList)
-  }
+  },
 
-  clearMoviesList(){
+  methods : {
+    clearMoviesList(){
     this.totalMovies = 0;
     this.movies = [];
     //@ts-ignore
     this.emitter.emit('clearPagesList');
-  }
+  },
 
   updateMoviesList(moviesList: PageListUpdate<MovieBasicData>): void {
     this.totalMovies = moviesList.totalElements
@@ -89,12 +93,12 @@ export default class MoviesList extends Vue {
       pagesNumber: amountOfSubPages,
       currentPage: moviesList.currentPage,
     });
-  }
+  },
 
   updatePagesList(data: PagesListBasicData) {
     //@ts-ignore
     this.emitter.emit("updatePagesList", data);
-  }
+  },
 
   extractPornstars(pornstarsList: BasicPornstarData[]): string[] | string {
     if (pornstarsList && pornstarsList.length > 0) {
@@ -109,6 +113,9 @@ export default class MoviesList extends Vue {
       return "";
     }
   }
+  }
+
+
 }
 </script>
 

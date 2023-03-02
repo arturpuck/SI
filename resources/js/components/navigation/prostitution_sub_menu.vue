@@ -35,7 +35,7 @@ import Translations from "@jsmodules/translations/components/navbar";
 import PriceListIcon from "@svgicon/price_list_icon.vue";
 import FindLoveIcon from "@svgicon/find_love_icon.vue";
 import RoutesConfig from "@config/paths/routes";
-import NotificationFunction from '@jsmodules/notification_function.ts';
+import NotificationFunction from '@jsmodules/notification_function';
 
 export default {
   name: "prostitution-sub-menu",

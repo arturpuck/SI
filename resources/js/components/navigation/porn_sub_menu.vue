@@ -228,15 +228,15 @@ $border-color: black;
 </style>
         
 <script lang="ts">
-import MovieMediaPlayerIcon from "@svgicon/movie_media_player_icon";
-import ArrowUpIcon from "@svgicon/arrow_up_icon";
-import FolderIcon from "@svgicon/folder_icon";
-import HappyTongueIcon from "@svgicon/happy_tongue_icon";
-import DictionaryIcon from "@svgicon/dictionary_icon";
-import ExpandAllIcon from "@svgicon/expand_all_icon";
-import MagnifierIcon from "@svgicon/magnifier_icon";
+import MovieMediaPlayerIcon from "@svgicon/movie_media_player_icon.vue";
+import ArrowUpIcon from "@svgicon/arrow_up_icon.vue";
+import FolderIcon from "@svgicon/folder_icon.vue";
+import HappyTongueIcon from "@svgicon/happy_tongue_icon.vue";
+import DictionaryIcon from "@svgicon/dictionary_icon.vue";
+import ExpandAllIcon from "@svgicon/expand_all_icon.vue";
+import MagnifierIcon from "@svgicon/magnifier_icon.vue";
 import Translations from "@jsmodules/translations/components/navbar";
-import StarFullIcon from "@svgicon/star_full_icon";
+import StarFullIcon from "@svgicon/star_full_icon.vue";
 
 export default {
   name: "porn-sub-menu",

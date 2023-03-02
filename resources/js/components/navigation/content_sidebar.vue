@@ -118,22 +118,31 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options, Prop } from "vue-property-decorator";
 import RoutesConfig from "@config/paths/routes";
 import Translator from "@jsmodules/translator.js";
-import AngleTopIcon from "@svgicon/angle_top_icon";
-import MovieMediaPlayerIcon from "@svgicon/movie_media_player_icon";
-import FolderIcon from "@svgicon/folder_icon";
-import ExpandAllIcon from "@svgicon/expand_all_icon";
-import MagnifierIcon from "@svgicon/magnifier_icon";
-import SmileLightIcon from "@svgicon/smile_light_icon";
-import StarFullIcon from "@svgicon/star_full_icon";
-import DictionaryIcon from "@svgicon/dictionary_icon";
-import AddFileIcon from "@svgicon/add_file_icon";
+import AngleTopIcon from "@svgicon/angle_top_icon.vue";
+import MovieMediaPlayerIcon from "@svgicon/movie_media_player_icon.vue";
+import FolderIcon from "@svgicon/folder_icon.vue";
+import ExpandAllIcon from "@svgicon/expand_all_icon.vue";
+import MagnifierIcon from "@svgicon/magnifier_icon.vue";
+import SmileLightIcon from "@svgicon/smile_light_icon.vue";
+import StarFullIcon from "@svgicon/star_full_icon.vue";
+import DictionaryIcon from "@svgicon/dictionary_icon.vue";
+import AddFileIcon from "@svgicon/add_file_icon.vue";
 import EventEmmiter from "mitt";
 const EventBus = EventEmmiter();
 
-@Options({
+export default {
+  name : 'content-sidebar',
+
+  data() {
+    return {
+      translations: Object = Translator.getPackage("content_sidebar"),
+      moviesSubMenuIsVisible:  false,
+      routes : RoutesConfig
+    }
+  },
+
   components: {
     AngleTopIcon,
     MovieMediaPlayerIcon,
@@ -145,29 +154,27 @@ const EventBus = EventEmmiter();
     DictionaryIcon,
     AddFileIcon
   },
-  name: "ContentSideBar",
-})
-export default class ContentSideBar extends Vue {
-  private translations: Object = Translator.getPackage("content_sidebar");
-  moviesSubMenuIsVisible: Boolean = false;
-  private routes = RoutesConfig;
 
-  showCategories() {
+  methods : {
+    showCategories() {
     //@ts-ignore
     this.emitter.emit("showMoviesCategories");
-  }
+   },
 
   hideSideBar() {
     //@ts-ignore
     this.emitter.emit("hideContentBar");
-  }
+    },
 
   toggleMoviesMenu() {
     this.moviesSubMenuIsVisible = !this.moviesSubMenuIsVisible;
   }
+  },
 
-  get moviesIconName(): string {
+  computed : {
+    moviesIconName(): string {
     return this.moviesSubMenuIsVisible ? "AngleTopIcon" : "MovieMediaPlayerIcon";
+  }
   }
 }
 </script>

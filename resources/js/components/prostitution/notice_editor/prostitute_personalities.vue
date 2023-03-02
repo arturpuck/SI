@@ -100,6 +100,8 @@ import TextareaCombo from '@jscomponents-form-controls/textarea_combo.vue';
 import { EmptyInputValue} from "@jscomponents/empty_input_option";
 import { EmptyInputList } from "@jscomponents/empty_input_option";
 import { EmptyInputDescription } from "@jscomponents/empty_input_option";
+import announcementDetails from "@jscomponents/prostitution/notice_editor/announcement_details";
+import { mapWritableState } from 'pinia'
 
 export default {
   name: "prostitute-personalities",
@@ -170,7 +172,7 @@ export default {
     validateTitsSize(): void {
       if (
         this.userTypeString === Translations[UserType.Male] &&
-        this.titsSize !== EmptyInputValue
+        this.titsSize !== 0
       ) {
         this.showErrorOnComboInput(
           "TitsSize",
@@ -224,7 +226,19 @@ export default {
 
     requiredFieldsList(): string {
       return `${this.translations.nickname}, ${this.translations.user_type}, ${this.translations.birthday}`;
-    }
+    },
+    ...mapWritableState(announcementDetails, [
+      'nickname', 
+      'phoneNumber', 
+      'birthDate', 
+      'description', 
+      'userType', 
+      'sexualOrientation', 
+      'hairColor',
+      'titsSize',
+      'height',
+      'weight',
+    ])
   },
 
   components: {
@@ -237,14 +251,7 @@ export default {
   data() {
     return {
       translations: Translations,
-      nickname: "",
-      phoneNumber: "",
       csrfToken: "",
-      userType: EmptyInputValue,
-      sexualOrientation: EmptyInputValue,
-      hairColor: EmptyInputValue,
-      birthDate: null,
-      description : "",
       hairColorsList: {
         ...EmptyInputList,
         blonde: "blond",
@@ -255,9 +262,6 @@ export default {
         other: "inny",
       },
       titsSizesList: [EmptyInputDescription, 1, 2, 3, 4, 5, 6, 7, 8],
-      titsSize: 0,
-      height: "",
-      weight: "",
     };
   },
 
@@ -291,7 +295,7 @@ export default {
 }
 
 .basic-information-container {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

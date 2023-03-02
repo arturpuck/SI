@@ -19,7 +19,8 @@
         <ul
           v-bind:style="{ left: leftOffsetStyle }"
           v-bind:class="{
-            'pages-list__content-container-slider--content-in-center': !arrowsShouldBeDisplayed,
+            'pages-list__content-container-slider--content-in-center':
+              !arrowsShouldBeDisplayed,
           }"
           class="pages-list__content-container-slider"
         >
@@ -32,7 +33,8 @@
               v-text="pageNumber"
               v-on:click="pageHasBeenSelected(pageNumber)"
               v-bind:class="{
-                'pages-list__pagination-button--green': checkCurrentPage(pageNumber),
+                'pages-list__pagination-button--green':
+                  checkCurrentPage(pageNumber),
               }"
               class="pages-list__pagination-button"
             ></button>
@@ -51,7 +53,7 @@
           v-text="descriptions['nextLinksDescription']"
           class="pages-list__button-description"
         ></span>
-         <right-arrow-icon class="pages-list__scroll-pages-icon" />
+        <right-arrow-icon class="pages-list__scroll-pages-icon" />
       </button>
     </div>
     <ul class="pages-list__aditional-controls">
@@ -60,7 +62,9 @@
           v-on:click="navigatePageByDirection(pageDirection.previous)"
           class="pages-list__aditional-control-button"
         >
-          <left-arrow-icon class="pages-list__aditional-control-icon--left-align" />
+          <left-arrow-icon
+            class="pages-list__aditional-control-icon--left-align"
+          />
           <span v-text="descriptions.previous_page"></span>
         </button>
       </li>
@@ -69,7 +73,9 @@
           v-on:click="navigatePageByDirection(pageDirection.first)"
           class="pages-list__aditional-control-button"
         >
-          <fast-backward-icon class="pages-list__aditional-control-icon--left-align" />
+          <fast-backward-icon
+            class="pages-list__aditional-control-icon--left-align"
+          />
           <span v-text="descriptions.first_page"></span>
         </button>
       </li>
@@ -79,7 +85,9 @@
           class="pages-list__aditional-control-button"
         >
           <span v-text="descriptions.last_page"></span>
-          <fast-forward-icon class="pages-list__aditional-control-icon--right-align" />
+          <fast-forward-icon
+            class="pages-list__aditional-control-icon--right-align"
+          />
         </button>
       </li>
       <li v-show="pageIsNotLast" class="pages-list__aditional-control">
@@ -88,7 +96,9 @@
           class="pages-list__aditional-control-button"
         >
           <span v-text="descriptions.next_page"></span>
-          <right-arrow-icon class="pages-list__aditional-control-icon--right-align" />
+          <right-arrow-icon
+            class="pages-list__aditional-control-icon--right-align"
+          />
         </button>
       </li>
     </ul>
@@ -96,73 +106,74 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options, Prop } from "vue-property-decorator";
-import Translator from "@jsmodules/translator.js";
 import { LinkListScrollDirection } from "@js/enum/movies/scroll_types";
 import { PageDirection } from "@js/enum/page_direction";
-import Descriptions from "@jsmodules/translations/components/pages_list.ts";
+import Descriptions from "@jsmodules/translations/components/pages_list";
 import LeftArrowIcon from "@jscomponents/decoration/icons/svg/left_arrow_icon.vue";
 import RightArrowIcon from "@jscomponents/decoration/icons/svg/right_arrow_icon.vue";
-import PagesListBasicData from "@interfaces/pages_list_basic_data.ts";
+import PagesListBasicData from "@interfaces/pages_list_basic_data";
 import FastBackwardIcon from "@svgicon/fast_backward_icon.vue";
 import FastForwardIcon from "@svgicon/fast_forward_icon.vue";
 
-@Options({
+export default {
+  name: "pages-list",
+
   components: {
     LeftArrowIcon,
     RightArrowIcon,
     FastForwardIcon,
     FastBackwardIcon,
   },
-  name: "PagesList",
-})
-export default class PagesList extends Vue {
-  @Prop({
-    type: Number,
-    required: false,
-    default: 1,
-  })
-  readonly initialCurrentPage: number;
 
-  @Prop({
-    type: Number,
-    required: false,
-    default: null,
-  })
-  readonly initialPages: number;
+  props: {
+    initialCurrentPage: {
+      type: Number,
+      required: false,
+      default: 1,
+    },
 
-  @Prop({
-    type: String,
-    required: false,
-    default: "",
-  })
-  readonly uniqueIdentifier: string;
+    initialPages: {
+      type: Number,
+      required: false,
+      default: null,
+    },
 
-  private scrollOffset: number = 0;
-  private leftScrollDirection = LinkListScrollDirection.Left;
-  private rightScrollDirection = LinkListScrollDirection.Right;
-  private mouseDown: boolean = false;
-  private interval = null;
-  private arrowsShouldBeDisplayed: boolean = false;
-  private currentPage: number = 0;
-  private pagesNumber: number = 0;
-  readonly descriptions: object = Descriptions;
-  private pageDirection = {
-    first: PageDirection.First,
-    next: PageDirection.Next,
-    previous: PageDirection.Previous,
-    last: PageDirection.Last,
-  };
+    uniqueIdentifier: {
+      type: String,
+      required: false,
+      default: "",
+    },
+  },
 
-  get pagesListShoulBeDisplayed(): boolean {
-    return this.pagesNumber > 1;
-  }
+  data() {
+    return {
+      scrollOffset: 0,
+      leftScrollDirection: LinkListScrollDirection.Left,
+      rightScrollDirection: LinkListScrollDirection.Right,
+      mouseDown: false,
+      interval: null,
+      arrowsShouldBeDisplayed: false,
+      currentPage: 0,
+      pagesNumber: 0,
+      descriptions: Descriptions,
+      pageDirection: {
+        first: PageDirection.First,
+        next: PageDirection.Next,
+        previous: PageDirection.Previous,
+        last: PageDirection.Last,
+      },
+    };
+  },
 
-  pageHasBeenSelected(pageNumber: number): void {
+  methods : {
+    pageHasBeenSelected(pageNumber: number): void {
     this.currentPage = pageNumber;
     //@ts-ignore
-    this.emitter.emit(`pageHasBeenSelected${this.uniqueIdentifier}`, pageNumber);
-  }
+    this.emitter.emit(
+      `pageHasBeenSelected${this.uniqueIdentifier}`,
+      pageNumber
+    );
+  },
 
   navigatePageByDirection(pageDirection: PageDirection): void {
     switch (pageDirection) {
@@ -182,44 +193,30 @@ export default class PagesList extends Vue {
         this.pageHasBeenSelected(this.pagesNumber);
         break;
     }
-  }
+  },
 
   chechIfArrowsShouldBeDisplayed() {
-    this.arrowsShouldBeDisplayed = this.pagesNumber > this.getamountOfVisibleLinksInBox();
-  }
+    this.arrowsShouldBeDisplayed =
+      this.pagesNumber > this.getamountOfVisibleLinksInBox();
+  },
 
   resetScrollOffset(): void {
     this.scrollOffset = 0;
-  }
+  },
 
-  get leftOffsetStyle(): string {
-    const linksInBox = this.getamountOfVisibleLinksInBox();
-    const unit = linksInBox === 5 ? "px" : "vw";
-    const offsetBase = linksInBox === 5 ? 48 : 5;
-    return `calc(${-1 * this.scrollOffset * offsetBase}${unit})`;
-  }
-
-  get pageIsNotFirst(): boolean {
-    return this.currentPage !== 1;
-  }
-
-  get pageIsNotLast(): boolean {
-    return this.currentPage !== this.pagesNumber;
-  }
-
-  checkCurrentPage(pageNumber: number): boolean {
+    checkCurrentPage(pageNumber: number): boolean {
     return pageNumber == this.currentPage;
-  }
+  },
 
   getamountOfVisibleLinksInBox(): number {
     return window.innerWidth <= 830 ? 5 : 10;
-  }
+  },
 
   getMaxOffset(): number {
     return this.pagesNumber > this.getamountOfVisibleLinksInBox()
       ? this.pagesNumber - this.getamountOfVisibleLinksInBox()
       : 0;
-  }
+  },
 
   scrollLinks(direction: LinkListScrollDirection): void {
     const linksToSkip = this.getamountOfVisibleLinksInBox();
@@ -227,7 +224,9 @@ export default class PagesList extends Vue {
     switch (direction) {
       case LinkListScrollDirection.Left:
         this.scrollOffset =
-          this.scrollOffset - linksToSkip <= 0 ? 0 : this.scrollOffset - linksToSkip;
+          this.scrollOffset - linksToSkip <= 0
+            ? 0
+            : this.scrollOffset - linksToSkip;
         break;
 
       case LinkListScrollDirection.Right:
@@ -238,24 +237,24 @@ export default class PagesList extends Vue {
             : this.scrollOffset + linksToSkip;
         break;
     }
-  }
+  },
 
   scrollLinksByMouseDown(direction: LinkListScrollDirection): void {
     this.interval = setInterval(() => this.scrollLinks(direction), 300);
-  }
+  },
 
   stopScrollingFromMouseDown() {
     if (this.interval) {
       clearInterval(this.interval);
       this.interval = null;
     }
-  }
+  },
 
   updatePagesList(data: PagesListBasicData): void {
     this.pagesNumber = data.pagesNumber;
     this.currentPage = data.currentPage;
     this.controlInterface();
-  }
+  },
 
   controlInterface(): void {
     this.chechIfArrowsShouldBeDisplayed();
@@ -264,16 +263,38 @@ export default class PagesList extends Vue {
     } else {
       this.recomputeOffset();
     }
-  }
+  },
 
   recomputeOffset() {
     const pagesDelta = this.currentPage - this.getamountOfVisibleLinksInBox();
     this.scrollOffset = pagesDelta > 0 ? pagesDelta : 0;
-  }
+  },
 
   clearPagesList() {
     this.pagesNumber = 0;
   }
+  },
+
+  computed : {
+    leftOffsetStyle(): string {
+    const linksInBox = this.getamountOfVisibleLinksInBox();
+    const unit = linksInBox === 5 ? "px" : "vw";
+    const offsetBase = linksInBox === 5 ? 48 : 5;
+    return `calc(${-1 * this.scrollOffset * offsetBase}${unit})`;
+  },
+
+  pageIsNotFirst(): boolean {
+    return this.currentPage !== 1;
+  },
+
+  pageIsNotLast(): boolean {
+    return this.currentPage !== this.pagesNumber;
+  },
+
+  pagesListShoulBeDisplayed(): boolean {
+    return this.pagesNumber > 1;
+  }
+  },
 
   mounted() {
     this.currentPage = this.initialCurrentPage;
@@ -284,23 +305,26 @@ export default class PagesList extends Vue {
     this.controlInterface();
     window.addEventListener("resize", () => this.controlInterface());
     //@ts-ignore
-    this.emitter.on(`updatePagesList${this.uniqueIdentifier}`, this.updatePagesList);
+    this.emitter.on(
+      `updatePagesList${this.uniqueIdentifier}`,
+      this.updatePagesList
+    );
     //@ts-ignore
-    this.emitter.on('clearPagesList', this.clearPagesList)
+    this.emitter.on("clearPagesList", this.clearPagesList);
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 @import "~sass/fonts";
 
-@mixin aditional-control-icon{
-   vertical-align: middle;
-    width: 1.3vw;
-    height: 1.3vw;
-    min-width: 12px;
-    min-height: 12px;
-    fill: white;
+@mixin aditional-control-icon {
+  vertical-align: middle;
+  width: 1.3vw;
+  height: 1.3vw;
+  min-width: 12px;
+  min-height: 12px;
+  fill: white;
 }
 
 .pages-list {
@@ -317,7 +341,7 @@ export default class PagesList extends Vue {
   }
 
   &__scroll-pages-icon {
-     fill:#23af23;
+    fill: #23af23;
   }
 
   &__scroll-pages-button {
@@ -444,17 +468,15 @@ export default class PagesList extends Vue {
   }
 
   &__aditional-control-icon {
-    &--left-align{
-       @include aditional-control-icon();
-        margin-right: 5px;
+    &--left-align {
+      @include aditional-control-icon();
+      margin-right: 5px;
     }
 
-    &--right-align{
+    &--right-align {
       @include aditional-control-icon();
       margin-left: 5px;
     }
-    
-
   }
 }
 </style>

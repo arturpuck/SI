@@ -5,25 +5,32 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options, Prop } from "vue-property-decorator";
-import Translator from "@jsmodules/translator.js";
 import FixedShadowContainer from "@jscomponents/decoration/fixed_shadow_container.vue";
 import MoviePreview from "@jscomponents/movies/movie_preview.vue";
 
-@Options({
-  components: { FixedShadowContainer, MoviePreview },
-  name: "MoviePreviewComplete",
-})
-export default class MoviePreviewComplete extends Vue {
-  private showPreview: boolean = false;
+export default {
+  name : 'movie-preview-complete',
 
-  showMoviePreview(): void {
+  data() {
+    return {
+      showPreview: false
+    }
+  },
+
+  components: { 
+    FixedShadowContainer, 
+    MoviePreview 
+  },
+
+  methods : { 
+    showMoviePreview(): void {
     this.showPreview = true;
-  }
+  },
 
   hideMoviePreview(): void {
     this.showPreview = false;
   }
+  },
 
   created() {
     //@ts-ignore

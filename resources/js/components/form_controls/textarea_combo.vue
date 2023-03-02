@@ -43,185 +43,183 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options, Prop, Watch } from "vue-property-decorator";
 import ComboInputBasicFunctionality from "@mixins/components/comboInputs/comboInputBasicFunctionality";
-import IconStop from '@jscomponents-decoration/icon_stop.vue';
-import IconConfirm from '@jscomponents-decoration/icon_confirm.vue';
+import IconStop from "@jscomponents-decoration/icon_stop.vue";
+import IconConfirm from "@jscomponents-decoration/icon_confirm.vue";
 
-@Options({ name: "TextareaCombo", components : {IconStop, IconConfirm}, mixins : [ComboInputBasicFunctionality], emits : ['blur'] })
-export default class TextAreaCombo extends Vue {
-  @Prop({
-    type: String,
-    required: false,
-    default: "",
-  })
-  readonly initialValue: string;
+export default {
+  name: "textarea-combo",
 
-  @Prop({
-    type: String,
-    required: false,
-    default: "textarea_combo",
-  })
-  readonly textareaName: string;
+  mixins: [ComboInputBasicFunctionality],
 
-  @Prop({
-    type: Boolean,
-    required: false,
-    default: false,
-  })
-  readonly errorIconAvailable: boolean;
+  emits: ["blur"],
 
-  @Prop({
-    type: Boolean,
-    required: false,
-    default: false,
-  })
-  readonly confirmationIconAvailable: boolean;
+  components: {
+    IconStop,
+    IconConfirm,
+  },
 
-  @Prop({
-    type: Boolean,
-    required: false,
-    default: false,
-  })
-  readonly redBorderAvailable: boolean;
+  props: {
+    initialValue: {
+      type: String,
+      required: false,
+      default: "",
+    },
 
-  @Prop({
-    type: Boolean,
-    required: false,
-    default: false,
-  })
-  readonly greenBorderAvailable: boolean;
+    textareaName: {
+      type: String,
+      required: false,
+      default: "textarea_combo",
+    },
 
-  @Prop({
-    type: Boolean,
-    required: false,
-    default: undefined,
-  })
-  readonly initialOk: boolean;
+    errorIconAvailable: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
 
-  @Prop({
-    type: Boolean,
-    required: false,
-    default: false,
-  })
-  readonly completeErrorDisplayAvailable: boolean;
+    confirmationIconAvailable: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
 
-  @Prop({
-    type: Boolean,
-    required: false,
-    default: false,
-  })
-  readonly completeConfirmationDisplayAvailable: boolean;
+    redBorderAvailable: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
 
-  @Prop({
-    type: Boolean,
-    required: false,
-    default: false,
-  })
-  readonly completeValidationDisplayAvailable: boolean;
+    greenBorderAvailable: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
 
-  @Prop({
-    type: Boolean,
-    required: false,
-    default: false,
-  })
-  readonly errorMessageBoxAvailable: boolean;
+    initialOk: {
+      type: Boolean,
+      required: false,
+      default: undefined,
+    },
 
-  @Prop({
-    type: String,
-    required: false,
-    default: undefined,
-  })
-  readonly initialErrorText: string;
+    completeErrorDisplayAvailable: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
 
-  @Prop({
-    type: String,
-    required: false,
-    default: "",
-  })
-  readonly placeholderText: string;
+    completeConfirmationDisplayAvailable: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
 
-  @Prop({
-    type: Boolean,
-    required: false,
-    default: false,
-  })
-  readonly inputIsRequired: boolean;
+    completeValidationDisplayAvailable: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
 
-  @Prop({
-    type: Number,
-    required: false,
-    default: undefined,
-  })
-  readonly maxCharacters: number;
+    errorMessageBoxAvailable: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
 
-  @Prop({
-    type: Number,
-    required: false,
-    default: 6,
-  })
-  readonly rowsNumber: number;
+    initialErrorText: {
+      type: String,
+      required: false,
+      default: undefined,
+    },
 
-  @Prop({
-    type: Boolean,
-    required: false,
-    default: false,
-  })
-  readonly phantomLabel: boolean;
+    placeholderText: {
+      type: String,
+      required: false,
+      default: "",
+    },
 
-  @Prop({
-    type: String,
-    required: false,
-    default: '',
-  })
-  readonly uniqueId: boolean;
+    inputIsRequired: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
 
-  @Prop({
-    type: String,
-    required: false,
-    default: '',
-  })
-  readonly modelValue: string;
+    maxCharacters: {
+      type: Number,
+      required: false,
+      default: undefined,
+    },
 
-  private valueOK: boolean = null;
-  private errorMessage: string = '';
-  private iconErrorCanBeDisplayed: boolean = false;
-  private iconConfirmationCanBeDisplayed: boolean = false;
-  private redBorderCanBeDisplayed: boolean = false;
-  private greenBorderCanBeDisplayed: boolean = false;
-  private modelMediator = '';
+    rowsNumber: {
+      type: Number,
+      required: false,
+      default: 6,
+    },
 
-  get displayIconError() {
-    return this.iconErrorCanBeDisplayed && this.valueOK === false;
-  }
+    phantomLabel: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
 
-  get displayRedBorder() {
-    return this.redBorderCanBeDisplayed && (this.valueOK === false);
-  }
+    uniqueId: {
+      type: String,
+      required: false,
+      default: "",
+    },
 
-  get displayIconConfirmation() {
-    return this.iconConfirmationCanBeDisplayed && this.valueOK === true;
-  }
+    modelValue: {
+      type: String,
+      required: false,
+      default: "",
+    },
+  },
 
-  get displayGreenBorder() {
-    return this.greenBorderCanBeDisplayed && this.valueOK === true;
-  }
+  data() {
+    return {
+      valueOK: null,
+      errorMessage: "",
+      iconErrorCanBeDisplayed: false,
+      iconConfirmationCanBeDisplayed: false,
+      redBorderCanBeDisplayed: false,
+      greenBorderCanBeDisplayed: false,
+      modelMediator: "",
+    };
+  },
 
-  emitBlur(){
-    this.$emit("blur", this.modelMediator);
-  }
+  watch: {
+    modelValue(newValue) {
+      this.modelMediator = newValue;
+    },
+  },
 
-  @Watch("modelValue")
-  updateModel(newValue) {
-    console.log(`watch : ${newValue}`);
-    this.modelMediator = newValue;
-  }
+  methods: {
+    emitBlur() {
+      this.$emit("blur", this.modelMediator);
+    },
 
-  userEditedTextarea(event) {
-    console.log(event.target.value);
-    this.$emit("update:modelValue", event.target.value);
-  }
+    userEditedTextarea(event) {
+      this.$emit("update:modelValue", event.target.value);
+    },
+  },
 
+  computed: {
+    displayIconError() {
+      return this.iconErrorCanBeDisplayed && this.valueOK === false;
+    },
+
+    displayRedBorder() {
+      return this.redBorderCanBeDisplayed && this.valueOK === false;
+    },
+
+    displayIconConfirmation() {
+      return this.iconConfirmationCanBeDisplayed && this.valueOK === true;
+    },
+
+    displayGreenBorder() {
+      return this.greenBorderCanBeDisplayed && this.valueOK === true;
+    },
+  },
 
   created() {
     this.modelMediator = this.initialValue || this.modelValue;
@@ -241,20 +239,19 @@ export default class TextAreaCombo extends Vue {
       this.redBorderAvailable ||
       this.completeErrorDisplayAvailable ||
       this.completeValidationDisplayAvailable;
-      
+
     this.greenBorderCanBeDisplayed =
       this.greenBorderAvailable ||
       this.completeConfirmationDisplayAvailable ||
       this.completeValidationDisplayAvailable;
     this.valueOK = this.initialOk;
-    
-  }
+  },
 
   mounted() {
     //@ts-ignore
     this.attachEventListeners();
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss">

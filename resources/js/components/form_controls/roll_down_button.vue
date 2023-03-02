@@ -6,17 +6,22 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options, Prop } from "vue-property-decorator";
-import ArrowDownIcon from "@svgicon/arrow_down_icon";
+import ArrowDownIcon from "@svgicon/arrow_down_icon.vue";
 
-@Options({ name: "RollDownButton", components: { ArrowDownIcon } })
-export default class RollDownButton extends Vue {
-  @Prop({
-    type: String,
-    required: false,
-    default: "",
-  })
-  readonly caption: string;
+export default {
+  name : "roll-down-button",
+
+  components : {
+    ArrowDownIcon
+  },
+
+  props : {
+    caption : {
+      type: String,
+      required: false,
+      default: "",
+    }
+  }
 }
 </script>
 

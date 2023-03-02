@@ -48,7 +48,7 @@
 import { Vue, Options, Prop } from "vue-property-decorator";
 import Translator from "@jsmodules/translator.js";
 import MagnifierIcon from "@svgicon/magnifier_icon.vue";
-
+//@ts-ignore
 @Options({ name: "HintedSearchField", components : {MagnifierIcon} })
 export default class HintedSearchField extends Vue {
   @Prop({

@@ -66,7 +66,7 @@
 <script lang="ts">
 import Translator from "@jsmodules/translator.js";
 import UserPreview from "@jscomponents/user/user_preview.vue";
-import DateConfirmedIcon from "@svgicon/date_confirmed_icon";
+import DateConfirmedIcon from "@svgicon/date_confirmed_icon.vue";
 import PhantomButton from "@jscomponents/form_controls/phantom_button.vue";
 import CommentBox from "@jscomponents-form-controls/comment_box.vue";
 import Comment from "@interfaces/Comment";

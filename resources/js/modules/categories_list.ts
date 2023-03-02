@@ -1,4 +1,4 @@
-import CategoryData from '@interfaces/movies/category_data.ts';
+import CategoryData from '@interfaces/movies/category_data';
 import Translator from '@jsmodules/translator.js';
 
 type categoryType = 'theMostPopularCategories' | 'otherCategories'

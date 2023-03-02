@@ -1,4 +1,4 @@
-import { MoviesListResponse } from "@interfaces/movies/MoviesListResponse.ts";
+import { MoviesListResponse } from "@interfaces/movies/MoviesListResponse";
 
 export interface MoviesCurrentPage {
     moviesData: MoviesListResponse;

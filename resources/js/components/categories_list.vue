@@ -31,10 +31,10 @@
 </template>
 
 <script lang="ts">
-import CategoriesListTranslations from "@jsmodules/translations/categories_list.ts";
+import CategoriesListTranslations from "@jsmodules/translations/categories_list";
 import Categories from "@jsmodules/categories_list";
 import CategoryData from "@interfaces/movies/category_data";
-import MovieTapeIcon from "@svgicon/movie_tape_icon";
+import MovieTapeIcon from "@svgicon/movie_tape_icon.vue";
 
 export default  {
 

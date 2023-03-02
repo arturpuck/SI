@@ -14,13 +14,10 @@ var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
     "default": mod
   };
 };
-
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-
 var translator_js_1 = __importDefault(__webpack_require__(/*! @jsmodules/translator.js */ "./resources/js/modules/translator.js"));
-
 var translations = {
   loginFormCaption: translator_js_1["default"].translate('login_to_sex_empire'),
   loginDataCaption: translator_js_1["default"].translate('login_or_email'),
@@ -29,7 +26,7 @@ var translations = {
   logIn: translator_js_1["default"].translate('log_in'),
   iForgotPassword: translator_js_1["default"].translate('i_forgot_password')
 };
-exports.default = translations;
+exports["default"] = translations;
 
 /***/ }),
 
@@ -44,12 +41,9 @@ exports.default = translations;
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.default = void 0;
-
+exports["default"] = void 0;
 var _login_form = _interopRequireDefault(__webpack_require__(/*! @jsmodules/translations/components/login_form */ "./resources/js/modules/translations/components/login_form.ts"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
 var _default = {
   name: 'login-form',
   emits: ['hide'],
@@ -68,7 +62,7 @@ var _default = {
     }
   }
 };
-exports.default = _default;
+exports["default"] = _default;
 
 /***/ }),
 
@@ -84,9 +78,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.render = render;
-
 var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-
 (0, _vue.pushScopeId)("data-v-6e40fe23");
 var _hoisted_1 = {
   "class": "login-form-container"
@@ -106,40 +98,27 @@ var _hoisted_6 = ["textContent"];
 var _hoisted_7 = ["textContent"];
 var _hoisted_8 = ["textContent"];
 (0, _vue.popScopeId)();
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_button_close = (0, _vue.resolveComponent)("button-close");
-
   var _component_text_input_combo = (0, _vue.resolveComponent)("text-input-combo");
-
   var _component_labeled_checkbox = (0, _vue.resolveComponent)("labeled-checkbox");
-
   var _component_submit_button = (0, _vue.resolveComponent)("submit-button");
-
   return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [(0, _vue.createElementVNode)("form", _hoisted_2, [(0, _vue.createElementVNode)("header", _hoisted_3, [(0, _vue.createElementVNode)("span", {
     textContent: (0, _vue.toDisplayString)($data.translations['loginFormCaption']),
     "class": "login-info"
-  }, null, 8
-  /* PROPS */
-  , _hoisted_4), (0, _vue.createVNode)(_component_button_close, {
+  }, null, 8 /* PROPS */, _hoisted_4), (0, _vue.createVNode)(_component_button_close, {
     onClick: $options.hide,
     title: "Zamknij okno logowania",
     "aria-label": "Zamknij okno logowania"
-  }, null, 8
-  /* PROPS */
-  , ["onClick"])]), (0, _vue.createElementVNode)("input", {
+  }, null, 8 /* PROPS */, ["onClick"])]), (0, _vue.createElementVNode)("input", {
     value: $data.csrfToken,
     type: "hidden",
     name: "_token"
-  }, null, 8
-  /* PROPS */
-  , _hoisted_5), (0, _vue.createElementVNode)("label", {
+  }, null, 8 /* PROPS */, _hoisted_5), (0, _vue.createElementVNode)("label", {
     "for": "login",
     textContent: (0, _vue.toDisplayString)($data.translations['loginDataCaption']),
     "class": "main-panel-label"
-  }, null, 8
-  /* PROPS */
-  , _hoisted_6), (0, _vue.createVNode)(_component_text_input_combo, {
+  }, null, 8 /* PROPS */, _hoisted_6), (0, _vue.createVNode)(_component_text_input_combo, {
     "input-is-required": true,
     "input-id": "login",
     inputType: "text",
@@ -148,9 +127,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "for": "password",
     textContent: (0, _vue.toDisplayString)($data.translations['password']),
     "class": "main-panel-label"
-  }, null, 8
-  /* PROPS */
-  , _hoisted_7), (0, _vue.createVNode)(_component_text_input_combo, {
+  }, null, 8 /* PROPS */, _hoisted_7), (0, _vue.createVNode)(_component_text_input_combo, {
     "input-is-required": true,
     "input-id": "password",
     inputType: "password",
@@ -160,29 +137,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "remember"
   }, {
     "default": (0, _vue.withCtx)(function () {
-      return [(0, _vue.createTextVNode)((0, _vue.toDisplayString)($data.translations['rememberMe']), 1
-      /* TEXT */
-      )];
+      return [(0, _vue.createTextVNode)((0, _vue.toDisplayString)($data.translations['rememberMe']), 1 /* TEXT */)];
     }),
-    _: 1
-    /* STABLE */
 
+    _: 1 /* STABLE */
   }), (0, _vue.createVNode)(_component_submit_button, null, {
     "default": (0, _vue.withCtx)(function () {
-      return [(0, _vue.createTextVNode)((0, _vue.toDisplayString)($data.translations['logIn']), 1
-      /* TEXT */
-      )];
+      return [(0, _vue.createTextVNode)((0, _vue.toDisplayString)($data.translations['logIn']), 1 /* TEXT */)];
     }),
-    _: 1
-    /* STABLE */
 
+    _: 1 /* STABLE */
   }), (0, _vue.createElementVNode)("a", {
     href: "/haslo/resetuj/wyslij-link",
     textContent: (0, _vue.toDisplayString)($data.translations['iForgotPassword']),
     "class": "forgot-password-link"
-  }, null, 8
-  /* PROPS */
-  , _hoisted_8)])]);
+  }, null, 8 /* PROPS */, _hoisted_8)])]);
 }
 
 /***/ }),
@@ -228,11 +197,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_28_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_28_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_28_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_login_form_vue_vue_type_style_index_0_id_6e40fe23_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_28_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_28_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_28_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_login_form_vue_vue_type_style_index_0_id_6e40fe23_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"], options);
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_28_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_28_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_28_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_login_form_vue_vue_type_style_index_0_id_6e40fe23_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_28_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_28_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_28_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_login_form_vue_vue_type_style_index_0_id_6e40fe23_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -254,14 +223,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 ;
-_login_form_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _login_form_vue_vue_type_template_id_6e40fe23_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render
-_login_form_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__scopeId = "data-v-6e40fe23"
+_login_form_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].render = _login_form_vue_vue_type_template_id_6e40fe23_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render
+_login_form_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].__scopeId = "data-v-6e40fe23"
 /* hot reload */
 if (false) {}
 
-_login_form_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/components/user/login_form.vue"
+_login_form_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/components/user/login_form.vue"
 
-/* harmony default export */ __webpack_exports__["default"] = (_login_form_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+/* harmony default export */ __webpack_exports__["default"] = (_login_form_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 /***/ }),
 
@@ -273,8 +242,8 @@ _login_form_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__f
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_login_form_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default; },
-/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_login_form_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.__esModule; }
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_login_form_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
+/* harmony export */   "default": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_login_form_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"]; }
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_31_use_0_login_form_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./login_form.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[31].use[0]!./resources/js/components/user/login_form.vue?vue&type=script&lang=js");
  
