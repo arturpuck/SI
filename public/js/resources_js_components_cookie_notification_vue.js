@@ -125,13 +125,14 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.render = render;
 var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-(0, _vue.pushScopeId)("data-v-20448deb");
+var _withScopeId = function _withScopeId(n) {
+  return (0, _vue.pushScopeId)("data-v-20448deb"), n = n(), (0, _vue.popScopeId)(), n;
+};
 var _hoisted_1 = {
   "class": "cookies-notification"
 };
 var _hoisted_2 = ["textContent"];
 var _hoisted_3 = ["textContent"];
-(0, _vue.popScopeId)();
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_accept_button = (0, _vue.resolveComponent)("accept-button");
   return (0, _vue.withDirectives)(((0, _vue.openBlock)(), (0, _vue.createElementBlock)("section", _hoisted_1, [(0, _vue.createElementVNode)("header", {
@@ -166,12 +167,13 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.render = render;
 var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-(0, _vue.pushScopeId)("data-v-3f6667e0");
+var _withScopeId = function _withScopeId(n) {
+  return (0, _vue.pushScopeId)("data-v-3f6667e0"), n = n(), (0, _vue.popScopeId)(), n;
+};
 var _hoisted_1 = {
   type: "button",
   "class": "accept-button"
 };
-(0, _vue.popScopeId)();
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("button", _hoisted_1, [(0, _vue.renderSlot)(_ctx.$slots, "default", {}, undefined, true)]);
 }

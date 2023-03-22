@@ -53,14 +53,15 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.render = render;
 var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-(0, _vue.pushScopeId)("data-v-5a337b9c");
+var _withScopeId = function _withScopeId(n) {
+  return (0, _vue.pushScopeId)("data-v-5a337b9c"), n = n(), (0, _vue.popScopeId)(), n;
+};
 var _hoisted_1 = {
   "class": "confirmation-text"
 };
 var _hoisted_2 = {
   "class": "icon-background"
 };
-(0, _vue.popScopeId)();
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_icon_confirm = (0, _vue.resolveComponent)("icon-confirm");
   return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", {

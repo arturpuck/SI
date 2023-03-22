@@ -79,7 +79,9 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.render = render;
 var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-(0, _vue.pushScopeId)("data-v-6e40fe23");
+var _withScopeId = function _withScopeId(n) {
+  return (0, _vue.pushScopeId)("data-v-6e40fe23"), n = n(), (0, _vue.popScopeId)(), n;
+};
 var _hoisted_1 = {
   "class": "login-form-container"
 };
@@ -97,7 +99,6 @@ var _hoisted_5 = ["value"];
 var _hoisted_6 = ["textContent"];
 var _hoisted_7 = ["textContent"];
 var _hoisted_8 = ["textContent"];
-(0, _vue.popScopeId)();
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_button_close = (0, _vue.resolveComponent)("button-close");
   var _component_text_input_combo = (0, _vue.resolveComponent)("text-input-combo");

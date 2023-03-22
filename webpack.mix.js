@@ -101,5 +101,3 @@ mix.js('resources/js/mainpage.js', 'public/js').vue()
       ]
     }
   })
-
-console.log(mix.dumpWebpackConfig().alias())

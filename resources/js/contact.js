@@ -12,7 +12,7 @@ import ContactingComboInputs from '@mixins/components/comboInputs/contactingComb
 
     data() {
         return{
-
+          message : ''
         };
     },
 

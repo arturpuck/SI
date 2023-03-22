@@ -9,13 +9,21 @@
             "type": "php",
             "request": "launch",
             "port": 9003,
-            "log" : true,
-            "url" : "http://localhost/",
-            "runtimeExecutable" : "/usr/bin/php8.1",
+            "log": true,
+            "url": "http://localhost/",
+            "runtimeExecutable": "/usr/bin/php8.1",
             "pathMappings": {
                 "/var/www/html/sex-imperium": "${workspaceFolder}"
             }
+        },
+        {
+            "name": "Launch Chrome against localhost",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost",
+            "webRoot": "${workspaceFolder}",
+            "breakOnLoad": true,
+            "outFiles": ["${workspaceFolder}/public/js/*.js"]
         }
-
     ]
 }

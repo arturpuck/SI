@@ -45,6 +45,7 @@
 
 		<textarea-combo
 		  v-bind:input-is-required="true"
+		  v-model="message"
 		  textarea-name="message"
 		  v-bind:error-message-box-available="true"
 		  placeholder-text="{{__('required_between_3_and_1000')}}"

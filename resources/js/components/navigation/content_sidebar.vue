@@ -137,7 +137,7 @@ export default {
 
   data() {
     return {
-      translations: Object = Translator.getPackage("content_sidebar"),
+      translations: Translator.getPackage("content_sidebar"),
       moviesSubMenuIsVisible:  false,
       routes : RoutesConfig
     }

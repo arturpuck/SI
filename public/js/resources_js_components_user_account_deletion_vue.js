@@ -219,7 +219,9 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.render = render;
 var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-(0, _vue.pushScopeId)("data-v-0a577a4c");
+var _withScopeId = function _withScopeId(n) {
+  return (0, _vue.pushScopeId)("data-v-0a577a4c"), n = n(), (0, _vue.popScopeId)(), n;
+};
 var _hoisted_1 = {
   "class": "container"
 };
@@ -227,7 +229,6 @@ var _hoisted_2 = {
   "class": "container__description"
 };
 var _hoisted_3 = ["disabled", "name", "required", "placeholder", "value", "type", "min", "max"];
-(0, _vue.popScopeId)();
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("label", _hoisted_1, [(0, _vue.createElementVNode)("span", _hoisted_2, [(0, _vue.renderSlot)(_ctx.$slots, "default", {}, undefined, true)]), (0, _vue.createElementVNode)("input", {
     disabled: _ctx.isDisabled,
@@ -260,7 +261,9 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.render = render;
 var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-(0, _vue.pushScopeId)("data-v-1e8f7fae");
+var _withScopeId = function _withScopeId(n) {
+  return (0, _vue.pushScopeId)("data-v-1e8f7fae"), n = n(), (0, _vue.popScopeId)(), n;
+};
 var _hoisted_1 = {
   "class": "dialog-box",
   open: ""
@@ -271,18 +274,19 @@ var _hoisted_3 = {
   method: "POST",
   "class": "delete-account-form"
 };
-var _hoisted_4 = /*#__PURE__*/(0, _vue.createElementVNode)("input", {
-  type: "hidden",
-  name: "_method",
-  value: "DELETE"
-}, null, -1 /* HOISTED */);
+var _hoisted_4 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0, _vue.createElementVNode)("input", {
+    type: "hidden",
+    name: "_method",
+    value: "DELETE"
+  }, null, -1 /* HOISTED */);
+});
 var _hoisted_5 = ["value"];
 var _hoisted_6 = {
   "class": "button-container"
 };
 var _hoisted_7 = ["textContent"];
 var _hoisted_8 = ["textContent"];
-(0, _vue.popScopeId)();
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_exclamation_icon = (0, _vue.resolveComponent)("exclamation-icon");
   var _component_simple_labeled_input = (0, _vue.resolveComponent)("simple-labeled-input");
