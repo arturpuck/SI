@@ -13,7 +13,8 @@
     </div>
     <multifile-image-upload 
       v-on:number-of-images-limit-exceeded="notifyUserAboutToManyPhotos" 
-      v-on:added-photos="assignNumberOfPhotos"
+      v-on:added-photos="assignPhotos"
+      v-on:removed-photo="assignPhotos"
       v-bind:number-of-maximum-photos=10
       class="added-images"></multifile-image-upload>
   </section>
@@ -23,6 +24,8 @@
 import Translations from "@jsmodules/translations/components/prostitution_offer_photos";
 import MultifileImageUpload from '@jscomponents/form_controls/multifile_image_upload.vue';
 import NotificationFunction from '@jsmodules/notification_function';
+import { mapWritableState } from 'pinia';
+import announcementDetails from "@jscomponents/prostitution/notice_editor/announcement_details";
 
 export default {
   name: "prostitute-photos",
@@ -44,7 +47,6 @@ export default {
     return {
       Translations,
       showNotification : NotificationFunction,
-      numberOfAddedPhotos : 0
     };
   },
 
@@ -60,8 +62,8 @@ export default {
       this.showNotification('you_have_exceeded_photos_limit', 'error');
     },
 
-    assignNumberOfPhotos(numberOfPhotos : number) : void {
-      this.numberOfAddedPhotos = numberOfPhotos;
+    assignPhotos(photos : []) : void {
+      this.photos = [...photos];
     },
 
     validatePhotos() : void {
@@ -71,6 +73,14 @@ export default {
         this.$emit('validated');
       }
     }
+  },
+
+  computed : {
+    numberOfAddedPhotos() : number {
+      return this.photos.length;
+    },
+
+    ...mapWritableState(announcementDetails, ['photos'])
   }
 };
 </script>

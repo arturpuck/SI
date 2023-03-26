@@ -5,7 +5,7 @@
     <ul class="images-list">
       <li v-for="(file, index) in files" v-bind:key="index" class="image-list-element">
         <button-close 
-        v-on:click="removeFileFromList(index)"
+        v-on:click="removeFileFromListAndEmitEvent(index)"
         v-bind:label="Translations['remove']"
         v-bind:title="Translations['remove']"
         class="close-button"></button-close>
@@ -27,7 +27,7 @@ import Translations from "@jsmodules/translations/components/multifile_image_upl
   
   export default {
 
-    emits : ['numberOfImagesLimitExceeded', 'addedPhotos'],
+    emits : ['numberOfImagesLimitExceeded', 'addedPhotos', 'removedPhoto'],
 
     name: "multifile-image-upload",
 
@@ -63,7 +63,7 @@ import Translations from "@jsmodules/translations/components/multifile_image_upl
 
       pushFilesAndEmitEvent(files : []) : void {
         this.files.push(...files);
-        this.$emit('addedPhotos', this.files.length);
+        this.$emit('addedPhotos', this.files);
       },
 
       fileNumberLimitIsNotExceeded(event = undefined) : boolean {
@@ -82,8 +82,9 @@ import Translations from "@jsmodules/translations/components/multifile_image_upl
         return URL.createObjectURL(file);
       },
 
-      removeFileFromList(indexOfFileThatShouldBeRemoved : number) : void {
+      removeFileFromListAndEmitEvent(indexOfFileThatShouldBeRemoved : number) : void {
         this.files = this.files.filter((file, fileIndex) => fileIndex != indexOfFileThatShouldBeRemoved);
+        this.$emit('removedPhoto', this.files);
       }
     },
 

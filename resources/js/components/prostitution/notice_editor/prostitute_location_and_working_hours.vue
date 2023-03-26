@@ -189,6 +189,7 @@ import { EmptyInputValue } from "@jscomponents/empty_input_option";
 import { EmptyInputList } from "@jscomponents/empty_input_option";
 import ErrorOnComboForProstitueAnnouncements from "@mixins/components/prostitute_announcement_creator/error_on_combo_input";
 import TimeStringValidator from "@jsmodules/helpers/time_string_validator";
+import { mapWritableState } from 'pinia';
 import announcementDetails from "@jscomponents/prostitution/notice_editor/announcement_details";
 
 export default {
@@ -412,21 +413,14 @@ export default {
 
   data() {
     return {
+     
+      freePeriods : [],
       Translations,
       YesNoOptions,
-      preciseHoursDecision: EmptyInputValue,
-      showEverySingleWeekday: false,
-      workingHoursByPeriodOrDay: undefined,
-      citiesList: EmptyInputList,
-      city: EmptyInputValue,
-      voivodeship: EmptyInputValue,
-      token: "",
-      csrfToken: "",
-      test: EmptyInputList,
-      fetchingCitiesInProgress: false,
       incorrectRelationBetweenHourOfStartAndEnd : false,
-      freePeriods : [],
-      announcementDetails : announcementDetails()
+      csrfToken: "",
+      fetchingCitiesInProgress: false,
+      citiesList: EmptyInputList,
     };
   },
 
@@ -464,7 +458,15 @@ export default {
       return this.freePeriods.includes('saturday') && 
               this.freePeriods.includes('sunday') && 
               this.freePeriods.includes('mondayToFriday')
-    }
+    },
+
+    ...mapWritableState(announcementDetails, [
+        'preciseHoursDecision',
+        'showEverySingleWeekday',
+        'workingHoursByPeriodOrDay',
+        'city',
+        'voivodeship',
+    ])
   },
 };
 </script>

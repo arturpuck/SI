@@ -172,7 +172,7 @@ export default {
     validateTitsSize(): void {
       if (
         this.userTypeString === Translations[UserType.Male] &&
-        this.titsSize !== 0
+        this.titsSize !== '0'
       ) {
         this.showErrorOnComboInput(
           "TitsSize",

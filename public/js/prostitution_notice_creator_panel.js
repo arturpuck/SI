@@ -20024,7 +20024,7 @@ var image_photography_icon_vue_1 = __importDefault(__webpack_require__(/*! @svgi
 var button_close_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/form_controls/button_close.vue */ "./resources/js/components/form_controls/button_close.vue"));
 var multifile_image_upload_1 = __importDefault(__webpack_require__(/*! @jsmodules/translations/components/multifile_image_upload */ "./resources/js/modules/translations/components/multifile_image_upload.ts"));
 exports["default"] = {
-  emits: ['numberOfImagesLimitExceeded', 'addedPhotos'],
+  emits: ['numberOfImagesLimitExceeded', 'addedPhotos', 'removedPhoto'],
   name: "multifile-image-upload",
   components: {
     AddButton: add_button_vue_1["default"],
@@ -20053,7 +20053,7 @@ exports["default"] = {
     pushFilesAndEmitEvent: function pushFilesAndEmitEvent(files) {
       var _a;
       (_a = this.files).push.apply(_a, files);
-      this.$emit('addedPhotos', this.files.length);
+      this.$emit('addedPhotos', this.files);
     },
     fileNumberLimitIsNotExceeded: function fileNumberLimitIsNotExceeded(event) {
       if (event === void 0) {
@@ -20072,10 +20072,11 @@ exports["default"] = {
     createURL: function createURL(file) {
       return URL.createObjectURL(file);
     },
-    removeFileFromList: function removeFileFromList(indexOfFileThatShouldBeRemoved) {
+    removeFileFromListAndEmitEvent: function removeFileFromListAndEmitEvent(indexOfFileThatShouldBeRemoved) {
       this.files = this.files.filter(function (file, fileIndex) {
         return fileIndex != indexOfFileThatShouldBeRemoved;
       });
+      this.$emit('removedPhoto', this.files);
     }
   },
   props: {
@@ -21399,6 +21400,7 @@ var empty_input_option_1 = __webpack_require__(/*! @jscomponents/empty_input_opt
 var empty_input_option_2 = __webpack_require__(/*! @jscomponents/empty_input_option */ "./resources/js/components/empty_input_option.ts");
 var error_on_combo_input_1 = __importDefault(__webpack_require__(/*! @mixins/components/prostitute_announcement_creator/error_on_combo_input */ "./resources/js/mixins/components/prostitute_announcement_creator/error_on_combo_input.ts"));
 var time_string_validator_1 = __importDefault(__webpack_require__(/*! @jsmodules/helpers/time_string_validator */ "./resources/js/modules/helpers/time_string_validator.ts"));
+var pinia_1 = __webpack_require__(/*! pinia */ "./node_modules/pinia/index.js");
 var announcement_details_1 = __importDefault(__webpack_require__(/*! @jscomponents/prostitution/notice_editor/announcement_details */ "./resources/js/components/prostitution/notice_editor/announcement_details.ts"));
 exports["default"] = {
   name: "prostitute-location-and-working-hours",
@@ -21613,21 +21615,13 @@ exports["default"] = {
   },
   data: function data() {
     return {
+      freePeriods: [],
       Translations: prostitute_location_and_working_hours_1["default"],
       YesNoOptions: yes_no_options_1["default"],
-      preciseHoursDecision: empty_input_option_1.EmptyInputValue,
-      showEverySingleWeekday: false,
-      workingHoursByPeriodOrDay: undefined,
-      citiesList: empty_input_option_2.EmptyInputList,
-      city: empty_input_option_1.EmptyInputValue,
-      voivodeship: empty_input_option_1.EmptyInputValue,
-      token: "",
-      csrfToken: "",
-      test: empty_input_option_2.EmptyInputList,
-      fetchingCitiesInProgress: false,
       incorrectRelationBetweenHourOfStartAndEnd: false,
-      freePeriods: [],
-      announcementDetails: (0, announcement_details_1["default"])()
+      csrfToken: "",
+      fetchingCitiesInProgress: false,
+      citiesList: empty_input_option_2.EmptyInputList
     };
   },
   created: function created() {
@@ -21635,7 +21629,7 @@ exports["default"] = {
     this.initiateWorkingHours();
     this.csrfToken = document.getElementById("csrf-token").content;
   },
-  computed: {
+  computed: __assign({
     showWeeklySchedule: function showWeeklySchedule() {
       return parseInt(this.preciseHoursDecision) === 1;
     },
@@ -21651,7 +21645,7 @@ exports["default"] = {
     userSetAllDaysToFreeUsingShortWeekdays: function userSetAllDaysToFreeUsingShortWeekdays() {
       return this.freePeriods.includes('saturday') && this.freePeriods.includes('sunday') && this.freePeriods.includes('mondayToFriday');
     }
-  }
+  }, (0, pinia_1.mapWritableState)(announcement_details_1["default"], ['preciseHoursDecision', 'showEverySingleWeekday', 'workingHoursByPeriodOrDay', 'city', 'voivodeship']))
 };
 
 /***/ }),
@@ -21752,7 +21746,7 @@ exports["default"] = {
       this.emitter.emit("resetValidationannouncementDescription");
     },
     validateTitsSize: function validateTitsSize() {
-      if (this.userTypeString === prostitute_basic_information_1["default"][user_type_1.UserType.Male] && this.titsSize !== 0) {
+      if (this.userTypeString === prostitute_basic_information_1["default"][user_type_1.UserType.Male] && this.titsSize !== '0') {
         this.showErrorOnComboInput("TitsSize", "you_mustnot_choose_tits_size_if_you_are_a_male");
       }
     },
@@ -21831,6 +21825,25 @@ exports["default"] = {
 "use strict";
 
 
+var __assign = void 0 && (void 0).__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign.apply(this, arguments);
+};
+var __spreadArray = void 0 && (void 0).__spreadArray || function (to, from, pack) {
+  if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+    if (ar || !(i in from)) {
+      if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+      ar[i] = from[i];
+    }
+  }
+  return to.concat(ar || Array.prototype.slice.call(from));
+};
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -21842,6 +21855,8 @@ Object.defineProperty(exports, "__esModule", ({
 var prostitution_offer_photos_1 = __importDefault(__webpack_require__(/*! @jsmodules/translations/components/prostitution_offer_photos */ "./resources/js/modules/translations/components/prostitution_offer_photos.ts"));
 var multifile_image_upload_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/form_controls/multifile_image_upload.vue */ "./resources/js/components/form_controls/multifile_image_upload.vue"));
 var notification_function_1 = __importDefault(__webpack_require__(/*! @jsmodules/notification_function */ "./resources/js/modules/notification_function.ts"));
+var pinia_1 = __webpack_require__(/*! pinia */ "./node_modules/pinia/index.js");
+var announcement_details_1 = __importDefault(__webpack_require__(/*! @jscomponents/prostitution/notice_editor/announcement_details */ "./resources/js/components/prostitution/notice_editor/announcement_details.ts"));
 exports["default"] = {
   name: "prostitute-photos",
   props: {
@@ -21858,8 +21873,7 @@ exports["default"] = {
   data: function data() {
     return {
       Translations: prostitution_offer_photos_1["default"],
-      showNotification: notification_function_1["default"],
-      numberOfAddedPhotos: 0
+      showNotification: notification_function_1["default"]
     };
   },
   mounted: function mounted() {
@@ -21869,8 +21883,8 @@ exports["default"] = {
     notifyUserAboutToManyPhotos: function notifyUserAboutToManyPhotos() {
       this.showNotification('you_have_exceeded_photos_limit', 'error');
     },
-    assignNumberOfPhotos: function assignNumberOfPhotos(numberOfPhotos) {
-      this.numberOfAddedPhotos = numberOfPhotos;
+    assignPhotos: function assignPhotos(photos) {
+      this.photos = __spreadArray([], photos, true);
     },
     validatePhotos: function validatePhotos() {
       if (this.numberOfAddedPhotos > 10 || this.numberOfAddedPhotos < 1) {
@@ -21879,7 +21893,12 @@ exports["default"] = {
         this.$emit('validated');
       }
     }
-  }
+  },
+  computed: __assign({
+    numberOfAddedPhotos: function numberOfAddedPhotos() {
+      return this.photos.length;
+    }
+  }, (0, pinia_1.mapWritableState)(announcement_details_1["default"], ['photos']))
 };
 
 /***/ }),
@@ -21893,6 +21912,16 @@ exports["default"] = {
 "use strict";
 
 
+var __assign = void 0 && (void 0).__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign.apply(this, arguments);
+};
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -21904,9 +21933,15 @@ Object.defineProperty(exports, "__esModule", ({
 var prostitution_save_notice_1 = __importDefault(__webpack_require__(/*! @jsmodules/translations/components/prostitution_save_notice */ "./resources/js/modules/translations/components/prostitution_save_notice.ts"));
 var routes_1 = __importDefault(__webpack_require__(/*! @config/paths/routes */ "./resources/js/config/paths/routes.ts"));
 var add_button_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents-form-controls/add_button.vue */ "./resources/js/components/form_controls/add_button.vue"));
+var announcement_details_1 = __importDefault(__webpack_require__(/*! @jscomponents/prostitution/notice_editor/announcement_details */ "./resources/js/components/prostitution/notice_editor/announcement_details.ts"));
+var pinia_1 = __webpack_require__(/*! pinia */ "./node_modules/pinia/index.js");
+var global_properties_names_1 = __importDefault(__webpack_require__(/*! @jscomponents/prostitution/notice_editor/global_properties_names */ "./resources/js/components/prostitution/notice_editor/global_properties_names.ts"));
+var global_properties_names_2 = __webpack_require__(/*! @jscomponents/prostitution/notice_editor/global_properties_names */ "./resources/js/components/prostitution/notice_editor/global_properties_names.ts");
+var global_properties_names_3 = __webpack_require__(/*! @jscomponents/prostitution/notice_editor/global_properties_names */ "./resources/js/components/prostitution/notice_editor/global_properties_names.ts");
+var empty_input_option_1 = __webpack_require__(/*! @jscomponents/empty_input_option */ "./resources/js/components/empty_input_option.ts");
+var weekdays_1 = __webpack_require__(/*! @js/enum/weekdays */ "./resources/js/enum/weekdays.ts");
 exports["default"] = {
   name: "prostitution-save-notice",
-  emits: ['validated'],
   components: {
     AddButton: add_button_vue_1["default"]
   },
@@ -21915,7 +21950,113 @@ exports["default"] = {
       translations: prostitution_save_notice_1["default"],
       routesConfig: routes_1["default"]
     };
-  }
+  },
+  methods: {
+    createRequestObject: function createRequestObject() {
+      return __assign(__assign(__assign(__assign({}, this.createRequestObjectPersonalitiesPart()), this.createRequestObjectServicesPart()), this.createRequestObjectPhotosPart()), this.createRequestObjectLocationAndWorkingHoursPart());
+    },
+    createRequestObjectLocationAndWorkingHoursPart: function createRequestObjectLocationAndWorkingHoursPart() {
+      var requestPart = {};
+      if (this.preciseHoursDecision === '1') {
+        //sucks a little bit I know
+        requestPart = this.createRequestObjectWorkingHoursPart();
+      }
+      return __assign(__assign({}, requestPart), this.createLocationRequestPart());
+    },
+    createLocationRequestPart: function createLocationRequestPart() {
+      return {
+        city: this.city,
+        voivodeship: this.voivodeship
+      };
+    },
+    createRequestObjectWorkingHoursPart: function createRequestObjectWorkingHoursPart() {
+      return this.showEverySingleWeekday ? this.extractWorkingHoursForEverySingleDayOfWeek() : this.extractWorkingHoursWhenUserChoseMondayToFridayAsOneOption();
+    },
+    extractWorkingHoursForEverySingleDayOfWeek: function extractWorkingHoursForEverySingleDayOfWeek() {
+      var _this = this;
+      var workingHoursCopy = __assign({}, this.workingHoursByPeriodOrDay);
+      var result = {};
+      delete workingHoursCopy['mondayToFriday'];
+      Object.keys(workingHoursCopy).forEach(function (dayOfWeek) {
+        if (_this.userWorksDuringThisDayOrPeriod(workingHoursCopy[dayOfWeek])) {
+          result[dayOfWeek] = workingHoursCopy[dayOfWeek];
+        }
+      });
+      return {
+        workingHours: result
+      };
+    },
+    extractWorkingHoursWhenUserChoseMondayToFridayAsOneOption: function extractWorkingHoursWhenUserChoseMondayToFridayAsOneOption() {
+      var result = {};
+      if (this.userWorksDuringThisDayOrPeriod(this.workingHoursByPeriodOrDay['mondayToFriday'])) {
+        var mondayToFridayHours_1 = this.workingHoursByPeriodOrDay['mondayToFriday'];
+        Object.values(weekdays_1.Weekdays).forEach(function (weekday) {
+          result[weekday] = mondayToFridayHours_1;
+        });
+      }
+      if (this.userWorksDuringThisDayOrPeriod(this.workingHoursByPeriodOrDay['saturday'])) {
+        result['saturday'] = this.workingHoursByPeriodOrDay['saturday'];
+      }
+      if (this.userWorksDuringThisDayOrPeriod(this.workingHoursByPeriodOrDay['sunday'])) {
+        result['sunday'] = this.workingHoursByPeriodOrDay['sunday'];
+      }
+      return {
+        workingHours: result
+      };
+    },
+    userWorksDuringThisDayOrPeriod: function userWorksDuringThisDayOrPeriod(period) {
+      return period.since !== undefined && period.until !== undefined;
+    },
+    anyValueWasChosenByUser: function anyValueWasChosenByUser(propertyValue) {
+      return propertyValue && propertyValue != empty_input_option_1.EmptyInputValue;
+    },
+    createRequestObjectPhotosPart: function createRequestObjectPhotosPart() {
+      return {
+        photos: this.photos
+      };
+    },
+    createRequestObjectPersonalitiesPart: function createRequestObjectPersonalitiesPart() {
+      var _this = this;
+      var personalitiesPart = {
+        nickname: this.nickname,
+        birthDate: this.birthDate,
+        userType: this.userType
+      };
+      global_properties_names_2.optionalPersonalitiesPropertiesNames.forEach(function (propertyName) {
+        if (_this.anyValueWasChosenByUser(_this[propertyName])) {
+          personalitiesPart[propertyName] = _this[propertyName];
+        }
+      });
+      return personalitiesPart;
+    },
+    createRequestObjectServicesPart: function createRequestObjectServicesPart() {
+      var _this = this;
+      var serviceProperties = {};
+      global_properties_names_3.sexServicesPropertiesCoreKeys.forEach(function (propertyCoreName) {
+        var preferencePropertyName = "".concat(propertyCoreName, "Preference");
+        if (_this[preferencePropertyName] !== 'never') {
+          serviceProperties[preferencePropertyName] = _this[preferencePropertyName];
+        }
+        if (_this[preferencePropertyName].includes('aditional_payment')) {
+          var aditionalPaymentPropertyName = "".concat(propertyCoreName, "AditionalPayment");
+          serviceProperties[aditionalPaymentPropertyName] = _this[aditionalPaymentPropertyName];
+        }
+      });
+      if (this.selectedSecondaryServices.length > 0) {
+        serviceProperties['selectedSecondaryServices'] = this.selectedSecondaryServices;
+      }
+      if (this.tripsPreference === '1') {
+        serviceProperties['tripsPreference'] = '1';
+      }
+      serviceProperties['selectedServiceFormsToPayFor'] = this.selectedServiceFormsToPayFor;
+      return serviceProperties;
+    },
+    saveNotice: function saveNotice() {
+      var requestBody = this.createRequestObject();
+      console.log(requestBody);
+    }
+  },
+  computed: __assign({}, (0, pinia_1.mapWritableState)(announcement_details_1["default"], global_properties_names_1["default"]))
 };
 
 /***/ }),
@@ -21929,6 +22070,16 @@ exports["default"] = {
 "use strict";
 
 
+var __assign = void 0 && (void 0).__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign.apply(this, arguments);
+};
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -21955,6 +22106,8 @@ var add_button_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents-for
 var remove_button_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents-form-controls/remove_button.vue */ "./resources/js/components/form_controls/remove_button.vue"));
 var error_on_combo_input_1 = __importDefault(__webpack_require__(/*! @mixins/components/prostitute_announcement_creator/error_on_combo_input */ "./resources/js/mixins/components/prostitute_announcement_creator/error_on_combo_input.ts"));
 var empty_input_option_1 = __webpack_require__(/*! @jscomponents/empty_input_option */ "./resources/js/components/empty_input_option.ts");
+var pinia_1 = __webpack_require__(/*! pinia */ "./node_modules/pinia/index.js");
+var announcement_details_1 = __importDefault(__webpack_require__(/*! @jscomponents/prostitution/notice_editor/announcement_details */ "./resources/js/components/prostitution/notice_editor/announcement_details.ts"));
 var kesThatDoNotRequireSpecialValidation = prostitute_services_4.ServiceKeys.filter(function (key) {
   return key != 'swallow' && key != 'oralCreampie';
 });
@@ -21977,43 +22130,15 @@ exports["default"] = {
   data: function data() {
     return {
       translations: prostitute_services_1["default"],
-      massagePreference: empty_input_option_1.EmptyInputValue,
-      vaginalSexPreference: empty_input_option_1.EmptyInputValue,
-      blowjobPreference: empty_input_option_1.EmptyInputValue,
-      oralCreampiePreference: empty_input_option_1.EmptyInputValue,
-      cumSwallowPreference: empty_input_option_1.EmptyInputValue,
-      cumOnFacePreference: empty_input_option_1.EmptyInputValue,
-      analPreference: empty_input_option_1.EmptyInputValue,
-      pussyLickingPreference: empty_input_option_1.EmptyInputValue,
-      clientRimmingPreference: empty_input_option_1.EmptyInputValue,
-      kissingPreference: empty_input_option_1.EmptyInputValue,
-      cumOnBodyPreference: empty_input_option_1.EmptyInputValue,
-      tripsPreference: empty_input_option_1.EmptyInputValue,
-      analAditionalPayment: 100,
-      vaginalSexAditionalPayment: 100,
-      blowjobAditionalPayment: 100,
-      oralCreampieAditionalPayment: 100,
-      cumOnFaceAditionalPayment: 100,
-      massageAditionalPayment: 100,
-      pussyLickingAditionalPayment: 100,
-      clientRimmingAditionalPayment: 100,
-      kissingAditionalPayment: 100,
-      cumOnBodyAditionalPayment: 100,
-      cumSwallowAditionalPayment: 100,
-      selectedSecondaryServices: [],
       SecondaryServicesList: prostitute_services_7.SecondaryServicesList,
       DefaultPreferencesOptionsList: prostitute_services_2.DefaultPreferencesOptionsList,
       BlowjobPreferencesOptionsList: prostitute_services_5.BlowjobPreferencesOptionsList,
       AvailableServiceFormsToPayFor: prostitute_services_8.AvailableServiceFormsToPayFor,
       BinaryPreferences: yes_no_options_1["default"],
-      selectedServiceFormsToPayFor: [{
-        unit: 'for_hour',
-        price: 200
-      }],
       allServiceFormsUnits: Object.keys(prostitute_services_8.AvailableServiceFormsToPayFor)
     };
   },
-  computed: {
+  computed: __assign({
     showVaginalSexAditionalPayment: function showVaginalSexAditionalPayment() {
       return this.vaginalSexPreference === prostitute_services_3.DefaultSexPreference.aditional_payment;
     },
@@ -22059,7 +22184,7 @@ exports["default"] = {
     showCumSwallowAditionalPayment: function showCumSwallowAditionalPayment() {
       return this.cumSwallowPreference === prostitute_services_3.DefaultSexPreference.aditional_payment;
     }
-  },
+  }, (0, pinia_1.mapWritableState)(announcement_details_1["default"], ['massagePreference', 'vaginalSexPreference', 'blowjobPreference', 'oralCreampiePreference', 'cumSwallowPreference', 'cumOnFacePreference', 'analPreference', 'pussyLickingPreference', 'clientRimmingPreference', 'kissingPreference', 'cumOnBodyPreference', 'tripsPreference', 'analAditionalPayment', 'vaginalSexAditionalPayment', 'blowjobAditionalPayment', 'oralCreampieAditionalPayment', 'cumOnFaceAditionalPayment', 'massageAditionalPayment', 'pussyLickingAditionalPayment', 'clientRimmingAditionalPayment', 'kissingAditionalPayment', 'cumOnBodyAditionalPayment', 'cumSwallowAditionalPayment', 'selectedSecondaryServices', 'selectedServiceFormsToPayFor'])),
   methods: {
     getServiceID: function getServiceID(type, index) {
       return "".concat(type).concat(index);
@@ -22728,11 +22853,65 @@ var announcementDetails = (0, pinia_1.defineStore)({
       hairColor: empty_input_option_1.EmptyInputValue,
       titsSize: 0,
       height: "",
-      weight: ""
+      weight: "",
+      massagePreference: empty_input_option_1.EmptyInputValue,
+      vaginalSexPreference: empty_input_option_1.EmptyInputValue,
+      blowjobPreference: empty_input_option_1.EmptyInputValue,
+      oralCreampiePreference: empty_input_option_1.EmptyInputValue,
+      cumSwallowPreference: empty_input_option_1.EmptyInputValue,
+      cumOnFacePreference: empty_input_option_1.EmptyInputValue,
+      analPreference: empty_input_option_1.EmptyInputValue,
+      pussyLickingPreference: empty_input_option_1.EmptyInputValue,
+      clientRimmingPreference: empty_input_option_1.EmptyInputValue,
+      kissingPreference: empty_input_option_1.EmptyInputValue,
+      cumOnBodyPreference: empty_input_option_1.EmptyInputValue,
+      tripsPreference: empty_input_option_1.EmptyInputValue,
+      analAditionalPayment: 100,
+      vaginalSexAditionalPayment: 100,
+      blowjobAditionalPayment: 100,
+      oralCreampieAditionalPayment: 100,
+      cumOnFaceAditionalPayment: 100,
+      massageAditionalPayment: 100,
+      pussyLickingAditionalPayment: 100,
+      clientRimmingAditionalPayment: 100,
+      kissingAditionalPayment: 100,
+      cumOnBodyAditionalPayment: 100,
+      cumSwallowAditionalPayment: 100,
+      selectedSecondaryServices: [],
+      selectedServiceFormsToPayFor: [{
+        unit: 'for_hour',
+        price: 200
+      }],
+      photos: [],
+      preciseHoursDecision: empty_input_option_1.EmptyInputValue,
+      showEverySingleWeekday: false,
+      workingHoursByPeriodOrDay: undefined,
+      city: empty_input_option_1.EmptyInputValue,
+      voivodeship: empty_input_option_1.EmptyInputValue
     };
   }
 });
 exports["default"] = announcementDetails;
+
+/***/ }),
+
+/***/ "./resources/js/components/prostitution/notice_editor/global_properties_names.ts":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/prostitution/notice_editor/global_properties_names.ts ***!
+  \***************************************************************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.sexServicesPropertiesCoreKeys = exports.optionalPersonalitiesPropertiesNames = void 0;
+var allPropertiesNames = ['nickname', 'phoneNumber', 'birthDate', 'description', 'userType', 'sexualOrientation', 'hairColor', 'titsSize', 'height', 'weight', 'massagePreference', 'vaginalSexPreference', 'blowjobPreference', 'oralCreampiePreference', 'cumSwallowPreference', 'cumOnFacePreference', 'analPreference', 'pussyLickingPreference', 'clientRimmingPreference', 'kissingPreference', 'cumOnBodyPreference', 'tripsPreference', 'analAditionalPayment', 'vaginalSexAditionalPayment', 'blowjobAditionalPayment', 'oralCreampieAditionalPayment', 'cumOnFaceAditionalPayment', 'massageAditionalPayment', 'pussyLickingAditionalPayment', 'clientRimmingAditionalPayment', 'kissingAditionalPayment', 'cumOnBodyAditionalPayment', 'cumSwallowAditionalPayment', 'selectedSecondaryServices', 'selectedServiceFormsToPayFor', 'photos', 'preciseHoursDecision', 'showEverySingleWeekday', 'workingHoursByPeriodOrDay', 'citiesList', 'city', 'voivodeship'];
+exports["default"] = allPropertiesNames;
+exports.optionalPersonalitiesPropertiesNames = ['phoneNumber', 'description', 'sexualOrientation', 'hairColor', 'titsSize', 'height', 'weight'];
+exports.sexServicesPropertiesCoreKeys = ['massage', 'vaginalSex', 'blowjob', 'oralCreampie', 'cumSwallow', 'cumOnFace', 'anal', 'pussyLicking', 'clientRimming', 'kissing', 'cumOnBody'];
 
 /***/ }),
 
@@ -23543,7 +23722,8 @@ var translations = {
   announcements_are_free: translator_js_1["default"].translate('prostitution_announcements_are_free'),
   dont_spam_with_announcements: translator_js_1["default"].translate('dont_spam_with_announcements'),
   everyone_can_comment_a_prostitute: translator_js_1["default"].translate('everyone_can_comment_a_prostitute'),
-  in_case_of_a_problem_please_contact_us_using_the_contact_form: translator_js_1["default"].translate('in_case_of_a_problem_please_contact_us_using_the_contact_form')
+  in_case_of_a_problem_please_contact_us_using_the_contact_form: translator_js_1["default"].translate('in_case_of_a_problem_please_contact_us_using_the_contact_form'),
+  comments_are_filtered_by_admins_to_prevent_revealing_classified_information: translator_js_1["default"].translate("comments_are_filtered_by_admins_to_prevent_revealing_classified_information")
 };
 exports["default"] = translations;
 
@@ -25683,7 +25863,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "class": "image-list-element"
     }, [(0, _vue.createVNode)(_component_button_close, {
       onClick: function onClick($event) {
-        return $options.removeFileFromList(index);
+        return $options.removeFileFromListAndEmitEvent(index);
       },
       label: $data.Translations['remove'],
       title: $data.Translations['remove'],
@@ -26905,9 +27085,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "error-message-box-available": true,
     "unique-id": "preciseHoursDecision",
     "select-options": $data.YesNoOptions,
-    modelValue: $data.preciseHoursDecision,
+    modelValue: _ctx.preciseHoursDecision,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return $data.preciseHoursDecision = $event;
+      return _ctx.preciseHoursDecision = $event;
     }),
     "complete-error-display-available": true,
     "class": "select"
@@ -26931,9 +27111,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "error-message-box-available": true,
     "unique-id": "mondayToFridayHourSince",
     "input-type": "time",
-    modelValue: $data.workingHoursByPeriodOrDay['mondayToFriday']['since'],
+    modelValue: _ctx.workingHoursByPeriodOrDay['mondayToFriday']['since'],
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $data.workingHoursByPeriodOrDay['mondayToFriday']['since'] = $event;
+      return _ctx.workingHoursByPeriodOrDay['mondayToFriday']['since'] = $event;
     }),
     "class": "hours-range-edge",
     "complete-error-display-available": true
@@ -26947,9 +27127,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "error-message-box-available": true,
     "unique-id": "mondayToFridayHourUntil",
     "input-type": "time",
-    modelValue: $data.workingHoursByPeriodOrDay['mondayToFriday']['until'],
+    modelValue: _ctx.workingHoursByPeriodOrDay['mondayToFriday']['until'],
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-      return $data.workingHoursByPeriodOrDay['mondayToFriday']['until'] = $event;
+      return _ctx.workingHoursByPeriodOrDay['mondayToFriday']['until'] = $event;
     }),
     "class": "hours-range-edge",
     "complete-error-display-available": true
@@ -26970,7 +27150,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
 
     _: 1 /* STABLE */
-  })], 512 /* NEED_PATCH */), [[_vue.vShow, !$data.showEverySingleWeekday]]), $data.showEverySingleWeekday ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_8, [((0, _vue.openBlock)(true), (0, _vue.createElementBlock)(_vue.Fragment, null, (0, _vue.renderList)($options.weekdays, function (weekday, index) {
+  })], 512 /* NEED_PATCH */), [[_vue.vShow, !_ctx.showEverySingleWeekday]]), _ctx.showEverySingleWeekday ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_8, [((0, _vue.openBlock)(true), (0, _vue.createElementBlock)(_vue.Fragment, null, (0, _vue.renderList)($options.weekdays, function (weekday, index) {
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", {
       key: index,
       "class": "time-period-details"
@@ -26980,9 +27160,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "error-message-box-available": true,
       "unique-id": "".concat(weekday, "HourSince"),
       "input-type": "time",
-      modelValue: $data.workingHoursByPeriodOrDay[weekday]['since'],
+      modelValue: _ctx.workingHoursByPeriodOrDay[weekday]['since'],
       "onUpdate:modelValue": function onUpdateModelValue($event) {
-        return $data.workingHoursByPeriodOrDay[weekday]['since'] = $event;
+        return _ctx.workingHoursByPeriodOrDay[weekday]['since'] = $event;
       },
       "class": "hours-range-edge",
       "complete-error-display-available": true
@@ -26996,9 +27176,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "error-message-box-available": true,
       "unique-id": "".concat(weekday, "HourUntil"),
       "input-type": "time",
-      modelValue: $data.workingHoursByPeriodOrDay[weekday]['until'],
+      modelValue: _ctx.workingHoursByPeriodOrDay[weekday]['until'],
       "onUpdate:modelValue": function onUpdateModelValue($event) {
-        return $data.workingHoursByPeriodOrDay[weekday]['until'] = $event;
+        return _ctx.workingHoursByPeriodOrDay[weekday]['until'] = $event;
       },
       "class": "hours-range-edge",
       "complete-error-display-available": true
@@ -27026,9 +27206,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "error-message-box-available": true,
     "unique-id": "saturdayHourSince",
     "input-type": "time",
-    modelValue: $data.workingHoursByPeriodOrDay['saturday']['since'],
+    modelValue: _ctx.workingHoursByPeriodOrDay['saturday']['since'],
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-      return $data.workingHoursByPeriodOrDay['saturday']['since'] = $event;
+      return _ctx.workingHoursByPeriodOrDay['saturday']['since'] = $event;
     }),
     "class": "hours-range-edge",
     "complete-error-display-available": true
@@ -27042,9 +27222,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "error-message-box-available": true,
     "unique-id": "saturdayHourUntil",
     "input-type": "time",
-    modelValue: $data.workingHoursByPeriodOrDay['saturday']['until'],
+    modelValue: _ctx.workingHoursByPeriodOrDay['saturday']['until'],
     "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-      return $data.workingHoursByPeriodOrDay['saturday']['until'] = $event;
+      return _ctx.workingHoursByPeriodOrDay['saturday']['until'] = $event;
     }),
     "class": "hours-range-edge",
     "complete-error-display-available": true
@@ -27071,9 +27251,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "error-message-box-available": true,
     "unique-id": "sundayHourSince",
     "input-type": "time",
-    modelValue: $data.workingHoursByPeriodOrDay['sunday']['since'],
+    modelValue: _ctx.workingHoursByPeriodOrDay['sunday']['since'],
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-      return $data.workingHoursByPeriodOrDay['sunday']['since'] = $event;
+      return _ctx.workingHoursByPeriodOrDay['sunday']['since'] = $event;
     }),
     "class": "hours-range-edge",
     "complete-error-display-available": true
@@ -27087,9 +27267,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "error-message-box-available": true,
     "unique-id": "sundayHourUntil",
     "input-type": "time",
-    modelValue: $data.workingHoursByPeriodOrDay['sunday']['until'],
+    modelValue: _ctx.workingHoursByPeriodOrDay['sunday']['until'],
     "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
-      return $data.workingHoursByPeriodOrDay['sunday']['until'] = $event;
+      return _ctx.workingHoursByPeriodOrDay['sunday']['until'] = $event;
     }),
     "class": "hours-range-edge",
     "complete-error-display-available": true
@@ -27117,9 +27297,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "error-message-box-available": true,
     "unique-id": "voivodeship",
     "select-options": $props.voivodeshipsList,
-    modelValue: $data.voivodeship,
+    modelValue: _ctx.voivodeship,
     "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
-      return $data.voivodeship = $event;
+      return _ctx.voivodeship = $event;
     }),
     onSelected: $options.getCitiesForVoivodeship,
     "class": "select",
@@ -27134,9 +27314,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "error-message-box-available": true,
     "unique-id": "city",
     "select-options": $data.citiesList,
-    modelValue: $data.city,
+    modelValue: _ctx.city,
     "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
-      return $data.city = $event;
+      return _ctx.city = $event;
     }),
     "class": "select",
     "complete-error-display-available": true
@@ -27396,10 +27576,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     textContent: (0, _vue.toDisplayString)($props.token)
   }, null, 8 /* PROPS */, _hoisted_10)]), (0, _vue.createVNode)(_component_multifile_image_upload, {
     onNumberOfImagesLimitExceeded: $options.notifyUserAboutToManyPhotos,
-    onAddedPhotos: $options.assignNumberOfPhotos,
+    onAddedPhotos: $options.assignPhotos,
+    onRemovedPhoto: $options.assignPhotos,
     "number-of-maximum-photos": 10,
     "class": "added-images"
-  }, null, 8 /* PROPS */, ["onNumberOfImagesLimitExceeded", "onAddedPhotos"])]);
+  }, null, 8 /* PROPS */, ["onNumberOfImagesLimitExceeded", "onAddedPhotos", "onRemovedPhoto"])]);
 }
 
 /***/ }),
@@ -27436,13 +27617,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8 /* PROPS */, _hoisted_3), (0, _vue.createElementVNode)("strong", {
     "class": "important-info",
     textContent: (0, _vue.toDisplayString)($data.translations['announcement_must_be_accepted_reminder'])
-  }, null, 8 /* PROPS */, _hoisted_4)]), (0, _vue.createVNode)(_component_add_button, null, {
+  }, null, 8 /* PROPS */, _hoisted_4)]), (0, _vue.createVNode)(_component_add_button, {
+    onClick: $options.saveNotice
+  }, {
     "default": (0, _vue.withCtx)(function () {
       return [(0, _vue.createTextVNode)((0, _vue.toDisplayString)($data.translations['add_notice']), 1 /* TEXT */)];
     }),
 
     _: 1 /* STABLE */
-  })]);
+  }, 8 /* PROPS */, ["onClick"])]);
 }
 
 /***/ }),
@@ -27534,9 +27717,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "select-options": $data.DefaultPreferencesOptionsList,
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.vaginalSexPreference,
+    modelValue: _ctx.vaginalSexPreference,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return $data.vaginalSexPreference = $event;
+      return _ctx.vaginalSexPreference = $event;
     }),
     "unique-id": "vaginalSexPreference",
     "class": "sex-preference-input"
@@ -27549,9 +27732,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8 /* PROPS */, ["select-options", "modelValue"]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_text_input_combo, {
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.vaginalSexAditionalPayment,
+    modelValue: _ctx.vaginalSexAditionalPayment,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $data.vaginalSexAditionalPayment = $event;
+      return _ctx.vaginalSexAditionalPayment = $event;
     }),
     "input-type": "number",
     "unique-id": "vaginalSexAditionalPayment",
@@ -27566,9 +27749,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "select-options": $data.BlowjobPreferencesOptionsList,
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.blowjobPreference,
+    modelValue: _ctx.blowjobPreference,
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-      return $data.blowjobPreference = $event;
+      return _ctx.blowjobPreference = $event;
     }),
     "unique-id": "blowjobPreference",
     "class": "sex-preference-input"
@@ -27581,9 +27764,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8 /* PROPS */, ["select-options", "modelValue"]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_text_input_combo, {
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.blowjobAditionalPayment,
+    modelValue: _ctx.blowjobAditionalPayment,
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-      return $data.blowjobAditionalPayment = $event;
+      return _ctx.blowjobAditionalPayment = $event;
     }),
     "input-type": "number",
     "class": "money-amount"
@@ -27597,9 +27780,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "select-options": $data.DefaultPreferencesOptionsList,
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.oralCreampiePreference,
+    modelValue: _ctx.oralCreampiePreference,
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-      return $data.oralCreampiePreference = $event;
+      return _ctx.oralCreampiePreference = $event;
     }),
     "unique-id": "oralCreampiePreference",
     "class": "sex-preference-input"
@@ -27612,9 +27795,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8 /* PROPS */, ["select-options", "modelValue"]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_text_input_combo, {
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.oralCreampieAditionalPayment,
+    modelValue: _ctx.oralCreampieAditionalPayment,
     "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-      return $data.oralCreampieAditionalPayment = $event;
+      return _ctx.oralCreampieAditionalPayment = $event;
     }),
     "unique-id": "oralCreampieAditionalPayment",
     "input-type": "number",
@@ -27629,9 +27812,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "select-options": $data.DefaultPreferencesOptionsList,
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.cumSwallowPreference,
+    modelValue: _ctx.cumSwallowPreference,
     "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
-      return $data.cumSwallowPreference = $event;
+      return _ctx.cumSwallowPreference = $event;
     }),
     "unique-id": "cumSwallowPreference",
     "class": "sex-preference-input"
@@ -27644,9 +27827,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8 /* PROPS */, ["select-options", "modelValue"]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_text_input_combo, {
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.cumSwallowAditionalPayment,
+    modelValue: _ctx.cumSwallowAditionalPayment,
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-      return $data.cumSwallowAditionalPayment = $event;
+      return _ctx.cumSwallowAditionalPayment = $event;
     }),
     "unique-id": "cumSwallowAditionalPayment",
     "input-type": "number",
@@ -27661,9 +27844,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "select-options": $data.DefaultPreferencesOptionsList,
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.analPreference,
+    modelValue: _ctx.analPreference,
     "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
-      return $data.analPreference = $event;
+      return _ctx.analPreference = $event;
     }),
     "unique-id": "analPreference",
     "class": "sex-preference-input"
@@ -27676,9 +27859,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8 /* PROPS */, ["select-options", "modelValue"]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_text_input_combo, {
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.analAditionalPayment,
+    modelValue: _ctx.analAditionalPayment,
     "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
-      return $data.analAditionalPayment = $event;
+      return _ctx.analAditionalPayment = $event;
     }),
     "unique-id": "analAditionalPayment",
     "input-type": "number",
@@ -27694,9 +27877,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "error-message-box-available": true,
     "complete-error-display-available": true,
     "unique-id": "kissingPreference",
-    modelValue: $data.kissingPreference,
+    modelValue: _ctx.kissingPreference,
     "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
-      return $data.kissingPreference = $event;
+      return _ctx.kissingPreference = $event;
     }),
     "class": "sex-preference-input"
   }, {
@@ -27708,9 +27891,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8 /* PROPS */, ["select-options", "modelValue"]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_text_input_combo, {
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.kissingAditionalPayment,
+    modelValue: _ctx.kissingAditionalPayment,
     "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
-      return $data.kissingAditionalPayment = $event;
+      return _ctx.kissingAditionalPayment = $event;
     }),
     "unique-id": "kissingAditionalPayment",
     "input-type": "number",
@@ -27725,9 +27908,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "select-options": $data.DefaultPreferencesOptionsList,
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.cumOnFacePreference,
+    modelValue: _ctx.cumOnFacePreference,
     "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
-      return $data.cumOnFacePreference = $event;
+      return _ctx.cumOnFacePreference = $event;
     }),
     "unique-id": "cumOnFacePreference",
     "class": "sex-preference-input"
@@ -27740,9 +27923,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8 /* PROPS */, ["select-options", "modelValue"]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_text_input_combo, {
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.cumOnFaceAditionalPayment,
+    modelValue: _ctx.cumOnFaceAditionalPayment,
     "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
-      return $data.cumOnFaceAditionalPayment = $event;
+      return _ctx.cumOnFaceAditionalPayment = $event;
     }),
     "unique-id": "cumOnFaceAditionalPayment",
     "input-type": "number",
@@ -27757,9 +27940,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "select-options": $data.DefaultPreferencesOptionsList,
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.cumOnBodyPreference,
+    modelValue: _ctx.cumOnBodyPreference,
     "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
-      return $data.cumOnBodyPreference = $event;
+      return _ctx.cumOnBodyPreference = $event;
     }),
     "unique-id": "cumOnBodyPreference",
     "class": "sex-preference-input"
@@ -27772,9 +27955,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8 /* PROPS */, ["select-options", "modelValue"]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_text_input_combo, {
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.cumOnBodyAditionalPayment,
+    modelValue: _ctx.cumOnBodyAditionalPayment,
     "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
-      return $data.cumOnBodyAditionalPayment = $event;
+      return _ctx.cumOnBodyAditionalPayment = $event;
     }),
     "unique-id": "cumOnBodyAditionalPayment",
     "input-type": "number",
@@ -27789,9 +27972,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "select-options": $data.DefaultPreferencesOptionsList,
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.massagePreference,
+    modelValue: _ctx.massagePreference,
     "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
-      return $data.massagePreference = $event;
+      return _ctx.massagePreference = $event;
     }),
     "unique-id": "massagePreference",
     "class": "sex-preference-input"
@@ -27804,9 +27987,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8 /* PROPS */, ["select-options", "modelValue"]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_text_input_combo, {
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.massageAditionalPayment,
+    modelValue: _ctx.massageAditionalPayment,
     "onUpdate:modelValue": _cache[17] || (_cache[17] = function ($event) {
-      return $data.massageAditionalPayment = $event;
+      return _ctx.massageAditionalPayment = $event;
     }),
     "unique-id": "massageAditionalPayment",
     "input-type": "number",
@@ -27821,9 +28004,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "select-options": $data.DefaultPreferencesOptionsList,
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.pussyLickingPreference,
+    modelValue: _ctx.pussyLickingPreference,
     "onUpdate:modelValue": _cache[18] || (_cache[18] = function ($event) {
-      return $data.pussyLickingPreference = $event;
+      return _ctx.pussyLickingPreference = $event;
     }),
     "unique-id": "pussyLickingPreference",
     "class": "sex-preference-input"
@@ -27836,9 +28019,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8 /* PROPS */, ["select-options", "modelValue"]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_text_input_combo, {
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.pussyLickingAditionalPayment,
+    modelValue: _ctx.pussyLickingAditionalPayment,
     "onUpdate:modelValue": _cache[19] || (_cache[19] = function ($event) {
-      return $data.pussyLickingAditionalPayment = $event;
+      return _ctx.pussyLickingAditionalPayment = $event;
     }),
     "unique-id": "pussyLickingAditionalPayment",
     "input-type": "number",
@@ -27853,9 +28036,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "select-options": $data.DefaultPreferencesOptionsList,
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.clientRimmingPreference,
+    modelValue: _ctx.clientRimmingPreference,
     "onUpdate:modelValue": _cache[20] || (_cache[20] = function ($event) {
-      return $data.clientRimmingPreference = $event;
+      return _ctx.clientRimmingPreference = $event;
     }),
     "unique-id": "clientRimmingPreference",
     "class": "sex-preference-input"
@@ -27868,9 +28051,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8 /* PROPS */, ["select-options", "modelValue"]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_text_input_combo, {
     "error-message-box-available": true,
     "complete-error-display-available": true,
-    modelValue: $data.clientRimmingAditionalPayment,
+    modelValue: _ctx.clientRimmingAditionalPayment,
     "onUpdate:modelValue": _cache[21] || (_cache[21] = function ($event) {
-      return $data.clientRimmingAditionalPayment = $event;
+      return _ctx.clientRimmingAditionalPayment = $event;
     }),
     "unique-id": "clientRimmingAditionalPayment",
     "input-type": "number",
@@ -27886,9 +28069,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "error-message-box-available": true,
     "complete-error-display-available": true,
     "unique-id": "tripsPreference",
-    modelValue: $data.tripsPreference,
+    modelValue: _ctx.tripsPreference,
     "onUpdate:modelValue": _cache[22] || (_cache[22] = function ($event) {
-      return $data.tripsPreference = $event;
+      return _ctx.tripsPreference = $event;
     }),
     "class": "sex-preference-input"
   }, {
@@ -27902,9 +28085,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "info"
   }, null, 8 /* PROPS */, _hoisted_17), (0, _vue.createElementVNode)("div", _hoisted_18, [(0, _vue.createVNode)(_component_Multiselect, {
     "class": "secondary-services-list",
-    modelValue: $data.selectedSecondaryServices,
+    modelValue: _ctx.selectedSecondaryServices,
     "onUpdate:modelValue": _cache[23] || (_cache[23] = function ($event) {
-      return $data.selectedSecondaryServices = $event;
+      return _ctx.selectedSecondaryServices = $event;
     }),
     "initial-options": $data.SecondaryServicesList,
     showSearchInput: true
@@ -27918,9 +28101,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     textContent: (0, _vue.toDisplayString)($data.translations.prices_for_your_services_description),
     "class": "info"
   }, null, 8 /* PROPS */, _hoisted_19), (0, _vue.createElementVNode)("div", _hoisted_20, [(0, _vue.createVNode)(_component_text_input_combo, {
-    modelValue: $data.selectedServiceFormsToPayFor[0]['price'],
+    modelValue: _ctx.selectedServiceFormsToPayFor[0]['price'],
     "onUpdate:modelValue": _cache[24] || (_cache[24] = function ($event) {
-      return $data.selectedServiceFormsToPayFor[0]['price'] = $event;
+      return _ctx.selectedServiceFormsToPayFor[0]['price'] = $event;
     }),
     "input-type": "number",
     "unique-id": "paymentForService0",
@@ -27938,9 +28121,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "error-message-box-available": true,
     "complete-error-display-available": true,
     "unique-id": "serviceForm0",
-    modelValue: $data.selectedServiceFormsToPayFor[0]['unit'],
+    modelValue: _ctx.selectedServiceFormsToPayFor[0]['unit'],
     "onUpdate:modelValue": _cache[25] || (_cache[25] = function ($event) {
-      return $data.selectedServiceFormsToPayFor[0]['unit'] = $event;
+      return _ctx.selectedServiceFormsToPayFor[0]['unit'] = $event;
     }),
     "class": "service-unit"
   }, null, 8 /* PROPS */, ["select-options", "modelValue"])]), ((0, _vue.openBlock)(true), (0, _vue.createElementBlock)(_vue.Fragment, null, (0, _vue.renderList)($options.addedServiceForms, function (selectedPaymentType, index) {
@@ -28096,7 +28279,8 @@ var _hoisted_4 = ["textContent"];
 var _hoisted_5 = ["textContent"];
 var _hoisted_6 = ["textContent"];
 var _hoisted_7 = ["textContent"];
-var _hoisted_8 = ["href", "textContent"];
+var _hoisted_8 = ["textContent"];
+var _hoisted_9 = ["href", "textContent"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_info_circle_icon = (0, _vue.resolveComponent)("info-circle-icon");
   return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("section", _hoisted_1, [(0, _vue.createElementVNode)("div", _hoisted_2, [(0, _vue.createVNode)(_component_info_circle_icon, {
@@ -28112,12 +28296,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "important-info",
     textContent: (0, _vue.toDisplayString)($data.translations['everyone_can_comment_a_prostitute'])
   }, null, 8 /* PROPS */, _hoisted_6), (0, _vue.createElementVNode)("span", {
+    textContent: (0, _vue.toDisplayString)($data.translations['comments_are_filtered_by_admins_to_prevent_revealing_classified_information'])
+  }, null, 8 /* PROPS */, _hoisted_7), (0, _vue.createElementVNode)("span", {
     textContent: (0, _vue.toDisplayString)($data.translations['in_case_of_a_problem_please_contact_us_using_the_contact_form'])
-  }, null, 8 /* PROPS */, _hoisted_7), (0, _vue.createElementVNode)("a", {
+  }, null, 8 /* PROPS */, _hoisted_8), (0, _vue.createElementVNode)("a", {
     href: $data.routesConfig.contact,
     textContent: (0, _vue.toDisplayString)($data.translations['clicking_here']),
     "class": "contact-form-link"
-  }, null, 8 /* PROPS */, _hoisted_8)]);
+  }, null, 8 /* PROPS */, _hoisted_9)]);
 }
 
 /***/ }),
@@ -28425,7 +28611,7 @@ var _default = {
     login_has_already_been_taken: "Login jest już zajęty",
     login_contains_less_then_3_characters: "Login ma mniej niż 3 znaki",
     login_contains_more_then_20_characters: "Login ma więcej niż 20 znaków"
-  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "subject_exceeds_40_characters", "Temat przekracza 40 znaków"), _defineProperty(_pl, "current_news", 'Aktualności'), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "movies", "Filmy"), _defineProperty(_pl, "views", "Odsłon"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "pornstars_navbar_caption", "Gwiazdy porno"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "launching_in_progress", "Trwa uruchamianie"), _defineProperty(_pl, "clicking_here", "klikając tutaj"), _defineProperty(_pl, "prostitution_offer_bottom_navigation_info", "Ogłoszenie zostało podzielone na sekcje, użyj strzałek aby przejść dalej"), _defineProperty(_pl, "click_to_play_the_video", "Kliknij aby uruchomić film"), _defineProperty(_pl, "stop_movie_preview", "Zatrzymaj odtwarzanie podglądu filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "previous_page", "poprzednia"), _defineProperty(_pl, "next_page", "następna"), _defineProperty(_pl, "further", "dalej"), _defineProperty(_pl, "back", "wstecz"), _defineProperty(_pl, "up", "góra"), _defineProperty(_pl, "first_page", "pierwsza"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "default_avatar", "Domyślny avatar, przedstawia bliżej niezidentyfikowanego użytkownika"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "element_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "movie_rate_data_is_invalid", "Niepoprawne dane oceny lub filmu"), _defineProperty(_pl, "birth_date_is_required", "Data urodzenia jest wymagana"), _defineProperty(_pl, "nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "answears", "Odpowiedzi"), _defineProperty(_pl, "add_comment", "Dodaj komentarz"), _defineProperty(_pl, "add", "dodaj"), _defineProperty(_pl, "contents", "Treść"), _defineProperty(_pl, "comment_added", "Dodano komentarz"), _defineProperty(_pl, "unregistered_user", "Niezarejestrowany"), _defineProperty(_pl, "register", "Rejestruj"), _defineProperty(_pl, "add_comment_short", "Komentuj"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "adding_comment", "Dodaję komentarz"), _defineProperty(_pl, "fetching_comments", "Pobieram komentarze"), _defineProperty(_pl, "comment_text_is_missing", "Nie podano treści komentarza"), _defineProperty(_pl, "comment_text_exceeds_1000_characters", "Treść komentarza przekracza 1000 znaków"), _defineProperty(_pl, "the_nickname_must_be_between_2_and_20_characters", "Pseudonim musi mieć minimum 2 znaki ale nie więcej niż 20"), _defineProperty(_pl, "no_comments_available", "Brak komentarzy"), _defineProperty(_pl, "because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute", "Z powodów bezpieczeństwa ograniczono liczbę dodawanych komentarzy do 2 na minutę"), _defineProperty(_pl, "total_comments", "Liczba wszystkich komentarzy"), _defineProperty(_pl, "publish_comment", "Opublikuj komentarz"), _defineProperty(_pl, "show_comments_sub_page_with_number", "Pokaż podstronę komentarzy o numerze"), _defineProperty(_pl, "the_value_must_be_a_number_greater_than_0", "Podaj dodatnią liczbę"), _defineProperty(_pl, "sex_empire_short", "SI"), _defineProperty(_pl, "small_ass", "mały"), _defineProperty(_pl, "medium_ass", "średni"), _defineProperty(_pl, "big_ass", "duży"), _defineProperty(_pl, "small_tits", "małe"), _defineProperty(_pl, "medium_tits", "średnie"), _defineProperty(_pl, "big_tits", "duże"), _defineProperty(_pl, "skinny_tchickness", "chuda"), _defineProperty(_pl, "medium_tchickness", "średnia"), _defineProperty(_pl, "fat_tchickness", "gruba"), _defineProperty(_pl, "teenagers", "nastolatki(18 - 19)"), _defineProperty(_pl, "age_range_young", "młode (20 -29)"), _defineProperty(_pl, "age_range_mature", "dojrzałe(30 - 50)"), _defineProperty(_pl, "dark_hair", "czarny"), _defineProperty(_pl, "blonde_hair", "blond"), _defineProperty(_pl, "brown_hair", "brązowy"), _defineProperty(_pl, "red_hair", "rudy"), _defineProperty(_pl, "white_race", "biała"), _defineProperty(_pl, "asian_race", "azjatki"), _defineProperty(_pl, "ebony_race", "murzynki"), _defineProperty(_pl, "latin_race", "latynoski"), _defineProperty(_pl, "arabic_race", "arabki"), _defineProperty(_pl, "yes", "tak"), _defineProperty(_pl, "most_important_services_exact_information_notice", " Prosimy wypełnić poniższy formularz skrupulatnie, starannie i zgodnie z prawdą"), _defineProperty(_pl, "deep_throat", "głębokie gardło"), _defineProperty(_pl, "no", "nie"), _defineProperty(_pl, "one_male_one_female", "facet i kobieta"), _defineProperty(_pl, "bukkake", "bukkake"), _defineProperty(_pl, "single_female", "kobieta solo"), _defineProperty(_pl, "lesbians", "lesbijki"), _defineProperty(_pl, "group_sex", "grupowy"), _defineProperty(_pl, "one_male_many_females", "facet i wiele kobiet"), _defineProperty(_pl, "GangBang", "GangBang"), _defineProperty(_pl, "sex_with_many_males", "sex z wieloma mężczyznami"), _defineProperty(_pl, "outside_together", "wspólne wyjścia"), _defineProperty(_pl, "one_female_two_males", "Na 2 baty"), _defineProperty(_pl, "lesbian_group_sex", "Lesbijki grupowo"), _defineProperty(_pl, "only", "tylko i wyłącznie"), _defineProperty(_pl, "maximum", "maximum"), _defineProperty(_pl, "a_lot", "dużo"), _defineProperty(_pl, "medium", "średnio"), _defineProperty(_pl, "a_little", "trochę"), _defineProperty(_pl, "exclude", "wyklucz"), _defineProperty(_pl, "on_face", "na twarz"), _defineProperty(_pl, "cum_swallow", "z połykiem"), _defineProperty(_pl, "creampie", "w cipkę"), _defineProperty(_pl, "anal", "anal"), _defineProperty(_pl, "cum_on_face", "wytrysk na twarz"), _defineProperty(_pl, "anal_creampie", "w dupkę"), _defineProperty(_pl, "on_tits", "na cycki"), _defineProperty(_pl, "on_pussy", "na cipkę"), _defineProperty(_pl, "on_ass", "na dupkę"), _defineProperty(_pl, "on_feet", "na stopy"), _defineProperty(_pl, "on_many_places", "na wiele miejsc"), _defineProperty(_pl, "on_other_body_parts", "na inne miejsca"), _defineProperty(_pl, "american_nationality", "amerykańska"), _defineProperty(_pl, "japanese_nationality", "japońska"), _defineProperty(_pl, "german_nationality", "niemiecka"), _defineProperty(_pl, "czech_nationality", "czeska"), _defineProperty(_pl, "russian_nationality", "rosyjska"), _defineProperty(_pl, "british_nationality", "brytyjska"), _defineProperty(_pl, "swedish_nationality", "szwedzka"), _defineProperty(_pl, "ukrainian_nationality", "ukraińska"), _defineProperty(_pl, "slovac_nationality", "słowacka"), _defineProperty(_pl, "hanguarian_nationality", "węgierska"), _defineProperty(_pl, "polish_nationality", "polska"), _defineProperty(_pl, "dutch_nationality", "holenderska"), _defineProperty(_pl, "hindu_nationality", "hinduska"), _defineProperty(_pl, "french_nationality", "francuska"), _defineProperty(_pl, "spanish_nationality", "hiszpańska"), _defineProperty(_pl, "italian_nationality", "włoska"), _defineProperty(_pl, "canadian_nationality", "kanadyjska"), _defineProperty(_pl, "argentinian_nationality", "argentyńska"), _defineProperty(_pl, "house", "dom"), _defineProperty(_pl, "bathroom", "łazienka"), _defineProperty(_pl, "office", "biuro"), _defineProperty(_pl, "school", "szkoła"), _defineProperty(_pl, "public_place", "miejsca publiczne"), _defineProperty(_pl, "car", "samochód"), _defineProperty(_pl, "nature", "łono natury"), _defineProperty(_pl, "solarium", "solarium"), _defineProperty(_pl, "elevator", "winda"), _defineProperty(_pl, "beach", "plaża"), _defineProperty(_pl, "gym", "siłownia"), _defineProperty(_pl, "POV", "POV"), _defineProperty(_pl, "weight", "waga"), _defineProperty(_pl, "outside_camera_style", "z zewnątrz"), _defineProperty(_pl, "mixed_camera_style", "mieszane"), _defineProperty(_pl, "female_pupil", "uczennica"), _defineProperty(_pl, "female_employee", "pracownica"), _defineProperty(_pl, "female_student", "studentka"), _defineProperty(_pl, "wife", "żona"), _defineProperty(_pl, "female_teacher", "nauczycielka"), _defineProperty(_pl, "nurse", "pielęgniarka"), _defineProperty(_pl, "female_slave", "niewolnica"), _defineProperty(_pl, "nun", "zakonnica"), _defineProperty(_pl, "female_police_officer", "policjantka"), _defineProperty(_pl, "prostitute", "prostytutka"), _defineProperty(_pl, "female_boss", "szefowa"), _defineProperty(_pl, "cleaner", "sprzątaczka"), _defineProperty(_pl, "mommy", "mamusia"), _defineProperty(_pl, "amateur", "amatorski"), _defineProperty(_pl, "professional", "profesjonalny"), _defineProperty(_pl, "choose_option", "wybierz opcję"), _defineProperty(_pl, "saving_notice", "Zapisywanie ogłoszenia"), _defineProperty(_pl, "announcement_must_be_accepted_reminder", "Proszę pamiętać, że ogłoszenie nie zostanie dodane natychmiast. Musi najpierw zostać zweryfikowane, jednakże nie dłużej niż 48 godzin."), _defineProperty(_pl, "prostitute_save_announcement_info", "To już koniec wypełniania formularzy. Jeśli wszystko się zgadza, można kliknąć w przycisk poniżej aby dodać ogłoszenie. "), _defineProperty(_pl, "choose_options", "wybierz opcje"), _defineProperty(_pl, "included_in_price", "wliczone w cenę"), _defineProperty(_pl, "client_rimming", "rimming w stronę klienta"), _defineProperty(_pl, "cum_on_body", "wytrysk na ciało"), _defineProperty(_pl, "kisses", "pocałunki"), _defineProperty(_pl, "aditional_payment", "za dopłatą"), _defineProperty(_pl, "classic_sex", "sex klasyczny"), _defineProperty(_pl, "only_in_condom", "tylko w gumce"), _defineProperty(_pl, "without_condom", "bez gumki"), _defineProperty(_pl, "without_condom_with_aditional_payments", "bez gumki, za dopłatą"), _defineProperty(_pl, "role_playing", "odgrywanie ról"), _defineProperty(_pl, "a_payment_type_can_be_chosen_only_once", "dany typ płatności można wybrać tylko raz"), _defineProperty(_pl, "announcement_description", "Treść ogłoszenia, opis"), _defineProperty(_pl, "oral_creampie", "wytrysk do ust"), _defineProperty(_pl, "most_important_services_description", "Poniżej lista najważniejszych usług jakimi interesują się klienci. Aktualnie ceny podawane są w złotówkach. Pracujemy nad cennikiem w innych walutach. Informacje, ułatwią użytkownikom wyszukiwanie i Tobie pomogą znaleźć klientów. Jeżeli formularze nie do końca odpowiadają Twej ofercie możesz doprecyzować to w opisie w dalszej sekcji."), _defineProperty(_pl, "remaining_services_description", "Pozostałe usługi nie ujęte na liście najważniejszych (opcjonalnie)"), _defineProperty(_pl, "click_to_chose_remaining_services", "Kliknij aby wybrać pozostałe usługi"), _defineProperty(_pl, "blowjob", "lodzik"), _defineProperty(_pl, "currencies_you_accept", "waluty jakie akceptujesz"), _defineProperty(_pl, "trips", "wyjazdy"), _defineProperty(_pl, "prices_for_your_services_description", "Ceny Twoich usług. Możesz podać kilka opcji. Kliknij w zielony przycisk aby dodać kolejną pozycję i czerwony przycisk aby usunąć."), _defineProperty(_pl, "add_payment_type", "dodaj typ płatności"), _defineProperty(_pl, "remove_payment_type", "usuń typ płatności"), _defineProperty(_pl, "remove", "usuń"), _defineProperty(_pl, "streaptease", "striptiz"), _defineProperty(_pl, "dancing", "taniec"), _defineProperty(_pl, "latex", "lateks"), _defineProperty(_pl, "double_penetration", "podwójna penetracja"), _defineProperty(_pl, "for_hour", "za godzinę"), _defineProperty(_pl, "for_30_minutes", "za pół godziny"), _defineProperty(_pl, "for_15_minutes", "za 15 minut"), _defineProperty(_pl, "for_night", "za noc"), _defineProperty(_pl, "for_blowjob", "za lodzika"), _defineProperty(_pl, "until_first_cumshot", "do pierwszego wystrzału"), _defineProperty(_pl, "location_and_working_hours", "lokalizacja i godziny pracy"), _defineProperty(_pl, "for_2_hours", "za 2 godziny"), _defineProperty(_pl, "for_3_hours", "za 3 godziny"), _defineProperty(_pl, "never", "nigdy"), _defineProperty(_pl, "height", "wzrost"), _defineProperty(_pl, "search", "szukaj"), _defineProperty(_pl, "remove_option", "usuń opcję"), _defineProperty(_pl, "you_have_exceeded_photos_limit", "Przekroczono limit zdjęć"), _defineProperty(_pl, "monday", "poniedziałek"), _defineProperty(_pl, "tuesday", "wtorek"), _defineProperty(_pl, "wednesday", "środa"), _defineProperty(_pl, "thursday", "czwartek"), _defineProperty(_pl, "friday", "piątek"), _defineProperty(_pl, "saturday", "sobota"), _defineProperty(_pl, "sunday", "niedziela"), _defineProperty(_pl, "show_each_single_day_from_monday_to_friday", "Pokaż pojedyncze dni powszednie"), _defineProperty(_pl, "close", "zamknij"), _defineProperty(_pl, "day_of", "wolne"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę"), _defineProperty(_pl, "show_weekdays_as_one_row", "Pokaż dni powszednie w jednym wierszu"), _defineProperty(_pl, "fetching_pornstars", "Pobieram listę gwiazd"), _defineProperty(_pl, "not_selected", "nie wybrano"), _defineProperty(_pl, "minutes_inflected", "minut(y)"), _defineProperty(_pl, "views_inflected", "wyświetleń"), _defineProperty(_pl, "unexpected_error_occured", "Pojawił się bliżej niezidentyfikowany błąd"), _defineProperty(_pl, "titsSize", "rozmiar cycków"), _defineProperty(_pl, "assSize", "rozmiar dupci"), _defineProperty(_pl, "thicknessSize", "tusza"), _defineProperty(_pl, "ageRange", "przedział wiekowy"), _defineProperty(_pl, "hairColor", "kolor włosów"), _defineProperty(_pl, "race", "rasa"), _defineProperty(_pl, "abundanceType", "liczebność"), _defineProperty(_pl, "cumshotType", "typ wytrysku"), _defineProperty(_pl, "nationality", "narodowość"), _defineProperty(_pl, "location", "lokalizacja"), _defineProperty(_pl, "cameraStyle", "ujęcie kamery"), _defineProperty(_pl, "storyOrCostume", "motyw fabularno kostiumowy"), _defineProperty(_pl, "professionalismLevel", "poziom filmu"), _defineProperty(_pl, "shavedPussy", "wygolona cipka"), _defineProperty(_pl, "analAmount", "anal"), _defineProperty(_pl, "blowjob", "obciąganie"), _defineProperty(_pl, "handjob", "walenie konika"), _defineProperty(_pl, "blondes", "blondynki"), _defineProperty(_pl, "tittfuck", "na hiszpana"), _defineProperty(_pl, "pissing", "obsikiwanie"), _defineProperty(_pl, "strapon", "sztuczny penis"), _defineProperty(_pl, "fingering", "palcówka"), _defineProperty(_pl, "licking_balls", "lizanie jąder"), _defineProperty(_pl, "spanking", "klapsy"), _defineProperty(_pl, "pussy_licking", "minetka"), _defineProperty(_pl, "petting_with_feet", "pieszczenie stopami"), _defineProperty(_pl, "feet", "stopy"), _defineProperty(_pl, "femdom", "kobieca dominacja"), _defineProperty(_pl, "brunettes", "brunetki"), _defineProperty(_pl, "redheads", "rude"), _defineProperty(_pl, "milfs", "dojrzałe"), _defineProperty(_pl, "teens", 'nastolatki'), _defineProperty(_pl, "amateur", "amatorskie"), _defineProperty(_pl, "asian", 'azjatki'), _defineProperty(_pl, "latins", 'latynoski'), _defineProperty(_pl, "ebony", 'murzynki'), _defineProperty(_pl, "lesbians", 'lesbijki'), _defineProperty(_pl, "group", 'grupowy'), _defineProperty(_pl, "cumshot_compilation", 'kompilacja wytrysków'), _defineProperty(_pl, "cumshot_compilations", 'kompilacje wytrysków'), _defineProperty(_pl, "cum_on_face", 'wytrysk na twarz'), _defineProperty(_pl, "cum_swallow", 'połykanie spermy'), _defineProperty(_pl, "cum_on_feet", 'wytrysk na stopy'), _defineProperty(_pl, "creampie", 'wytrysk w cipkę'), _defineProperty(_pl, "cum_in_ass", 'wytrysk w dupkę'), _defineProperty(_pl, "cum_on_titts", 'wytrysk na cycki'), _defineProperty(_pl, "pantyhose", 'rajstopki'), _defineProperty(_pl, "high_heels", 'szpile'), _defineProperty(_pl, "insults", "wyzwiska"), _defineProperty(_pl, "hugging", "przytulanie"), _defineProperty(_pl, "shared_bath", "wspólna kąpiel"), _defineProperty(_pl, "sex_with_2_males", "na 2 baty"), _defineProperty(_pl, "nurses", 'pielęgniarki'), _defineProperty(_pl, "teachers", 'nauczycielki'), _defineProperty(_pl, "japanese", 'japonki'), _defineProperty(_pl, "russian", 'rosjanki'), _defineProperty(_pl, "pornstars", 'gwiazdy porno'), _defineProperty(_pl, "blowjobAmount", 'obciąganie'), _defineProperty(_pl, "money_amount", "kwota"), _defineProperty(_pl, "handjobAmount", 'walenie konika'), _defineProperty(_pl, "doublePenetrationamount", "wtyczka"), _defineProperty(_pl, "vaginalamount", "waginalny"), _defineProperty(_pl, "pussyLickingAmount", 'minetka'), _defineProperty(_pl, "feetPettingAmount", 'pieszczenie stóp'), _defineProperty(_pl, "position69amount", 'pozycja 69'), _defineProperty(_pl, "titfuckAmount", "na hiszpana"), _defineProperty(_pl, "isCumshotCompilation", 'kompilacja wytrysków'), _defineProperty(_pl, "recordedBySpamCamera", 'nagrany kamerą szpiegowską'), _defineProperty(_pl, "isSadisticOrMasochistic", 'sado-masochostyczny'), _defineProperty(_pl, "isFemaleDomination", 'kobieca dominacja'), _defineProperty(_pl, "isTranslatedToPolish", 'polska wersja językowa'), _defineProperty(_pl, "showPantyhose", 'rajstopy'), _defineProperty(_pl, "showStockings", 'pończochy'), _defineProperty(_pl, "showGlasses", 'okulary'), _defineProperty(_pl, "showHighHeels", 'szpile'), _defineProperty(_pl, "showHugeCock", 'wielki kutas'), _defineProperty(_pl, "showWhips", 'bicze'), _defineProperty(_pl, "whips", 'bicze'), _defineProperty(_pl, "showSexToys", 'sex-zabawki'), _defineProperty(_pl, "minimumMovieTime", "minimalny czas"), _defineProperty(_pl, "maximumMovieTime", "maksymalny czas"), _defineProperty(_pl, "minimumMovieViews", 'minimalna liczba wyświetleń'), _defineProperty(_pl, "maximumMovieViews", 'maksymalna liczba wyświetleń'), _defineProperty(_pl, "hasStory", 'zawiera fabułę'), _defineProperty(_pl, "total_movies_found", "Ilość znalezionych filmów"), _defineProperty(_pl, "rules", "zasady"), _defineProperty(_pl, "movie_with_following_pornstars", "występują jednocześnie następujące gwiazdy"), _defineProperty(_pl, "last_page", "ostatnia"), _defineProperty(_pl, "movie_with_pornstar", "Film w którym występuje"), _defineProperty(_pl, "no_movies_have_been_found", "Nie znaleziono żadnych filmów pasujących do wybranych kryteriów"), _defineProperty(_pl, "no_options_have_been_selected", "Nie wybrano żadnych opcji"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd"), _defineProperty(_pl, "because_of_security_reasons_search_was_blocked", "Ze względów bezpieczeństwa ilość zapytań do wyszukiwarki w ciągu minuty jest ograniczona. Prosimy zaczekać chwilę i spróbować ponownie."), _defineProperty(_pl, "popular_categories", "Popularne kategorie"), _defineProperty(_pl, "categories_list", "Lista kategorii"), _defineProperty(_pl, "personalities", "personalia"), _defineProperty(_pl, "section", "sekcja"), _defineProperty(_pl, "big_titts", "duże cycki"), _defineProperty(_pl, "categories", "Kategorie"), _defineProperty(_pl, "teenagers", "nastolatki"), _defineProperty(_pl, "spermatozoid_has_been_asigned", "Przyznano plemnika. Musisz odczekać minimum pół godziny aby przyznać kolejnego."), _defineProperty(_pl, "you_have_exceeded_cum_limit", "Możesz przyznać maksymalnie jednego plemnika na pół godziny niezależnie od filmu"), _defineProperty(_pl, "spermatozoid_rate_data_is_incorrect", "Niepoprawne dane filmu"), _defineProperty(_pl, "movie_views", "Liczba wyświetleń"), _defineProperty(_pl, "movie_added_at", "Data dodania"), _defineProperty(_pl, "movie_average_rating", "Średnia ocen"), _defineProperty(_pl, "this_pornstar_does_not_have_enough_votes_to_calculate_average", "Ta gwiazda ma za mało głosów aby policzyć średnią (wymagane minimum to 10)"), _defineProperty(_pl, "fetching_rating_in_progress", "Pobieram dane rankingu"), _defineProperty(_pl, "average_rate_not_available_yet", "jeszcze niedostępna"), _defineProperty(_pl, "ammount_of_spermatozoids", "Liczba plemników"), _defineProperty(_pl, "your_spermatozoids", "twoich"), _defineProperty(_pl, "number_of_likes", "Polubień"), _defineProperty(_pl, "failed_to_load_movie_data", "Nie udało się pobrać szczegółowych danych filmu"), _defineProperty(_pl, "failed_to_load_similar_movies", "Nie udało się załadować podobnych filmów"), _defineProperty(_pl, "you_like_it", "Lubisz to"), _defineProperty(_pl, "you_already_like_this_movie", "Już wcześniej polubiłeś ten film"), _defineProperty(_pl, "you_and", "Ty i"), _defineProperty(_pl, "people_like_it", "osób lubi to"), _defineProperty(_pl, "no_comments", "Brak komentarzy"), _defineProperty(_pl, "services_range_and_pricing", "usługi i cennik"), _defineProperty(_pl, "working_hours", "Godziny pracy"), _defineProperty(_pl, "location", "Lokalizacja"), _defineProperty(_pl, "voivodeship", "Województwo"), _defineProperty(_pl, "city", "Miasto"), _defineProperty(_pl, "monday", "poniedziałek"), _defineProperty(_pl, "friday", "piątek"), _defineProperty(_pl, "please_decide", "proszę zdecydować"), _defineProperty(_pl, "invalid_time_format", "Błędny format"), _defineProperty(_pl, "time_since_must_be_earlier_than_time_until", "W przypadku co najmniej jednego dnia, godzina rozpoczęcia jest później niż godzina zakończenia lub są one równe. Zaznaczono te kontrolki na czerwono"), _defineProperty(_pl, "prostitution_announcements_are_free", "Dodawanie ogłoszeń jest całkowicie darmowe. Obowiązują następujące zasady. Jeżeli dodajesz więcej niż 1 ogłoszenie, oferty te muszą wyraźnie różnić się zakresem wykonywanych usług, lub dotyczyć innej osoby(jeżeli jesteś np. właścicielem salonu masażu i masz więcej panienek pod sobą). "), _defineProperty(_pl, "dont_spam_with_announcements", "Nie kombinuj, nie spamuj ogłoszeniami - administracja i tak prędzej czy później takowe oferty usuwa i banuje użytkowników. Dodawaj tylko i wyłącznie swoje aktualne zdjęcia. "), _defineProperty(_pl, "announcement_will_not_be_added_immidiatelly", "Ogłoszenie nie zostanie dodane natychmiastowo, musi najpierw zostać zweryfikowane przez administrację. Czas weryfikacji to maksimum 48 godzin. "), _defineProperty(_pl, "in_case_of_a_problem_please_contact_us_using_the_contact_form", "W razie problemów, prosimy o kontakt poprzez formularz "), _defineProperty(_pl, "empire_policy_for_working_hours_of_prostitutes", "Proszę zdecydować czy podać konkretne godziny pracy, czy też pozostawić niezdefiniowane - na zasadzie mam włączony telefon to jestem a jak jest wyłączony to mnie nie ma. Warto wziąć pod uwagę, że podanie precyzyjnych godzin pozytywnie wpłynie na odbiór klientów. W przyszłości będzie można zaznaczyć opcję ukrywania ogłoszenia poza godzinami pracy. Nie wystarczy podać przedziału czasowego w opisie (w sekcji : personalia), aby w 100% poprawnie zapisał się w systemie i aby ułatwiał wyszukiwanie użytkownikom."), _defineProperty(_pl, "prostitution_offer_policy_description", "Nie kombinuj, nie spamuj ogłoszeniami - administracja i tak prędzej czy później takowe oferty usuwa i banuje użytkowników. Dodawaj tylko i wyłącznie swoje aktualne zdjęcia. Ogłoszenie nie zostanie dodane natychmiastowo, musi najpierw zostać zweryfikowane przez administrację. Czas weryfikacji to maksimum 48 godzin. W razie problemów, prosimy o kontakt poprzez formularz, "), _defineProperty(_pl, "everyone_can_comment_a_prostitute", "Każdy zarejestrowany użytkownik może dodać komentarz pod dowolnym ogłoszeniem. Autor ogłoszenia nie ma możliwości usuwania komentarzy użytkowników, a już tym bardziej tych nieprzychylnych. "), _defineProperty(_pl, "do_you_want_to_set_precise_working_hours", "Podać godziny pracy"), _defineProperty(_pl, "cookie_notification_header", "Ta strona wykorzystuje pliki cookie"), _defineProperty(_pl, "cookie_notification_body", "Poprzez dalsze korzystanie z portalu lub naci\u015Bni\u0119cie przycisku \"Akceptuj\u0119\" wyra\u017Casz zgod\u0119 na przechowywanie plik\xF3w cookie na Twej maszynie"), _defineProperty(_pl, "accept_button_caption", "Akceptuję - zamknij"), _defineProperty(_pl, "show_content_side_bar_title", "Rozwiń nawigację strony dla wersji mobilnej"), _defineProperty(_pl, "show_content_side_bar_caption", "Menu"), _defineProperty(_pl, "cancel_like", "cofnij like'a"), _defineProperty(_pl, "fetching_cities", "Pobieram listę miast"), _defineProperty(_pl, "show_authenticated_user_sidebar_title", "Rozwiń menu użytkownika, ustawienia profilu, wylogowanie itp."), _defineProperty(_pl, "show_authenticated_user_sidebar_caption", "Profil"), _defineProperty(_pl, "user_type_is_required", "Wymagane jest podanie typu użytkownika"), _defineProperty(_pl, "you_mustnot_choose_tits_size_if_you_are_a_male", "Nie możesz wybrać rozmiaru cycków będąc mężczyzną"), _defineProperty(_pl, "selected_avatar", "Nowy avatar"), _defineProperty(_pl, "no_avatar_has_been_choosen", "Nie wybrano avataru"), _defineProperty(_pl, "notices_policy", "polityka dodawania ogłoszeń"), _defineProperty(_pl, "current_avatar", "Wybrany avatar"), _defineProperty(_pl, "basic_information", "Podstawowe informacje"), _defineProperty(_pl, "the_latest", "Najnowsze"), _defineProperty(_pl, "the_most_popular", "Najpopularniejsze"), _defineProperty(_pl, "advanced_search", "Szukanie zaawansowane"), _defineProperty(_pl, "login_or_email", "Login lub email"), _defineProperty(_pl, "remember_me", "Zapamiętaj mnie"), _defineProperty(_pl, "scroll_movies_list_left", "Przewiń listę filmów w lewo"), _defineProperty(_pl, "scroll_movies_list_right", "Przewiń listę filmów w prawo"), _defineProperty(_pl, "dictionary", "Słownik"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "prostitution", "Prostytucja"), _defineProperty(_pl, "add_notice", "Dodaj ogłoszenie"), _defineProperty(_pl, "no_working_period_has_been_provided", "Skoro zdecydowałaś(eś) się podać godziny pracy to nie możesz mieć cały czas wolne"), _defineProperty(_pl, "notices_list", "Lista ogłoszeń"), _defineProperty(_pl, "you_have_to_be_logged_in_to_add_notice", "Musisz być zalogowany aby dodać ogłoszenie"), _defineProperty(_pl, "phone_number_format_must_be_valid", "Numer telefonu musi być w prawidłowym formacie"), _defineProperty(_pl, "phone_number", "numer telefonu"), _defineProperty(_pl, "birth_date_restrictions", "Po zatwierdzeniu ogłoszenia zmiana daty urodzenia nie będzie możliwa. Prosimy nie zaniżać swojego wieku - w przyszłości może zostać wprowadzony mechanizm weryfikowania i kłamliwe ogłoszenia zostaną usunięte"), _defineProperty(_pl, "packages", {
+  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "subject_exceeds_40_characters", "Temat przekracza 40 znaków"), _defineProperty(_pl, "current_news", 'Aktualności'), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "movies", "Filmy"), _defineProperty(_pl, "views", "Odsłon"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "pornstars_navbar_caption", "Gwiazdy porno"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "launching_in_progress", "Trwa uruchamianie"), _defineProperty(_pl, "clicking_here", "klikając tutaj"), _defineProperty(_pl, "prostitution_offer_bottom_navigation_info", "Ogłoszenie zostało podzielone na sekcje, użyj strzałek aby przejść dalej"), _defineProperty(_pl, "click_to_play_the_video", "Kliknij aby uruchomić film"), _defineProperty(_pl, "stop_movie_preview", "Zatrzymaj odtwarzanie podglądu filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "previous_page", "poprzednia"), _defineProperty(_pl, "next_page", "następna"), _defineProperty(_pl, "further", "dalej"), _defineProperty(_pl, "back", "wstecz"), _defineProperty(_pl, "up", "góra"), _defineProperty(_pl, "first_page", "pierwsza"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "default_avatar", "Domyślny avatar, przedstawia bliżej niezidentyfikowanego użytkownika"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "element_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "movie_rate_data_is_invalid", "Niepoprawne dane oceny lub filmu"), _defineProperty(_pl, "birth_date_is_required", "Data urodzenia jest wymagana"), _defineProperty(_pl, "nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "answears", "Odpowiedzi"), _defineProperty(_pl, "add_comment", "Dodaj komentarz"), _defineProperty(_pl, "add", "dodaj"), _defineProperty(_pl, "contents", "Treść"), _defineProperty(_pl, "comment_added", "Dodano komentarz"), _defineProperty(_pl, "unregistered_user", "Niezarejestrowany"), _defineProperty(_pl, "register", "Rejestruj"), _defineProperty(_pl, "add_comment_short", "Komentuj"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "adding_comment", "Dodaję komentarz"), _defineProperty(_pl, "fetching_comments", "Pobieram komentarze"), _defineProperty(_pl, "comment_text_is_missing", "Nie podano treści komentarza"), _defineProperty(_pl, "comment_text_exceeds_1000_characters", "Treść komentarza przekracza 1000 znaków"), _defineProperty(_pl, "the_nickname_must_be_between_2_and_20_characters", "Pseudonim musi mieć minimum 2 znaki ale nie więcej niż 20"), _defineProperty(_pl, "no_comments_available", "Brak komentarzy"), _defineProperty(_pl, "because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute", "Z powodów bezpieczeństwa ograniczono liczbę dodawanych komentarzy do 2 na minutę"), _defineProperty(_pl, "total_comments", "Liczba wszystkich komentarzy"), _defineProperty(_pl, "publish_comment", "Opublikuj komentarz"), _defineProperty(_pl, "show_comments_sub_page_with_number", "Pokaż podstronę komentarzy o numerze"), _defineProperty(_pl, "the_value_must_be_a_number_greater_than_0", "Podaj dodatnią liczbę"), _defineProperty(_pl, "sex_empire_short", "SI"), _defineProperty(_pl, "small_ass", "mały"), _defineProperty(_pl, "medium_ass", "średni"), _defineProperty(_pl, "big_ass", "duży"), _defineProperty(_pl, "small_tits", "małe"), _defineProperty(_pl, "medium_tits", "średnie"), _defineProperty(_pl, "big_tits", "duże"), _defineProperty(_pl, "skinny_tchickness", "chuda"), _defineProperty(_pl, "medium_tchickness", "średnia"), _defineProperty(_pl, "fat_tchickness", "gruba"), _defineProperty(_pl, "teenagers", "nastolatki(18 - 19)"), _defineProperty(_pl, "age_range_young", "młode (20 -29)"), _defineProperty(_pl, "age_range_mature", "dojrzałe(30 - 50)"), _defineProperty(_pl, "dark_hair", "czarny"), _defineProperty(_pl, "blonde_hair", "blond"), _defineProperty(_pl, "brown_hair", "brązowy"), _defineProperty(_pl, "red_hair", "rudy"), _defineProperty(_pl, "white_race", "biała"), _defineProperty(_pl, "asian_race", "azjatki"), _defineProperty(_pl, "ebony_race", "murzynki"), _defineProperty(_pl, "latin_race", "latynoski"), _defineProperty(_pl, "arabic_race", "arabki"), _defineProperty(_pl, "yes", "tak"), _defineProperty(_pl, "most_important_services_exact_information_notice", " Prosimy wypełnić poniższy formularz skrupulatnie, starannie i zgodnie z prawdą"), _defineProperty(_pl, "deep_throat", "głębokie gardło"), _defineProperty(_pl, "no", "nie"), _defineProperty(_pl, "one_male_one_female", "facet i kobieta"), _defineProperty(_pl, "bukkake", "bukkake"), _defineProperty(_pl, "single_female", "kobieta solo"), _defineProperty(_pl, "lesbians", "lesbijki"), _defineProperty(_pl, "group_sex", "grupowy"), _defineProperty(_pl, "one_male_many_females", "facet i wiele kobiet"), _defineProperty(_pl, "GangBang", "GangBang"), _defineProperty(_pl, "sex_with_many_males", "sex z wieloma mężczyznami"), _defineProperty(_pl, "outside_together", "wspólne wyjścia"), _defineProperty(_pl, "one_female_two_males", "Na 2 baty"), _defineProperty(_pl, "lesbian_group_sex", "Lesbijki grupowo"), _defineProperty(_pl, "only", "tylko i wyłącznie"), _defineProperty(_pl, "maximum", "maximum"), _defineProperty(_pl, "a_lot", "dużo"), _defineProperty(_pl, "medium", "średnio"), _defineProperty(_pl, "a_little", "trochę"), _defineProperty(_pl, "exclude", "wyklucz"), _defineProperty(_pl, "on_face", "na twarz"), _defineProperty(_pl, "cum_swallow", "z połykiem"), _defineProperty(_pl, "creampie", "w cipkę"), _defineProperty(_pl, "anal", "anal"), _defineProperty(_pl, "cum_on_face", "wytrysk na twarz"), _defineProperty(_pl, "anal_creampie", "w dupkę"), _defineProperty(_pl, "on_tits", "na cycki"), _defineProperty(_pl, "on_pussy", "na cipkę"), _defineProperty(_pl, "on_ass", "na dupkę"), _defineProperty(_pl, "on_feet", "na stopy"), _defineProperty(_pl, "on_many_places", "na wiele miejsc"), _defineProperty(_pl, "on_other_body_parts", "na inne miejsca"), _defineProperty(_pl, "american_nationality", "amerykańska"), _defineProperty(_pl, "japanese_nationality", "japońska"), _defineProperty(_pl, "german_nationality", "niemiecka"), _defineProperty(_pl, "czech_nationality", "czeska"), _defineProperty(_pl, "russian_nationality", "rosyjska"), _defineProperty(_pl, "british_nationality", "brytyjska"), _defineProperty(_pl, "swedish_nationality", "szwedzka"), _defineProperty(_pl, "ukrainian_nationality", "ukraińska"), _defineProperty(_pl, "slovac_nationality", "słowacka"), _defineProperty(_pl, "hanguarian_nationality", "węgierska"), _defineProperty(_pl, "polish_nationality", "polska"), _defineProperty(_pl, "dutch_nationality", "holenderska"), _defineProperty(_pl, "hindu_nationality", "hinduska"), _defineProperty(_pl, "french_nationality", "francuska"), _defineProperty(_pl, "spanish_nationality", "hiszpańska"), _defineProperty(_pl, "italian_nationality", "włoska"), _defineProperty(_pl, "canadian_nationality", "kanadyjska"), _defineProperty(_pl, "argentinian_nationality", "argentyńska"), _defineProperty(_pl, "house", "dom"), _defineProperty(_pl, "bathroom", "łazienka"), _defineProperty(_pl, "office", "biuro"), _defineProperty(_pl, "school", "szkoła"), _defineProperty(_pl, "public_place", "miejsca publiczne"), _defineProperty(_pl, "car", "samochód"), _defineProperty(_pl, "nature", "łono natury"), _defineProperty(_pl, "solarium", "solarium"), _defineProperty(_pl, "elevator", "winda"), _defineProperty(_pl, "beach", "plaża"), _defineProperty(_pl, "gym", "siłownia"), _defineProperty(_pl, "POV", "POV"), _defineProperty(_pl, "weight", "waga"), _defineProperty(_pl, "outside_camera_style", "z zewnątrz"), _defineProperty(_pl, "mixed_camera_style", "mieszane"), _defineProperty(_pl, "female_pupil", "uczennica"), _defineProperty(_pl, "female_employee", "pracownica"), _defineProperty(_pl, "female_student", "studentka"), _defineProperty(_pl, "wife", "żona"), _defineProperty(_pl, "female_teacher", "nauczycielka"), _defineProperty(_pl, "nurse", "pielęgniarka"), _defineProperty(_pl, "female_slave", "niewolnica"), _defineProperty(_pl, "nun", "zakonnica"), _defineProperty(_pl, "female_police_officer", "policjantka"), _defineProperty(_pl, "prostitute", "prostytutka"), _defineProperty(_pl, "female_boss", "szefowa"), _defineProperty(_pl, "cleaner", "sprzątaczka"), _defineProperty(_pl, "mommy", "mamusia"), _defineProperty(_pl, "amateur", "amatorski"), _defineProperty(_pl, "professional", "profesjonalny"), _defineProperty(_pl, "choose_option", "wybierz opcję"), _defineProperty(_pl, "saving_notice", "Zapisywanie ogłoszenia"), _defineProperty(_pl, "announcement_must_be_accepted_reminder", "Proszę pamiętać, że ogłoszenie nie zostanie dodane natychmiast. Musi najpierw zostać zweryfikowane, jednakże nie dłużej niż 48 godzin."), _defineProperty(_pl, "prostitute_save_announcement_info", "To już koniec wypełniania formularzy. Jeśli wszystko się zgadza, można kliknąć w przycisk poniżej aby dodać ogłoszenie. "), _defineProperty(_pl, "choose_options", "wybierz opcje"), _defineProperty(_pl, "included_in_price", "wliczone w cenę"), _defineProperty(_pl, "client_rimming", "rimming w stronę klienta"), _defineProperty(_pl, "cum_on_body", "wytrysk na ciało"), _defineProperty(_pl, "kisses", "pocałunki"), _defineProperty(_pl, "aditional_payment", "za dopłatą"), _defineProperty(_pl, "classic_sex", "sex klasyczny"), _defineProperty(_pl, "only_in_condom", "tylko w gumce"), _defineProperty(_pl, "without_condom", "bez gumki"), _defineProperty(_pl, "without_condom_with_aditional_payments", "bez gumki, za dopłatą"), _defineProperty(_pl, "role_playing", "odgrywanie ról"), _defineProperty(_pl, "a_payment_type_can_be_chosen_only_once", "dany typ płatności można wybrać tylko raz"), _defineProperty(_pl, "announcement_description", "Treść ogłoszenia, opis"), _defineProperty(_pl, "oral_creampie", "wytrysk do ust"), _defineProperty(_pl, "most_important_services_description", "Poniżej lista najważniejszych usług jakimi interesują się klienci. Aktualnie ceny podawane są w złotówkach. Pracujemy nad cennikiem w innych walutach. Informacje, ułatwią użytkownikom wyszukiwanie i Tobie pomogą znaleźć klientów. Jeżeli formularze nie do końca odpowiadają Twej ofercie możesz doprecyzować to w opisie w dalszej sekcji."), _defineProperty(_pl, "remaining_services_description", "Pozostałe usługi nie ujęte na liście najważniejszych (opcjonalnie)"), _defineProperty(_pl, "click_to_chose_remaining_services", "Kliknij aby wybrać pozostałe usługi"), _defineProperty(_pl, "blowjob", "lodzik"), _defineProperty(_pl, "currencies_you_accept", "waluty jakie akceptujesz"), _defineProperty(_pl, "trips", "wyjazdy"), _defineProperty(_pl, "prices_for_your_services_description", "Ceny Twoich usług. Możesz podać kilka opcji. Kliknij w zielony przycisk aby dodać kolejną pozycję i czerwony przycisk aby usunąć."), _defineProperty(_pl, "add_payment_type", "dodaj typ płatności"), _defineProperty(_pl, "remove_payment_type", "usuń typ płatności"), _defineProperty(_pl, "remove", "usuń"), _defineProperty(_pl, "streaptease", "striptiz"), _defineProperty(_pl, "dancing", "taniec"), _defineProperty(_pl, "latex", "lateks"), _defineProperty(_pl, "double_penetration", "podwójna penetracja"), _defineProperty(_pl, "for_hour", "za godzinę"), _defineProperty(_pl, "for_30_minutes", "za pół godziny"), _defineProperty(_pl, "for_15_minutes", "za 15 minut"), _defineProperty(_pl, "for_night", "za noc"), _defineProperty(_pl, "for_blowjob", "za lodzika"), _defineProperty(_pl, "until_first_cumshot", "do pierwszego wystrzału"), _defineProperty(_pl, "location_and_working_hours", "lokalizacja i godziny pracy"), _defineProperty(_pl, "for_2_hours", "za 2 godziny"), _defineProperty(_pl, "for_3_hours", "za 3 godziny"), _defineProperty(_pl, "never", "nigdy"), _defineProperty(_pl, "height", "wzrost"), _defineProperty(_pl, "search", "szukaj"), _defineProperty(_pl, "remove_option", "usuń opcję"), _defineProperty(_pl, "you_have_exceeded_photos_limit", "Przekroczono limit zdjęć"), _defineProperty(_pl, "monday", "poniedziałek"), _defineProperty(_pl, "tuesday", "wtorek"), _defineProperty(_pl, "wednesday", "środa"), _defineProperty(_pl, "thursday", "czwartek"), _defineProperty(_pl, "friday", "piątek"), _defineProperty(_pl, "saturday", "sobota"), _defineProperty(_pl, "sunday", "niedziela"), _defineProperty(_pl, "show_each_single_day_from_monday_to_friday", "Pokaż pojedyncze dni powszednie"), _defineProperty(_pl, "close", "zamknij"), _defineProperty(_pl, "day_of", "wolne"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę"), _defineProperty(_pl, "show_weekdays_as_one_row", "Pokaż dni powszednie w jednym wierszu"), _defineProperty(_pl, "fetching_pornstars", "Pobieram listę gwiazd"), _defineProperty(_pl, "not_selected", "nie wybrano"), _defineProperty(_pl, "minutes_inflected", "minut(y)"), _defineProperty(_pl, "views_inflected", "wyświetleń"), _defineProperty(_pl, "unexpected_error_occured", "Pojawił się bliżej niezidentyfikowany błąd"), _defineProperty(_pl, "titsSize", "rozmiar cycków"), _defineProperty(_pl, "assSize", "rozmiar dupci"), _defineProperty(_pl, "thicknessSize", "tusza"), _defineProperty(_pl, "ageRange", "przedział wiekowy"), _defineProperty(_pl, "hairColor", "kolor włosów"), _defineProperty(_pl, "race", "rasa"), _defineProperty(_pl, "abundanceType", "liczebność"), _defineProperty(_pl, "cumshotType", "typ wytrysku"), _defineProperty(_pl, "nationality", "narodowość"), _defineProperty(_pl, "location", "lokalizacja"), _defineProperty(_pl, "cameraStyle", "ujęcie kamery"), _defineProperty(_pl, "storyOrCostume", "motyw fabularno kostiumowy"), _defineProperty(_pl, "professionalismLevel", "poziom filmu"), _defineProperty(_pl, "shavedPussy", "wygolona cipka"), _defineProperty(_pl, "analAmount", "anal"), _defineProperty(_pl, "blowjob", "obciąganie"), _defineProperty(_pl, "handjob", "walenie konika"), _defineProperty(_pl, "blondes", "blondynki"), _defineProperty(_pl, "tittfuck", "na hiszpana"), _defineProperty(_pl, "pissing", "obsikiwanie"), _defineProperty(_pl, "strapon", "sztuczny penis"), _defineProperty(_pl, "fingering", "palcówka"), _defineProperty(_pl, "licking_balls", "lizanie jąder"), _defineProperty(_pl, "spanking", "klapsy"), _defineProperty(_pl, "pussy_licking", "minetka"), _defineProperty(_pl, "petting_with_feet", "pieszczenie stopami"), _defineProperty(_pl, "feet", "stopy"), _defineProperty(_pl, "femdom", "kobieca dominacja"), _defineProperty(_pl, "brunettes", "brunetki"), _defineProperty(_pl, "redheads", "rude"), _defineProperty(_pl, "milfs", "dojrzałe"), _defineProperty(_pl, "teens", 'nastolatki'), _defineProperty(_pl, "amateur", "amatorskie"), _defineProperty(_pl, "asian", 'azjatki'), _defineProperty(_pl, "latins", 'latynoski'), _defineProperty(_pl, "ebony", 'murzynki'), _defineProperty(_pl, "lesbians", 'lesbijki'), _defineProperty(_pl, "group", 'grupowy'), _defineProperty(_pl, "cumshot_compilation", 'kompilacja wytrysków'), _defineProperty(_pl, "cumshot_compilations", 'kompilacje wytrysków'), _defineProperty(_pl, "cum_on_face", 'wytrysk na twarz'), _defineProperty(_pl, "cum_swallow", 'połykanie spermy'), _defineProperty(_pl, "cum_on_feet", 'wytrysk na stopy'), _defineProperty(_pl, "creampie", 'wytrysk w cipkę'), _defineProperty(_pl, "cum_in_ass", 'wytrysk w dupkę'), _defineProperty(_pl, "cum_on_titts", 'wytrysk na cycki'), _defineProperty(_pl, "pantyhose", 'rajstopki'), _defineProperty(_pl, "high_heels", 'szpile'), _defineProperty(_pl, "insults", "wyzwiska"), _defineProperty(_pl, "hugging", "przytulanie"), _defineProperty(_pl, "shared_bath", "wspólna kąpiel"), _defineProperty(_pl, "sex_with_2_males", "na 2 baty"), _defineProperty(_pl, "nurses", 'pielęgniarki'), _defineProperty(_pl, "teachers", 'nauczycielki'), _defineProperty(_pl, "japanese", 'japonki'), _defineProperty(_pl, "russian", 'rosjanki'), _defineProperty(_pl, "pornstars", 'gwiazdy porno'), _defineProperty(_pl, "blowjobAmount", 'obciąganie'), _defineProperty(_pl, "money_amount", "kwota"), _defineProperty(_pl, "handjobAmount", 'walenie konika'), _defineProperty(_pl, "doublePenetrationamount", "wtyczka"), _defineProperty(_pl, "vaginalamount", "waginalny"), _defineProperty(_pl, "pussyLickingAmount", 'minetka'), _defineProperty(_pl, "feetPettingAmount", 'pieszczenie stóp'), _defineProperty(_pl, "position69amount", 'pozycja 69'), _defineProperty(_pl, "titfuckAmount", "na hiszpana"), _defineProperty(_pl, "isCumshotCompilation", 'kompilacja wytrysków'), _defineProperty(_pl, "recordedBySpamCamera", 'nagrany kamerą szpiegowską'), _defineProperty(_pl, "isSadisticOrMasochistic", 'sado-masochostyczny'), _defineProperty(_pl, "isFemaleDomination", 'kobieca dominacja'), _defineProperty(_pl, "isTranslatedToPolish", 'polska wersja językowa'), _defineProperty(_pl, "showPantyhose", 'rajstopy'), _defineProperty(_pl, "showStockings", 'pończochy'), _defineProperty(_pl, "showGlasses", 'okulary'), _defineProperty(_pl, "showHighHeels", 'szpile'), _defineProperty(_pl, "showHugeCock", 'wielki kutas'), _defineProperty(_pl, "showWhips", 'bicze'), _defineProperty(_pl, "whips", 'bicze'), _defineProperty(_pl, "showSexToys", 'sex-zabawki'), _defineProperty(_pl, "minimumMovieTime", "minimalny czas"), _defineProperty(_pl, "maximumMovieTime", "maksymalny czas"), _defineProperty(_pl, "minimumMovieViews", 'minimalna liczba wyświetleń'), _defineProperty(_pl, "maximumMovieViews", 'maksymalna liczba wyświetleń'), _defineProperty(_pl, "hasStory", 'zawiera fabułę'), _defineProperty(_pl, "total_movies_found", "Ilość znalezionych filmów"), _defineProperty(_pl, "rules", "zasady"), _defineProperty(_pl, "movie_with_following_pornstars", "występują jednocześnie następujące gwiazdy"), _defineProperty(_pl, "last_page", "ostatnia"), _defineProperty(_pl, "movie_with_pornstar", "Film w którym występuje"), _defineProperty(_pl, "no_movies_have_been_found", "Nie znaleziono żadnych filmów pasujących do wybranych kryteriów"), _defineProperty(_pl, "no_options_have_been_selected", "Nie wybrano żadnych opcji"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd"), _defineProperty(_pl, "because_of_security_reasons_search_was_blocked", "Ze względów bezpieczeństwa ilość zapytań do wyszukiwarki w ciągu minuty jest ograniczona. Prosimy zaczekać chwilę i spróbować ponownie."), _defineProperty(_pl, "popular_categories", "Popularne kategorie"), _defineProperty(_pl, "categories_list", "Lista kategorii"), _defineProperty(_pl, "personalities", "personalia"), _defineProperty(_pl, "section", "sekcja"), _defineProperty(_pl, "big_titts", "duże cycki"), _defineProperty(_pl, "categories", "Kategorie"), _defineProperty(_pl, "teenagers", "nastolatki"), _defineProperty(_pl, "spermatozoid_has_been_asigned", "Przyznano plemnika. Musisz odczekać minimum pół godziny aby przyznać kolejnego."), _defineProperty(_pl, "you_have_exceeded_cum_limit", "Możesz przyznać maksymalnie jednego plemnika na pół godziny niezależnie od filmu"), _defineProperty(_pl, "spermatozoid_rate_data_is_incorrect", "Niepoprawne dane filmu"), _defineProperty(_pl, "movie_views", "Liczba wyświetleń"), _defineProperty(_pl, "movie_added_at", "Data dodania"), _defineProperty(_pl, "movie_average_rating", "Średnia ocen"), _defineProperty(_pl, "this_pornstar_does_not_have_enough_votes_to_calculate_average", "Ta gwiazda ma za mało głosów aby policzyć średnią (wymagane minimum to 10)"), _defineProperty(_pl, "fetching_rating_in_progress", "Pobieram dane rankingu"), _defineProperty(_pl, "average_rate_not_available_yet", "jeszcze niedostępna"), _defineProperty(_pl, "ammount_of_spermatozoids", "Liczba plemników"), _defineProperty(_pl, "your_spermatozoids", "twoich"), _defineProperty(_pl, "number_of_likes", "Polubień"), _defineProperty(_pl, "failed_to_load_movie_data", "Nie udało się pobrać szczegółowych danych filmu"), _defineProperty(_pl, "failed_to_load_similar_movies", "Nie udało się załadować podobnych filmów"), _defineProperty(_pl, "you_like_it", "Lubisz to"), _defineProperty(_pl, "you_already_like_this_movie", "Już wcześniej polubiłeś ten film"), _defineProperty(_pl, "you_and", "Ty i"), _defineProperty(_pl, "people_like_it", "osób lubi to"), _defineProperty(_pl, "no_comments", "Brak komentarzy"), _defineProperty(_pl, "services_range_and_pricing", "usługi i cennik"), _defineProperty(_pl, "working_hours", "Godziny pracy"), _defineProperty(_pl, "location", "Lokalizacja"), _defineProperty(_pl, "voivodeship", "Województwo"), _defineProperty(_pl, "city", "Miasto"), _defineProperty(_pl, "monday", "poniedziałek"), _defineProperty(_pl, "friday", "piątek"), _defineProperty(_pl, "please_decide", "proszę zdecydować"), _defineProperty(_pl, "invalid_time_format", "Błędny format"), _defineProperty(_pl, "time_since_must_be_earlier_than_time_until", "W przypadku co najmniej jednego dnia, godzina rozpoczęcia jest później niż godzina zakończenia lub są one równe. Zaznaczono te kontrolki na czerwono"), _defineProperty(_pl, "prostitution_announcements_are_free", "Dodawanie ogłoszeń jest całkowicie darmowe. Obowiązują następujące zasady. Jeżeli dodajesz więcej niż 1 ogłoszenie, oferty te muszą wyraźnie różnić się zakresem wykonywanych usług, lub dotyczyć innej osoby(jeżeli jesteś np. właścicielem salonu masażu i masz więcej panienek pod sobą). "), _defineProperty(_pl, "dont_spam_with_announcements", "Nie kombinuj, nie spamuj ogłoszeniami - administracja i tak prędzej czy później takowe oferty usuwa i banuje użytkowników. Dodawaj tylko i wyłącznie swoje aktualne zdjęcia. "), _defineProperty(_pl, "announcement_will_not_be_added_immidiatelly", "Ogłoszenie nie zostanie dodane natychmiastowo, musi najpierw zostać zweryfikowane przez administrację. Czas weryfikacji to maksimum 48 godzin. "), _defineProperty(_pl, "in_case_of_a_problem_please_contact_us_using_the_contact_form", "W razie problemów, prosimy o kontakt poprzez formularz "), _defineProperty(_pl, "empire_policy_for_working_hours_of_prostitutes", "Proszę zdecydować czy podać konkretne godziny pracy, czy też pozostawić niezdefiniowane - na zasadzie mam włączony telefon to jestem a jak jest wyłączony to mnie nie ma. Warto wziąć pod uwagę, że podanie precyzyjnych godzin pozytywnie wpłynie na odbiór klientów. W przyszłości będzie można zaznaczyć opcję ukrywania ogłoszenia poza godzinami pracy. Nie wystarczy podać przedziału czasowego w opisie (w sekcji : personalia), aby w 100% poprawnie zapisał się w systemie i aby ułatwiał wyszukiwanie użytkownikom."), _defineProperty(_pl, "prostitution_offer_policy_description", "Nie kombinuj, nie spamuj ogłoszeniami - administracja i tak prędzej czy później takowe oferty usuwa i banuje użytkowników. Dodawaj tylko i wyłącznie swoje aktualne zdjęcia. Ogłoszenie nie zostanie dodane natychmiastowo, musi najpierw zostać zweryfikowane przez administrację. Czas weryfikacji to maksimum 48 godzin. W razie problemów, prosimy o kontakt poprzez formularz, "), _defineProperty(_pl, "everyone_can_comment_a_prostitute", "Każdy zarejestrowany użytkownik może dodać komentarz pod dowolnym ogłoszeniem. Autor ogłoszenia nie ma możliwości usuwania komentarzy użytkowników, a już tym bardziej tych nieprzychylnych. "), _defineProperty(_pl, "comments_are_filtered_by_admins_to_prevent_revealing_classified_information", "Jednocześnie przed opublikowaniem jakiegokolwiek komentarza administracja dba o to aby nie zostały upublicznione poufne dane takie jak adres, imie i nazwisko itp. "), _defineProperty(_pl, "do_you_want_to_set_precise_working_hours", "Podać godziny pracy"), _defineProperty(_pl, "cookie_notification_header", "Ta strona wykorzystuje pliki cookie"), _defineProperty(_pl, "cookie_notification_body", "Poprzez dalsze korzystanie z portalu lub naci\u015Bni\u0119cie przycisku \"Akceptuj\u0119\" wyra\u017Casz zgod\u0119 na przechowywanie plik\xF3w cookie na Twej maszynie"), _defineProperty(_pl, "accept_button_caption", "Akceptuję - zamknij"), _defineProperty(_pl, "show_content_side_bar_title", "Rozwiń nawigację strony dla wersji mobilnej"), _defineProperty(_pl, "show_content_side_bar_caption", "Menu"), _defineProperty(_pl, "cancel_like", "cofnij like'a"), _defineProperty(_pl, "fetching_cities", "Pobieram listę miast"), _defineProperty(_pl, "show_authenticated_user_sidebar_title", "Rozwiń menu użytkownika, ustawienia profilu, wylogowanie itp."), _defineProperty(_pl, "show_authenticated_user_sidebar_caption", "Profil"), _defineProperty(_pl, "user_type_is_required", "Wymagane jest podanie typu użytkownika"), _defineProperty(_pl, "you_mustnot_choose_tits_size_if_you_are_a_male", "Nie możesz wybrać rozmiaru cycków będąc mężczyzną"), _defineProperty(_pl, "selected_avatar", "Nowy avatar"), _defineProperty(_pl, "no_avatar_has_been_choosen", "Nie wybrano avataru"), _defineProperty(_pl, "notices_policy", "polityka dodawania ogłoszeń"), _defineProperty(_pl, "current_avatar", "Wybrany avatar"), _defineProperty(_pl, "basic_information", "Podstawowe informacje"), _defineProperty(_pl, "the_latest", "Najnowsze"), _defineProperty(_pl, "the_most_popular", "Najpopularniejsze"), _defineProperty(_pl, "advanced_search", "Szukanie zaawansowane"), _defineProperty(_pl, "login_or_email", "Login lub email"), _defineProperty(_pl, "remember_me", "Zapamiętaj mnie"), _defineProperty(_pl, "scroll_movies_list_left", "Przewiń listę filmów w lewo"), _defineProperty(_pl, "scroll_movies_list_right", "Przewiń listę filmów w prawo"), _defineProperty(_pl, "dictionary", "Słownik"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "prostitution", "Prostytucja"), _defineProperty(_pl, "add_notice", "Dodaj ogłoszenie"), _defineProperty(_pl, "no_working_period_has_been_provided", "Skoro zdecydowałaś(eś) się podać godziny pracy to nie możesz mieć cały czas wolne"), _defineProperty(_pl, "notices_list", "Lista ogłoszeń"), _defineProperty(_pl, "you_have_to_be_logged_in_to_add_notice", "Musisz być zalogowany aby dodać ogłoszenie"), _defineProperty(_pl, "phone_number_format_must_be_valid", "Numer telefonu musi być w prawidłowym formacie"), _defineProperty(_pl, "phone_number", "numer telefonu"), _defineProperty(_pl, "birth_date_restrictions", "Po zatwierdzeniu ogłoszenia zmiana daty urodzenia nie będzie możliwa. Prosimy nie zaniżać swojego wieku - w przyszłości może zostać wprowadzony mechanizm weryfikowania i kłamliwe ogłoszenia zostaną usunięte"), _defineProperty(_pl, "packages", {
     content_sidebar: {
       hide_side_bar_title: "Schowaj boczne menu",
       hide_side_bar_caption: "Schowaj",

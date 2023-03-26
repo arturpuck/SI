@@ -7,6 +7,7 @@
   <strong class="important-info" v-text="translations['dont_spam_with_announcements']"></strong>
   <span v-text="translations['announcement_will_not_be_added_immidiatelly']"></span>
   <strong class="important-info" v-text="translations['everyone_can_comment_a_prostitute']"></strong>
+  <span v-text="translations['comments_are_filtered_by_admins_to_prevent_revealing_classified_information']"></span>
   <span v-text="translations['in_case_of_a_problem_please_contact_us_using_the_contact_form']"></span>
   <a v-bind:href="routesConfig.contact" v-text="translations['clicking_here']" class="contact-form-link"></a>
 </section>

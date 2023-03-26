@@ -401,6 +401,8 @@ import AddButton from "@jscomponents-form-controls/add_button.vue";
 import RemoveButton from "@jscomponents-form-controls/remove_button.vue";
 import ErrorOnComboForProstitueAnnouncements from "@mixins/components/prostitute_announcement_creator/error_on_combo_input";
 import { EmptyInputValue} from "@jscomponents/empty_input_option";
+import { mapWritableState } from 'pinia';
+import announcementDetails from "@jscomponents/prostitution/notice_editor/announcement_details";
 const kesThatDoNotRequireSpecialValidation = ServiceKeys.filter(key => key != 'swallow' && key != 'oralCreampie');
 const keysForAditionalPaymentsThatDoNotRequireSpecialValidation = kesThatDoNotRequireSpecialValidation.filter(key => key != 'trips')
 
@@ -424,36 +426,11 @@ export default {
   data() {
     return {
       translations: Translations,
-      massagePreference : EmptyInputValue,
-      vaginalSexPreference: EmptyInputValue,
-      blowjobPreference: EmptyInputValue,
-      oralCreampiePreference : EmptyInputValue,
-      cumSwallowPreference : EmptyInputValue,
-      cumOnFacePreference : EmptyInputValue,
-      analPreference : EmptyInputValue,
-      pussyLickingPreference : EmptyInputValue,
-      clientRimmingPreference : EmptyInputValue,
-      kissingPreference : EmptyInputValue,
-      cumOnBodyPreference : EmptyInputValue,
-      tripsPreference : EmptyInputValue,
-      analAditionalPayment : 100,
-      vaginalSexAditionalPayment : 100,
-      blowjobAditionalPayment : 100,
-      oralCreampieAditionalPayment : 100,
-      cumOnFaceAditionalPayment : 100,
-      massageAditionalPayment : 100,
-      pussyLickingAditionalPayment : 100,
-      clientRimmingAditionalPayment : 100,
-      kissingAditionalPayment : 100,
-      cumOnBodyAditionalPayment : 100,
-      cumSwallowAditionalPayment : 100,
-      selectedSecondaryServices : [],
       SecondaryServicesList,
       DefaultPreferencesOptionsList,
       BlowjobPreferencesOptionsList,
       AvailableServiceFormsToPayFor,
       BinaryPreferences,
-      selectedServiceFormsToPayFor : [{unit : 'for_hour', price : 200}],
       allServiceFormsUnits : Object.keys(AvailableServiceFormsToPayFor),
     };
   },
@@ -517,7 +494,35 @@ export default {
 
     showCumSwallowAditionalPayment() : boolean {
      return this.cumSwallowPreference === DefaultSexPreference.aditional_payment;
-    }
+    },
+
+    ...mapWritableState(announcementDetails, [
+        'massagePreference',
+        'vaginalSexPreference',
+        'blowjobPreference',
+        'oralCreampiePreference',
+        'cumSwallowPreference',
+        'cumOnFacePreference',
+        'analPreference',
+        'pussyLickingPreference',
+        'clientRimmingPreference',
+        'kissingPreference',
+        'cumOnBodyPreference',
+        'tripsPreference',
+        'analAditionalPayment',
+        'vaginalSexAditionalPayment',
+        'blowjobAditionalPayment',
+        'oralCreampieAditionalPayment',
+        'cumOnFaceAditionalPayment',
+        'massageAditionalPayment',
+        'pussyLickingAditionalPayment',
+        'clientRimmingAditionalPayment',
+        'kissingAditionalPayment',
+        'cumOnBodyAditionalPayment',
+        'cumSwallowAditionalPayment',
+        'selectedSecondaryServices',
+        'selectedServiceFormsToPayFor'
+    ])
 
   },
 
