@@ -12,7 +12,7 @@ const announcementDetails = defineStore({
         userType: EmptyInputValue,
         sexualOrientation: EmptyInputValue,
         hairColor: EmptyInputValue,
-        titsSize: 0,
+        titsSize: '0',
         height: "",
         weight: "",
 

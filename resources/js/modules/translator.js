@@ -394,6 +394,9 @@ export default {
       not_selected: "nie wybrano",
       minutes_inflected: "minut(y)",
       views_inflected: "wyświetleń",
+      phone_number_must_contain_at_least_7_characters : "Numer telefonu musi zawierać co najmniej 7 znaków",
+      height_must_be_an_integer_between_90_and_270 : "Podaj liczbę między 90 a 270",
+      weight_must_be_an_integer_between_30_and_800 : "Podal liczbę pomiędzy 30 a 800",
       unexpected_error_occured: "Pojawił się bliżej niezidentyfikowany błąd",
       titsSize: "rozmiar cycków",
       assSize: "rozmiar dupci",
@@ -564,6 +567,7 @@ export default {
       notices_list : "Lista ogłoszeń",
       you_have_to_be_logged_in_to_add_notice : "Musisz być zalogowany aby dodać ogłoszenie",
       phone_number_format_must_be_valid : "Numer telefonu musi być w prawidłowym formacie",
+      phone_number_must_not_exceed_16_characters : "Numer telefonu nie może być dłuższy niż 16 znaków",
       phone_number : "numer telefonu",
       birth_date_restrictions : "Po zatwierdzeniu ogłoszenia zmiana daty urodzenia nie będzie możliwa. Prosimy nie zaniżać swojego wieku - w przyszłości może zostać wprowadzony mechanizm weryfikowania i kłamliwe ogłoszenia zostaną usunięte",
       packages: {

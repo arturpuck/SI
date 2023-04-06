@@ -67,12 +67,18 @@
       >{{ translations.tits_size }} :</select-combo
     >
     <text-input-combo
+      v-bind:error-message-box-available="true"
+      v-bind:complete-error-display-available="true"
       class="extended without-error-message-box"
       input-type="number"
+      unique-id="UserHeight"
       v-model="height"
       >{{ translations.height }} (cm) :</text-input-combo
     >
     <text-input-combo
+      v-bind:error-message-box-available="true"
+      v-bind:complete-error-display-available="true"
+      unique-id="UserWeight"
       class="extended without-error-message-box"
       input-type="number"
       v-model="weight"
@@ -135,6 +141,8 @@ export default {
       this.validateTitsSize();
       this.validatePhoneNumber();
       this.validateDescription();
+      this.validateHeight();
+      this.validateWeight();
       if(this.validationIsSuccessfull) {
         this.$emit('validated');
       }
@@ -146,6 +154,26 @@ export default {
       }
     },
 
+    validateHeight(): void {
+      if(!this.height) {
+        return;
+      }
+
+      if(!Number.isInteger(this.height) || (this.height > 270) || (this.height < 90)) {
+        this.showErrorOnComboInput("UserHeight", "height_must_be_an_integer_between_90_and_270");
+      }
+    },
+
+    validateWeight(): void {
+      if(!this.weight) {
+        return;
+      }
+
+      if(!Number.isInteger(this.weight) || (this.weight > 800) || (this.weight < 30)) {
+        this.showErrorOnComboInput("UserWeight", "weight_must_be_an_integer_between_30_and_800");
+      }
+    },
+
     validatePhoneNumber(): void {
       if (this.phoneNumber) {
           this.validatePhoneNumberFormat();
@@ -154,8 +182,16 @@ export default {
 
     validatePhoneNumberFormat(): void {
       const regularExpression = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
-      if (!this.phoneNumber.match(regularExpression)) {
+      if (!this.phoneNumber.trim().match(regularExpression)) {
         this.showErrorOnComboInput("PhoneNumber", "phone_number_format_must_be_valid");
+      }
+
+      if (this.phoneNumber.trim().length > 16) {
+        this.showErrorOnComboInput("PhoneNumber", "phone_number_must_not_exceed_16_characters");
+      }
+
+      if (this.phoneNumber.trim().length < 7) {
+        this.showErrorOnComboInput("PhoneNumber", "phone_number_must_contain_at_least_7_characters");
       }
     },
 
@@ -167,6 +203,8 @@ export default {
       this.emitter.emit("resetValidationTitsSize");
       this.emitter.emit("resetValidationPhoneNumber");
       this.emitter.emit("resetValidationannouncementDescription");
+      this.emitter.emit("resetValidationUserHeight");
+      this.emitter.emit("resetValidationUserWeight");
     },
 
     validateTitsSize(): void {

@@ -7,6 +7,8 @@ use Illuminate\View\View;
 use Illuminate\Http\JsonResponse;
 use App\Handlers\Prostitution\ShowCreatorPanelHandler;
 use App\Handlers\Prostitution\GetFormOptionsHandler;
+use App\Handlers\Prostitution\CreateProstitutionAnnouncementHandler;
+use App\Http\Requests\Prostitution\CreateProstitutionAnnouncementRequest;
 
 class CreateProstitutionNoticeController extends Controller
 {
@@ -18,5 +20,10 @@ class CreateProstitutionNoticeController extends Controller
     public function getNoticeFormOptions(GetFormOptionsHandler $handler) : JsonResponse
     {
         return $handler->handle();
+    }
+
+    public function createProstitutionAnnouncement(CreateProstitutionAnnouncementRequest $request, CreateProstitutionAnnouncementHandler $handler) : JsonResponse
+    {
+        return $handler->handle($request);
     }
 }

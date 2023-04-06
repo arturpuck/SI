@@ -161,6 +161,9 @@ Route::namespace ('Prostitution')->prefix('prostytucja/')->name('prostitution.')
     Route::get('notice-form-options', 'CreateProstitutionNoticeController@getNoticeFormOptions')
         ->name('notice-form-options');
 
+    Route::post('dodaj-ogłoszenie', 'CreateProstitutionNoticeController@createProstitutionAnnouncement')
+        ->name('create.announcement');
+
 });
 
 Route::middleware(['auth'])->group(function(){

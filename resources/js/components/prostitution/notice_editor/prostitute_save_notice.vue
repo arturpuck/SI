@@ -17,12 +17,12 @@ import { mapWritableState } from 'pinia';
 import GlobalPropertiesNames from "@jscomponents/prostitution/notice_editor/global_properties_names";
 import { optionalPersonalitiesPropertiesNames } from "@jscomponents/prostitution/notice_editor/global_properties_names";
 import { sexServicesPropertiesCoreKeys } from "@jscomponents/prostitution/notice_editor/global_properties_names";
-import { EmptyInputValue} from "@jscomponents/empty_input_option";
+import { EmptyInputValue } from "@jscomponents/empty_input_option";
 import { Weekdays } from "@js/enum/weekdays";
 
 interface WorkingPeriodRange {
-    since : string
-    until : string
+    since: string
+    until: string
 }
 
 export default {
@@ -36,10 +36,11 @@ export default {
         return {
             translations: Translations,
             routesConfig: RoutesConfig,
+            csrfToken : '',
         };
     },
 
-    methods : {
+    methods: {
         createRequestObject() {
             return {
                 ...this.createRequestObjectPersonalitiesPart(),
@@ -49,126 +50,158 @@ export default {
             }
         },
 
-        createRequestObjectLocationAndWorkingHoursPart() : object {
+        createRequestObjectLocationAndWorkingHoursPart(): object {
             let requestPart = {};
-            if(this.preciseHoursDecision === '1') {  //sucks a little bit I know
+            if (this.preciseHoursDecision === '1') {  //sucks a little bit I know
                 requestPart = this.createRequestObjectWorkingHoursPart();
             }
             return {
-                ...requestPart, 
+                ...requestPart,
                 ...this.createLocationRequestPart()
             };
         },
 
-        createLocationRequestPart() : object {
+        createLocationRequestPart(): object {
             return {
-                city : this.city,
-                voivodeship : this.voivodeship
+                city: this.city,
+                voivodeship: this.voivodeship
             };
         },
 
-        createRequestObjectWorkingHoursPart() : object {
-            return this.showEverySingleWeekday ? 
-            this.extractWorkingHoursForEverySingleDayOfWeek() :
-            this.extractWorkingHoursWhenUserChoseMondayToFridayAsOneOption();
+        createRequestObjectWorkingHoursPart(): object {
+            return this.showEverySingleWeekday ?
+                this.extractWorkingHoursForEverySingleDayOfWeek() :
+                this.extractWorkingHoursWhenUserChoseMondayToFridayAsOneOption();
         },
 
-        extractWorkingHoursForEverySingleDayOfWeek() : object {
-            let workingHoursCopy = {...this.workingHoursByPeriodOrDay};
+        extractWorkingHoursForEverySingleDayOfWeek(): object {
+            let workingHoursCopy = { ...this.workingHoursByPeriodOrDay };
             let result = {};
             delete workingHoursCopy['mondayToFriday'];
 
             Object.keys(workingHoursCopy).forEach(dayOfWeek => {
-                if(this.userWorksDuringThisDayOrPeriod(workingHoursCopy[dayOfWeek])) {
+                if (this.userWorksDuringThisDayOrPeriod(workingHoursCopy[dayOfWeek])) {
                     result[dayOfWeek] = workingHoursCopy[dayOfWeek];
                 }
             });
             return {
-             workingHours : result
+                workingHours: result
             };
         },
 
-        extractWorkingHoursWhenUserChoseMondayToFridayAsOneOption() : object {
+        extractWorkingHoursWhenUserChoseMondayToFridayAsOneOption(): object {
             let result = {};
-            if(this.userWorksDuringThisDayOrPeriod(this.workingHoursByPeriodOrDay['mondayToFriday'])) {
-                let mondayToFridayHours : WorkingPeriodRange = this.workingHoursByPeriodOrDay['mondayToFriday'];
+            if (this.userWorksDuringThisDayOrPeriod(this.workingHoursByPeriodOrDay['mondayToFriday'])) {
+                let mondayToFridayHours: WorkingPeriodRange = this.workingHoursByPeriodOrDay['mondayToFriday'];
                 Object.values(Weekdays).forEach(weekday => {
                     result[weekday] = mondayToFridayHours;
                 })
             }
-            if(this.userWorksDuringThisDayOrPeriod(this.workingHoursByPeriodOrDay['saturday'])) {
+            if (this.userWorksDuringThisDayOrPeriod(this.workingHoursByPeriodOrDay['saturday'])) {
                 result['saturday'] = this.workingHoursByPeriodOrDay['saturday'];
             }
 
-            if(this.userWorksDuringThisDayOrPeriod(this.workingHoursByPeriodOrDay['sunday'])) {
+            if (this.userWorksDuringThisDayOrPeriod(this.workingHoursByPeriodOrDay['sunday'])) {
                 result['sunday'] = this.workingHoursByPeriodOrDay['sunday'];
             }
-            
+
             return {
-             workingHours : result
+                workingHours: result
             };
         },
 
-        userWorksDuringThisDayOrPeriod(period : WorkingPeriodRange) : boolean {
+        userWorksDuringThisDayOrPeriod(period: WorkingPeriodRange): boolean {
             return period.since !== undefined && period.until !== undefined;
         },
 
-        anyValueWasChosenByUser(propertyValue) : boolean {
+        anyValueWasChosenByUser(propertyValue): boolean {
             return propertyValue && propertyValue != EmptyInputValue;
         },
 
-        createRequestObjectPhotosPart() : object {
+        createRequestObjectPhotosPart(): object {
             return {
-                photos : this.photos
+                photos: this.photos
             };
         },
 
-        createRequestObjectPersonalitiesPart() : object {
+        createRequestObjectPersonalitiesPart(): object {
             let personalitiesPart = {
-                nickname : this.nickname,
-                birthDate : this.birthDate,
-                userType : this.userType,
+                nickname: this.nickname,
+                birthDate: this.birthDate,
+                userType: this.userType,
             }
             optionalPersonalitiesPropertiesNames.forEach(propertyName => {
-                if(this.anyValueWasChosenByUser(this[propertyName])) {
+                if (this.anyValueWasChosenByUser(this[propertyName])) {
                     personalitiesPart[propertyName] = this[propertyName];
                 }
             })
             return personalitiesPart;
         },
 
-        createRequestObjectServicesPart() : object {
+        createRequestObjectServicesPart(): object {
             let serviceProperties = {};
             sexServicesPropertiesCoreKeys.forEach(propertyCoreName => {
                 let preferencePropertyName = `${propertyCoreName}Preference`;
-                if(this[preferencePropertyName] !== 'never') {
+                if (this[preferencePropertyName] !== 'never') {
                     serviceProperties[preferencePropertyName] = this[preferencePropertyName];
                 }
 
-                if(this[preferencePropertyName].includes('aditional_payment')) {
+                if (this[preferencePropertyName].includes('aditional_payment')) {
                     let aditionalPaymentPropertyName = `${propertyCoreName}AditionalPayment`;
                     serviceProperties[aditionalPaymentPropertyName] = this[aditionalPaymentPropertyName];
                 }
             });
-            if(this.selectedSecondaryServices.length > 0) {
+            if (this.selectedSecondaryServices.length > 0) {
                 serviceProperties['selectedSecondaryServices'] = this.selectedSecondaryServices;
             }
-            if(this.tripsPreference === '1') {
+            if (this.tripsPreference === '1') {
                 serviceProperties['tripsPreference'] = '1';
             }
             serviceProperties['selectedServiceFormsToPayFor'] = this.selectedServiceFormsToPayFor;
             return serviceProperties;
         },
 
-        saveNotice() : void {
+       async saveNotice() {
             const requestBody = this.createRequestObject();
-            console.log(requestBody);
+            const requestData = {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': this.csrfToken,
+                    'Content-type': 'application/json; charset=UTF-8'
+                },
+                body: JSON.stringify(requestBody)
+            };
+            
+            const response = await fetch(RoutesConfig.addAnnouncement, requestData);
+            this.processNoticeResponse(response);
+        },
+
+        async processNoticeResponse(response) {
+            switch(response.status) {
+                case 200:
+                    alert('good');
+                break;
+
+                case 400:
+                    alert('your request sucks');
+                break;
+
+                case 500:
+                    alert('your server sucks');
+                break;
+            }
         }
     },
 
-    computed : {
+    computed: {
         //@ts-ignore
         ...mapWritableState(announcementDetails, GlobalPropertiesNames),
+    },
+
+    mounted() {
+        this.csrfToken = (<HTMLMetaElement>(
+      document.getElementById("csrf-token")
+    )).content;
     }
 
 };
@@ -179,17 +212,17 @@ export default {
 
 .save-notice {
     padding: 4px;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0, 0, 0, 0.85);
     color: white;
     text-align: center;
     @include responsive-font();
 }
 
 .important-info {
-    color : red;
+    color: red;
 }
 
 .info-container {
-    padding:10px 0;
+    padding: 10px 0;
 }
 </style>
