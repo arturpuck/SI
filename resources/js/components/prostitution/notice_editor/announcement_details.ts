@@ -39,8 +39,8 @@ const announcementDetails = defineStore({
         kissingAditionalPayment : 100,
         cumOnBodyAditionalPayment : 100,
         cumSwallowAditionalPayment : 100,
-        selectedSecondaryServices : [],
-        selectedServiceFormsToPayFor : [{unit : 'for_hour', price : 200}],
+        secondaryServices : [],
+        paymentForms : [{unit : 'for_hour', price : 200}],
 
         photos: [],
 

@@ -3,17 +3,14 @@
 namespace App\Handlers\Prostitution;
 
 use Illuminate\Http\JsonResponse;
-use App\UserType;
-use App\SexualOrientation;
-use App\Voivodeship;
+use App\ProstitutionAnnouncement;
 use App\Http\Requests\Prostitution\CreateProstitutionAnnouncementRequest;
 
 class CreateProstitutionAnnouncementHandler
 {
     public function handle(CreateProstitutionAnnouncementRequest $request) : JsonResponse
     {
-        
-        return new JsonResponse();
+        $announcement = new ProstitutionAnnouncement();
     }
 
 }

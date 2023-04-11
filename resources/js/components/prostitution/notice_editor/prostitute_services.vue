@@ -261,7 +261,7 @@
     <div class="service-container limited-width">
       <Multiselect
         class="secondary-services-list"
-        v-model="selectedSecondaryServices"
+        v-model="secondaryServices"
         v-bind:initial-options="SecondaryServicesList"
         v-bind:showSearchInput="true"
         >{{ translations.click_to_chose_remaining_services }}</Multiselect
@@ -273,7 +273,7 @@
     ></div>
     <div class="service-container limited-width">
       <text-input-combo
-        v-model="selectedServiceFormsToPayFor[0]['price']"
+        v-model="paymentForms[0]['price']"
         input-type="number"
         unique-id="paymentForService0"
         v-bind:error-message-box-available="true"
@@ -286,7 +286,7 @@
         v-bind:error-message-box-available="true"
         v-bind:complete-error-display-available="true"
         unique-id="serviceForm0"
-        v-model="selectedServiceFormsToPayFor[0]['unit']"
+        v-model="paymentForms[0]['unit']"
         class="service-unit"
       ></select-combo>
     </div>
@@ -444,7 +444,7 @@ export default {
     },
 
     addedServiceForms() : [] {
-      let [firstPayment, ...addedPayments] = this.selectedServiceFormsToPayFor;
+      let [firstPayment, ...addedPayments] = this.paymentForms;
       return addedPayments; 
     },
 
@@ -520,8 +520,8 @@ export default {
         'kissingAditionalPayment',
         'cumOnBodyAditionalPayment',
         'cumSwallowAditionalPayment',
-        'selectedSecondaryServices',
-        'selectedServiceFormsToPayFor'
+        'secondaryServices',
+        'paymentForms'
     ])
 
   },
@@ -533,22 +533,22 @@ export default {
     },
 
     addServicePaymentForm() : void {
-      const currentNumberOfElements = this.selectedServiceFormsToPayFor.length 
+      const currentNumberOfElements = this.paymentForms.length 
       if(currentNumberOfElements >= this.AvailableServiceFormsToPayFor.length) {
         return;
       }
-      this.selectedServiceFormsToPayFor.push({unit : this.allServiceFormsUnits[currentNumberOfElements], price : 200});
+      this.paymentForms.push({unit : this.allServiceFormsUnits[currentNumberOfElements], price : 200});
     },
 
     removeServicePaymentForm() : void {
-      this.selectedServiceFormsToPayFor.pop();
+      this.paymentForms.pop();
     },
 
     validateSelectedOptions() : void {
       this.resetValidation();
-      this.checkIfBasicRequiredOptionsAreSelected();
-      this.validateAditionalPayments();
-      this.validatePayments();
+      // this.checkIfBasicRequiredOptionsAreSelected();
+      // this.validateAditionalPayments();
+      // this.validatePayments();
       if(this.validationIsSuccessfull) {
         this.$emit('validated');
       }
@@ -558,8 +558,8 @@ export default {
       let selectedServiceForms = {};
 
       for(let index = 0; index <= this.addedServiceForms.length; index++) {
-          let moneyAmmount = parseInt(this.selectedServiceFormsToPayFor[index].price);
-          let serviceForm = this.selectedServiceFormsToPayFor[index].unit;
+          let moneyAmmount = parseInt(this.paymentForms[index].price);
+          let serviceForm = this.paymentForms[index].unit;
         
           if(Number.isNaN(moneyAmmount) || moneyAmmount <= 0) {
             this.showErrorOnComboInput(`paymentForService${index}`, 'the_value_must_be_a_number_greater_than_0');

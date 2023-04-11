@@ -135,14 +135,14 @@ export default {
 
     validateSelectedOptions(): void {
       this.resetAllValidation();
-      this.validateNickname();
-      this.validateBirthDate();
-      this.validateUserType();
-      this.validateTitsSize();
-      this.validatePhoneNumber();
-      this.validateDescription();
-      this.validateHeight();
-      this.validateWeight();
+      // this.validateNickname();
+      // this.validateBirthDate();
+      // this.validateUserType();
+      // this.validateTitsSize();
+      // this.validatePhoneNumber();
+      // this.validateDescription();
+      // this.validateHeight();
+      // this.validateWeight();
       if(this.validationIsSuccessfull) {
         this.$emit('validated');
       }

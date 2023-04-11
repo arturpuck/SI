@@ -7,25 +7,27 @@ use Illuminate\Validation\Rule;
 use App\Rules\DayOfWeek;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
+use App\UserType;
+use App\Rules\Prostitution\WorkingHoursRangeIdentifiers;
+use App\Rules\Prostitution\HourOfStartIsBeforeHourOfEnd;
+use App\Rules\Prostitution\EveryPaymentFormContainsOnlyRequiredFields;
 
 class CreateProstitutionAnnouncementRequest extends FormRequest
 {
     public const STANDARD_SEXUAL_SERVICE_OPTIONS = [
         'included',
         'aditional_payment',
-        'never'
     ];
 
     public const BLOWJOB_SERVICE_OPTIONS = [
         'only_in_condom',
         'without_condom',
         'without_condom_with_aditional_payments',
-        'never'
     ];
 
-    const NON_NEGATIVE_NUMERIC = [
+    const POSITIVE_NUMERIC = [
         'numeric',
-        'min:0'
+        'min:1'
     ];
 
     const SECONDARY_SERVICES = [
@@ -90,25 +92,82 @@ class CreateProstitutionAnnouncementRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-        $this->merge(
-            [
-            'working_days' => array_keys($this->get('workingHours') ?? []),
-            'range_identifiers' => $this->getRangeIdentifiers()
-            ]
-        );
+        $this->getWorkingHours();
+        $this->getWorkingDays();
+        $this->getPaymentForms();
+        $this->getPhotos();
+        $this->getSecondaryServices();
     }
 
-    protected function getRangeIdentifiers() : array
+    protected function getSecondaryServices() : void 
+    {
+        if(!$this->has('secondaryServices')) {
+            return;
+        }
+        $secondaryServices = $this->get('secondaryServices');
+
+        if(!is_string($secondaryServices)) {
+            return;
+        }
+        $secondaryServices = json_decode($secondaryServices);
+        $this->merge(compact('secondaryServices'));
+    }
+
+    protected function getWorkingHours() : void
+    {
+            if(!$this->has('workingHours')) {
+                return;
+            }
+
+            $workingHours = $this->get('workingHours');
+            if(!is_string($workingHours)) {
+                return;   
+            }
+
+            if(is_array($workingHours = json_decode($workingHours, true))) {
+                $this->merge(compact('workingHours'));
+            }
+        
+    }
+
+    protected function getPhotos() : void
+    {
+        $photos = [];
+        foreach($this->files as $file) {
+            $photos[] = $file;
+        }
+        if(count($photos) > 0) {
+            $this->merge(compact('photos'));
+        }
+    }
+
+    protected function getPaymentForms() : void
+    {
+        if(!$this->has('paymentForms')) {
+            return;
+        }
+
+        $paymentForms = $this->get('paymentForms');
+        if(!is_string($paymentForms)) {
+            return;   
+        }
+            
+        if(is_array($paymentForms = json_decode($paymentForms, true))) {
+            $this->merge(compact('paymentForms'));
+        }
+
+    }
+
+    protected function getWorkingDays() : void
     {
         if(!$this->has('workingHours')) {
-            return [];
+            return;
         }
-        $identifiers = [];
-
-        foreach($this->get('workingHours') as $weekDay) {
-            array_push($identifiers, array_diff(array_keys($weekDay), ...$identifiers));
+        $workingHours = $this->get('workingHours');
+        if(!is_array($workingHours)) {
+            return;
         }
-        return $identifiers;
+        $this->merge(['workingDays' => array_keys($workingHours)]);
     }
 
     /**
@@ -120,17 +179,17 @@ class CreateProstitutionAnnouncementRequest extends FormRequest
     {
         return [
             'nickname' => ['required', 'string', 'min:3', 'max:30'],
-            'phone_number' => ['regex:/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g', 'min:7', 'max:16'],
-            'birth_date' => ['required', 'date', 'before:-18 years', 'after:-120 years'],
+            'phoneNumber' => ['regex:/^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$/', 'min:7', 'max:16'],
+            'birthDate' => ['required', 'date', 'before:-18 years', 'after:-120 years'],
             'description' => ['string', 'max:2000'],
             'userType' => ['required', 'exists:user_types,id'],
             'sexualOrientation' => ['exists:sexual_orientations,id'],
-            'titsSize' => ['min:0', 'max:8'],
+            'titsSize' => ['min:1', 'max:8'],
             'height' => ['numeric', 'min:90', 'max:270'],
             'weight' => ['numeric', 'min:30', 'max:800'],
-            'titsSize' => ['numeric', 'min:0', 'max:8', 'prohibited_if:userType,male'],
+            'titsSize' => ['numeric', 'min:0', 'max:8', Rule::prohibitedIf(fn() => UserType::find($this->get('userType'))?->isMale())],
             'hairColor' => [Rule::in(self::HAIR_COLORS)],
-            'tripsPreference' => ['boolean'],
+            'tripsPreference' => ['boolean', Rule::in('1')],
 
             'massagePreference' => [Rule::in(self::STANDARD_SEXUAL_SERVICE_OPTIONS)],
             'vaginalSexPreference' => [Rule::in(self::STANDARD_SEXUAL_SERVICE_OPTIONS)],
@@ -144,37 +203,45 @@ class CreateProstitutionAnnouncementRequest extends FormRequest
             'cumOnBodyPreference' => [Rule::in(self::STANDARD_SEXUAL_SERVICE_OPTIONS)],
             'blowjobPreference' => [Rule::in(self::BLOWJOB_SERVICE_OPTIONS)],
 
-            'analAditionalPayment' => self::NON_NEGATIVE_NUMERIC,
-            'vaginalSexAditionalPayment' => self::NON_NEGATIVE_NUMERIC,
-            'blowjobAditionalPayment' => self::NON_NEGATIVE_NUMERIC,
-            'oralCreampieAditionalPayment' => self::NON_NEGATIVE_NUMERIC,
-            'cumOnFaceAditionalPayment' => self::NON_NEGATIVE_NUMERIC,
-            'massageAditionalPayment' => self::NON_NEGATIVE_NUMERIC,
-            'pussyLickingAditionalPayment' => self::NON_NEGATIVE_NUMERIC,
-            'clientRimmingAditionalPayment' => self::NON_NEGATIVE_NUMERIC,
-            'kissingAditionalPayment' => self::NON_NEGATIVE_NUMERIC,
-            'cumOnBodyAditionalPayment' => self::NON_NEGATIVE_NUMERIC,
-            'cumSwallowAditionalPayment' => self::NON_NEGATIVE_NUMERIC,
+            'analAditionalPayment' => self::POSITIVE_NUMERIC,
+            'vaginalSexAditionalPayment' => self::POSITIVE_NUMERIC,
+            'blowjobAditionalPayment' => self::POSITIVE_NUMERIC,
+            'oralCreampieAditionalPayment' => self::POSITIVE_NUMERIC,
+            'cumOnFaceAditionalPayment' => self::POSITIVE_NUMERIC,
+            'massageAditionalPayment' => self::POSITIVE_NUMERIC,
+            'pussyLickingAditionalPayment' => self::POSITIVE_NUMERIC,
+            'clientRimmingAditionalPayment' => self::POSITIVE_NUMERIC,
+            'kissingAditionalPayment' => self::POSITIVE_NUMERIC,
+            'cumOnBodyAditionalPayment' => self::POSITIVE_NUMERIC,
+            'cumSwallowAditionalPayment' => self::POSITIVE_NUMERIC,
 
-            'selectedSecondaryServices.*' => Rule::in(self::SECONDARY_SERVICES),
-            'selectedSecondaryServices' => ['required', 'array'],
+            'secondaryServices' => ['array'],
+            'secondaryServices.*' => Rule::in(self::SECONDARY_SERVICES),
 
-            'selectedServiceFormsToPayFor' => ['required', 'array'],
-            'selectedServiceFormsToPayFor.*.unit' => Rule::in(self::AVAILABLE_SERVICE_FORMS),
-            'selectedServiceFormsToPayFor.*.price' => self::NON_NEGATIVE_NUMERIC,
-            'photos.*' => ['required', 'image'],
-            'workingHours' => ['required', 'array'],
-            'workingHours.*.*.*' => ['required', 'date_format:H:i'],
-            'working_days' => ['required', 'array'],
-            'working_days.*' => [new DayOfWeek()],
-            'range_identifiers' => ['required', 'array'],
-            'range_identifiers.*' => [Rule::in(['since', 'until'])],
+            'paymentForms' => ['required', 'array', new EveryPaymentFormContainsOnlyRequiredFields()],
+            'paymentForms.*.unit' => Rule::in(self::AVAILABLE_SERVICE_FORMS),
+            'paymentForms.*.price' => self::POSITIVE_NUMERIC,
+            'photos' => ['required', 'array'],
+            'photos.*' => ['image'],
+            'workingHours' => ['array', new WorkingHoursRangeIdentifiers(), new HourOfStartIsBeforeHourOfEnd()],
+            'workingHours.*.since' => ['date_format:H:i', 'required_if:workingHours,!=,null'],
+            'workingHours.*.until' => ['date_format:H:i', 'required_if:workingHours,!=,null'],
+            'workingDays' => ['required_if:workingHours,!=,null', 'array'],
+            'workingDays.*' => ['required_if:workingHours,!=,null', new DayOfWeek()],
             'city' => ['required', 'exists:cities,id'],
             'voivodeship' => ['required', 'exists:voivodeships,id']
         ];
     }
 
-    public function failedValidation(Validator $validator){
-        throw new HttpResponseException(response()->json($validator->messages()->all(),400));
+    public function messages()
+    {
+        return [
+            'titsSize.prohibited' => 'You cannot provide tits size when user type is male',
+        ];
+    }
+
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json($validator->messages()->all(), 400));
     }
 }

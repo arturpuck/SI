@@ -42,12 +42,15 @@ export default {
 
     methods: {
         createRequestObject() {
-            return {
+            let rawObject = {
                 ...this.createRequestObjectPersonalitiesPart(),
                 ...this.createRequestObjectServicesPart(),
-                ...this.createRequestObjectPhotosPart(),
                 ...this.createRequestObjectLocationAndWorkingHoursPart(),
             }
+            let formData = new FormData();
+            Object.keys(rawObject).forEach(key => formData.append(key, rawObject[key]));
+            this.createRequestObjectPhotosPart(formData);
+            return formData;
         },
 
         createRequestObjectLocationAndWorkingHoursPart(): object {
@@ -85,7 +88,7 @@ export default {
                 }
             });
             return {
-                workingHours: result
+                workingHours: JSON.stringify(result)
             };
         },
 
@@ -106,7 +109,7 @@ export default {
             }
 
             return {
-                workingHours: result
+                workingHours: JSON.stringify(result)
             };
         },
 
@@ -118,10 +121,8 @@ export default {
             return propertyValue && propertyValue != EmptyInputValue;
         },
 
-        createRequestObjectPhotosPart(): object {
-            return {
-                photos: this.photos
-            };
+        createRequestObjectPhotosPart(formData : FormData) : void {
+            this.photos.forEach((photo, index) => formData.append(`photo${index}`, photo));
         },
 
         createRequestObjectPersonalitiesPart(): object {
@@ -151,13 +152,13 @@ export default {
                     serviceProperties[aditionalPaymentPropertyName] = this[aditionalPaymentPropertyName];
                 }
             });
-            if (this.selectedSecondaryServices.length > 0) {
-                serviceProperties['selectedSecondaryServices'] = this.selectedSecondaryServices;
+            if (this.secondaryServices.length > 0) {
+                serviceProperties['secondaryServices'] = JSON.stringify(this.secondaryServices);
             }
             if (this.tripsPreference === '1') {
-                serviceProperties['tripsPreference'] = '1';
+                serviceProperties['tripsPreference'] = this.tripsPreference
             }
-            serviceProperties['selectedServiceFormsToPayFor'] = this.selectedServiceFormsToPayFor;
+            serviceProperties['paymentForms'] = JSON.stringify(this.paymentForms);
             return serviceProperties;
         },
 
@@ -167,9 +168,8 @@ export default {
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': this.csrfToken,
-                    'Content-type': 'application/json; charset=UTF-8'
                 },
-                body: JSON.stringify(requestBody)
+                body: requestBody
             };
             
             const response = await fetch(RoutesConfig.addAnnouncement, requestData);

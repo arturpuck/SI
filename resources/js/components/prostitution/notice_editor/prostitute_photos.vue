@@ -67,11 +67,11 @@ export default {
     },
 
     validatePhotos() : void {
-      if(this.numberOfAddedPhotos > 10 || this.numberOfAddedPhotos < 1) {
-        this.showNotification('the_number_of_photos_must_be_between_1_and_10', 'error');
-      } else {
+      // if(this.numberOfAddedPhotos > 10 || this.numberOfAddedPhotos < 1) {
+      //   this.showNotification('the_number_of_photos_must_be_between_1_and_10', 'error');
+      // } else {
         this.$emit('validated');
-      }
+      // }
     }
   },
 

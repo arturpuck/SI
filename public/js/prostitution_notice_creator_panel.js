@@ -21434,8 +21434,8 @@ exports["default"] = {
     },
     validateData: function validateData() {
       this.resetValidation();
-      this.validateWorkingHours();
-      this.validateLocation();
+      // this.validateWorkingHours();
+      // this.validateLocation();
       if (this.validationIsSuccessfull) {
         this.$emit('validated');
       }
@@ -21710,14 +21710,14 @@ exports["default"] = {
   methods: {
     validateSelectedOptions: function validateSelectedOptions() {
       this.resetAllValidation();
-      this.validateNickname();
-      this.validateBirthDate();
-      this.validateUserType();
-      this.validateTitsSize();
-      this.validatePhoneNumber();
-      this.validateDescription();
-      this.validateHeight();
-      this.validateWeight();
+      // this.validateNickname();
+      // this.validateBirthDate();
+      // this.validateUserType();
+      // this.validateTitsSize();
+      // this.validatePhoneNumber();
+      // this.validateDescription();
+      // this.validateHeight();
+      // this.validateWeight();
       if (this.validationIsSuccessfull) {
         this.$emit('validated');
       }
@@ -21913,13 +21913,14 @@ exports["default"] = {
       this.photos = __spreadArray([], photos, true);
     },
     validatePhotos: function validatePhotos() {
-      if (this.numberOfAddedPhotos > 10 || this.numberOfAddedPhotos < 1) {
-        this.showNotification('the_number_of_photos_must_be_between_1_and_10', 'error');
-      } else {
-        this.$emit('validated');
-      }
+      // if(this.numberOfAddedPhotos > 10 || this.numberOfAddedPhotos < 1) {
+      //   this.showNotification('the_number_of_photos_must_be_between_1_and_10', 'error');
+      // } else {
+      this.$emit('validated');
+      // }
     }
   },
+
   computed: __assign({
     numberOfAddedPhotos: function numberOfAddedPhotos() {
       return this.photos.length;
@@ -22095,7 +22096,13 @@ exports["default"] = {
   },
   methods: {
     createRequestObject: function createRequestObject() {
-      return __assign(__assign(__assign(__assign({}, this.createRequestObjectPersonalitiesPart()), this.createRequestObjectServicesPart()), this.createRequestObjectPhotosPart()), this.createRequestObjectLocationAndWorkingHoursPart());
+      var rawObject = __assign(__assign(__assign({}, this.createRequestObjectPersonalitiesPart()), this.createRequestObjectServicesPart()), this.createRequestObjectLocationAndWorkingHoursPart());
+      var formData = new FormData();
+      Object.keys(rawObject).forEach(function (key) {
+        return formData.append(key, rawObject[key]);
+      });
+      this.createRequestObjectPhotosPart(formData);
+      return formData;
     },
     createRequestObjectLocationAndWorkingHoursPart: function createRequestObjectLocationAndWorkingHoursPart() {
       var requestPart = {};
@@ -22125,7 +22132,7 @@ exports["default"] = {
         }
       });
       return {
-        workingHours: result
+        workingHours: JSON.stringify(result)
       };
     },
     extractWorkingHoursWhenUserChoseMondayToFridayAsOneOption: function extractWorkingHoursWhenUserChoseMondayToFridayAsOneOption() {
@@ -22143,7 +22150,7 @@ exports["default"] = {
         result['sunday'] = this.workingHoursByPeriodOrDay['sunday'];
       }
       return {
-        workingHours: result
+        workingHours: JSON.stringify(result)
       };
     },
     userWorksDuringThisDayOrPeriod: function userWorksDuringThisDayOrPeriod(period) {
@@ -22152,10 +22159,10 @@ exports["default"] = {
     anyValueWasChosenByUser: function anyValueWasChosenByUser(propertyValue) {
       return propertyValue && propertyValue != empty_input_option_1.EmptyInputValue;
     },
-    createRequestObjectPhotosPart: function createRequestObjectPhotosPart() {
-      return {
-        photos: this.photos
-      };
+    createRequestObjectPhotosPart: function createRequestObjectPhotosPart(formData) {
+      this.photos.forEach(function (photo, index) {
+        return formData.append("photo".concat(index), photo);
+      });
     },
     createRequestObjectPersonalitiesPart: function createRequestObjectPersonalitiesPart() {
       var _this = this;
@@ -22184,13 +22191,13 @@ exports["default"] = {
           serviceProperties[aditionalPaymentPropertyName] = _this[aditionalPaymentPropertyName];
         }
       });
-      if (this.selectedSecondaryServices.length > 0) {
-        serviceProperties['selectedSecondaryServices'] = this.selectedSecondaryServices;
+      if (this.secondaryServices.length > 0) {
+        serviceProperties['secondaryServices'] = JSON.stringify(this.secondaryServices);
       }
       if (this.tripsPreference === '1') {
-        serviceProperties['tripsPreference'] = '1';
+        serviceProperties['tripsPreference'] = this.tripsPreference;
       }
-      serviceProperties['selectedServiceFormsToPayFor'] = this.selectedServiceFormsToPayFor;
+      serviceProperties['paymentForms'] = JSON.stringify(this.paymentForms);
       return serviceProperties;
     },
     saveNotice: function saveNotice() {
@@ -22203,10 +22210,9 @@ exports["default"] = {
               requestData = {
                 method: 'POST',
                 headers: {
-                  'X-CSRF-TOKEN': this.csrfToken,
-                  'Content-type': 'application/json; charset=UTF-8'
+                  'X-CSRF-TOKEN': this.csrfToken
                 },
-                body: JSON.stringify(requestBody)
+                body: requestBody
               };
               return [4 /*yield*/, fetch(routes_1["default"].addAnnouncement, requestData)];
             case 1:
@@ -22328,7 +22334,7 @@ exports["default"] = {
       return this.vaginalSexPreference === prostitute_services_3.DefaultSexPreference.aditional_payment;
     },
     addedServiceForms: function addedServiceForms() {
-      var _a = this.selectedServiceFormsToPayFor,
+      var _a = this.paymentForms,
         firstPayment = _a[0],
         addedPayments = _a.slice(1);
       return addedPayments;
@@ -22369,29 +22375,29 @@ exports["default"] = {
     showCumSwallowAditionalPayment: function showCumSwallowAditionalPayment() {
       return this.cumSwallowPreference === prostitute_services_3.DefaultSexPreference.aditional_payment;
     }
-  }, (0, pinia_1.mapWritableState)(announcement_details_1["default"], ['massagePreference', 'vaginalSexPreference', 'blowjobPreference', 'oralCreampiePreference', 'cumSwallowPreference', 'cumOnFacePreference', 'analPreference', 'pussyLickingPreference', 'clientRimmingPreference', 'kissingPreference', 'cumOnBodyPreference', 'tripsPreference', 'analAditionalPayment', 'vaginalSexAditionalPayment', 'blowjobAditionalPayment', 'oralCreampieAditionalPayment', 'cumOnFaceAditionalPayment', 'massageAditionalPayment', 'pussyLickingAditionalPayment', 'clientRimmingAditionalPayment', 'kissingAditionalPayment', 'cumOnBodyAditionalPayment', 'cumSwallowAditionalPayment', 'selectedSecondaryServices', 'selectedServiceFormsToPayFor'])),
+  }, (0, pinia_1.mapWritableState)(announcement_details_1["default"], ['massagePreference', 'vaginalSexPreference', 'blowjobPreference', 'oralCreampiePreference', 'cumSwallowPreference', 'cumOnFacePreference', 'analPreference', 'pussyLickingPreference', 'clientRimmingPreference', 'kissingPreference', 'cumOnBodyPreference', 'tripsPreference', 'analAditionalPayment', 'vaginalSexAditionalPayment', 'blowjobAditionalPayment', 'oralCreampieAditionalPayment', 'cumOnFaceAditionalPayment', 'massageAditionalPayment', 'pussyLickingAditionalPayment', 'clientRimmingAditionalPayment', 'kissingAditionalPayment', 'cumOnBodyAditionalPayment', 'cumSwallowAditionalPayment', 'secondaryServices', 'paymentForms'])),
   methods: {
     getServiceID: function getServiceID(type, index) {
       return "".concat(type).concat(index);
     },
     addServicePaymentForm: function addServicePaymentForm() {
-      var currentNumberOfElements = this.selectedServiceFormsToPayFor.length;
+      var currentNumberOfElements = this.paymentForms.length;
       if (currentNumberOfElements >= this.AvailableServiceFormsToPayFor.length) {
         return;
       }
-      this.selectedServiceFormsToPayFor.push({
+      this.paymentForms.push({
         unit: this.allServiceFormsUnits[currentNumberOfElements],
         price: 200
       });
     },
     removeServicePaymentForm: function removeServicePaymentForm() {
-      this.selectedServiceFormsToPayFor.pop();
+      this.paymentForms.pop();
     },
     validateSelectedOptions: function validateSelectedOptions() {
       this.resetValidation();
-      this.checkIfBasicRequiredOptionsAreSelected();
-      this.validateAditionalPayments();
-      this.validatePayments();
+      // this.checkIfBasicRequiredOptionsAreSelected();
+      // this.validateAditionalPayments();
+      // this.validatePayments();
       if (this.validationIsSuccessfull) {
         this.$emit('validated');
       }
@@ -22399,8 +22405,8 @@ exports["default"] = {
     validatePayments: function validatePayments() {
       var selectedServiceForms = {};
       for (var index = 0; index <= this.addedServiceForms.length; index++) {
-        var moneyAmmount = parseInt(this.selectedServiceFormsToPayFor[index].price);
-        var serviceForm = this.selectedServiceFormsToPayFor[index].unit;
+        var moneyAmmount = parseInt(this.paymentForms[index].price);
+        var serviceForm = this.paymentForms[index].unit;
         if (Number.isNaN(moneyAmmount) || moneyAmmount <= 0) {
           this.showErrorOnComboInput("paymentForService".concat(index), 'the_value_must_be_a_number_greater_than_0');
         }
@@ -23062,8 +23068,8 @@ var announcementDetails = (0, pinia_1.defineStore)({
       kissingAditionalPayment: 100,
       cumOnBodyAditionalPayment: 100,
       cumSwallowAditionalPayment: 100,
-      selectedSecondaryServices: [],
-      selectedServiceFormsToPayFor: [{
+      secondaryServices: [],
+      paymentForms: [{
         unit: 'for_hour',
         price: 200
       }],
@@ -23093,7 +23099,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.sexServicesPropertiesCoreKeys = exports.optionalPersonalitiesPropertiesNames = void 0;
-var allPropertiesNames = ['nickname', 'phoneNumber', 'birthDate', 'description', 'userType', 'sexualOrientation', 'hairColor', 'titsSize', 'height', 'weight', 'massagePreference', 'vaginalSexPreference', 'blowjobPreference', 'oralCreampiePreference', 'cumSwallowPreference', 'cumOnFacePreference', 'analPreference', 'pussyLickingPreference', 'clientRimmingPreference', 'kissingPreference', 'cumOnBodyPreference', 'tripsPreference', 'analAditionalPayment', 'vaginalSexAditionalPayment', 'blowjobAditionalPayment', 'oralCreampieAditionalPayment', 'cumOnFaceAditionalPayment', 'massageAditionalPayment', 'pussyLickingAditionalPayment', 'clientRimmingAditionalPayment', 'kissingAditionalPayment', 'cumOnBodyAditionalPayment', 'cumSwallowAditionalPayment', 'selectedSecondaryServices', 'selectedServiceFormsToPayFor', 'photos', 'preciseHoursDecision', 'showEverySingleWeekday', 'workingHoursByPeriodOrDay', 'citiesList', 'city', 'voivodeship'];
+var allPropertiesNames = ['nickname', 'phoneNumber', 'birthDate', 'description', 'userType', 'sexualOrientation', 'hairColor', 'titsSize', 'height', 'weight', 'massagePreference', 'vaginalSexPreference', 'blowjobPreference', 'oralCreampiePreference', 'cumSwallowPreference', 'cumOnFacePreference', 'analPreference', 'pussyLickingPreference', 'clientRimmingPreference', 'kissingPreference', 'cumOnBodyPreference', 'tripsPreference', 'analAditionalPayment', 'vaginalSexAditionalPayment', 'blowjobAditionalPayment', 'oralCreampieAditionalPayment', 'cumOnFaceAditionalPayment', 'massageAditionalPayment', 'pussyLickingAditionalPayment', 'clientRimmingAditionalPayment', 'kissingAditionalPayment', 'cumOnBodyAditionalPayment', 'cumSwallowAditionalPayment', 'secondaryServices', 'paymentForms', 'photos', 'preciseHoursDecision', 'showEverySingleWeekday', 'workingHoursByPeriodOrDay', 'citiesList', 'city', 'voivodeship'];
 exports["default"] = allPropertiesNames;
 exports.optionalPersonalitiesPropertiesNames = ['phoneNumber', 'description', 'sexualOrientation', 'hairColor', 'titsSize', 'height', 'weight'];
 exports.sexServicesPropertiesCoreKeys = ['massage', 'vaginalSex', 'blowjob', 'oralCreampie', 'cumSwallow', 'cumOnFace', 'anal', 'pussyLicking', 'clientRimming', 'kissing', 'cumOnBody'];
@@ -28276,9 +28282,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "info"
   }, null, 8 /* PROPS */, _hoisted_17), (0, _vue.createElementVNode)("div", _hoisted_18, [(0, _vue.createVNode)(_component_Multiselect, {
     "class": "secondary-services-list",
-    modelValue: _ctx.selectedSecondaryServices,
+    modelValue: _ctx.secondaryServices,
     "onUpdate:modelValue": _cache[23] || (_cache[23] = function ($event) {
-      return _ctx.selectedSecondaryServices = $event;
+      return _ctx.secondaryServices = $event;
     }),
     "initial-options": $data.SecondaryServicesList,
     showSearchInput: true
@@ -28292,9 +28298,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     textContent: (0, _vue.toDisplayString)($data.translations.prices_for_your_services_description),
     "class": "info"
   }, null, 8 /* PROPS */, _hoisted_19), (0, _vue.createElementVNode)("div", _hoisted_20, [(0, _vue.createVNode)(_component_text_input_combo, {
-    modelValue: _ctx.selectedServiceFormsToPayFor[0]['price'],
+    modelValue: _ctx.paymentForms[0]['price'],
     "onUpdate:modelValue": _cache[24] || (_cache[24] = function ($event) {
-      return _ctx.selectedServiceFormsToPayFor[0]['price'] = $event;
+      return _ctx.paymentForms[0]['price'] = $event;
     }),
     "input-type": "number",
     "unique-id": "paymentForService0",
@@ -28312,9 +28318,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "error-message-box-available": true,
     "complete-error-display-available": true,
     "unique-id": "serviceForm0",
-    modelValue: _ctx.selectedServiceFormsToPayFor[0]['unit'],
+    modelValue: _ctx.paymentForms[0]['unit'],
     "onUpdate:modelValue": _cache[25] || (_cache[25] = function ($event) {
-      return _ctx.selectedServiceFormsToPayFor[0]['unit'] = $event;
+      return _ctx.paymentForms[0]['unit'] = $event;
     }),
     "class": "service-unit"
   }, null, 8 /* PROPS */, ["select-options", "modelValue"])]), ((0, _vue.openBlock)(true), (0, _vue.createElementBlock)(_vue.Fragment, null, (0, _vue.renderList)($options.addedServiceForms, function (selectedPaymentType, index) {

@@ -229,8 +229,8 @@ export default {
 
     validateData(): void {
       this.resetValidation();
-      this.validateWorkingHours();
-      this.validateLocation();
+      // this.validateWorkingHours();
+      // this.validateLocation();
       if(this.validationIsSuccessfull) {
         this.$emit('validated');
       }
