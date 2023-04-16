@@ -27,7 +27,7 @@ import Translations from "@jsmodules/translations/components/multifile_image_upl
   
   export default {
 
-    emits : ['numberOfImagesLimitExceeded', 'addedPhotos', 'removedPhoto'],
+    emits : ['numberOfImagesLimitExceeded', 'fileSizeHasBeenExceeded', 'addedPhotos', 'removedPhoto'],
 
     name: "multifile-image-upload",
 
@@ -46,7 +46,7 @@ import Translations from "@jsmodules/translations/components/multifile_image_upl
 
       addFilesByDrop(event) {
         this.allowDrop(event);
-        if(this.fileNumberLimitIsNotExceeded(event)) {
+        if(this.fileNumberLimitIsNotExceeded(event) && this.filesDoNotExceedSizeLimit(event)) {
           this.pushFilesAndEmitEvent(event.dataTransfer.files);
         }
       },
@@ -56,7 +56,7 @@ import Translations from "@jsmodules/translations/components/multifile_image_upl
       },
 
       addFilesToList() : void {
-        if(this.fileNumberLimitIsNotExceeded()) {
+        if(this.fileNumberLimitIsNotExceeded() && this.filesDoNotExceedSizeLimit()) {
           this.pushFilesAndEmitEvent(this.$refs.fileInput.files);
         }
       },
@@ -78,6 +78,29 @@ import Translations from "@jsmodules/translations/components/multifile_image_upl
         return true;
       },
 
+      filesDoNotExceedSizeLimit(event = undefined) : boolean {
+        if(this.maximumFileSizeInBytes === undefined) {
+          return true;
+        }
+
+        let invalidFilesNames = [];
+        let files = event === undefined ? this.$refs.fileInput.files : event.dataTransfer.files;
+        let allFilesAreValid = true;
+        
+        for(let file of files) {
+          if(file.size > this.maximumFileSizeInBytes) {
+            invalidFilesNames.push(file.name);
+            allFilesAreValid = false;
+          }
+        }
+
+         if(allFilesAreValid) {
+          return true;
+         }
+         this.$emit('fileSizeHasBeenExceeded', invalidFilesNames);
+         return false;
+      },
+
       createURL(file : File) : string {
         return URL.createObjectURL(file);
       },
@@ -96,6 +119,12 @@ import Translations from "@jsmodules/translations/components/multifile_image_upl
         },
 
         numberOfMaximumPhotos : {
+          required : false,
+          type : Number,
+          default : undefined
+        },
+
+        maximumFileSizeInBytes : {
           required : false,
           type : Number,
           default : undefined

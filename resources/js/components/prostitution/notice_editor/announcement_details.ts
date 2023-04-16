@@ -9,12 +9,12 @@ const announcementDetails = defineStore({
         phoneNumber : '',
         birthDate: null,
         description : "",
-        userType: EmptyInputValue,
-        sexualOrientation: EmptyInputValue,
+        userTypeId: EmptyInputValue,
+        sexualOrientationId: EmptyInputValue,
         hairColor: EmptyInputValue,
         titsSize: '0',
-        height: "",
-        weight: "",
+        heightInCentimeters: "",
+        weightInKilograms: "",
 
         massagePreference : EmptyInputValue,
         vaginalSexPreference: EmptyInputValue,
@@ -47,8 +47,8 @@ const announcementDetails = defineStore({
         preciseHoursDecision: EmptyInputValue,
         showEverySingleWeekday: false,
         workingHoursByPeriodOrDay: undefined,
-        city: EmptyInputValue,
-        voivodeship: EmptyInputValue,
+        cityId: EmptyInputValue,
+        regionId: EmptyInputValue,
 
     })
 });

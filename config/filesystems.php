@@ -1,5 +1,15 @@
 <?php
 
+function getRootPathByEnvironement() : string
+{
+    return match(env('APP_ENV')){
+        'local' => base_path('public'),
+        'staging' => env('STAGING_ROOT'),
+        'production' => env('PRODUCTION_ROOT'),
+        'testing' => storage_path('app')
+    };
+}
+
 return [
 
     /*
@@ -16,6 +26,11 @@ return [
     'default' => env('FILESYSTEM_DRIVER', 'local'),
 
     'avatar_directory' => env('AVATARS_DIRECTORY', '/images/decoration/users/avatars/'),
+    'prostitution' => [
+        'photos' => getRootPathByEnvironement().'/images/prostitution',
+        'photos_directory_awaiting_verification' => 'awaiting-verification',
+        'photos_directory_approved' => 'approved'
+    ],
 
     /*
     |--------------------------------------------------------------------------

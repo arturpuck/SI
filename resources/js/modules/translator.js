@@ -397,6 +397,8 @@ export default {
       phone_number_must_contain_at_least_7_characters : "Numer telefonu musi zawierać co najmniej 7 znaków",
       height_must_be_an_integer_between_90_and_270 : "Podaj liczbę między 90 a 270",
       weight_must_be_an_integer_between_30_and_800 : "Podal liczbę pomiędzy 30 a 800",
+      file_size_has_been_exceeded_for_following_files : "Następujące pliki mają za duży rozmiar",
+      prostitute_photos_allowed_size : "Maksymalny rozmiar zdjęcia to 1MB",
       unexpected_error_occured: "Pojawił się bliżej niezidentyfikowany błąd",
       titsSize: "rozmiar cycków",
       assSize: "rozmiar dupci",

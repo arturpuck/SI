@@ -546,9 +546,9 @@ export default {
 
     validateSelectedOptions() : void {
       this.resetValidation();
-      // this.checkIfBasicRequiredOptionsAreSelected();
-      // this.validateAditionalPayments();
-      // this.validatePayments();
+      this.checkIfBasicRequiredOptionsAreSelected();
+      this.validateAditionalPayments();
+      this.validatePayments();
       if(this.validationIsSuccessfull) {
         this.$emit('validated');
       }

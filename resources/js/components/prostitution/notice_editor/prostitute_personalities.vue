@@ -46,14 +46,14 @@
       v-bind:select-options="userTypesList"
       v-bind:error-message-box-available="true"
       v-bind:complete-error-display-available="true"
-      v-model="userType"
+      v-model="userTypeId"
       unique-id="UserType"
       class="extended"
       >{{ translations.user_type }} :</select-combo
     >
     <select-combo
       v-bind:select-options="sexualOrientationsList"
-      v-model="sexualOrientation"
+      v-model="sexualOrientationId"
       class="extended without-error-message-box"
       >{{ translations.sexual_orientation }} :</select-combo
     >
@@ -72,7 +72,7 @@
       class="extended without-error-message-box"
       input-type="number"
       unique-id="UserHeight"
-      v-model="height"
+      v-model="heightInCentimeters"
       >{{ translations.height }} (cm) :</text-input-combo
     >
     <text-input-combo
@@ -81,7 +81,7 @@
       unique-id="UserWeight"
       class="extended without-error-message-box"
       input-type="number"
-      v-model="weight"
+      v-model="weightInKilograms"
       >{{ translations.weight }} (kg) :</text-input-combo
     >
     <select-combo
@@ -135,14 +135,14 @@ export default {
 
     validateSelectedOptions(): void {
       this.resetAllValidation();
-      // this.validateNickname();
-      // this.validateBirthDate();
-      // this.validateUserType();
-      // this.validateTitsSize();
-      // this.validatePhoneNumber();
-      // this.validateDescription();
-      // this.validateHeight();
-      // this.validateWeight();
+      this.validateNickname();
+      this.validateBirthDate();
+      this.validateUserType();
+      this.validateTitsSize();
+      this.validatePhoneNumber();
+      this.validateDescription();
+      this.validateHeight();
+      this.validateWeight();
       if(this.validationIsSuccessfull) {
         this.$emit('validated');
       }
@@ -155,21 +155,21 @@ export default {
     },
 
     validateHeight(): void {
-      if(!this.height) {
+      if(!this.heightInCentimeters) {
         return;
       }
 
-      if(!Number.isInteger(this.height) || (this.height > 270) || (this.height < 90)) {
+      if(!Number.isInteger(this.heightInCentimeters) || (this.heightInCentimeters > 270) || (this.heightInCentimeters < 90)) {
         this.showErrorOnComboInput("UserHeight", "height_must_be_an_integer_between_90_and_270");
       }
     },
 
     validateWeight(): void {
-      if(!this.weight) {
+      if(!this.weightInKilograms) {
         return;
       }
 
-      if(!Number.isInteger(this.weight) || (this.weight > 800) || (this.weight < 30)) {
+      if(!Number.isInteger(this.weightInKilograms) || (this.weightInKilograms > 800) || (this.weightInKilograms < 30)) {
         this.showErrorOnComboInput("UserWeight", "weight_must_be_an_integer_between_30_and_800");
       }
     },
@@ -220,7 +220,7 @@ export default {
     },
 
     validateUserType(): void {
-      if (this.userType === EmptyInputValue) {
+      if (this.userTypeId === EmptyInputValue) {
         this.showErrorOnComboInput("UserType", "user_type_is_required");
       }
     },
@@ -259,7 +259,7 @@ export default {
 
   computed: {
     userTypeString(): string {
-      return this.userTypesList[parseInt(this.userType)];
+      return this.userTypesList[parseInt(this.userTypeId)];
     },
 
     requiredFieldsList(): string {
@@ -270,12 +270,12 @@ export default {
       'phoneNumber', 
       'birthDate', 
       'description', 
-      'userType', 
-      'sexualOrientation', 
+      'userTypeId', 
+      'sexualOrientationId', 
       'hairColor',
       'titsSize',
-      'height',
-      'weight',
+      'heightInCentimeters',
+      'weightInKilograms',
     ])
   },
 

@@ -182,15 +182,15 @@ class CreateProstitutionAnnouncementRequest extends FormRequest
             'phoneNumber' => ['regex:/^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$/', 'min:7', 'max:16'],
             'birthDate' => ['required', 'date', 'before:-18 years', 'after:-120 years'],
             'description' => ['string', 'max:2000'],
-            'userType' => ['required', 'exists:user_types,id'],
-            'sexualOrientation' => ['exists:sexual_orientations,id'],
+            'userTypeId' => ['required', 'exists:user_types,id'],
+            'sexualOrientationId' => ['exists:sexual_orientations,id'],
             'titsSize' => ['min:1', 'max:8'],
-            'height' => ['numeric', 'min:90', 'max:270'],
-            'weight' => ['numeric', 'min:30', 'max:800'],
+            'heightInCentimeters' => ['numeric', 'min:90', 'max:270'],
+            'weightInKilograms' => ['numeric', 'min:30', 'max:800'],
             'titsSize' => ['numeric', 'min:0', 'max:8', Rule::prohibitedIf(fn() => UserType::find($this->get('userType'))?->isMale())],
             'hairColor' => [Rule::in(self::HAIR_COLORS)],
+            
             'tripsPreference' => ['boolean', Rule::in('1')],
-
             'massagePreference' => [Rule::in(self::STANDARD_SEXUAL_SERVICE_OPTIONS)],
             'vaginalSexPreference' => [Rule::in(self::STANDARD_SEXUAL_SERVICE_OPTIONS)],
             'oralCreampiePreference' => [Rule::in(self::STANDARD_SEXUAL_SERVICE_OPTIONS)],
@@ -222,14 +222,14 @@ class CreateProstitutionAnnouncementRequest extends FormRequest
             'paymentForms.*.unit' => Rule::in(self::AVAILABLE_SERVICE_FORMS),
             'paymentForms.*.price' => self::POSITIVE_NUMERIC,
             'photos' => ['required', 'array'],
-            'photos.*' => ['image'],
+            'photos.*' => ['image', 'max:1024'],
             'workingHours' => ['array', new WorkingHoursRangeIdentifiers(), new HourOfStartIsBeforeHourOfEnd()],
             'workingHours.*.since' => ['date_format:H:i', 'required_if:workingHours,!=,null'],
             'workingHours.*.until' => ['date_format:H:i', 'required_if:workingHours,!=,null'],
             'workingDays' => ['required_if:workingHours,!=,null', 'array'],
             'workingDays.*' => ['required_if:workingHours,!=,null', new DayOfWeek()],
-            'city' => ['required', 'exists:cities,id'],
-            'voivodeship' => ['required', 'exists:voivodeships,id']
+            'cityId' => ['required', 'exists:cities,id'],
+            'regionId' => ['required', 'exists:voivodeships,id']
         ];
     }
 

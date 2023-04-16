@@ -156,7 +156,7 @@
       v-bind:error-message-box-available="true"
       unique-id="voivodeship"
       v-bind:select-options="voivodeshipsList"
-      v-model="voivodeship"
+      v-model="regionId"
       v-on:selected="getCitiesForVoivodeship"
       class="select"
       v-bind:complete-error-display-available="true"
@@ -167,7 +167,7 @@
       v-bind:error-message-box-available="true"
       unique-id="city"
       v-bind:select-options="citiesList"
-      v-model="city"
+      v-model="cityId"
       class="select"
       v-bind:complete-error-display-available="true"
     >
@@ -229,19 +229,19 @@ export default {
 
     validateData(): void {
       this.resetValidation();
-      // this.validateWorkingHours();
-      // this.validateLocation();
+      this.validateWorkingHours();
+      this.validateLocation();
       if(this.validationIsSuccessfull) {
         this.$emit('validated');
       }
     },
 
     validateLocation(): void {
-      if(this.voivodeship === EmptyInputValue) {
+      if(this.regionId === EmptyInputValue) {
         this.showErrorOnComboInput('voivodeship', 'choose_option');
       }
 
-      if(this.city === EmptyInputValue) {
+      if(this.cityId === EmptyInputValue) {
         this.showErrorOnComboInput('city', 'choose_option');
       }
     },
@@ -399,7 +399,7 @@ export default {
         loadedCities[city.id] = city.name;
       });
       this.citiesList = loadedCities;
-      this.city = EmptyInputValue;
+      this.cityId = EmptyInputValue;
     },
 
     notifyUserAboutFetchError(): void {
@@ -464,8 +464,8 @@ export default {
         'preciseHoursDecision',
         'showEverySingleWeekday',
         'workingHoursByPeriodOrDay',
-        'city',
-        'voivodeship',
+        'cityId',
+        'regionId',
     ])
   },
 };
