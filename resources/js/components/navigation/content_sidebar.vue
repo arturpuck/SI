@@ -248,7 +248,7 @@ export default {
   margin: 0 auto;
 }
 
-@media (max-width: 540px) {
+@media (max-width: 730px) {
   .content-side-bar {
     display: block;
   }

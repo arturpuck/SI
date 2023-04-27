@@ -4,6 +4,7 @@ export const BlankOption = `--${Translator.translate('choose_options')}--`;
 
 const translations : {
     empire_policy_for_working_hours_of_prostitutes : string,
+    free_periods_checkbox_reminder : string,
     do_you_want_to_set_precise_working_hours : string,
     from_monday_to_friday : string,
     since : string,
@@ -26,6 +27,7 @@ const translations : {
     fetching_cities : string,
 } = {
     empire_policy_for_working_hours_of_prostitutes : Translator.translate('empire_policy_for_working_hours_of_prostitutes'),
+    free_periods_checkbox_reminder : Translator.translate("free_periods_checkbox_reminder"),
     do_you_want_to_set_precise_working_hours : Translator.translate('do_you_want_to_set_precise_working_hours'),
     from_monday_to_friday : `${Translator.translate('monday')} - ${Translator.translate('friday')}`,
     working_hours : Translator.translate('working_hours'),

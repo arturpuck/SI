@@ -4,10 +4,10 @@
       v-show="fetchingCitiesInProgress"
       v-bind:circle-label="Translations['fetching_cities']"
     ></expect-shadow-circle>
-    <div
-      v-text="Translations['empire_policy_for_working_hours_of_prostitutes']"
-      class="info"
-    ></div>
+    <div class="info">
+      {{Translations['empire_policy_for_working_hours_of_prostitutes']}}
+      <strong class="important-info" v-text="Translations['free_periods_checkbox_reminder']"></strong>
+    </div>
     <div>
       <h2 v-text="Translations['working_hours']" class="subsection-header"></h2>
       <select-combo
@@ -55,8 +55,7 @@
             (clean) => toggleDayFreeOrBusy(clean, 'mondayToFriday')
           "
           class="shortcut-checkbox"
-          >{{ Translations["day_of"] }}</labeled-checkbox
-        >
+          >{{ Translations["day_of"] }}</labeled-checkbox>
       </div>
 
       <div v-if="showEverySingleWeekday">
@@ -117,6 +116,7 @@
           {{ Translations["until"] }} :
         </text-input-combo>
         <labeled-checkbox
+          v-bind:model-value="1"
           v-on:update:modelValue="(clean) => toggleDayFreeOrBusy(clean, 'saturday')"
           class="shortcut-checkbox"
           >{{ Translations["day_of"] }}</labeled-checkbox
@@ -145,6 +145,7 @@
           {{ Translations["until"] }} :
         </text-input-combo>
         <labeled-checkbox
+          v-bind:model-value="1"
           v-on:update:modelValue="(clean) => toggleDayFreeOrBusy(clean, 'sunday')"
           class="shortcut-checkbox"
           >{{ Translations["day_of"] }}</labeled-checkbox
@@ -332,8 +333,8 @@ export default {
     },
 
     initiateWeekendHours(): void {
-      this.workingHoursByPeriodOrDay["saturday"] = this.getEmptyPeriod();
-      this.workingHoursByPeriodOrDay["sunday"] = this.getEmptyPeriod();
+      this.workingHoursByPeriodOrDay["saturday"] = this.getUndefinedPeriod();
+      this.workingHoursByPeriodOrDay["sunday"] = this.getUndefinedPeriod();
     },
 
     initiateWeekdays(): void {
@@ -347,6 +348,13 @@ export default {
       return {
         since: "00:00",
         until: "00:00",
+      };
+    },
+
+    getUndefinedPeriod() {
+      return {
+        since: undefined,
+        until: undefined,
       };
     },
 
@@ -413,8 +421,7 @@ export default {
 
   data() {
     return {
-     
-      freePeriods : [],
+      freePeriods : ['saturday', 'sunday'],
       Translations,
       YesNoOptions,
       incorrectRelationBetweenHourOfStartAndEnd : false,
@@ -474,6 +481,12 @@ export default {
 <style lang="scss" scoped>
 @import "~sass/fonts";
 
+$weekdaysChangeDirectionAt : 590px;
+
+.important-info {
+  color:red;
+}
+
 .toggle-days-container {
   display: flex;
   justify-content: center;
@@ -483,6 +496,9 @@ export default {
 .weekly-schedule {
   max-width: max-content;
   margin: 0 auto;
+  @media(max-width:$weekdaysChangeDirectionAt) {
+    max-width: none;
+  }
 }
 
 .hours-range-edge {
@@ -496,6 +512,16 @@ export default {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+  @media(max-width:$weekdaysChangeDirectionAt) {
+    flex-direction: column;
+    align-items: center;
+    &:nth-child(odd) {
+      background: #0e0e0e;
+    }
+    &:nth-child(even) {
+      background: black;
+    }
+  }
 }
 
 .select {
@@ -526,6 +552,9 @@ export default {
 
 .shortcut-checkbox {
   margin-left: 5px;
+  @media(max-width:$weekdaysChangeDirectionAt) {
+    margin:10px 0;
+  }
 }
 
 .relative-shadow-container {

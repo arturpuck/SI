@@ -109,6 +109,10 @@ $border-color: black;
 		max-width:150px;
 		overflow: hidden;
 	}
+	max-width: 200px;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
 }
 
 .user-avatar{

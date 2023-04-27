@@ -89,7 +89,7 @@ const settings = {
       
       validateLogin(login: string) {
          
-         if (login === '') {
+         if (!login) {
             this.resetComboInput('Login');
             this.setVerificationDecorationVisibility(false);
             return;
@@ -155,7 +155,7 @@ const settings = {
 
       validateEmail(email: string) {
          
-         if (email === '') {
+         if (!email) {
             this.setVerificationDecorationVisibility(false);
             this.resetComboInput('Email');
             return;
@@ -174,7 +174,7 @@ const settings = {
 
          try {
 
-            if (password === '') {
+            if (!password) {
                this.resetComboInput('Password');
                return;
             }

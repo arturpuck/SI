@@ -3,7 +3,7 @@ const allPropertiesNames = [
     'phoneNumber',
     'birthDate',
     'description' ,
-    'userType',
+    'userTypeId',
     'sexualOrientation',
     'hairColor',
     'titsSize',
@@ -39,8 +39,8 @@ const allPropertiesNames = [
     'showEverySingleWeekday',
     'workingHoursByPeriodOrDay',
     'citiesList',
-    'city',
-    'voivodeship',
+    'cityId',
+    'regionId',
 ];
 
 export default allPropertiesNames;
@@ -55,12 +55,10 @@ export const optionalPersonalitiesPropertiesNames = [
     'weight',
 ];
 
-export const sexServicesPropertiesCoreKeys = [
+export const sexServicesAlwaysVisibleKeys = [
     'massage',
     'vaginalSex',
     'blowjob',
-    'oralCreampie',
-    'cumSwallow',
     'cumOnFace',
     'anal',
     'pussyLicking',
@@ -68,3 +66,5 @@ export const sexServicesPropertiesCoreKeys = [
     'kissing',
     'cumOnBody',
 ];
+// 'oralCreampie',
+// 'cumSwallow',

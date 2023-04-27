@@ -405,13 +405,13 @@ export default {
   height: 100%;
 }
 
-@media (max-width: 540px) {
+@media (max-width: 730px) {
   .navigation-element-main-has-content {
     display: none;
   }
 }
 
-@media (min-width: 541px) {
+@media (min-width: 731px) {
   .show-side-bar-button--left {
     display: none;
   }

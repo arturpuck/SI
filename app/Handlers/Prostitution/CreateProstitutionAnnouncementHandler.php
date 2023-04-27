@@ -47,18 +47,19 @@ final class CreateProstitutionAnnouncementHandler
         $this->assignPersonalities();
         $this->assignServices();
         $this->assignPaymentForms();
-        $this->movePhotos();
+        $this->processPhotos();
         $this->assignLocationAndWorkingHours();
         $this->announcement->save();
         return new Response(status:200);
     }
 
-    private function movePhotos() : void 
+    private function processPhotos() : void 
     {
         $storageDirectory = $this->getPhotosStorageDirectory();
-        foreach($this->request->file('photos') as $photo) {
-            $photo->storeAs($storageDirectory, $photo->getClientOriginalName());
+        foreach($this->request->get('photos') as $index => $photo) {
+            $photo->move($storageDirectory, $index.'.'.$photo->getClientOriginalExtension());
         }
+        $this->announcement->last_generated_token = $this->request->get('verificationToken');
     }
 
     private function assignLocationAndWorkingHours() : void
@@ -85,6 +86,7 @@ final class CreateProstitutionAnnouncementHandler
             $requestFieldName = $this->translateColumnNameToRequestFieldName($columnName);
             $this->announcement->$columnName = $this->request->get($requestFieldName); 
         }
+        $this->announcement->user_id = auth()->user()->id;
     }
 
     private function assignServices() : void
@@ -116,7 +118,7 @@ final class CreateProstitutionAnnouncementHandler
 
     private function translateColumnNameToRequestFieldName(string $fieldName) : string
     {
-        $parts = explode($fieldName, '_');
+        $parts = explode('_', $fieldName);
         if(count($parts) === 1) {
             return $fieldName;
         }

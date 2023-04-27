@@ -156,17 +156,17 @@ Route::middleware(['auth'])->name('auth.user.')->namespace('Auth\User')->group(f
 Route::namespace ('Prostitution')->prefix('prostytucja/')->name('prostitution.')->group(function () {
 
     Route::get('dodaj-ogłoszenie', 'CreateProstitutionNoticeController@showCreatorPanel')
-        ->name('creator.panel');
+        ->name('creator.panel')->middleware('auth');
 
     Route::get('notice-form-options', 'CreateProstitutionNoticeController@getNoticeFormOptions')
-        ->name('notice-form-options');
+        ->name('notice-form-options')->middleware('authWithoutRedirecting');
 
     Route::post('dodaj-ogłoszenie', 'CreateProstitutionNoticeController@createProstitutionAnnouncement')
-        ->name('create.announcement');
+        ->name('create.announcement')->middleware('authWithoutRedirecting');
 
 });
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['authWithoutRedirecting'])->group(function(){
     Route::get('/cities', [CountryRegionsController::class, 'getCities']);
 
 });

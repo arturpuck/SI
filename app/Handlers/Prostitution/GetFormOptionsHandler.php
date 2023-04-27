@@ -13,16 +13,16 @@ class GetFormOptionsHandler
 {
     public function handle() : JsonResponse
     {
-        if(Session::has('token')) {
-            $token = Session::get('token');
+        if(Session::has('prostitutePhotoVerificationToken')) {
+            $prostitutePhotoVerificationToken = Session::get('prostitutePhotoVerificationToken');
         } else {
-            $token = strtoupper(Str::random(rand(4,8)));
-            Session::put('token', $token);
+            $prostitutePhotoVerificationToken = strtoupper(Str::random(rand(4,8)));
+            Session::put('prostitutePhotoVerificationToken', $prostitutePhotoVerificationToken);
         }
         $formOptions = [
             'userTypes' => UserType::all(),
             'sexualOrientations' => SexualOrientation::all(),
-            'token' => $token,
+            'token' => $prostitutePhotoVerificationToken,
             'voivodeships' => Voivodeship::all()
         ];
         return new JsonResponse($formOptions);

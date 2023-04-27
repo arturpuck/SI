@@ -60,21 +60,21 @@ export default {
 }
 
 .logo-description-short {
-  @media (max-width: 650px) {
+  @media (max-width: 820px) {
     display: inline;
   }
 
-  @media (min-width: 651px) {
+  @media (min-width: 821px) {
     display: none;
   }
 }
 
 .logo-description-long {
-  @media (max-width: 650px) {
+  @media (max-width: 820px) {
     display: none;
   }
 
-  @media (min-width: 651px) {
+  @media (min-width: 821px) {
     display: inline;
   }
 }

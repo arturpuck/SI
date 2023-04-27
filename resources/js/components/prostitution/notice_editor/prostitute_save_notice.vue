@@ -3,6 +3,7 @@
         <div class="info-container">
             <span v-text="translations['prostitute_save_announcement_info']"></span>
             <strong class="important-info" v-text="translations['announcement_must_be_accepted_reminder']"></strong>
+            <span v-text="translations['just_one_offer_reminder']"></span>
         </div>
         <add-button v-on:click="saveNotice">{{ translations['add_notice'] }}</add-button>
     </section>
@@ -16,7 +17,7 @@ import announcementDetails from "@jscomponents/prostitution/notice_editor/announ
 import { mapWritableState } from 'pinia';
 import GlobalPropertiesNames from "@jscomponents/prostitution/notice_editor/global_properties_names";
 import { optionalPersonalitiesPropertiesNames } from "@jscomponents/prostitution/notice_editor/global_properties_names";
-import { sexServicesPropertiesCoreKeys } from "@jscomponents/prostitution/notice_editor/global_properties_names";
+import { sexServicesAlwaysVisibleKeys } from "@jscomponents/prostitution/notice_editor/global_properties_names";
 import { EmptyInputValue } from "@jscomponents/empty_input_option";
 import { Weekdays } from "@js/enum/weekdays";
 
@@ -66,8 +67,8 @@ export default {
 
         createLocationRequestPart(): object {
             return {
-                city: this.city,
-                voivodeship: this.voivodeship
+                cityId: this.cityId,
+                regionId: this.regionId
             };
         },
 
@@ -129,7 +130,7 @@ export default {
             let personalitiesPart = {
                 nickname: this.nickname,
                 birthDate: this.birthDate,
-                userType: this.userType,
+                userTypeId: this.userTypeId,
             }
             optionalPersonalitiesPropertiesNames.forEach(propertyName => {
                 if (this.anyValueWasChosenByUser(this[propertyName])) {
@@ -140,8 +141,16 @@ export default {
         },
 
         createRequestObjectServicesPart(): object {
+            
+            return {
+                ...this.createAlwaysVisibleServicesRequestObjectPart(),
+                ...this.createSecondaryServicesRequestObjectPart()
+            };
+        },
+
+        createAlwaysVisibleServicesRequestObjectPart(): object {
             let serviceProperties = {};
-            sexServicesPropertiesCoreKeys.forEach(propertyCoreName => {
+            sexServicesAlwaysVisibleKeys.forEach(propertyCoreName => {
                 let preferencePropertyName = `${propertyCoreName}Preference`;
                 if (this[preferencePropertyName] !== 'never') {
                     serviceProperties[preferencePropertyName] = this[preferencePropertyName];
@@ -152,11 +161,24 @@ export default {
                     serviceProperties[aditionalPaymentPropertyName] = this[aditionalPaymentPropertyName];
                 }
             });
+            return serviceProperties;
+        },
+
+        createSecondaryServicesRequestObjectPart(): object {
+            let serviceProperties = {};
             if (this.secondaryServices.length > 0) {
                 serviceProperties['secondaryServices'] = JSON.stringify(this.secondaryServices);
             }
             if (this.tripsPreference === '1') {
                 serviceProperties['tripsPreference'] = this.tripsPreference
+            }
+
+            if(this.userPerformsBlowjobWithoutCondom) {
+                serviceProperties['oralCreampiePreference'] = this.oralCreampiePreference;
+            }
+
+            if(this.userAllowsOralCreampie) {
+                serviceProperties['cumSwallowPreference'] = this.cumSwallowPreference;
             }
             serviceProperties['paymentForms'] = JSON.stringify(this.paymentForms);
             return serviceProperties;
@@ -179,23 +201,57 @@ export default {
         async processNoticeResponse(response) {
             switch(response.status) {
                 case 200:
-                    alert('good');
+                    this.notifyAboutSuccess();
                 break;
 
                 case 400:
-                    alert('your request sucks');
+                    this.notificationErrorMessage('incorrect_announcement_data_please_make_sure_data_has_not_been_modified');
                 break;
 
+                case 401:
+                    this.notificationErrorMessage('probably_your_session_has_expired');
+                break;
+
+                case 403:
+                    this.notificationErrorMessage('one_announcement_is_awaiting_validation')
+                break
+
                 case 500:
-                    alert('your server sucks');
+                    this.notificationErrorMessage('server_error_please_contact_admin');
                 break;
             }
+        },
+
+        notificationErrorMessage(message : string) : void {
+            this.emitter.emit("showNotification", {
+                notificationText: message,
+                notificationType: "error",
+                headerText: "error",
+            });
+        },
+
+        notifyAboutSuccess() : void {
+            this.emitter.emit("showNotification", {
+                notificationText: 'announcement_has_been_added',
+                notificationType: "information",
+                headerText: "information",
+            });
         }
+
     },
 
     computed: {
         //@ts-ignore
         ...mapWritableState(announcementDetails, GlobalPropertiesNames),
+
+        userPerformsBlowjobWithoutCondom() : boolean {
+            return this.blowjobPreference === 'without_condom' || this.blowjobPreference === 'without_condom_with_aditional_payments';
+        },
+
+        userAllowsOralCreampie() : boolean {
+            return this.oralCreampiePreference === 'included' || this.oralCreampiePreference === 'aditional_payment';
+        }
+
     },
 
     mounted() {

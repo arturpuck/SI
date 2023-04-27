@@ -11,6 +11,10 @@ use App\UserType;
 use App\Rules\Prostitution\WorkingHoursRangeIdentifiers;
 use App\Rules\Prostitution\HourOfStartIsBeforeHourOfEnd;
 use App\Rules\Prostitution\EveryPaymentFormContainsOnlyRequiredFields;
+use App\ProstitutionAnnouncement;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Auth\Access\AuthorizationException;
+
 
 class CreateProstitutionAnnouncementRequest extends FormRequest
 {
@@ -87,7 +91,10 @@ class CreateProstitutionAnnouncementRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return !ProstitutionAnnouncement::query()
+                ->assignedToCurrentLoggedUser()
+                ->onlyAwaitingVerification()
+                ->exists();
     }
 
     protected function prepareForValidation()
@@ -97,6 +104,12 @@ class CreateProstitutionAnnouncementRequest extends FormRequest
         $this->getPaymentForms();
         $this->getPhotos();
         $this->getSecondaryServices();
+        $this->getVerificationToken();
+    }
+
+    protected function getVerificationToken() : void
+    {
+        $this->merge(['verificationToken' => Session::get('prostitutePhotoVerificationToken')]);
     }
 
     protected function getSecondaryServices() : void 
@@ -223,6 +236,7 @@ class CreateProstitutionAnnouncementRequest extends FormRequest
             'paymentForms.*.price' => self::POSITIVE_NUMERIC,
             'photos' => ['required', 'array'],
             'photos.*' => ['image', 'max:1024'],
+            'verificationToken' => ['required', 'string', 'min:4', 'max:8'],
             'workingHours' => ['array', new WorkingHoursRangeIdentifiers(), new HourOfStartIsBeforeHourOfEnd()],
             'workingHours.*.since' => ['date_format:H:i', 'required_if:workingHours,!=,null'],
             'workingHours.*.until' => ['date_format:H:i', 'required_if:workingHours,!=,null'],
@@ -240,8 +254,13 @@ class CreateProstitutionAnnouncementRequest extends FormRequest
         ];
     }
 
-    public function failedValidation(Validator $validator)
+    protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json($validator->messages()->all(), 400));
+    }
+
+    protected function failedAuthorization()
+    {
+        throw new AuthorizationException('announcement_awaits_validation');
     }
 }

@@ -63,7 +63,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'csrfprotection' => \App\Http\Middleware\VerifyCsrfToken::class,
         'startsession' => \Illuminate\Session\Middleware\StartSession::class,
-        'apiKeyVerification' => \App\Http\Middleware\APIKeyVerification::class
+        'apiKeyVerification' => \App\Http\Middleware\APIKeyVerification::class,
+        'authWithoutRedirecting' => \App\Http\Middleware\AuthenticationWithoutRedirecting::class
     ];
 
     /**
