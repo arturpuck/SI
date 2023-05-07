@@ -57,7 +57,7 @@
                     {{ucfirst(__('email'))}} : 
                 </text-input-combo>
                 <described-select ref="user_type_id"
-                    v-bind:visible-options-list="['--{{__('choose')}}--',@foreach($userTypes as $userType) '{{__($userType->user_type_name.'_i')}}', @endforeach '{{__('i_dont_want_to_tell')}}']"
+                    v-bind:visible-options-list="['--{{__('choose')}}--',@foreach($userTypes as $userType) '{{__($userType->user_type_name)}}', @endforeach '{{__('i_dont_want_to_tell')}}']"
                     v-bind:option-values="['not-selected', @foreach($userTypes as $userType) '{{$userType->id}}', @endforeach '']"
                     v-bind:error-message-box-available="true"
                     v-bind:complete-validation-display-available="true"

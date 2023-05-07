@@ -46,7 +46,7 @@ const announcementDetails = defineStore({
 
         preciseHoursDecision: EmptyInputValue,
         showEverySingleWeekday: false,
-        workingHoursByPeriodOrDay: undefined,
+        workingHours: undefined,
         cityId: EmptyInputValue,
         regionId: EmptyInputValue,
 

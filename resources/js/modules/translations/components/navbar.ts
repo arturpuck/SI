@@ -19,7 +19,8 @@ const translations : {
     current_news : string,
     prostitution : string,
     add_notice : string,
-    notices_list : string
+    notices_list : string,
+    my_notices : string,
     
 } = {
     showContentSideBarButtonTitle : Translator.translate('show_content_side_bar_title'),
@@ -41,6 +42,7 @@ const translations : {
     prostitution : Translator.translate('prostitution'),
     add_notice : Translator.translate('add_notice'),
     notices_list : Translator.translate('notices_list'),
+    my_notices : Translator.translate("my_notices")
 };
 
 export default translations;

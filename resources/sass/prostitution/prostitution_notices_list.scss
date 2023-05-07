@@ -1,0 +1,19 @@
+@import "~sass/basic";
+@import "~sass/fonts";
+@import "~sass/standard_background";
+
+.prostitution-announcements-list-background {
+    background: url('/images/decoration/prostitution/prostitution_list_background.webp');
+    background-size:cover;
+    background-attachment: fixed;
+}
+
+.container {
+    background:rgba(0,0,0,0.7);
+    border-radius:5px;
+    box-shadow: 2px 2px 2px 3px;
+    max-width:1200px;
+    margin:0 auto;
+    width: max-content;
+    padding: 5px;
+}

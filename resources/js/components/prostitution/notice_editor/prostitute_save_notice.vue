@@ -79,7 +79,7 @@ export default {
         },
 
         extractWorkingHoursForEverySingleDayOfWeek(): object {
-            let workingHoursCopy = { ...this.workingHoursByPeriodOrDay };
+            let workingHoursCopy = { ...this.workingHours };
             let result = {};
             delete workingHoursCopy['mondayToFriday'];
 
@@ -95,18 +95,18 @@ export default {
 
         extractWorkingHoursWhenUserChoseMondayToFridayAsOneOption(): object {
             let result = {};
-            if (this.userWorksDuringThisDayOrPeriod(this.workingHoursByPeriodOrDay['mondayToFriday'])) {
-                let mondayToFridayHours: WorkingPeriodRange = this.workingHoursByPeriodOrDay['mondayToFriday'];
+            if (this.userWorksDuringThisDayOrPeriod(this.workingHours['mondayToFriday'])) {
+                let mondayToFridayHours: WorkingPeriodRange = this.workingHours['mondayToFriday'];
                 Object.values(Weekdays).forEach(weekday => {
                     result[weekday] = mondayToFridayHours;
                 })
             }
-            if (this.userWorksDuringThisDayOrPeriod(this.workingHoursByPeriodOrDay['saturday'])) {
-                result['saturday'] = this.workingHoursByPeriodOrDay['saturday'];
+            if (this.userWorksDuringThisDayOrPeriod(this.workingHours['saturday'])) {
+                result['saturday'] = this.workingHours['saturday'];
             }
 
-            if (this.userWorksDuringThisDayOrPeriod(this.workingHoursByPeriodOrDay['sunday'])) {
-                result['sunday'] = this.workingHoursByPeriodOrDay['sunday'];
+            if (this.userWorksDuringThisDayOrPeriod(this.workingHours['sunday'])) {
+                result['sunday'] = this.workingHours['sunday'];
             }
 
             return {
@@ -200,7 +200,7 @@ export default {
 
         async processNoticeResponse(response) {
             switch(response.status) {
-                case 200:
+                case 201:
                     this.notifyAboutSuccess();
                 break;
 

@@ -35,7 +35,7 @@ return new class extends Migration
             $table->tinyInteger('weight_in_kilograms')->unsigned()->nullable()->default(null);
             $table->string('hair_color', 15)->nullable()->default(null);
             $table->json('main_services');
-            $table->json('aditional_services')->nullable()->default(null);
+            $table->json('secondary_services')->nullable()->default(null);
             $table->json('payment_forms');
             $table->string('last_generated_token', 10);
             $table->json('working_hours')->nullable()->default(null);

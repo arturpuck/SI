@@ -1,0 +1,85 @@
+@import "~sass/fonts";
+
+.save-notice {
+  fill: #1edb0d;
+}
+
+.policy-section {
+  fill:white;
+}
+
+.services-section {
+  fill:#dd0d85;
+}
+
+.personalities-section {
+  fill: #2bd71b;
+}
+
+.photos-section {
+  fill:#fbf7f8;
+  width: auto;
+}
+
+
+.outer-container {
+  border-radius: 4px;
+  max-width: 900px;
+}
+
+.navbar-section-icon {
+  height: 1.5em;
+}
+
+.section-navbar-container {
+  background: black;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px 4px 0 0;
+}
+
+#app .select-container {
+  border: 2px solid #148327;
+}
+
+.change-sections-container {
+  padding: 5px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.change-section {
+  fill: #13d735;
+  height: 1.8em;
+  cursor: pointer;
+  transition: transform 0.5s;
+  &:active {
+    transform: scale(1.3);
+  }
+}
+
+.bottom-navigation {
+  background: black;
+  color: #828181;
+  @include responsive-font(1vw, 13px);
+}
+
+.navigation-description {
+  padding: 3px;
+  text-align: center;
+}
+
+.navbar-caption {
+  @include responsive-font(1.5vw, 16px);
+  color:white;
+  padding:0;
+  margin:0;
+}
+
+.location-and-working-hours {
+  width: 35px;
+  height: 35px;
+  fill: #22d31b;
+}

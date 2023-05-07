@@ -34,7 +34,7 @@
           v-bind:error-message-box-available="true"
           unique-id="mondayToFridayHourSince"
           input-type="time"
-          v-model="workingHoursByPeriodOrDay['mondayToFriday']['since']"
+          v-model="workingHours['mondayToFriday']['since']"
           class="hours-range-edge"
           v-bind:complete-error-display-available="true"
         >
@@ -44,7 +44,7 @@
           v-bind:error-message-box-available="true"
           unique-id="mondayToFridayHourUntil"
           input-type="time"
-          v-model="workingHoursByPeriodOrDay['mondayToFriday']['until']"
+          v-model="workingHours['mondayToFriday']['until']"
           class="hours-range-edge"
           v-bind:complete-error-display-available="true"
         >
@@ -69,7 +69,7 @@
             v-bind:error-message-box-available="true"
             v-bind:unique-id="`${weekday}HourSince`"
             input-type="time"
-            v-model="workingHoursByPeriodOrDay[weekday]['since']"
+            v-model="workingHours[weekday]['since']"
             class="hours-range-edge"
             v-bind:complete-error-display-available="true"
           >
@@ -79,7 +79,7 @@
             v-bind:error-message-box-available="true"
             v-bind:unique-id="`${weekday}HourUntil`"
             input-type="time"
-            v-model="workingHoursByPeriodOrDay[weekday]['until']"
+            v-model="workingHours[weekday]['until']"
             class="hours-range-edge"
             v-bind:complete-error-display-available="true"
           >
@@ -99,7 +99,7 @@
           v-bind:error-message-box-available="true"
           unique-id="saturdayHourSince"
           input-type="time"
-          v-model="workingHoursByPeriodOrDay['saturday']['since']"
+          v-model="workingHours['saturday']['since']"
           class="hours-range-edge"
           v-bind:complete-error-display-available="true"
         >
@@ -109,7 +109,7 @@
           v-bind:error-message-box-available="true"
           unique-id="saturdayHourUntil"
           input-type="time"
-          v-model="workingHoursByPeriodOrDay['saturday']['until']"
+          v-model="workingHours['saturday']['until']"
           class="hours-range-edge"
           v-bind:complete-error-display-available="true"
         >
@@ -128,7 +128,7 @@
           v-bind:error-message-box-available="true"
           unique-id="sundayHourSince"
           input-type="time"
-          v-model="workingHoursByPeriodOrDay['sunday']['since']"
+          v-model="workingHours['sunday']['since']"
           class="hours-range-edge"
           v-bind:complete-error-display-available="true"
         >
@@ -138,7 +138,7 @@
           v-bind:error-message-box-available="true"
           unique-id="sundayHourUntil"
           input-type="time"
-          v-model="workingHoursByPeriodOrDay['sunday']['until']"
+          v-model="workingHours['sunday']['until']"
           class="hours-range-edge"
           v-bind:complete-error-display-available="true"
         >
@@ -303,8 +303,8 @@ export default {
 
     validateWorkingPeriod(period: string): void {
       if (this.userProvidedWorkingHours(period)) {
-        const timeSince = this.workingHoursByPeriodOrDay[period]["since"];
-        const timeUntil = this.workingHoursByPeriodOrDay[period]["until"];
+        const timeSince = this.workingHours[period]["since"];
+        const timeUntil = this.workingHours[period]["until"];
         let bothTimesAreValid = true;
         if (!TimeStringValidator(timeSince)) {
           this.showErrorOnComboInput(`${period}HourSince`,"invalid_time_format");
@@ -327,21 +327,21 @@ export default {
     },
 
     initiateWorkingHours(): void {
-      this.workingHoursByPeriodOrDay = {};
+      this.workingHours = {};
       this.initiateWeekdays();
       this.initiateWeekendHours();
     },
 
     initiateWeekendHours(): void {
-      this.workingHoursByPeriodOrDay["saturday"] = this.getUndefinedPeriod();
-      this.workingHoursByPeriodOrDay["sunday"] = this.getUndefinedPeriod();
+      this.workingHours["saturday"] = this.getUndefinedPeriod();
+      this.workingHours["sunday"] = this.getUndefinedPeriod();
     },
 
     initiateWeekdays(): void {
       this.weekdays.forEach((weekday) => {
-        this.workingHoursByPeriodOrDay[weekday] = this.getEmptyPeriod();
+        this.workingHours[weekday] = this.getEmptyPeriod();
       });
-      this.workingHoursByPeriodOrDay["mondayToFriday"] = this.getEmptyPeriod();
+      this.workingHours["mondayToFriday"] = this.getEmptyPeriod();
     },
 
     getEmptyPeriod() {
@@ -364,12 +364,12 @@ export default {
 
     toggleDayFreeOrBusy(free: boolean, period: string): void {
       if(free) {
-        this.workingHoursByPeriodOrDay[period]["since"] = undefined;
-        this.workingHoursByPeriodOrDay[period]["until"] = undefined;
+        this.workingHours[period]["since"] = undefined;
+        this.workingHours[period]["until"] = undefined;
         this.freePeriods.push(period);
       } else {
-        this.workingHoursByPeriodOrDay[period]["since"] = "00:00";
-        this.workingHoursByPeriodOrDay[period]["until"] = "00:00";
+        this.workingHours[period]["since"] = "00:00";
+        this.workingHours[period]["until"] = "00:00";
         this.freePeriods = this.freePeriods.filter(freePeriods => freePeriods !== period);
       }
     },
@@ -470,7 +470,7 @@ export default {
     ...mapWritableState(announcementDetails, [
         'preciseHoursDecision',
         'showEverySingleWeekday',
-        'workingHoursByPeriodOrDay',
+        'workingHours',
         'cityId',
         'regionId',
     ])

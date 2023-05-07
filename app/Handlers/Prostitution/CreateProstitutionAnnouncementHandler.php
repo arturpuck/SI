@@ -5,9 +5,12 @@ namespace App\Handlers\Prostitution;
 use Illuminate\Http\Response;
 use App\ProstitutionAnnouncement;
 use App\Http\Requests\Prostitution\CreateProstitutionAnnouncementRequest;
+use App\Traits\ColumnToRequestField;
 
 final class CreateProstitutionAnnouncementHandler
 {
+    use ColumnToRequestField;
+
     private CreateProstitutionAnnouncementRequest $request;
     private ProstitutionAnnouncement $announcement;
 
@@ -50,7 +53,7 @@ final class CreateProstitutionAnnouncementHandler
         $this->processPhotos();
         $this->assignLocationAndWorkingHours();
         $this->announcement->save();
-        return new Response(status:200);
+        return new Response(status:201);
     }
 
     private function processPhotos() : void 
@@ -76,7 +79,7 @@ final class CreateProstitutionAnnouncementHandler
         $currentUserID = auth()->user()->id;
         return config('filesystems.prostitution.photos').
                $currentUserID.'/'.
-               config('filesystems.prostitution.photos.awaiting_verification');
+               config('filesystems.prostitution.photos_directory_awaiting_verification');
     }
 
 
@@ -106,7 +109,7 @@ final class CreateProstitutionAnnouncementHandler
         
         $this->announcement->main_services = json_encode($mainServices);
         if($this->request->has('secondaryServices')) {
-            $this->announcement->aditional_services = json_encode($this->request->get('secondaryServices'));
+            $this->announcement->secondary_services = json_encode($this->request->get('secondaryServices'));
         }
 
     }
@@ -114,19 +117,6 @@ final class CreateProstitutionAnnouncementHandler
     private function assignPaymentForms() : void
     {
         $this->announcement->payment_forms = json_encode($this->request->get('paymentForms'));
-    }
-
-    private function translateColumnNameToRequestFieldName(string $fieldName) : string
-    {
-        $parts = explode('_', $fieldName);
-        if(count($parts) === 1) {
-            return $fieldName;
-        }
-        $result = array_shift($parts);
-        foreach($parts as $part) {
-            $result .= ucfirst($part);
-        }
-        return $result;
     }
 
 }

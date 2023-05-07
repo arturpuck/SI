@@ -1,12 +1,12 @@
 
 import { createApp } from 'vue';
 import BasicElements from '@jsmodules/basic.js';
-import ProstitutionOfferEditor from "@jscomponents/prostitution/notice_editor/prostitution_offer_editor.vue";
+import ProstitutionOfferCreator from "@js/components/prostitution/notice_editor/prostitution_offer_creator.vue";
 import { createPinia } from 'pinia'
 
 const settings = {
     components : {
-        ProstitutionOfferEditor
+        ProstitutionOfferCreator
     }
 };
 

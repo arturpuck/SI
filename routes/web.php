@@ -164,6 +164,15 @@ Route::namespace ('Prostitution')->prefix('prostytucja/')->name('prostitution.')
     Route::post('dodaj-ogłoszenie', 'CreateProstitutionNoticeController@createProstitutionAnnouncement')
         ->name('create.announcement')->middleware('authWithoutRedirecting');
 
+    Route::get('lista-moich-ogłoszeń', 'ProstitutionListController@showAnnouncementsList')
+        ->name('show.announcements.list')->middleware('auth');
+
+    Route::get('announcements', 'ProstitutionListController@getAnnouncementInformation')
+        ->name('announcement.information')->middleware('authWithoutRedirecting');
+
+    Route::delete('announcements', 'ProstitutionListController@deleteAnnouncement')
+        ->name('announcement.deletion')->middleware('authWithoutRedirecting');
+
 });
 
 Route::middleware(['authWithoutRedirecting'])->group(function(){

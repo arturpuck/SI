@@ -27,6 +27,16 @@
         </a>
       </div>
     </li>
+    <li v-if="authenticated" class="sub-menu-list-element intendation-first-level">
+      <div class="sub-menu-level-one-item">
+        <a class="navbar-link-main-manu" v-bind:href="routesConfig.myNoticesList">
+          <notices-board-icon
+            class="navbar-icon navbar-icon-outer"
+          ></notices-board-icon>
+          {{ translations["my_notices"] }}
+        </a>
+      </div>
+    </li>
   </ul>
 </template>
 
@@ -34,6 +44,7 @@
 import Translations from "@jsmodules/translations/components/navbar";
 import PriceListIcon from "@svgicon/price_list_icon.vue";
 import FindLoveIcon from "@svgicon/find_love_icon.vue";
+import NoticesBoardIcon from "@svgicon/notices_board_icon.vue";
 import RoutesConfig from "@config/paths/routes";
 import NotificationFunction from '@jsmodules/notification_function';
 
@@ -56,7 +67,8 @@ export default {
 
   components: {
     PriceListIcon,
-    FindLoveIcon
+    FindLoveIcon,
+    NoticesBoardIcon
   },
   
   data() {

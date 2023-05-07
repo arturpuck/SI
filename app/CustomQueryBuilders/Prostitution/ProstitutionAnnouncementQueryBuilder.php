@@ -17,4 +17,10 @@ class ProstitutionAnnouncementQueryBuilder extends Builder
         $this->where('user_id', auth()->user()->id);
         return $this;
     }
+
+    public function filterByUserID(int $userID) : self 
+    {
+        $this->where('user_id', $userID);
+        return $this;
+    }
 }

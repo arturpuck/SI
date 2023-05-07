@@ -18,7 +18,7 @@
       }
   </script>
   
-  <style lang="scss">
+  <style lang="scss" scoped>
   @import "~sass/fonts";
 
   .remove-button {

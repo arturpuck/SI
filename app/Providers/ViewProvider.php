@@ -35,7 +35,8 @@ class ViewProvider extends ServiceProvider
                 'session_expired',
                 'porn_dictionary',
                 'news_list',
-                'prostitution_notice_creator_panel'
+                'prostitution_notice_creator_panel',
+                'prostitution_notices_list'
             ];
 
             $viewName = Str::afterLast($view->getName(), ".");

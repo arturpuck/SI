@@ -37,7 +37,7 @@ const allPropertiesNames = [
     'photos',
     'preciseHoursDecision',
     'showEverySingleWeekday',
-    'workingHoursByPeriodOrDay',
+    'workingHours',
     'citiesList',
     'cityId',
     'regionId',
