@@ -17,21 +17,25 @@
       </thead>
       <tbody>
         <tr
+        class="announcement-row"
           v-for="(announcement, index) in announcementsBasicInformationList"
           v-bind:key="index"
         >
-          <td class="announcement-cell" v-text="announcement.nickname"></td>
-          <td class="announcement-cell" v-text="announcement.region"></td>
-          <td class="announcement-cell" v-text="announcement.city"></td>
+          <td class="announcement-cell" v-bind:data-label="translations.nickname" v-text="announcement.nickname"></td>
+          <td class="announcement-cell" v-bind:data-label="translations.region" v-text="announcement.region"></td>
+          <td class="announcement-cell" v-bind:data-label="translations.city" v-text="announcement.city"></td>
           <td
+            v-bind:data-label="translations.phoneNumber"
             class="announcement-cell"
             v-text="getPhoneNumber(announcement.phoneNumber)"
           ></td>
           <td
+            v-bind:data-label="translations.hiddenByAUser"
             class="announcement-cell"
             v-text="transformBooleanToYesOrNo(announcement.hiddenByAUser)"
           ></td>
           <td
+          v-bind:data-label="translations.photosAreValidAndUpToDate"
             class="announcement-cell"
             v-text="
               transformBooleanToYesOrNo(announcement.photosAreValidAndUpToDate)
@@ -39,9 +43,10 @@
           ></td>
           <td
             class="announcement-cell"
+            v-bind:data-label="translations.validUntil"
             v-text="getValidUntilLabel(announcement.validUntil)"
           ></td>
-          <td class="announcement-cell">
+          <td v-bind:data-label="translations.actions" class="announcement-cell">
             <edit-button-vertical class="edit"
             v-on:click="demonstrateUserHasSelectedAnnouncementToEdit(announcement.id)"
             >
@@ -66,11 +71,11 @@
         
 <script lang="ts">
 import Routes from "@config/paths/routes";
-import Translations from "@jsmodules/translations/components/prostitution_list";
+import Translations from "@js/modules/translations/components/prostitution/prostitution_list";
 import EditButtonVertical from "@js/components/form_controls/edit_button_vertical.vue";
 import DeleteButtonVertical from "@js/components/form_controls/delete_button_vertical.vue";
 import YesNoDialog from "@jscomponents/yes_no_dialog.vue";
-import ExpectShadowCircle from "@jscomponents/decoration/expect_shadow_circle.vue"
+import ExpectShadowCircle from "@jscomponents/decoration/expect_shadow_circle.vue";
 
 export default {
   name: "prostitution-announcements-list",
@@ -294,5 +299,41 @@ export default {
   color:white;
   @include responsive-font(1.4vw, 16px);
 }
+
+@media(max-width:950px) {
+  .list-header {
+    overflow:hidden;
+    width:1px;
+    height:1px;
+    position:absolute;
+    top:-9999px;
+    left:-9999px;
+  }
+
+  .announcement-cell {
+    display: block;
+    padding: 7px;
+    text-align: right;
+    &::before {
+      content : attr(data-label) ' : ';
+      float:left;
+      margin-right:5px;
+      font-weight:bold;
+    }
+  }
+
+  .announcements-table {
+    min-width: 300px;
+  }
+
+  .announcement-row {
+    display:block;
+  }
+
+  .announcement-row:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
 </style>
         

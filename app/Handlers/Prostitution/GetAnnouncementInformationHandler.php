@@ -22,14 +22,25 @@ final class GetAnnouncementInformationHandler
     public function handle(GetProstituteAnnouncementRequest $request)
     {
         $this->request = $request;
+        $this->processRequirements();
+        $announcements = $this->announcementsQuery->get();
+        return $this->basicInformationIsRequired() ? ProstitutionAnnouncementBasicInfoResource::collection($announcements) :
+            ProstitutionAnnouncementEditorFormResource::collection($announcements);
+            
+        }
+        
+    protected function processRequirements() : void
+    {
         $this->announcementsQuery->with(['region', 'city']);
         $this->processUserID();
-        $announcements = $this->announcementsQuery->get();
-        return $this->basicInformationIsRequired() ?
-         ProstitutionAnnouncementBasicInfoResource::collection($announcements) :
-         ProstitutionAnnouncementEditorFormResource::collection($announcements);
-        
+        $this->processAnnouncementID();
+    }
 
+    protected function processAnnouncementID() : void 
+    {
+        if($id = $this->request->get('announcementID')) {
+            $this->announcementsQuery->where('id', $id);
+        }
     }
     
     protected function processUserID() : void 

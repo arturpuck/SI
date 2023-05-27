@@ -178,7 +178,7 @@
 </template>
         
 <script lang="ts">
-import Translations from "@jsmodules/translations/components/prostitute_location_and_working_hours";
+import Translations from "@js/modules/translations/components/prostitution/prostitute_location_and_working_hours";
 import SelectCombo from "@jscomponents/form_controls/select_combo.vue";
 import YesNoOptions from "@jsmodules/translations/components/yes_no_options";
 import AddButton from "@jscomponents-form-controls/add_button.vue";
@@ -192,11 +192,12 @@ import ErrorOnComboForProstitueAnnouncements from "@mixins/components/prostitute
 import TimeStringValidator from "@jsmodules/helpers/time_string_validator";
 import { mapWritableState } from 'pinia';
 import announcementDetails from "@jscomponents/prostitution/notice_editor/announcement_details";
+import InitialTimePeriods from "@js/mixins/components/prostitute_announcement_creator/initial_time_periods";
 
 export default {
   name: "prostitute-location-and-working-hours",
 
-  mixins: [ErrorOnComboForProstitueAnnouncements],
+  mixins: [ErrorOnComboForProstitueAnnouncements, InitialTimePeriods],
 
   emits: ["validated"],
 
@@ -344,20 +345,6 @@ export default {
       this.workingHours["mondayToFriday"] = this.getEmptyPeriod();
     },
 
-    getEmptyPeriod() {
-      return {
-        since: "00:00",
-        until: "00:00",
-      };
-    },
-
-    getUndefinedPeriod() {
-      return {
-        since: undefined,
-        until: undefined,
-      };
-    },
-
     toggleWeekdaysList(): void {
       this.showEverySingleWeekday = !this.showEverySingleWeekday;
     },
@@ -395,19 +382,19 @@ export default {
       let response = await fetch(URL, requestData);
       if (response.status === 200) {
         response = await response.json();
-        this.loadCities(response);
+        this.loadCities({cities : response, initialValue : EmptyInputValue});
       } else {
         this.notifyUserAboutFetchError();
       }
     },
 
-    loadCities(cities: any[]): void {
+    loadCities({cities, initialValue}): void {
       let loadedCities = { ...EmptyInputList };
       cities.forEach((city) => {
         loadedCities[city.id] = city.name;
       });
       this.citiesList = loadedCities;
-      this.cityId = EmptyInputValue;
+      this.cityId = initialValue;
     },
 
     notifyUserAboutFetchError(): void {
@@ -417,6 +404,14 @@ export default {
         headerText: "error",
       });
     },
+
+    attachEventListeners() : void {
+      this.emitter.on(
+        "prostituteLocationAndWorkingHoursValidator",
+        this.validateData
+      );
+      this.emitter.on('loadCities', this.loadCities);
+    }
   },
 
   data() {
@@ -432,14 +427,11 @@ export default {
   },
 
   created() {
-    this.emitter.on(
-      "prostituteLocationAndWorkingHoursValidator",
-      this.validateData
-    );
     this.initiateWorkingHours();
     this.csrfToken = (<HTMLMetaElement>(
       document.getElementById("csrf-token")
     )).content;
+    this.attachEventListeners();
   },
 
   computed: {

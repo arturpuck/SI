@@ -173,6 +173,12 @@ Route::namespace ('Prostitution')->prefix('prostytucja/')->name('prostitution.')
     Route::delete('announcements', 'ProstitutionListController@deleteAnnouncement')
         ->name('announcement.deletion')->middleware('authWithoutRedirecting');
 
+    Route::put('photo-token', 'ProstitutionAnnouncementTokenController@setVerificationToken')
+        ->name('announcement.set-photo-token')->middleware(['authWithoutRedirecting', 'throttle:10,1']);
+
+    Route::delete('photo-token', 'ProstitutionAnnouncementTokenController@unsetVerificationToken')
+        ->name('announcement.unset-photo-token');
+
 });
 
 Route::middleware(['authWithoutRedirecting'])->group(function(){

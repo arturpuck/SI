@@ -33,6 +33,9 @@ class GetProstituteAnnouncementRequest extends FormRequest
         
         $this->merge(['detailsLevel' => $this->query('detailsLevel')]);
         $this->merge(['userID' => $this->query('userID')]);
+        if($announcementID = $this->query('announcementID')) {
+            $this->merge(compact('announcementID'));
+        }
     }
 
     /**
@@ -44,6 +47,7 @@ class GetProstituteAnnouncementRequest extends FormRequest
     {
         return [
             'detailsLevel' => ['required', Rule::in(self::ALLOWED_DETAILS_LEVELS)],
+            'announcementID' => ['nullable', 'exists:prostitution_announcements,id'],
             'userID' => function (string $attribute, mixed $value, Closure $fail) {
                 if ($value === self::AUTHENTICATED_USER_LABEL) {
                     return;

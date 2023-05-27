@@ -1,5 +1,5 @@
 <template>
- <div v-on:drop="addFilesByDrop"  v-on:dragover="allowDrop" class="container">
+ <div v-on:drop="addFilesByDrop"  v-on:dragover="allowDrop" class="image-upload-container">
     <div v-text="Translations['user_info']" class="info"></div>
     <image-photography-icon v-if="nothingHasBeenAdded" class="blank-image"></image-photography-icon>
     <ul class="images-list">
@@ -15,7 +15,7 @@
     <div class="centering-container">
       <add-button v-on:click="showImagesDialogBox">{{Translations['add_button_caption']}}</add-button>
     </div>
-    <input class="files-input" accept="image/*" v-on:input="addFilesToList" ref="fileInput" type="file" multiple v-bind:name="name">
+    <input class="files-input" accept="image/*" v-on:input="() => addFilesToList()" ref="fileInput" type="file" multiple v-bind:name="name">
  </div>   
 </template>
           
@@ -46,8 +46,9 @@ import Translations from "@jsmodules/translations/components/multifile_image_upl
 
       addFilesByDrop(event) {
         this.allowDrop(event);
-        if(this.fileNumberLimitIsNotExceeded(event) && this.filesDoNotExceedSizeLimit(event)) {
-          this.pushFilesAndEmitEvent(event.dataTransfer.files);
+        const files = event.dataTransfer.files;
+        if(this.fileNumberLimitIsNotExceeded(files) && this.filesDoNotExceedSizeLimit(files)) {
+          this.pushFilesAndEmitEvent(files);
         }
       },
 
@@ -55,9 +56,10 @@ import Translations from "@jsmodules/translations/components/multifile_image_upl
         this.$refs.fileInput.click();
       },
 
-      addFilesToList() : void {
-        if(this.fileNumberLimitIsNotExceeded() && this.filesDoNotExceedSizeLimit()) {
-          this.pushFilesAndEmitEvent(this.$refs.fileInput.files);
+      addFilesToList(files : File[] = undefined) : void {
+        files ??= this.$refs.fileInput.files;
+        if(this.fileNumberLimitIsNotExceeded(files) && this.filesDoNotExceedSizeLimit(files)) {
+          this.pushFilesAndEmitEvent(files);
         }
       },
 
@@ -66,9 +68,9 @@ import Translations from "@jsmodules/translations/components/multifile_image_upl
         this.$emit('addedPhotos', this.files);
       },
 
-      fileNumberLimitIsNotExceeded(event = undefined) : boolean {
+      fileNumberLimitIsNotExceeded(files : File[]) : boolean {
         if(this.numberOfMaximumPhotos !== undefined) {
-          const numberOfFilesUserWantsToAdd = event === undefined ? this.$refs.fileInput.files.length : event.dataTransfer.files.length;
+          const numberOfFilesUserWantsToAdd = files.length;
           const totalNumberOfPhotosIncludingCurentlyAdded = this.files.length + numberOfFilesUserWantsToAdd;
           if(totalNumberOfPhotosIncludingCurentlyAdded > this.numberOfMaximumPhotos) {
             this.$emit('numberOfImagesLimitExceeded', totalNumberOfPhotosIncludingCurentlyAdded);
@@ -78,13 +80,12 @@ import Translations from "@jsmodules/translations/components/multifile_image_upl
         return true;
       },
 
-      filesDoNotExceedSizeLimit(event = undefined) : boolean {
+      filesDoNotExceedSizeLimit(files : File[]) : boolean {
         if(this.maximumFileSizeInBytes === undefined) {
           return true;
         }
 
         let invalidFilesNames = [];
-        let files = event === undefined ? this.$refs.fileInput.files : event.dataTransfer.files;
         let allFilesAreValid = true;
         
         for(let file of files) {
@@ -108,7 +109,37 @@ import Translations from "@jsmodules/translations/components/multifile_image_upl
       removeFileFromListAndEmitEvent(indexOfFileThatShouldBeRemoved : number) : void {
         this.files = this.files.filter((file, fileIndex) => fileIndex != indexOfFileThatShouldBeRemoved);
         this.$emit('removedPhoto', this.files);
+      },
+
+      async loadImagesByURL(URLs : string[]) {
+          const imagesRequests = [];
+          let imagesBlobs = [];
+          URLs.forEach(URL => {
+            imagesRequests.push(fetch(URL));
+          });
+          const responses = await Promise.all(imagesRequests);
+          responses.forEach(response => {
+            imagesBlobs.push(response.blob());
+          });
+
+          imagesBlobs = await Promise.all(imagesBlobs);
+          const photos = [];
+          imagesBlobs.forEach((blob, number) => {
+            const fileName = `${number}.${this.getGileExtensionByURL(URLs[number])}`;
+            let file = new File([blob], fileName);
+            photos.push(file);
+          });
+          this.addFilesToList(photos);
+      },
+
+      getGileExtensionByURL(URL : string) : string {
+        return URL.split('.').pop();
+      },
+
+      addEventListeners() : void {
+        this.emitter.on('loadImagesByURL', this.loadImagesByURL);
       }
+
     },
 
     props : {
@@ -140,7 +171,7 @@ import Translations from "@jsmodules/translations/components/multifile_image_upl
     },
   
     mounted() {
-
+      this.addEventListeners();
     },
 
     computed : {
@@ -170,7 +201,7 @@ import Translations from "@jsmodules/translations/components/multifile_image_upl
     padding:5px;
   }
 
-  .container {
+  .image-upload-container {
     border-radius: 4px;
     background:black;
     border:1px solid silver;

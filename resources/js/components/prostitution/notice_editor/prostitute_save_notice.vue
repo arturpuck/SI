@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import Translations from "@jsmodules/translations/components/prostitution_save_notice";
+import Translations from "@js/modules/translations/components/prostitution/prostitution_save_notice";
 import RoutesConfig from "@config/paths/routes";
 import AddButton from "@jscomponents-form-controls/add_button.vue";
 import announcementDetails from "@jscomponents/prostitution/notice_editor/announcement_details";

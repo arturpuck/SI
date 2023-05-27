@@ -384,14 +384,14 @@
 
 <script lang="ts">
 import SelectCombo from "@jscomponents/form_controls/select_combo.vue";
-import Translations from "@jsmodules/translations/components/prostitute_services";
-import { DefaultPreferencesOptionsList } from "@jsmodules/translations/components/prostitute_services";
-import { DefaultSexPreference } from "@jsmodules/translations/components/prostitute_services";
-import { ServiceKeys } from "@jsmodules/translations/components/prostitute_services";
-import { BlowjobPreferencesOptionsList } from "@jsmodules/translations/components/prostitute_services";
-import { BlowjobPreference } from "@jsmodules/translations/components/prostitute_services";
-import { SecondaryServicesList } from "@jsmodules/translations/components/prostitute_services";
-import { AvailableServiceFormsToPayFor } from "@jsmodules/translations/components/prostitute_services";
+import Translations from "@js/modules/translations/components/prostitution/prostitute_services";
+import { DefaultPreferencesOptionsList } from "@js/modules/translations/components/prostitution/prostitute_services";
+import { DefaultSexPreference } from "@js/modules/translations/components/prostitution/prostitute_services";
+import { ServiceKeys } from "@js/modules/translations/components/prostitution/prostitute_services";
+import { BlowjobPreferencesOptionsList } from "@js/modules/translations/components/prostitution/prostitute_services";
+import { BlowjobPreference } from "@js/modules/translations/components/prostitution/prostitute_services";
+import { SecondaryServicesList } from "@js/modules/translations/components/prostitution/prostitute_services";
+import { AvailableServiceFormsToPayFor } from "@js/modules/translations/components/prostitution/prostitute_services";
 import BinaryPreferences from "@jsmodules/translations/components/yes_no_options";
 import SimpleLabeledSelect from "@jscomponents-form-controls/simple_labeled_select.vue";
 import SimpleLabeledInput from "@jscomponents-form-controls/simple_labeled_input.vue";

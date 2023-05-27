@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia';
 import { EmptyInputValue} from "@jscomponents/empty_input_option";
-import { EmptyInputList } from "@jscomponents/empty_input_option";
 
 const announcementDetails = defineStore({
     id : 'announcementDetails',
     state : () => ({
+        id : undefined,
         nickname : '',
         phoneNumber : '',
         birthDate: null,
@@ -49,6 +49,8 @@ const announcementDetails = defineStore({
         workingHours: undefined,
         cityId: EmptyInputValue,
         regionId: EmptyInputValue,
+
+        modifiedFields : []
 
     })
 });

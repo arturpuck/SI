@@ -6,6 +6,7 @@ use Illuminate\Http\Response;
 use App\ProstitutionAnnouncement;
 use App\Http\Requests\Prostitution\CreateProstitutionAnnouncementRequest;
 use App\Traits\ColumnToRequestField;
+use Illuminate\Support\Facades\Session;
 
 final class CreateProstitutionAnnouncementHandler
 {
@@ -53,6 +54,7 @@ final class CreateProstitutionAnnouncementHandler
         $this->processPhotos();
         $this->assignLocationAndWorkingHours();
         $this->announcement->save();
+        Session::remove('verificationToken');
         return new Response(status:201);
     }
 

@@ -187,8 +187,11 @@
           box-shadow: 2px 2px 2px 3px;
   max-width: 1200px;
   margin: 0 auto;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  padding: 5px; }
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content; }
+
+@media (max-width: 950px) {
+  .container {
+    margin: 20px auto 0; } }
 

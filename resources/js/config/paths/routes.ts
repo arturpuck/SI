@@ -4,7 +4,8 @@ const prostitutionRoutes = {
     announcementsList : '/prostytucja/ogłoszenia',
     noticeFormOptions : '/prostytucja/notice-form-options',
     myNoticesList : '/prostytucja/lista-moich-ogłoszeń',
-    noticesManagement : '/prostytucja/announcements'
+    noticesManagement : '/prostytucja/announcements',
+    photoToken : '/prostytucja/photo-token'
 }
 
 export default {

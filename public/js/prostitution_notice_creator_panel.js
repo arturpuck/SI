@@ -20029,6 +20029,121 @@ exports["default"] = {
 "use strict";
 
 
+var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+var __generator = void 0 && (void 0).__generator || function (thisArg, body) {
+  var _ = {
+      label: 0,
+      sent: function sent() {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      },
+      trys: [],
+      ops: []
+    },
+    f,
+    y,
+    t,
+    g;
+  return g = {
+    next: verb(0),
+    "throw": verb(1),
+    "return": verb(2)
+  }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {
+    return this;
+  }), g;
+  function verb(n) {
+    return function (v) {
+      return step([n, v]);
+    };
+  }
+  function step(op) {
+    if (f) throw new TypeError("Generator is already executing.");
+    while (g && (g = 0, op[0] && (_ = 0)), _) try {
+      if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+      if (y = 0, t) op = [op[0] & 2, t.value];
+      switch (op[0]) {
+        case 0:
+        case 1:
+          t = op;
+          break;
+        case 4:
+          _.label++;
+          return {
+            value: op[1],
+            done: false
+          };
+        case 5:
+          _.label++;
+          y = op[1];
+          op = [0];
+          continue;
+        case 7:
+          op = _.ops.pop();
+          _.trys.pop();
+          continue;
+        default:
+          if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+            _ = 0;
+            continue;
+          }
+          if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+            _.label = op[1];
+            break;
+          }
+          if (op[0] === 6 && _.label < t[1]) {
+            _.label = t[1];
+            t = op;
+            break;
+          }
+          if (t && _.label < t[2]) {
+            _.label = t[2];
+            _.ops.push(op);
+            break;
+          }
+          if (t[2]) _.ops.pop();
+          _.trys.pop();
+          continue;
+      }
+      op = body.call(thisArg, _);
+    } catch (e) {
+      op = [6, e];
+      y = 0;
+    } finally {
+      f = t = 0;
+    }
+    if (op[0] & 5) throw op[1];
+    return {
+      value: op[0] ? op[1] : void 0,
+      done: true
+    };
+  }
+};
 var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -20056,16 +20171,21 @@ exports["default"] = {
     },
     addFilesByDrop: function addFilesByDrop(event) {
       this.allowDrop(event);
-      if (this.fileNumberLimitIsNotExceeded(event) && this.filesDoNotExceedSizeLimit(event)) {
-        this.pushFilesAndEmitEvent(event.dataTransfer.files);
+      var files = event.dataTransfer.files;
+      if (this.fileNumberLimitIsNotExceeded(files) && this.filesDoNotExceedSizeLimit(files)) {
+        this.pushFilesAndEmitEvent(files);
       }
     },
     showImagesDialogBox: function showImagesDialogBox() {
       this.$refs.fileInput.click();
     },
-    addFilesToList: function addFilesToList() {
-      if (this.fileNumberLimitIsNotExceeded() && this.filesDoNotExceedSizeLimit()) {
-        this.pushFilesAndEmitEvent(this.$refs.fileInput.files);
+    addFilesToList: function addFilesToList(files) {
+      if (files === void 0) {
+        files = undefined;
+      }
+      files !== null && files !== void 0 ? files : files = this.$refs.fileInput.files;
+      if (this.fileNumberLimitIsNotExceeded(files) && this.filesDoNotExceedSizeLimit(files)) {
+        this.pushFilesAndEmitEvent(files);
       }
     },
     pushFilesAndEmitEvent: function pushFilesAndEmitEvent(files) {
@@ -20073,12 +20193,9 @@ exports["default"] = {
       (_a = this.files).push.apply(_a, files);
       this.$emit('addedPhotos', this.files);
     },
-    fileNumberLimitIsNotExceeded: function fileNumberLimitIsNotExceeded(event) {
-      if (event === void 0) {
-        event = undefined;
-      }
+    fileNumberLimitIsNotExceeded: function fileNumberLimitIsNotExceeded(files) {
       if (this.numberOfMaximumPhotos !== undefined) {
-        var numberOfFilesUserWantsToAdd = event === undefined ? this.$refs.fileInput.files.length : event.dataTransfer.files.length;
+        var numberOfFilesUserWantsToAdd = files.length;
         var totalNumberOfPhotosIncludingCurentlyAdded = this.files.length + numberOfFilesUserWantsToAdd;
         if (totalNumberOfPhotosIncludingCurentlyAdded > this.numberOfMaximumPhotos) {
           this.$emit('numberOfImagesLimitExceeded', totalNumberOfPhotosIncludingCurentlyAdded);
@@ -20087,15 +20204,11 @@ exports["default"] = {
       }
       return true;
     },
-    filesDoNotExceedSizeLimit: function filesDoNotExceedSizeLimit(event) {
-      if (event === void 0) {
-        event = undefined;
-      }
+    filesDoNotExceedSizeLimit: function filesDoNotExceedSizeLimit(files) {
       if (this.maximumFileSizeInBytes === undefined) {
         return true;
       }
       var invalidFilesNames = [];
-      var files = event === undefined ? this.$refs.fileInput.files : event.dataTransfer.files;
       var allFilesAreValid = true;
       for (var _i = 0, files_1 = files; _i < files_1.length; _i++) {
         var file = files_1[_i];
@@ -20118,6 +20231,46 @@ exports["default"] = {
         return fileIndex != indexOfFileThatShouldBeRemoved;
       });
       this.$emit('removedPhoto', this.files);
+    },
+    loadImagesByURL: function loadImagesByURL(URLs) {
+      return __awaiter(this, void 0, void 0, function () {
+        var imagesRequests, imagesBlobs, responses, photos;
+        var _this = this;
+        return __generator(this, function (_a) {
+          switch (_a.label) {
+            case 0:
+              imagesRequests = [];
+              imagesBlobs = [];
+              URLs.forEach(function (URL) {
+                imagesRequests.push(fetch(URL));
+              });
+              return [4 /*yield*/, Promise.all(imagesRequests)];
+            case 1:
+              responses = _a.sent();
+              responses.forEach(function (response) {
+                imagesBlobs.push(response.blob());
+              });
+              return [4 /*yield*/, Promise.all(imagesBlobs)];
+            case 2:
+              imagesBlobs = _a.sent();
+              photos = [];
+              imagesBlobs.forEach(function (blob, number) {
+                var fileName = "".concat(number, ".").concat(_this.getGileExtensionByURL(URLs[number]));
+                var file = new File([blob], fileName);
+                photos.push(file);
+              });
+              this.addFilesToList(photos);
+              return [2 /*return*/];
+          }
+        });
+      });
+    },
+
+    getGileExtensionByURL: function getGileExtensionByURL(URL) {
+      return URL.split('.').pop();
+    },
+    addEventListeners: function addEventListeners() {
+      this.emitter.on('loadImagesByURL', this.loadImagesByURL);
     }
   },
   props: {
@@ -20143,7 +20296,9 @@ exports["default"] = {
       Translations: multifile_image_upload_1["default"]
     };
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.addEventListeners();
+  },
   computed: {
     nothingHasBeenAdded: function nothingHasBeenAdded() {
       return this.files.length === 0;
@@ -21294,6 +21449,146 @@ exports["default"] = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=script&lang=ts":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=script&lang=ts ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __assign = void 0 && (void 0).__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign.apply(this, arguments);
+};
+var __spreadArray = void 0 && (void 0).__spreadArray || function (to, from, pack) {
+  if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+    if (ar || !(i in from)) {
+      if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+      ar[i] = from[i];
+    }
+  }
+  return to.concat(ar || Array.prototype.slice.call(from));
+};
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+var prostitution_offer_photos_1 = __importDefault(__webpack_require__(/*! @js/modules/translations/components/prostitution/prostitution_offer_photos */ "./resources/js/modules/translations/components/prostitution/prostitution_offer_photos.ts"));
+var multifile_image_upload_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/form_controls/multifile_image_upload.vue */ "./resources/js/components/form_controls/multifile_image_upload.vue"));
+var notification_function_1 = __importDefault(__webpack_require__(/*! @jsmodules/notification_function */ "./resources/js/modules/notification_function.ts"));
+var pinia_1 = __webpack_require__(/*! pinia */ "./node_modules/pinia/index.js");
+var announcement_details_1 = __importDefault(__webpack_require__(/*! @jscomponents/prostitution/notice_editor/announcement_details */ "./resources/js/components/prostitution/notice_editor/announcement_details.ts"));
+exports["default"] = {
+  name: "prostitute-photos",
+  emits: ["validated"],
+  components: {
+    MultifileImageUpload: multifile_image_upload_vue_1["default"]
+  },
+  data: function data() {
+    return {
+      Translations: prostitution_offer_photos_1["default"],
+      showNotification: notification_function_1["default"]
+    };
+  },
+  mounted: function mounted() {
+    this.addEventListeners();
+  },
+  methods: {
+    notifyUserAboutToManyPhotos: function notifyUserAboutToManyPhotos() {
+      this.showNotification("you_have_exceeded_photos_limit", "error");
+    },
+    notifyUserThatFileSizeHasBeenExceeded: function notifyUserThatFileSizeHasBeenExceeded(listOfFilesThatAreToBig) {
+      var filesListString = listOfFilesThatAreToBig.join(", ");
+      var errorMessage = "".concat(prostitution_offer_photos_1["default"].file_size_has_been_exceeded_for_following_files, " : ").concat(filesListString);
+      this.showNotification(errorMessage, "error");
+    },
+    assignPhotos: function assignPhotos(photos) {
+      this.photos = __spreadArray([], photos, true);
+    },
+    validatePhotos: function validatePhotos() {
+      if (this.numberOfAddedPhotos > 10 || this.numberOfAddedPhotos < 1) {
+        this.showNotification("the_number_of_photos_must_be_between_1_and_10", "error");
+      } else {
+        this.emitter.emit("prostitutePhotosValidated");
+      }
+    },
+    addEventListeners: function addEventListeners() {
+      this.emitter.on("prostitutePhotosValidator", this.validatePhotos);
+    }
+  },
+  computed: __assign({
+    numberOfAddedPhotos: function numberOfAddedPhotos() {
+      return this.photos.length;
+    }
+  }, (0, pinia_1.mapWritableState)(announcement_details_1["default"], ["photos", "modifiedFields"]))
+};
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=script&lang=ts":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=script&lang=ts ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+var prostitution_offer_photos_1 = __importDefault(__webpack_require__(/*! @js/modules/translations/components/prostitution/prostitution_offer_photos */ "./resources/js/modules/translations/components/prostitution/prostitution_offer_photos.ts"));
+var prostitute_photos_vue_1 = __importDefault(__webpack_require__(/*! @js/components/prostitution/notice_editor/photos/prostitute_photos.vue */ "./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue"));
+exports["default"] = {
+  name: "prostitute-photos-for-creator",
+  emits: ['validated'],
+  data: function data() {
+    return {
+      Translations: prostitution_offer_photos_1["default"],
+      token: undefined
+    };
+  },
+  methods: {
+    addEventListeners: function addEventListeners() {
+      var _this = this;
+      this.emitter.on('setProstitutePhotoToken', function (token) {
+        return _this.token = token;
+      });
+      this.emitter.on('prostitutePhotosForCreatorValidator', function () {
+        return _this.emitter.emit('prostitutePhotosValidator');
+      });
+    },
+    emitSuccessFullValidation: function emitSuccessFullValidation() {
+      this.$emit('validated');
+    }
+  },
+  components: {
+    ProstitutePhotos: prostitute_photos_vue_1["default"]
+  },
+  mounted: function mounted() {
+    this.addEventListeners();
+  }
+};
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_location_and_working_hours.vue?vue&type=script&lang=ts":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_location_and_working_hours.vue?vue&type=script&lang=ts ***!
@@ -21436,7 +21731,7 @@ var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-var prostitute_location_and_working_hours_1 = __importDefault(__webpack_require__(/*! @jsmodules/translations/components/prostitute_location_and_working_hours */ "./resources/js/modules/translations/components/prostitute_location_and_working_hours.ts"));
+var prostitute_location_and_working_hours_1 = __importDefault(__webpack_require__(/*! @js/modules/translations/components/prostitution/prostitute_location_and_working_hours */ "./resources/js/modules/translations/components/prostitution/prostitute_location_and_working_hours.ts"));
 var select_combo_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/form_controls/select_combo.vue */ "./resources/js/components/form_controls/select_combo.vue"));
 var yes_no_options_1 = __importDefault(__webpack_require__(/*! @jsmodules/translations/components/yes_no_options */ "./resources/js/modules/translations/components/yes_no_options.ts"));
 var add_button_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents-form-controls/add_button.vue */ "./resources/js/components/form_controls/add_button.vue"));
@@ -21450,9 +21745,10 @@ var error_on_combo_input_1 = __importDefault(__webpack_require__(/*! @mixins/com
 var time_string_validator_1 = __importDefault(__webpack_require__(/*! @jsmodules/helpers/time_string_validator */ "./resources/js/modules/helpers/time_string_validator.ts"));
 var pinia_1 = __webpack_require__(/*! pinia */ "./node_modules/pinia/index.js");
 var announcement_details_1 = __importDefault(__webpack_require__(/*! @jscomponents/prostitution/notice_editor/announcement_details */ "./resources/js/components/prostitution/notice_editor/announcement_details.ts"));
+var initial_time_periods_1 = __importDefault(__webpack_require__(/*! @js/mixins/components/prostitute_announcement_creator/initial_time_periods */ "./resources/js/mixins/components/prostitute_announcement_creator/initial_time_periods.ts"));
 exports["default"] = {
   name: "prostitute-location-and-working-hours",
-  mixins: [error_on_combo_input_1["default"]],
+  mixins: [error_on_combo_input_1["default"], initial_time_periods_1["default"]],
   emits: ["validated"],
   props: {
     voivodeshipsList: {
@@ -21583,18 +21879,6 @@ exports["default"] = {
       });
       this.workingHours["mondayToFriday"] = this.getEmptyPeriod();
     },
-    getEmptyPeriod: function getEmptyPeriod() {
-      return {
-        since: "00:00",
-        until: "00:00"
-      };
-    },
-    getUndefinedPeriod: function getUndefinedPeriod() {
-      return {
-        since: undefined,
-        until: undefined
-      };
-    },
     toggleWeekdaysList: function toggleWeekdaysList() {
       this.showEverySingleWeekday = !this.showEverySingleWeekday;
     },
@@ -21639,7 +21923,10 @@ exports["default"] = {
               return [4 /*yield*/, response.json()];
             case 2:
               response = _a.sent();
-              this.loadCities(response);
+              this.loadCities({
+                cities: response,
+                initialValue: empty_input_option_1.EmptyInputValue
+              });
               return [3 /*break*/, 4];
             case 3:
               this.notifyUserAboutFetchError();
@@ -21651,13 +21938,15 @@ exports["default"] = {
       });
     },
 
-    loadCities: function loadCities(cities) {
+    loadCities: function loadCities(_a) {
+      var cities = _a.cities,
+        initialValue = _a.initialValue;
       var loadedCities = __assign({}, empty_input_option_2.EmptyInputList);
       cities.forEach(function (city) {
         loadedCities[city.id] = city.name;
       });
       this.citiesList = loadedCities;
-      this.cityId = empty_input_option_1.EmptyInputValue;
+      this.cityId = initialValue;
     },
     notifyUserAboutFetchError: function notifyUserAboutFetchError() {
       this.emitter.emit("showNotification", {
@@ -21665,6 +21954,10 @@ exports["default"] = {
         notificationType: "error",
         headerText: "error"
       });
+    },
+    attachEventListeners: function attachEventListeners() {
+      this.emitter.on("prostituteLocationAndWorkingHoursValidator", this.validateData);
+      this.emitter.on('loadCities', this.loadCities);
     }
   },
   data: function data() {
@@ -21679,9 +21972,9 @@ exports["default"] = {
     };
   },
   created: function created() {
-    this.emitter.on("prostituteLocationAndWorkingHoursValidator", this.validateData);
     this.initiateWorkingHours();
     this.csrfToken = document.getElementById("csrf-token").content;
+    this.attachEventListeners();
   },
   computed: __assign({
     showWeeklySchedule: function showWeeklySchedule() {
@@ -21731,7 +22024,7 @@ var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-var prostitute_basic_information_1 = __importDefault(__webpack_require__(/*! @jsmodules/translations/components/prostitute_basic_information */ "./resources/js/modules/translations/components/prostitute_basic_information.ts"));
+var prostitute_basic_information_1 = __importDefault(__webpack_require__(/*! @js/modules/translations/components/prostitution/prostitute_basic_information */ "./resources/js/modules/translations/components/prostitution/prostitute_basic_information.ts"));
 var simple_labeled_input_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents-form-controls/simple_labeled_input.vue */ "./resources/js/components/form_controls/simple_labeled_input.vue"));
 var simple_labeled_select_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents-form-controls/simple_labeled_select.vue */ "./resources/js/components/form_controls/simple_labeled_select.vue"));
 var select_combo_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/form_controls/select_combo.vue */ "./resources/js/components/form_controls/select_combo.vue"));
@@ -21759,6 +22052,11 @@ exports["default"] = {
       type: Array,
       "default": [],
       required: true
+    },
+    disabledBirthDate: {
+      type: Boolean,
+      "default": false,
+      required: false
     }
   },
   methods: {
@@ -21892,98 +22190,6 @@ exports["default"] = {
   created: function created() {
     this.csrfToken = document.getElementById("csrf-token").content;
   }
-};
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=script&lang=ts":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=script&lang=ts ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __assign = void 0 && (void 0).__assign || function () {
-  __assign = Object.assign || function (t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-      s = arguments[i];
-      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-    }
-    return t;
-  };
-  return __assign.apply(this, arguments);
-};
-var __spreadArray = void 0 && (void 0).__spreadArray || function (to, from, pack) {
-  if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-    if (ar || !(i in from)) {
-      if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-      ar[i] = from[i];
-    }
-  }
-  return to.concat(ar || Array.prototype.slice.call(from));
-};
-var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-var prostitution_offer_photos_1 = __importDefault(__webpack_require__(/*! @jsmodules/translations/components/prostitution_offer_photos */ "./resources/js/modules/translations/components/prostitution_offer_photos.ts"));
-var multifile_image_upload_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/form_controls/multifile_image_upload.vue */ "./resources/js/components/form_controls/multifile_image_upload.vue"));
-var notification_function_1 = __importDefault(__webpack_require__(/*! @jsmodules/notification_function */ "./resources/js/modules/notification_function.ts"));
-var pinia_1 = __webpack_require__(/*! pinia */ "./node_modules/pinia/index.js");
-var announcement_details_1 = __importDefault(__webpack_require__(/*! @jscomponents/prostitution/notice_editor/announcement_details */ "./resources/js/components/prostitution/notice_editor/announcement_details.ts"));
-exports["default"] = {
-  name: "prostitute-photos",
-  props: {
-    token: {
-      type: String,
-      "default": '',
-      required: true
-    }
-  },
-  emits: ["validated"],
-  components: {
-    MultifileImageUpload: multifile_image_upload_vue_1["default"]
-  },
-  data: function data() {
-    return {
-      Translations: prostitution_offer_photos_1["default"],
-      showNotification: notification_function_1["default"]
-    };
-  },
-  mounted: function mounted() {
-    this.emitter.on("prostitutePhotosValidator", this.validatePhotos);
-  },
-  methods: {
-    notifyUserAboutToManyPhotos: function notifyUserAboutToManyPhotos() {
-      this.showNotification('you_have_exceeded_photos_limit', 'error');
-    },
-    notifyUserThatFileSizeHasBeenExceeded: function notifyUserThatFileSizeHasBeenExceeded(listOfFilesThatAreToBig) {
-      var filesListString = listOfFilesThatAreToBig.join(', ');
-      var errorMessage = "".concat(prostitution_offer_photos_1["default"].file_size_has_been_exceeded_for_following_files, " : ").concat(filesListString);
-      this.showNotification(errorMessage, 'error');
-    },
-    assignPhotos: function assignPhotos(photos) {
-      this.photos = __spreadArray([], photos, true);
-    },
-    validatePhotos: function validatePhotos() {
-      if (this.numberOfAddedPhotos > 10 || this.numberOfAddedPhotos < 1) {
-        this.showNotification('the_number_of_photos_must_be_between_1_and_10', 'error');
-      } else {
-        this.$emit('validated');
-      }
-    }
-  },
-  computed: __assign({
-    numberOfAddedPhotos: function numberOfAddedPhotos() {
-      return this.photos.length;
-    }
-  }, (0, pinia_1.mapWritableState)(announcement_details_1["default"], ['photos']))
 };
 
 /***/ }),
@@ -22130,7 +22336,7 @@ var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-var prostitution_save_notice_1 = __importDefault(__webpack_require__(/*! @jsmodules/translations/components/prostitution_save_notice */ "./resources/js/modules/translations/components/prostitution_save_notice.ts"));
+var prostitution_save_notice_1 = __importDefault(__webpack_require__(/*! @js/modules/translations/components/prostitution/prostitution_save_notice */ "./resources/js/modules/translations/components/prostitution/prostitution_save_notice.ts"));
 var routes_1 = __importDefault(__webpack_require__(/*! @config/paths/routes */ "./resources/js/config/paths/routes.ts"));
 var add_button_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents-form-controls/add_button.vue */ "./resources/js/components/form_controls/add_button.vue"));
 var announcement_details_1 = __importDefault(__webpack_require__(/*! @jscomponents/prostitution/notice_editor/announcement_details */ "./resources/js/components/prostitution/notice_editor/announcement_details.ts"));
@@ -22378,14 +22584,14 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 var select_combo_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/form_controls/select_combo.vue */ "./resources/js/components/form_controls/select_combo.vue"));
-var prostitute_services_1 = __importDefault(__webpack_require__(/*! @jsmodules/translations/components/prostitute_services */ "./resources/js/modules/translations/components/prostitute_services.ts"));
-var prostitute_services_2 = __webpack_require__(/*! @jsmodules/translations/components/prostitute_services */ "./resources/js/modules/translations/components/prostitute_services.ts");
-var prostitute_services_3 = __webpack_require__(/*! @jsmodules/translations/components/prostitute_services */ "./resources/js/modules/translations/components/prostitute_services.ts");
-var prostitute_services_4 = __webpack_require__(/*! @jsmodules/translations/components/prostitute_services */ "./resources/js/modules/translations/components/prostitute_services.ts");
-var prostitute_services_5 = __webpack_require__(/*! @jsmodules/translations/components/prostitute_services */ "./resources/js/modules/translations/components/prostitute_services.ts");
-var prostitute_services_6 = __webpack_require__(/*! @jsmodules/translations/components/prostitute_services */ "./resources/js/modules/translations/components/prostitute_services.ts");
-var prostitute_services_7 = __webpack_require__(/*! @jsmodules/translations/components/prostitute_services */ "./resources/js/modules/translations/components/prostitute_services.ts");
-var prostitute_services_8 = __webpack_require__(/*! @jsmodules/translations/components/prostitute_services */ "./resources/js/modules/translations/components/prostitute_services.ts");
+var prostitute_services_1 = __importDefault(__webpack_require__(/*! @js/modules/translations/components/prostitution/prostitute_services */ "./resources/js/modules/translations/components/prostitution/prostitute_services.ts"));
+var prostitute_services_2 = __webpack_require__(/*! @js/modules/translations/components/prostitution/prostitute_services */ "./resources/js/modules/translations/components/prostitution/prostitute_services.ts");
+var prostitute_services_3 = __webpack_require__(/*! @js/modules/translations/components/prostitution/prostitute_services */ "./resources/js/modules/translations/components/prostitution/prostitute_services.ts");
+var prostitute_services_4 = __webpack_require__(/*! @js/modules/translations/components/prostitution/prostitute_services */ "./resources/js/modules/translations/components/prostitution/prostitute_services.ts");
+var prostitute_services_5 = __webpack_require__(/*! @js/modules/translations/components/prostitution/prostitute_services */ "./resources/js/modules/translations/components/prostitution/prostitute_services.ts");
+var prostitute_services_6 = __webpack_require__(/*! @js/modules/translations/components/prostitution/prostitute_services */ "./resources/js/modules/translations/components/prostitution/prostitute_services.ts");
+var prostitute_services_7 = __webpack_require__(/*! @js/modules/translations/components/prostitution/prostitute_services */ "./resources/js/modules/translations/components/prostitution/prostitute_services.ts");
+var prostitute_services_8 = __webpack_require__(/*! @js/modules/translations/components/prostitution/prostitute_services */ "./resources/js/modules/translations/components/prostitution/prostitute_services.ts");
 var yes_no_options_1 = __importDefault(__webpack_require__(/*! @jsmodules/translations/components/yes_no_options */ "./resources/js/modules/translations/components/yes_no_options.ts"));
 var simple_labeled_select_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents-form-controls/simple_labeled_select.vue */ "./resources/js/components/form_controls/simple_labeled_select.vue"));
 var simple_labeled_input_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents-form-controls/simple_labeled_input.vue */ "./resources/js/components/form_controls/simple_labeled_input.vue"));
@@ -22619,6 +22825,535 @@ exports["default"] = {
 "use strict";
 
 
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+var prostitute_save_notice_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/prostitution/notice_editor/prostitute_save_notice.vue */ "./resources/js/components/prostitution/notice_editor/prostitute_save_notice.vue"));
+var prostitute_photos_for_creator_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue */ "./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue"));
+var editor_basic_control_1 = __importDefault(__webpack_require__(/*! @mixins/components/prostitute_announcement_creator/editor_basic_control */ "./resources/js/mixins/components/prostitute_announcement_creator/editor_basic_control.ts"));
+var Section;
+(function (Section) {
+  Section["ProstitutionPolicyDescription"] = "ProstitutionPolicyDescription";
+  Section["ProstituteBasicInformation"] = "ProstituteBasicInformation";
+  Section["ProstituteServices"] = "ProstituteServices";
+  Section["ProstitutePhotosForCreator"] = "ProstitutePhotosForCreator";
+  Section["ProstituteLocationAndWorkingHours"] = "ProstituteLocationAndWorkingHours";
+  Section["ProstituteSaveNotice"] = "ProstituteSaveNotice";
+})(Section || (Section = {}));
+exports["default"] = {
+  name: "prostitution-offer-creator",
+  mixins: [editor_basic_control_1["default"]],
+  components: {
+    ProstituteSaveNotice: prostitute_save_notice_vue_1["default"],
+    ProstitutePhotosForCreator: prostitute_photos_for_creator_vue_1["default"]
+  },
+  data: function data() {
+    return {
+      orderedSections: [Section.ProstitutionPolicyDescription, Section.ProstituteBasicInformation, Section.ProstituteServices, Section.ProstitutePhotosForCreator, Section.ProstituteLocationAndWorkingHours, Section.ProstituteSaveNotice]
+    };
+  },
+  methods: {
+    addEventListeners: function addEventListeners() {
+      this.emitter.on('prostitutePhotosValidated', this.skipToNextSection);
+    }
+  },
+  mounted: function mounted() {
+    this.prepareSelectValues();
+    this.addEventListeners();
+  },
+  computed: {
+    decorationComponentName: function decorationComponentName() {
+      var iconComponentNamesBySection = {
+        ProstitutionPolicyDescription: "SecureDocumentsIcon",
+        ProstituteBasicInformation: "IdCardIcon",
+        ProstituteServices: "OhIcon",
+        ProstitutePhotos: "ImagePhotographyIcon",
+        ProstituteLocationAndWorkingHours: "TimeLateIcon",
+        ProstituteSaveNotice: "FloppyDiscIcon"
+      };
+      return iconComponentNamesBySection[this.currentSection];
+    },
+    currentSection: function currentSection() {
+      return this.orderedSections[this.sectionIndex];
+    },
+    showPolicyDescription: function showPolicyDescription() {
+      return this.currentSection === Section.ProstitutionPolicyDescription;
+    },
+    showBasicInformation: function showBasicInformation() {
+      return this.currentSection === Section.ProstituteBasicInformation;
+    },
+    showServices: function showServices() {
+      return this.currentSection === Section.ProstituteServices;
+    },
+    showPhotos: function showPhotos() {
+      return this.currentSection === Section.ProstitutePhotosForCreator;
+    },
+    showSaveNotice: function showSaveNotice() {
+      return this.currentSection === Section.ProstituteSaveNotice;
+    },
+    showLocationAndWorkingHours: function showLocationAndWorkingHours() {
+      return this.currentSection === Section.ProstituteLocationAndWorkingHours;
+    },
+    iconClass: function iconClass() {
+      var classesNameBySection = {
+        ProstitutionPolicyDescription: "policy-section",
+        ProstituteBasicInformation: "personalities-section",
+        ProstituteServices: "services-section",
+        ProstitutePhotosForCreator: "photos-section",
+        ProstituteLocationAndWorkingHours: "location-and-working-hours",
+        ProstituteSaveNotice: "save-notice"
+      };
+      return classesNameBySection[this.currentSection];
+    }
+  }
+};
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitution_policy_description.vue?vue&type=script&lang=ts":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitution_policy_description.vue?vue&type=script&lang=ts ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+var prostitution_offer_policy_description_1 = __importDefault(__webpack_require__(/*! @js/modules/translations/components/prostitution/prostitution_offer_policy_description */ "./resources/js/modules/translations/components/prostitution/prostitution_offer_policy_description.ts"));
+var info_circle_icon_vue_1 = __importDefault(__webpack_require__(/*! @svgicon/info_circle_icon.vue */ "./resources/js/components/decoration/icons/svg/info_circle_icon.vue"));
+var routes_1 = __importDefault(__webpack_require__(/*! @config/paths/routes */ "./resources/js/config/paths/routes.ts"));
+exports["default"] = {
+  name: "prostitution-policy-description",
+  emits: ['validated'],
+  components: {
+    InfoCircleIcon: info_circle_icon_vue_1["default"]
+  },
+  data: function data() {
+    return {
+      translations: prostitution_offer_policy_description_1["default"],
+      routesConfig: routes_1["default"]
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+    this.emitter.on('prostitutionPolicyDescriptionValidator', function () {
+      return _this.$emit('validated');
+    });
+  }
+};
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/user_notification.vue?vue&type=script&lang=ts":
+/*!************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/user_notification.vue?vue&type=script&lang=ts ***!
+  \************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+var button_close_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/form_controls/button_close.vue */ "./resources/js/components/form_controls/button_close.vue"));
+var translator_js_1 = __importDefault(__webpack_require__(/*! @jsmodules/translator.js */ "./resources/js/modules/translator.js"));
+var info_circle_icon_vue_1 = __importDefault(__webpack_require__(/*! @svgicon/info_circle_icon.vue */ "./resources/js/components/decoration/icons/svg/info_circle_icon.vue"));
+var exclamation_icon_vue_1 = __importDefault(__webpack_require__(/*! @svgicon/exclamation_icon.vue */ "./resources/js/components/decoration/icons/svg/exclamation_icon.vue"));
+exports["default"] = {
+  name: "user-notification",
+  components: {
+    ButtonClose: button_close_vue_1["default"],
+    InfoCircleIcon: info_circle_icon_vue_1["default"],
+    ExclamationErrorIcon: exclamation_icon_vue_1["default"]
+  },
+  data: function data() {
+    return {
+      notificationText: "",
+      visible: false,
+      headerText: "Information",
+      type: "no-error",
+      flicker: false
+    };
+  },
+  methods: {
+    closeNotification: function closeNotification() {
+      this.visible = false;
+    },
+    showNotification: function showNotification(content) {
+      var _this = this;
+      var currentType = this.type;
+      var currentNotificationText = this.notificationText;
+      var translator = translator_js_1["default"];
+      if (content["headerText"]) {
+        this.headerText = translator.translate(content["headerText"]);
+      }
+      if (content["notificationText"]) {
+        this.notificationText = translator.translate(content["notificationText"]);
+      }
+      if (content["notificationType"]) {
+        this.type = content["notificationType"];
+      }
+      if (this.visible && this.type === currentType && this.notificationText === currentNotificationText) {
+        this.flicker = true;
+        setTimeout(function () {
+          return _this.flicker = false;
+        }, 1000);
+      }
+      this.visible = true;
+    }
+  },
+  computed: {
+    showsError: function showsError() {
+      return this.type === "error";
+    },
+    decorationComponentName: function decorationComponentName() {
+      return this.showsError ? "exclamation-error-icon" : "info-circle-icon";
+    },
+    decorationComponentClass: function decorationComponentClass() {
+      return this.showsError ? "decoration-component--error" : "decoration-component--info";
+    }
+  },
+  mounted: function mounted() {
+    //@ts-ignore
+    this.emitter.on("showNotification", this.showNotification);
+  }
+};
+
+/***/ }),
+
+/***/ "./resources/js/components/empty_input_option.ts":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/empty_input_option.ts ***!
+  \*******************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.EmptyInputList = exports.EmptyInputValue = exports.EmptyInputDescription = void 0;
+var translator_js_1 = __importDefault(__webpack_require__(/*! @jsmodules/translator.js */ "./resources/js/modules/translator.js"));
+exports.EmptyInputDescription = "--".concat(translator_js_1["default"].translate('choose_options'), "--");
+exports.EmptyInputValue = 'choose';
+exports.EmptyInputList = {
+  choose: exports.EmptyInputDescription
+};
+
+/***/ }),
+
+/***/ "./resources/js/components/prostitution/notice_editor/announcement_details.ts":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/prostitution/notice_editor/announcement_details.ts ***!
+  \************************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+var pinia_1 = __webpack_require__(/*! pinia */ "./node_modules/pinia/index.js");
+var empty_input_option_1 = __webpack_require__(/*! @jscomponents/empty_input_option */ "./resources/js/components/empty_input_option.ts");
+var announcementDetails = (0, pinia_1.defineStore)({
+  id: 'announcementDetails',
+  state: function state() {
+    return {
+      id: undefined,
+      nickname: '',
+      phoneNumber: '',
+      birthDate: null,
+      description: "",
+      userTypeId: empty_input_option_1.EmptyInputValue,
+      sexualOrientationId: empty_input_option_1.EmptyInputValue,
+      hairColor: empty_input_option_1.EmptyInputValue,
+      titsSize: '0',
+      heightInCentimeters: "",
+      weightInKilograms: "",
+      massagePreference: empty_input_option_1.EmptyInputValue,
+      vaginalSexPreference: empty_input_option_1.EmptyInputValue,
+      blowjobPreference: empty_input_option_1.EmptyInputValue,
+      oralCreampiePreference: empty_input_option_1.EmptyInputValue,
+      cumSwallowPreference: empty_input_option_1.EmptyInputValue,
+      cumOnFacePreference: empty_input_option_1.EmptyInputValue,
+      analPreference: empty_input_option_1.EmptyInputValue,
+      pussyLickingPreference: empty_input_option_1.EmptyInputValue,
+      clientRimmingPreference: empty_input_option_1.EmptyInputValue,
+      kissingPreference: empty_input_option_1.EmptyInputValue,
+      cumOnBodyPreference: empty_input_option_1.EmptyInputValue,
+      tripsPreference: empty_input_option_1.EmptyInputValue,
+      analAditionalPayment: 100,
+      vaginalSexAditionalPayment: 100,
+      blowjobAditionalPayment: 100,
+      oralCreampieAditionalPayment: 100,
+      cumOnFaceAditionalPayment: 100,
+      massageAditionalPayment: 100,
+      pussyLickingAditionalPayment: 100,
+      clientRimmingAditionalPayment: 100,
+      kissingAditionalPayment: 100,
+      cumOnBodyAditionalPayment: 100,
+      cumSwallowAditionalPayment: 100,
+      secondaryServices: [],
+      paymentForms: [{
+        unit: 'for_hour',
+        price: 200
+      }],
+      photos: [],
+      preciseHoursDecision: empty_input_option_1.EmptyInputValue,
+      showEverySingleWeekday: false,
+      workingHours: undefined,
+      cityId: empty_input_option_1.EmptyInputValue,
+      regionId: empty_input_option_1.EmptyInputValue,
+      modifiedFields: []
+    };
+  }
+});
+exports["default"] = announcementDetails;
+
+/***/ }),
+
+/***/ "./resources/js/components/prostitution/notice_editor/global_properties_names.ts":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/prostitution/notice_editor/global_properties_names.ts ***!
+  \***************************************************************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.sexServicesAlwaysVisibleKeys = exports.optionalPersonalitiesPropertiesNames = void 0;
+var allPropertiesNames = ['nickname', 'phoneNumber', 'birthDate', 'description', 'userTypeId', 'sexualOrientation', 'hairColor', 'titsSize', 'height', 'weight', 'massagePreference', 'vaginalSexPreference', 'blowjobPreference', 'oralCreampiePreference', 'cumSwallowPreference', 'cumOnFacePreference', 'analPreference', 'pussyLickingPreference', 'clientRimmingPreference', 'kissingPreference', 'cumOnBodyPreference', 'tripsPreference', 'analAditionalPayment', 'vaginalSexAditionalPayment', 'blowjobAditionalPayment', 'oralCreampieAditionalPayment', 'cumOnFaceAditionalPayment', 'massageAditionalPayment', 'pussyLickingAditionalPayment', 'clientRimmingAditionalPayment', 'kissingAditionalPayment', 'cumOnBodyAditionalPayment', 'cumSwallowAditionalPayment', 'secondaryServices', 'paymentForms', 'photos', 'preciseHoursDecision', 'showEverySingleWeekday', 'workingHours', 'citiesList', 'cityId', 'regionId'];
+exports["default"] = allPropertiesNames;
+exports.optionalPersonalitiesPropertiesNames = ['phoneNumber', 'description', 'sexualOrientation', 'hairColor', 'titsSize', 'height', 'weight'];
+exports.sexServicesAlwaysVisibleKeys = ['massage', 'vaginalSex', 'blowjob', 'cumOnFace', 'anal', 'pussyLicking', 'clientRimming', 'kissing', 'cumOnBody'];
+// 'oralCreampie',
+// 'cumSwallow',
+
+/***/ }),
+
+/***/ "./resources/js/config/paths/avatar.ts":
+/*!*********************************************!*\
+  !*** ./resources/js/config/paths/avatar.ts ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+var paths = {
+  avatarRootDirectory: '/images/decoration/users/avatars/',
+  defaultAvatarFileName: 'default.svg',
+  getDefaultAvatarPath: function getDefaultAvatarPath() {
+    return "".concat(this.avatarRootDirectory).concat(this.defaultAvatarFileName);
+  }
+};
+exports["default"] = paths;
+
+/***/ }),
+
+/***/ "./resources/js/config/paths/routes.ts":
+/*!*********************************************!*\
+  !*** ./resources/js/config/paths/routes.ts ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+
+var __assign = void 0 && (void 0).__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+var apiPrefix = '/api';
+var prostitutionRoutes = {
+  addAnnouncement: '/prostytucja/dodaj-ogłoszenie',
+  announcementsList: '/prostytucja/ogłoszenia',
+  noticeFormOptions: '/prostytucja/notice-form-options',
+  myNoticesList: '/prostytucja/lista-moich-ogłoszeń',
+  noticesManagement: '/prostytucja/announcements',
+  photoToken: '/prostytucja/photo-token'
+};
+exports["default"] = __assign(__assign({
+  news: '/aktualności'
+}, prostitutionRoutes), {
+  contact: '/kontakt',
+  cities: "/cities"
+});
+
+/***/ }),
+
+/***/ "./resources/js/enum/days_of_week.ts":
+/*!*******************************************!*\
+  !*** ./resources/js/enum/days_of_week.ts ***!
+  \*******************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.DaysOfWeek = void 0;
+var DaysOfWeek;
+(function (DaysOfWeek) {
+  DaysOfWeek["Monday"] = "monday";
+  DaysOfWeek["Tuesday"] = "tuesday";
+  DaysOfWeek["Wednesday"] = "wednesday";
+  DaysOfWeek["Thursday"] = "thursday";
+  DaysOfWeek["Friday"] = "friday";
+  DaysOfWeek["Saturday"] = "saturday";
+  DaysOfWeek["Sunday"] = "sunday";
+})(DaysOfWeek = exports.DaysOfWeek || (exports.DaysOfWeek = {}));
+;
+
+/***/ }),
+
+/***/ "./resources/js/enum/user_type.ts":
+/*!****************************************!*\
+  !*** ./resources/js/enum/user_type.ts ***!
+  \****************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.UserType = void 0;
+var UserType;
+(function (UserType) {
+  UserType["Male"] = "male";
+  UserType["Female"] = "female";
+  UserType["Hermaphrodite"] = "hermaphrodite";
+  UserType["Transsexualist"] = "transsexualist";
+  UserType["Couple"] = "couple";
+  UserType["TriangleOrMore"] = "triangle_or_more";
+  UserType["Brothel"] = "brothel";
+  UserType["MassageParlor"] = "massage_parlor";
+  UserType["Heterosexual"] = "heterosexual";
+  UserType["Homosexual"] = "homosexual";
+  UserType["Bisexual"] = "bisexual";
+  UserType["Asexual"] = "asexual";
+  UserType["Autosexual"] = "autosexual";
+})(UserType = exports.UserType || (exports.UserType = {}));
+
+/***/ }),
+
+/***/ "./resources/js/enum/weekdays.ts":
+/*!***************************************!*\
+  !*** ./resources/js/enum/weekdays.ts ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.Weekdays = void 0;
+var Weekdays;
+(function (Weekdays) {
+  Weekdays["Monday"] = "monday";
+  Weekdays["Tuesday"] = "tuesday";
+  Weekdays["Wednesday"] = "wednesday";
+  Weekdays["Thursday"] = "thursday";
+  Weekdays["Friday"] = "friday";
+})(Weekdays = exports.Weekdays || (exports.Weekdays = {}));
+;
+
+/***/ }),
+
+/***/ "./resources/js/mixins/components/comboInputs/comboInputBasicFunctionality.ts":
+/*!************************************************************************************!*\
+  !*** ./resources/js/mixins/components/comboInputs/comboInputBasicFunctionality.ts ***!
+  \************************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+var translator_1 = __importDefault(__webpack_require__(/*! @jsmodules/translator */ "./resources/js/modules/translator.js"));
+var comboInputBasicFunctionality = {
+  methods: {
+    showIfValueIsCorrect: function showIfValueIsCorrect(currentStatus) {
+      this.valueOK = currentStatus.valueIsCorrect;
+      this.errorMessage = translator_1["default"].translate(currentStatus.errorMessage);
+    },
+    resetValidation: function resetValidation() {
+      this.valueOK = undefined;
+      this.errorMessage = "";
+    },
+    attachEventListeners: function attachEventListeners() {
+      this.emitter.on("showIfValueIsOK".concat(this.uniqueId), this.showIfValueIsCorrect);
+      this.emitter.on("resetValidation".concat(this.uniqueId), this.resetValidation);
+    }
+  }
+};
+exports["default"] = comboInputBasicFunctionality;
+
+/***/ }),
+
+/***/ "./resources/js/mixins/components/prostitute_announcement_creator/editor_basic_control.ts":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/mixins/components/prostitute_announcement_creator/editor_basic_control.ts ***!
+  \************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var __assign = void 0 && (void 0).__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -22785,16 +23520,14 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 var info_circle_icon_vue_1 = __importDefault(__webpack_require__(/*! @svgicon/info_circle_icon.vue */ "./resources/js/components/decoration/icons/svg/info_circle_icon.vue"));
 var lcfirst_1 = __importDefault(__webpack_require__(/*! @jsmodules/helpers/lcfirst */ "./resources/js/modules/helpers/lcfirst.ts"));
-var prostitution_offer_editor_1 = __importStar(__webpack_require__(/*! @jsmodules/translations/components/prostitution_offer_editor */ "./resources/js/modules/translations/components/prostitution_offer_editor.ts"));
+var prostitution_offer_editor_1 = __importStar(__webpack_require__(/*! @jsmodules/translations/components/prostitution/prostitution_offer_editor */ "./resources/js/modules/translations/components/prostitution/prostitution_offer_editor.ts"));
 var simple_labeled_select_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents-form-controls/simple_labeled_select.vue */ "./resources/js/components/form_controls/simple_labeled_select.vue"));
 var secure_documents_icon_vue_1 = __importDefault(__webpack_require__(/*! @svgicon/secure_documents_icon.vue */ "./resources/js/components/decoration/icons/svg/secure_documents_icon.vue"));
 var routes_1 = __importDefault(__webpack_require__(/*! @config/paths/routes */ "./resources/js/config/paths/routes.ts"));
 var prostitution_policy_description_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/prostitution/notice_editor/prostitution_policy_description.vue */ "./resources/js/components/prostitution/notice_editor/prostitution_policy_description.vue"));
 var prostitute_personalities_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/prostitution/notice_editor/prostitute_personalities.vue */ "./resources/js/components/prostitution/notice_editor/prostitute_personalities.vue"));
 var prostitute_services_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/prostitution/notice_editor/prostitute_services.vue */ "./resources/js/components/prostitution/notice_editor/prostitute_services.vue"));
-var prostitute_photos_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/prostitution/notice_editor/prostitute_photos.vue */ "./resources/js/components/prostitution/notice_editor/prostitute_photos.vue"));
 var prostitute_location_and_working_hours_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/prostitution/notice_editor/prostitute_location_and_working_hours.vue */ "./resources/js/components/prostitution/notice_editor/prostitute_location_and_working_hours.vue"));
-var prostitute_save_notice_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/prostitution/notice_editor/prostitute_save_notice.vue */ "./resources/js/components/prostitution/notice_editor/prostitute_save_notice.vue"));
 var left_arrow_icon_vue_1 = __importDefault(__webpack_require__(/*! @svgicon/left_arrow_icon.vue */ "./resources/js/components/decoration/icons/svg/left_arrow_icon.vue"));
 var right_arrow_icon_vue_1 = __importDefault(__webpack_require__(/*! @svgicon/right_arrow_icon.vue */ "./resources/js/components/decoration/icons/svg/right_arrow_icon.vue"));
 var id_card_icon_vue_1 = __importDefault(__webpack_require__(/*! @svgicon/id_card_icon.vue */ "./resources/js/components/decoration/icons/svg/id_card_icon.vue"));
@@ -22803,17 +23536,7 @@ var image_photography_icon_vue_1 = __importDefault(__webpack_require__(/*! @svgi
 var time_late_icon_vue_1 = __importDefault(__webpack_require__(/*! @svgicon/time_late_icon.vue */ "./resources/js/components/decoration/icons/svg/time_late_icon.vue"));
 var floppy_disc_icon_vue_1 = __importDefault(__webpack_require__(/*! @svgicon/floppy_disc_icon.vue */ "./resources/js/components/decoration/icons/svg/floppy_disc_icon.vue"));
 var empty_input_option_1 = __webpack_require__(/*! @jscomponents/empty_input_option */ "./resources/js/components/empty_input_option.ts");
-var Section;
-(function (Section) {
-  Section["ProstitutionPolicyDescription"] = "ProstitutionPolicyDescription";
-  Section["ProstituteBasicInformation"] = "ProstituteBasicInformation";
-  Section["ProstituteServices"] = "ProstituteServices";
-  Section["ProstitutePhotos"] = "ProstitutePhotos";
-  Section["ProstituteLocationAndWorkingHours"] = "ProstituteLocationAndWorkingHours";
-  Section["ProstituteSaveNotice"] = "ProstituteSaveNotice";
-})(Section || (Section = {}));
 exports["default"] = {
-  name: "prostitution-offer-creator",
   components: {
     InfoCircleIcon: info_circle_icon_vue_1["default"],
     SimpleLabeledSelect: simple_labeled_select_vue_1["default"],
@@ -22826,10 +23549,8 @@ exports["default"] = {
     OhIcon: oh_icon_vue_1["default"],
     ProstituteServices: prostitute_services_vue_1["default"],
     ProstituteLocationAndWorkingHours: prostitute_location_and_working_hours_vue_1["default"],
-    ProstitutePhotos: prostitute_photos_vue_1["default"],
     ImagePhotographyIcon: image_photography_icon_vue_1["default"],
     TimeLateIcon: time_late_icon_vue_1["default"],
-    ProstituteSaveNotice: prostitute_save_notice_vue_1["default"],
     FloppyDiscIcon: floppy_disc_icon_vue_1["default"]
   },
   data: function data() {
@@ -22837,11 +23558,9 @@ exports["default"] = {
       translations: prostitution_offer_editor_1["default"],
       sections: prostitution_offer_editor_1.sections,
       sectionIndex: 4,
-      orderedSections: [Section.ProstitutionPolicyDescription, Section.ProstituteBasicInformation, Section.ProstituteServices, Section.ProstitutePhotos, Section.ProstituteLocationAndWorkingHours, Section.ProstituteSaveNotice],
       userTypesList: [],
       sexualOrientationsList: [],
-      voivodeshipsList: [],
-      token: ''
+      voivodeshipsList: []
     };
   },
   methods: {
@@ -22880,7 +23599,7 @@ exports["default"] = {
               this.userTypesList = this.parseForSelectOptions(availableOptions["userTypes"], "user_type_name");
               this.sexualOrientationsList = this.parseForSelectOptions(availableOptions["sexualOrientations"], "sexual_orientation_name");
               this.voivodeshipsList = this.parseForSelectOptions(availableOptions["voivodeships"], 'name');
-              this.token = availableOptions["token"];
+              this.emitter.emit('setProstitutePhotoToken', availableOptions["token"]);
               return [3 /*break*/, 3];
             case 2:
               this.notifyUserAboutFetchError();
@@ -22900,29 +23619,6 @@ exports["default"] = {
       });
       return result;
     },
-    fetchProstitutionAnnouncement: function fetchProstitutionAnnouncement(announcementID) {
-      return __awaiter(this, void 0, void 0, function () {
-        var requestData, URL, response;
-        return __generator(this, function (_a) {
-          switch (_a.label) {
-            case 0:
-              requestData = {
-                method: "GET",
-                headers: {
-                  "X-CSRF-TOKEN": this.csrfToken,
-                  "Content-type": "application/json; charset=UTF-8"
-                }
-              };
-              URL = "".concat(routes_1["default"].noticesManagement, "?userID=authenticatedUser&detailsLevel=complete");
-              return [4 /*yield*/, fetch(URL, requestData)];
-            case 1:
-              response = _a.sent();
-              return [2 /*return*/];
-          }
-        });
-      });
-    },
-
     notifyUserAboutFetchError: function notifyUserAboutFetchError() {
       this.emitter.emit("showNotification", {
         notificationText: "fetching_required_data_failed_it_is_impossible_to_complete_announcement_please_try_again",
@@ -22930,490 +23626,16 @@ exports["default"] = {
         headerText: "error"
       });
     },
-    attachEventListeners: function attachEventListeners() {
-      this.emitter.on('loadProstitutionAnnouncement', this.fetchProstitutionAnnouncement);
+    addEventListeners: function addEventListeners() {
+      this.emitter.on('prostitutePhotosValidated', this.skipToNextSection);
     }
   },
-  mounted: function mounted() {
-    this.prepareSelectValues();
-    this.attachEventListeners();
-  },
   computed: {
-    decorationComponentName: function decorationComponentName() {
-      var iconComponentNamesBySection = {
-        ProstitutionPolicyDescription: "SecureDocumentsIcon",
-        ProstituteBasicInformation: "IdCardIcon",
-        ProstituteServices: "OhIcon",
-        ProstitutePhotos: "ImagePhotographyIcon",
-        ProstituteLocationAndWorkingHours: "TimeLateIcon",
-        ProstituteSaveNotice: "FloppyDiscIcon"
-      };
-      return iconComponentNamesBySection[this.currentSection];
-    },
     navbarCaption: function navbarCaption() {
       return "".concat(this.translations["section"], " : ").concat(prostitution_offer_editor_1.sections[this.currentSection]);
-    },
-    currentSection: function currentSection() {
-      return this.orderedSections[this.sectionIndex];
-    },
-    showPolicyDescription: function showPolicyDescription() {
-      return this.currentSection === Section.ProstitutionPolicyDescription;
-    },
-    showBasicInformation: function showBasicInformation() {
-      return this.currentSection === Section.ProstituteBasicInformation;
-    },
-    showServices: function showServices() {
-      return this.currentSection === Section.ProstituteServices;
-    },
-    showPhotos: function showPhotos() {
-      return this.currentSection === Section.ProstitutePhotos;
-    },
-    showSaveNotice: function showSaveNotice() {
-      return this.currentSection === Section.ProstituteSaveNotice;
-    },
-    showLocationAndWorkingHours: function showLocationAndWorkingHours() {
-      return this.currentSection === Section.ProstituteLocationAndWorkingHours;
-    },
-    iconClass: function iconClass() {
-      var classesNameBySection = {
-        ProstitutionPolicyDescription: "policy-section",
-        ProstituteBasicInformation: "personalities-section",
-        ProstituteServices: "services-section",
-        ProstitutePhotos: "photos-section",
-        ProstituteLocationAndWorkingHours: "location-and-working-hours",
-        ProstituteSaveNotice: "save-notice"
-      };
-      return classesNameBySection[this.currentSection];
     }
   }
 };
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitution_policy_description.vue?vue&type=script&lang=ts":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitution_policy_description.vue?vue&type=script&lang=ts ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-var prostitution_offer_policy_description_1 = __importDefault(__webpack_require__(/*! @jsmodules/translations/components/prostitution_offer_policy_description */ "./resources/js/modules/translations/components/prostitution_offer_policy_description.ts"));
-var info_circle_icon_vue_1 = __importDefault(__webpack_require__(/*! @svgicon/info_circle_icon.vue */ "./resources/js/components/decoration/icons/svg/info_circle_icon.vue"));
-var routes_1 = __importDefault(__webpack_require__(/*! @config/paths/routes */ "./resources/js/config/paths/routes.ts"));
-exports["default"] = {
-  name: "prostitution-policy-description",
-  emits: ['validated'],
-  components: {
-    InfoCircleIcon: info_circle_icon_vue_1["default"]
-  },
-  data: function data() {
-    return {
-      translations: prostitution_offer_policy_description_1["default"],
-      routesConfig: routes_1["default"]
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
-    this.emitter.on('prostitutionPolicyDescriptionValidator', function () {
-      return _this.$emit('validated');
-    });
-  }
-};
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/user_notification.vue?vue&type=script&lang=ts":
-/*!************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/user_notification.vue?vue&type=script&lang=ts ***!
-  \************************************************************************************************************************************************************************************************************************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-var button_close_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/form_controls/button_close.vue */ "./resources/js/components/form_controls/button_close.vue"));
-var translator_js_1 = __importDefault(__webpack_require__(/*! @jsmodules/translator.js */ "./resources/js/modules/translator.js"));
-var info_circle_icon_vue_1 = __importDefault(__webpack_require__(/*! @svgicon/info_circle_icon.vue */ "./resources/js/components/decoration/icons/svg/info_circle_icon.vue"));
-var exclamation_icon_vue_1 = __importDefault(__webpack_require__(/*! @svgicon/exclamation_icon.vue */ "./resources/js/components/decoration/icons/svg/exclamation_icon.vue"));
-exports["default"] = {
-  name: "user-notification",
-  components: {
-    ButtonClose: button_close_vue_1["default"],
-    InfoCircleIcon: info_circle_icon_vue_1["default"],
-    ExclamationErrorIcon: exclamation_icon_vue_1["default"]
-  },
-  data: function data() {
-    return {
-      notificationText: "",
-      visible: false,
-      headerText: "Information",
-      type: "no-error",
-      flicker: false
-    };
-  },
-  methods: {
-    closeNotification: function closeNotification() {
-      this.visible = false;
-    },
-    showNotification: function showNotification(content) {
-      var _this = this;
-      var currentType = this.type;
-      var currentNotificationText = this.notificationText;
-      var translator = translator_js_1["default"];
-      if (content["headerText"]) {
-        this.headerText = translator.translate(content["headerText"]);
-      }
-      if (content["notificationText"]) {
-        this.notificationText = translator.translate(content["notificationText"]);
-      }
-      if (content["notificationType"]) {
-        this.type = content["notificationType"];
-      }
-      if (this.visible && this.type === currentType && this.notificationText === currentNotificationText) {
-        this.flicker = true;
-        setTimeout(function () {
-          return _this.flicker = false;
-        }, 1000);
-      }
-      this.visible = true;
-    }
-  },
-  computed: {
-    showsError: function showsError() {
-      return this.type === "error";
-    },
-    decorationComponentName: function decorationComponentName() {
-      return this.showsError ? "exclamation-error-icon" : "info-circle-icon";
-    },
-    decorationComponentClass: function decorationComponentClass() {
-      return this.showsError ? "decoration-component--error" : "decoration-component--info";
-    }
-  },
-  mounted: function mounted() {
-    //@ts-ignore
-    this.emitter.on("showNotification", this.showNotification);
-  }
-};
-
-/***/ }),
-
-/***/ "./resources/js/components/empty_input_option.ts":
-/*!*******************************************************!*\
-  !*** ./resources/js/components/empty_input_option.ts ***!
-  \*******************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.EmptyInputList = exports.EmptyInputValue = exports.EmptyInputDescription = void 0;
-var translator_js_1 = __importDefault(__webpack_require__(/*! @jsmodules/translator.js */ "./resources/js/modules/translator.js"));
-exports.EmptyInputDescription = "--".concat(translator_js_1["default"].translate('choose_options'), "--");
-exports.EmptyInputValue = 'choose';
-exports.EmptyInputList = {
-  choose: exports.EmptyInputDescription
-};
-
-/***/ }),
-
-/***/ "./resources/js/components/prostitution/notice_editor/announcement_details.ts":
-/*!************************************************************************************!*\
-  !*** ./resources/js/components/prostitution/notice_editor/announcement_details.ts ***!
-  \************************************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-var pinia_1 = __webpack_require__(/*! pinia */ "./node_modules/pinia/index.js");
-var empty_input_option_1 = __webpack_require__(/*! @jscomponents/empty_input_option */ "./resources/js/components/empty_input_option.ts");
-var announcementDetails = (0, pinia_1.defineStore)({
-  id: 'announcementDetails',
-  state: function state() {
-    return {
-      nickname: '',
-      phoneNumber: '',
-      birthDate: null,
-      description: "",
-      userTypeId: empty_input_option_1.EmptyInputValue,
-      sexualOrientationId: empty_input_option_1.EmptyInputValue,
-      hairColor: empty_input_option_1.EmptyInputValue,
-      titsSize: '0',
-      heightInCentimeters: "",
-      weightInKilograms: "",
-      massagePreference: empty_input_option_1.EmptyInputValue,
-      vaginalSexPreference: empty_input_option_1.EmptyInputValue,
-      blowjobPreference: empty_input_option_1.EmptyInputValue,
-      oralCreampiePreference: empty_input_option_1.EmptyInputValue,
-      cumSwallowPreference: empty_input_option_1.EmptyInputValue,
-      cumOnFacePreference: empty_input_option_1.EmptyInputValue,
-      analPreference: empty_input_option_1.EmptyInputValue,
-      pussyLickingPreference: empty_input_option_1.EmptyInputValue,
-      clientRimmingPreference: empty_input_option_1.EmptyInputValue,
-      kissingPreference: empty_input_option_1.EmptyInputValue,
-      cumOnBodyPreference: empty_input_option_1.EmptyInputValue,
-      tripsPreference: empty_input_option_1.EmptyInputValue,
-      analAditionalPayment: 100,
-      vaginalSexAditionalPayment: 100,
-      blowjobAditionalPayment: 100,
-      oralCreampieAditionalPayment: 100,
-      cumOnFaceAditionalPayment: 100,
-      massageAditionalPayment: 100,
-      pussyLickingAditionalPayment: 100,
-      clientRimmingAditionalPayment: 100,
-      kissingAditionalPayment: 100,
-      cumOnBodyAditionalPayment: 100,
-      cumSwallowAditionalPayment: 100,
-      secondaryServices: [],
-      paymentForms: [{
-        unit: 'for_hour',
-        price: 200
-      }],
-      photos: [],
-      preciseHoursDecision: empty_input_option_1.EmptyInputValue,
-      showEverySingleWeekday: false,
-      workingHours: undefined,
-      cityId: empty_input_option_1.EmptyInputValue,
-      regionId: empty_input_option_1.EmptyInputValue
-    };
-  }
-});
-exports["default"] = announcementDetails;
-
-/***/ }),
-
-/***/ "./resources/js/components/prostitution/notice_editor/global_properties_names.ts":
-/*!***************************************************************************************!*\
-  !*** ./resources/js/components/prostitution/notice_editor/global_properties_names.ts ***!
-  \***************************************************************************************/
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.sexServicesAlwaysVisibleKeys = exports.optionalPersonalitiesPropertiesNames = void 0;
-var allPropertiesNames = ['nickname', 'phoneNumber', 'birthDate', 'description', 'userTypeId', 'sexualOrientation', 'hairColor', 'titsSize', 'height', 'weight', 'massagePreference', 'vaginalSexPreference', 'blowjobPreference', 'oralCreampiePreference', 'cumSwallowPreference', 'cumOnFacePreference', 'analPreference', 'pussyLickingPreference', 'clientRimmingPreference', 'kissingPreference', 'cumOnBodyPreference', 'tripsPreference', 'analAditionalPayment', 'vaginalSexAditionalPayment', 'blowjobAditionalPayment', 'oralCreampieAditionalPayment', 'cumOnFaceAditionalPayment', 'massageAditionalPayment', 'pussyLickingAditionalPayment', 'clientRimmingAditionalPayment', 'kissingAditionalPayment', 'cumOnBodyAditionalPayment', 'cumSwallowAditionalPayment', 'secondaryServices', 'paymentForms', 'photos', 'preciseHoursDecision', 'showEverySingleWeekday', 'workingHours', 'citiesList', 'cityId', 'regionId'];
-exports["default"] = allPropertiesNames;
-exports.optionalPersonalitiesPropertiesNames = ['phoneNumber', 'description', 'sexualOrientation', 'hairColor', 'titsSize', 'height', 'weight'];
-exports.sexServicesAlwaysVisibleKeys = ['massage', 'vaginalSex', 'blowjob', 'cumOnFace', 'anal', 'pussyLicking', 'clientRimming', 'kissing', 'cumOnBody'];
-// 'oralCreampie',
-// 'cumSwallow',
-
-/***/ }),
-
-/***/ "./resources/js/config/paths/avatar.ts":
-/*!*********************************************!*\
-  !*** ./resources/js/config/paths/avatar.ts ***!
-  \*********************************************/
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-var paths = {
-  avatarRootDirectory: '/images/decoration/users/avatars/',
-  defaultAvatarFileName: 'default.svg',
-  getDefaultAvatarPath: function getDefaultAvatarPath() {
-    return "".concat(this.avatarRootDirectory).concat(this.defaultAvatarFileName);
-  }
-};
-exports["default"] = paths;
-
-/***/ }),
-
-/***/ "./resources/js/config/paths/routes.ts":
-/*!*********************************************!*\
-  !*** ./resources/js/config/paths/routes.ts ***!
-  \*********************************************/
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-
-
-var __assign = void 0 && (void 0).__assign || function () {
-  __assign = Object.assign || function (t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-      s = arguments[i];
-      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-    }
-    return t;
-  };
-  return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-var apiPrefix = '/api';
-var prostitutionRoutes = {
-  addAnnouncement: '/prostytucja/dodaj-ogłoszenie',
-  announcementsList: '/prostytucja/ogłoszenia',
-  noticeFormOptions: '/prostytucja/notice-form-options',
-  myNoticesList: '/prostytucja/lista-moich-ogłoszeń',
-  noticesManagement: '/prostytucja/announcements'
-};
-exports["default"] = __assign(__assign({
-  news: '/aktualności'
-}, prostitutionRoutes), {
-  contact: '/kontakt',
-  cities: "/cities"
-});
-
-/***/ }),
-
-/***/ "./resources/js/enum/days_of_week.ts":
-/*!*******************************************!*\
-  !*** ./resources/js/enum/days_of_week.ts ***!
-  \*******************************************/
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.DaysOfWeek = void 0;
-var DaysOfWeek;
-(function (DaysOfWeek) {
-  DaysOfWeek["Monday"] = "monday";
-  DaysOfWeek["Tuesday"] = "tuesday";
-  DaysOfWeek["Wednesday"] = "wednesday";
-  DaysOfWeek["Thursday"] = "thursday";
-  DaysOfWeek["Friday"] = "friday";
-  DaysOfWeek["Saturday"] = "saturday";
-  DaysOfWeek["Sunday"] = "sunday";
-})(DaysOfWeek = exports.DaysOfWeek || (exports.DaysOfWeek = {}));
-;
-
-/***/ }),
-
-/***/ "./resources/js/enum/user_type.ts":
-/*!****************************************!*\
-  !*** ./resources/js/enum/user_type.ts ***!
-  \****************************************/
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.UserType = void 0;
-var UserType;
-(function (UserType) {
-  UserType["Male"] = "male";
-  UserType["Female"] = "female";
-  UserType["Hermaphrodite"] = "hermaphrodite";
-  UserType["Transsexualist"] = "transsexualist";
-  UserType["Couple"] = "couple";
-  UserType["TriangleOrMore"] = "triangle_or_more";
-  UserType["Brothel"] = "brothel";
-  UserType["MassageParlor"] = "massage_parlor";
-  UserType["Heterosexual"] = "heterosexual";
-  UserType["Homosexual"] = "homosexual";
-  UserType["Bisexual"] = "bisexual";
-  UserType["Asexual"] = "asexual";
-  UserType["Autosexual"] = "autosexual";
-})(UserType = exports.UserType || (exports.UserType = {}));
-
-/***/ }),
-
-/***/ "./resources/js/enum/weekdays.ts":
-/*!***************************************!*\
-  !*** ./resources/js/enum/weekdays.ts ***!
-  \***************************************/
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.Weekdays = void 0;
-var Weekdays;
-(function (Weekdays) {
-  Weekdays["Monday"] = "monday";
-  Weekdays["Tuesday"] = "tuesday";
-  Weekdays["Wednesday"] = "wednesday";
-  Weekdays["Thursday"] = "thursday";
-  Weekdays["Friday"] = "friday";
-})(Weekdays = exports.Weekdays || (exports.Weekdays = {}));
-;
-
-/***/ }),
-
-/***/ "./resources/js/mixins/components/comboInputs/comboInputBasicFunctionality.ts":
-/*!************************************************************************************!*\
-  !*** ./resources/js/mixins/components/comboInputs/comboInputBasicFunctionality.ts ***!
-  \************************************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-var translator_1 = __importDefault(__webpack_require__(/*! @jsmodules/translator */ "./resources/js/modules/translator.js"));
-var comboInputBasicFunctionality = {
-  methods: {
-    showIfValueIsCorrect: function showIfValueIsCorrect(currentStatus) {
-      this.valueOK = currentStatus.valueIsCorrect;
-      this.errorMessage = translator_1["default"].translate(currentStatus.errorMessage);
-    },
-    resetValidation: function resetValidation() {
-      this.valueOK = undefined;
-      this.errorMessage = "";
-    },
-    attachEventListeners: function attachEventListeners() {
-      this.emitter.on("showIfValueIsOK".concat(this.uniqueId), this.showIfValueIsCorrect);
-      this.emitter.on("resetValidation".concat(this.uniqueId), this.resetValidation);
-    }
-  }
-};
-exports["default"] = comboInputBasicFunctionality;
 
 /***/ }),
 
@@ -23446,6 +23668,37 @@ exports["default"] = {
       comboInputErrorState.errorMessage = errorMessage;
       this.validationIsSuccessfull = false;
       this.emitter.emit("showIfValueIsOK".concat(id), comboInputErrorState);
+    }
+  }
+};
+
+/***/ }),
+
+/***/ "./resources/js/mixins/components/prostitute_announcement_creator/initial_time_periods.ts":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/mixins/components/prostitute_announcement_creator/initial_time_periods.ts ***!
+  \************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = {
+  methods: {
+    getEmptyPeriod: function getEmptyPeriod() {
+      return {
+        since: "00:00",
+        until: "00:00"
+      };
+    },
+    getUndefinedPeriod: function getUndefinedPeriod() {
+      return {
+        since: undefined,
+        until: undefined
+      };
     }
   }
 };
@@ -23715,10 +23968,10 @@ exports["default"] = translations;
 
 /***/ }),
 
-/***/ "./resources/js/modules/translations/components/prostitute_basic_information.ts":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/modules/translations/components/prostitute_basic_information.ts ***!
-  \**************************************************************************************/
+/***/ "./resources/js/modules/translations/components/prostitution/prostitute_basic_information.ts":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/modules/translations/components/prostitution/prostitute_basic_information.ts ***!
+  \***************************************************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -23769,10 +24022,10 @@ exports["default"] = translations;
 
 /***/ }),
 
-/***/ "./resources/js/modules/translations/components/prostitute_location_and_working_hours.ts":
-/*!***********************************************************************************************!*\
-  !*** ./resources/js/modules/translations/components/prostitute_location_and_working_hours.ts ***!
-  \***********************************************************************************************/
+/***/ "./resources/js/modules/translations/components/prostitution/prostitute_location_and_working_hours.ts":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/modules/translations/components/prostitution/prostitute_location_and_working_hours.ts ***!
+  \************************************************************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -23817,10 +24070,10 @@ exports["default"] = translations;
 
 /***/ }),
 
-/***/ "./resources/js/modules/translations/components/prostitute_services.ts":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/modules/translations/components/prostitute_services.ts ***!
-  \*****************************************************************************/
+/***/ "./resources/js/modules/translations/components/prostitution/prostitute_services.ts":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/modules/translations/components/prostitution/prostitute_services.ts ***!
+  \******************************************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -23935,10 +24188,10 @@ exports["default"] = translations;
 
 /***/ }),
 
-/***/ "./resources/js/modules/translations/components/prostitution_offer_editor.ts":
-/*!***********************************************************************************!*\
-  !*** ./resources/js/modules/translations/components/prostitution_offer_editor.ts ***!
-  \***********************************************************************************/
+/***/ "./resources/js/modules/translations/components/prostitution/prostitution_offer_editor.ts":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/modules/translations/components/prostitution/prostitution_offer_editor.ts ***!
+  \************************************************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -23981,17 +24234,19 @@ exports.sections = {
   ProstitutionPolicyDescription: translator_js_1["default"].translate('notices_policy'),
   ProstituteBasicInformation: translator_js_1["default"].translate('personalities'),
   ProstituteServices: translator_js_1["default"].translate('services_range_and_pricing'),
-  ProstitutePhotos: translator_js_1["default"].translate('photos'),
+  ProstitutePhotosForCreator: translator_js_1["default"].translate('photos'),
+  ProstitutePhotosForEditor: translator_js_1["default"].translate('photos'),
   ProstituteLocationAndWorkingHours: translator_js_1["default"].translate('location_and_working_hours'),
-  ProstituteSaveNotice: translator_js_1["default"].translate('saving_notice')
+  ProstituteSaveNotice: translator_js_1["default"].translate('saving_notice'),
+  ProstitutionSaveEditedNotice: translator_js_1["default"].translate('saving_notice')
 };
 
 /***/ }),
 
-/***/ "./resources/js/modules/translations/components/prostitution_offer_photos.ts":
-/*!***********************************************************************************!*\
-  !*** ./resources/js/modules/translations/components/prostitution_offer_photos.ts ***!
-  \***********************************************************************************/
+/***/ "./resources/js/modules/translations/components/prostitution/prostitution_offer_photos.ts":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/modules/translations/components/prostitution/prostitution_offer_photos.ts ***!
+  \************************************************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -24006,8 +24261,10 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 var translator_js_1 = __importDefault(__webpack_require__(/*! @jsmodules/translator.js */ "./resources/js/modules/translator.js"));
+var ucfirst_1 = __importDefault(__webpack_require__(/*! @jsmodules/helpers/ucfirst */ "./resources/js/modules/helpers/ucfirst.ts"));
 var translations = {
   photos_policy: translator_js_1["default"].translate('prostitute_photos_policy'),
+  setting_in_progress: translator_js_1["default"].translate("setting_in_progress"),
   your_photo_token: translator_js_1["default"].translate('your_photo_token'),
   maximum_photos_and_outdate_risk: translator_js_1["default"].translate('maximum_photos_and_outdate_risk'),
   what_happens_when_photos_are_outdated: translator_js_1["default"].translate('what_happens_when_photos_are_outdated'),
@@ -24015,16 +24272,25 @@ var translations = {
   photos_token_info: translator_js_1["default"].translate('photos_token_info'),
   prostitute_photos_end_of_description: translator_js_1["default"].translate('prostitute_photos_end_of_description'),
   file_size_has_been_exceeded_for_following_files: translator_js_1["default"].translate("file_size_has_been_exceeded_for_following_files"),
-  prostitute_photos_allowed_size: translator_js_1["default"].translate("prostitute_photos_allowed_size")
+  prostitute_photos_allowed_size: translator_js_1["default"].translate("prostitute_photos_allowed_size"),
+  two_types_of_photo_edition_is_available: translator_js_1["default"].translate("two_types_of_photo_edition_is_available"),
+  prolonging_announcement: translator_js_1["default"].translate("prolonging_prostitution_announcement"),
+  updating_until_expiration_date: translator_js_1["default"].translate("updating_prostitution_announcement_until_expiration_date"),
+  if_you_want_to_prolong_your_prostitution_announcement: translator_js_1["default"].translate('if_you_want_to_prolong_your_prostitution_announcement'),
+  if_you_dont_want_to_prolong_your_prostitution_announcement: translator_js_1["default"].translate('if_you_dont_want_to_prolong_your_prostitution_announcement'),
+  old_token: (0, ucfirst_1["default"])(translator_js_1["default"].translate("old_token")),
+  new_token: (0, ucfirst_1["default"])(translator_js_1["default"].translate("new_token")),
+  generate_new_token: translator_js_1["default"].translate("generate_new_token"),
+  use_old_token: translator_js_1["default"].translate("use_old_token")
 };
 exports["default"] = translations;
 
 /***/ }),
 
-/***/ "./resources/js/modules/translations/components/prostitution_offer_policy_description.ts":
-/*!***********************************************************************************************!*\
-  !*** ./resources/js/modules/translations/components/prostitution_offer_policy_description.ts ***!
-  \***********************************************************************************************/
+/***/ "./resources/js/modules/translations/components/prostitution/prostitution_offer_policy_description.ts":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/modules/translations/components/prostitution/prostitution_offer_policy_description.ts ***!
+  \************************************************************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -24053,10 +24319,10 @@ exports["default"] = translations;
 
 /***/ }),
 
-/***/ "./resources/js/modules/translations/components/prostitution_save_notice.ts":
-/*!**********************************************************************************!*\
-  !*** ./resources/js/modules/translations/components/prostitution_save_notice.ts ***!
-  \**********************************************************************************/
+/***/ "./resources/js/modules/translations/components/prostitution/prostitution_save_notice.ts":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/modules/translations/components/prostitution/prostitution_save_notice.ts ***!
+  \***********************************************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -26208,7 +26474,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onDragover: _cache[2] || (_cache[2] = function () {
       return $options.allowDrop && $options.allowDrop.apply($options, arguments);
     }),
-    "class": "container"
+    "class": "image-upload-container"
   }, [(0, _vue.createElementVNode)("div", {
     textContent: (0, _vue.toDisplayString)($data.Translations['user_info']),
     "class": "info"
@@ -26242,7 +26508,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "files-input",
     accept: "image/*",
     onInput: _cache[0] || (_cache[0] = function () {
-      return $options.addFilesToList && $options.addFilesToList.apply($options, arguments);
+      return $options.addFilesToList();
     }),
     ref: "fileInput",
     type: "file",
@@ -26625,23 +26891,20 @@ var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundl
 var _withScopeId = function _withScopeId(n) {
   return (0, _vue.pushScopeId)("data-v-6c07a9d0"), n = n(), (0, _vue.popScopeId)(), n;
 };
-var _hoisted_1 = {
-  "class": "container"
-};
-var _hoisted_2 = ["textContent"];
-var _hoisted_3 = {
+var _hoisted_1 = ["textContent"];
+var _hoisted_2 = {
   "class": "text-input-description"
 };
-var _hoisted_4 = ["id", "disabled", "name", "required", "placeholder", "type"];
+var _hoisted_3 = ["id", "disabled", "name", "required", "placeholder", "type"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_padlock_icon = (0, _vue.resolveComponent)("padlock-icon");
   var _component_icon_stop = (0, _vue.resolveComponent)("icon-stop");
   var _component_icon_confirm = (0, _vue.resolveComponent)("icon-confirm");
-  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [$props.errorMessageBoxAvailable ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", {
+  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", null, [$props.errorMessageBoxAvailable ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", {
     key: 0,
     textContent: (0, _vue.toDisplayString)($data.errorMessage),
     "class": "error-message-box"
-  }, null, 8 /* PROPS */, _hoisted_2)) : (0, _vue.createCommentVNode)("v-if", true), (0, _vue.createElementVNode)("label", {
+  }, null, 8 /* PROPS */, _hoisted_1)) : (0, _vue.createCommentVNode)("v-if", true), (0, _vue.createElementVNode)("label", {
     ref: "label",
     "class": (0, _vue.normalizeClass)([{
       'incorrect-value': $options.displayRedBorder,
@@ -26656,7 +26919,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 512 /* NEED_PATCH */)), [[_vue.vShow, $options.displayIconError]]) : (0, _vue.createCommentVNode)("v-if", true), $data.iconConfirmationCanBeDisplayed ? (0, _vue.withDirectives)(((0, _vue.openBlock)(), (0, _vue.createBlock)(_component_icon_confirm, {
     key: 2,
     "attached-icon": true
-  }, null, 512 /* NEED_PATCH */)), [[_vue.vShow, $options.displayIconConfirmation]]) : (0, _vue.createCommentVNode)("v-if", true), (0, _vue.createElementVNode)("span", _hoisted_3, [(0, _vue.renderSlot)(_ctx.$slots, "default", {}, undefined, true)]), (0, _vue.withDirectives)((0, _vue.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */)), [[_vue.vShow, $options.displayIconConfirmation]]) : (0, _vue.createCommentVNode)("v-if", true), (0, _vue.createElementVNode)("span", _hoisted_2, [(0, _vue.renderSlot)(_ctx.$slots, "default", {}, undefined, true)]), (0, _vue.withDirectives)((0, _vue.createElementVNode)("input", {
     id: $props.inputId,
     disabled: $props.isDisabled,
     onBlur: _cache[0] || (_cache[0] = function () {
@@ -26673,7 +26936,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.inputValue = $event;
     }),
     type: $props.inputType
-  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_4), [[_vue.vModelDynamic, $data.inputValue]])], 2 /* CLASS */)]);
+  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_3), [[_vue.vModelDynamic, $data.inputValue]])], 2 /* CLASS */)]);
 }
 
 /***/ }),
@@ -27397,6 +27660,113 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=template&id=58f670a4&scoped=true":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=template&id=58f670a4&scoped=true ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.render = render;
+var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+var _withScopeId = function _withScopeId(n) {
+  return (0, _vue.pushScopeId)("data-v-58f670a4"), n = n(), (0, _vue.popScopeId)(), n;
+};
+var _hoisted_1 = {
+  "class": "prostitute-photos-container"
+};
+var _hoisted_2 = {
+  "class": "aditional-features"
+};
+var _hoisted_3 = {
+  "class": "photos-restrictions-information"
+};
+var _hoisted_4 = ["textContent"];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_multifile_image_upload = (0, _vue.resolveComponent)("multifile-image-upload");
+  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("section", _hoisted_1, [(0, _vue.createElementVNode)("div", _hoisted_2, [(0, _vue.renderSlot)(_ctx.$slots, "default", {}, undefined, true)]), (0, _vue.createElementVNode)("div", _hoisted_3, [(0, _vue.createElementVNode)("strong", {
+    textContent: (0, _vue.toDisplayString)($data.Translations.prostitute_photos_allowed_size)
+  }, null, 8 /* PROPS */, _hoisted_4)]), (0, _vue.createVNode)(_component_multifile_image_upload, {
+    onNumberOfImagesLimitExceeded: $options.notifyUserAboutToManyPhotos,
+    onAddedPhotos: $options.assignPhotos,
+    onRemovedPhoto: $options.assignPhotos,
+    onFileSizeHasBeenExceeded: $options.notifyUserThatFileSizeHasBeenExceeded,
+    "maximum-file-size-in-bytes": 1024000,
+    "number-of-maximum-photos": 10,
+    "class": "added-images"
+  }, null, 8 /* PROPS */, ["onNumberOfImagesLimitExceeded", "onAddedPhotos", "onRemovedPhoto", "onFileSizeHasBeenExceeded"])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=template&id=3234b7ca&scoped=true":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=template&id=3234b7ca&scoped=true ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.render = render;
+var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+var _withScopeId = function _withScopeId(n) {
+  return (0, _vue.pushScopeId)("data-v-3234b7ca"), n = n(), (0, _vue.popScopeId)(), n;
+};
+var _hoisted_1 = {
+  "class": "explanation-container"
+};
+var _hoisted_2 = ["textContent"];
+var _hoisted_3 = ["textContent"];
+var _hoisted_4 = ["textContent"];
+var _hoisted_5 = ["textContent"];
+var _hoisted_6 = ["textContent"];
+var _hoisted_7 = {
+  "class": "token-info"
+};
+var _hoisted_8 = ["textContent"];
+var _hoisted_9 = ["textContent"];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_prostitute_photos = (0, _vue.resolveComponent)("prostitute-photos");
+  return (0, _vue.openBlock)(), (0, _vue.createBlock)(_component_prostitute_photos, {
+    onProstitutePhotosValidated: $options.emitSuccessFullValidation,
+    "class": "photos-all"
+  }, {
+    "default": (0, _vue.withCtx)(function () {
+      return [(0, _vue.createElementVNode)("div", _hoisted_1, [(0, _vue.createElementVNode)("strong", {
+        "class": "important-notice",
+        textContent: (0, _vue.toDisplayString)($data.Translations.maximum_photos_and_outdate_risk)
+      }, null, 8 /* PROPS */, _hoisted_2), (0, _vue.createElementVNode)("span", {
+        textContent: (0, _vue.toDisplayString)($data.Translations.what_happens_when_photos_are_outdated)
+      }, null, 8 /* PROPS */, _hoisted_3), (0, _vue.createElementVNode)("strong", {
+        "class": "important-notice",
+        textContent: (0, _vue.toDisplayString)($data.Translations.anti_photoshop_warning)
+      }, null, 8 /* PROPS */, _hoisted_4), (0, _vue.createElementVNode)("strong", {
+        "class": "important-notice",
+        textContent: (0, _vue.toDisplayString)($data.Translations.photos_token_info)
+      }, null, 8 /* PROPS */, _hoisted_5), (0, _vue.createElementVNode)("span", {
+        textContent: (0, _vue.toDisplayString)($data.Translations.prostitute_photos_end_of_description)
+      }, null, 8 /* PROPS */, _hoisted_6)]), (0, _vue.createElementVNode)("div", _hoisted_7, [(0, _vue.createElementVNode)("span", {
+        textContent: (0, _vue.toDisplayString)($data.Translations.your_photo_token)
+      }, null, 8 /* PROPS */, _hoisted_8), (0, _vue.createTextVNode)(" : "), (0, _vue.createElementVNode)("strong", {
+        "class": "token",
+        textContent: (0, _vue.toDisplayString)($data.token)
+      }, null, 8 /* PROPS */, _hoisted_9)])];
+    }),
+    _: 1 /* STABLE */
+  }, 8 /* PROPS */, ["onProstitutePhotosValidated"]);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_location_and_working_hours.vue?vue&type=template&id=c4db835c&scoped=true":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_location_and_working_hours.vue?vue&type=template&id=c4db835c&scoped=true ***!
@@ -27782,6 +28152,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8 /* PROPS */, ["modelValue"]), (0, _vue.createVNode)(_component_text_input_combo, {
     "class": "extended",
     "unique-id": "BirthDate",
+    "is-disabled": $props.disabledBirthDate,
     modelValue: _ctx.birthDate,
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return _ctx.birthDate = $event;
@@ -27795,7 +28166,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
 
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["modelValue"]), (0, _vue.createVNode)(_component_textarea_combo, {
+  }, 8 /* PROPS */, ["is-disabled", "modelValue"]), (0, _vue.createVNode)(_component_textarea_combo, {
     "placeholder-text": $data.translations.description_limitation,
     "rows-number": "10",
     "unique-id": "announcementDescription",
@@ -27903,78 +28274,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
     _: 1 /* STABLE */
   }, 8 /* PROPS */, ["select-options", "modelValue"])]);
-}
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=template&id=8b81b178&scoped=true":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=template&id=8b81b178&scoped=true ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.render = render;
-var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-var _withScopeId = function _withScopeId(n) {
-  return (0, _vue.pushScopeId)("data-v-8b81b178"), n = n(), (0, _vue.popScopeId)(), n;
-};
-var _hoisted_1 = {
-  "class": "photos-section"
-};
-var _hoisted_2 = {
-  "class": "photos-policy"
-};
-var _hoisted_3 = ["textContent"];
-var _hoisted_4 = ["textContent"];
-var _hoisted_5 = ["textContent"];
-var _hoisted_6 = ["textContent"];
-var _hoisted_7 = ["textContent"];
-var _hoisted_8 = {
-  "class": "token-info"
-};
-var _hoisted_9 = ["textContent"];
-var _hoisted_10 = ["textContent"];
-var _hoisted_11 = {
-  "class": "photos-restrictions-information"
-};
-var _hoisted_12 = ["textContent"];
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_multifile_image_upload = (0, _vue.resolveComponent)("multifile-image-upload");
-  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("section", _hoisted_1, [(0, _vue.createElementVNode)("div", _hoisted_2, [(0, _vue.createElementVNode)("strong", {
-    "class": "important-notice",
-    textContent: (0, _vue.toDisplayString)($data.Translations.maximum_photos_and_outdate_risk)
-  }, null, 8 /* PROPS */, _hoisted_3), (0, _vue.createElementVNode)("span", {
-    textContent: (0, _vue.toDisplayString)($data.Translations.what_happens_when_photos_are_outdated)
-  }, null, 8 /* PROPS */, _hoisted_4), (0, _vue.createElementVNode)("strong", {
-    "class": "important-notice",
-    textContent: (0, _vue.toDisplayString)($data.Translations.anti_photoshop_warning)
-  }, null, 8 /* PROPS */, _hoisted_5), (0, _vue.createElementVNode)("strong", {
-    "class": "important-notice",
-    textContent: (0, _vue.toDisplayString)($data.Translations.photos_token_info)
-  }, null, 8 /* PROPS */, _hoisted_6), (0, _vue.createElementVNode)("span", {
-    textContent: (0, _vue.toDisplayString)($data.Translations.prostitute_photos_end_of_description)
-  }, null, 8 /* PROPS */, _hoisted_7)]), (0, _vue.createElementVNode)("div", _hoisted_8, [(0, _vue.createElementVNode)("span", {
-    textContent: (0, _vue.toDisplayString)($data.Translations.your_photo_token)
-  }, null, 8 /* PROPS */, _hoisted_9), (0, _vue.createTextVNode)(" : "), (0, _vue.createElementVNode)("strong", {
-    "class": "token",
-    textContent: (0, _vue.toDisplayString)($props.token)
-  }, null, 8 /* PROPS */, _hoisted_10)]), (0, _vue.createElementVNode)("div", _hoisted_11, [(0, _vue.createElementVNode)("strong", {
-    textContent: (0, _vue.toDisplayString)($data.Translations.prostitute_photos_allowed_size)
-  }, null, 8 /* PROPS */, _hoisted_12)]), (0, _vue.createVNode)(_component_multifile_image_upload, {
-    onNumberOfImagesLimitExceeded: $options.notifyUserAboutToManyPhotos,
-    onAddedPhotos: $options.assignPhotos,
-    onRemovedPhoto: $options.assignPhotos,
-    onFileSizeHasBeenExceeded: $options.notifyUserThatFileSizeHasBeenExceeded,
-    "maximum-file-size-in-bytes": 1024000,
-    "number-of-maximum-photos": 10,
-    "class": "added-images"
-  }, null, 8 /* PROPS */, ["onNumberOfImagesLimitExceeded", "onAddedPhotos", "onRemovedPhoto", "onFileSizeHasBeenExceeded"])]);
 }
 
 /***/ }),
@@ -28610,38 +28909,35 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_prostitution_policy_description = (0, _vue.resolveComponent)("prostitution-policy-description");
   var _component_prostitute_personalities = (0, _vue.resolveComponent)("prostitute-personalities");
   var _component_prostitute_services = (0, _vue.resolveComponent)("prostitute-services");
-  var _component_prostitute_photos = (0, _vue.resolveComponent)("prostitute-photos");
+  var _component_prostitute_photos_for_creator = (0, _vue.resolveComponent)("prostitute-photos-for-creator");
   var _component_prostitute_location_and_working_hours = (0, _vue.resolveComponent)("prostitute-location-and-working-hours");
   var _component_prostitute_save_notice = (0, _vue.resolveComponent)("prostitute-save-notice");
   var _component_left_arrow_icon = (0, _vue.resolveComponent)("left-arrow-icon");
   var _component_right_arrow_icon = (0, _vue.resolveComponent)("right-arrow-icon");
   return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [(0, _vue.createElementVNode)("div", _hoisted_2, [(0, _vue.createElementVNode)("h1", {
     "class": "navbar-caption",
-    textContent: (0, _vue.toDisplayString)($options.navbarCaption)
+    textContent: (0, _vue.toDisplayString)(_ctx.navbarCaption)
   }, null, 8 /* PROPS */, _hoisted_3), ((0, _vue.openBlock)(), (0, _vue.createBlock)((0, _vue.resolveDynamicComponent)($options.decorationComponentName), {
     "class": (0, _vue.normalizeClass)(["navbar-section-icon", $options.iconClass])
   }, null, 8 /* PROPS */, ["class"]))]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_prostitution_policy_description, {
-    onValidated: $options.skipToNextSection
+    onValidated: _ctx.skipToNextSection
   }, null, 8 /* PROPS */, ["onValidated"]), [[_vue.vShow, $options.showPolicyDescription]]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_prostitute_personalities, {
-    "user-types-list": $data.userTypesList,
-    "sexual-orientations-list": $data.sexualOrientationsList,
-    onValidated: $options.skipToNextSection
+    "user-types-list": _ctx.userTypesList,
+    "sexual-orientations-list": _ctx.sexualOrientationsList,
+    onValidated: _ctx.skipToNextSection
   }, null, 8 /* PROPS */, ["user-types-list", "sexual-orientations-list", "onValidated"]), [[_vue.vShow, $options.showBasicInformation]]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_prostitute_services, {
-    onValidated: $options.skipToNextSection
-  }, null, 8 /* PROPS */, ["onValidated"]), [[_vue.vShow, $options.showServices]]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_prostitute_photos, {
-    onValidated: $options.skipToNextSection,
-    token: $data.token
-  }, null, 8 /* PROPS */, ["onValidated", "token"]), [[_vue.vShow, $options.showPhotos]]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_prostitute_location_and_working_hours, {
-    onValidated: $options.skipToNextSection,
-    "voivodeships-list": $data.voivodeshipsList
+    onValidated: _ctx.skipToNextSection
+  }, null, 8 /* PROPS */, ["onValidated"]), [[_vue.vShow, $options.showServices]]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_prostitute_photos_for_creator, null, null, 512 /* NEED_PATCH */), [[_vue.vShow, $options.showPhotos]]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_prostitute_location_and_working_hours, {
+    onValidated: _ctx.skipToNextSection,
+    "voivodeships-list": _ctx.voivodeshipsList
   }, null, 8 /* PROPS */, ["onValidated", "voivodeships-list"]), [[_vue.vShow, $options.showLocationAndWorkingHours]]), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_prostitute_save_notice, null, null, 512 /* NEED_PATCH */), [[_vue.vShow, $options.showSaveNotice]]), (0, _vue.createElementVNode)("div", _hoisted_4, [(0, _vue.createElementVNode)("div", {
     "class": "navigation-description",
-    textContent: (0, _vue.toDisplayString)($data.translations['prostitution_offer_bottom_navigation_info'])
+    textContent: (0, _vue.toDisplayString)(_ctx.translations['prostitution_offer_bottom_navigation_info'])
   }, null, 8 /* PROPS */, _hoisted_5), (0, _vue.createElementVNode)("div", _hoisted_6, [(0, _vue.createVNode)(_component_left_arrow_icon, {
-    onClick: $options.skipToPreviousSection,
+    onClick: _ctx.skipToPreviousSection,
     "class": "change-section"
   }, null, 8 /* PROPS */, ["onClick"]), (0, _vue.createVNode)(_component_right_arrow_icon, {
-    onClick: $options.tryToSkipToNextSection,
+    onClick: _ctx.tryToSkipToNextSection,
     "class": "change-section"
   }, null, 8 /* PROPS */, ["onClick"])])])]);
 }
@@ -28951,7 +29247,7 @@ var _default = {
     the_following_errors_occured: "Wykryto następujące problemy : ",
     an_error_occured_while_fetching_required_data: "Podczas pobierania danych pojawił się błąd",
     failed_to_fetch_cities_list_please_try_again: "Pojawił się nieoczekiwany błąd podczas pobierania listy miejscowości. Proszę upewnić się, czy łącze internetowe jest sprawne i spróbować ponownie.",
-    fetching_required_data_failed_it_is_impossible_to_complete_announcement_please_try_again: "Pojawił się błąd podczas pobierania danych formularza. Proszę spróbować ponownie. Jeśli problem notorycznie się powtarza i łącze internetowe jest sprawne prosimy o kontakt z administracją poprzez formularz kontaktowy. Bez owych danych nie można dodać ogłoszenia.",
+    fetching_required_data_failed_it_is_impossible_to_complete_announcement_please_try_again: "Pojawił się błąd podczas pobierania danych formularza. Proszę spróbować ponownie. Jeśli problem notorycznie się powtarza i łącze internetowe jest sprawne prosimy o kontakt z administracją poprzez formularz kontaktowy. Bez owych danych nie można dodać/edytować ogłoszenia.",
     this_is_the_minimal_required_data: "Minimalne dane, które należy podać to",
     the_rest_is_optional: "reszta jest opcjonalna - nie wymagana, ale wskazana",
     data_has_been_changed_successfully: "Pomyślnie zmieniono dane użytkownika.",
@@ -29016,7 +29312,7 @@ var _default = {
     login_has_already_been_taken: "Login jest już zajęty",
     login_contains_less_then_3_characters: "Login ma mniej niż 3 znaki",
     login_contains_more_then_20_characters: "Login ma więcej niż 20 znaków"
-  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "subject_exceeds_40_characters", "Temat przekracza 40 znaków"), _defineProperty(_pl, "current_news", 'Aktualności'), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "movies", "Filmy"), _defineProperty(_pl, "views", "Odsłon"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "pornstars_navbar_caption", "Gwiazdy porno"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "launching_in_progress", "Trwa uruchamianie"), _defineProperty(_pl, "clicking_here", "klikając tutaj"), _defineProperty(_pl, "prostitution_offer_bottom_navigation_info", "Ogłoszenie zostało podzielone na sekcje, użyj strzałek aby przejść dalej"), _defineProperty(_pl, "click_to_play_the_video", "Kliknij aby uruchomić film"), _defineProperty(_pl, "stop_movie_preview", "Zatrzymaj odtwarzanie podglądu filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "previous_page", "poprzednia"), _defineProperty(_pl, "next_page", "następna"), _defineProperty(_pl, "further", "dalej"), _defineProperty(_pl, "back", "wstecz"), _defineProperty(_pl, "up", "góra"), _defineProperty(_pl, "first_page", "pierwsza"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "default_avatar", "Domyślny avatar, przedstawia bliżej niezidentyfikowanego użytkownika"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "element_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "movie_rate_data_is_invalid", "Niepoprawne dane oceny lub filmu"), _defineProperty(_pl, "birth_date_is_required", "Data urodzenia jest wymagana"), _defineProperty(_pl, "nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "answears", "Odpowiedzi"), _defineProperty(_pl, "add_comment", "Dodaj komentarz"), _defineProperty(_pl, "photosAreValidAndUpToDate", "zweryfikowane zdjęcia"), _defineProperty(_pl, "region", "województwo"), _defineProperty(_pl, "add", "dodaj"), _defineProperty(_pl, "contents", "Treść"), _defineProperty(_pl, "comment_added", "Dodano komentarz"), _defineProperty(_pl, "unregistered_user", "Niezarejestrowany"), _defineProperty(_pl, "register", "Rejestruj"), _defineProperty(_pl, "add_comment_short", "Komentuj"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "adding_comment", "Dodaję komentarz"), _defineProperty(_pl, "fetching_comments", "Pobieram komentarze"), _defineProperty(_pl, "comment_text_is_missing", "Nie podano treści komentarza"), _defineProperty(_pl, "comment_text_exceeds_1000_characters", "Treść komentarza przekracza 1000 znaków"), _defineProperty(_pl, "the_nickname_must_be_between_2_and_20_characters", "Pseudonim musi mieć minimum 2 znaki ale nie więcej niż 20"), _defineProperty(_pl, "no_comments_available", "Brak komentarzy"), _defineProperty(_pl, "because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute", "Z powodów bezpieczeństwa ograniczono liczbę dodawanych komentarzy do 2 na minutę"), _defineProperty(_pl, "total_comments", "Liczba wszystkich komentarzy"), _defineProperty(_pl, "publish_comment", "Opublikuj komentarz"), _defineProperty(_pl, "show_comments_sub_page_with_number", "Pokaż podstronę komentarzy o numerze"), _defineProperty(_pl, "edit", 'edytuj'), _defineProperty(_pl, "the_value_must_be_a_number_greater_than_0", "Podaj dodatnią liczbę"), _defineProperty(_pl, "sex_empire_short", "SI"), _defineProperty(_pl, "small_ass", "mały"), _defineProperty(_pl, "medium_ass", "średni"), _defineProperty(_pl, "big_ass", "duży"), _defineProperty(_pl, "small_tits", "małe"), _defineProperty(_pl, "medium_tits", "średnie"), _defineProperty(_pl, "big_tits", "duże"), _defineProperty(_pl, "skinny_tchickness", "chuda"), _defineProperty(_pl, "medium_tchickness", "średnia"), _defineProperty(_pl, "fat_tchickness", "gruba"), _defineProperty(_pl, "teenagers", "nastolatki(18 - 19)"), _defineProperty(_pl, "age_range_young", "młode (20 -29)"), _defineProperty(_pl, "age_range_mature", "dojrzałe(30 - 50)"), _defineProperty(_pl, "dark_hair", "czarny"), _defineProperty(_pl, "blonde_hair", "blond"), _defineProperty(_pl, "brown_hair", "brązowy"), _defineProperty(_pl, "red_hair", "rudy"), _defineProperty(_pl, "white_race", "biała"), _defineProperty(_pl, "asian_race", "azjatki"), _defineProperty(_pl, "ebony_race", "murzynki"), _defineProperty(_pl, "latin_race", "latynoski"), _defineProperty(_pl, "arabic_race", "arabki"), _defineProperty(_pl, "yes", "tak"), _defineProperty(_pl, "most_important_services_exact_information_notice", " Prosimy wypełnić poniższy formularz skrupulatnie, starannie i zgodnie z prawdą"), _defineProperty(_pl, "deep_throat", "głębokie gardło"), _defineProperty(_pl, "no", "nie"), _defineProperty(_pl, "one_male_one_female", "facet i kobieta"), _defineProperty(_pl, "bukkake", "bukkake"), _defineProperty(_pl, "single_female", "kobieta solo"), _defineProperty(_pl, "lesbians", "lesbijki"), _defineProperty(_pl, "group_sex", "grupowy"), _defineProperty(_pl, "one_male_many_females", "facet i wiele kobiet"), _defineProperty(_pl, "GangBang", "GangBang"), _defineProperty(_pl, "sex_with_many_males", "sex z wieloma mężczyznami"), _defineProperty(_pl, "outside_together", "wspólne wyjścia"), _defineProperty(_pl, "one_female_two_males", "Na 2 baty"), _defineProperty(_pl, "lesbian_group_sex", "Lesbijki grupowo"), _defineProperty(_pl, "only", "tylko i wyłącznie"), _defineProperty(_pl, "maximum", "maximum"), _defineProperty(_pl, "a_lot", "dużo"), _defineProperty(_pl, "medium", "średnio"), _defineProperty(_pl, "a_little", "trochę"), _defineProperty(_pl, "exclude", "wyklucz"), _defineProperty(_pl, "on_face", "na twarz"), _defineProperty(_pl, "cum_swallow", "z połykiem"), _defineProperty(_pl, "creampie", "w cipkę"), _defineProperty(_pl, "anal", "anal"), _defineProperty(_pl, "cum_on_face", "wytrysk na twarz"), _defineProperty(_pl, "anal_creampie", "w dupkę"), _defineProperty(_pl, "on_tits", "na cycki"), _defineProperty(_pl, "on_pussy", "na cipkę"), _defineProperty(_pl, "on_ass", "na dupkę"), _defineProperty(_pl, "on_feet", "na stopy"), _defineProperty(_pl, "on_many_places", "na wiele miejsc"), _defineProperty(_pl, "on_other_body_parts", "na inne miejsca"), _defineProperty(_pl, "american_nationality", "amerykańska"), _defineProperty(_pl, "japanese_nationality", "japońska"), _defineProperty(_pl, "german_nationality", "niemiecka"), _defineProperty(_pl, "czech_nationality", "czeska"), _defineProperty(_pl, "russian_nationality", "rosyjska"), _defineProperty(_pl, "british_nationality", "brytyjska"), _defineProperty(_pl, "swedish_nationality", "szwedzka"), _defineProperty(_pl, "ukrainian_nationality", "ukraińska"), _defineProperty(_pl, "slovac_nationality", "słowacka"), _defineProperty(_pl, "hanguarian_nationality", "węgierska"), _defineProperty(_pl, "polish_nationality", "polska"), _defineProperty(_pl, "dutch_nationality", "holenderska"), _defineProperty(_pl, "hindu_nationality", "hinduska"), _defineProperty(_pl, "french_nationality", "francuska"), _defineProperty(_pl, "spanish_nationality", "hiszpańska"), _defineProperty(_pl, "italian_nationality", "włoska"), _defineProperty(_pl, "canadian_nationality", "kanadyjska"), _defineProperty(_pl, "argentinian_nationality", "argentyńska"), _defineProperty(_pl, "house", "dom"), _defineProperty(_pl, "bathroom", "łazienka"), _defineProperty(_pl, "office", "biuro"), _defineProperty(_pl, "school", "szkoła"), _defineProperty(_pl, "public_place", "miejsca publiczne"), _defineProperty(_pl, "car", "samochód"), _defineProperty(_pl, "nature", "łono natury"), _defineProperty(_pl, "solarium", "solarium"), _defineProperty(_pl, "elevator", "winda"), _defineProperty(_pl, "beach", "plaża"), _defineProperty(_pl, "gym", "siłownia"), _defineProperty(_pl, "POV", "POV"), _defineProperty(_pl, "weight", "waga"), _defineProperty(_pl, "outside_camera_style", "z zewnątrz"), _defineProperty(_pl, "mixed_camera_style", "mieszane"), _defineProperty(_pl, "female_pupil", "uczennica"), _defineProperty(_pl, "female_employee", "pracownica"), _defineProperty(_pl, "female_student", "studentka"), _defineProperty(_pl, "wife", "żona"), _defineProperty(_pl, "female_teacher", "nauczycielka"), _defineProperty(_pl, "nurse", "pielęgniarka"), _defineProperty(_pl, "female_slave", "niewolnica"), _defineProperty(_pl, "nun", "zakonnica"), _defineProperty(_pl, "female_police_officer", "policjantka"), _defineProperty(_pl, "prostitute", "prostytutka"), _defineProperty(_pl, "female_boss", "szefowa"), _defineProperty(_pl, "cleaner", "sprzątaczka"), _defineProperty(_pl, "mommy", "mamusia"), _defineProperty(_pl, "amateur", "amatorski"), _defineProperty(_pl, "professional", "profesjonalny"), _defineProperty(_pl, "choose_option", "wybierz opcję"), _defineProperty(_pl, "saving_notice", "Zapisywanie ogłoszenia"), _defineProperty(_pl, "announcement_must_be_accepted_reminder", "Proszę pamiętać, że ogłoszenie nie zostanie dodane natychmiast. Musi najpierw zostać zweryfikowane, jednakże nie dłużej niż 48 godzin. "), _defineProperty(_pl, "prostitute_save_announcement_info", "To już koniec wypełniania formularzy. Jeśli wszystko się zgadza, można kliknąć w przycisk poniżej aby dodać ogłoszenie. "), _defineProperty(_pl, "choose_options", "wybierz opcje"), _defineProperty(_pl, "included_in_price", "wliczone w cenę"), _defineProperty(_pl, "client_rimming", "rimming w stronę klienta"), _defineProperty(_pl, "cum_on_body", "wytrysk na ciało"), _defineProperty(_pl, "kisses", "pocałunki"), _defineProperty(_pl, "aditional_payment", "za dopłatą"), _defineProperty(_pl, "classic_sex", "sex klasyczny"), _defineProperty(_pl, "only_in_condom", "tylko w gumce"), _defineProperty(_pl, "without_condom", "bez gumki"), _defineProperty(_pl, "without_condom_with_aditional_payments", "bez gumki, za dopłatą"), _defineProperty(_pl, "role_playing", "odgrywanie ról"), _defineProperty(_pl, "a_payment_type_can_be_chosen_only_once", "dany typ płatności można wybrać tylko raz"), _defineProperty(_pl, "announcement_description", "Treść ogłoszenia, max: 2000 znaków"), _defineProperty(_pl, "oral_creampie", "wytrysk do ust"), _defineProperty(_pl, "most_important_services_description", "Poniżej lista najważniejszych usług jakimi interesują się klienci. Aktualnie ceny podawane są w złotówkach. Pracujemy nad cennikiem w innych walutach. Informacje, ułatwią użytkownikom wyszukiwanie i Tobie pomogą znaleźć klientów. Jeżeli formularze nie do końca odpowiadają Twej ofercie możesz doprecyzować to w opisie w dalszej sekcji."), _defineProperty(_pl, "remaining_services_description", "Pozostałe usługi nie ujęte na liście najważniejszych (opcjonalnie)"), _defineProperty(_pl, "click_to_chose_remaining_services", "Kliknij aby wybrać pozostałe usługi"), _defineProperty(_pl, "blowjob", "lodzik"), _defineProperty(_pl, "currencies_you_accept", "waluty jakie akceptujesz"), _defineProperty(_pl, "trips", "wyjazdy"), _defineProperty(_pl, "prices_for_your_services_description", "Ceny Twoich usług. Możesz podać kilka opcji. Kliknij w zielony przycisk aby dodać kolejną pozycję i czerwony przycisk aby usunąć."), _defineProperty(_pl, "add_payment_type", "dodaj typ płatności"), _defineProperty(_pl, "remove_payment_type", "usuń typ płatności"), _defineProperty(_pl, "remove", "usuń"), _defineProperty(_pl, "streaptease", "striptiz"), _defineProperty(_pl, "dancing", "taniec"), _defineProperty(_pl, "latex", "lateks"), _defineProperty(_pl, "double_penetration", "podwójna penetracja"), _defineProperty(_pl, "for_hour", "za godzinę"), _defineProperty(_pl, "for_30_minutes", "za pół godziny"), _defineProperty(_pl, "for_15_minutes", "za 15 minut"), _defineProperty(_pl, "for_night", "za noc"), _defineProperty(_pl, "for_blowjob", "za lodzika"), _defineProperty(_pl, "until_first_cumshot", "do pierwszego wystrzału"), _defineProperty(_pl, "location_and_working_hours", "lokalizacja i godziny pracy"), _defineProperty(_pl, "for_2_hours", "za 2 godziny"), _defineProperty(_pl, "for_3_hours", "za 3 godziny"), _defineProperty(_pl, "never", "nigdy"), _defineProperty(_pl, "height", "wzrost"), _defineProperty(_pl, "search", "szukaj"), _defineProperty(_pl, "remove_option", "usuń opcję"), _defineProperty(_pl, "you_have_exceeded_photos_limit", "Przekroczono limit zdjęć"), _defineProperty(_pl, "monday", "poniedziałek"), _defineProperty(_pl, "tuesday", "wtorek"), _defineProperty(_pl, "wednesday", "środa"), _defineProperty(_pl, "thursday", "czwartek"), _defineProperty(_pl, "friday", "piątek"), _defineProperty(_pl, "saturday", "sobota"), _defineProperty(_pl, "sunday", "niedziela"), _defineProperty(_pl, "show_each_single_day_from_monday_to_friday", "Pokaż pojedyncze dni powszednie"), _defineProperty(_pl, "close", "zamknij"), _defineProperty(_pl, "day_of", "wolne"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę"), _defineProperty(_pl, "show_weekdays_as_one_row", "Pokaż dni powszednie w jednym wierszu"), _defineProperty(_pl, "fetching_pornstars", "Pobieram listę gwiazd"), _defineProperty(_pl, "not_selected", "nie wybrano"), _defineProperty(_pl, "minutes_inflected", "minut(y)"), _defineProperty(_pl, "views_inflected", "wyświetleń"), _defineProperty(_pl, "phone_number_must_contain_at_least_7_characters", "Numer telefonu musi zawierać co najmniej 7 znaków"), _defineProperty(_pl, "height_must_be_an_integer_between_90_and_270", "Podaj liczbę między 90 a 270"), _defineProperty(_pl, "weight_must_be_an_integer_between_30_and_800", "Podal liczbę pomiędzy 30 a 800"), _defineProperty(_pl, "file_size_has_been_exceeded_for_following_files", "Następujące pliki mają za duży rozmiar"), _defineProperty(_pl, "prostitute_photos_allowed_size", "Maksymalny rozmiar zdjęcia to 1MB"), _defineProperty(_pl, "unexpected_error_occured", "Pojawił się bliżej niezidentyfikowany błąd"), _defineProperty(_pl, "titsSize", "rozmiar cycków"), _defineProperty(_pl, "assSize", "rozmiar dupci"), _defineProperty(_pl, "thicknessSize", "tusza"), _defineProperty(_pl, "ageRange", "przedział wiekowy"), _defineProperty(_pl, "hairColor", "kolor włosów"), _defineProperty(_pl, "race", "rasa"), _defineProperty(_pl, "abundanceType", "liczebność"), _defineProperty(_pl, "cumshotType", "typ wytrysku"), _defineProperty(_pl, "nationality", "narodowość"), _defineProperty(_pl, "location", "lokalizacja"), _defineProperty(_pl, "cameraStyle", "ujęcie kamery"), _defineProperty(_pl, "storyOrCostume", "motyw fabularno kostiumowy"), _defineProperty(_pl, "professionalismLevel", "poziom filmu"), _defineProperty(_pl, "shavedPussy", "wygolona cipka"), _defineProperty(_pl, "analAmount", "anal"), _defineProperty(_pl, "blowjob", "obciąganie"), _defineProperty(_pl, "handjob", "walenie konika"), _defineProperty(_pl, "blondes", "blondynki"), _defineProperty(_pl, "tittfuck", "na hiszpana"), _defineProperty(_pl, "pissing", "obsikiwanie"), _defineProperty(_pl, "strapon", "sztuczny penis"), _defineProperty(_pl, "fingering", "palcówka"), _defineProperty(_pl, "licking_balls", "lizanie jąder"), _defineProperty(_pl, "spanking", "klapsy"), _defineProperty(_pl, "pussy_licking", "minetka"), _defineProperty(_pl, "petting_with_feet", "pieszczenie stopami"), _defineProperty(_pl, "feet", "stopy"), _defineProperty(_pl, "femdom", "kobieca dominacja"), _defineProperty(_pl, "brunettes", "brunetki"), _defineProperty(_pl, "redheads", "rude"), _defineProperty(_pl, "milfs", "dojrzałe"), _defineProperty(_pl, "teens", 'nastolatki'), _defineProperty(_pl, "amateur", "amatorskie"), _defineProperty(_pl, "asian", 'azjatki'), _defineProperty(_pl, "latins", 'latynoski'), _defineProperty(_pl, "ebony", 'murzynki'), _defineProperty(_pl, "lesbians", 'lesbijki'), _defineProperty(_pl, "group", 'grupowy'), _defineProperty(_pl, "cumshot_compilation", 'kompilacja wytrysków'), _defineProperty(_pl, "cumshot_compilations", 'kompilacje wytrysków'), _defineProperty(_pl, "cum_on_face", 'wytrysk na twarz'), _defineProperty(_pl, "cum_swallow", 'połykanie spermy'), _defineProperty(_pl, "cum_on_feet", 'wytrysk na stopy'), _defineProperty(_pl, "creampie", 'wytrysk w cipkę'), _defineProperty(_pl, "cum_in_ass", 'wytrysk w dupkę'), _defineProperty(_pl, "cum_on_titts", 'wytrysk na cycki'), _defineProperty(_pl, "pantyhose", 'rajstopki'), _defineProperty(_pl, "high_heels", 'szpile'), _defineProperty(_pl, "insults", "wyzwiska"), _defineProperty(_pl, "hugging", "przytulanie"), _defineProperty(_pl, "shared_bath", "wspólna kąpiel"), _defineProperty(_pl, "sex_with_2_males", "na 2 baty"), _defineProperty(_pl, "nurses", 'pielęgniarki'), _defineProperty(_pl, "teachers", 'nauczycielki'), _defineProperty(_pl, "japanese", 'japonki'), _defineProperty(_pl, "russian", 'rosjanki'), _defineProperty(_pl, "pornstars", 'gwiazdy porno'), _defineProperty(_pl, "blowjobAmount", 'obciąganie'), _defineProperty(_pl, "money_amount", "kwota"), _defineProperty(_pl, "handjobAmount", 'walenie konika'), _defineProperty(_pl, "doublePenetrationamount", "wtyczka"), _defineProperty(_pl, "vaginalamount", "waginalny"), _defineProperty(_pl, "pussyLickingAmount", 'minetka'), _defineProperty(_pl, "feetPettingAmount", 'pieszczenie stóp'), _defineProperty(_pl, "position69amount", 'pozycja 69'), _defineProperty(_pl, "titfuckAmount", "na hiszpana"), _defineProperty(_pl, "isCumshotCompilation", 'kompilacja wytrysków'), _defineProperty(_pl, "recordedBySpamCamera", 'nagrany kamerą szpiegowską'), _defineProperty(_pl, "isSadisticOrMasochistic", 'sado-masochostyczny'), _defineProperty(_pl, "isFemaleDomination", 'kobieca dominacja'), _defineProperty(_pl, "isTranslatedToPolish", 'polska wersja językowa'), _defineProperty(_pl, "showPantyhose", 'rajstopy'), _defineProperty(_pl, "showStockings", 'pończochy'), _defineProperty(_pl, "showGlasses", 'okulary'), _defineProperty(_pl, "showHighHeels", 'szpile'), _defineProperty(_pl, "showHugeCock", 'wielki kutas'), _defineProperty(_pl, "showWhips", 'bicze'), _defineProperty(_pl, "whips", 'bicze'), _defineProperty(_pl, "showSexToys", 'sex-zabawki'), _defineProperty(_pl, "minimumMovieTime", "minimalny czas"), _defineProperty(_pl, "maximumMovieTime", "maksymalny czas"), _defineProperty(_pl, "minimumMovieViews", 'minimalna liczba wyświetleń'), _defineProperty(_pl, "maximumMovieViews", 'maksymalna liczba wyświetleń'), _defineProperty(_pl, "hasStory", 'zawiera fabułę'), _defineProperty(_pl, "total_movies_found", "Ilość znalezionych filmów"), _defineProperty(_pl, "rules", "zasady"), _defineProperty(_pl, "movie_with_following_pornstars", "występują jednocześnie następujące gwiazdy"), _defineProperty(_pl, "last_page", "ostatnia"), _defineProperty(_pl, "movie_with_pornstar", "Film w którym występuje"), _defineProperty(_pl, "no_movies_have_been_found", "Nie znaleziono żadnych filmów pasujących do wybranych kryteriów"), _defineProperty(_pl, "no_options_have_been_selected", "Nie wybrano żadnych opcji"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd"), _defineProperty(_pl, "because_of_security_reasons_search_was_blocked", "Ze względów bezpieczeństwa ilość zapytań do wyszukiwarki w ciągu minuty jest ograniczona. Prosimy zaczekać chwilę i spróbować ponownie."), _defineProperty(_pl, "popular_categories", "Popularne kategorie"), _defineProperty(_pl, "categories_list", "Lista kategorii"), _defineProperty(_pl, "personalities", "personalia"), _defineProperty(_pl, "section", "sekcja"), _defineProperty(_pl, "big_titts", "duże cycki"), _defineProperty(_pl, "categories", "Kategorie"), _defineProperty(_pl, "teenagers", "nastolatki"), _defineProperty(_pl, "spermatozoid_has_been_asigned", "Przyznano plemnika. Musisz odczekać minimum pół godziny aby przyznać kolejnego."), _defineProperty(_pl, "you_have_exceeded_cum_limit", "Możesz przyznać maksymalnie jednego plemnika na pół godziny niezależnie od filmu"), _defineProperty(_pl, "spermatozoid_rate_data_is_incorrect", "Niepoprawne dane filmu"), _defineProperty(_pl, "movie_views", "Liczba wyświetleń"), _defineProperty(_pl, "movie_added_at", "Data dodania"), _defineProperty(_pl, "movie_average_rating", "Średnia ocen"), _defineProperty(_pl, "this_pornstar_does_not_have_enough_votes_to_calculate_average", "Ta gwiazda ma za mało głosów aby policzyć średnią (wymagane minimum to 10)"), _defineProperty(_pl, "fetching_rating_in_progress", "Pobieram dane rankingu"), _defineProperty(_pl, "average_rate_not_available_yet", "jeszcze niedostępna"), _defineProperty(_pl, "ammount_of_spermatozoids", "Liczba plemników"), _defineProperty(_pl, "your_spermatozoids", "twoich"), _defineProperty(_pl, "number_of_likes", "Polubień"), _defineProperty(_pl, "failed_to_load_movie_data", "Nie udało się pobrać szczegółowych danych filmu"), _defineProperty(_pl, "failed_to_load_similar_movies", "Nie udało się załadować podobnych filmów"), _defineProperty(_pl, "you_like_it", "Lubisz to"), _defineProperty(_pl, "you_already_like_this_movie", "Już wcześniej polubiłeś ten film"), _defineProperty(_pl, "you_and", "Ty i"), _defineProperty(_pl, "people_like_it", "osób lubi to"), _defineProperty(_pl, "no_comments", "Brak komentarzy"), _defineProperty(_pl, "services_range_and_pricing", "usługi i cennik"), _defineProperty(_pl, "working_hours", "Godziny pracy"), _defineProperty(_pl, "location", "Lokalizacja"), _defineProperty(_pl, "voivodeship", "Województwo"), _defineProperty(_pl, "fetching_announcements", "Pobieram ogłoszenia"), _defineProperty(_pl, "you_dont_have_any_announcements", "Nie posiadasz żadnych ogłoszeń"), _defineProperty(_pl, "city", "Miasto"), _defineProperty(_pl, "hidden_by_a_user", "Ukryte przez użytkownika"), _defineProperty(_pl, "not_valid_awaiting_verification_not_visible_for_users", "Nieważne, niewidoczne dla użytkowników. Czeka na weryfikację"), _defineProperty(_pl, "monday", "poniedziałek"), _defineProperty(_pl, "actions", "działania"), _defineProperty(_pl, "not_provided", "nie podano"), _defineProperty(_pl, "friday", "piątek"), _defineProperty(_pl, "please_decide", "proszę zdecydować"), _defineProperty(_pl, "invalid_time_format", "Błędny format"), _defineProperty(_pl, "probably_your_session_has_expired", "Jesteś niezalogowany, prawdopodbnie zostało to spowodowane dłuższym czasem bezczynności - w takiej sytuacji aplikacja wylogowuje użytkownika. Niestety chcąc kontynuować należy ponownie się zalogować."), _defineProperty(_pl, "time_since_must_be_earlier_than_time_until", "W przypadku co najmniej jednego dnia, godzina rozpoczęcia jest później niż godzina zakończenia lub są one równe. Zaznaczono te kontrolki na czerwono"), _defineProperty(_pl, "prostitution_announcements_are_free", "Zamieszczenie oferty jest całkowicie darmowe. Obowiązuje limit : 1 ogłoszenie. Wyjątkiem są właściciele agencji towarzyskich/salonów masażu, którzy chcieliby przedstawić poszczególnych pracowników. "), _defineProperty(_pl, "dont_spam_with_announcements", "Nie kombinuj, nie spamuj ogłoszeniami - administracja i tak prędzej czy później takowe oferty usuwa i banuje użytkowników. Dodawaj tylko i wyłącznie swoje aktualne zdjęcia. "), _defineProperty(_pl, "announcement_will_not_be_added_immidiatelly", "Ogłoszenie nie zostanie dodane natychmiastowo, musi najpierw zostać zweryfikowane przez administrację. Czas weryfikacji to maksimum 48 godzin. Aby dodać kolejne ogłoszenie poprzednie musi najpierw zostać zweryfikowane. "), _defineProperty(_pl, "in_case_of_a_problem_please_contact_us_using_the_contact_form", "W razie problemów, prosimy o kontakt poprzez formularz "), _defineProperty(_pl, "empire_policy_for_working_hours_of_prostitutes", "Proszę zdecydować czy podać konkretne godziny pracy, czy też pozostawić niezdefiniowane - na zasadzie mam włączony telefon to jestem a jak jest wyłączony to mnie nie ma. Warto wziąć pod uwagę, że podanie precyzyjnych godzin pozytywnie wpłynie na odbiór klientów. W przyszłości będzie można zaznaczyć opcję ukrywania ogłoszenia poza godzinami pracy. Nie wystarczy podać przedziału czasowego w opisie (w sekcji : personalia), aby w 100% poprawnie zapisał się w systemie i aby ułatwiał wyszukiwanie użytkownikom."), _defineProperty(_pl, "prostitution_offer_policy_description", "Nie kombinuj, nie spamuj ogłoszeniami - administracja i tak prędzej czy później takowe oferty usuwa i banuje użytkowników. Dodawaj tylko i wyłącznie swoje aktualne zdjęcia. Ogłoszenie nie zostanie dodane natychmiastowo, musi najpierw zostać zweryfikowane przez administrację. Czas weryfikacji to maksimum 48 godzin. W razie problemów, prosimy o kontakt poprzez formularz, "), _defineProperty(_pl, "everyone_can_comment_a_prostitute", "Każdy zarejestrowany użytkownik może dodać komentarz pod dowolnym ogłoszeniem. Autor ogłoszenia nie ma możliwości usuwania komentarzy użytkowników, a już tym bardziej tych nieprzychylnych. "), _defineProperty(_pl, "comments_are_filtered_by_admins_to_prevent_revealing_classified_information", "Jednocześnie przed opublikowaniem jakiegokolwiek komentarza administracja dba o to aby nie zostały upublicznione poufne dane takie jak adres, imię i nazwisko itp. "), _defineProperty(_pl, "do_you_want_to_set_precise_working_hours", "Podać godziny pracy"), _defineProperty(_pl, "cookie_notification_header", "Ta strona wykorzystuje pliki cookie"), _defineProperty(_pl, "prostitute_photos_just_one_reminder", "Przypominamy, że poza wyjątkiem właścicieli agencji towarzyskich/salonów masażu można dodać tylko 1 ogłoszenie. Przypominamy również, że aby dodać kolejną ofertę wszystkie poprzednie muszą najpierw zostać zaakceptowane. Ewentualne zmiany w treści ogłoszenia są możliwe w panelu użytkownika."), _defineProperty(_pl, "cookie_notification_body", "Poprzez dalsze korzystanie z portalu lub naci\u015Bni\u0119cie przycisku \"Akceptuj\u0119\" wyra\u017Casz zgod\u0119 na przechowywanie plik\xF3w cookie na Twej maszynie"), _defineProperty(_pl, "accept_button_caption", "Akceptuję - zamknij"), _defineProperty(_pl, "show_content_side_bar_title", "Rozwiń nawigację strony dla wersji mobilnej"), _defineProperty(_pl, "show_content_side_bar_caption", "Menu"), _defineProperty(_pl, "cancel_like", "cofnij like'a"), _defineProperty(_pl, "fetching_cities", "Pobieram listę miast"), _defineProperty(_pl, "show_authenticated_user_sidebar_title", "Rozwiń menu użytkownika, ustawienia profilu, wylogowanie itp."), _defineProperty(_pl, "show_authenticated_user_sidebar_caption", "Profil"), _defineProperty(_pl, "user_type_is_required", "Wymagane jest podanie typu użytkownika"), _defineProperty(_pl, "you_mustnot_choose_tits_size_if_you_are_a_male", "Nie możesz wybrać rozmiaru cycków będąc mężczyzną"), _defineProperty(_pl, "one_announcement_is_awaiting_validation", "Aktualnie posiadasz już 1 ogłoszenie oczekujące na weryfikację w związku z czym nie można dodać kolejnego"), _defineProperty(_pl, "selected_avatar", "Nowy avatar"), _defineProperty(_pl, "no_avatar_has_been_choosen", "Nie wybrano avataru"), _defineProperty(_pl, "notices_policy", "polityka dodawania ogłoszeń"), _defineProperty(_pl, "current_avatar", "Wybrany avatar"), _defineProperty(_pl, "basic_information", "Podstawowe informacje"), _defineProperty(_pl, "the_latest", "Najnowsze"), _defineProperty(_pl, "the_most_popular", "Najpopularniejsze"), _defineProperty(_pl, "advanced_search", "Szukanie zaawansowane"), _defineProperty(_pl, "login_or_email", "Login lub email"), _defineProperty(_pl, "remember_me", "Zapamiętaj mnie"), _defineProperty(_pl, "scroll_movies_list_left", "Przewiń listę filmów w lewo"), _defineProperty(_pl, "scroll_movies_list_right", "Przewiń listę filmów w prawo"), _defineProperty(_pl, "dictionary", "Słownik"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "prostitution", "Prostytucja"), _defineProperty(_pl, "add_notice", "Dodaj ogłoszenie"), _defineProperty(_pl, "no_working_period_has_been_provided", "Skoro zdecydowałaś(eś) się podać godziny pracy to nie możesz mieć cały czas wolne"), _defineProperty(_pl, "notices_list", "Lista ogłoszeń"), _defineProperty(_pl, "you_have_to_be_logged_in_to_add_notice", "Musisz być zalogowany aby dodać ogłoszenie"), _defineProperty(_pl, "phone_number_format_must_be_valid", "Numer telefonu musi być w prawidłowym formacie"), _defineProperty(_pl, "phone_number_must_not_exceed_16_characters", "Numer telefonu nie może być dłuższy niż 16 znaków"), _defineProperty(_pl, "valid_until", "ważny do"), _defineProperty(_pl, "phone_number", "numer telefonu"), _defineProperty(_pl, "birth_date_restrictions", "Po zatwierdzeniu ogłoszenia zmiana daty urodzenia nie będzie możliwa. Prosimy nie zaniżać swojego wieku - w przyszłości może zostać wprowadzony mechanizm weryfikowania i kłamliwe ogłoszenia zostaną usunięte"), _defineProperty(_pl, "packages", {
+  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "subject_exceeds_40_characters", "Temat przekracza 40 znaków"), _defineProperty(_pl, "current_news", 'Aktualności'), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "movies", "Filmy"), _defineProperty(_pl, "views", "Odsłon"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "pornstars_navbar_caption", "Gwiazdy porno"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "launching_in_progress", "Trwa uruchamianie"), _defineProperty(_pl, "clicking_here", "klikając tutaj"), _defineProperty(_pl, "prostitution_offer_bottom_navigation_info", "Ogłoszenie zostało podzielone na sekcje, użyj strzałek aby przejść dalej"), _defineProperty(_pl, "click_to_play_the_video", "Kliknij aby uruchomić film"), _defineProperty(_pl, "stop_movie_preview", "Zatrzymaj odtwarzanie podglądu filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "previous_page", "poprzednia"), _defineProperty(_pl, "next_page", "następna"), _defineProperty(_pl, "further", "dalej"), _defineProperty(_pl, "back", "wstecz"), _defineProperty(_pl, "up", "góra"), _defineProperty(_pl, "first_page", "pierwsza"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "default_avatar", "Domyślny avatar, przedstawia bliżej niezidentyfikowanego użytkownika"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "element_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "movie_rate_data_is_invalid", "Niepoprawne dane oceny lub filmu"), _defineProperty(_pl, "birth_date_is_required", "Data urodzenia jest wymagana"), _defineProperty(_pl, "nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "answears", "Odpowiedzi"), _defineProperty(_pl, "add_comment", "Dodaj komentarz"), _defineProperty(_pl, "photosAreValidAndUpToDate", "zweryfikowane zdjęcia"), _defineProperty(_pl, "region", "województwo"), _defineProperty(_pl, "add", "dodaj"), _defineProperty(_pl, "contents", "Treść"), _defineProperty(_pl, "comment_added", "Dodano komentarz"), _defineProperty(_pl, "unregistered_user", "Niezarejestrowany"), _defineProperty(_pl, "register", "Rejestruj"), _defineProperty(_pl, "add_comment_short", "Komentuj"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "adding_comment", "Dodaję komentarz"), _defineProperty(_pl, "fetching_comments", "Pobieram komentarze"), _defineProperty(_pl, "comment_text_is_missing", "Nie podano treści komentarza"), _defineProperty(_pl, "comment_text_exceeds_1000_characters", "Treść komentarza przekracza 1000 znaków"), _defineProperty(_pl, "the_nickname_must_be_between_2_and_20_characters", "Pseudonim musi mieć minimum 2 znaki ale nie więcej niż 20"), _defineProperty(_pl, "no_comments_available", "Brak komentarzy"), _defineProperty(_pl, "because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute", "Z powodów bezpieczeństwa ograniczono liczbę dodawanych komentarzy do 2 na minutę"), _defineProperty(_pl, "total_comments", "Liczba wszystkich komentarzy"), _defineProperty(_pl, "publish_comment", "Opublikuj komentarz"), _defineProperty(_pl, "show_comments_sub_page_with_number", "Pokaż podstronę komentarzy o numerze"), _defineProperty(_pl, "edit", 'edytuj'), _defineProperty(_pl, "the_value_must_be_a_number_greater_than_0", "Podaj dodatnią liczbę"), _defineProperty(_pl, "sex_empire_short", "SI"), _defineProperty(_pl, "small_ass", "mały"), _defineProperty(_pl, "medium_ass", "średni"), _defineProperty(_pl, "big_ass", "duży"), _defineProperty(_pl, "small_tits", "małe"), _defineProperty(_pl, "medium_tits", "średnie"), _defineProperty(_pl, "big_tits", "duże"), _defineProperty(_pl, "skinny_tchickness", "chuda"), _defineProperty(_pl, "medium_tchickness", "średnia"), _defineProperty(_pl, "fat_tchickness", "gruba"), _defineProperty(_pl, "teenagers", "nastolatki(18 - 19)"), _defineProperty(_pl, "age_range_young", "młode (20 -29)"), _defineProperty(_pl, "age_range_mature", "dojrzałe(30 - 50)"), _defineProperty(_pl, "dark_hair", "czarny"), _defineProperty(_pl, "blonde_hair", "blond"), _defineProperty(_pl, "brown_hair", "brązowy"), _defineProperty(_pl, "red_hair", "rudy"), _defineProperty(_pl, "white_race", "biała"), _defineProperty(_pl, "asian_race", "azjatki"), _defineProperty(_pl, "ebony_race", "murzynki"), _defineProperty(_pl, "latin_race", "latynoski"), _defineProperty(_pl, "arabic_race", "arabki"), _defineProperty(_pl, "yes", "tak"), _defineProperty(_pl, "most_important_services_exact_information_notice", " Prosimy wypełnić poniższy formularz skrupulatnie, starannie i zgodnie z prawdą"), _defineProperty(_pl, "deep_throat", "głębokie gardło"), _defineProperty(_pl, "no", "nie"), _defineProperty(_pl, "one_male_one_female", "facet i kobieta"), _defineProperty(_pl, "bukkake", "bukkake"), _defineProperty(_pl, "single_female", "kobieta solo"), _defineProperty(_pl, "lesbians", "lesbijki"), _defineProperty(_pl, "group_sex", "grupowy"), _defineProperty(_pl, "one_male_many_females", "facet i wiele kobiet"), _defineProperty(_pl, "GangBang", "GangBang"), _defineProperty(_pl, "sex_with_many_males", "sex z wieloma mężczyznami"), _defineProperty(_pl, "outside_together", "wspólne wyjścia"), _defineProperty(_pl, "one_female_two_males", "Na 2 baty"), _defineProperty(_pl, "lesbian_group_sex", "Lesbijki grupowo"), _defineProperty(_pl, "only", "tylko i wyłącznie"), _defineProperty(_pl, "maximum", "maximum"), _defineProperty(_pl, "a_lot", "dużo"), _defineProperty(_pl, "medium", "średnio"), _defineProperty(_pl, "a_little", "trochę"), _defineProperty(_pl, "exclude", "wyklucz"), _defineProperty(_pl, "on_face", "na twarz"), _defineProperty(_pl, "cum_swallow", "z połykiem"), _defineProperty(_pl, "creampie", "w cipkę"), _defineProperty(_pl, "anal", "anal"), _defineProperty(_pl, "cum_on_face", "wytrysk na twarz"), _defineProperty(_pl, "anal_creampie", "w dupkę"), _defineProperty(_pl, "on_tits", "na cycki"), _defineProperty(_pl, "on_pussy", "na cipkę"), _defineProperty(_pl, "on_ass", "na dupkę"), _defineProperty(_pl, "on_feet", "na stopy"), _defineProperty(_pl, "on_many_places", "na wiele miejsc"), _defineProperty(_pl, "on_other_body_parts", "na inne miejsca"), _defineProperty(_pl, "american_nationality", "amerykańska"), _defineProperty(_pl, "japanese_nationality", "japońska"), _defineProperty(_pl, "german_nationality", "niemiecka"), _defineProperty(_pl, "czech_nationality", "czeska"), _defineProperty(_pl, "russian_nationality", "rosyjska"), _defineProperty(_pl, "british_nationality", "brytyjska"), _defineProperty(_pl, "swedish_nationality", "szwedzka"), _defineProperty(_pl, "ukrainian_nationality", "ukraińska"), _defineProperty(_pl, "slovac_nationality", "słowacka"), _defineProperty(_pl, "hanguarian_nationality", "węgierska"), _defineProperty(_pl, "polish_nationality", "polska"), _defineProperty(_pl, "dutch_nationality", "holenderska"), _defineProperty(_pl, "hindu_nationality", "hinduska"), _defineProperty(_pl, "french_nationality", "francuska"), _defineProperty(_pl, "spanish_nationality", "hiszpańska"), _defineProperty(_pl, "italian_nationality", "włoska"), _defineProperty(_pl, "canadian_nationality", "kanadyjska"), _defineProperty(_pl, "argentinian_nationality", "argentyńska"), _defineProperty(_pl, "house", "dom"), _defineProperty(_pl, "bathroom", "łazienka"), _defineProperty(_pl, "office", "biuro"), _defineProperty(_pl, "school", "szkoła"), _defineProperty(_pl, "public_place", "miejsca publiczne"), _defineProperty(_pl, "car", "samochód"), _defineProperty(_pl, "nature", "łono natury"), _defineProperty(_pl, "solarium", "solarium"), _defineProperty(_pl, "elevator", "winda"), _defineProperty(_pl, "beach", "plaża"), _defineProperty(_pl, "gym", "siłownia"), _defineProperty(_pl, "POV", "POV"), _defineProperty(_pl, "weight", "waga"), _defineProperty(_pl, "outside_camera_style", "z zewnątrz"), _defineProperty(_pl, "mixed_camera_style", "mieszane"), _defineProperty(_pl, "female_pupil", "uczennica"), _defineProperty(_pl, "female_employee", "pracownica"), _defineProperty(_pl, "female_student", "studentka"), _defineProperty(_pl, "wife", "żona"), _defineProperty(_pl, "female_teacher", "nauczycielka"), _defineProperty(_pl, "nurse", "pielęgniarka"), _defineProperty(_pl, "female_slave", "niewolnica"), _defineProperty(_pl, "nun", "zakonnica"), _defineProperty(_pl, "female_police_officer", "policjantka"), _defineProperty(_pl, "prostitute", "prostytutka"), _defineProperty(_pl, "female_boss", "szefowa"), _defineProperty(_pl, "cleaner", "sprzątaczka"), _defineProperty(_pl, "mommy", "mamusia"), _defineProperty(_pl, "amateur", "amatorski"), _defineProperty(_pl, "professional", "profesjonalny"), _defineProperty(_pl, "choose_option", "wybierz opcję"), _defineProperty(_pl, "saving_notice", "Zapisywanie ogłoszenia"), _defineProperty(_pl, "announcement_must_be_accepted_reminder", "Proszę pamiętać, że ogłoszenie nie zostanie dodane natychmiast. Musi najpierw zostać zweryfikowane, jednakże nie dłużej niż 48 godzin. "), _defineProperty(_pl, "prostitute_save_announcement_info", "To już koniec wypełniania formularzy. Jeśli wszystko się zgadza, można kliknąć w przycisk poniżej aby dodać ogłoszenie. "), _defineProperty(_pl, "choose_options", "wybierz opcje"), _defineProperty(_pl, "included_in_price", "wliczone w cenę"), _defineProperty(_pl, "client_rimming", "rimming w stronę klienta"), _defineProperty(_pl, "cum_on_body", "wytrysk na ciało"), _defineProperty(_pl, "kisses", "pocałunki"), _defineProperty(_pl, "aditional_payment", "za dopłatą"), _defineProperty(_pl, "classic_sex", "sex klasyczny"), _defineProperty(_pl, "only_in_condom", "tylko w gumce"), _defineProperty(_pl, "without_condom", "bez gumki"), _defineProperty(_pl, "without_condom_with_aditional_payments", "bez gumki, za dopłatą"), _defineProperty(_pl, "role_playing", "odgrywanie ról"), _defineProperty(_pl, "a_payment_type_can_be_chosen_only_once", "dany typ płatności można wybrać tylko raz"), _defineProperty(_pl, "announcement_description", "Treść ogłoszenia, max: 2000 znaków"), _defineProperty(_pl, "oral_creampie", "wytrysk do ust"), _defineProperty(_pl, "most_important_services_description", "Poniżej lista najważniejszych usług jakimi interesują się klienci. Aktualnie ceny podawane są w złotówkach. Pracujemy nad cennikiem w innych walutach. Informacje, ułatwią użytkownikom wyszukiwanie i Tobie pomogą znaleźć klientów. Jeżeli formularze nie do końca odpowiadają Twej ofercie możesz doprecyzować to w opisie w dalszej sekcji."), _defineProperty(_pl, "remaining_services_description", "Pozostałe usługi nie ujęte na liście najważniejszych (opcjonalnie)"), _defineProperty(_pl, "click_to_chose_remaining_services", "Kliknij aby wybrać pozostałe usługi"), _defineProperty(_pl, "blowjob", "lodzik"), _defineProperty(_pl, "currencies_you_accept", "waluty jakie akceptujesz"), _defineProperty(_pl, "trips", "wyjazdy"), _defineProperty(_pl, "prices_for_your_services_description", "Ceny Twoich usług. Możesz podać kilka opcji. Kliknij w zielony przycisk aby dodać kolejną pozycję i czerwony przycisk aby usunąć."), _defineProperty(_pl, "add_payment_type", "dodaj typ płatności"), _defineProperty(_pl, "remove_payment_type", "usuń typ płatności"), _defineProperty(_pl, "remove", "usuń"), _defineProperty(_pl, "streaptease", "striptiz"), _defineProperty(_pl, "dancing", "taniec"), _defineProperty(_pl, "latex", "lateks"), _defineProperty(_pl, "double_penetration", "podwójna penetracja"), _defineProperty(_pl, "for_hour", "za godzinę"), _defineProperty(_pl, "for_30_minutes", "za pół godziny"), _defineProperty(_pl, "for_15_minutes", "za 15 minut"), _defineProperty(_pl, "for_night", "za noc"), _defineProperty(_pl, "for_blowjob", "za lodzika"), _defineProperty(_pl, "until_first_cumshot", "do pierwszego wystrzału"), _defineProperty(_pl, "location_and_working_hours", "lokalizacja i godziny pracy"), _defineProperty(_pl, "for_2_hours", "za 2 godziny"), _defineProperty(_pl, "for_3_hours", "za 3 godziny"), _defineProperty(_pl, "never", "nigdy"), _defineProperty(_pl, "height", "wzrost"), _defineProperty(_pl, "search", "szukaj"), _defineProperty(_pl, "remove_option", "usuń opcję"), _defineProperty(_pl, "you_have_exceeded_photos_limit", "Przekroczono limit zdjęć"), _defineProperty(_pl, "monday", "poniedziałek"), _defineProperty(_pl, "tuesday", "wtorek"), _defineProperty(_pl, "wednesday", "środa"), _defineProperty(_pl, "thursday", "czwartek"), _defineProperty(_pl, "friday", "piątek"), _defineProperty(_pl, "saturday", "sobota"), _defineProperty(_pl, "sunday", "niedziela"), _defineProperty(_pl, "show_each_single_day_from_monday_to_friday", "Pokaż pojedyncze dni powszednie"), _defineProperty(_pl, "close", "zamknij"), _defineProperty(_pl, "day_of", "wolne"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę"), _defineProperty(_pl, "show_weekdays_as_one_row", "Pokaż dni powszednie w jednym wierszu"), _defineProperty(_pl, "fetching_pornstars", "Pobieram listę gwiazd"), _defineProperty(_pl, "not_selected", "nie wybrano"), _defineProperty(_pl, "minutes_inflected", "minut(y)"), _defineProperty(_pl, "views_inflected", "wyświetleń"), _defineProperty(_pl, "phone_number_must_contain_at_least_7_characters", "Numer telefonu musi zawierać co najmniej 7 znaków"), _defineProperty(_pl, "height_must_be_an_integer_between_90_and_270", "Podaj liczbę między 90 a 270"), _defineProperty(_pl, "weight_must_be_an_integer_between_30_and_800", "Podal liczbę pomiędzy 30 a 800"), _defineProperty(_pl, "file_size_has_been_exceeded_for_following_files", "Następujące pliki mają za duży rozmiar"), _defineProperty(_pl, "prostitute_photos_allowed_size", "Maksymalny rozmiar zdjęcia to 1MB"), _defineProperty(_pl, "unexpected_error_occured", "Pojawił się bliżej niezidentyfikowany błąd"), _defineProperty(_pl, "titsSize", "rozmiar cycków"), _defineProperty(_pl, "assSize", "rozmiar dupci"), _defineProperty(_pl, "thicknessSize", "tusza"), _defineProperty(_pl, "ageRange", "przedział wiekowy"), _defineProperty(_pl, "hairColor", "kolor włosów"), _defineProperty(_pl, "race", "rasa"), _defineProperty(_pl, "abundanceType", "liczebność"), _defineProperty(_pl, "cumshotType", "typ wytrysku"), _defineProperty(_pl, "nationality", "narodowość"), _defineProperty(_pl, "location", "lokalizacja"), _defineProperty(_pl, "cameraStyle", "ujęcie kamery"), _defineProperty(_pl, "storyOrCostume", "motyw fabularno kostiumowy"), _defineProperty(_pl, "professionalismLevel", "poziom filmu"), _defineProperty(_pl, "shavedPussy", "wygolona cipka"), _defineProperty(_pl, "analAmount", "anal"), _defineProperty(_pl, "blowjob", "obciąganie"), _defineProperty(_pl, "handjob", "walenie konika"), _defineProperty(_pl, "blondes", "blondynki"), _defineProperty(_pl, "tittfuck", "na hiszpana"), _defineProperty(_pl, "pissing", "obsikiwanie"), _defineProperty(_pl, "strapon", "sztuczny penis"), _defineProperty(_pl, "fingering", "palcówka"), _defineProperty(_pl, "licking_balls", "lizanie jąder"), _defineProperty(_pl, "spanking", "klapsy"), _defineProperty(_pl, "pussy_licking", "minetka"), _defineProperty(_pl, "petting_with_feet", "pieszczenie stopami"), _defineProperty(_pl, "feet", "stopy"), _defineProperty(_pl, "femdom", "kobieca dominacja"), _defineProperty(_pl, "brunettes", "brunetki"), _defineProperty(_pl, "redheads", "rude"), _defineProperty(_pl, "milfs", "dojrzałe"), _defineProperty(_pl, "teens", 'nastolatki'), _defineProperty(_pl, "amateur", "amatorskie"), _defineProperty(_pl, "asian", 'azjatki'), _defineProperty(_pl, "latins", 'latynoski'), _defineProperty(_pl, "ebony", 'murzynki'), _defineProperty(_pl, "lesbians", 'lesbijki'), _defineProperty(_pl, "group", 'grupowy'), _defineProperty(_pl, "cumshot_compilation", 'kompilacja wytrysków'), _defineProperty(_pl, "cumshot_compilations", 'kompilacje wytrysków'), _defineProperty(_pl, "cum_on_face", 'wytrysk na twarz'), _defineProperty(_pl, "cum_swallow", 'połykanie spermy'), _defineProperty(_pl, "cum_on_feet", 'wytrysk na stopy'), _defineProperty(_pl, "creampie", 'wytrysk w cipkę'), _defineProperty(_pl, "cum_in_ass", 'wytrysk w dupkę'), _defineProperty(_pl, "cum_on_titts", 'wytrysk na cycki'), _defineProperty(_pl, "pantyhose", 'rajstopki'), _defineProperty(_pl, "high_heels", 'szpile'), _defineProperty(_pl, "insults", "wyzwiska"), _defineProperty(_pl, "hugging", "przytulanie"), _defineProperty(_pl, "shared_bath", "wspólna kąpiel"), _defineProperty(_pl, "sex_with_2_males", "na 2 baty"), _defineProperty(_pl, "nurses", 'pielęgniarki'), _defineProperty(_pl, "teachers", 'nauczycielki'), _defineProperty(_pl, "japanese", 'japonki'), _defineProperty(_pl, "russian", 'rosjanki'), _defineProperty(_pl, "pornstars", 'gwiazdy porno'), _defineProperty(_pl, "blowjobAmount", 'obciąganie'), _defineProperty(_pl, "money_amount", "kwota"), _defineProperty(_pl, "handjobAmount", 'walenie konika'), _defineProperty(_pl, "doublePenetrationamount", "wtyczka"), _defineProperty(_pl, "vaginalamount", "waginalny"), _defineProperty(_pl, "pussyLickingAmount", 'minetka'), _defineProperty(_pl, "feetPettingAmount", 'pieszczenie stóp'), _defineProperty(_pl, "position69amount", 'pozycja 69'), _defineProperty(_pl, "titfuckAmount", "na hiszpana"), _defineProperty(_pl, "isCumshotCompilation", 'kompilacja wytrysków'), _defineProperty(_pl, "recordedBySpamCamera", 'nagrany kamerą szpiegowską'), _defineProperty(_pl, "isSadisticOrMasochistic", 'sado-masochostyczny'), _defineProperty(_pl, "isFemaleDomination", 'kobieca dominacja'), _defineProperty(_pl, "isTranslatedToPolish", 'polska wersja językowa'), _defineProperty(_pl, "showPantyhose", 'rajstopy'), _defineProperty(_pl, "showStockings", 'pończochy'), _defineProperty(_pl, "showGlasses", 'okulary'), _defineProperty(_pl, "showHighHeels", 'szpile'), _defineProperty(_pl, "showHugeCock", 'wielki kutas'), _defineProperty(_pl, "showWhips", 'bicze'), _defineProperty(_pl, "whips", 'bicze'), _defineProperty(_pl, "showSexToys", 'sex-zabawki'), _defineProperty(_pl, "minimumMovieTime", "minimalny czas"), _defineProperty(_pl, "maximumMovieTime", "maksymalny czas"), _defineProperty(_pl, "minimumMovieViews", 'minimalna liczba wyświetleń'), _defineProperty(_pl, "maximumMovieViews", 'maksymalna liczba wyświetleń'), _defineProperty(_pl, "hasStory", 'zawiera fabułę'), _defineProperty(_pl, "total_movies_found", "Ilość znalezionych filmów"), _defineProperty(_pl, "rules", "zasady"), _defineProperty(_pl, "movie_with_following_pornstars", "występują jednocześnie następujące gwiazdy"), _defineProperty(_pl, "last_page", "ostatnia"), _defineProperty(_pl, "movie_with_pornstar", "Film w którym występuje"), _defineProperty(_pl, "no_movies_have_been_found", "Nie znaleziono żadnych filmów pasujących do wybranych kryteriów"), _defineProperty(_pl, "no_options_have_been_selected", "Nie wybrano żadnych opcji"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd"), _defineProperty(_pl, "because_of_security_reasons_search_was_blocked", "Ze względów bezpieczeństwa ilość zapytań do wyszukiwarki w ciągu minuty jest ograniczona. Prosimy zaczekać chwilę i spróbować ponownie."), _defineProperty(_pl, "popular_categories", "Popularne kategorie"), _defineProperty(_pl, "categories_list", "Lista kategorii"), _defineProperty(_pl, "personalities", "personalia"), _defineProperty(_pl, "section", "sekcja"), _defineProperty(_pl, "big_titts", "duże cycki"), _defineProperty(_pl, "categories", "Kategorie"), _defineProperty(_pl, "teenagers", "nastolatki"), _defineProperty(_pl, "spermatozoid_has_been_asigned", "Przyznano plemnika. Musisz odczekać minimum pół godziny aby przyznać kolejnego."), _defineProperty(_pl, "you_have_exceeded_cum_limit", "Możesz przyznać maksymalnie jednego plemnika na pół godziny niezależnie od filmu"), _defineProperty(_pl, "spermatozoid_rate_data_is_incorrect", "Niepoprawne dane filmu"), _defineProperty(_pl, "movie_views", "Liczba wyświetleń"), _defineProperty(_pl, "movie_added_at", "Data dodania"), _defineProperty(_pl, "movie_average_rating", "Średnia ocen"), _defineProperty(_pl, "this_pornstar_does_not_have_enough_votes_to_calculate_average", "Ta gwiazda ma za mało głosów aby policzyć średnią (wymagane minimum to 10)"), _defineProperty(_pl, "fetching_rating_in_progress", "Pobieram dane rankingu"), _defineProperty(_pl, "average_rate_not_available_yet", "jeszcze niedostępna"), _defineProperty(_pl, "ammount_of_spermatozoids", "Liczba plemników"), _defineProperty(_pl, "your_spermatozoids", "twoich"), _defineProperty(_pl, "number_of_likes", "Polubień"), _defineProperty(_pl, "failed_to_load_movie_data", "Nie udało się pobrać szczegółowych danych filmu"), _defineProperty(_pl, "failed_to_load_similar_movies", "Nie udało się załadować podobnych filmów"), _defineProperty(_pl, "you_like_it", "Lubisz to"), _defineProperty(_pl, "you_already_like_this_movie", "Już wcześniej polubiłeś ten film"), _defineProperty(_pl, "you_and", "Ty i"), _defineProperty(_pl, "people_like_it", "osób lubi to"), _defineProperty(_pl, "no_comments", "Brak komentarzy"), _defineProperty(_pl, "services_range_and_pricing", "usługi i cennik"), _defineProperty(_pl, "working_hours", "Godziny pracy"), _defineProperty(_pl, "location", "Lokalizacja"), _defineProperty(_pl, "voivodeship", "Województwo"), _defineProperty(_pl, "fetching_announcements", "Pobieram ogłoszenia"), _defineProperty(_pl, "you_dont_have_any_announcements", "Nie posiadasz żadnych ogłoszeń"), _defineProperty(_pl, "city", "Miasto"), _defineProperty(_pl, "hidden_by_a_user", "Ukryte przez użytkownika"), _defineProperty(_pl, "not_valid_awaiting_verification_not_visible_for_users", "Nieważne, niewidoczne dla użytkowników. Czeka na weryfikację"), _defineProperty(_pl, "monday", "poniedziałek"), _defineProperty(_pl, "actions", "działania"), _defineProperty(_pl, "not_provided", "nie podano"), _defineProperty(_pl, "friday", "piątek"), _defineProperty(_pl, "please_decide", "proszę zdecydować"), _defineProperty(_pl, "invalid_time_format", "Błędny format"), _defineProperty(_pl, "probably_your_session_has_expired", "Jesteś niezalogowany, prawdopodbnie zostało to spowodowane dłuższym czasem bezczynności - w takiej sytuacji aplikacja wylogowuje użytkownika. Niestety chcąc kontynuować należy ponownie się zalogować."), _defineProperty(_pl, "time_since_must_be_earlier_than_time_until", "W przypadku co najmniej jednego dnia, godzina rozpoczęcia jest później niż godzina zakończenia lub są one równe. Zaznaczono te kontrolki na czerwono"), _defineProperty(_pl, "prostitution_announcements_are_free", "Zamieszczenie oferty jest całkowicie darmowe. Obowiązuje limit : 1 ogłoszenie. Wyjątkiem są właściciele agencji towarzyskich/salonów masażu, którzy chcieliby przedstawić poszczególnych pracowników. "), _defineProperty(_pl, "dont_spam_with_announcements", "Nie kombinuj, nie spamuj ogłoszeniami - administracja i tak prędzej czy później takowe oferty usuwa i banuje użytkowników. Dodawaj tylko i wyłącznie swoje aktualne zdjęcia. "), _defineProperty(_pl, "announcement_will_not_be_added_immidiatelly", "Ogłoszenie nie zostanie dodane natychmiastowo, musi najpierw zostać zweryfikowane przez administrację. Czas weryfikacji to maksimum 48 godzin. Aby dodać kolejne ogłoszenie poprzednie musi najpierw zostać zweryfikowane. "), _defineProperty(_pl, "in_case_of_a_problem_please_contact_us_using_the_contact_form", "W razie problemów, prosimy o kontakt poprzez formularz "), _defineProperty(_pl, "empire_policy_for_working_hours_of_prostitutes", "Proszę zdecydować czy podać konkretne godziny pracy, czy też pozostawić niezdefiniowane - na zasadzie mam włączony telefon to jestem a jak jest wyłączony to mnie nie ma. Warto wziąć pod uwagę, że podanie precyzyjnych godzin pozytywnie wpłynie na odbiór klientów. W przyszłości będzie można zaznaczyć opcję ukrywania ogłoszenia poza godzinami pracy. Nie wystarczy podać przedziału czasowego w opisie (w sekcji : personalia), aby w 100% poprawnie zapisał się w systemie i aby ułatwiał wyszukiwanie użytkownikom."), _defineProperty(_pl, "prostitution_offer_policy_description", "Nie kombinuj, nie spamuj ogłoszeniami - administracja i tak prędzej czy później takowe oferty usuwa i banuje użytkowników. Dodawaj tylko i wyłącznie swoje aktualne zdjęcia. Ogłoszenie nie zostanie dodane natychmiastowo, musi najpierw zostać zweryfikowane przez administrację. Czas weryfikacji to maksimum 48 godzin. W razie problemów, prosimy o kontakt poprzez formularz, "), _defineProperty(_pl, "everyone_can_comment_a_prostitute", "Każdy zarejestrowany użytkownik może dodać komentarz pod dowolnym ogłoszeniem. Autor ogłoszenia nie ma możliwości usuwania komentarzy użytkowników, a już tym bardziej tych nieprzychylnych. "), _defineProperty(_pl, "comments_are_filtered_by_admins_to_prevent_revealing_classified_information", "Jednocześnie przed opublikowaniem jakiegokolwiek komentarza administracja dba o to aby nie zostały upublicznione poufne dane takie jak adres, imię i nazwisko itp. "), _defineProperty(_pl, "do_you_want_to_set_precise_working_hours", "Podać godziny pracy"), _defineProperty(_pl, "cookie_notification_header", "Ta strona wykorzystuje pliki cookie"), _defineProperty(_pl, "prostitute_photos_just_one_reminder", "Przypominamy, że poza wyjątkiem właścicieli agencji towarzyskich/salonów masażu można dodać tylko 1 ogłoszenie. Przypominamy również, że aby dodać kolejną ofertę wszystkie poprzednie muszą najpierw zostać zaakceptowane. Ewentualne zmiany w treści ogłoszenia są możliwe w panelu użytkownika."), _defineProperty(_pl, "cookie_notification_body", "Poprzez dalsze korzystanie z portalu lub naci\u015Bni\u0119cie przycisku \"Akceptuj\u0119\" wyra\u017Casz zgod\u0119 na przechowywanie plik\xF3w cookie na Twej maszynie"), _defineProperty(_pl, "accept_button_caption", "Akceptuję - zamknij"), _defineProperty(_pl, "show_content_side_bar_title", "Rozwiń nawigację strony dla wersji mobilnej"), _defineProperty(_pl, "show_content_side_bar_caption", "Menu"), _defineProperty(_pl, "cancel_like", "cofnij like'a"), _defineProperty(_pl, "fetching_cities", "Pobieram listę miast"), _defineProperty(_pl, "show_authenticated_user_sidebar_title", "Rozwiń menu użytkownika, ustawienia profilu, wylogowanie itp."), _defineProperty(_pl, "show_authenticated_user_sidebar_caption", "Profil"), _defineProperty(_pl, "user_type_is_required", "Wymagane jest podanie typu użytkownika"), _defineProperty(_pl, "you_mustnot_choose_tits_size_if_you_are_a_male", "Nie możesz wybrać rozmiaru cycków będąc mężczyzną"), _defineProperty(_pl, "one_announcement_is_awaiting_validation", "Aktualnie posiadasz już 1 ogłoszenie oczekujące na weryfikację w związku z czym nie można dodać kolejnego"), _defineProperty(_pl, "selected_avatar", "Nowy avatar"), _defineProperty(_pl, "no_avatar_has_been_choosen", "Nie wybrano avataru"), _defineProperty(_pl, "notices_policy", "polityka dodawania ogłoszeń"), _defineProperty(_pl, "current_avatar", "Wybrany avatar"), _defineProperty(_pl, "basic_information", "Podstawowe informacje"), _defineProperty(_pl, "the_latest", "Najnowsze"), _defineProperty(_pl, "the_most_popular", "Najpopularniejsze"), _defineProperty(_pl, "advanced_search", "Szukanie zaawansowane"), _defineProperty(_pl, "login_or_email", "Login lub email"), _defineProperty(_pl, "remember_me", "Zapamiętaj mnie"), _defineProperty(_pl, "scroll_movies_list_left", "Przewiń listę filmów w lewo"), _defineProperty(_pl, "scroll_movies_list_right", "Przewiń listę filmów w prawo"), _defineProperty(_pl, "dictionary", "Słownik"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "generate_new_token", "Generuj nowy token"), _defineProperty(_pl, "use_old_token", "Użyj starego tokena"), _defineProperty(_pl, "prostitution", "Prostytucja"), _defineProperty(_pl, "add_notice", "Dodaj ogłoszenie"), _defineProperty(_pl, "no_working_period_has_been_provided", "Skoro zdecydowałaś(eś) się podać godziny pracy to nie możesz mieć cały czas wolne"), _defineProperty(_pl, "notices_list", "Lista ogłoszeń"), _defineProperty(_pl, "you_have_to_be_logged_in_to_add_notice", "Musisz być zalogowany aby dodać ogłoszenie"), _defineProperty(_pl, "phone_number_format_must_be_valid", "Numer telefonu musi być w prawidłowym formacie"), _defineProperty(_pl, "phone_number_must_not_exceed_16_characters", "Numer telefonu nie może być dłuższy niż 16 znaków"), _defineProperty(_pl, "valid_until", "ważny do"), _defineProperty(_pl, "phone_number", "numer telefonu"), _defineProperty(_pl, "two_types_of_photo_edition_is_available", "Są możliwe 2 rodzaje edycji zdjęć"), _defineProperty(_pl, "prolonging_prostitution_announcement", "Przedłużanie ogłoszenia o kolejne 3 miesiące"), _defineProperty(_pl, "updating_prostitution_announcement_until_expiration_date", "Zmiana bez przedłużania"), _defineProperty(_pl, "if_you_want_to_prolong_your_prostitution_announcement", "Jeżeli chcesz przedłużyć ważność Twego ogłoszenia o kolejne 3 miesiące musisz dodać zdjęcia z świeżo wygenerowanym tokenem. Aby wygenerować nowy token kliknij w przycisk poniżej."), _defineProperty(_pl, "birth_date_restrictions", "Po zatwierdzeniu ogłoszenia zmiana daty urodzenia nie będzie możliwa. Prosimy nie zaniżać swojego wieku - w przyszłości może zostać wprowadzony mechanizm weryfikowania i kłamliwe ogłoszenia zostaną usunięte"), _defineProperty(_pl, "if_you_dont_want_to_prolong_your_prostitution_announcement", "Jeśli nie zależy Ci na przedłużaniu daty ważności ogłoszenia, należy dodać zdjęcia ze starym tokenem wygenerowanym po ostatniej akceptacji."), _defineProperty(_pl, "old_token", "stary token"), _defineProperty(_pl, "new_token", "nowy token"), _defineProperty(_pl, "setting_in_progress", "Trwa ustawianie"), _defineProperty(_pl, "updating_announcement", "Aktualizuję ogłoszenie"), _defineProperty(_pl, "because_of_security_reasons_token_generation_is_limited", "Ze względów bezpieczeństwa liczba generowanych nowych tokenów w ciągu minuty jest ograniczona"), _defineProperty(_pl, "error_occured_while_token_processing", "Podczas ustawiania tokena pojawił się błąd. Zweryfikuj swe łącze internetowe i w razie problemów prosimy o kontakt z administracją portalu"), _defineProperty(_pl, "packages", {
     content_sidebar: {
       hide_side_bar_title: "Schowaj boczne menu",
       hide_side_bar_caption: "Schowaj",
@@ -29660,7 +29956,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".close-button[data-v-66551f78] {\n  position: absolute;\n  top: 1px;\n  right: 1px;\n}\n.files-input[data-v-66551f78] {\n  display: none;\n}\n.centering-container[data-v-66551f78] {\n  text-align: center;\n  padding: 5px;\n}\n.container[data-v-66551f78] {\n  -webkit-border-radius: 4px;\n     -moz-border-radius: 4px;\n          border-radius: 4px;\n  background: black;\n  border: 1px solid silver;\n  min-width: 230px;\n}\n.info[data-v-66551f78] {\n  text-align: center;\n  padding: 5px;\n}\n.blank-image[data-v-66551f78] {\n  width: 20%;\n  min-width: 120px;\n  height: auto;\n  display: block;\n  margin: 0 auto;\n  fill: #11b337;\n}\n.images-list[data-v-66551f78] {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  display: flex;\n  flex-wrap: wrap;\n  -webkit-box-pack: space-evenly;\n  -webkit-justify-content: space-evenly;\n     -moz-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly;\n}\n.added-image[data-v-66551f78] {\n  width: 100%;\n}\n.image-list-element[data-v-66551f78] {\n  min-width: 100px;\n  -webkit-flex-basis: 20%;\n      -ms-flex-preferred-size: 20%;\n          flex-basis: 20%;\n  border: 1px solid #810c0c;\n  margin: 5px;\n  -webkit-border-radius: 4px;\n     -moz-border-radius: 4px;\n          border-radius: 4px;\n  overflow: hidden;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n     -moz-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  position: relative;\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/form_controls/multifile_image_upload.vue"],"names":[],"mappings":"AAAA;EACE,kBAAkB;EAClB,QAAQ;EACR,UAAU;AAAE;AAEd;EACE,aAAa;AAAE;AAEjB;EACE,kBAAkB;EAClB,YAAY;AAAE;AAEhB;EACE,0BAAkB;KAAlB,uBAAkB;UAAlB,kBAAkB;EAClB,iBAAiB;EACjB,wBAAwB;EACxB,gBAAgB;AAAE;AAEpB;EACE,kBAAkB;EAClB,YAAY;AAAE;AAEhB;EACE,UAAU;EACV,gBAAgB;EAChB,YAAY;EACZ,cAAc;EACd,cAAc;EACd,aAAa;AAAE;AAEjB;EACE,qBAAqB;EACrB,UAAU;EACV,SAAS;EACT,oBAAa;EAAb,qBAAa;EAAb,iBAAa;EAAb,oBAAa;EAAb,aAAa;EACb,uBAAe;MAAf,mBAAe;UAAf,eAAe;EACf,aAAa;EACb,eAAe;EACf,8BAA6B;EAA7B,qCAA6B;KAA7B,2BAA6B;MAA7B,2BAA6B;UAA7B,6BAA6B;AAAE;AAEjC;EACE,WAAW;AAAE;AAEf;EACE,gBAAgB;EAChB,uBAAe;MAAf,4BAAe;UAAf,eAAe;EACf,yBAAyB;EACzB,WAAW;EACX,0BAAkB;KAAlB,uBAAkB;UAAlB,kBAAkB;EAClB,gBAAgB;EAChB,oBAAa;EAAb,qBAAa;EAAb,iBAAa;EAAb,oBAAa;EAAb,aAAa;EACb,4BAAsB;EAAtB,6BAAsB;EAAtB,8BAAsB;KAAtB,yBAAsB;KAAtB,0BAAsB;MAAtB,0BAAsB;UAAtB,sBAAsB;EACtB,wBAAuB;EAAvB,+BAAuB;KAAvB,qBAAuB;MAAvB,qBAAuB;UAAvB,uBAAuB;EACvB,kBAAkB;AAAE","sourcesContent":[".close-button {\n  position: absolute;\n  top: 1px;\n  right: 1px; }\n\n.files-input {\n  display: none; }\n\n.centering-container {\n  text-align: center;\n  padding: 5px; }\n\n.container {\n  border-radius: 4px;\n  background: black;\n  border: 1px solid silver;\n  min-width: 230px; }\n\n.info {\n  text-align: center;\n  padding: 5px; }\n\n.blank-image {\n  width: 20%;\n  min-width: 120px;\n  height: auto;\n  display: block;\n  margin: 0 auto;\n  fill: #11b337; }\n\n.images-list {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: flex;\n  flex-wrap: wrap;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-evenly; }\n\n.added-image {\n  width: 100%; }\n\n.image-list-element {\n  min-width: 100px;\n  flex-basis: 20%;\n  border: 1px solid #810c0c;\n  margin: 5px;\n  border-radius: 4px;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  position: relative; }\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".close-button[data-v-66551f78] {\n  position: absolute;\n  top: 1px;\n  right: 1px;\n}\n.files-input[data-v-66551f78] {\n  display: none;\n}\n.centering-container[data-v-66551f78] {\n  text-align: center;\n  padding: 5px;\n}\n.image-upload-container[data-v-66551f78] {\n  -webkit-border-radius: 4px;\n     -moz-border-radius: 4px;\n          border-radius: 4px;\n  background: black;\n  border: 1px solid silver;\n  min-width: 230px;\n}\n.info[data-v-66551f78] {\n  text-align: center;\n  padding: 5px;\n}\n.blank-image[data-v-66551f78] {\n  width: 20%;\n  min-width: 120px;\n  height: auto;\n  display: block;\n  margin: 0 auto;\n  fill: #11b337;\n}\n.images-list[data-v-66551f78] {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  display: flex;\n  flex-wrap: wrap;\n  -webkit-box-pack: space-evenly;\n  -webkit-justify-content: space-evenly;\n     -moz-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly;\n}\n.added-image[data-v-66551f78] {\n  width: 100%;\n}\n.image-list-element[data-v-66551f78] {\n  min-width: 100px;\n  -webkit-flex-basis: 20%;\n      -ms-flex-preferred-size: 20%;\n          flex-basis: 20%;\n  border: 1px solid #810c0c;\n  margin: 5px;\n  -webkit-border-radius: 4px;\n     -moz-border-radius: 4px;\n          border-radius: 4px;\n  overflow: hidden;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n     -moz-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  position: relative;\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/form_controls/multifile_image_upload.vue"],"names":[],"mappings":"AAAA;EACE,kBAAkB;EAClB,QAAQ;EACR,UAAU;AAAE;AAEd;EACE,aAAa;AAAE;AAEjB;EACE,kBAAkB;EAClB,YAAY;AAAE;AAEhB;EACE,0BAAkB;KAAlB,uBAAkB;UAAlB,kBAAkB;EAClB,iBAAiB;EACjB,wBAAwB;EACxB,gBAAgB;AAAE;AAEpB;EACE,kBAAkB;EAClB,YAAY;AAAE;AAEhB;EACE,UAAU;EACV,gBAAgB;EAChB,YAAY;EACZ,cAAc;EACd,cAAc;EACd,aAAa;AAAE;AAEjB;EACE,qBAAqB;EACrB,UAAU;EACV,SAAS;EACT,oBAAa;EAAb,qBAAa;EAAb,iBAAa;EAAb,oBAAa;EAAb,aAAa;EACb,uBAAe;MAAf,mBAAe;UAAf,eAAe;EACf,aAAa;EACb,eAAe;EACf,8BAA6B;EAA7B,qCAA6B;KAA7B,2BAA6B;MAA7B,2BAA6B;UAA7B,6BAA6B;AAAE;AAEjC;EACE,WAAW;AAAE;AAEf;EACE,gBAAgB;EAChB,uBAAe;MAAf,4BAAe;UAAf,eAAe;EACf,yBAAyB;EACzB,WAAW;EACX,0BAAkB;KAAlB,uBAAkB;UAAlB,kBAAkB;EAClB,gBAAgB;EAChB,oBAAa;EAAb,qBAAa;EAAb,iBAAa;EAAb,oBAAa;EAAb,aAAa;EACb,4BAAsB;EAAtB,6BAAsB;EAAtB,8BAAsB;KAAtB,yBAAsB;KAAtB,0BAAsB;MAAtB,0BAAsB;UAAtB,sBAAsB;EACtB,wBAAuB;EAAvB,+BAAuB;KAAvB,qBAAuB;MAAvB,qBAAuB;UAAvB,uBAAuB;EACvB,kBAAkB;AAAE","sourcesContent":[".close-button {\n  position: absolute;\n  top: 1px;\n  right: 1px; }\n\n.files-input {\n  display: none; }\n\n.centering-container {\n  text-align: center;\n  padding: 5px; }\n\n.image-upload-container {\n  border-radius: 4px;\n  background: black;\n  border: 1px solid silver;\n  min-width: 230px; }\n\n.info {\n  text-align: center;\n  padding: 5px; }\n\n.blank-image {\n  width: 20%;\n  min-width: 120px;\n  height: auto;\n  display: block;\n  margin: 0 auto;\n  fill: #11b337; }\n\n.images-list {\n  list-style-type: none;\n  padding: 0;\n  margin: 0;\n  display: flex;\n  flex-wrap: wrap;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-evenly; }\n\n.added-image {\n  width: 100%; }\n\n.image-list-element {\n  min-width: 100px;\n  flex-basis: 20%;\n  border: 1px solid #810c0c;\n  margin: 5px;\n  border-radius: 4px;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  position: relative; }\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -30027,6 +30323,54 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".navbar-icon-second-level[data-v-47759
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=style&index=0&id=58f670a4&lang=scss&scoped=true":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=style&index=0&id=58f670a4&lang=scss&scoped=true ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".photos-restrictions-information[data-v-58f670a4] {\n  background: #ddd713;\n  color: #0e0e0e;\n  padding: 5px;\n  font-size: 1.4vw;\n  font-family: \"Exo 2\", sans-serif;\n  text-align: center;\n}\n@media (max-width: 1200px) {\n.photos-restrictions-information[data-v-58f670a4] {\n      font-size: 19px;\n}\n}\n.important-notice[data-v-58f670a4] {\n  color: red;\n}\n.aditional-features[data-v-58f670a4] {\n  text-align: center;\n}\n.prostitute-photos-container[data-v-58f670a4] {\n  color: white;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  border: 1px solid transparent;\n}\n@media (max-width: 1200px) {\n.prostitute-photos-container[data-v-58f670a4] {\n      font-size: 16px;\n}\n}\n.added-images[data-v-58f670a4] {\n  width: 90%;\n  margin: 5px auto;\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue"],"names":[],"mappings":"AAAA;EACE,mBAAmB;EACnB,cAAc;EACd,YAAY;EACZ,gBAAgB;EAChB,gCAAgC;EAChC,kBAAkB;AAAE;AACpB;AACE;MACE,eAAe;AAAE;AAAE;AAEzB;EACE,UAAU;AAAE;AAEd;EACE,kBAAkB;AAAE;AAEtB;EACE,YAAY;EACZ,gBAAgB;EAChB,gCAAgC;EAChC,6BAA6B;AAAE;AAC/B;AACE;MACE,eAAe;AAAE;AAAE;AAEzB;EACE,UAAU;EACV,gBAAgB;AAAE","sourcesContent":[".photos-restrictions-information {\n  background: #ddd713;\n  color: #0e0e0e;\n  padding: 5px;\n  font-size: 1.4vw;\n  font-family: \"Exo 2\", sans-serif;\n  text-align: center; }\n  @media (max-width: 1200px) {\n    .photos-restrictions-information {\n      font-size: 19px; } }\n\n.important-notice {\n  color: red; }\n\n.aditional-features {\n  text-align: center; }\n\n.prostitute-photos-container {\n  color: white;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  border: 1px solid transparent; }\n  @media (max-width: 1200px) {\n    .prostitute-photos-container {\n      font-size: 16px; } }\n\n.added-images {\n  width: 90%;\n  margin: 5px auto; }\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=style&index=0&id=3234b7ca&lang=scss&scoped=true":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=style&index=0&id=3234b7ca&lang=scss&scoped=true ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".important-notice[data-v-3234b7ca] {\n  color: red;\n}\n.token-info[data-v-3234b7ca] {\n  text-align: center;\n  padding: 5px;\n  font-size: 1.5vw;\n  font-family: \"Exo 2\", sans-serif;\n  background: #0d9312;\n}\n@media (max-width: 1200px) {\n.token-info[data-v-3234b7ca] {\n      font-size: 20px;\n}\n}\n.token[data-v-3234b7ca] {\n  letter-spacing: 0.3em;\n}\n.explanation-container[data-v-3234b7ca] {\n  padding: 5px;\n}\n.photos-all[data-v-3234b7ca] {\n  background: rgba(0, 0, 0, 0.87);\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue"],"names":[],"mappings":"AAAA;EACE,UAAU;AAAE;AAEd;EACE,kBAAkB;EAClB,YAAY;EACZ,gBAAgB;EAChB,gCAAgC;EAChC,mBAAmB;AAAE;AACrB;AACE;MACE,eAAe;AAAE;AAAE;AAEzB;EACE,qBAAqB;AAAE;AAEzB;EACE,YAAY;AAAE;AAEhB;EACE,+BAA+B;AAAE","sourcesContent":[".important-notice {\n  color: red; }\n\n.token-info {\n  text-align: center;\n  padding: 5px;\n  font-size: 1.5vw;\n  font-family: \"Exo 2\", sans-serif;\n  background: #0d9312; }\n  @media (max-width: 1200px) {\n    .token-info {\n      font-size: 20px; } }\n\n.token {\n  letter-spacing: 0.3em; }\n\n.explanation-container {\n  padding: 5px; }\n\n.photos-all {\n  background: rgba(0, 0, 0, 0.87); }\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_location_and_working_hours.vue?vue&type=style&index=0&id=c4db835c&lang=scss&scoped=true":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_location_and_working_hours.vue?vue&type=style&index=0&id=c4db835c&lang=scss&scoped=true ***!
@@ -30069,30 +30413,6 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".without-error-message-box {\n  margin-top: -webkit-calc(1em + 6px);\n  margin-top: -moz-calc(1em + 6px);\n  margin-top: calc(1em + 6px);\n}\n.data-explanation {\n  color: white;\n  font-size: 1.1vw;\n  font-family: \"Exo 2\", sans-serif;\n  padding: 0 7px;\n  text-align: center;\n}\n@media (max-width: 1200px) {\n.data-explanation {\n      font-size: 14px;\n}\n}\n.basic-information-container {\n  background: rgba(0, 0, 0, 0.8);\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: space-evenly;\n  -webkit-justify-content: space-evenly;\n     -moz-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.basic-information-input {\n  margin: 10px;\n}\n.extended {\n  width: 90%;\n}\n#app .text-input-combo-value-label {\n  width: initial;\n}\n.required-fields {\n  font-weight: bold;\n  color: #ef0c7e;\n}\n.last-input {\n  margin-bottom: -webkit-calc(1em + 6px);\n  margin-bottom: -moz-calc(1em + 6px);\n  margin-bottom: calc(1em + 6px);\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/prostitution/notice_editor/prostitute_personalities.vue"],"names":[],"mappings":"AAAA;EACE,mCAA2B;EAA3B,gCAA2B;EAA3B,2BAA2B;AAAE;AAE/B;EACE,YAAY;EACZ,gBAAgB;EAChB,gCAAgC;EAChC,cAAc;EACd,kBAAkB;AAAE;AACpB;AACE;MACE,eAAe;AAAE;AAAE;AAEzB;EACE,8BAA8B;EAC9B,oBAAa;EAAb,qBAAa;EAAb,iBAAa;EAAb,oBAAa;EAAb,aAAa;EACb,4BAAsB;EAAtB,6BAAsB;EAAtB,8BAAsB;KAAtB,yBAAsB;KAAtB,0BAAsB;MAAtB,0BAAsB;UAAtB,sBAAsB;EACtB,8BAA6B;EAA7B,qCAA6B;KAA7B,2BAA6B;MAA7B,2BAA6B;UAA7B,6BAA6B;EAC7B,yBAAmB;EAAnB,2BAAmB;KAAnB,sBAAmB;MAAnB,sBAAmB;UAAnB,mBAAmB;AAAE;AAEvB;EACE,YAAY;AAAE;AAEhB;EACE,UAAU;AAAE;AAEd;EACE,cAAc;AAAE;AAElB;EACE,iBAAiB;EACjB,cAAc;AAAE;AAElB;EACE,sCAA8B;EAA9B,mCAA8B;EAA9B,8BAA8B;AAAE","sourcesContent":[".without-error-message-box {\n  margin-top: calc(1em + 6px); }\n\n.data-explanation {\n  color: white;\n  font-size: 1.1vw;\n  font-family: \"Exo 2\", sans-serif;\n  padding: 0 7px;\n  text-align: center; }\n  @media (max-width: 1200px) {\n    .data-explanation {\n      font-size: 14px; } }\n\n.basic-information-container {\n  background: rgba(0, 0, 0, 0.8);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: center; }\n\n.basic-information-input {\n  margin: 10px; }\n\n.extended {\n  width: 90%; }\n\n#app .text-input-combo-value-label {\n  width: initial; }\n\n.required-fields {\n  font-weight: bold;\n  color: #ef0c7e; }\n\n.last-input {\n  margin-bottom: calc(1em + 6px); }\n"],"sourceRoot":""}]);
-// Exports
-/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=style&index=0&id=8b81b178&lang=scss&scoped=true":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=style&index=0&id=8b81b178&lang=scss&scoped=true ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
-// Imports
-
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".photos-restrictions-information[data-v-8b81b178] {\n  background: #ddd713;\n  color: #0e0e0e;\n  padding: 5px;\n  font-size: 1.4vw;\n  font-family: \"Exo 2\", sans-serif;\n  text-align: center;\n}\n@media (max-width: 1200px) {\n.photos-restrictions-information[data-v-8b81b178] {\n      font-size: 19px;\n}\n}\n.important-notice[data-v-8b81b178] {\n  color: red;\n}\n.photos-policy[data-v-8b81b178] {\n  padding: 5px;\n  text-align: center;\n}\n.photos-section[data-v-8b81b178] {\n  background: rgba(0, 0, 0, 0.87);\n  color: white;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  border: 1px solid transparent;\n  width: 70%;\n}\n@media (max-width: 1200px) {\n.photos-section[data-v-8b81b178] {\n      font-size: 16px;\n}\n}\n.token-info[data-v-8b81b178] {\n  text-align: center;\n  padding: 5px;\n  font-size: 1.5vw;\n  font-family: \"Exo 2\", sans-serif;\n  background: #0d9312;\n}\n@media (max-width: 1200px) {\n.token-info[data-v-8b81b178] {\n      font-size: 20px;\n}\n}\n.added-images[data-v-8b81b178] {\n  width: 90%;\n  margin: 5px auto;\n}\n.token[data-v-8b81b178] {\n  letter-spacing: 0.3em;\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/prostitution/notice_editor/prostitute_photos.vue"],"names":[],"mappings":"AAAA;EACE,mBAAmB;EACnB,cAAc;EACd,YAAY;EACZ,gBAAgB;EAChB,gCAAgC;EAChC,kBAAkB;AAAE;AACpB;AACE;MACE,eAAe;AAAE;AAAE;AAEzB;EACE,UAAU;AAAE;AAEd;EACE,YAAY;EACZ,kBAAkB;AAAE;AAEtB;EACE,+BAA+B;EAC/B,YAAY;EACZ,gBAAgB;EAChB,gCAAgC;EAChC,6BAA6B;EAC7B,UAAU;AAAE;AACZ;AACE;MACE,eAAe;AAAE;AAAE;AAEzB;EACE,kBAAkB;EAClB,YAAY;EACZ,gBAAgB;EAChB,gCAAgC;EAChC,mBAAmB;AAAE;AACrB;AACE;MACE,eAAe;AAAE;AAAE;AAEzB;EACE,UAAU;EACV,gBAAgB;AAAE;AAEpB;EACE,qBAAqB;AAAE","sourcesContent":[".photos-restrictions-information {\n  background: #ddd713;\n  color: #0e0e0e;\n  padding: 5px;\n  font-size: 1.4vw;\n  font-family: \"Exo 2\", sans-serif;\n  text-align: center; }\n  @media (max-width: 1200px) {\n    .photos-restrictions-information {\n      font-size: 19px; } }\n\n.important-notice {\n  color: red; }\n\n.photos-policy {\n  padding: 5px;\n  text-align: center; }\n\n.photos-section {\n  background: rgba(0, 0, 0, 0.87);\n  color: white;\n  font-size: 1.2vw;\n  font-family: \"Exo 2\", sans-serif;\n  border: 1px solid transparent;\n  width: 70%; }\n  @media (max-width: 1200px) {\n    .photos-section {\n      font-size: 16px; } }\n\n.token-info {\n  text-align: center;\n  padding: 5px;\n  font-size: 1.5vw;\n  font-family: \"Exo 2\", sans-serif;\n  background: #0d9312; }\n  @media (max-width: 1200px) {\n    .token-info {\n      font-size: 20px; } }\n\n.added-images {\n  width: 90%;\n  margin: 5px auto; }\n\n.token {\n  letter-spacing: 0.3em; }\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -30164,7 +30484,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".save-notice[data-v-1efba50e] {\n  fill: #1edb0d;\n}\n.policy-section[data-v-1efba50e] {\n  fill: white;\n}\n.services-section[data-v-1efba50e] {\n  fill: #dd0d85;\n}\n.personalities-section[data-v-1efba50e] {\n  fill: #2bd71b;\n}\n.photos-section[data-v-1efba50e] {\n  fill: #fbf7f8;\n  width: auto;\n}\n.outer-container[data-v-1efba50e] {\n  -webkit-border-radius: 4px;\n     -moz-border-radius: 4px;\n          border-radius: 4px;\n  max-width: 900px;\n}\n.navbar-section-icon[data-v-1efba50e] {\n  height: 1.5em;\n}\n.section-navbar-container[data-v-1efba50e] {\n  background: black;\n  padding: 5px;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n     -moz-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-border-radius: 4px 4px 0 0;\n     -moz-border-radius: 4px 4px 0 0;\n          border-radius: 4px 4px 0 0;\n}\n#app .select-container[data-v-1efba50e] {\n  border: 2px solid #148327;\n}\n.change-sections-container[data-v-1efba50e] {\n  padding: 5px;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: space-evenly;\n  -webkit-justify-content: space-evenly;\n     -moz-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly;\n}\n.change-section[data-v-1efba50e] {\n  fill: #13d735;\n  height: 1.8em;\n  cursor: pointer;\n  -webkit-transition: -webkit-transform 0.5s;\n  transition: -webkit-transform 0.5s;\n  -o-transition: -o-transform 0.5s;\n  -moz-transition: transform 0.5s, -moz-transform 0.5s;\n  transition: transform 0.5s;\n  transition: transform 0.5s, -webkit-transform 0.5s, -moz-transform 0.5s, -o-transform 0.5s;\n}\n.change-section[data-v-1efba50e]:active {\n    -webkit-transform: scale(1.3);\n       -moz-transform: scale(1.3);\n        -ms-transform: scale(1.3);\n         -o-transform: scale(1.3);\n            transform: scale(1.3);\n}\n.bottom-navigation[data-v-1efba50e] {\n  background: black;\n  color: #828181;\n  font-size: 1vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.bottom-navigation[data-v-1efba50e] {\n      font-size: 13px;\n}\n}\n.navigation-description[data-v-1efba50e] {\n  padding: 3px;\n  text-align: center;\n}\n.navbar-caption[data-v-1efba50e] {\n  font-size: 1.5vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n  padding: 0;\n  margin: 0;\n}\n@media (max-width: 1200px) {\n.navbar-caption[data-v-1efba50e] {\n      font-size: 16px;\n}\n}\n.location-and-working-hours[data-v-1efba50e] {\n  width: 35px;\n  height: 35px;\n  fill: #22d31b;\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/prostitution/notice_editor/prostitution_offer_creator.vue"],"names":[],"mappings":"AAAA;EACE,aAAa;AAAE;AAEjB;EACE,WAAW;AAAE;AAEf;EACE,aAAa;AAAE;AAEjB;EACE,aAAa;AAAE;AAEjB;EACE,aAAa;EACb,WAAW;AAAE;AAEf;EACE,0BAAkB;KAAlB,uBAAkB;UAAlB,kBAAkB;EAClB,gBAAgB;AAAE;AAEpB;EACE,aAAa;AAAE;AAEjB;EACE,iBAAiB;EACjB,YAAY;EACZ,oBAAa;EAAb,qBAAa;EAAb,iBAAa;EAAb,oBAAa;EAAb,aAAa;EACb,yBAA8B;EAA9B,sCAA8B;KAA9B,sBAA8B;MAA9B,sBAA8B;UAA9B,8BAA8B;EAC9B,yBAAmB;EAAnB,2BAAmB;KAAnB,sBAAmB;MAAnB,sBAAmB;UAAnB,mBAAmB;EACnB,kCAA0B;KAA1B,+BAA0B;UAA1B,0BAA0B;AAAE;AAE9B;EACE,yBAAyB;AAAE;AAE7B;EACE,YAAY;EACZ,oBAAa;EAAb,qBAAa;EAAb,iBAAa;EAAb,oBAAa;EAAb,aAAa;EACb,8BAA6B;EAA7B,qCAA6B;KAA7B,2BAA6B;MAA7B,2BAA6B;UAA7B,6BAA6B;AAAE;AAEjC;EACE,aAAa;EACb,aAAa;EACb,eAAe;EACf,0CAA0B;EAA1B,kCAA0B;EAA1B,gCAA0B;EAA1B,oDAA0B;EAA1B,0BAA0B;EAA1B,0FAA0B;AAAE;AAC5B;IACE,6BAAqB;OAArB,0BAAqB;QAArB,yBAAqB;SAArB,wBAAqB;YAArB,qBAAqB;AAAE;AAE3B;EACE,iBAAiB;EACjB,cAAc;EACd,cAAc;EACd,gCAAgC;AAAE;AAClC;AACE;MACE,eAAe;AAAE;AAAE;AAEzB;EACE,YAAY;EACZ,kBAAkB;AAAE;AAEtB;EACE,gBAAgB;EAChB,gCAAgC;EAChC,YAAY;EACZ,UAAU;EACV,SAAS;AAAE;AACX;AACE;MACE,eAAe;AAAE;AAAE;AAEzB;EACE,WAAW;EACX,YAAY;EACZ,aAAa;AAAE","sourcesContent":[".save-notice {\n  fill: #1edb0d; }\n\n.policy-section {\n  fill: white; }\n\n.services-section {\n  fill: #dd0d85; }\n\n.personalities-section {\n  fill: #2bd71b; }\n\n.photos-section {\n  fill: #fbf7f8;\n  width: auto; }\n\n.outer-container {\n  border-radius: 4px;\n  max-width: 900px; }\n\n.navbar-section-icon {\n  height: 1.5em; }\n\n.section-navbar-container {\n  background: black;\n  padding: 5px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 4px 4px 0 0; }\n\n#app .select-container {\n  border: 2px solid #148327; }\n\n.change-sections-container {\n  padding: 5px;\n  display: flex;\n  justify-content: space-evenly; }\n\n.change-section {\n  fill: #13d735;\n  height: 1.8em;\n  cursor: pointer;\n  transition: transform 0.5s; }\n  .change-section:active {\n    transform: scale(1.3); }\n\n.bottom-navigation {\n  background: black;\n  color: #828181;\n  font-size: 1vw;\n  font-family: \"Exo 2\", sans-serif; }\n  @media (max-width: 1200px) {\n    .bottom-navigation {\n      font-size: 13px; } }\n\n.navigation-description {\n  padding: 3px;\n  text-align: center; }\n\n.navbar-caption {\n  font-size: 1.5vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n  padding: 0;\n  margin: 0; }\n  @media (max-width: 1200px) {\n    .navbar-caption {\n      font-size: 16px; } }\n\n.location-and-working-hours {\n  width: 35px;\n  height: 35px;\n  fill: #22d31b; }\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".save-notice[data-v-1efba50e] {\n  fill: #1edb0d;\n}\n.policy-section[data-v-1efba50e] {\n  fill: white;\n}\n.services-section[data-v-1efba50e] {\n  fill: #dd0d85;\n}\n.personalities-section[data-v-1efba50e] {\n  fill: #2bd71b;\n}\n.photos-section[data-v-1efba50e] {\n  fill: #fbf7f8;\n  width: auto;\n}\n.outer-container[data-v-1efba50e] {\n  -webkit-border-radius: 4px;\n     -moz-border-radius: 4px;\n          border-radius: 4px;\n  max-width: 900px;\n}\n.navbar-section-icon[data-v-1efba50e] {\n  height: 1.5em;\n}\n.section-navbar-container[data-v-1efba50e] {\n  background: black;\n  padding: 5px;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n     -moz-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-border-radius: 4px 4px 0 0;\n     -moz-border-radius: 4px 4px 0 0;\n          border-radius: 4px 4px 0 0;\n}\n#app .select-container[data-v-1efba50e] {\n  border: 2px solid #148327;\n}\n.change-sections-container[data-v-1efba50e] {\n  padding: 5px;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: space-evenly;\n  -webkit-justify-content: space-evenly;\n     -moz-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly;\n}\n.change-section[data-v-1efba50e] {\n  fill: #13d735;\n  height: 1.8em;\n  cursor: pointer;\n  -webkit-transition: -webkit-transform 0.5s;\n  transition: -webkit-transform 0.5s;\n  -o-transition: -o-transform 0.5s;\n  -moz-transition: transform 0.5s, -moz-transform 0.5s;\n  transition: transform 0.5s;\n  transition: transform 0.5s, -webkit-transform 0.5s, -moz-transform 0.5s, -o-transform 0.5s;\n}\n.change-section[data-v-1efba50e]:active {\n    -webkit-transform: scale(1.3);\n       -moz-transform: scale(1.3);\n        -ms-transform: scale(1.3);\n         -o-transform: scale(1.3);\n            transform: scale(1.3);\n}\n.bottom-navigation[data-v-1efba50e] {\n  background: black;\n  color: #828181;\n  font-size: 1vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.bottom-navigation[data-v-1efba50e] {\n      font-size: 13px;\n}\n}\n.navigation-description[data-v-1efba50e] {\n  padding: 3px;\n  text-align: center;\n}\n.navbar-caption[data-v-1efba50e] {\n  font-size: 1.5vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n  padding: 0;\n  margin: 0;\n}\n@media (max-width: 1200px) {\n.navbar-caption[data-v-1efba50e] {\n      font-size: 16px;\n}\n}\n.location-and-working-hours[data-v-1efba50e] {\n  width: 35px;\n  height: 35px;\n  fill: #22d31b;\n}\n.outer-container[data-v-1efba50e] {\n  max-width: 900px;\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/prostitution/notice_editor/prostitution_offer_creator.vue"],"names":[],"mappings":"AAAA;EACE,aAAa;AAAE;AAEjB;EACE,WAAW;AAAE;AAEf;EACE,aAAa;AAAE;AAEjB;EACE,aAAa;AAAE;AAEjB;EACE,aAAa;EACb,WAAW;AAAE;AAEf;EACE,0BAAkB;KAAlB,uBAAkB;UAAlB,kBAAkB;EAClB,gBAAgB;AAAE;AAEpB;EACE,aAAa;AAAE;AAEjB;EACE,iBAAiB;EACjB,YAAY;EACZ,oBAAa;EAAb,qBAAa;EAAb,iBAAa;EAAb,oBAAa;EAAb,aAAa;EACb,yBAA8B;EAA9B,sCAA8B;KAA9B,sBAA8B;MAA9B,sBAA8B;UAA9B,8BAA8B;EAC9B,yBAAmB;EAAnB,2BAAmB;KAAnB,sBAAmB;MAAnB,sBAAmB;UAAnB,mBAAmB;EACnB,kCAA0B;KAA1B,+BAA0B;UAA1B,0BAA0B;AAAE;AAE9B;EACE,yBAAyB;AAAE;AAE7B;EACE,YAAY;EACZ,oBAAa;EAAb,qBAAa;EAAb,iBAAa;EAAb,oBAAa;EAAb,aAAa;EACb,8BAA6B;EAA7B,qCAA6B;KAA7B,2BAA6B;MAA7B,2BAA6B;UAA7B,6BAA6B;AAAE;AAEjC;EACE,aAAa;EACb,aAAa;EACb,eAAe;EACf,0CAA0B;EAA1B,kCAA0B;EAA1B,gCAA0B;EAA1B,oDAA0B;EAA1B,0BAA0B;EAA1B,0FAA0B;AAAE;AAC5B;IACE,6BAAqB;OAArB,0BAAqB;QAArB,yBAAqB;SAArB,wBAAqB;YAArB,qBAAqB;AAAE;AAE3B;EACE,iBAAiB;EACjB,cAAc;EACd,cAAc;EACd,gCAAgC;AAAE;AAClC;AACE;MACE,eAAe;AAAE;AAAE;AAEzB;EACE,YAAY;EACZ,kBAAkB;AAAE;AAEtB;EACE,gBAAgB;EAChB,gCAAgC;EAChC,YAAY;EACZ,UAAU;EACV,SAAS;AAAE;AACX;AACE;MACE,eAAe;AAAE;AAAE;AAEzB;EACE,WAAW;EACX,YAAY;EACZ,aAAa;AAAE;AAEjB;EACE,gBAAgB;AAAE","sourcesContent":[".save-notice {\n  fill: #1edb0d; }\n\n.policy-section {\n  fill: white; }\n\n.services-section {\n  fill: #dd0d85; }\n\n.personalities-section {\n  fill: #2bd71b; }\n\n.photos-section {\n  fill: #fbf7f8;\n  width: auto; }\n\n.outer-container {\n  border-radius: 4px;\n  max-width: 900px; }\n\n.navbar-section-icon {\n  height: 1.5em; }\n\n.section-navbar-container {\n  background: black;\n  padding: 5px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 4px 4px 0 0; }\n\n#app .select-container {\n  border: 2px solid #148327; }\n\n.change-sections-container {\n  padding: 5px;\n  display: flex;\n  justify-content: space-evenly; }\n\n.change-section {\n  fill: #13d735;\n  height: 1.8em;\n  cursor: pointer;\n  transition: transform 0.5s; }\n  .change-section:active {\n    transform: scale(1.3); }\n\n.bottom-navigation {\n  background: black;\n  color: #828181;\n  font-size: 1vw;\n  font-family: \"Exo 2\", sans-serif; }\n  @media (max-width: 1200px) {\n    .bottom-navigation {\n      font-size: 13px; } }\n\n.navigation-description {\n  padding: 3px;\n  text-align: center; }\n\n.navbar-caption {\n  font-size: 1.5vw;\n  font-family: \"Exo 2\", sans-serif;\n  color: white;\n  padding: 0;\n  margin: 0; }\n  @media (max-width: 1200px) {\n    .navbar-caption {\n      font-size: 16px; } }\n\n.location-and-working-hours {\n  width: 35px;\n  height: 35px;\n  fill: #22d31b; }\n\n.outer-container {\n  max-width: 900px; }\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -31449,6 +31769,60 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=style&index=0&id=58f670a4&lang=scss&scoped=true":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=style&index=0&id=58f670a4&lang=scss&scoped=true ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_style_index_0_id_58f670a4_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!../../../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./prostitute_photos.vue?vue&type=style&index=0&id=58f670a4&lang=scss&scoped=true */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=style&index=0&id=58f670a4&lang=scss&scoped=true");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_style_index_0_id_58f670a4_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_style_index_0_id_58f670a4_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=style&index=0&id=3234b7ca&lang=scss&scoped=true":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=style&index=0&id=3234b7ca&lang=scss&scoped=true ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_for_creator_vue_vue_type_style_index_0_id_3234b7ca_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!../../../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./prostitute_photos_for_creator.vue?vue&type=style&index=0&id=3234b7ca&lang=scss&scoped=true */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=style&index=0&id=3234b7ca&lang=scss&scoped=true");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_for_creator_vue_vue_type_style_index_0_id_3234b7ca_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_for_creator_vue_vue_type_style_index_0_id_3234b7ca_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_location_and_working_hours.vue?vue&type=style&index=0&id=c4db835c&lang=scss&scoped=true":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_location_and_working_hours.vue?vue&type=style&index=0&id=c4db835c&lang=scss&scoped=true ***!
@@ -31500,33 +31874,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_personalities_vue_vue_type_style_index_0_id_0423adce_lang_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=style&index=0&id=8b81b178&lang=scss&scoped=true":
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=style&index=0&id=8b81b178&lang=scss&scoped=true ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_style_index_0_id_8b81b178_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!../../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./prostitute_photos.vue?vue&type=style&index=0&id=8b81b178&lang=scss&scoped=true */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=style&index=0&id=8b81b178&lang=scss&scoped=true");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_style_index_0_id_8b81b178_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_style_index_0_id_8b81b178_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -34237,6 +34584,66 @@ _prostitution_sub_menu_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__[
 
 /***/ }),
 
+/***/ "./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue ***!
+  \*****************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__.__esModule; }
+/* harmony export */ });
+/* harmony import */ var _prostitute_photos_vue_vue_type_template_id_58f670a4_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./prostitute_photos.vue?vue&type=template&id=58f670a4&scoped=true */ "./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=template&id=58f670a4&scoped=true");
+/* harmony import */ var _prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./prostitute_photos.vue?vue&type=script&lang=ts */ "./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=script&lang=ts");
+/* harmony import */ var _prostitute_photos_vue_vue_type_style_index_0_id_58f670a4_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./prostitute_photos.vue?vue&type=style&index=0&id=58f670a4&lang=scss&scoped=true */ "./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=style&index=0&id=58f670a4&lang=scss&scoped=true");
+
+
+
+
+;
+_prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].render = _prostitute_photos_vue_vue_type_template_id_58f670a4_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render
+_prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].__scopeId = "data-v-58f670a4"
+/* hot reload */
+if (false) {}
+
+_prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue"
+
+/* harmony default export */ __webpack_exports__["default"] = (_prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+/***/ }),
+
+/***/ "./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue ***!
+  \*****************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _prostitute_photos_for_creator_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__.__esModule; }
+/* harmony export */ });
+/* harmony import */ var _prostitute_photos_for_creator_vue_vue_type_template_id_3234b7ca_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./prostitute_photos_for_creator.vue?vue&type=template&id=3234b7ca&scoped=true */ "./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=template&id=3234b7ca&scoped=true");
+/* harmony import */ var _prostitute_photos_for_creator_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./prostitute_photos_for_creator.vue?vue&type=script&lang=ts */ "./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=script&lang=ts");
+/* harmony import */ var _prostitute_photos_for_creator_vue_vue_type_style_index_0_id_3234b7ca_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./prostitute_photos_for_creator.vue?vue&type=style&index=0&id=3234b7ca&lang=scss&scoped=true */ "./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=style&index=0&id=3234b7ca&lang=scss&scoped=true");
+
+
+
+
+;
+_prostitute_photos_for_creator_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].render = _prostitute_photos_for_creator_vue_vue_type_template_id_3234b7ca_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render
+_prostitute_photos_for_creator_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].__scopeId = "data-v-3234b7ca"
+/* hot reload */
+if (false) {}
+
+_prostitute_photos_for_creator_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue"
+
+/* harmony default export */ __webpack_exports__["default"] = (_prostitute_photos_for_creator_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+/***/ }),
+
 /***/ "./resources/js/components/prostitution/notice_editor/prostitute_location_and_working_hours.vue":
 /*!******************************************************************************************************!*\
   !*** ./resources/js/components/prostitution/notice_editor/prostitute_location_and_working_hours.vue ***!
@@ -34293,36 +34700,6 @@ if (false) {}
 _prostitute_personalities_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/components/prostitution/notice_editor/prostitute_personalities.vue"
 
 /* harmony default export */ __webpack_exports__["default"] = (_prostitute_personalities_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"]);
-
-/***/ }),
-
-/***/ "./resources/js/components/prostitution/notice_editor/prostitute_photos.vue":
-/*!**********************************************************************************!*\
-  !*** ./resources/js/components/prostitution/notice_editor/prostitute_photos.vue ***!
-  \**********************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "__esModule": function() { return /* reexport safe */ _prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__.__esModule; }
-/* harmony export */ });
-/* harmony import */ var _prostitute_photos_vue_vue_type_template_id_8b81b178_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./prostitute_photos.vue?vue&type=template&id=8b81b178&scoped=true */ "./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=template&id=8b81b178&scoped=true");
-/* harmony import */ var _prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./prostitute_photos.vue?vue&type=script&lang=ts */ "./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=script&lang=ts");
-/* harmony import */ var _prostitute_photos_vue_vue_type_style_index_0_id_8b81b178_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./prostitute_photos.vue?vue&type=style&index=0&id=8b81b178&lang=scss&scoped=true */ "./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=style&index=0&id=8b81b178&lang=scss&scoped=true");
-
-
-
-
-;
-_prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].render = _prostitute_photos_vue_vue_type_template_id_8b81b178_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render
-_prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].__scopeId = "data-v-8b81b178"
-/* hot reload */
-if (false) {}
-
-_prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/components/prostitution/notice_editor/prostitute_photos.vue"
-
-/* harmony default export */ __webpack_exports__["default"] = (_prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 /***/ }),
 
@@ -35428,6 +35805,40 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=script&lang=ts":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=script&lang=ts ***!
+  \*****************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
+/* harmony export */   "default": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"]; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./prostitute_photos.vue?vue&type=script&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=script&lang=ts");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=script&lang=ts":
+/*!*****************************************************************************************************************************!*\
+  !*** ./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=script&lang=ts ***!
+  \*****************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_for_creator_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
+/* harmony export */   "default": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_for_creator_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"]; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_for_creator_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./prostitute_photos_for_creator.vue?vue&type=script&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=script&lang=ts");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/prostitution/notice_editor/prostitute_location_and_working_hours.vue?vue&type=script&lang=ts":
 /*!******************************************************************************************************************************!*\
   !*** ./resources/js/components/prostitution/notice_editor/prostitute_location_and_working_hours.vue?vue&type=script&lang=ts ***!
@@ -35458,23 +35869,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_personalities_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"]; }
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_personalities_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./prostitute_personalities.vue?vue&type=script&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_personalities.vue?vue&type=script&lang=ts");
- 
-
-/***/ }),
-
-/***/ "./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=script&lang=ts":
-/*!**********************************************************************************************************!*\
-  !*** ./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=script&lang=ts ***!
-  \**********************************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
-/* harmony export */   "default": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"]; }
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./prostitute_photos.vue?vue&type=script&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=script&lang=ts");
  
 
 /***/ }),
@@ -36720,6 +37114,40 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=template&id=58f670a4&scoped=true":
+/*!***********************************************************************************************************************************!*\
+  !*** ./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=template&id=58f670a4&scoped=true ***!
+  \***********************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_template_id_58f670a4_scoped_true__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
+/* harmony export */   "render": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_template_id_58f670a4_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_template_id_58f670a4_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./prostitute_photos.vue?vue&type=template&id=58f670a4&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=template&id=58f670a4&scoped=true");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=template&id=3234b7ca&scoped=true":
+/*!***********************************************************************************************************************************************!*\
+  !*** ./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=template&id=3234b7ca&scoped=true ***!
+  \***********************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_for_creator_vue_vue_type_template_id_3234b7ca_scoped_true__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
+/* harmony export */   "render": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_for_creator_vue_vue_type_template_id_3234b7ca_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_for_creator_vue_vue_type_template_id_3234b7ca_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./prostitute_photos_for_creator.vue?vue&type=template&id=3234b7ca&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=template&id=3234b7ca&scoped=true");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/prostitution/notice_editor/prostitute_location_and_working_hours.vue?vue&type=template&id=c4db835c&scoped=true":
 /*!************************************************************************************************************************************************!*\
   !*** ./resources/js/components/prostitution/notice_editor/prostitute_location_and_working_hours.vue?vue&type=template&id=c4db835c&scoped=true ***!
@@ -36750,23 +37178,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_personalities_vue_vue_type_template_id_0423adce__WEBPACK_IMPORTED_MODULE_0__.render; }
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_personalities_vue_vue_type_template_id_0423adce__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./prostitute_personalities.vue?vue&type=template&id=0423adce */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_personalities.vue?vue&type=template&id=0423adce");
-
-
-/***/ }),
-
-/***/ "./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=template&id=8b81b178&scoped=true":
-/*!****************************************************************************************************************************!*\
-  !*** ./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=template&id=8b81b178&scoped=true ***!
-  \****************************************************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_template_id_8b81b178_scoped_true__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
-/* harmony export */   "render": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_template_id_8b81b178_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render; }
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_template_id_8b81b178_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./prostitute_photos.vue?vue&type=template&id=8b81b178&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=template&id=8b81b178&scoped=true");
 
 
 /***/ }),
@@ -37376,6 +37787,32 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=style&index=0&id=58f670a4&lang=scss&scoped=true":
+/*!**************************************************************************************************************************************************!*\
+  !*** ./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=style&index=0&id=58f670a4&lang=scss&scoped=true ***!
+  \**************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_style_index_0_id_58f670a4_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader/dist/cjs.js!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!../../../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./prostitute_photos.vue?vue&type=style&index=0&id=58f670a4&lang=scss&scoped=true */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos.vue?vue&type=style&index=0&id=58f670a4&lang=scss&scoped=true");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=style&index=0&id=3234b7ca&lang=scss&scoped=true":
+/*!**************************************************************************************************************************************************************!*\
+  !*** ./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=style&index=0&id=3234b7ca&lang=scss&scoped=true ***!
+  \**************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_for_creator_vue_vue_type_style_index_0_id_3234b7ca_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader/dist/cjs.js!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!../../../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./prostitute_photos_for_creator.vue?vue&type=style&index=0&id=3234b7ca&lang=scss&scoped=true */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue?vue&type=style&index=0&id=3234b7ca&lang=scss&scoped=true");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/prostitution/notice_editor/prostitute_location_and_working_hours.vue?vue&type=style&index=0&id=c4db835c&lang=scss&scoped=true":
 /*!***************************************************************************************************************************************************************!*\
   !*** ./resources/js/components/prostitution/notice_editor/prostitute_location_and_working_hours.vue?vue&type=style&index=0&id=c4db835c&lang=scss&scoped=true ***!
@@ -37398,19 +37835,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_personalities_vue_vue_type_style_index_0_id_0423adce_lang_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader/dist/cjs.js!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!../../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./prostitute_personalities.vue?vue&type=style&index=0&id=0423adce&lang=scss */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_personalities.vue?vue&type=style&index=0&id=0423adce&lang=scss");
-
-
-/***/ }),
-
-/***/ "./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=style&index=0&id=8b81b178&lang=scss&scoped=true":
-/*!*******************************************************************************************************************************************!*\
-  !*** ./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=style&index=0&id=8b81b178&lang=scss&scoped=true ***!
-  \*******************************************************************************************************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_prostitute_photos_vue_vue_type_style_index_0_id_8b81b178_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader/dist/cjs.js!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!../../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./prostitute_photos.vue?vue&type=style&index=0&id=8b81b178&lang=scss&scoped=true */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/prostitution/notice_editor/prostitute_photos.vue?vue&type=style&index=0&id=8b81b178&lang=scss&scoped=true");
 
 
 /***/ }),

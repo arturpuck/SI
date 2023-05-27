@@ -4,6 +4,7 @@ namespace App\Http\Resources\Prostitution;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Traits\ColumnToRequestField;
+use App\City;
 
 class ProstitutionAnnouncementEditorFormResource extends JsonResource
 {
@@ -16,9 +17,11 @@ class ProstitutionAnnouncementEditorFormResource extends JsonResource
         'city_id',
         'user_typ_id',
         'birth_date',
+        'tits_size',
         'phone_number',
         'description',
         'sexual_orientation_id',
+        'user_type_id',
         'hair_color',
         'height_in_centimeters',
         'weight_in_kilograms',
@@ -45,12 +48,22 @@ class ProstitutionAnnouncementEditorFormResource extends JsonResource
             }
         }
         $result['photosURLs'] = $this->getPhotosURLs();
+        $result['cities'] = $this->getCitiesForRegion($this->region_id);
         return $result;
     }
 
     private function getPhotosURLs() : array 
     {
         return $this->isVerified() ? $this->getAcceptedPhotosURLs() : $this->getPhotosURLsAwaitingVerification();
+    }
+
+    private function getCitiesForRegion(int $regionID) : array
+    {
+        return City::select('id', 'name')
+                    ->where('voivodeship_id', $regionID)
+                    ->get()
+                    ->toArray();
+        
     }
     
 }

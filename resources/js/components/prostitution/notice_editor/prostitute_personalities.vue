@@ -26,6 +26,7 @@
     <text-input-combo
       class="extended"
       unique-id="BirthDate"
+      v-bind:is-disabled="disabledBirthDate"
       v-model="birthDate"
       input-type="date"
       v-bind:error-message-box-available="true"
@@ -94,7 +95,7 @@
 </template>
         
 <script lang="ts">
-import Translations from "@jsmodules/translations/components/prostitute_basic_information";
+import Translations from "@js/modules/translations/components/prostitution/prostitute_basic_information";
 import SimpleLabeledInput from "@jscomponents-form-controls/simple_labeled_input.vue";
 import SimpleLabeledSelect from "@jscomponents-form-controls/simple_labeled_select.vue";
 import SelectCombo from "@jscomponents/form_controls/select_combo.vue";
@@ -128,6 +129,12 @@ export default {
       default : [],
       required : true
     },
+
+    disabledBirthDate : {
+      type : Boolean,
+      default : false,
+      required : false
+    }
 
   },
 

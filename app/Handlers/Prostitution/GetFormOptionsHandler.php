@@ -6,17 +6,19 @@ use Illuminate\Http\JsonResponse;
 use App\UserType;
 use App\SexualOrientation;
 use App\Voivodeship;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
+use App\Traits\Prostitution\PhotoTokenGenerator;
 
 class GetFormOptionsHandler
 {
+    use PhotoTokenGenerator;
+
     public function handle() : JsonResponse
     {
         if(Session::has('prostitutePhotoVerificationToken')) {
             $prostitutePhotoVerificationToken = Session::get('prostitutePhotoVerificationToken');
         } else {
-            $prostitutePhotoVerificationToken = strtoupper(Str::random(rand(4,8)));
+            $prostitutePhotoVerificationToken = $this->generatePhotoToken();
             Session::put('prostitutePhotoVerificationToken', $prostitutePhotoVerificationToken);
         }
         $formOptions = [

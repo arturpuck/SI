@@ -38,7 +38,7 @@ trait ProstitutionAnnouncementDetails
         }
         $result = [];
         foreach($photos as $photo) {
-            $result[] = url($folder.'/'.$photo);
+            $result[] = url($folder.'/'.basename($photo));
         }
         return $result;
 

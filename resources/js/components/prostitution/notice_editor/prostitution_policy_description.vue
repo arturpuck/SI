@@ -14,7 +14,7 @@
 </template>
     
 <script lang="ts">
-import Translations from "@jsmodules/translations/components/prostitution_offer_policy_description";
+import Translations from "@js/modules/translations/components/prostitution/prostitution_offer_policy_description";
 import InfoCircleIcon from "@svgicon/info_circle_icon.vue";
 import RoutesConfig from "@config/paths/routes";
 
