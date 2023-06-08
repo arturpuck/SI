@@ -7,6 +7,7 @@ use App\ProstitutionAnnouncement;
 use App\Http\Requests\Prostitution\CreateProstitutionAnnouncementRequest;
 use App\Traits\ColumnToRequestField;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 final class CreateProstitutionAnnouncementHandler
 {
@@ -14,6 +15,7 @@ final class CreateProstitutionAnnouncementHandler
 
     private CreateProstitutionAnnouncementRequest $request;
     private ProstitutionAnnouncement $announcement;
+    private string $universallyUniqueIdentifier;
 
     const PERSONALITIES_COLUMNS = [
         'nickname',
@@ -48,6 +50,8 @@ final class CreateProstitutionAnnouncementHandler
     {
         $this->request = $request;
         $this->announcement = new ProstitutionAnnouncement();
+        $this->universallyUniqueIdentifier = Str::uuid();
+        $this->announcement->universally_unique_identifier = $this->universallyUniqueIdentifier;
         $this->assignPersonalities();
         $this->assignServices();
         $this->assignPaymentForms();
@@ -61,10 +65,15 @@ final class CreateProstitutionAnnouncementHandler
     private function processPhotos() : void 
     {
         $storageDirectory = $this->getPhotosStorageDirectory();
+        $controlSums = [];
         foreach($this->request->get('photos') as $index => $photo) {
-            $photo->move($storageDirectory, $index.'.'.$photo->getClientOriginalExtension());
+            $newFileName = $index.'.'.$photo->getClientOriginalExtension();
+            $photo->move($storageDirectory, $newFileName);
+            $controlSums[$newFileName] = hash_file('sha256', $storageDirectory.'/'.$newFileName);
         }
         $this->announcement->last_generated_token = $this->request->get('verificationToken');
+        $this->announcement->any_photo_awaits_validation = true;
+        $this->announcement->photos_control_sum = json_encode($controlSums);
     }
 
     private function assignLocationAndWorkingHours() : void
@@ -81,6 +90,7 @@ final class CreateProstitutionAnnouncementHandler
         $currentUserID = auth()->user()->id;
         return config('filesystems.prostitution.photos').
                $currentUserID.'/'.
+               $this->universallyUniqueIdentifier.'/'.
                config('filesystems.prostitution.photos_directory_awaiting_verification');
     }
 

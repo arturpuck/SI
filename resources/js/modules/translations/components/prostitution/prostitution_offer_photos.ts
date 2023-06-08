@@ -22,6 +22,7 @@ const translations : {
     generate_new_token : string,
     use_old_token : string,
     setting_in_progress : string,
+    these_photos_currently_await_validation : string
 } = {
    photos_policy : Translator.translate('prostitute_photos_policy'),
    setting_in_progress : Translator.translate("setting_in_progress"),
@@ -41,7 +42,8 @@ const translations : {
    old_token : ucfirst(Translator.translate("old_token")),
    new_token : ucfirst(Translator.translate("new_token")),
    generate_new_token : Translator.translate("generate_new_token"),
-   use_old_token : Translator.translate("use_old_token")
+   use_old_token : Translator.translate("use_old_token"),
+   these_photos_currently_await_validation : Translator.translate("these_photos_currently_await_validation")
 
 };
 

@@ -1,14 +1,15 @@
 const allPropertiesNames = [
+    'universallyUniqueId',
     'nickname',
     'phoneNumber',
     'birthDate',
     'description' ,
     'userTypeId',
-    'sexualOrientation',
+    'sexualOrientationId',
     'hairColor',
     'titsSize',
-    'height',
-    'weight',
+    'heightInCentimeters',
+    'weightInKilograms',
     'massagePreference',
     'vaginalSexPreference',
     'blowjobPreference',
@@ -48,7 +49,9 @@ export default allPropertiesNames;
 export const optionalPersonalitiesPropertiesNames = [
     'phoneNumber',
     'description' ,
-    'sexualOrientation',
+    'sexualOrientationId',
+    'heightInCentimeters',
+    'weightInKilograms',
     'hairColor',
     'titsSize',
     'height',
@@ -68,3 +71,9 @@ export const sexServicesAlwaysVisibleKeys = [
 ];
 // 'oralCreampie',
 // 'cumSwallow',
+
+export const allMainSexServices = [
+    ...sexServicesAlwaysVisibleKeys,
+    'oralCreampie',
+    'cumSwallow',
+]

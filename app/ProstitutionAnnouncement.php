@@ -8,11 +8,10 @@ use App\CustomQueryBuilders\Prostitution\ProstitutionAnnouncementQueryBuilder;
 use App\Voivodeship;
 use App\City;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Traits\Models\ProstitutionAnnouncementDetails;
 
 class ProstitutionAnnouncement extends Model
 {
-    use HasFactory, SoftDeletes, ProstitutionAnnouncementDetails;
+    use HasFactory, SoftDeletes;
 
     public function newEloquentBuilder($query): ProstitutionAnnouncementQueryBuilder
     {

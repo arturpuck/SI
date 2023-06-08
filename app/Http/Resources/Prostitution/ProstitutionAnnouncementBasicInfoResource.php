@@ -15,7 +15,7 @@ class ProstitutionAnnouncementBasicInfoResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
+            'universallyUniqueID' => $this->universally_unique_identifier,
             'nickname' => $this->nickname,
             'region' => $this->region->name,
             'city' => $this->city->name,

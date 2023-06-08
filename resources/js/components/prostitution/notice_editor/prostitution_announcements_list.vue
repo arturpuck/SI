@@ -1,6 +1,9 @@
 <template>
   <div class="list-container">
-    <expect-shadow-circle v-show="fetchingInProgress" v-bind:circle-label="translations.fetchingAnnouncements"></expect-shadow-circle>
+    <expect-shadow-circle
+      v-show="fetchingInProgress"
+      v-bind:circle-label="translations.fetchingAnnouncements"
+    ></expect-shadow-circle>
     <table class="announcements-table" v-if="userHasAnyAnnouncements">
       <thead>
         <th class="list-header" v-text="translations.nickname"></th>
@@ -8,22 +11,31 @@
         <th class="list-header" v-text="translations.city"></th>
         <th class="list-header" v-text="translations.phoneNumber"></th>
         <th class="list-header" v-text="translations.hiddenByAUser"></th>
-        <th
-          class="list-header"
-          v-text="translations.photosAreValidAndUpToDate"
-        ></th>
+        <th class="list-header" v-text="translations.photosAreValidAndUpToDate"></th>
         <th class="list-header" v-text="translations.validUntil"></th>
         <th class="list-header" v-text="translations.actions"></th>
       </thead>
       <tbody>
         <tr
-        class="announcement-row"
+          class="announcement-row"
           v-for="(announcement, index) in announcementsBasicInformationList"
           v-bind:key="index"
         >
-          <td class="announcement-cell" v-bind:data-label="translations.nickname" v-text="announcement.nickname"></td>
-          <td class="announcement-cell" v-bind:data-label="translations.region" v-text="announcement.region"></td>
-          <td class="announcement-cell" v-bind:data-label="translations.city" v-text="announcement.city"></td>
+          <td
+            class="announcement-cell"
+            v-bind:data-label="translations.nickname"
+            v-text="announcement.nickname"
+          ></td>
+          <td
+            class="announcement-cell"
+            v-bind:data-label="translations.region"
+            v-text="announcement.region"
+          ></td>
+          <td
+            class="announcement-cell"
+            v-bind:data-label="translations.city"
+            v-text="announcement.city"
+          ></td>
           <td
             v-bind:data-label="translations.phoneNumber"
             class="announcement-cell"
@@ -35,11 +47,9 @@
             v-text="transformBooleanToYesOrNo(announcement.hiddenByAUser)"
           ></td>
           <td
-          v-bind:data-label="translations.photosAreValidAndUpToDate"
+            v-bind:data-label="translations.photosAreValidAndUpToDate"
             class="announcement-cell"
-            v-text="
-              transformBooleanToYesOrNo(announcement.photosAreValidAndUpToDate)
-            "
+            v-text="transformBooleanToYesOrNo(announcement.photosAreValidAndUpToDate)"
           ></td>
           <td
             class="announcement-cell"
@@ -47,8 +57,13 @@
             v-text="getValidUntilLabel(announcement.validUntil)"
           ></td>
           <td v-bind:data-label="translations.actions" class="announcement-cell">
-            <edit-button-vertical class="edit"
-            v-on:click="demonstrateUserHasSelectedAnnouncementToEdit(announcement.id)"
+            <edit-button-vertical
+              class="edit"
+              v-on:click="
+                demonstrateUserHasSelectedAnnouncementToEdit(
+                  announcement.universallyUniqueID
+                )
+              "
             >
             </edit-button-vertical>
             <delete-button-vertical
@@ -59,16 +74,26 @@
         </tr>
       </tbody>
     </table>
-    <yes-no-dialog class="dialog"
-    v-on:confirmed="startDeletingAnnouncement"
-    v-on:denied="hideDialog"
-    v-show="dialogIsVisible">
+    <yes-no-dialog
+      class="dialog"
+      v-on:confirmed="startDeletingAnnouncement"
+      v-on:denied="hideDialog"
+      v-show="dialogIsVisible"
+    >
     </yes-no-dialog>
-    <div v-if="noAnnouncementsInformationShouldBeDisplayed" v-text="translations.youDontHaveAnyAnnouncements" class="no-announcements-info"></div>
-    <div v-if="errorNotificationShouldBeDisplayed" v-text="translations.announcementsCannotBeDisplayedBecauseAnErrorOccured" class="no-announcements-info"></div>
+    <div
+      v-if="noAnnouncementsInformationShouldBeDisplayed"
+      v-text="translations.youDontHaveAnyAnnouncements"
+      class="no-announcements-info"
+    ></div>
+    <div
+      v-if="errorNotificationShouldBeDisplayed"
+      v-text="translations.announcementsCannotBeDisplayedBecauseAnErrorOccured"
+      class="no-announcements-info"
+    ></div>
   </div>
 </template>
-        
+
 <script lang="ts">
 import Routes from "@config/paths/routes";
 import Translations from "@js/modules/translations/components/prostitution/prostitution_list";
@@ -79,11 +104,10 @@ import ExpectShadowCircle from "@jscomponents/decoration/expect_shadow_circle.vu
 
 export default {
   name: "prostitution-announcements-list",
-  emits : ['selectedToEdit'],
+  emits: ["selectedToEdit"],
   methods: {
-
-    demonstrateUserHasSelectedAnnouncementToEdit(announcementID : number) : void {
-      this.$emit('selectedToEdit', announcementID);
+    demonstrateUserHasSelectedAnnouncementToEdit(announcementID: number): void {
+      this.$emit("selectedToEdit", announcementID);
     },
 
     async fetchAllCurrentUserAnnouncementsBasicInformation() {
@@ -94,7 +118,7 @@ export default {
           "Content-type": "application/json; charset=UTF-8",
         },
       };
-      const URL = `${Routes.noticesManagement}?userID=authenticatedUser&detailsLevel=basic`;
+      const URL = `${Routes.noticesManagement}?detailsLevel=basic`;
       const response = await fetch(URL, requestData);
       this.processAnnouncementsFetchingResponse(response);
     },
@@ -107,7 +131,7 @@ export default {
       });
     },
 
-    startDeletingAnnouncement() : void {
+    startDeletingAnnouncement(): void {
       this.hideDialog();
       this.deleteAnnouncement();
     },
@@ -115,7 +139,9 @@ export default {
     async deleteAnnouncement() {
       const requestData = {
         method: "DELETE",
-        body : JSON.stringify({announcementID : this.announcementIDMarkedAsConsideredToDelete}),
+        body: JSON.stringify({
+          announcementID: this.announcementIDMarkedAsConsideredToDelete,
+        }),
         headers: {
           "X-CSRF-TOKEN": this.csrfToken,
           "Content-type": "application/json; charset=UTF-8",
@@ -123,27 +149,27 @@ export default {
       };
       const URL = Routes.noticesManagement;
       const response = await fetch(URL, requestData);
-      this.processDeleteAnnouncementResponse(response)
+      this.processDeleteAnnouncementResponse(response);
     },
 
-     async processDeleteAnnouncementResponse(response : Response) {
-      if(response.status === 200) {
+    async processDeleteAnnouncementResponse(response: Response) {
+      if (response.status === 200) {
         const deletedAnnouncement = await response.json();
         this.removeAnnouncementFromList(deletedAnnouncement.id);
       }
     },
 
-    removeAnnouncementFromList(deletedAnnouncementID : number) : void {
+    removeAnnouncementFromList(deletedAnnouncementID: number): void {
       this.announcementsBasicInformationList = this.announcementsBasicInformationList.filter(
-        announcement => announcement.id != deletedAnnouncementID
+        (announcement) => announcement.id != deletedAnnouncementID
       );
     },
 
-    hideDialog() : void {
+    hideDialog(): void {
       this.dialogIsVisible = false;
     },
 
-    hideFetchingDecoration() : void {
+    hideFetchingDecoration(): void {
       this.fetchingInProgress = false;
     },
 
@@ -162,9 +188,7 @@ export default {
     },
 
     getCSRFToken(): void {
-      this.csrfToken = (<HTMLMetaElement>(
-        document.getElementById("csrf-token")
-      )).content;
+      this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
     },
 
     getPhoneNumber(number) {
@@ -177,16 +201,15 @@ export default {
 
     getValidUntilLabel(validUntil): string {
       return (
-        validUntil ??
-        this.translations.notValidAwaitingVerificationNotVisibleForUsers
+        validUntil ?? this.translations.notValidAwaitingVerificationNotVisibleForUsers
       );
     },
 
-    showDialog() : void {
+    showDialog(): void {
       this.dialogIsVisible = true;
     },
 
-    initiateAnnouncementDeletion(announcementID : number): void {
+    initiateAnnouncementDeletion(announcementID: number): void {
       this.showDialog();
       this.announcementIDMarkedAsConsideredToDelete = announcementID;
     },
@@ -196,7 +219,7 @@ export default {
     EditButtonVertical,
     DeleteButtonVertical,
     YesNoDialog,
-    ExpectShadowCircle
+    ExpectShadowCircle,
   },
 
   computed: {
@@ -204,15 +227,17 @@ export default {
       return this.announcementsBasicInformationList.length > 0;
     },
 
-    noAnnouncementsInformationShouldBeDisplayed() : boolean
-    {
-      return !this.fetchingInProgress && !this.userHasAnyAnnouncements && !this.errorOccuredDuringFetchingList;
+    noAnnouncementsInformationShouldBeDisplayed(): boolean {
+      return (
+        !this.fetchingInProgress &&
+        !this.userHasAnyAnnouncements &&
+        !this.errorOccuredDuringFetchingList
+      );
     },
 
-    errorNotificationShouldBeDisplayed() : boolean {
+    errorNotificationShouldBeDisplayed(): boolean {
       return !this.fetchingInProgress && this.errorOccuredDuringFetchingList;
-    }
-
+    },
   },
 
   data() {
@@ -221,9 +246,9 @@ export default {
       announcementsBasicInformationList: [],
       translations: Translations,
       dialogIsVisible: false,
-      announcementIDMarkedAsConsideredToDelete : undefined,
-      fetchingInProgress : true,
-      errorOccuredDuringFetchingList : false,
+      announcementIDMarkedAsConsideredToDelete: undefined,
+      fetchingInProgress: true,
+      errorOccuredDuringFetchingList: false,
     };
   },
 
@@ -233,7 +258,7 @@ export default {
   },
 };
 </script>
-        
+
 <style lang="scss" scoped>
 @import "~sass/fonts";
 
@@ -287,7 +312,7 @@ export default {
 
 .list-container {
   min-height: 200px;
-  position:relative;
+  position: relative;
   min-width: 50vw;
   display: flex;
   flex-direction: column;
@@ -296,18 +321,18 @@ export default {
 }
 
 .no-announcements-info {
-  color:white;
+  color: white;
   @include responsive-font(1.4vw, 16px);
 }
 
-@media(max-width:950px) {
+@media (max-width: 950px) {
   .list-header {
-    overflow:hidden;
-    width:1px;
-    height:1px;
-    position:absolute;
-    top:-9999px;
-    left:-9999px;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
   }
 
   .announcement-cell {
@@ -315,10 +340,10 @@ export default {
     padding: 7px;
     text-align: right;
     &::before {
-      content : attr(data-label) ' : ';
-      float:left;
-      margin-right:5px;
-      font-weight:bold;
+      content: attr(data-label) " : ";
+      float: left;
+      margin-right: 5px;
+      font-weight: bold;
     }
   }
 
@@ -327,13 +352,11 @@ export default {
   }
 
   .announcement-row {
-    display:block;
+    display: block;
   }
 
   .announcement-row:not(:last-child) {
     margin-bottom: 10px;
   }
 }
-
 </style>
-        

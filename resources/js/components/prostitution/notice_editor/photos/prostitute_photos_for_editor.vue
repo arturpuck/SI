@@ -33,6 +33,12 @@
         class="token-assignement-button old-token-button"
       ></button>
     </div>
+    <div class="photos-awaiting-validation-notice" v-if="anyPhotoAwaitsValidation">
+      <strong
+        class="photos-awaiting-validation-text"
+        v-text="Translations.these_photos_currently_await_validation"
+      ></strong>
+    </div>
     <div class="token-info">
       <span v-text="tokenLabel"></span> :
       <strong class="token" v-text="token"></strong>
@@ -58,6 +64,14 @@ export default {
   emits: ["validated"],
 
   mixins: [TokenSetter, TokenErrorProcessor],
+
+  props: {
+    anyPhotoAwaitsValidation: {
+      required: false,
+      type: Boolean,
+      default: true,
+    },
+  },
 
   data() {
     return {
@@ -170,6 +184,16 @@ export default {
 
 <style lang="scss" scoped>
 @import "~sass/fonts";
+
+.photos-awaiting-validation-notice {
+  text-align: center;
+  padding: 5px;
+}
+
+.photos-awaiting-validation-text {
+  color: #f70b56;
+  @include responsive-font(1.4vw, 20px);
+}
 .important-notice {
   color: red;
 }

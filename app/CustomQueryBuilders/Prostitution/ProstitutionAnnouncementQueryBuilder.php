@@ -23,4 +23,10 @@ class ProstitutionAnnouncementQueryBuilder extends Builder
         $this->where('user_id', $userID);
         return $this;
     }
+
+    public function filterByUniversallyUniqueIdentifier(string $uniqueIdentifier) : self
+    {
+        $this->where('universally_unique_identifier', $uniqueIdentifier);
+        return $this;
+    }
 }

@@ -11,24 +11,24 @@ use App\UserType;
 use App\Rules\Prostitution\WorkingHoursRangeIdentifiers;
 use App\Rules\Prostitution\HourOfStartIsBeforeHourOfEnd;
 use App\Rules\Prostitution\EveryPaymentFormContainsOnlyRequiredFields;
-use App\ProstitutionAnnouncement;
-use Illuminate\Auth\Access\AuthorizationException;
 use App\Traits\Requests\ProstitutionAnnouncementFormFieldsValidation;
+use App\Rules\Prostitution\CurrentUserOwnsProstitutionAnnouncement;
 
-
-class CreateProstitutionAnnouncementRequest extends FormRequest
+class UpdateProstitutionAnnouncementRequest extends FormRequest
 {
     use ProstitutionAnnouncementFormFieldsValidation;
 
     public const STANDARD_SEXUAL_SERVICE_OPTIONS = [
         'included',
         'aditional_payment',
+        'never'
     ];
 
     public const BLOWJOB_SERVICE_OPTIONS = [
         'only_in_condom',
         'without_condom',
         'without_condom_with_aditional_payments',
+        'never'
     ];
 
     const POSITIVE_NUMERIC = [
@@ -85,18 +85,6 @@ class CreateProstitutionAnnouncementRequest extends FormRequest
         'other'
     ];
 
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return !ProstitutionAnnouncement::query()
-                ->assignedToCurrentLoggedUser()
-                ->onlyAwaitingVerification()
-                ->exists();
-    }
 
     protected function prepareForValidation()
     {
@@ -116,11 +104,12 @@ class CreateProstitutionAnnouncementRequest extends FormRequest
     public function rules()
     {
         return [
-            'nickname' => ['required', 'string', 'min:3', 'max:30'],
+            'id' => ['required', new CurrentUserOwnsProstitutionAnnouncement()],
+            'nickname' => ['string', 'min:3', 'max:30'],
             'phoneNumber' => ['regex:/^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$/', 'min:7', 'max:16'],
-            'birthDate' => ['required', 'date', 'before:-18 years', 'after:-120 years'],
+            'birthDate' => ['prohibited'],
             'description' => ['string', 'max:2000'],
-            'userTypeId' => ['required', 'exists:user_types,id'],
+            'userTypeId' => ['exists:user_types,id'],
             'sexualOrientationId' => ['exists:sexual_orientations,id'],
             'titsSize' => ['min:1', 'max:8'],
             'heightInCentimeters' => ['numeric', 'min:90', 'max:270'],
@@ -128,7 +117,7 @@ class CreateProstitutionAnnouncementRequest extends FormRequest
             'titsSize' => ['numeric', 'min:0', 'max:8', Rule::prohibitedIf(fn() => UserType::find($this->get('userType'))?->isMale())],
             'hairColor' => [Rule::in(self::HAIR_COLORS)],
             
-            'tripsPreference' => ['boolean', Rule::in('1')],
+            'tripsPreference' => ['boolean', Rule::in(['1', '2'])],
             'massagePreference' => [Rule::in(self::STANDARD_SEXUAL_SERVICE_OPTIONS)],
             'vaginalSexPreference' => [Rule::in(self::STANDARD_SEXUAL_SERVICE_OPTIONS)],
             'oralCreampiePreference' => [Rule::in(self::STANDARD_SEXUAL_SERVICE_OPTIONS)],
@@ -156,19 +145,19 @@ class CreateProstitutionAnnouncementRequest extends FormRequest
             'secondaryServices' => ['array'],
             'secondaryServices.*' => Rule::in(self::SECONDARY_SERVICES),
 
-            'paymentForms' => ['required', 'array', new EveryPaymentFormContainsOnlyRequiredFields()],
+            'paymentForms' => ['array', new EveryPaymentFormContainsOnlyRequiredFields()],
             'paymentForms.*.unit' => Rule::in(self::AVAILABLE_SERVICE_FORMS),
             'paymentForms.*.price' => self::POSITIVE_NUMERIC,
-            'photos' => ['required', 'array'],
+            'photos' => ['array'],
             'photos.*' => ['image', 'max:1024'],
-            'verificationToken' => ['required', 'string', 'min:4', 'max:8'],
+            'verificationToken' => ['nullable', 'string', 'min:4', 'max:8'],
             'workingHours' => ['array', new WorkingHoursRangeIdentifiers(), new HourOfStartIsBeforeHourOfEnd()],
             'workingHours.*.since' => ['date_format:H:i', 'required_if:workingHours,!=,null'],
             'workingHours.*.until' => ['date_format:H:i', 'required_if:workingHours,!=,null'],
             'workingDays' => ['required_if:workingHours,!=,null', 'array'],
             'workingDays.*' => ['required_if:workingHours,!=,null', new DayOfWeek()],
-            'cityId' => ['required', 'exists:cities,id'],
-            'regionId' => ['required', 'exists:voivodeships,id']
+            'cityId' => ['exists:cities,id'],
+            'regionId' => ['exists:voivodeships,id']
         ];
     }
 
@@ -184,8 +173,4 @@ class CreateProstitutionAnnouncementRequest extends FormRequest
         throw new HttpResponseException(response()->json($validator->messages()->all(), 400));
     }
 
-    protected function failedAuthorization()
-    {
-        throw new AuthorizationException('announcement_awaits_validation');
-    }
 }

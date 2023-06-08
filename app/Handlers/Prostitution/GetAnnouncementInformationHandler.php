@@ -38,28 +38,19 @@ final class GetAnnouncementInformationHandler
 
     protected function processAnnouncementID() : void 
     {
-        if($id = $this->request->get('announcementID')) {
-            $this->announcementsQuery->where('id', $id);
+        if($uniqueIdentifier = $this->request->query('announcementUniqueIdentifier')) {
+            $this->announcementsQuery->filterByUniversallyUniqueIdentifier($uniqueIdentifier);
         }
     }
     
     protected function processUserID() : void 
     {
-        if(!$this->request->has('userID')) {
-            return;
-        }
-        $userID = $this->request->get('userID');
-        $filterByAuthenticatedUser = !is_numeric($userID);
-        if($filterByAuthenticatedUser) {
-            $this->announcementsQuery->assignedToCurrentLoggedUser();
-            return;
-        }
-        $this->announcementsQuery->filterByUserID(intval($userID));
+        $this->announcementsQuery->assignedToCurrentLoggedUser();
     }
 
     protected function basicInformationIsRequired() : bool
     {
-        return $this->request->get('detailsLevel') === 'basic';
+        return $this->request->query('detailsLevel') === 'basic';
     }
 
 }

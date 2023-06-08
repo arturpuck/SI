@@ -18,6 +18,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->string('universally_unique_identifier', 36);
 
             $table->string('nickname', 30);
             $table->string('phone_number', 16)->nullable()->default(null);
@@ -46,6 +47,9 @@ return new class extends Migration
             $table->unsignedBigInteger('city_id');
             $table->foreign('city_id')->references('id')->on('cities');
             $table->boolean('hidden_by_a_user')->default(false);
+            $table->boolean('user_requested_prolongation')->default(false);
+            $table->boolean('any_photo_awaits_validation')->default(false);
+            $table->json('photos_control_sum');
             $table->date('valid_until')->nullable()->default(null);
             $table->softDeletes();
             $table->timestamps();

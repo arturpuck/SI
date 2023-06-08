@@ -23,7 +23,10 @@
       v-show="showServices"
       v-on:validated="skipToNextSection"
     ></prostitute-services>
-    <prostitute-photos-for-editor v-show="showPhotos"> </prostitute-photos-for-editor>
+    <prostitute-photos-for-editor
+      v-bind:any-photo-awaits-validation="anyPhotoAwaitsValidation"
+      v-show="showPhotos"
+    ></prostitute-photos-for-editor>
     <prostitute-location-and-working-hours
       v-show="showLocationAndWorkingHours"
       v-on:validated="skipToNextSection"
@@ -58,12 +61,13 @@ import ProstitutionEditNotice from "@js/components/prostitution/notice_editor/pr
 import announcementDetails from "@jscomponents/prostitution/notice_editor/announcement_details";
 import { mapWritableState } from "pinia";
 import GlobalPropertiesNames from "@jscomponents/prostitution/notice_editor/global_properties_names";
+import { allMainSexServices } from "@jscomponents/prostitution/notice_editor/global_properties_names";
 import ProstitutePhotosForEditor from "@jscomponents/prostitution/notice_editor/photos/prostitute_photos_for_editor.vue";
 import TokenSetter from "@mixins/components/prostitute_announcement_creator/token_setter";
 import TokenErrorProcessor from "@mixins/components/prostitute_announcement_creator/token_error_processor";
 import InitialTimePeriods from "@js/mixins/components/prostitute_announcement_creator/initial_time_periods";
 import { Weekdays } from "@js/enum/weekdays";
-import { computed } from "vue";
+import { EmptyInputValue } from "@jscomponents/empty_input_option";
 
 enum Section {
   ProstitutionPolicyDescription = "ProstitutionPolicyDescription",
@@ -88,6 +92,8 @@ export default {
 
   data() {
     return {
+      anyPhotoAwaitsValidation: false,
+
       orderedSections: [
         Section.ProstitutionPolicyDescription,
         Section.ProstituteBasicInformation,
@@ -97,7 +103,7 @@ export default {
         Section.ProstitutionSaveEditedNotice,
       ],
       simpleFields: [
-        "id",
+        "universallyUniqueId",
         "birthDate",
         "titsSize",
         "description",
@@ -114,7 +120,7 @@ export default {
   },
 
   methods: {
-    async fetchProstitutionAnnouncement(announcementID: number) {
+    async fetchProstitutionAnnouncement(uniqueID: number) {
       const requestData = {
         method: "GET",
         headers: {
@@ -122,7 +128,7 @@ export default {
           "Content-type": "application/json; charset=UTF-8",
         },
       };
-      const URL = `${Routes.noticesManagement}?userID=authenticatedUser&detailsLevel=complete&announcementID=${announcementID}`;
+      const URL = `${Routes.noticesManagement}?detailsLevel=complete&announcementUniqueIdentifier=${uniqueID}`;
       const response = await fetch(URL, requestData);
       if (response.status !== 200) {
         this.showErrorMessage(
@@ -144,7 +150,6 @@ export default {
     },
 
     loadProstitutionAnnouncement(announcementDetails) {
-      console.log(announcementDetails);
       this.clearModifiedFields();
       this.loadSimpleFields(announcementDetails);
       this.loadCities(announcementDetails);
@@ -188,6 +193,7 @@ export default {
 
     loadPhotos(announcementDetails): void {
       this.emitter.emit("loadImagesByURL", announcementDetails.photosURLs);
+      this.anyPhotoAwaitsValidation = announcementDetails.anyPhotoAwaitsValidation === 1;
     },
 
     loadPaymentForms(announcementDetails): void {
@@ -195,13 +201,27 @@ export default {
     },
 
     loadServices(announcementDetails): void {
-      const mainServices = JSON.parse(announcementDetails.mainServices);
-      Object.keys(mainServices).forEach((preference) => {
-        this[preference] = mainServices[preference];
+      const userSelectedMainServices = JSON.parse(announcementDetails.mainServices);
+      allMainSexServices.forEach((preference) => {
+        const serviceKey = `${preference}Preference`;
+        const aditionalPaymentKey = `${preference}AditionalPayment`;
+        this[serviceKey] = userSelectedMainServices.hasOwnProperty(serviceKey)
+          ? userSelectedMainServices[serviceKey]
+          : "never";
+
+        this[aditionalPaymentKey] = userSelectedMainServices.hasOwnProperty(
+          aditionalPaymentKey
+        )
+          ? userSelectedMainServices[aditionalPaymentKey]
+          : "never";
       });
+
       if (announcementDetails.hasOwnProperty("secondaryServices")) {
         this.secondaryServices = JSON.parse(announcementDetails.secondaryServices);
       }
+      this.tripsPreference = userSelectedMainServices.hasOwnProperty("tripsPreference")
+        ? "1"
+        : "0";
     },
 
     loadCities(announcementDetails): void {
@@ -261,6 +281,7 @@ export default {
     ...mapWritableState(announcementDetails, [
       ...GlobalPropertiesNames,
       "modifiedFields",
+      "id",
     ]),
 
     decorationComponentName(): string {

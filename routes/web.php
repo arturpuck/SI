@@ -161,8 +161,11 @@ Route::namespace ('Prostitution')->prefix('prostytucja/')->name('prostitution.')
     Route::get('notice-form-options', 'CreateProstitutionNoticeController@getNoticeFormOptions')
         ->name('notice-form-options')->middleware('authWithoutRedirecting');
 
-    Route::post('dodaj-ogłoszenie', 'CreateProstitutionNoticeController@createProstitutionAnnouncement')
+    Route::post('announcements', 'CreateProstitutionNoticeController@createProstitutionAnnouncement')
         ->name('create.announcement')->middleware('authWithoutRedirecting');
+
+    Route::patch('announcements', 'CreateProstitutionNoticeController@updateProstitutionAnnouncement')
+        ->name('update.announcement')->middleware('authWithoutRedirecting');
 
     Route::get('lista-moich-ogłoszeń', 'ProstitutionListController@showAnnouncementsList')
         ->name('show.announcements.list')->middleware('auth');

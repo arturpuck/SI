@@ -17,7 +17,6 @@ class GetProstituteAnnouncementRequest extends FormRequest
         'complete'
     ];
 
-    private const AUTHENTICATED_USER_LABEL = 'authenticatedUser';
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -28,14 +27,12 @@ class GetProstituteAnnouncementRequest extends FormRequest
         return true;
     }
 
-    public function prepareForvalidation()
+    public function validationData()
     {
-        
-        $this->merge(['detailsLevel' => $this->query('detailsLevel')]);
-        $this->merge(['userID' => $this->query('userID')]);
-        if($announcementID = $this->query('announcementID')) {
-            $this->merge(compact('announcementID'));
-        }
+        return [
+            'detailsLevel' => $this->query('detailsLevel'),
+            'announcementUniqueIdentifier' => $this->query('announcementUniqueIdentifier'),
+        ];
     }
 
     /**
@@ -47,22 +44,7 @@ class GetProstituteAnnouncementRequest extends FormRequest
     {
         return [
             'detailsLevel' => ['required', Rule::in(self::ALLOWED_DETAILS_LEVELS)],
-            'announcementID' => ['nullable', 'exists:prostitution_announcements,id'],
-            'userID' => function (string $attribute, mixed $value, Closure $fail) {
-                if ($value === self::AUTHENTICATED_USER_LABEL) {
-                    return;
-                }
-        
-                if(empty($value)) {
-                    return;
-                }
-        
-                if (is_numeric($value) && User::find($value)) {
-                    return;
-                }
-        
-                return $fail('Invalid value for user_id');
-            }
+            'announcementUniqueIdentifier' => ['nullable', 'exists:prostitution_announcements,universally_unique_identifier'],
         ];
     }
 
