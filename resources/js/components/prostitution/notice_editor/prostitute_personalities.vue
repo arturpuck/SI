@@ -1,7 +1,7 @@
 <template>
   <section class="basic-information-container">
     <div class="data-explanation">
-      <span v-text="translations.this_is_the_minimal_required_data"></span> : 
+      <span v-text="translations.this_is_the_minimal_required_data"></span> :
       <span class="required-fields" v-text="requiredFieldsList"></span>.
       <span v-text="translations.the_rest_is_optional"></span>.
       <strong v-text="translations.birth_date_restrictions"></strong>.
@@ -33,15 +33,16 @@
       v-bind:complete-error-display-available="true"
       >{{ translations.birthday }} :</text-input-combo
     >
-    <textarea-combo 
-      v-bind:placeholder-text="translations.description_limitation" 
+    <textarea-combo
+      v-bind:placeholder-text="translations.description_limitation"
       rows-number="10"
       unique-id="announcementDescription"
       v-model="description"
       v-bind:error-message-box-available="true"
       v-bind:complete-error-display-available="true"
-      class="extended">
-      {{translations.announcement_description}}
+      class="extended"
+    >
+      {{ translations.announcement_description }}
     </textarea-combo>
     <select-combo
       v-bind:select-options="userTypesList"
@@ -93,7 +94,7 @@
     >
   </section>
 </template>
-        
+
 <script lang="ts">
 import Translations from "@js/modules/translations/components/prostitution/prostitute_basic_information";
 import SimpleLabeledInput from "@jscomponents-form-controls/simple_labeled_input.vue";
@@ -103,43 +104,41 @@ import checkIfUserIsAdult from "@jsmodules/helpers/adult_check";
 import checkIfUserExceedsMaximumPossibleAge from "@jsmodules/helpers/max_age_check";
 import { UserType } from "@js/enum/user_type";
 import ErrorOnComboForProstitueAnnouncements from "@mixins/components/prostitute_announcement_creator/error_on_combo_input";
-import TextareaCombo from '@jscomponents-form-controls/textarea_combo.vue';
-import { EmptyInputValue} from "@jscomponents/empty_input_option";
+import TextareaCombo from "@jscomponents-form-controls/textarea_combo.vue";
+import { EmptyInputValue } from "@jscomponents/empty_input_option";
 import { EmptyInputList } from "@jscomponents/empty_input_option";
 import { EmptyInputDescription } from "@jscomponents/empty_input_option";
 import announcementDetails from "@jscomponents/prostitution/notice_editor/announcement_details";
-import { mapWritableState } from 'pinia'
+import { mapWritableState } from "pinia";
 
 export default {
   name: "prostitute-personalities",
 
-  mixins : [ErrorOnComboForProstitueAnnouncements],
+  mixins: [ErrorOnComboForProstitueAnnouncements],
 
-  emits : ['validated'],
+  emits: ["validated"],
 
-  props : {
-    userTypesList : {
-      type : Array,
-      default : [],
-      required : true
+  props: {
+    userTypesList: {
+      type: Array,
+      default: [],
+      required: true,
     },
 
-    sexualOrientationsList : {
-      type : Array,
-      default : [],
-      required : true
+    sexualOrientationsList: {
+      type: Array,
+      default: [],
+      required: true,
     },
 
-    disabledBirthDate : {
-      type : Boolean,
-      default : false,
-      required : false
-    }
-
+    disabledBirthDate: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
 
   methods: {
-
     validateSelectedOptions(): void {
       this.resetAllValidation();
       this.validateNickname();
@@ -150,40 +149,57 @@ export default {
       this.validateDescription();
       this.validateHeight();
       this.validateWeight();
-      if(this.validationIsSuccessfull) {
-        this.$emit('validated');
+      if (this.validationIsSuccessfull) {
+        this.$emit("validated");
       }
     },
 
-    validateDescription() : void {
-      if(this.description.length > 2000) {
-        this.showErrorOnComboInput("announcementDescription", "the_description_exceeds_2000_characters");
+    validateDescription(): void {
+      if (this.description.length > 2000) {
+        this.showErrorOnComboInput(
+          "announcementDescription",
+          "the_description_exceeds_2000_characters"
+        );
       }
     },
 
     validateHeight(): void {
-      if(!this.heightInCentimeters) {
+      if (!this.heightInCentimeters) {
         return;
       }
 
-      if(!Number.isInteger(this.heightInCentimeters) || (this.heightInCentimeters > 270) || (this.heightInCentimeters < 90)) {
-        this.showErrorOnComboInput("UserHeight", "height_must_be_an_integer_between_90_and_270");
+      if (
+        !Number.isInteger(this.heightInCentimeters) ||
+        this.heightInCentimeters > 270 ||
+        this.heightInCentimeters < 90
+      ) {
+        this.showErrorOnComboInput(
+          "UserHeight",
+          "height_must_be_an_integer_between_90_and_270"
+        );
       }
     },
 
     validateWeight(): void {
-      if(!this.weightInKilograms) {
+      if (!this.weightInKilograms) {
         return;
       }
 
-      if(!Number.isInteger(this.weightInKilograms) || (this.weightInKilograms > 800) || (this.weightInKilograms < 30)) {
-        this.showErrorOnComboInput("UserWeight", "weight_must_be_an_integer_between_30_and_800");
+      if (
+        !Number.isInteger(this.weightInKilograms) ||
+        this.weightInKilograms > 800 ||
+        this.weightInKilograms < 30
+      ) {
+        this.showErrorOnComboInput(
+          "UserWeight",
+          "weight_must_be_an_integer_between_30_and_800"
+        );
       }
     },
 
     validatePhoneNumber(): void {
       if (this.phoneNumber) {
-          this.validatePhoneNumberFormat();
+        this.validatePhoneNumberFormat();
       }
     },
 
@@ -194,11 +210,17 @@ export default {
       }
 
       if (this.phoneNumber.trim().length > 16) {
-        this.showErrorOnComboInput("PhoneNumber", "phone_number_must_not_exceed_16_characters");
+        this.showErrorOnComboInput(
+          "PhoneNumber",
+          "phone_number_must_not_exceed_16_characters"
+        );
       }
 
       if (this.phoneNumber.trim().length < 7) {
-        this.showErrorOnComboInput("PhoneNumber", "phone_number_must_contain_at_least_7_characters");
+        this.showErrorOnComboInput(
+          "PhoneNumber",
+          "phone_number_must_contain_at_least_7_characters"
+        );
       }
     },
 
@@ -217,7 +239,8 @@ export default {
     validateTitsSize(): void {
       if (
         this.userTypeString === Translations[UserType.Male] &&
-        this.titsSize !== '0'
+        this.titsSize !== "0" &&
+        this.titsSize !== 0
       ) {
         this.showErrorOnComboInput(
           "TitsSize",
@@ -261,7 +284,6 @@ export default {
         this.showErrorOnComboInput("BirthDate", "you_cant_be_over_120_yo");
       }
     },
-
   },
 
   computed: {
@@ -273,24 +295,24 @@ export default {
       return `${this.translations.nickname}, ${this.translations.user_type}, ${this.translations.birthday}`;
     },
     ...mapWritableState(announcementDetails, [
-      'nickname', 
-      'phoneNumber', 
-      'birthDate', 
-      'description', 
-      'userTypeId', 
-      'sexualOrientationId', 
-      'hairColor',
-      'titsSize',
-      'heightInCentimeters',
-      'weightInKilograms',
-    ])
+      "nickname",
+      "phoneNumber",
+      "birthDate",
+      "description",
+      "userTypeId",
+      "sexualOrientationId",
+      "hairColor",
+      "titsSize",
+      "heightInCentimeters",
+      "weightInKilograms",
+    ]),
   },
 
   components: {
     SimpleLabeledInput,
     SimpleLabeledSelect,
     SelectCombo,
-    TextareaCombo
+    TextareaCombo,
   },
 
   data() {
@@ -311,31 +333,26 @@ export default {
   },
 
   mounted() {
-    this.emitter.on(
-      "prostituteBasicInformationValidator",
-      this.validateSelectedOptions
-    );
+    this.emitter.on("prostituteBasicInformationValidator", this.validateSelectedOptions);
   },
 
   created() {
-    this.csrfToken = (<HTMLMetaElement>(
-      document.getElementById("csrf-token")
-    )).content;
+    this.csrfToken = (<HTMLMetaElement>document.getElementById("csrf-token")).content;
   },
 };
 </script>
-        
+
 <style lang="scss">
 @import "~sass/fonts";
 
 .without-error-message-box {
-  margin-top:calc(1em + 6px);
+  margin-top: calc(1em + 6px);
 }
 
 .data-explanation {
-  color : white;
+  color: white;
   @include responsive-font(1.1vw, 14px);
-  padding:0 7px;
+  padding: 0 7px;
   text-align: center;
 }
 
@@ -361,10 +378,10 @@ export default {
 
 .required-fields {
   font-weight: bold;
-  color:#ef0c7e;
+  color: #ef0c7e;
 }
 
 .last-input {
-  margin-bottom:calc(1em + 6px);
+  margin-bottom: calc(1em + 6px);
 }
 </style>

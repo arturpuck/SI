@@ -8,6 +8,8 @@ use App\Http\Requests\Prostitution\CreateProstitutionAnnouncementRequest;
 use App\Traits\ColumnToRequestField;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use App\Services\Prostitution\Announcements\ProstitutionAnnouncementsPhotosService;
+use App\Enum\Prostitution\AnnouncementPhotoType;
 
 final class CreateProstitutionAnnouncementHandler
 {
@@ -16,6 +18,7 @@ final class CreateProstitutionAnnouncementHandler
     private CreateProstitutionAnnouncementRequest $request;
     private ProstitutionAnnouncement $announcement;
     private string $universallyUniqueIdentifier;
+    private ProstitutionAnnouncementsPhotosService $photosService;
 
     const PERSONALITIES_COLUMNS = [
         'nickname',
@@ -46,12 +49,16 @@ final class CreateProstitutionAnnouncementHandler
         'trips'
     ];
 
-    public function handle(CreateProstitutionAnnouncementRequest $request) : Response
+    public function handle(CreateProstitutionAnnouncementRequest $request, ProstitutionAnnouncementsPhotosService $photosService = null) : Response
     {
         $this->request = $request;
         $this->announcement = new ProstitutionAnnouncement();
         $this->universallyUniqueIdentifier = Str::uuid();
         $this->announcement->universally_unique_identifier = $this->universallyUniqueIdentifier;
+        $this->photosService = $photosService ?? new ProstitutionAnnouncementsPhotosService(
+            auth()->user()->id,
+            $this->announcement->universally_unique_identifier
+        ); 
         $this->assignPersonalities();
         $this->assignServices();
         $this->assignPaymentForms();
@@ -61,15 +68,15 @@ final class CreateProstitutionAnnouncementHandler
         Session::remove('verificationToken');
         return new Response(status:201);
     }
-
+    
     private function processPhotos() : void 
     {
-        $storageDirectory = $this->getPhotosStorageDirectory();
-        $controlSums = [];
-        foreach($this->request->get('photos') as $index => $photo) {
-            $newFileName = $index.'.'.$photo->getClientOriginalExtension();
+        $storageDirectory = $this->photosService->getPhotosAwaitingVerificationFolder();
+        $controlSums = [AnnouncementPhotoType::AWAITING_VERIFICATION->value => []];
+        foreach($this->request->get('photos') as $photo) {
+            $newFileName = Str::uuid().'.'.$photo->getClientOriginalExtension();
             $photo->move($storageDirectory, $newFileName);
-            $controlSums[$newFileName] = hash_file('sha256', $storageDirectory.'/'.$newFileName);
+            $controlSums[AnnouncementPhotoType::AWAITING_VERIFICATION->value][$newFileName] = hash_file('sha256', $storageDirectory.'/'.$newFileName);
         }
         $this->announcement->last_generated_token = $this->request->get('verificationToken');
         $this->announcement->any_photo_awaits_validation = true;
@@ -84,16 +91,6 @@ final class CreateProstitutionAnnouncementHandler
         $this->announcement->city_id = $this->request->get('cityId');
         $this->announcement->region_id = $this->request->get('regionId');
     }
-
-    private function getPhotosStorageDirectory() : string
-    {
-        $currentUserID = auth()->user()->id;
-        return config('filesystems.prostitution.photos').
-               $currentUserID.'/'.
-               $this->universallyUniqueIdentifier.'/'.
-               config('filesystems.prostitution.photos_directory_awaiting_verification');
-    }
-
 
     private function assignPersonalities() : void 
     {

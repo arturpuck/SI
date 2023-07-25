@@ -29,4 +29,10 @@ class ProstitutionAnnouncementQueryBuilder extends Builder
         $this->where('universally_unique_identifier', $uniqueIdentifier);
         return $this;
     }
+
+    public function filterByPhotoUniqueIdentifier(string $uniqueIdentifier) : self
+    {
+        $this->whereNotNull('photos_control_sum->'.$uniqueIdentifier);
+        return $this;
+    }
 }

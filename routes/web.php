@@ -182,6 +182,9 @@ Route::namespace ('Prostitution')->prefix('prostytucja/')->name('prostitution.')
     Route::delete('photo-token', 'ProstitutionAnnouncementTokenController@unsetVerificationToken')
         ->name('announcement.unset-photo-token');
 
+    Route::get('/announcement-photo-for-editor', 'CreateProstitutionNoticeController@getAnnouncementPhotoForEditor')
+        ->name('announcement.photo')->middleware('authWithoutRedirecting');
+
 });
 
 Route::middleware(['authWithoutRedirecting'])->group(function(){

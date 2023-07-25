@@ -5,7 +5,7 @@ namespace App\Rules\Prostitution;
 use Illuminate\Contracts\Validation\Rule;
 use App\ProstitutionAnnouncement;
 
-class CurrentUserOwnsProstitutionAnnouncement implements Rule
+class ProstitutionAnnouncementPhotoExists implements Rule
 {
     /**
      * Create a new rule instance.
@@ -26,9 +26,7 @@ class CurrentUserOwnsProstitutionAnnouncement implements Rule
      */
     public function passes($attribute, $value)
     {
-        return ProstitutionAnnouncement::query()->assignedToCurrentLoggedUser()
-                                                ->filterByUniversallyUniqueIdentifier($value)
-                                                ->exists();
+        return ProstitutionAnnouncement::query()->filterByPhotoUniqueIdentifier($value)->exists();
     }
 
     /**

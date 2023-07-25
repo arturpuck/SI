@@ -56,8 +56,11 @@ class ProstitutionAnnouncementEditorFormResource extends JsonResource
 
     private function getPhotosURLs() : array 
     {
-        $photosService = new ProstitutionAnnouncementsPhotosService($this->user_id, $this->universally_unique_identifier);
-        return $this->any_photo_awaits_validation ? $photosService->getPhotosURLsAwaitingVerification() : $photosService->getAcceptedPhotosURLs();
+        $photosService = new ProstitutionAnnouncementsPhotosService(
+            $this->user_id,
+            $this->universally_unique_identifier,
+        );
+        return $photosService->getPhotosURLsForEditorPanel($this->any_photo_awaits_validation);
     }
 
     private function getCitiesForRegion(int $regionID) : array

@@ -4,7 +4,7 @@
       <span v-text="translations['prostitute_save_announcement_info']"></span>
       <strong
         class="important-info"
-        v-text="translations['announcement_must_be_accepted_reminder']"
+        v-text="translations['announcement_must_be_validated_reminder']"
       ></strong>
       <span v-text="translations['just_one_offer_reminder']"></span>
     </div>
