@@ -61,13 +61,17 @@ final class UpdateProstitutionAnnouncementHandler
 
     public function handle(UpdateProstitutionAnnouncementRequest $request, ProstitutionAnnouncementsPhotosService $photosService = null) : Response
     {
-        $this->announcement = ProstitutionAnnouncement::find($request->get('id'));
+        $this->announcement = ProstitutionAnnouncement::query()
+                            ->filterByUniversallyUniqueIdentifier($request->get('uniqueID'))
+                            ->get()
+                            ->first();
+
         $this->photosService = $photosService ?? new ProstitutionAnnouncementsPhotosService(
             auth()->user()->id,
-            $this->announcement->universally_unique_identifier
+            $this->announcement->uniqueID
         );
-        $this->filteredRequest = Arr::except($request->validated(),['workingDays', 'id']);
-        foreach($request->validated() as $key => $value) {
+        $this->filteredRequest = Arr::except($request->validated(),['workingDays', 'uniqueID']);
+        foreach($this->filteredRequest as $key => $value) {
             $methodName = $this->getMethodName($key, $value);
             $this->$methodName($key, $value);
         }
@@ -78,6 +82,23 @@ final class UpdateProstitutionAnnouncementHandler
     private function getMethodName(string $field) : string
     {
         return array_key_exists($field, self::SPECIAL_TREATMENT_COLUMNS) ? self::SPECIAL_TREATMENT_COLUMNS[$field] : self::SIMPLE_ASSIGNEMENT_METHOD_NAME;
+    }
+
+    private function mapRequestFieldToColumnName(string $requestField) : string {
+        return match($requestField) {
+            'verificationToken' => 'last_generated_token',
+            default => $this->camelCaseToUnderscore($requestField)
+        };
+    }
+
+    private function camelCaseToUnderscore(string $camelCase) : string
+    {
+        if (empty($camelCase)) {
+            return $camelCase;
+        }
+        $result = lcfirst($camelCase);
+        $result = preg_replace("/[A-Z]/", '_' . "$0", $result);
+        return strtolower($result);
     }
 
     private function updateMainService(string $key, string $value) : void
@@ -97,6 +118,7 @@ final class UpdateProstitutionAnnouncementHandler
 
     private function simpleAssignement(string $key, string $value) : void
     {
+        $key = $this->mapRequestFieldToColumnName($key);
         $this->announcement[$key] = $value;
     }
 
@@ -110,25 +132,24 @@ final class UpdateProstitutionAnnouncementHandler
 
     private function assignRequestedFilesControlSums() : void 
     {
-        foreach($this->filteredRequest['photos'] as $photo) {
-            $newFileName = Str::uuid().'.'.$photo->getClientOriginalExtension();
-            $controlSum = hash_file('sha256', $photo->path());
-            $this->requestedFilesControlSums[$newFileName] = $controlSum;
+        foreach($this->filteredRequest['photos'] as $index => $photo) {
+            $controlSum = hash_file('sha256', $photo->getRealPath());
+            $this->requestedFilesControlSums[$index] = $controlSum;
         }
     }
     
     private function moveNewPhotosIfTheyExist() : void
     {
         $savedControlSums = $this->getAllSavedControlSums();
-        foreach($this->requestedFilesControlSums as $fileName => $controlSum) {
+        foreach($this->requestedFilesControlSums as $index => $controlSum) {
             if(!in_array($controlSum, $savedControlSums)) {
-                copy(
-                    $this->photosService->getPhotosAwaitingVerificationFolder(),
-                    $this->photosService->createFilePathForPhotoAwaitingVerification($fileName)
-                );
+                $currentFile = $this->filteredRequest['photos'][$index];
+                $newFileName = Str::uuid().'.'.$currentFile->getClientOriginalExtension();
+                $newFileFolderPath = $this->photosService->getPhotosAwaitingVerificationFolder();
+                $currentFile->move($newFileFolderPath, $newFileName);
                 $this->announcement->addControlSum(
                             AnnouncementPhotoType::AWAITING_VERIFICATION,
-                            $fileName,
+                            $newFileName,
                             $controlSum
                 );
                 
@@ -160,8 +181,8 @@ final class UpdateProstitutionAnnouncementHandler
     
     private function assignSavedControlSums() : void
     {
-        $savedControlSums = json_decode($this->announcement->photos_control_sum);
-        $this->validatedPhotosControlSums = $savedControlSums[AnnouncementPhotoType::VALIDATED->value];
+        $savedControlSums = json_decode($this->announcement->photos_control_sum, true);
+        $this->validatedPhotosControlSums = $savedControlSums[AnnouncementPhotoType::VALIDATED->value] ?? [];
         $this->photosAwaitingVerificationControlSums = $savedControlSums[AnnouncementPhotoType::AWAITING_VERIFICATION->value] ?? [];
     }
 

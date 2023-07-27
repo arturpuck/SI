@@ -44,7 +44,7 @@ class GetProstituteAnnouncementRequest extends FormRequest
     {
         return [
             'detailsLevel' => ['required', Rule::in(self::ALLOWED_DETAILS_LEVELS)],
-            'announcementUniqueIdentifier' => ['nullable', 'exists:prostitution_announcements,universally_unique_identifier'],
+            'announcementUniqueIdentifier' => ['nullable', 'exists:prostitution_announcements,uniqueID'],
         ];
     }
 

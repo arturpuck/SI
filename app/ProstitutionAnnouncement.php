@@ -31,14 +31,14 @@ class ProstitutionAnnouncement extends Model
 
     public function addControlSum(AnnouncementPhotoType $type, string $key, string $value) : void
     {
-        $currentSum = json_decode($this->photos_control_sum);
+        $currentSum = json_decode($this->photos_control_sum, true);
         $currentSum[$type->value][$key] = $value;
         $this->setAttribute('photos_control_sum', json_encode($currentSum));
     }
     
     public function removeControlSum(AnnouncementPhotoType $type, string $key) : void
     {
-        $currentSum = json_decode($this->photos_control_sum);
+        $currentSum = json_decode($this->photos_control_sum, true);
         unset($currentSum[$type->value][$key]);
         $this->setAttribute('photos_control_sum', json_encode($currentSum));
     }

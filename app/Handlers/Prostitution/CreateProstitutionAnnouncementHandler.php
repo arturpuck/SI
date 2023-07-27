@@ -17,7 +17,7 @@ final class CreateProstitutionAnnouncementHandler
 
     private CreateProstitutionAnnouncementRequest $request;
     private ProstitutionAnnouncement $announcement;
-    private string $universallyUniqueIdentifier;
+    private string $uniqueID;
     private ProstitutionAnnouncementsPhotosService $photosService;
 
     const PERSONALITIES_COLUMNS = [
@@ -53,11 +53,11 @@ final class CreateProstitutionAnnouncementHandler
     {
         $this->request = $request;
         $this->announcement = new ProstitutionAnnouncement();
-        $this->universallyUniqueIdentifier = Str::uuid();
-        $this->announcement->universally_unique_identifier = $this->universallyUniqueIdentifier;
+        $this->uniqueID = Str::uuid();
+        $this->announcement->uniqueID = $this->uniqueID;
         $this->photosService = $photosService ?? new ProstitutionAnnouncementsPhotosService(
             auth()->user()->id,
-            $this->announcement->universally_unique_identifier
+            $this->announcement->uniqueID
         ); 
         $this->assignPersonalities();
         $this->assignServices();

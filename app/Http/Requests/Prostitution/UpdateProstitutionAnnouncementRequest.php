@@ -104,7 +104,7 @@ class UpdateProstitutionAnnouncementRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => ['required', new CurrentUserOwnsProstitutionAnnouncement()],
+            'uniqueID' => ['required', new CurrentUserOwnsProstitutionAnnouncement()],
             'nickname' => ['string', 'min:3', 'max:30'],
             'phoneNumber' => ['regex:/^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$/', 'min:7', 'max:16'],
             'birthDate' => ['prohibited'],

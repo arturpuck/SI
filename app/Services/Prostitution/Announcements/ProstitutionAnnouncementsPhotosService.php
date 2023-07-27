@@ -74,7 +74,7 @@ final class ProstitutionAnnouncementsPhotosService
     public function getPhotosAwaitingVerificationFolder() : string
     {
         $storageDirectory = Storage::path('');
-        return $storageDirectory.'/'.
+        return $storageDirectory.
         config('filesystems.prostitution.photos').
         $this->userID.'/'.
         $this->uniqueID;

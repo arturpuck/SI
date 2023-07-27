@@ -58,7 +58,7 @@ class ProstitutionAnnouncementEditorFormResource extends JsonResource
     {
         $photosService = new ProstitutionAnnouncementsPhotosService(
             $this->user_id,
-            $this->universally_unique_identifier,
+            $this->uniqueID,
         );
         return $photosService->getPhotosURLsForEditorPanel($this->any_photo_awaits_validation);
     }

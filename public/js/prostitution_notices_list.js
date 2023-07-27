@@ -23306,7 +23306,7 @@ exports["default"] = {
     return {
       anyPhotoAwaitsValidation: false,
       orderedSections: [Section.ProstitutionPolicyDescription, Section.ProstituteBasicInformation, Section.ProstituteServices, Section.ProstitutePhotosForEditor, Section.ProstituteLocationAndWorkingHours, Section.ProstitutionSaveEditedNotice],
-      simpleFields: ["universallyUniqueId", "birthDate", "titsSize", "description", "hairColor", "nickname", "phoneNumber", "regionId", "userTypeId", "sexualOrientationId", "heightInCentimeters", "weightInKilograms"]
+      simpleFields: ["uniqueID", "birthDate", "titsSize", "description", "hairColor", "nickname", "phoneNumber", "regionId", "userTypeId", "sexualOrientationId", "heightInCentimeters", "weightInKilograms"]
     };
   },
   methods: {
@@ -23335,7 +23335,7 @@ exports["default"] = {
               return [4 /*yield*/, response.json()];
             case 2:
               announcementDetails = _a.sent();
-              this.loadProstitutionAnnouncement(announcementDetails[0]);
+              this.loadProstitutionAnnouncement(announcementDetails[0], uniqueID);
               return [2 /*return*/];
           }
         });
@@ -23349,8 +23349,9 @@ exports["default"] = {
     clearModifiedFields: function clearModifiedFields() {
       this.modifiedFields = [];
     },
-    loadProstitutionAnnouncement: function loadProstitutionAnnouncement(announcementDetails) {
+    loadProstitutionAnnouncement: function loadProstitutionAnnouncement(announcementDetails, uniqueID) {
       this.clearModifiedFields();
+      this.uniqueID = uniqueID;
       this.loadSimpleFields(announcementDetails);
       this.loadCities(announcementDetails);
       this.loadServices(announcementDetails);
@@ -23747,7 +23748,7 @@ exports["default"] = {
       Object.keys(requestBody).forEach(function (key) {
         return formData.append(key, requestBody[key]);
       });
-      formData.append("id", this.id);
+      formData.append("uniqueID", this.uniqueID);
       return formData;
     },
     createRequestObjectPhotosPart: function createRequestObjectPhotosPart(formData) {
@@ -24051,7 +24052,7 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.allMainSexServices = exports.sexServicesAlwaysVisibleKeys = exports.optionalPersonalitiesPropertiesNames = void 0;
-var allPropertiesNames = ['universallyUniqueId', 'nickname', 'phoneNumber', 'birthDate', 'description', 'userTypeId', 'sexualOrientationId', 'hairColor', 'titsSize', 'heightInCentimeters', 'weightInKilograms', 'massagePreference', 'vaginalSexPreference', 'blowjobPreference', 'oralCreampiePreference', 'cumSwallowPreference', 'cumOnFacePreference', 'analPreference', 'pussyLickingPreference', 'clientRimmingPreference', 'kissingPreference', 'cumOnBodyPreference', 'tripsPreference', 'analAditionalPayment', 'vaginalSexAditionalPayment', 'blowjobAditionalPayment', 'oralCreampieAditionalPayment', 'cumOnFaceAditionalPayment', 'massageAditionalPayment', 'pussyLickingAditionalPayment', 'clientRimmingAditionalPayment', 'kissingAditionalPayment', 'cumOnBodyAditionalPayment', 'cumSwallowAditionalPayment', 'secondaryServices', 'paymentForms', 'photos', 'preciseHoursDecision', 'showEverySingleWeekday', 'workingHours', 'citiesList', 'cityId', 'regionId'];
+var allPropertiesNames = ['uniqueID', 'nickname', 'phoneNumber', 'birthDate', 'description', 'userTypeId', 'sexualOrientationId', 'hairColor', 'titsSize', 'heightInCentimeters', 'weightInKilograms', 'massagePreference', 'vaginalSexPreference', 'blowjobPreference', 'oralCreampiePreference', 'cumSwallowPreference', 'cumOnFacePreference', 'analPreference', 'pussyLickingPreference', 'clientRimmingPreference', 'kissingPreference', 'cumOnBodyPreference', 'tripsPreference', 'analAditionalPayment', 'vaginalSexAditionalPayment', 'blowjobAditionalPayment', 'oralCreampieAditionalPayment', 'cumOnFaceAditionalPayment', 'massageAditionalPayment', 'pussyLickingAditionalPayment', 'clientRimmingAditionalPayment', 'kissingAditionalPayment', 'cumOnBodyAditionalPayment', 'cumSwallowAditionalPayment', 'secondaryServices', 'paymentForms', 'photos', 'preciseHoursDecision', 'showEverySingleWeekday', 'workingHours', 'citiesList', 'cityId', 'regionId'];
 exports["default"] = allPropertiesNames;
 exports.optionalPersonalitiesPropertiesNames = ['phoneNumber', 'description', 'sexualOrientationId', 'heightInCentimeters', 'weightInKilograms', 'hairColor', 'titsSize', 'height', 'weight'];
 exports.sexServicesAlwaysVisibleKeys = ['massage', 'vaginalSex', 'blowjob', 'cumOnFace', 'anal', 'pussyLicking', 'clientRimming', 'kissing', 'cumOnBody'];
