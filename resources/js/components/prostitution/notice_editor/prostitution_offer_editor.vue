@@ -103,7 +103,7 @@ export default {
         Section.ProstitutionSaveEditedNotice,
       ],
       simpleFields: [
-        "universallyUniqueId",
+        "uniqueID",
         "birthDate",
         "titsSize",
         "description",
@@ -137,7 +137,7 @@ export default {
         return;
       }
       const announcementDetails = await response.json();
-      this.loadProstitutionAnnouncement(announcementDetails[0]);
+      this.loadProstitutionAnnouncement(announcementDetails[0], uniqueID);
     },
 
     attachEventListeners(): void {
@@ -149,8 +149,9 @@ export default {
       this.modifiedFields = [];
     },
 
-    loadProstitutionAnnouncement(announcementDetails) {
+    loadProstitutionAnnouncement(announcementDetails, uniqueID: string) {
       this.clearModifiedFields();
+      this.uniqueID = uniqueID;
       this.loadSimpleFields(announcementDetails);
       this.loadCities(announcementDetails);
       this.loadServices(announcementDetails);

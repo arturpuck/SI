@@ -9,11 +9,13 @@ use Illuminate\Http\JsonResponse;
 use App\Http\Requests\Prostitution\GetProstituteAnnouncementRequest;
 use App\Http\Requests\Prostitution\DeleteProstitutionAnnouncementRequest;
 use App\Handlers\Prostitution\DeleteProstitutionAnnouncementHandler;
+use Illuminate\Support\Facades\Session;
 
 class ProstitutionListController extends Controller
 {
     public function showAnnouncementsList() : View
     {
+        Session::remove('prostitutePhotoVerificationToken');
         return view('prostitution.prostitution_notices_list');
     }
 

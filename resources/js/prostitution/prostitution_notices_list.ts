@@ -17,7 +17,7 @@ const settings = {
     },
 
     methods : {
-        loadAnnouncementEditor(announcementID : number) : void {
+        loadAnnouncementEditor(announcementID : string) : void {
             this.emitter.emit('loadProstitutionAnnouncement', announcementID);
         },
 

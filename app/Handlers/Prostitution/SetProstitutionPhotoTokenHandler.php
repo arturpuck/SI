@@ -14,6 +14,7 @@ final class SetProstitutionPhotoTokenHandler
     {
         $photoToken = $this->generatePhotoToken();
         Session::put('prostitutePhotoVerificationToken', $photoToken);
+        $test = Session::get('prostitutePhotoVerificationToken');
         return new JsonResponse(compact('photoToken'),200);
     }
 

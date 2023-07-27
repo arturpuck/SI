@@ -6,18 +6,19 @@ use Illuminate\Http\Response;
 use App\Http\Requests\Prostitution\UpdateProstitutionAnnouncementRequest;
 use App\ProstitutionAnnouncement;
 use Illuminate\Support\Arr;
-use App\Services\Prostitution\Announcements\ProstitutionAnnouncementsPhotosService;
+use App\Services\Prostitution\Announcements\ProstitutionAnnouncementsFileSystemService;
 use Illuminate\Support\Str;
 use App\Enum\Prostitution\AnnouncementPhotoType;
+use Illuminate\Support\Facades\Session;
 
 final class UpdateProstitutionAnnouncementHandler
 {
     private ProstitutionAnnouncement $announcement;
     private array $filteredRequest;
-    private ProstitutionAnnouncementsPhotosService $photosService;
     private array $photosAwaitingVerificationControlSums = [];
     private array $validatedPhotosControlSums = [];
     private array $requestedFilesControlSums = [];
+    private bool $anyPhotoHasBeenAdded = false;
 
     const MAIN_SERVICES_METHOD_NAME = 'updateMainService';
     const STORE_AS_JSON_METHOD_NAME = 'storeAsJSON';
@@ -57,27 +58,54 @@ final class UpdateProstitutionAnnouncementHandler
             'photos' => self::PHOTOS_METHOD_NAME
     ];
 
-    public function __construct() {}
+    public function __construct(private ProstitutionAnnouncementsFileSystemService $photosFileSystem = new ProstitutionAnnouncementsFileSystemService()) {}
 
-    public function handle(UpdateProstitutionAnnouncementRequest $request, ProstitutionAnnouncementsPhotosService $photosService = null) : Response
+    public function handle(UpdateProstitutionAnnouncementRequest $request) : Response
     {
-        $this->announcement = ProstitutionAnnouncement::find($request->get('id'));
-        $this->photosService = $photosService ?? new ProstitutionAnnouncementsPhotosService(
-            auth()->user()->id,
-            $this->announcement->universally_unique_identifier
-        );
-        $this->filteredRequest = Arr::except($request->validated(),['workingDays', 'id']);
-        foreach($request->validated() as $key => $value) {
+        $this->announcement = ProstitutionAnnouncement::query()
+                            ->filterByUniversallyUniqueIdentifier($request->get('uniqueID'))
+                            ->get()
+                            ->first();
+        $userSentNewTokenAndWantsToProlongTheAnnouncement = !is_null($request->get('prostitutePhotoVerificationToken'));
+        $this->filterRequest($request, $userSentNewTokenAndWantsToProlongTheAnnouncement);
+        foreach($this->filteredRequest as $key => $value) {
             $methodName = $this->getMethodName($key, $value);
             $this->$methodName($key, $value);
         }
+        if($userSentNewTokenAndWantsToProlongTheAnnouncement) {
+            $this->announcement->user_requested_prolongation = true;
+        }
         $this->announcement->save();
+        Session::remove('prostitutePhotoVerificationToken');
         return new Response(status:200);
+    }
+
+    private function filterRequest(UpdateProstitutionAnnouncementRequest $request, bool $tokenHasBeenSent) : void
+    {
+        $elementsToExclude = $tokenHasBeenSent ? ['workingDays', 'uniqueID'] : ['workingDays', 'uniqueID', 'prostitutePhotoVerificationToken'];
+        $this->filteredRequest = Arr::except($request->validated(),$elementsToExclude);  
     }
 
     private function getMethodName(string $field) : string
     {
         return array_key_exists($field, self::SPECIAL_TREATMENT_COLUMNS) ? self::SPECIAL_TREATMENT_COLUMNS[$field] : self::SIMPLE_ASSIGNEMENT_METHOD_NAME;
+    }
+
+    private function mapRequestFieldToColumnName(string $requestField) : string {
+        return match($requestField) {
+            'prostitutePhotoVerificationToken' => 'last_generated_token',
+            default => $this->camelCaseToUnderscore($requestField)
+        };
+    }
+
+    private function camelCaseToUnderscore(string $camelCase) : string
+    {
+        if (empty($camelCase)) {
+            return $camelCase;
+        }
+        $result = lcfirst($camelCase);
+        $result = preg_replace("/[A-Z]/", '_' . "$0", $result);
+        return strtolower($result);
     }
 
     private function updateMainService(string $key, string $value) : void
@@ -86,17 +114,20 @@ final class UpdateProstitutionAnnouncementHandler
             $this->announcement->unset('mainServices->'.$key);
             return;
         }
-
-        $this->announcement->mainServices[$key] = $value;
+        $currentData = json_decode($this->announcement->main_services, true) ?? [];
+        $currentData[$key] = $value;
+        $this->announcement->setAttribute('main_services', json_encode($currentData));
     }
 
-    private function storeAsJSON(string $key, string $value) : void
+    private function storeAsJSON(string $key, ?array $value) : void
     {
-        $this->announcement[$key] = count($this->announcement[$key]) === 0 ? null : json_encode($this->announcement[$key]);
+        $key = $this->mapRequestFieldToColumnName($key);
+        $this->announcement[$key] = is_array($value) && count($value) > 0 ? json_encode($value, true) : null;
     }
 
     private function simpleAssignement(string $key, string $value) : void
     {
+        $key = $this->mapRequestFieldToColumnName($key);
         $this->announcement[$key] = $value;
     }
 
@@ -106,32 +137,34 @@ final class UpdateProstitutionAnnouncementHandler
         $this->assignSavedControlSums();
         $this->moveNewPhotosIfTheyExist();
         $this->removePhotosIfUserDeletedAny();
+        if($this->anyPhotoHasBeenAdded) {
+            $this->announcement->any_photo_awaits_validation = true;
+        }
     }
 
     private function assignRequestedFilesControlSums() : void 
     {
-        foreach($this->filteredRequest['photos'] as $photo) {
-            $newFileName = Str::uuid().'.'.$photo->getClientOriginalExtension();
-            $controlSum = hash_file('sha256', $photo->path());
-            $this->requestedFilesControlSums[$newFileName] = $controlSum;
+        foreach($this->filteredRequest['photos'] as $index => $photo) {
+            $controlSum = hash_file('sha256', $photo->getRealPath());
+            $this->requestedFilesControlSums[$index] = $controlSum;
         }
     }
     
     private function moveNewPhotosIfTheyExist() : void
     {
         $savedControlSums = $this->getAllSavedControlSums();
-        foreach($this->requestedFilesControlSums as $fileName => $controlSum) {
+        foreach($this->requestedFilesControlSums as $index => $controlSum) {
             if(!in_array($controlSum, $savedControlSums)) {
-                copy(
-                    $this->photosService->getPhotosAwaitingVerificationFolder(),
-                    $this->photosService->createFilePathForPhotoAwaitingVerification($fileName)
-                );
+                $currentFile = $this->filteredRequest['photos'][$index];
+                $newFileName = Str::uuid().'.'.$currentFile->getClientOriginalExtension();
+                $newFileFolderPath = $this->photosFileSystem->getPhotosAwaitingVerificationFolder($this->announcement->uniqueID);
+                $currentFile->move($newFileFolderPath, $newFileName);
                 $this->announcement->addControlSum(
                             AnnouncementPhotoType::AWAITING_VERIFICATION,
-                            $fileName,
+                            $newFileName,
                             $controlSum
                 );
-                
+                $this->anyPhotoHasBeenAdded = true;
             }
         }
     }
@@ -139,7 +172,7 @@ final class UpdateProstitutionAnnouncementHandler
     private function removePhotosIfUserDeletedAny() : void
     {
         foreach($this->validatedPhotosControlSums as $fileName => $controlSum) {
-            $filePath = $this->photosService->createFilePathForValidatedPhoto($fileName);
+            $filePath = $this->photosFileSystem->createFilePathForValidatedPhoto($fileName, $this->announcement->uniqueID);
 
             if(!in_array($controlSum, $this->requestedFilesControlSums) && file_exists($filePath)) {
                 unlink($filePath);
@@ -148,7 +181,7 @@ final class UpdateProstitutionAnnouncementHandler
         }
 
         foreach($this->photosAwaitingVerificationControlSums as $fileName => $controlSum) {
-            $filePath = $this->photosService->createFilePathForPhotoAwaitingVerification($fileName);
+            $filePath = $this->photosFileSystem->createFilePathForPhotoAwaitingVerification($fileName, $this->announcement->uniqueID);
 
             if(!in_array($controlSum, $this->requestedFilesControlSums) && file_exists($filePath)) {
                 unlink($filePath);
@@ -160,8 +193,8 @@ final class UpdateProstitutionAnnouncementHandler
     
     private function assignSavedControlSums() : void
     {
-        $savedControlSums = json_decode($this->announcement->photos_control_sum);
-        $this->validatedPhotosControlSums = $savedControlSums[AnnouncementPhotoType::VALIDATED->value];
+        $savedControlSums = json_decode($this->announcement->photos_control_sum, true);
+        $this->validatedPhotosControlSums = $savedControlSums[AnnouncementPhotoType::VALIDATED->value] ?? [];
         $this->photosAwaitingVerificationControlSums = $savedControlSums[AnnouncementPhotoType::AWAITING_VERIFICATION->value] ?? [];
     }
 

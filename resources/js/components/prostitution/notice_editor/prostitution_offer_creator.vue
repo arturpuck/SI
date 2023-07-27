@@ -1,7 +1,7 @@
 <template>
   <div class="outer-container">
     <div class="section-navbar-container">
-        <h1 class="navbar-caption" v-text="navbarCaption"></h1>
+      <h1 class="navbar-caption" v-text="navbarCaption"></h1>
       <component
         class="navbar-section-icon"
         v-bind:class="iconClass"
@@ -22,36 +22,41 @@
       v-show="showServices"
       v-on:validated="skipToNextSection"
     ></prostitute-services>
-    <prostitute-photos-for-creator
-    v-show="showPhotos">
-    </prostitute-photos-for-creator>
+    <prostitute-photos-for-creator v-show="showPhotos"> </prostitute-photos-for-creator>
     <prostitute-location-and-working-hours
-    v-show="showLocationAndWorkingHours"
-    v-on:validated="skipToNextSection"
-    v-bind:voivodeships-list="voivodeshipsList"
+      v-show="showLocationAndWorkingHours"
+      v-on:validated="skipToNextSection"
+      v-bind:voivodeships-list="voivodeshipsList"
     >
     </prostitute-location-and-working-hours>
-    <prostitute-save-notice
-    v-show="showSaveNotice"
-    >
-    </prostitute-save-notice>
+    <prostitute-save-notice v-show="showSaveNotice"> </prostitute-save-notice>
     <div class="bottom-navigation">
       <div
         class="navigation-description"
         v-text="translations['prostitution_offer_bottom_navigation_info']"
       ></div>
       <div class="change-sections-container">
-        <left-arrow-icon v-on:click="skipToPreviousSection" class="change-section"></left-arrow-icon>
-        <right-arrow-icon v-on:click="tryToSkipToNextSection" class="change-section"></right-arrow-icon>
+        <left-arrow-icon
+          v-on:click="skipToPreviousSection"
+          class="change-section"
+        ></left-arrow-icon>
+        <right-arrow-icon
+          v-on:click="tryToSkipToNextSection"
+          class="change-section"
+        ></right-arrow-icon>
       </div>
     </div>
   </div>
 </template>
-  
+
 <script lang="ts">
 import ProstituteSaveNotice from "@jscomponents/prostitution/notice_editor/prostitute_save_notice.vue";
-import ProstitutePhotosForCreator from "@jscomponents/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue"
+import ProstitutePhotosForCreator from "@jscomponents/prostitution/notice_editor/photos/prostitute_photos_for_creator.vue";
 import EditorBasicControl from "@mixins/components/prostitute_announcement_creator/editor_basic_control";
+import TokenSetter from "@mixins/components/prostitute_announcement_creator/token_setter";
+import PhotoTokenRequest from "@js/interfaces/prostitution/PhotoTokenRequest";
+import Routes from "@config/paths/routes";
+import { TokenType } from "@js/enum/token_type";
 
 enum Section {
   ProstitutionPolicyDescription = "ProstitutionPolicyDescription",
@@ -59,13 +64,13 @@ enum Section {
   ProstituteServices = "ProstituteServices",
   ProstitutePhotosForCreator = "ProstitutePhotosForCreator",
   ProstituteLocationAndWorkingHours = "ProstituteLocationAndWorkingHours",
-  ProstituteSaveNotice = "ProstituteSaveNotice"
+  ProstituteSaveNotice = "ProstituteSaveNotice",
 }
 
 export default {
   name: "prostitution-offer-creator",
 
-  mixins : [EditorBasicControl],
+  mixins: [EditorBasicControl, TokenSetter],
 
   components: {
     ProstituteSaveNotice,
@@ -74,24 +79,41 @@ export default {
 
   data() {
     return {
+      csrfToken: undefined,
       orderedSections: [
         Section.ProstitutionPolicyDescription,
         Section.ProstituteBasicInformation,
         Section.ProstituteServices,
         Section.ProstitutePhotosForCreator,
         Section.ProstituteLocationAndWorkingHours,
-        Section.ProstituteSaveNotice
+        Section.ProstituteSaveNotice,
       ],
     };
   },
 
-  methods : {
-    addEventListeners() : void {
-      this.emitter.on('prostitutePhotosValidated', this.skipToNextSection);
-    }
+  methods: {
+    addEventListeners(): void {
+      this.emitter.on("prostitutePhotosValidated", this.skipToNextSection);
+    },
+
+    prepareToken(): void {
+      const URL = Routes.photoToken;
+      const tokenRequest: PhotoTokenRequest = {
+        URL,
+        csrfToken: this.csrfToken,
+        tokenType: TokenType.New,
+      };
+
+      this.managePhotoTokenInSession(tokenRequest).then((token) =>
+        this.emitter.emit("setProstitutePhotoToken", token)
+      );
+    },
   },
 
   mounted() {
+    //@ts-ignore
+    this.csrfToken = document.getElementById("csrf-token").content;
+    this.prepareToken();
     this.prepareSelectValues();
     this.addEventListeners();
   },
@@ -99,18 +121,17 @@ export default {
   computed: {
     decorationComponentName(): string {
       const iconComponentNamesBySection = {
-        ProstitutionPolicyDescription : "SecureDocumentsIcon",
-        ProstituteBasicInformation : "IdCardIcon",
-        ProstituteServices : "OhIcon",
-        ProstitutePhotos : "ImagePhotographyIcon",
-        ProstituteLocationAndWorkingHours : "TimeLateIcon",
-        ProstituteSaveNotice : "FloppyDiscIcon"
-        
-      } 
+        ProstitutionPolicyDescription: "SecureDocumentsIcon",
+        ProstituteBasicInformation: "IdCardIcon",
+        ProstituteServices: "OhIcon",
+        ProstitutePhotos: "ImagePhotographyIcon",
+        ProstituteLocationAndWorkingHours: "TimeLateIcon",
+        ProstituteSaveNotice: "FloppyDiscIcon",
+      };
       return iconComponentNamesBySection[this.currentSection];
     },
 
-    currentSection() : Section {
+    currentSection(): Section {
       return this.orderedSections[this.sectionIndex];
     },
 
@@ -122,42 +143,40 @@ export default {
       return this.currentSection === Section.ProstituteBasicInformation;
     },
 
-    showServices() : boolean {
+    showServices(): boolean {
       return this.currentSection === Section.ProstituteServices;
     },
 
-    showPhotos() : boolean {
+    showPhotos(): boolean {
       return this.currentSection === Section.ProstitutePhotosForCreator;
     },
 
-    showSaveNotice() : boolean {
+    showSaveNotice(): boolean {
       return this.currentSection === Section.ProstituteSaveNotice;
     },
 
-    showLocationAndWorkingHours() : boolean {
-     return this.currentSection === Section.ProstituteLocationAndWorkingHours;
+    showLocationAndWorkingHours(): boolean {
+      return this.currentSection === Section.ProstituteLocationAndWorkingHours;
     },
 
-    iconClass() : string {
+    iconClass(): string {
       const classesNameBySection = {
-        ProstitutionPolicyDescription : "policy-section",
-        ProstituteBasicInformation : "personalities-section",
-        ProstituteServices : "services-section",
-        ProstitutePhotosForCreator : "photos-section",
-        ProstituteLocationAndWorkingHours : "location-and-working-hours",
-        ProstituteSaveNotice : "save-notice"
-      }
+        ProstitutionPolicyDescription: "policy-section",
+        ProstituteBasicInformation: "personalities-section",
+        ProstituteServices: "services-section",
+        ProstitutePhotosForCreator: "photos-section",
+        ProstituteLocationAndWorkingHours: "location-and-working-hours",
+        ProstituteSaveNotice: "save-notice",
+      };
       return classesNameBySection[this.currentSection];
-    }
+    },
   },
-
 };
 </script>
-  
+
 <style lang="scss" scoped>
 @import "~sasscomponent/prostitution/offer_edit_or_create";
 .outer-container {
-  max-width:900px;
+  max-width: 900px;
 }
 </style>
-  

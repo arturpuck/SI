@@ -5,7 +5,7 @@ namespace App\Http\Resources\Prostitution;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Traits\ColumnToRequestField;
 use App\City;
-use App\Services\Prostitution\Announcements\ProstitutionAnnouncementsPhotosService;
+use App\Services\Prostitution\Announcements\ProstitutionAnnouncementsFileSystemService;
 
 class ProstitutionAnnouncementEditorFormResource extends JsonResource
 {
@@ -33,6 +33,7 @@ class ProstitutionAnnouncementEditorFormResource extends JsonResource
         'secondary_services',
         'working_hours'
     ];
+
     /**
      * Transform the resource into an array.
      *
@@ -56,11 +57,9 @@ class ProstitutionAnnouncementEditorFormResource extends JsonResource
 
     private function getPhotosURLs() : array 
     {
-        $photosService = new ProstitutionAnnouncementsPhotosService(
-            $this->user_id,
-            $this->universally_unique_identifier,
-        );
-        return $photosService->getPhotosURLsForEditorPanel($this->any_photo_awaits_validation);
+        $prostitutionAnnouncementFileSystemService = new ProstitutionAnnouncementsFileSystemService();
+        return $prostitutionAnnouncementFileSystemService
+                    ->getPhotosURLsForEditorPanel($this->uniqueID, $this->any_photo_awaits_validation);
     }
 
     private function getCitiesForRegion(int $regionID) : array

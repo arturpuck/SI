@@ -9,7 +9,8 @@ trait ProstitutionAnnouncementFormFieldsValidation
 
     protected function getVerificationToken() : void
     {
-        $this->merge(['verificationToken' => Session::get('prostitutePhotoVerificationToken')]);
+        $test = Session::get('prostitutePhotoVerificationToken');
+        $this->merge(['prostitutePhotoVerificationToken' => Session::get('prostitutePhotoVerificationToken')]);
     }
 
     protected function getSecondaryServices() : void 

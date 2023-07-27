@@ -1,5 +1,5 @@
 const allPropertiesNames = [
-    'universallyUniqueId',
+    'uniqueID',
     'nickname',
     'phoneNumber',
     'birthDate',

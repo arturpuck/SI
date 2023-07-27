@@ -161,7 +161,7 @@ class CreateProstitutionAnnouncementRequest extends FormRequest
             'paymentForms.*.price' => self::POSITIVE_NUMERIC,
             'photos' => ['required', 'array'],
             'photos.*' => ['image', 'max:1024'],
-            'verificationToken' => ['required', 'string', 'min:4', 'max:8'],
+            // 'prostitutePhotoVerificationToken' => ['required', 'string', 'min:4', 'max:8'],
             'workingHours' => ['array', new WorkingHoursRangeIdentifiers(), new HourOfStartIsBeforeHourOfEnd()],
             'workingHours.*.since' => ['date_format:H:i', 'required_if:workingHours,!=,null'],
             'workingHours.*.until' => ['date_format:H:i', 'required_if:workingHours,!=,null'],

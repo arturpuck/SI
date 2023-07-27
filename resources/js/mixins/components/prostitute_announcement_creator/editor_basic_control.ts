@@ -92,7 +92,6 @@ export default {
               availableOptions["voivodeships"],
               'name'
             );
-            this.emitter.emit('setProstitutePhotoToken', availableOptions["token"]) ;
           } else {
             this.notifyUserAboutFetchError();
           }

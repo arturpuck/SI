@@ -8,7 +8,7 @@ use App\Http\Requests\Prostitution\CreateProstitutionAnnouncementRequest;
 use App\Traits\ColumnToRequestField;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
-use App\Services\Prostitution\Announcements\ProstitutionAnnouncementsPhotosService;
+use App\Services\Prostitution\Announcements\ProstitutionAnnouncementsFileSystemService;
 use App\Enum\Prostitution\AnnouncementPhotoType;
 
 final class CreateProstitutionAnnouncementHandler
@@ -17,8 +17,7 @@ final class CreateProstitutionAnnouncementHandler
 
     private CreateProstitutionAnnouncementRequest $request;
     private ProstitutionAnnouncement $announcement;
-    private string $universallyUniqueIdentifier;
-    private ProstitutionAnnouncementsPhotosService $photosService;
+    private string $uniqueID;
 
     const PERSONALITIES_COLUMNS = [
         'nickname',
@@ -49,36 +48,35 @@ final class CreateProstitutionAnnouncementHandler
         'trips'
     ];
 
-    public function handle(CreateProstitutionAnnouncementRequest $request, ProstitutionAnnouncementsPhotosService $photosService = null) : Response
+    public function __construct(private ProstitutionAnnouncementsFileSystemService $photosService = new ProstitutionAnnouncementsFileSystemService) {}
+
+    public function handle(CreateProstitutionAnnouncementRequest $request) : Response
     {
+        $test = Session::get('prostitutePhotoVerificationToken');
         $this->request = $request;
         $this->announcement = new ProstitutionAnnouncement();
-        $this->universallyUniqueIdentifier = Str::uuid();
-        $this->announcement->universally_unique_identifier = $this->universallyUniqueIdentifier;
-        $this->photosService = $photosService ?? new ProstitutionAnnouncementsPhotosService(
-            auth()->user()->id,
-            $this->announcement->universally_unique_identifier
-        ); 
+        $this->uniqueID = Str::uuid();
+        $this->announcement->uniqueID = $this->uniqueID;
         $this->assignPersonalities();
         $this->assignServices();
         $this->assignPaymentForms();
-        $this->processPhotos();
+        $this->processPhotos($this->uniqueID);
         $this->assignLocationAndWorkingHours();
         $this->announcement->save();
-        Session::remove('verificationToken');
+        Session::remove('prostitutePhotoVerificationToken');
         return new Response(status:201);
     }
     
-    private function processPhotos() : void 
+    private function processPhotos(string $announcementUID) : void 
     {
-        $storageDirectory = $this->photosService->getPhotosAwaitingVerificationFolder();
+        $storageDirectory = $this->photosService->getPhotosAwaitingVerificationFolder($announcementUID);
         $controlSums = [AnnouncementPhotoType::AWAITING_VERIFICATION->value => []];
         foreach($this->request->get('photos') as $photo) {
             $newFileName = Str::uuid().'.'.$photo->getClientOriginalExtension();
             $photo->move($storageDirectory, $newFileName);
             $controlSums[AnnouncementPhotoType::AWAITING_VERIFICATION->value][$newFileName] = hash_file('sha256', $storageDirectory.'/'.$newFileName);
         }
-        $this->announcement->last_generated_token = $this->request->get('verificationToken');
+        $this->announcement->last_generated_token = $this->request->get('prostitutePhotoVerificationToken');
         $this->announcement->any_photo_awaits_validation = true;
         $this->announcement->photos_control_sum = json_encode($controlSums);
     }

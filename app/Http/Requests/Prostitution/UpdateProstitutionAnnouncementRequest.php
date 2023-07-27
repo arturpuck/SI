@@ -13,6 +13,7 @@ use App\Rules\Prostitution\HourOfStartIsBeforeHourOfEnd;
 use App\Rules\Prostitution\EveryPaymentFormContainsOnlyRequiredFields;
 use App\Traits\Requests\ProstitutionAnnouncementFormFieldsValidation;
 use App\Rules\Prostitution\CurrentUserOwnsProstitutionAnnouncement;
+use Illuminate\Support\Facades\Session;
 
 class UpdateProstitutionAnnouncementRequest extends FormRequest
 {
@@ -104,7 +105,7 @@ class UpdateProstitutionAnnouncementRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => ['required', new CurrentUserOwnsProstitutionAnnouncement()],
+            'uniqueID' => ['required', new CurrentUserOwnsProstitutionAnnouncement()],
             'nickname' => ['string', 'min:3', 'max:30'],
             'phoneNumber' => ['regex:/^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$/', 'min:7', 'max:16'],
             'birthDate' => ['prohibited'],
@@ -150,7 +151,7 @@ class UpdateProstitutionAnnouncementRequest extends FormRequest
             'paymentForms.*.price' => self::POSITIVE_NUMERIC,
             'photos' => ['array'],
             'photos.*' => ['image', 'max:1024'],
-            'verificationToken' => ['nullable', 'string', 'min:4', 'max:8'],
+            'prostitutePhotoVerificationToken' => ['nullable', 'string', 'min:4', 'max:8'],
             'workingHours' => ['array', new WorkingHoursRangeIdentifiers(), new HourOfStartIsBeforeHourOfEnd()],
             'workingHours.*.since' => ['date_format:H:i', 'required_if:workingHours,!=,null'],
             'workingHours.*.until' => ['date_format:H:i', 'required_if:workingHours,!=,null'],

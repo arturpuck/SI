@@ -19,6 +19,7 @@ import GlobalPropertiesNames from "@jscomponents/prostitution/notice_editor/glob
 import ExpectShadowCircle from "@jscomponents-decoration/expect_shadow_circle.vue";
 import SaveButton from "@jscomponents-form-controls/save_button.vue";
 import RequestBuilding from "@mixins/components/prostitute_announcement_creator/request_building";
+import NotificationFunction from "@jsmodules/notification_function";
 
 export default {
   name: "prostitution-save-edited-notice",
@@ -41,6 +42,8 @@ export default {
   },
 
   methods: {
+    notifyUser: NotificationFunction,
+
     getRequestBody(): FormData {
       let requestBody = {};
       let formData = new FormData();
@@ -72,7 +75,7 @@ export default {
         }
       });
       Object.keys(requestBody).forEach((key) => formData.append(key, requestBody[key]));
-      formData.append("id", this.id);
+      formData.append("uniqueID", this.uniqueID);
       return formData;
     },
 
@@ -98,7 +101,23 @@ export default {
       };
 
       const response = await fetch(RoutesConfig.noticesManagement, requestData);
-      console.log(response);
+      this.showUpdateNotification(response);
+    },
+
+    showUpdateNotification(response: Response): void {
+      switch (response.status) {
+        case 200:
+          this.notifyUser("announcement_has_been_successfully_updated");
+          break;
+
+        case 429:
+          this.notifyUser("to_many_attempts", "error");
+          break;
+
+        default:
+          this.notifyUser("unexpected_error_occured");
+          break;
+      }
     },
   },
 
