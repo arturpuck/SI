@@ -40,6 +40,16 @@ const announcementDetails = defineStore({
         cumOnBodyAditionalPayment : 100,
         cumSwallowAditionalPayment : 100,
         secondaryServices : [],
+        daysMarkedAsFree: {
+            monday: false,
+            tuesday: false,
+            wednesday: false,
+            thursday: false,
+            friday: false,
+            saturday: true,
+            sunday: true,
+            mondayToFriday: false,
+          },
         paymentForms : [{unit : 'for_hour', price : 200}],
 
         photos: [],

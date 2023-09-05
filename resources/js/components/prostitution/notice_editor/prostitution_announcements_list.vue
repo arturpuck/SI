@@ -184,7 +184,6 @@ export default {
       }
       const announcementsList = await response.json();
       this.announcementsBasicInformationList = announcementsList;
-      console.log(announcementsList);
     },
 
     getCSRFToken(): void {

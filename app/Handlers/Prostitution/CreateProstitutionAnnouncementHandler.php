@@ -76,6 +76,7 @@ final class CreateProstitutionAnnouncementHandler
             $photo->move($storageDirectory, $newFileName);
             $controlSums[AnnouncementPhotoType::AWAITING_VERIFICATION->value][$newFileName] = hash_file('sha256', $storageDirectory.'/'.$newFileName);
         }
+        $test = Session::get('prostitutePhotoVerificationToken');
         $this->announcement->last_generated_token = $this->request->get('prostitutePhotoVerificationToken');
         $this->announcement->any_photo_awaits_validation = true;
         $this->announcement->photos_control_sum = json_encode($controlSums);

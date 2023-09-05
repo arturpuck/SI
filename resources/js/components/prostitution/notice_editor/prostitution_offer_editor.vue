@@ -168,20 +168,26 @@ export default {
         let workingHours = JSON.parse(announcementDetails.workingHours);
         Object.values(Weekdays).forEach((period) => {
           if (!workingHours.hasOwnProperty(period)) {
-            workingHours[period] = this.getEmptyPeriod();
+            workingHours[period] = this.getUndefinedPeriod();
+            this.daysMarkedAsFree[period] = true;
           }
         });
 
-        if (!workingHours.hasOwnProperty("mondayToFriday")) {
-          workingHours["mondayToFriday"] = this.getEmptyPeriod();
-        }
+        workingHours["mondayToFriday"] = this.getUndefinedPeriod();
+        this.daysMarkedAsFree["mondayToFriday"] = true;
 
         if (!workingHours.hasOwnProperty("saturday")) {
           workingHours["saturday"] = this.getUndefinedPeriod();
+          this.daysMarkedAsFree["saturday"] = true;
+        } else {
+          this.daysMarkedAsFree["saturday"] = false;
         }
 
         if (!workingHours.hasOwnProperty("sunday")) {
           workingHours["sunday"] = this.getUndefinedPeriod();
+          this.daysMarkedAsFree["sunday"] = true;
+        } else {
+          this.daysMarkedAsFree["sunday"] = true;
         }
 
         this.workingHours = workingHours;
@@ -283,6 +289,7 @@ export default {
       ...GlobalPropertiesNames,
       "modifiedFields",
       "id",
+      "daysMarkedAsFree",
     ]),
 
     decorationComponentName(): string {

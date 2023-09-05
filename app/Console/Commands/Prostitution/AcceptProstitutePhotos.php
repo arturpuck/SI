@@ -14,7 +14,7 @@ class AcceptProstitutePhotos extends Command
      *
      * @var string
      */
-    protected $signature = 'acceptProstitutePhotos {announcementUID}';
+    protected $signature = 'accept:prostitute-photos {announcementUID}';
 
     /**
      * The console command description.

@@ -40,7 +40,7 @@ final class ProstitutionAnnouncementsFileSystemService
 
     public function getAcceptedPhotosURLs(string $announcementUID) : array
     {
-        $folder = $this->getAcceptedPhotosFolder();
+        $folder = $this->getFolderForAcceptedProstitutePhotos($announcementUID);
         $pattern = $folder.'/*';
         return $this->getURLs($pattern, true, $announcementUID);
     }
@@ -72,7 +72,7 @@ final class ProstitutionAnnouncementsFileSystemService
     {
         $storageDirectory = Storage::path('');
         return $storageDirectory.
-        config('filesystems.prostitution.photos').'/'.
+        config('filesystems.prostitution.photos').
         $announcementUID;
     }
 
@@ -88,8 +88,9 @@ final class ProstitutionAnnouncementsFileSystemService
                     
     public function getAcceptedPhotosFolder() : string
     {
-        return config('filesystems.prostitution.photos').'/'
-              .config('filesystems.prostitution.photos_directory_approved');
+        return public_path().'/'.
+                config('filesystems.prostitution.photos')
+               .config('filesystems.prostitution.photos_directory_approved');
     }
 
     public function getPhotosURLsForEditorPanel(string $announcementUID, bool $anyPhotoAwaitValidation) : array
@@ -102,6 +103,10 @@ final class ProstitutionAnnouncementsFileSystemService
     public function movePhotoToAcceptedGroup(string $fileName, string $announcementUID) : void
     {
         $fileToMovePath = $this->getPhotoAwaitingVerificationPath($fileName, $announcementUID);
+        $announcementAcceptedPhotosFolder = $this->getFolderForAcceptedProstitutePhotos($announcementUID);
+        if(!file_exists($announcementAcceptedPhotosFolder)) {
+            mkdir($announcementAcceptedPhotosFolder, 0777, true);
+        }
         $newFilePath = $this->createFilePathForValidatedPhoto($fileName, $announcementUID);
         rename($fileToMovePath, $newFilePath);
     }
@@ -109,5 +114,10 @@ final class ProstitutionAnnouncementsFileSystemService
     public function removePhotoAwaitingVerification(string $fileName, string $announcementUID) : void
     {
         unlink($this->getPhotoAwaitingVerificationPath($fileName, $announcementUID));
+    }
+
+    public function getFolderForAcceptedProstitutePhotos(string $announcementUID) : string
+    {
+        return $this->getAcceptedPhotosFolder().'/'.$announcementUID;
     }
 }

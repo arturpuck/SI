@@ -54,7 +54,8 @@
           {{ Translations["until"] }} :
         </text-input-combo>
         <labeled-checkbox
-          v-on:update:modelValue="(clean) => toggleDayFreeOrBusy(clean, 'mondayToFriday')"
+          v-model="daysMarkedAsFree.mondayToFriday"
+          v-on:click="toggleDayFreeOrBusy('mondayToFriday')"
           class="shortcut-checkbox"
           >{{ Translations["day_of"] }}</labeled-checkbox
         >
@@ -88,7 +89,8 @@
             {{ Translations["until"] }} :
           </text-input-combo>
           <labeled-checkbox
-            v-on:update:modelValue="(clean) => toggleDayFreeOrBusy(clean, weekday)"
+            v-model="daysMarkedAsFree[weekday]"
+            v-on:click="toggleDayFreeOrBusy(weekday)"
             class="shortcut-checkbox"
             >{{ Translations["day_of"] }}</labeled-checkbox
           >
@@ -118,7 +120,8 @@
           {{ Translations["until"] }} :
         </text-input-combo>
         <labeled-checkbox
-          v-on:update:modelValue="(clean) => toggleDayFreeOrBusy(clean, 'saturday')"
+          v-model="daysMarkedAsFree.saturday"
+          v-on:click="toggleDayFreeOrBusy('saturday')"
           class="shortcut-checkbox"
           >{{ Translations["day_of"] }}</labeled-checkbox
         >
@@ -146,7 +149,8 @@
           {{ Translations["until"] }} :
         </text-input-combo>
         <labeled-checkbox
-          v-on:update:modelValue="(clean) => toggleDayFreeOrBusy(clean, 'sunday')"
+          v-model="daysMarkedAsFree.sunday"
+          v-on:click="toggleDayFreeOrBusy('sunday')"
           class="shortcut-checkbox"
           >{{ Translations["day_of"] }}</labeled-checkbox
         >
@@ -348,8 +352,8 @@ export default {
       this.showEverySingleWeekday = !this.showEverySingleWeekday;
     },
 
-    toggleDayFreeOrBusy(free: boolean, period: string): void {
-      if (free) {
+    toggleDayFreeOrBusy(period: string): void {
+      if (this.daysMarkedAsFree[period]) {
         this.workingHours[period]["since"] = undefined;
         this.workingHours[period]["until"] = undefined;
         this.freePeriods.push(period);
@@ -414,7 +418,7 @@ export default {
 
   data() {
     return {
-      freePeriods: ["saturday", "sunday"],
+      freePeriods: ["saturday", "sunday"], //actually duplicated data. skipped refactoring to save time.
       Translations,
       YesNoOptions,
       incorrectRelationBetweenHourOfStartAndEnd: false,
@@ -463,6 +467,7 @@ export default {
       "workingHours",
       "cityId",
       "regionId",
+      "daysMarkedAsFree",
     ]),
   },
 };

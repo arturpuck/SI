@@ -10,10 +10,7 @@
       v-bind:class="{ 'checked-outer-decoration': checkboxIsChecked }"
       class="checkbox-decoration"
     >
-      <div
-        v-bind:class="{ 'checked-mark': checkboxIsChecked }"
-        class="check-mark"
-      ></div>
+      <div v-bind:class="{ 'checked-mark': checkboxIsChecked }" class="check-mark"></div>
     </div>
     <span class="labeled-checkbox-description">
       <slot></slot>
@@ -56,15 +53,15 @@ export default {
     },
   },
 
-  watch : {
+  watch: {
     modelValue() {
       this.checkboxIsChecked = this.modelValue;
-    }
+    },
   },
 
   mounted() {
     this.checkboxIsChecked = this.modelValue;
-  }
+  },
 };
 </script>
 

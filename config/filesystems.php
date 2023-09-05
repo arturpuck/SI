@@ -1,14 +1,14 @@
 <?php
 
-function getRootPathByEnvironement() : string
-{
-    return match(env('APP_ENV')){
-        'local' => base_path('public'),
-        'staging' => env('STAGING_ROOT'),
-        'production' => env('PRODUCTION_ROOT'),
-        'testing' => storage_path('app')
-    };
-}
+// function getRootPathByEnvironement() : string
+// {
+//     return match(env('APP_ENV')){
+//         'local' => base_path('public'),
+//         'staging' => env('STAGING_ROOT'),
+//         'production' => env('PRODUCTION_ROOT'),
+//         'testing' => storage_path('app')
+//     };
+// }
 
 return [
 

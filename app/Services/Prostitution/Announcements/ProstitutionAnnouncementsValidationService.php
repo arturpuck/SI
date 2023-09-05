@@ -25,6 +25,8 @@ final class ProstitutionAnnouncementsValidationService
             $this->fileSystem->removePhotoAwaitingVerification($fileName, $announcementUID);
         }
         $announcement->photos_control_sum = json_encode(['accepted' => $controlSumsAfterChangingDirectory]);
+        $announcement->any_photo_awaits_validation = false;
+        $announcement->user_requested_prolongation = false;
         $announcement->save();
 
     }
@@ -46,7 +48,7 @@ final class ProstitutionAnnouncementsValidationService
 
     private function validatePhotosAwaitingVerificationControlSums(ProstitutionAnnouncement $announcement) : array
     {
-        $controlSums = json_decode($announcement, true);
+        $controlSums = json_decode($announcement->photos_control_sum, true);
         if(!is_array($controlSums)) {
             throw new Exception('Announcement has no control sums');
         }
@@ -80,6 +82,10 @@ final class ProstitutionAnnouncementsValidationService
                                                         ->first();
         if(is_null($announcement)) {
             throw new Exception('Announcement with given Uid does not exists');
+        }
+
+        if(!$announcement->any_photo_awaits_validation) {
+            throw new Exception('This announcement has no photos to validate');
         }
         return $announcement;
     }
