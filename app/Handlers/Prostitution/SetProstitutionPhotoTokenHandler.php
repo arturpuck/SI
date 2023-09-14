@@ -2,9 +2,11 @@
 
 namespace App\Handlers\Prostitution;
 
+use App\ProstitutionAnnouncement;
 use Illuminate\Http\JsonResponse;
 use App\Traits\Prostitution\PhotoTokenGenerator;
 use Illuminate\Support\Facades\Session;
+use App\ProstitutionAnnouncementPhotoToken;
 
 final class SetProstitutionPhotoTokenHandler
 {
@@ -13,8 +15,7 @@ final class SetProstitutionPhotoTokenHandler
     public function handle() : JsonResponse
     {
         $photoToken = $this->generatePhotoToken();
-        Session::put('prostitutePhotoVerificationToken', $photoToken);
-        $test = Session::get('prostitutePhotoVerificationToken');
+        ProstitutionAnnouncementPhotoToken::query()->assignToCurrentUser($photoToken);
         return new JsonResponse(compact('photoToken'),200);
     }
 

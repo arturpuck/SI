@@ -135,10 +135,12 @@ export default {
     setNewTokenForUI(newToken: string): void {
       this.newToken = newToken;
       this.showOldToken = false;
+      this.modifiedFields.push("token");
     },
 
     setTokenToOld(): void {
       this.showOldToken = true;
+      this.modifiedFields.push("token");
     },
 
     async assignOldToken() {

@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands\Prostitution;
 
-use App\ProstitutionAnnouncement;
 use Illuminate\Console\Command;
 use App\Services\Prostitution\Announcements\ProstitutionAnnouncementsValidationService;
 

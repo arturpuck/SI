@@ -27,8 +27,9 @@ return [
 
     'avatar_directory' => env('AVATARS_DIRECTORY', '/images/decoration/users/avatars/'),
     'prostitution' => [
-        'photos' => 'images/prostitution/',
-        'photos_directory_approved' => 'approved'
+        'announcements' =>[
+            'photos' => 'images/prostitution'
+        ],
     ],
 
     /*

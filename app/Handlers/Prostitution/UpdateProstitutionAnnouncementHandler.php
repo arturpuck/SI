@@ -7,9 +7,10 @@ use App\Http\Requests\Prostitution\UpdateProstitutionAnnouncementRequest;
 use App\ProstitutionAnnouncement;
 use Illuminate\Support\Arr;
 use App\Services\Prostitution\Announcements\ProstitutionAnnouncementsFileSystemService;
+use App\Services\Prostitution\Announcements\ProstitutionAnnouncementsFileSystem;
 use Illuminate\Support\Str;
 use App\Enum\Prostitution\AnnouncementPhotoType;
-use Illuminate\Support\Facades\Session;
+use App\ProstitutionAnnouncementPhotoToken;
 
 final class UpdateProstitutionAnnouncementHandler
 {
@@ -58,7 +59,7 @@ final class UpdateProstitutionAnnouncementHandler
             'photos' => self::PHOTOS_METHOD_NAME
     ];
 
-    public function __construct(private ProstitutionAnnouncementsFileSystemService $photosFileSystem = new ProstitutionAnnouncementsFileSystemService()) {}
+    public function __construct(private ProstitutionAnnouncementsFileSystem $photosFileSystem = new ProstitutionAnnouncementsFileSystemService()) {}
 
     public function handle(UpdateProstitutionAnnouncementRequest $request) : Response
     {
@@ -76,7 +77,7 @@ final class UpdateProstitutionAnnouncementHandler
             $this->announcement->user_requested_prolongation = true;
         }
         $this->announcement->save();
-        Session::remove('prostitutePhotoVerificationToken');
+        ProstitutionAnnouncementPhotoToken::query()->removeFromCurrentUser();
         return new Response(status:200);
     }
 
@@ -125,7 +126,7 @@ final class UpdateProstitutionAnnouncementHandler
         $this->announcement[$key] = is_array($value) && count($value) > 0 ? json_encode($value, true) : null;
     }
 
-    private function simpleAssignement(string $key, string $value) : void
+    private function simpleAssignement(string $key, mixed $value) : void
     {
         $key = $this->mapRequestFieldToColumnName($key);
         $this->announcement[$key] = $value;
@@ -157,7 +158,7 @@ final class UpdateProstitutionAnnouncementHandler
             if(!in_array($controlSum, $savedControlSums)) {
                 $currentFile = $this->filteredRequest['photos'][$index];
                 $newFileName = Str::uuid().'.'.$currentFile->getClientOriginalExtension();
-                $newFileFolderPath = $this->photosFileSystem->getPhotosAwaitingVerificationFolder($this->announcement->uniqueID);
+                $newFileFolderPath = $this->photosFileSystem->getAnnouncementPhotosFolder($this->announcement->uniqueID);
                 $currentFile->move($newFileFolderPath, $newFileName);
                 $this->announcement->addControlSum(
                             AnnouncementPhotoType::AWAITING_VERIFICATION,
@@ -172,16 +173,16 @@ final class UpdateProstitutionAnnouncementHandler
     private function removePhotosIfUserDeletedAny() : void
     {
         foreach($this->validatedPhotosControlSums as $fileName => $controlSum) {
-            $filePath = $this->photosFileSystem->createFilePathForValidatedPhoto($fileName, $this->announcement->uniqueID);
+            $filePath = $this->photosFileSystem->getPhotoFilePath($this->announcement->uniqueID, $fileName);
 
             if(!in_array($controlSum, $this->requestedFilesControlSums) && file_exists($filePath)) {
                 unlink($filePath);
-                $this->announcement->removeControlSum(AnnouncementPhotoType::VALIDATED, $fileName);
+                $this->announcement->removeControlSum(AnnouncementPhotoType::ACCEPTED, $fileName);
             }
         }
 
         foreach($this->photosAwaitingVerificationControlSums as $fileName => $controlSum) {
-            $filePath = $this->photosFileSystem->createFilePathForPhotoAwaitingVerification($fileName, $this->announcement->uniqueID);
+            $filePath = $this->photosFileSystem->getPhotoFilePath($this->announcement->uniqueID, $fileName);
 
             if(!in_array($controlSum, $this->requestedFilesControlSums) && file_exists($filePath)) {
                 unlink($filePath);
@@ -194,7 +195,7 @@ final class UpdateProstitutionAnnouncementHandler
     private function assignSavedControlSums() : void
     {
         $savedControlSums = json_decode($this->announcement->photos_control_sum, true);
-        $this->validatedPhotosControlSums = $savedControlSums[AnnouncementPhotoType::VALIDATED->value] ?? [];
+        $this->validatedPhotosControlSums = $savedControlSums[AnnouncementPhotoType::ACCEPTED->value] ?? [];
         $this->photosAwaitingVerificationControlSums = $savedControlSums[AnnouncementPhotoType::AWAITING_VERIFICATION->value] ?? [];
     }
 

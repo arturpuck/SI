@@ -9,6 +9,7 @@ use App\Voivodeship;
 use App\City;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Enum\Prostitution\AnnouncementPhotoType;
+use Carbon\Carbon;
 
 class ProstitutionAnnouncement extends Model
 {
@@ -41,6 +42,15 @@ class ProstitutionAnnouncement extends Model
         $currentSum = json_decode($this->photos_control_sum, true);
         unset($currentSum[$type->value][$key]);
         $this->setAttribute('photos_control_sum', json_encode($currentSum));
+    }
+
+    public function isValid() : bool
+    {
+        if(!$this->valid_until) {
+            return false;
+        }
+        $dateValidUntil = Carbon::createFromFormat('Y-m-d', $this->valid_until);
+        return $dateValidUntil->isFuture();
     }
 
 }

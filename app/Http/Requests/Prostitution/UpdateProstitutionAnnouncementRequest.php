@@ -158,7 +158,8 @@ class UpdateProstitutionAnnouncementRequest extends FormRequest
             'workingDays' => ['required_if:workingHours,!=,null', 'array'],
             'workingDays.*' => ['required_if:workingHours,!=,null', new DayOfWeek()],
             'cityId' => ['exists:cities,id'],
-            'regionId' => ['exists:voivodeships,id']
+            'regionId' => ['exists:voivodeships,id'],
+            'hiddenByAUser' => ['boolean'],
         ];
     }
 

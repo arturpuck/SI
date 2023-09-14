@@ -4,6 +4,7 @@ namespace App\Handlers\Prostitution;
 
 use Illuminate\Http\Response;
 use App\ProstitutionAnnouncement;
+use App\ProstitutionAnnouncementPhotoToken;
 use App\Http\Requests\Prostitution\CreateProstitutionAnnouncementRequest;
 use App\Traits\ColumnToRequestField;
 use Illuminate\Support\Facades\Session;
@@ -52,7 +53,6 @@ final class CreateProstitutionAnnouncementHandler
 
     public function handle(CreateProstitutionAnnouncementRequest $request) : Response
     {
-        $test = Session::get('prostitutePhotoVerificationToken');
         $this->request = $request;
         $this->announcement = new ProstitutionAnnouncement();
         $this->uniqueID = Str::uuid();
@@ -63,20 +63,19 @@ final class CreateProstitutionAnnouncementHandler
         $this->processPhotos($this->uniqueID);
         $this->assignLocationAndWorkingHours();
         $this->announcement->save();
-        Session::remove('prostitutePhotoVerificationToken');
+        ProstitutionAnnouncementPhotoToken::query()->removeFromCurrentUser();
         return new Response(status:201);
     }
     
     private function processPhotos(string $announcementUID) : void 
     {
-        $storageDirectory = $this->photosService->getPhotosAwaitingVerificationFolder($announcementUID);
+        $storageDirectory = $this->photosService->getAnnouncementPhotosFolder($announcementUID);
         $controlSums = [AnnouncementPhotoType::AWAITING_VERIFICATION->value => []];
         foreach($this->request->get('photos') as $photo) {
             $newFileName = Str::uuid().'.'.$photo->getClientOriginalExtension();
             $photo->move($storageDirectory, $newFileName);
             $controlSums[AnnouncementPhotoType::AWAITING_VERIFICATION->value][$newFileName] = hash_file('sha256', $storageDirectory.'/'.$newFileName);
         }
-        $test = Session::get('prostitutePhotoVerificationToken');
         $this->announcement->last_generated_token = $this->request->get('prostitutePhotoVerificationToken');
         $this->announcement->any_photo_awaits_validation = true;
         $this->announcement->photos_control_sum = json_encode($controlSums);

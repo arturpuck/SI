@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  sidas-ezd3-php-72-apache:
+    privileged: true
+    image: docker.madkom.pl/ezd/3x/web:debian10-apache2-php7.2
+    hostname: ezd-php-72
+    container_name: ezd-php-72
+    ports:
+      - "8072:80"
+    environment:
+      - DOCKER_UID=1000
+      - DOCKER_GID=1000
+      - PHP_IDE_CONFIG=serverName=localhost
+    volumes:
+      - .:/var/www
+
+  sidas-ezd3-postgres-13:
+    image: docker.madkom.pl/ezd/3x/postgres:13-debian10
+    hostname: sidas-ezd3-postgres-13
+    container_name: sidas-ezd3-postgres-13
+
+  sidas-ezd3-mailhog:
+    image: mailhog/mailhog
+    ports:
+      - 8001:8025
+    logging:
+      options:
+        max-size: "1m"
+        max-file: "1"
+
+  sidas-ezd3-node:
+    image: node:18
+    volumes:
+      - .:/var/www
+    working_dir: /var/www
+    logging:
+      options:
+        max-size: "2m"
+        max-file: "2"
+    command: bash -c "yarn && yarn watch"

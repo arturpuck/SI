@@ -3,7 +3,6 @@
 namespace App\Handlers\Prostitution;
 
 use App\ProstitutionAnnouncement;
-use Illuminate\Http\JsonResponse;
 use App\Http\Requests\Prostitution\GetProstituteAnnouncementRequest;
 use App\CustomQueryBuilders\Prostitution\ProstitutionAnnouncementQueryBuilder;
 use App\Http\Resources\Prostitution\ProstitutionAnnouncementBasicInfoResource;

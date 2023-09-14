@@ -21,6 +21,8 @@ class ProstitutionAnnouncementBasicInfoResource extends JsonResource
             'city' => $this->city->name,
             'phoneNumber' => $this->phone_number,
             'hiddenByAUser' => boolval($this->hidden_by_a_user),
+            'isValid' => $this->isValid(),
+            'validUntil' => $this->valid_until
         ];
     }
 }

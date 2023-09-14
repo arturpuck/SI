@@ -49,7 +49,7 @@
           <td
             v-bind:data-label="translations.photosAreValidAndUpToDate"
             class="announcement-cell"
-            v-text="transformBooleanToYesOrNo(announcement.photosAreValidAndUpToDate)"
+            v-text="transformBooleanToYesOrNo(announcement.isValid)"
           ></td>
           <td
             class="announcement-cell"
@@ -70,6 +70,11 @@
               v-on:click="initiateAnnouncementDeletion(announcement.id)"
               class="delete"
             ></delete-button-vertical>
+            <component
+              v-bind:is="visibilityComponentName(announcement.hiddenByAUser)"
+              class="toggle-visibility"
+              v-on:click="toggleAnnouncementHiddenOrNot(index)"
+            ></component>
           </td>
         </tr>
       </tbody>
@@ -101,11 +106,66 @@ import EditButtonVertical from "@js/components/form_controls/edit_button_vertica
 import DeleteButtonVertical from "@js/components/form_controls/delete_button_vertical.vue";
 import YesNoDialog from "@jscomponents/yes_no_dialog.vue";
 import ExpectShadowCircle from "@jscomponents/decoration/expect_shadow_circle.vue";
+import HideButtonVertical from "@js/components/form_controls/hide_button_vertical.vue";
+import DontHideButtonVertical from "@js/components/form_controls/dont_hide_button_vertical.vue";
 
 export default {
   name: "prostitution-announcements-list",
   emits: ["selectedToEdit"],
   methods: {
+    visibilityComponentName(hidden: boolean): string {
+      return hidden ? "DontHideButtonVertical" : "HideButtonVertical";
+    },
+
+    toggleAnnouncementHiddenOrNot(announcementIndex: number) {
+      let newState = !this.announcementsBasicInformationList[announcementIndex]
+        .hiddenByAUser;
+      let announcementUid = this.announcementsBasicInformationList[announcementIndex]
+        .universallyUniqueID;
+      this.sendHideShowRequest(announcementUid, newState).then((responseStatus) =>
+        this.adjustUITochangedAnnouncementVisibility(
+          announcementIndex,
+          responseStatus,
+          newState
+        )
+      );
+    },
+
+    adjustUITochangedAnnouncementVisibility(
+      announcementIndex: number,
+      responseStatus: number,
+      hidden: boolean
+    ): void {
+      if (responseStatus !== 200) {
+        this.notificationErrorMessage("undefined_error");
+        return;
+      }
+      this.announcementsBasicInformationList[announcementIndex].hiddenByAUser = hidden;
+
+      if (hidden) {
+        this.notificationMessage("announcement_has_been_hidden");
+        return;
+      }
+
+      this.notificationMessage("announcement_is_visible");
+      this.announcementsBasicInformationList = this.announcementsBasicInformationList;
+    },
+
+    async sendHideShowRequest(announcementUid: string, hidden: boolean) {
+      const requestData = {
+        method: "PATCH",
+        headers: {
+          "X-CSRF-TOKEN": this.csrfToken,
+          "Content-type": "application/json; charset=UTF-8",
+        },
+
+        body: JSON.stringify({ hiddenByAUser: hidden }),
+      };
+      const URL = `${Routes.noticesManagement}?uniqueID=${announcementUid}`;
+      const response = await fetch(URL, requestData);
+      return response.status;
+    },
+
     demonstrateUserHasSelectedAnnouncementToEdit(announcementID: number): void {
       this.$emit("selectedToEdit", announcementID);
     },
@@ -121,6 +181,14 @@ export default {
       const URL = `${Routes.noticesManagement}?detailsLevel=basic`;
       const response = await fetch(URL, requestData);
       this.processAnnouncementsFetchingResponse(response);
+    },
+
+    notificationMessage(message: string) {
+      this.emitter.emit("showNotification", {
+        notificationText: message,
+        notificationType: "no-error",
+        headerText: "information",
+      });
     },
 
     notificationErrorMessage(message: string): void {
@@ -219,6 +287,8 @@ export default {
     DeleteButtonVertical,
     YesNoDialog,
     ExpectShadowCircle,
+    HideButtonVertical,
+    DontHideButtonVertical,
   },
 
   computed: {
@@ -260,6 +330,30 @@ export default {
 
 <style lang="scss" scoped>
 @import "~sass/fonts";
+
+.hide-eye-icon {
+  width: 2.5em;
+  height: 2.5em;
+  fill: #ede30b;
+}
+
+.toggle-visibility {
+  fill: #ede30b;
+  color: white;
+  margin: 4px;
+  font-size: 12px;
+  font-family: "Exo 2", sans-serif;
+}
+
+.control-panel-button {
+  display: inline-flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
 
 .dialog {
   background: black;
@@ -312,7 +406,6 @@ export default {
 .list-container {
   min-height: 200px;
   position: relative;
-  min-width: 50vw;
   display: flex;
   flex-direction: column;
   justify-content: center;

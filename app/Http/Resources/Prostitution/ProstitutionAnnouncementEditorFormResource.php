@@ -6,6 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use App\Traits\ColumnToRequestField;
 use App\City;
 use App\Services\Prostitution\Announcements\ProstitutionAnnouncementsFileSystemService;
+use App\Services\Prostitution\Announcements\ProstitutionAnnouncementsFileSystem;
 
 class ProstitutionAnnouncementEditorFormResource extends JsonResource
 {
@@ -57,9 +58,8 @@ class ProstitutionAnnouncementEditorFormResource extends JsonResource
 
     private function getPhotosURLs() : array 
     {
-        $prostitutionAnnouncementFileSystemService = new ProstitutionAnnouncementsFileSystemService();
-        return $prostitutionAnnouncementFileSystemService
-                    ->getPhotosURLsForEditorPanel($this->uniqueID, $this->any_photo_awaits_validation);
+        $prostitutionPhotosFileSystem = new ProstitutionAnnouncementsFileSystemService();
+        return $prostitutionPhotosFileSystem->getAllPhotosURLs($this->uniqueID, $this->any_photo_awaits_validation);
     }
 
     private function getCitiesForRegion(int $regionID) : array

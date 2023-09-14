@@ -6,6 +6,7 @@ use App\Services\Prostitution\Announcements\ProstitutionAnnouncementsFileSystemS
 use App\ProstitutionAnnouncement;
 use App\Enum\Prostitution\AnnouncementPhotoType;
 use Exception;
+use Carbon\Carbon;
 
 final class ProstitutionAnnouncementsValidationService
 {
@@ -16,34 +17,49 @@ final class ProstitutionAnnouncementsValidationService
     {
         $announcement = $this->getAnnouncement($announcementUID);
         $controlSums = $this->validatePhotosAwaitingVerificationControlSums($announcement);
-        $controlSumsAfterChangingDirectory = [];
+        $acceptedPhotosControlSums = [];
         foreach($controlSums as $fileName => $controlSum) {
-            $this->fileSystem->movePhotoToAcceptedGroup($fileName, $announcementUID);
-            $controlSumsAfterChangingDirectory[$fileName] = $this->getAcceptedPhotoControlSum($fileName, $announcementUID);
+            $acceptedPhotosControlSums[$fileName] = $this->getPhotoControlSum($fileName, $announcementUID);
         }
-        foreach($controlSums as $fileName => $controlSum) {
-            $this->fileSystem->removePhotoAwaitingVerification($fileName, $announcementUID);
-        }
-        $announcement->photos_control_sum = json_encode(['accepted' => $controlSumsAfterChangingDirectory]);
+        $this->changeControlSumsFromAwaitingVerificationToAccepted($announcement, $acceptedPhotosControlSums);
         $announcement->any_photo_awaits_validation = false;
         $announcement->user_requested_prolongation = false;
+        $this->assignExpirationDate($announcement);
         $announcement->save();
+    }
 
+    private function assignExpirationDate(ProstitutionAnnouncement $announcement): void
+    {
+        $dateNow = Carbon::now();
+        $dateThreeMonthsLater = $dateNow->addMonths(3);
+        $announcement->valid_until = $dateThreeMonthsLater->toDateString();
+    }
+
+    private function changeControlSumsFromAwaitingVerificationToAccepted(ProstitutionAnnouncement $announcement, array $acceptedPhotosControlSums) : void
+    {
+        $previousControlSums = json_decode($announcement->photos_control_sum, true);
+        if(!array_key_exists(AnnouncementPhotoType::ACCEPTED->value, $previousControlSums)) {
+            $announcement->photos_control_sum = json_encode([AnnouncementPhotoType::ACCEPTED->value => $acceptedPhotosControlSums]);
+            return;
+        }
+        
+        $acceptedPhotosControlSums = [
+            AnnouncementPhotoType::ACCEPTED->value => [
+                ...$acceptedPhotosControlSums, 
+                ...$previousControlSums[AnnouncementPhotoType::ACCEPTED->value]
+            ]
+            ];
+            $announcement->photos_control_sum = json_encode($acceptedPhotosControlSums);
     }
     
     private function controlSumsAreNotEqual(string $storedFileName, string $controlSum, string $announcementUID) : bool 
     {
-        return $controlSum != $this->getPhotoAwaitingVerificationControlSum($storedFileName, $announcementUID);
+        return $controlSum != $this->getPhotoControlSum($storedFileName, $announcementUID);
     }
 
-    private function getAcceptedPhotoControlSum(string $fileName, string $announcementUID) : string
+    private function getPhotoControlSum(string $fileName, string $announcementUID) : string
     {
-        return hash_file('sha256', $this->fileSystem->getAcceptedPhotoPath($fileName, $announcementUID));
-    }
-
-    private function getPhotoAwaitingVerificationControlSum(string $fileName, string $announcementUID) : string
-    {
-        return hash_file('sha256', $this->fileSystem->getPhotoAwaitingVerificationPath($fileName, $announcementUID));
+        return hash_file('sha256', $this->fileSystem->getPhotoFilePath($announcementUID, $fileName));
     }
 
     private function validatePhotosAwaitingVerificationControlSums(ProstitutionAnnouncement $announcement) : array

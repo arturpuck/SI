@@ -2,15 +2,18 @@
 
 namespace App\Traits\Requests;
 
+use App\ProstitutionAnnouncement;
 use Illuminate\Support\Facades\Session;
+use App\ProstitutionAnnouncementPhotoToken;
 
 trait ProstitutionAnnouncementFormFieldsValidation
 {
 
     protected function getVerificationToken() : void
     {
-        $test = Session::get('prostitutePhotoVerificationToken');
-        $this->merge(['prostitutePhotoVerificationToken' => Session::get('prostitutePhotoVerificationToken')]);
+        $this->merge([
+            'prostitutePhotoVerificationToken' => ProstitutionAnnouncementPhotoToken::query()->getForCurrentUser()
+        ]);
     }
 
     protected function getSecondaryServices() : void 

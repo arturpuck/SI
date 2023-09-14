@@ -68,6 +68,9 @@ export default {
             requestBody["paymentForms"] = JSON.stringify(this.paymentForms);
             break;
 
+          case "token":
+            break;
+
           default:
             requestBody[modifiedField] =
               modifiedField === "choose" ? "remove" : this[modifiedField];
@@ -86,6 +89,8 @@ export default {
     updateAnnouncement() {
       if (this.userHasModifiedAnything) {
         this.sendUpdateRequest();
+      } else {
+        this.notifyUser("nothing_has_been_modified", "error");
       }
     },
 
@@ -101,13 +106,14 @@ export default {
       };
 
       const response = await fetch(RoutesConfig.noticesManagement, requestData);
-      this.showUpdateNotification(response);
+      this.processUpdateResponse(response);
     },
 
-    showUpdateNotification(response: Response): void {
+    processUpdateResponse(response: Response): void {
       switch (response.status) {
         case 200:
           this.notifyUser("announcement_has_been_successfully_updated");
+          this.modifiedFields = [];
           break;
 
         case 429:

@@ -19064,6 +19064,24 @@ exports["default"] = HeartRateIcon;
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=script&lang=ts":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=script&lang=ts ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = {
+  name: "hide-eye-icon"
+};
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/id_card_icon.vue?vue&type=script&lang=ts":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/id_card_icon.vue?vue&type=script&lang=ts ***!
@@ -20019,6 +20037,39 @@ exports["default"] = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=script&lang=ts":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=script&lang=ts ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+var translator_1 = __importDefault(__webpack_require__(/*! @jsmodules/translator */ "./resources/js/modules/translator.js"));
+var show_eye_icon_vue_1 = __importDefault(__webpack_require__(/*! @svgicon/show_eye_icon.vue */ "./resources/js/components/decoration/icons/svg/show_eye_icon.vue"));
+exports["default"] = {
+  name: "dont-hide-button-vertical",
+  components: {
+    ShowEyeIcon: show_eye_icon_vue_1["default"]
+  },
+  data: function data() {
+    return {
+      label: translator_1["default"].translate("dont_hide")
+    };
+  }
+};
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/edit_button_vertical.vue?vue&type=script&lang=ts":
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/edit_button_vertical.vue?vue&type=script&lang=ts ***!
@@ -20045,7 +20096,40 @@ exports["default"] = {
   },
   data: function data() {
     return {
-      label: translator_1["default"].translate('edit')
+      label: translator_1["default"].translate("edit")
+    };
+  }
+};
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=script&lang=ts":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=script&lang=ts ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = void 0 && (void 0).__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+var translator_1 = __importDefault(__webpack_require__(/*! @jsmodules/translator */ "./resources/js/modules/translator.js"));
+var hide_eye_icon_vue_1 = __importDefault(__webpack_require__(/*! @svgicon/hide_eye_icon.vue */ "./resources/js/components/decoration/icons/svg/hide_eye_icon.vue"));
+exports["default"] = {
+  name: "edit-button-vertical",
+  components: {
+    HideEyeIcon: hide_eye_icon_vue_1["default"]
+  },
+  data: function data() {
+    return {
+      label: translator_1["default"].translate("hide")
     };
   }
 };
@@ -21887,9 +21971,11 @@ exports["default"] = {
     setNewTokenForUI: function setNewTokenForUI(newToken) {
       this.newToken = newToken;
       this.showOldToken = false;
+      this.modifiedFields.push("token");
     },
     setTokenToOld: function setTokenToOld() {
       this.showOldToken = true;
+      this.modifiedFields.push("token");
     },
     assignOldToken: function assignOldToken() {
       return __awaiter(this, void 0, void 0, function () {
@@ -22942,10 +23028,61 @@ var edit_button_vertical_vue_1 = __importDefault(__webpack_require__(/*! @js/com
 var delete_button_vertical_vue_1 = __importDefault(__webpack_require__(/*! @js/components/form_controls/delete_button_vertical.vue */ "./resources/js/components/form_controls/delete_button_vertical.vue"));
 var yes_no_dialog_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/yes_no_dialog.vue */ "./resources/js/components/yes_no_dialog.vue"));
 var expect_shadow_circle_vue_1 = __importDefault(__webpack_require__(/*! @jscomponents/decoration/expect_shadow_circle.vue */ "./resources/js/components/decoration/expect_shadow_circle.vue"));
+var hide_button_vertical_vue_1 = __importDefault(__webpack_require__(/*! @js/components/form_controls/hide_button_vertical.vue */ "./resources/js/components/form_controls/hide_button_vertical.vue"));
+var dont_hide_button_vertical_vue_1 = __importDefault(__webpack_require__(/*! @js/components/form_controls/dont_hide_button_vertical.vue */ "./resources/js/components/form_controls/dont_hide_button_vertical.vue"));
 exports["default"] = {
   name: "prostitution-announcements-list",
   emits: ["selectedToEdit"],
   methods: {
+    visibilityComponentName: function visibilityComponentName(hidden) {
+      return hidden ? "DontHideButtonVertical" : "HideButtonVertical";
+    },
+    toggleAnnouncementHiddenOrNot: function toggleAnnouncementHiddenOrNot(announcementIndex) {
+      var _this = this;
+      var newState = !this.announcementsBasicInformationList[announcementIndex].hiddenByAUser;
+      var announcementUid = this.announcementsBasicInformationList[announcementIndex].universallyUniqueID;
+      this.sendHideShowRequest(announcementUid, newState).then(function (responseStatus) {
+        return _this.adjustUITochangedAnnouncementVisibility(announcementIndex, responseStatus, newState);
+      });
+    },
+    adjustUITochangedAnnouncementVisibility: function adjustUITochangedAnnouncementVisibility(announcementIndex, responseStatus, hidden) {
+      if (responseStatus !== 200) {
+        this.notificationErrorMessage("undefined_error");
+        return;
+      }
+      this.announcementsBasicInformationList[announcementIndex].hiddenByAUser = hidden;
+      if (hidden) {
+        this.notificationMessage("announcement_has_been_hidden");
+        return;
+      }
+      this.notificationMessage("announcement_is_visible");
+      this.announcementsBasicInformationList = this.announcementsBasicInformationList;
+    },
+    sendHideShowRequest: function sendHideShowRequest(announcementUid, hidden) {
+      return __awaiter(this, void 0, void 0, function () {
+        var requestData, URL, response;
+        return __generator(this, function (_a) {
+          switch (_a.label) {
+            case 0:
+              requestData = {
+                method: "PATCH",
+                headers: {
+                  "X-CSRF-TOKEN": this.csrfToken,
+                  "Content-type": "application/json; charset=UTF-8"
+                },
+                body: JSON.stringify({
+                  hiddenByAUser: hidden
+                })
+              };
+              URL = "".concat(routes_1["default"].noticesManagement, "?uniqueID=").concat(announcementUid);
+              return [4 /*yield*/, fetch(URL, requestData)];
+            case 1:
+              response = _a.sent();
+              return [2 /*return*/, response.status];
+          }
+        });
+      });
+    },
     demonstrateUserHasSelectedAnnouncementToEdit: function demonstrateUserHasSelectedAnnouncementToEdit(announcementID) {
       this.$emit("selectedToEdit", announcementID);
     },
@@ -22973,6 +23110,13 @@ exports["default"] = {
       });
     },
 
+    notificationMessage: function notificationMessage(message) {
+      this.emitter.emit("showNotification", {
+        notificationText: message,
+        notificationType: "no-error",
+        headerText: "information"
+      });
+    },
     notificationErrorMessage: function notificationErrorMessage(message) {
       this.emitter.emit("showNotification", {
         notificationText: message,
@@ -23088,7 +23232,9 @@ exports["default"] = {
     EditButtonVertical: edit_button_vertical_vue_1["default"],
     DeleteButtonVertical: delete_button_vertical_vue_1["default"],
     YesNoDialog: yes_no_dialog_vue_1["default"],
-    ExpectShadowCircle: expect_shadow_circle_vue_1["default"]
+    ExpectShadowCircle: expect_shadow_circle_vue_1["default"],
+    HideButtonVertical: hide_button_vertical_vue_1["default"],
+    DontHideButtonVertical: dont_hide_button_vertical_vue_1["default"]
   },
   computed: {
     userHasAnyAnnouncements: function userHasAnyAnnouncements() {
@@ -23747,6 +23893,8 @@ exports["default"] = {
           case "paymentForms":
             requestBody["paymentForms"] = JSON.stringify(_this.paymentForms);
             break;
+          case "token":
+            break;
           default:
             requestBody[modifiedField] = modifiedField === "choose" ? "remove" : _this[modifiedField];
             break;
@@ -23766,6 +23914,8 @@ exports["default"] = {
     updateAnnouncement: function updateAnnouncement() {
       if (this.userHasModifiedAnything) {
         this.sendUpdateRequest();
+      } else {
+        this.notifyUser("nothing_has_been_modified", "error");
       }
     },
     sendUpdateRequest: function sendUpdateRequest() {
@@ -23787,17 +23937,18 @@ exports["default"] = {
               return [4 /*yield*/, fetch(routes_1["default"].noticesManagement, requestData)];
             case 1:
               response = _a.sent();
-              this.showUpdateNotification(response);
+              this.processUpdateResponse(response);
               return [2 /*return*/];
           }
         });
       });
     },
 
-    showUpdateNotification: function showUpdateNotification(response) {
+    processUpdateResponse: function processUpdateResponse(response) {
       switch (response.status) {
         case 200:
           this.notifyUser("announcement_has_been_successfully_updated");
+          this.modifiedFields = [];
           break;
         case 429:
           this.notifyUser("to_many_attempts", "error");
@@ -25441,7 +25592,8 @@ var translations = {
   notValidAwaitingVerificationNotVisibleForUsers: translator_js_1["default"].translate("not_valid_awaiting_verification_not_visible_for_users"),
   fetchingAnnouncements: translator_js_1["default"].translate("fetching_announcements"),
   youDontHaveAnyAnnouncements: translator_js_1["default"].translate("you_dont_have_any_announcements"),
-  announcementsCannotBeDisplayedBecauseAnErrorOccured: translator_js_1["default"].translate("announcements_cannot_be_displayed_because_an_error_occured")
+  announcementsCannotBeDisplayedBecauseAnErrorOccured: translator_js_1["default"].translate("announcements_cannot_be_displayed_because_an_error_occured"),
+  announcementWilNotBeDisplayedForPotentialClients: translator_js_1["default"].translate("announcement_wil_not_be_displayed_for_potential_clients")
 };
 exports["default"] = translations;
 
@@ -25753,6 +25905,26 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = void 0;
 var _default = {
   name: "question-mark-icon-round"
+};
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/show_eye_icon.vue?vue&type=script&lang=js":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/show_eye_icon.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+var _default = {
+  name: "show-eye-icon"
 };
 exports["default"] = _default;
 
@@ -26946,6 +27118,44 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=template&id=7bd8eea0":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=template&id=7bd8eea0 ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.render = render;
+var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+var _hoisted_1 = {
+  version: "1.1",
+  id: "Layer_1",
+  xmlns: "http://www.w3.org/2000/svg",
+  "xmlns:xlink": "http://www.w3.org/1999/xlink",
+  x: "0px",
+  y: "0px",
+  viewBox: "0 0 122.88 122.42",
+  style: {
+    "enable-background": "new 0 0 122.88 122.42"
+  },
+  "xml:space": "preserve"
+};
+var _hoisted_2 = /*#__PURE__*/(0, _vue.createElementVNode)("g", null, [/*#__PURE__*/(0, _vue.createElementVNode)("path", {
+  "class": "st0",
+  d: "M99.52,40.18c5.66,5.21,13.22,11.64,17.27,18.98l0.56,1.01l-0.56,1c-5.71,10.37-15.85,18.9-24.58,24.78 c-7.34,4.94-15.51,8.03-24.19,8.79l5.59-9.68c4.36-1.18,8.5-3.12,12.36-5.73c6.79-4.57,15.29-11.16,19.86-19.17 c-2.47-4.33-7.94-8.25-11.12-11.66L99.52,40.18L99.52,40.18L99.52,40.18z M24.74,0H93.7L76.73,28.22 c-5.56-2.12-11.44-3.27-17.54-3.27c-10.26,0-22.54,3.24-31.06,8.98C19.38,39.81,11.86,48.34,6.15,58.7l-0.56,1.01l0.56,1.01 c5.71,10.36,13.24,18.89,21.98,24.77c3.15,2.12,9.05,3.89,12.48,5.29l-18.19,31.52C9.89,121.13,0,110.51,0,97.69V24.74 C0,11.13,11.13,0,24.74,0L24.74,0z M112.17,4.39c6.46,4.47,10.71,11.94,10.71,20.35v72.95c0,13.61-11.13,24.74-24.74,24.74H42.23 L112.17,4.39L112.17,4.39z M45.01,83.17l4.15-7.2c-4.93-3.14-8.21-8.65-8.21-14.93c0-9.77,7.92-17.69,17.69-17.69 c2.95,0,5.74,0.72,8.19,2.01l5.49-9.49c-4.18-1.54-8.59-2.37-13.14-2.37c-7.98,0-18.13,2.54-24.81,7.04 c-6.79,4.57-12.69,11.16-17.26,19.18c4.56,8.02,10.47,14.61,17.26,19.17C36.93,80.61,42.22,82.05,45.01,83.17L45.01,83.17 L45.01,83.17z M61.25,55.04l5.58-9.68c-1.51-0.79-3.13-1.36-4.8-1.68c-1.2,1.81-1.92,4-1.92,6.36 C60.11,51.84,60.53,53.54,61.25,55.04L61.25,55.04L61.25,55.04L61.25,55.04z"
+})], -1 /* HOISTED */);
+var _hoisted_3 = [_hoisted_2];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("svg", _hoisted_1, _hoisted_3);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/id_card_icon.vue?vue&type=template&id=2cef1f70":
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/id_card_icon.vue?vue&type=template&id=2cef1f70 ***!
@@ -27482,6 +27692,43 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/show_eye_icon.vue?vue&type=template&id=15d3f2d5":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/show_eye_icon.vue?vue&type=template&id=15d3f2d5 ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.render = render;
+var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+var _hoisted_1 = {
+  version: "1.1",
+  id: "Layer_1",
+  xmlns: "http://www.w3.org/2000/svg",
+  "xmlns:xlink": "http://www.w3.org/1999/xlink",
+  x: "0px",
+  y: "0px",
+  viewBox: "0 0 122.88 83.78",
+  style: {
+    "enable-background": "new 0 0 122.88 83.78"
+  },
+  "xml:space": "preserve"
+};
+var _hoisted_2 = /*#__PURE__*/(0, _vue.createElementVNode)("g", null, [/*#__PURE__*/(0, _vue.createElementVNode)("path", {
+  d: "M95.73,10.81c10.53,7.09,19.6,17.37,26.48,29.86l0.67,1.22l-0.67,1.21c-6.88,12.49-15.96,22.77-26.48,29.86 C85.46,79.88,73.8,83.78,61.44,83.78c-12.36,0-24.02-3.9-34.28-10.81C16.62,65.87,7.55,55.59,0.67,43.1L0,41.89l0.67-1.22 c6.88-12.49,15.95-22.77,26.48-29.86C37.42,3.9,49.08,0,61.44,0C73.8,0,85.45,3.9,95.73,10.81L95.73,10.81z M60.79,22.17l4.08,0.39 c-1.45,2.18-2.31,4.82-2.31,7.67c0,7.48,5.86,13.54,13.1,13.54c2.32,0,4.5-0.62,6.39-1.72c0.03,0.47,0.05,0.94,0.05,1.42 c0,11.77-9.54,21.31-21.31,21.31c-11.77,0-21.31-9.54-21.31-21.31C39.48,31.71,49.02,22.17,60.79,22.17L60.79,22.17L60.79,22.17z M109,41.89c-5.5-9.66-12.61-17.6-20.79-23.11c-8.05-5.42-17.15-8.48-26.77-8.48c-9.61,0-18.71,3.06-26.76,8.48 c-8.18,5.51-15.29,13.45-20.8,23.11c5.5,9.66,12.62,17.6,20.8,23.1c8.05,5.42,17.15,8.48,26.76,8.48c9.62,0,18.71-3.06,26.77-8.48 C96.39,59.49,103.5,51.55,109,41.89L109,41.89z"
+})], -1 /* HOISTED */);
+var _hoisted_3 = [_hoisted_2];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("svg", _hoisted_1, _hoisted_3);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/signup_icon.vue?vue&type=template&id=75d53acc&scoped=true":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/signup_icon.vue?vue&type=template&id=75d53acc&scoped=true ***!
@@ -27791,12 +28038,47 @@ var _withScopeId = function _withScopeId(n) {
   return (0, _vue.pushScopeId)("data-v-72840798"), n = n(), (0, _vue.popScopeId)(), n;
 };
 var _hoisted_1 = {
-  "class": "edit-button"
+  "class": "delete-button"
 };
 var _hoisted_2 = ["textContent"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_trash_can_icon = (0, _vue.resolveComponent)("trash-can-icon");
-  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("button", _hoisted_1, [(0, _vue.createVNode)(_component_trash_can_icon), (0, _vue.createElementVNode)("span", {
+  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("button", _hoisted_1, [(0, _vue.createVNode)(_component_trash_can_icon, {
+    "class": "icon"
+  }), (0, _vue.createElementVNode)("span", {
+    "class": "label",
+    textContent: (0, _vue.toDisplayString)($data.label)
+  }, null, 8 /* PROPS */, _hoisted_2)]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=template&id=f522a2ca&scoped=true":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=template&id=f522a2ca&scoped=true ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.render = render;
+var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+var _withScopeId = function _withScopeId(n) {
+  return (0, _vue.pushScopeId)("data-v-f522a2ca"), n = n(), (0, _vue.popScopeId)(), n;
+};
+var _hoisted_1 = {
+  "class": "show-button"
+};
+var _hoisted_2 = ["textContent"];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_show_eye_icon = (0, _vue.resolveComponent)("show-eye-icon");
+  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("button", _hoisted_1, [(0, _vue.createVNode)(_component_show_eye_icon, {
+    "class": "icon"
+  }), (0, _vue.createElementVNode)("span", {
     "class": "label",
     textContent: (0, _vue.toDisplayString)($data.label)
   }, null, 8 /* PROPS */, _hoisted_2)]);
@@ -27827,7 +28109,42 @@ var _hoisted_1 = {
 var _hoisted_2 = ["textContent"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_edit_box_icon = (0, _vue.resolveComponent)("edit-box-icon");
-  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("button", _hoisted_1, [(0, _vue.createVNode)(_component_edit_box_icon), (0, _vue.createElementVNode)("span", {
+  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("button", _hoisted_1, [(0, _vue.createVNode)(_component_edit_box_icon, {
+    "class": "icon"
+  }), (0, _vue.createElementVNode)("span", {
+    "class": "label",
+    textContent: (0, _vue.toDisplayString)($data.label)
+  }, null, 8 /* PROPS */, _hoisted_2)]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=template&id=00b17422&scoped=true":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=template&id=00b17422&scoped=true ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.render = render;
+var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+var _withScopeId = function _withScopeId(n) {
+  return (0, _vue.pushScopeId)("data-v-00b17422"), n = n(), (0, _vue.popScopeId)(), n;
+};
+var _hoisted_1 = {
+  "class": "edit-button"
+};
+var _hoisted_2 = ["textContent"];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_hide_eye_icon = (0, _vue.resolveComponent)("hide-eye-icon");
+  return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("button", _hoisted_1, [(0, _vue.createVNode)(_component_hide_eye_icon, {
+    "class": "icon"
+  }), (0, _vue.createElementVNode)("span", {
     "class": "label",
     textContent: (0, _vue.toDisplayString)($data.label)
   }, null, 8 /* PROPS */, _hoisted_2)]);
@@ -30445,7 +30762,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, null, 8 /* PROPS */, _hoisted_15), (0, _vue.createElementVNode)("td", {
       "data-label": $data.translations.photosAreValidAndUpToDate,
       "class": "announcement-cell",
-      textContent: (0, _vue.toDisplayString)($options.transformBooleanToYesOrNo(announcement.photosAreValidAndUpToDate))
+      textContent: (0, _vue.toDisplayString)($options.transformBooleanToYesOrNo(announcement.isValid))
     }, null, 8 /* PROPS */, _hoisted_16), (0, _vue.createElementVNode)("td", {
       "class": "announcement-cell",
       "data-label": $data.translations.validUntil,
@@ -30463,7 +30780,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return $options.initiateAnnouncementDeletion(announcement.id);
       },
       "class": "delete"
-    }, null, 8 /* PROPS */, ["onClick"])], 8 /* PROPS */, _hoisted_18)]);
+    }, null, 8 /* PROPS */, ["onClick"]), ((0, _vue.openBlock)(), (0, _vue.createBlock)((0, _vue.resolveDynamicComponent)($options.visibilityComponentName(announcement.hiddenByAUser)), {
+      "class": "toggle-visibility",
+      onClick: function onClick($event) {
+        return $options.toggleAnnouncementHiddenOrNot(index);
+      }
+    }, null, 8 /* PROPS */, ["onClick"]))], 8 /* PROPS */, _hoisted_18)]);
   }), 128 /* KEYED_FRAGMENT */))])])) : (0, _vue.createCommentVNode)("v-if", true), (0, _vue.withDirectives)((0, _vue.createVNode)(_component_yes_no_dialog, {
     "class": "dialog",
     onConfirmed: $options.startDeletingAnnouncement,
@@ -30905,6 +31227,9 @@ var _default = {
     "delete": 'usuń',
     cancel: 'anuluj',
     answear_comment: 'Odpowiedz',
+    dont_hide: "nie ukrywaj",
+    announcement_has_been_hidden: "Ogłoszenie zostało ukryte dla użytkowników",
+    announcement_is_visible: 'Ogłoszenie jest widoczne dla użytkowników',
     account_deletion_warning: "Czy na pewno chcesz usunąć konto? Znikną wszystkie komentarze i wystawione oceny. Nie będzie można tego cofnąć. Jeżeli jesteś pewny/a wpisz hasło i kliknij usuń",
     email_has_already_been_taken: "Adres email jest już zajęty",
     current_number_of_votes: "Liczba oddanych głosów",
@@ -31009,7 +31334,7 @@ var _default = {
     login_has_already_been_taken: "Login jest już zajęty",
     login_contains_less_then_3_characters: "Login ma mniej niż 3 znaki",
     login_contains_more_then_20_characters: "Login ma więcej niż 20 znaków"
-  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "subject_exceeds_40_characters", "Temat przekracza 40 znaków"), _defineProperty(_pl, "current_news", 'Aktualności'), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "movies", "Filmy"), _defineProperty(_pl, "views", "Odsłon"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "pornstars_navbar_caption", "Gwiazdy porno"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "launching_in_progress", "Trwa uruchamianie"), _defineProperty(_pl, "clicking_here", "klikając tutaj"), _defineProperty(_pl, "prostitution_offer_bottom_navigation_info", "Ogłoszenie zostało podzielone na sekcje, użyj strzałek aby przejść dalej"), _defineProperty(_pl, "click_to_play_the_video", "Kliknij aby uruchomić film"), _defineProperty(_pl, "stop_movie_preview", "Zatrzymaj odtwarzanie podglądu filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "previous_page", "poprzednia"), _defineProperty(_pl, "next_page", "następna"), _defineProperty(_pl, "further", "dalej"), _defineProperty(_pl, "back", "wstecz"), _defineProperty(_pl, "up", "góra"), _defineProperty(_pl, "first_page", "pierwsza"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "default_avatar", "Domyślny avatar, przedstawia bliżej niezidentyfikowanego użytkownika"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "element_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "movie_rate_data_is_invalid", "Niepoprawne dane oceny lub filmu"), _defineProperty(_pl, "birth_date_is_required", "Data urodzenia jest wymagana"), _defineProperty(_pl, "nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "answears", "Odpowiedzi"), _defineProperty(_pl, "add_comment", "Dodaj komentarz"), _defineProperty(_pl, "photosAreValidAndUpToDate", "zweryfikowane zdjęcia"), _defineProperty(_pl, "region", "województwo"), _defineProperty(_pl, "add", "dodaj"), _defineProperty(_pl, "contents", "Treść"), _defineProperty(_pl, "comment_added", "Dodano komentarz"), _defineProperty(_pl, "unregistered_user", "Niezarejestrowany"), _defineProperty(_pl, "register", "Rejestruj"), _defineProperty(_pl, "add_comment_short", "Komentuj"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "adding_comment", "Dodaję komentarz"), _defineProperty(_pl, "fetching_comments", "Pobieram komentarze"), _defineProperty(_pl, "comment_text_is_missing", "Nie podano treści komentarza"), _defineProperty(_pl, "comment_text_exceeds_1000_characters", "Treść komentarza przekracza 1000 znaków"), _defineProperty(_pl, "the_nickname_must_be_between_2_and_20_characters", "Pseudonim musi mieć minimum 2 znaki ale nie więcej niż 20"), _defineProperty(_pl, "no_comments_available", "Brak komentarzy"), _defineProperty(_pl, "because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute", "Z powodów bezpieczeństwa ograniczono liczbę dodawanych komentarzy do 2 na minutę"), _defineProperty(_pl, "total_comments", "Liczba wszystkich komentarzy"), _defineProperty(_pl, "publish_comment", "Opublikuj komentarz"), _defineProperty(_pl, "show_comments_sub_page_with_number", "Pokaż podstronę komentarzy o numerze"), _defineProperty(_pl, "edit", 'edytuj'), _defineProperty(_pl, "the_value_must_be_a_number_greater_than_0", "Podaj dodatnią liczbę"), _defineProperty(_pl, "sex_empire_short", "SI"), _defineProperty(_pl, "small_ass", "mały"), _defineProperty(_pl, "medium_ass", "średni"), _defineProperty(_pl, "big_ass", "duży"), _defineProperty(_pl, "small_tits", "małe"), _defineProperty(_pl, "medium_tits", "średnie"), _defineProperty(_pl, "big_tits", "duże"), _defineProperty(_pl, "skinny_tchickness", "chuda"), _defineProperty(_pl, "medium_tchickness", "średnia"), _defineProperty(_pl, "fat_tchickness", "gruba"), _defineProperty(_pl, "teenagers", "nastolatki(18 - 19)"), _defineProperty(_pl, "age_range_young", "młode (20 -29)"), _defineProperty(_pl, "age_range_mature", "dojrzałe(30 - 50)"), _defineProperty(_pl, "dark_hair", "czarny"), _defineProperty(_pl, "blonde_hair", "blond"), _defineProperty(_pl, "brown_hair", "brązowy"), _defineProperty(_pl, "red_hair", "rudy"), _defineProperty(_pl, "white_race", "biała"), _defineProperty(_pl, "asian_race", "azjatki"), _defineProperty(_pl, "ebony_race", "murzynki"), _defineProperty(_pl, "latin_race", "latynoski"), _defineProperty(_pl, "arabic_race", "arabki"), _defineProperty(_pl, "yes", "tak"), _defineProperty(_pl, "most_important_services_exact_information_notice", " Prosimy wypełnić poniższy formularz skrupulatnie, starannie i zgodnie z prawdą"), _defineProperty(_pl, "deep_throat", "głębokie gardło"), _defineProperty(_pl, "no", "nie"), _defineProperty(_pl, "one_male_one_female", "facet i kobieta"), _defineProperty(_pl, "bukkake", "bukkake"), _defineProperty(_pl, "single_female", "kobieta solo"), _defineProperty(_pl, "lesbians", "lesbijki"), _defineProperty(_pl, "group_sex", "grupowy"), _defineProperty(_pl, "one_male_many_females", "facet i wiele kobiet"), _defineProperty(_pl, "GangBang", "GangBang"), _defineProperty(_pl, "sex_with_many_males", "sex z wieloma mężczyznami"), _defineProperty(_pl, "outside_together", "wspólne wyjścia"), _defineProperty(_pl, "one_female_two_males", "Na 2 baty"), _defineProperty(_pl, "lesbian_group_sex", "Lesbijki grupowo"), _defineProperty(_pl, "only", "tylko i wyłącznie"), _defineProperty(_pl, "maximum", "maximum"), _defineProperty(_pl, "a_lot", "dużo"), _defineProperty(_pl, "medium", "średnio"), _defineProperty(_pl, "a_little", "trochę"), _defineProperty(_pl, "exclude", "wyklucz"), _defineProperty(_pl, "on_face", "na twarz"), _defineProperty(_pl, "cum_swallow", "z połykiem"), _defineProperty(_pl, "creampie", "w cipkę"), _defineProperty(_pl, "anal", "anal"), _defineProperty(_pl, "cum_on_face", "wytrysk na twarz"), _defineProperty(_pl, "anal_creampie", "w dupkę"), _defineProperty(_pl, "on_tits", "na cycki"), _defineProperty(_pl, "on_pussy", "na cipkę"), _defineProperty(_pl, "on_ass", "na dupkę"), _defineProperty(_pl, "on_feet", "na stopy"), _defineProperty(_pl, "on_many_places", "na wiele miejsc"), _defineProperty(_pl, "on_other_body_parts", "na inne miejsca"), _defineProperty(_pl, "american_nationality", "amerykańska"), _defineProperty(_pl, "japanese_nationality", "japońska"), _defineProperty(_pl, "german_nationality", "niemiecka"), _defineProperty(_pl, "czech_nationality", "czeska"), _defineProperty(_pl, "russian_nationality", "rosyjska"), _defineProperty(_pl, "british_nationality", "brytyjska"), _defineProperty(_pl, "swedish_nationality", "szwedzka"), _defineProperty(_pl, "ukrainian_nationality", "ukraińska"), _defineProperty(_pl, "slovac_nationality", "słowacka"), _defineProperty(_pl, "hanguarian_nationality", "węgierska"), _defineProperty(_pl, "polish_nationality", "polska"), _defineProperty(_pl, "dutch_nationality", "holenderska"), _defineProperty(_pl, "hindu_nationality", "hinduska"), _defineProperty(_pl, "french_nationality", "francuska"), _defineProperty(_pl, "spanish_nationality", "hiszpańska"), _defineProperty(_pl, "italian_nationality", "włoska"), _defineProperty(_pl, "canadian_nationality", "kanadyjska"), _defineProperty(_pl, "argentinian_nationality", "argentyńska"), _defineProperty(_pl, "house", "dom"), _defineProperty(_pl, "bathroom", "łazienka"), _defineProperty(_pl, "office", "biuro"), _defineProperty(_pl, "school", "szkoła"), _defineProperty(_pl, "public_place", "miejsca publiczne"), _defineProperty(_pl, "car", "samochód"), _defineProperty(_pl, "nature", "łono natury"), _defineProperty(_pl, "solarium", "solarium"), _defineProperty(_pl, "elevator", "winda"), _defineProperty(_pl, "beach", "plaża"), _defineProperty(_pl, "gym", "siłownia"), _defineProperty(_pl, "POV", "POV"), _defineProperty(_pl, "weight", "waga"), _defineProperty(_pl, "outside_camera_style", "z zewnątrz"), _defineProperty(_pl, "mixed_camera_style", "mieszane"), _defineProperty(_pl, "female_pupil", "uczennica"), _defineProperty(_pl, "female_employee", "pracownica"), _defineProperty(_pl, "female_student", "studentka"), _defineProperty(_pl, "wife", "żona"), _defineProperty(_pl, "female_teacher", "nauczycielka"), _defineProperty(_pl, "nurse", "pielęgniarka"), _defineProperty(_pl, "female_slave", "niewolnica"), _defineProperty(_pl, "nun", "zakonnica"), _defineProperty(_pl, "female_police_officer", "policjantka"), _defineProperty(_pl, "prostitute", "prostytutka"), _defineProperty(_pl, "female_boss", "szefowa"), _defineProperty(_pl, "cleaner", "sprzątaczka"), _defineProperty(_pl, "mommy", "mamusia"), _defineProperty(_pl, "amateur", "amatorski"), _defineProperty(_pl, "professional", "profesjonalny"), _defineProperty(_pl, "save", "zapisz"), _defineProperty(_pl, "choose_option", "wybierz opcję"), _defineProperty(_pl, "these_photos_currently_await_validation", "Te zdjęcia lub część z nich aktualnie czekają na weryfikację"), _defineProperty(_pl, "saving_notice", "Zapisywanie ogłoszenia"), _defineProperty(_pl, "announcement_update_info", "Wszelkie informacje zostaną zaktualizowane natychmiast, jeżeli dodano jakiekolwiek nowe zdjęcia, należy poczekać na weryfikację - do tego momentu wyświetlane będę zdjęcia z przed zmiany. Jeżeli tylko usunięto zdjęcie zmiana będzie widoczna natychmiast i nie trzeba czekać na weryfikację. Przypominamy, że zmiana daty urodzenia nie jest możliwa."), _defineProperty(_pl, "announcement_must_be_validated_reminder", "Proszę pamiętać, że ogłoszenie nie zostanie dodane natychmiast. Musi najpierw zostać zweryfikowane, jednakże nie dłużej niż 48 godzin. "), _defineProperty(_pl, "prostitute_save_announcement_info", "To już koniec wypełniania formularzy. Jeśli wszystko się zgadza, można kliknąć w przycisk poniżej aby dodać ogłoszenie. "), _defineProperty(_pl, "choose_options", "wybierz opcje"), _defineProperty(_pl, "included_in_price", "wliczone w cenę"), _defineProperty(_pl, "client_rimming", "rimming w stronę klienta"), _defineProperty(_pl, "cum_on_body", "wytrysk na ciało"), _defineProperty(_pl, "kisses", "pocałunki"), _defineProperty(_pl, "aditional_payment", "za dopłatą"), _defineProperty(_pl, "classic_sex", "sex klasyczny"), _defineProperty(_pl, "only_in_condom", "tylko w gumce"), _defineProperty(_pl, "without_condom", "bez gumki"), _defineProperty(_pl, "without_condom_with_aditional_payments", "bez gumki, za dopłatą"), _defineProperty(_pl, "role_playing", "odgrywanie ról"), _defineProperty(_pl, "a_payment_type_can_be_chosen_only_once", "dany typ płatności można wybrać tylko raz"), _defineProperty(_pl, "announcement_description", "Treść ogłoszenia, max: 2000 znaków"), _defineProperty(_pl, "oral_creampie", "wytrysk do ust"), _defineProperty(_pl, "most_important_services_description", "Poniżej lista najważniejszych usług jakimi interesują się klienci. Aktualnie ceny podawane są w złotówkach. Pracujemy nad cennikiem w innych walutach. Informacje, ułatwią użytkownikom wyszukiwanie i Tobie pomogą znaleźć klientów. Jeżeli formularze nie do końca odpowiadają Twej ofercie możesz doprecyzować to w opisie w dalszej sekcji."), _defineProperty(_pl, "remaining_services_description", "Pozostałe usługi nie ujęte na liście najważniejszych (opcjonalnie)"), _defineProperty(_pl, "click_to_chose_remaining_services", "Kliknij aby wybrać pozostałe usługi"), _defineProperty(_pl, "blowjob", "lodzik"), _defineProperty(_pl, "currencies_you_accept", "waluty jakie akceptujesz"), _defineProperty(_pl, "trips", "wyjazdy"), _defineProperty(_pl, "prices_for_your_services_description", "Ceny Twoich usług. Możesz podać kilka opcji. Kliknij w zielony przycisk aby dodać kolejną pozycję i czerwony przycisk aby usunąć."), _defineProperty(_pl, "add_payment_type", "dodaj typ płatności"), _defineProperty(_pl, "remove_payment_type", "usuń typ płatności"), _defineProperty(_pl, "remove", "usuń"), _defineProperty(_pl, "streaptease", "striptiz"), _defineProperty(_pl, "dancing", "taniec"), _defineProperty(_pl, "latex", "lateks"), _defineProperty(_pl, "double_penetration", "podwójna penetracja"), _defineProperty(_pl, "for_hour", "za godzinę"), _defineProperty(_pl, "for_30_minutes", "za pół godziny"), _defineProperty(_pl, "for_15_minutes", "za 15 minut"), _defineProperty(_pl, "for_night", "za noc"), _defineProperty(_pl, "for_blowjob", "za lodzika"), _defineProperty(_pl, "until_first_cumshot", "do pierwszego wystrzału"), _defineProperty(_pl, "location_and_working_hours", "lokalizacja i godziny pracy"), _defineProperty(_pl, "for_2_hours", "za 2 godziny"), _defineProperty(_pl, "for_3_hours", "za 3 godziny"), _defineProperty(_pl, "never", "nigdy"), _defineProperty(_pl, "height", "wzrost"), _defineProperty(_pl, "search", "szukaj"), _defineProperty(_pl, "remove_option", "usuń opcję"), _defineProperty(_pl, "you_have_exceeded_photos_limit", "Przekroczono limit zdjęć"), _defineProperty(_pl, "monday", "poniedziałek"), _defineProperty(_pl, "tuesday", "wtorek"), _defineProperty(_pl, "wednesday", "środa"), _defineProperty(_pl, "thursday", "czwartek"), _defineProperty(_pl, "friday", "piątek"), _defineProperty(_pl, "saturday", "sobota"), _defineProperty(_pl, "sunday", "niedziela"), _defineProperty(_pl, "show_each_single_day_from_monday_to_friday", "Pokaż pojedyncze dni powszednie"), _defineProperty(_pl, "close", "zamknij"), _defineProperty(_pl, "day_of", "wolne"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę"), _defineProperty(_pl, "show_weekdays_as_one_row", "Pokaż dni powszednie w jednym wierszu"), _defineProperty(_pl, "fetching_pornstars", "Pobieram listę gwiazd"), _defineProperty(_pl, "not_selected", "nie wybrano"), _defineProperty(_pl, "minutes_inflected", "minut(y)"), _defineProperty(_pl, "views_inflected", "wyświetleń"), _defineProperty(_pl, "phone_number_must_contain_at_least_7_characters", "Numer telefonu musi zawierać co najmniej 7 znaków"), _defineProperty(_pl, "height_must_be_an_integer_between_90_and_270", "Podaj liczbę między 90 a 270"), _defineProperty(_pl, "weight_must_be_an_integer_between_30_and_800", "Podal liczbę pomiędzy 30 a 800"), _defineProperty(_pl, "file_size_has_been_exceeded_for_following_files", "Następujące pliki mają za duży rozmiar"), _defineProperty(_pl, "prostitute_photos_allowed_size", "Maksymalny rozmiar zdjęcia to 1MB"), _defineProperty(_pl, "unexpected_error_occured", "Pojawił się bliżej niezidentyfikowany błąd"), _defineProperty(_pl, "titsSize", "rozmiar cycków"), _defineProperty(_pl, "assSize", "rozmiar dupci"), _defineProperty(_pl, "thicknessSize", "tusza"), _defineProperty(_pl, "ageRange", "przedział wiekowy"), _defineProperty(_pl, "hairColor", "kolor włosów"), _defineProperty(_pl, "race", "rasa"), _defineProperty(_pl, "abundanceType", "liczebność"), _defineProperty(_pl, "cumshotType", "typ wytrysku"), _defineProperty(_pl, "nationality", "narodowość"), _defineProperty(_pl, "location", "lokalizacja"), _defineProperty(_pl, "cameraStyle", "ujęcie kamery"), _defineProperty(_pl, "storyOrCostume", "motyw fabularno kostiumowy"), _defineProperty(_pl, "professionalismLevel", "poziom filmu"), _defineProperty(_pl, "shavedPussy", "wygolona cipka"), _defineProperty(_pl, "analAmount", "anal"), _defineProperty(_pl, "blowjob", "obciąganie"), _defineProperty(_pl, "handjob", "walenie konika"), _defineProperty(_pl, "blondes", "blondynki"), _defineProperty(_pl, "tittfuck", "na hiszpana"), _defineProperty(_pl, "pissing", "obsikiwanie"), _defineProperty(_pl, "strapon", "sztuczny penis"), _defineProperty(_pl, "fingering", "palcówka"), _defineProperty(_pl, "licking_balls", "lizanie jąder"), _defineProperty(_pl, "spanking", "klapsy"), _defineProperty(_pl, "pussy_licking", "minetka"), _defineProperty(_pl, "petting_with_feet", "pieszczenie stopami"), _defineProperty(_pl, "feet", "stopy"), _defineProperty(_pl, "femdom", "kobieca dominacja"), _defineProperty(_pl, "brunettes", "brunetki"), _defineProperty(_pl, "redheads", "rude"), _defineProperty(_pl, "milfs", "dojrzałe"), _defineProperty(_pl, "teens", 'nastolatki'), _defineProperty(_pl, "amateur", "amatorskie"), _defineProperty(_pl, "asian", 'azjatki'), _defineProperty(_pl, "latins", 'latynoski'), _defineProperty(_pl, "ebony", 'murzynki'), _defineProperty(_pl, "lesbians", 'lesbijki'), _defineProperty(_pl, "group", 'grupowy'), _defineProperty(_pl, "cumshot_compilation", 'kompilacja wytrysków'), _defineProperty(_pl, "cumshot_compilations", 'kompilacje wytrysków'), _defineProperty(_pl, "cum_on_face", 'wytrysk na twarz'), _defineProperty(_pl, "cum_swallow", 'połykanie spermy'), _defineProperty(_pl, "cum_on_feet", 'wytrysk na stopy'), _defineProperty(_pl, "creampie", 'wytrysk w cipkę'), _defineProperty(_pl, "cum_in_ass", 'wytrysk w dupkę'), _defineProperty(_pl, "cum_on_titts", 'wytrysk na cycki'), _defineProperty(_pl, "pantyhose", 'rajstopki'), _defineProperty(_pl, "high_heels", 'szpile'), _defineProperty(_pl, "insults", "wyzwiska"), _defineProperty(_pl, "hugging", "przytulanie"), _defineProperty(_pl, "shared_bath", "wspólna kąpiel"), _defineProperty(_pl, "sex_with_2_males", "na 2 baty"), _defineProperty(_pl, "nurses", 'pielęgniarki'), _defineProperty(_pl, "teachers", 'nauczycielki'), _defineProperty(_pl, "japanese", 'japonki'), _defineProperty(_pl, "russian", 'rosjanki'), _defineProperty(_pl, "pornstars", 'gwiazdy porno'), _defineProperty(_pl, "blowjobAmount", 'obciąganie'), _defineProperty(_pl, "money_amount", "kwota"), _defineProperty(_pl, "handjobAmount", 'walenie konika'), _defineProperty(_pl, "doublePenetrationamount", "wtyczka"), _defineProperty(_pl, "vaginalamount", "waginalny"), _defineProperty(_pl, "pussyLickingAmount", 'minetka'), _defineProperty(_pl, "feetPettingAmount", 'pieszczenie stóp'), _defineProperty(_pl, "position69amount", 'pozycja 69'), _defineProperty(_pl, "titfuckAmount", "na hiszpana"), _defineProperty(_pl, "isCumshotCompilation", 'kompilacja wytrysków'), _defineProperty(_pl, "recordedBySpamCamera", 'nagrany kamerą szpiegowską'), _defineProperty(_pl, "isSadisticOrMasochistic", 'sado-masochostyczny'), _defineProperty(_pl, "isFemaleDomination", 'kobieca dominacja'), _defineProperty(_pl, "isTranslatedToPolish", 'polska wersja językowa'), _defineProperty(_pl, "showPantyhose", 'rajstopy'), _defineProperty(_pl, "showStockings", 'pończochy'), _defineProperty(_pl, "showGlasses", 'okulary'), _defineProperty(_pl, "showHighHeels", 'szpile'), _defineProperty(_pl, "showHugeCock", 'wielki kutas'), _defineProperty(_pl, "showWhips", 'bicze'), _defineProperty(_pl, "whips", 'bicze'), _defineProperty(_pl, "showSexToys", 'sex-zabawki'), _defineProperty(_pl, "minimumMovieTime", "minimalny czas"), _defineProperty(_pl, "maximumMovieTime", "maksymalny czas"), _defineProperty(_pl, "minimumMovieViews", 'minimalna liczba wyświetleń'), _defineProperty(_pl, "maximumMovieViews", 'maksymalna liczba wyświetleń'), _defineProperty(_pl, "hasStory", 'zawiera fabułę'), _defineProperty(_pl, "total_movies_found", "Ilość znalezionych filmów"), _defineProperty(_pl, "rules", "zasady"), _defineProperty(_pl, "movie_with_following_pornstars", "występują jednocześnie następujące gwiazdy"), _defineProperty(_pl, "last_page", "ostatnia"), _defineProperty(_pl, "movie_with_pornstar", "Film w którym występuje"), _defineProperty(_pl, "no_movies_have_been_found", "Nie znaleziono żadnych filmów pasujących do wybranych kryteriów"), _defineProperty(_pl, "no_options_have_been_selected", "Nie wybrano żadnych opcji"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd"), _defineProperty(_pl, "because_of_security_reasons_search_was_blocked", "Ze względów bezpieczeństwa ilość zapytań do wyszukiwarki w ciągu minuty jest ograniczona. Prosimy zaczekać chwilę i spróbować ponownie."), _defineProperty(_pl, "popular_categories", "Popularne kategorie"), _defineProperty(_pl, "categories_list", "Lista kategorii"), _defineProperty(_pl, "personalities", "personalia"), _defineProperty(_pl, "section", "sekcja"), _defineProperty(_pl, "big_titts", "duże cycki"), _defineProperty(_pl, "categories", "Kategorie"), _defineProperty(_pl, "teenagers", "nastolatki"), _defineProperty(_pl, "spermatozoid_has_been_asigned", "Przyznano plemnika. Musisz odczekać minimum pół godziny aby przyznać kolejnego."), _defineProperty(_pl, "you_have_exceeded_cum_limit", "Możesz przyznać maksymalnie jednego plemnika na pół godziny niezależnie od filmu"), _defineProperty(_pl, "spermatozoid_rate_data_is_incorrect", "Niepoprawne dane filmu"), _defineProperty(_pl, "movie_views", "Liczba wyświetleń"), _defineProperty(_pl, "movie_added_at", "Data dodania"), _defineProperty(_pl, "movie_average_rating", "Średnia ocen"), _defineProperty(_pl, "this_pornstar_does_not_have_enough_votes_to_calculate_average", "Ta gwiazda ma za mało głosów aby policzyć średnią (wymagane minimum to 10)"), _defineProperty(_pl, "fetching_rating_in_progress", "Pobieram dane rankingu"), _defineProperty(_pl, "average_rate_not_available_yet", "jeszcze niedostępna"), _defineProperty(_pl, "ammount_of_spermatozoids", "Liczba plemników"), _defineProperty(_pl, "your_spermatozoids", "twoich"), _defineProperty(_pl, "number_of_likes", "Polubień"), _defineProperty(_pl, "failed_to_load_movie_data", "Nie udało się pobrać szczegółowych danych filmu"), _defineProperty(_pl, "failed_to_load_similar_movies", "Nie udało się załadować podobnych filmów"), _defineProperty(_pl, "you_like_it", "Lubisz to"), _defineProperty(_pl, "you_already_like_this_movie", "Już wcześniej polubiłeś ten film"), _defineProperty(_pl, "you_and", "Ty i"), _defineProperty(_pl, "people_like_it", "osób lubi to"), _defineProperty(_pl, "no_comments", "Brak komentarzy"), _defineProperty(_pl, "services_range_and_pricing", "usługi i cennik"), _defineProperty(_pl, "working_hours", "Godziny pracy"), _defineProperty(_pl, "location", "Lokalizacja"), _defineProperty(_pl, "voivodeship", "Województwo"), _defineProperty(_pl, "fetching_announcements", "Pobieram ogłoszenia"), _defineProperty(_pl, "you_dont_have_any_announcements", "Nie posiadasz żadnych ogłoszeń"), _defineProperty(_pl, "city", "Miasto"), _defineProperty(_pl, "hidden_by_a_user", "Ukryte przez użytkownika"), _defineProperty(_pl, "not_valid_awaiting_verification_not_visible_for_users", "Nieważne, niewidoczne dla użytkowników. Czeka na weryfikację"), _defineProperty(_pl, "monday", "poniedziałek"), _defineProperty(_pl, "actions", "działania"), _defineProperty(_pl, "not_provided", "nie podano"), _defineProperty(_pl, "friday", "piątek"), _defineProperty(_pl, "please_decide", "proszę zdecydować"), _defineProperty(_pl, "invalid_time_format", "Błędny format"), _defineProperty(_pl, "probably_your_session_has_expired", "Jesteś niezalogowany, prawdopodbnie zostało to spowodowane dłuższym czasem bezczynności - w takiej sytuacji aplikacja wylogowuje użytkownika. Niestety chcąc kontynuować należy ponownie się zalogować."), _defineProperty(_pl, "time_since_must_be_earlier_than_time_until", "W przypadku co najmniej jednego dnia, godzina rozpoczęcia jest później niż godzina zakończenia lub są one równe. Zaznaczono te kontrolki na czerwono"), _defineProperty(_pl, "prostitution_announcements_are_free", "Zamieszczenie oferty jest całkowicie darmowe. Obowiązuje limit : 1 ogłoszenie. Wyjątkiem są właściciele agencji towarzyskich/salonów masażu, którzy chcieliby przedstawić poszczególnych pracowników. "), _defineProperty(_pl, "dont_spam_with_announcements", "Nie kombinuj, nie spamuj ogłoszeniami - administracja i tak prędzej czy później takowe oferty usuwa i banuje użytkowników. Dodawaj tylko i wyłącznie swoje aktualne zdjęcia. "), _defineProperty(_pl, "announcement_will_not_be_added_immidiatelly", "Ogłoszenie nie zostanie dodane natychmiastowo, musi najpierw zostać zweryfikowane przez administrację. Czas weryfikacji to maksimum 48 godzin. Aby dodać kolejne ogłoszenie poprzednie musi najpierw zostać zweryfikowane. "), _defineProperty(_pl, "in_case_of_a_problem_please_contact_us_using_the_contact_form", "W razie problemów, prosimy o kontakt poprzez formularz "), _defineProperty(_pl, "empire_policy_for_working_hours_of_prostitutes", "Proszę zdecydować czy podać konkretne godziny pracy, czy też pozostawić niezdefiniowane - na zasadzie mam włączony telefon to jestem a jak jest wyłączony to mnie nie ma. Warto wziąć pod uwagę, że podanie precyzyjnych godzin pozytywnie wpłynie na odbiór klientów. W przyszłości będzie można zaznaczyć opcję ukrywania ogłoszenia poza godzinami pracy. Nie wystarczy podać przedziału czasowego w opisie (w sekcji : personalia), aby w 100% poprawnie zapisał się w systemie i aby ułatwiał wyszukiwanie użytkownikom."), _defineProperty(_pl, "prostitution_offer_policy_description", "Nie kombinuj, nie spamuj ogłoszeniami - administracja i tak prędzej czy później takowe oferty usuwa i banuje użytkowników. Dodawaj tylko i wyłącznie swoje aktualne zdjęcia. Ogłoszenie nie zostanie dodane natychmiastowo, musi najpierw zostać zweryfikowane przez administrację. Czas weryfikacji to maksimum 48 godzin. W razie problemów, prosimy o kontakt poprzez formularz, "), _defineProperty(_pl, "everyone_can_comment_a_prostitute", "Każdy zarejestrowany użytkownik może dodać komentarz pod dowolnym ogłoszeniem. Autor ogłoszenia nie ma możliwości usuwania komentarzy użytkowników, a już tym bardziej tych nieprzychylnych. "), _defineProperty(_pl, "comments_are_filtered_by_admins_to_prevent_revealing_classified_information", "Jednocześnie przed opublikowaniem jakiegokolwiek komentarza administracja dba o to aby nie zostały upublicznione poufne dane takie jak adres, imię i nazwisko itp. "), _defineProperty(_pl, "do_you_want_to_set_precise_working_hours", "Podać godziny pracy"), _defineProperty(_pl, "cookie_notification_header", "Ta strona wykorzystuje pliki cookie"), _defineProperty(_pl, "prostitute_photos_just_one_reminder", "Przypominamy, że poza wyjątkiem właścicieli agencji towarzyskich/salonów masażu można dodać tylko 1 ogłoszenie. Przypominamy również, że aby dodać kolejną ofertę wszystkie poprzednie muszą najpierw zostać zaakceptowane. Ewentualne zmiany w treści ogłoszenia są możliwe w panelu użytkownika."), _defineProperty(_pl, "cookie_notification_body", "Poprzez dalsze korzystanie z portalu lub naci\u015Bni\u0119cie przycisku \"Akceptuj\u0119\" wyra\u017Casz zgod\u0119 na przechowywanie plik\xF3w cookie na Twej maszynie"), _defineProperty(_pl, "accept_button_caption", "Akceptuję - zamknij"), _defineProperty(_pl, "show_content_side_bar_title", "Rozwiń nawigację strony dla wersji mobilnej"), _defineProperty(_pl, "show_content_side_bar_caption", "Menu"), _defineProperty(_pl, "cancel_like", "cofnij like'a"), _defineProperty(_pl, "fetching_cities", "Pobieram listę miast"), _defineProperty(_pl, "show_authenticated_user_sidebar_title", "Rozwiń menu użytkownika, ustawienia profilu, wylogowanie itp."), _defineProperty(_pl, "show_authenticated_user_sidebar_caption", "Profil"), _defineProperty(_pl, "user_type_is_required", "Wymagane jest podanie typu użytkownika"), _defineProperty(_pl, "you_mustnot_choose_tits_size_if_you_are_a_male", "Nie możesz wybrać rozmiaru cycków będąc mężczyzną"), _defineProperty(_pl, "one_announcement_is_awaiting_validation", "Aktualnie posiadasz już 1 ogłoszenie oczekujące na weryfikację w związku z czym nie można dodać kolejnego"), _defineProperty(_pl, "selected_avatar", "Nowy avatar"), _defineProperty(_pl, "no_avatar_has_been_choosen", "Nie wybrano avataru"), _defineProperty(_pl, "notices_policy", "polityka dodawania ogłoszeń"), _defineProperty(_pl, "current_avatar", "Wybrany avatar"), _defineProperty(_pl, "basic_information", "Podstawowe informacje"), _defineProperty(_pl, "the_latest", "Najnowsze"), _defineProperty(_pl, "the_most_popular", "Najpopularniejsze"), _defineProperty(_pl, "advanced_search", "Szukanie zaawansowane"), _defineProperty(_pl, "login_or_email", "Login lub email"), _defineProperty(_pl, "remember_me", "Zapamiętaj mnie"), _defineProperty(_pl, "scroll_movies_list_left", "Przewiń listę filmów w lewo"), _defineProperty(_pl, "scroll_movies_list_right", "Przewiń listę filmów w prawo"), _defineProperty(_pl, "dictionary", "Słownik"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "generate_new_token", "Generuj nowy token"), _defineProperty(_pl, "use_old_token", "Użyj starego tokena"), _defineProperty(_pl, "prostitution", "Prostytucja"), _defineProperty(_pl, "add_notice", "Dodaj ogłoszenie"), _defineProperty(_pl, "no_working_period_has_been_provided", "Skoro zdecydowałaś(eś) się podać godziny pracy to nie możesz mieć cały czas wolne"), _defineProperty(_pl, "notices_list", "Lista ogłoszeń"), _defineProperty(_pl, "you_have_to_be_logged_in_to_add_notice", "Musisz być zalogowany aby dodać ogłoszenie"), _defineProperty(_pl, "phone_number_format_must_be_valid", "Numer telefonu musi być w prawidłowym formacie"), _defineProperty(_pl, "phone_number_must_not_exceed_16_characters", "Numer telefonu nie może być dłuższy niż 16 znaków"), _defineProperty(_pl, "valid_until", "ważny do"), _defineProperty(_pl, "phone_number", "numer telefonu"), _defineProperty(_pl, "two_types_of_photo_edition_is_available", "Są możliwe 2 rodzaje edycji zdjęć"), _defineProperty(_pl, "announcement_has_been_successfully_updated", "Pomyślnie zaktualizowano ogłoszenie"), _defineProperty(_pl, "prolonging_prostitution_announcement", "Przedłużanie ogłoszenia o kolejne 3 miesiące"), _defineProperty(_pl, "updating_prostitution_announcement_until_expiration_date", "Zmiana bez przedłużania"), _defineProperty(_pl, "if_you_want_to_prolong_your_prostitution_announcement", "Jeżeli chcesz przedłużyć ważność Twego ogłoszenia o kolejne 3 miesiące musisz dodać zdjęcia z świeżo wygenerowanym tokenem. Ważne jest aby każde zdjęcie zawierało jeden i ten sam świeżo wygenerowany token. Aby wygenerować nowy token kliknij w przycisk poniżej."), _defineProperty(_pl, "birth_date_restrictions", "Po zatwierdzeniu ogłoszenia zmiana daty urodzenia nie będzie możliwa. Prosimy nie zaniżać swojego wieku - w przyszłości może zostać wprowadzony mechanizm weryfikowania i kłamliwe ogłoszenia zostaną usunięte"), _defineProperty(_pl, "if_you_dont_want_to_prolong_your_prostitution_announcement", "Jeśli nie zależy Ci na przedłużaniu daty ważności ogłoszenia, należy dodać zdjęcia ze starym tokenem wygenerowanym po ostatniej akceptacji. Usuwanie zdjęć odbywa się natychmiast bez konieczności akceptowania."), _defineProperty(_pl, "old_token", "stary token"), _defineProperty(_pl, "new_token", "nowy token"), _defineProperty(_pl, "setting_in_progress", "Trwa ustawianie"), _defineProperty(_pl, "updating_announcement", "Aktualizuję ogłoszenie"), _defineProperty(_pl, "because_of_security_reasons_token_generation_is_limited", "Ze względów bezpieczeństwa liczba generowanych nowych tokenów w ciągu minuty jest ograniczona"), _defineProperty(_pl, "error_occured_while_token_processing", "Podczas ustawiania tokena pojawił się błąd. Zweryfikuj swe łącze internetowe i w razie problemów prosimy o kontakt z administracją portalu"), _defineProperty(_pl, "packages", {
+  }, _defineProperty(_pl, "email_has_already_been_taken", "Email jest już zajęty"), _defineProperty(_pl, "email_seems_to_be_incorrect", "Email wygląda na nieprawidłowy"), _defineProperty(_pl, "subject_exceeds_40_characters", "Temat przekracza 40 znaków"), _defineProperty(_pl, "current_news", 'Aktualności'), _defineProperty(_pl, "you_are_under_18", "Nie ukończyłeś 18 lat"), _defineProperty(_pl, "the_user_has_no_avatar", "Użytkownik nie posiada avataru"), _defineProperty(_pl, "password_change_attempt", "Próba zmiany hasła"), _defineProperty(_pl, "password_changed_successfully", "Pomyślnie zmieniono hasło"), _defineProperty(_pl, "please_type_in_new_valid_password_as_described", "Proszę wprowadzić nowe hasło zgodnie z wytycznymi"), _defineProperty(_pl, "please_type_in_current_password_as_described", "Proszę wprowadzić aktualne hasło zgodnie z wytycznymi"), _defineProperty(_pl, "new_password_does_not_match", "Wprowadzone nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password_is_required", "Nie podano nowego hasła(środkowe pole)"), _defineProperty(_pl, "new_password_must_contain_at_least_3_characters", "Nowe hasło musi zawierać co najmniej 3 znaki(środkowe pole)"), _defineProperty(_pl, "the_given_new_passwords_do_not_match", "Podane nowe hasło nie pokrywa się z potwierdzeniem"), _defineProperty(_pl, "new_password__confirmation_must_contain_at_least_3_characters", "Potwierdzenie nowego hasła musi zawierać co najmniej 3 znaki"), _defineProperty(_pl, "new_password__confirmation_must_not_exceed_20_characters", "Potwierdzenie nowego hasła przekracza 20 znaków"), _defineProperty(_pl, "no_image_has_been_selected", "Nie wybrano żadnego prawidłowego obrazu"), _defineProperty(_pl, "the_file_selected_from_hard_drive_is_not_an_image", "Plik wybrany z dysku nie jest obrazem"), _defineProperty(_pl, "invalid_image_dimensions", "Niewłaściwe wymiary obrazu"), _defineProperty(_pl, "the_data_looks_ok_but_an_unexpected_error_occured", "Wprowadzone dane są w porządku jednak pojawił się nieoczekiwany błąd"), _defineProperty(_pl, "settings_change_attempt", "Próba zmiany ustawień"), _defineProperty(_pl, "settings_changed_successfully", "Pomyślnie zmieniono ustawienia"), _defineProperty(_pl, "the_shows_birthday_field_is_missing", "Brak informacji o tym czy wyświetlać datę urodzenia innym użytkownikom"), _defineProperty(_pl, "the_shows_birthday_field_must_be_a_boolean_value", "Pole pokazuj datę urodzenia musi zawierać wartość typu logicznego"), _defineProperty(_pl, "fetching_movies", "Pobieram filmy"), _defineProperty(_pl, "movies", "Filmy"), _defineProperty(_pl, "views", "Odsłon"), _defineProperty(_pl, "preview", "Podgląd"), _defineProperty(_pl, "pornstars", "Gwiazdy"), _defineProperty(_pl, "pornstars_navbar_caption", "Gwiazdy porno"), _defineProperty(_pl, "scroll_previous_links", "Przewijaj listę podstron do tyłu"), _defineProperty(_pl, "movie_frame", "Kadr z filmu"), _defineProperty(_pl, "close_movie_preview", "Zamknij podgląd filmu"), _defineProperty(_pl, "play_movie_preview", "Uruchom podgląd filmu"), _defineProperty(_pl, "launching_in_progress", "Trwa uruchamianie"), _defineProperty(_pl, "clicking_here", "klikając tutaj"), _defineProperty(_pl, "prostitution_offer_bottom_navigation_info", "Ogłoszenie zostało podzielone na sekcje, użyj strzałek aby przejść dalej"), _defineProperty(_pl, "click_to_play_the_video", "Kliknij aby uruchomić film"), _defineProperty(_pl, "stop_movie_preview", "Zatrzymaj odtwarzanie podglądu filmu"), _defineProperty(_pl, "sex_empire", "Sex-Imperium"), _defineProperty(_pl, "movie_translated_to_polish", "Film przetłumaczony na język polski"), _defineProperty(_pl, "scroll_next_links", "Przewijaj listę podstron do przodu"), _defineProperty(_pl, "hide_side_bar", "Schowaj boczny pasek"), _defineProperty(_pl, "previous_page", "poprzednia"), _defineProperty(_pl, "next_page", "następna"), _defineProperty(_pl, "further", "dalej"), _defineProperty(_pl, "back", "wstecz"), _defineProperty(_pl, "up", "góra"), _defineProperty(_pl, "first_page", "pierwsza"), _defineProperty(_pl, "profile", "Profil"), _defineProperty(_pl, "profile_settings", "Ustawienia profilu"), _defineProperty(_pl, "messages", "Wiadomości"), _defineProperty(_pl, "favourites", "Ulubione"), _defineProperty(_pl, "friends", "Znajomi"), _defineProperty(_pl, "logout", "Wyloguj"), _defineProperty(_pl, "porn", "Porno"), _defineProperty(_pl, "user_avatar_description", "Avatar użytkownika o nicku"), _defineProperty(_pl, "default_avatar", "Domyślny avatar, przedstawia bliżej niezidentyfikowanego użytkownika"), _defineProperty(_pl, "hide", "Schowaj"), _defineProperty(_pl, "element_has_been_rated", "Ocena została wystawiona. Możesz zawsze zmienić zdanie i ocenić ponownie."), _defineProperty(_pl, "pornstar_rate_data_is_invalid", "Niepoprawne dane oceny lub gwiazdy"), _defineProperty(_pl, "movie_rate_data_is_invalid", "Niepoprawne dane oceny lub filmu"), _defineProperty(_pl, "birth_date_is_required", "Data urodzenia jest wymagana"), _defineProperty(_pl, "nickname_is_missing", "Nie podano pseudonimu"), _defineProperty(_pl, "unexpected_error_occured_while_fetching_comments", "Niestety pojawił się bliżej niezidentyfikowany błąd podczas pobierania komentarzy"), _defineProperty(_pl, "nickname", "Pseudonim"), _defineProperty(_pl, "answears", "Odpowiedzi"), _defineProperty(_pl, "add_comment", "Dodaj komentarz"), _defineProperty(_pl, "photosAreValidAndUpToDate", "zweryfikowane zdjęcia"), _defineProperty(_pl, "region", "województwo"), _defineProperty(_pl, "add", "dodaj"), _defineProperty(_pl, "contents", "Treść"), _defineProperty(_pl, "comment_added", "Dodano komentarz"), _defineProperty(_pl, "unregistered_user", "Niezarejestrowany"), _defineProperty(_pl, "register", "Rejestruj"), _defineProperty(_pl, "add_comment_short", "Komentuj"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "adding_comment", "Dodaję komentarz"), _defineProperty(_pl, "fetching_comments", "Pobieram komentarze"), _defineProperty(_pl, "comment_text_is_missing", "Nie podano treści komentarza"), _defineProperty(_pl, "comment_text_exceeds_1000_characters", "Treść komentarza przekracza 1000 znaków"), _defineProperty(_pl, "the_nickname_must_be_between_2_and_20_characters", "Pseudonim musi mieć minimum 2 znaki ale nie więcej niż 20"), _defineProperty(_pl, "no_comments_available", "Brak komentarzy"), _defineProperty(_pl, "because_of_safety_reasons_adding_comments_is_limited_to_2_per_minute", "Z powodów bezpieczeństwa ograniczono liczbę dodawanych komentarzy do 2 na minutę"), _defineProperty(_pl, "total_comments", "Liczba wszystkich komentarzy"), _defineProperty(_pl, "publish_comment", "Opublikuj komentarz"), _defineProperty(_pl, "show_comments_sub_page_with_number", "Pokaż podstronę komentarzy o numerze"), _defineProperty(_pl, "edit", 'edytuj'), _defineProperty(_pl, "the_value_must_be_a_number_greater_than_0", "Podaj dodatnią liczbę"), _defineProperty(_pl, "sex_empire_short", "SI"), _defineProperty(_pl, "small_ass", "mały"), _defineProperty(_pl, "medium_ass", "średni"), _defineProperty(_pl, "big_ass", "duży"), _defineProperty(_pl, "small_tits", "małe"), _defineProperty(_pl, "medium_tits", "średnie"), _defineProperty(_pl, "big_tits", "duże"), _defineProperty(_pl, "skinny_tchickness", "chuda"), _defineProperty(_pl, "medium_tchickness", "średnia"), _defineProperty(_pl, "fat_tchickness", "gruba"), _defineProperty(_pl, "teenagers", "nastolatki(18 - 19)"), _defineProperty(_pl, "age_range_young", "młode (20 -29)"), _defineProperty(_pl, "age_range_mature", "dojrzałe(30 - 50)"), _defineProperty(_pl, "dark_hair", "czarny"), _defineProperty(_pl, "blonde_hair", "blond"), _defineProperty(_pl, "brown_hair", "brązowy"), _defineProperty(_pl, "red_hair", "rudy"), _defineProperty(_pl, "white_race", "biała"), _defineProperty(_pl, "asian_race", "azjatki"), _defineProperty(_pl, "ebony_race", "murzynki"), _defineProperty(_pl, "latin_race", "latynoski"), _defineProperty(_pl, "arabic_race", "arabki"), _defineProperty(_pl, "yes", "tak"), _defineProperty(_pl, "most_important_services_exact_information_notice", " Prosimy wypełnić poniższy formularz skrupulatnie, starannie i zgodnie z prawdą"), _defineProperty(_pl, "deep_throat", "głębokie gardło"), _defineProperty(_pl, "no", "nie"), _defineProperty(_pl, "one_male_one_female", "facet i kobieta"), _defineProperty(_pl, "bukkake", "bukkake"), _defineProperty(_pl, "single_female", "kobieta solo"), _defineProperty(_pl, "lesbians", "lesbijki"), _defineProperty(_pl, "group_sex", "grupowy"), _defineProperty(_pl, "one_male_many_females", "facet i wiele kobiet"), _defineProperty(_pl, "GangBang", "GangBang"), _defineProperty(_pl, "sex_with_many_males", "sex z wieloma mężczyznami"), _defineProperty(_pl, "outside_together", "wspólne wyjścia"), _defineProperty(_pl, "one_female_two_males", "Na 2 baty"), _defineProperty(_pl, "lesbian_group_sex", "Lesbijki grupowo"), _defineProperty(_pl, "only", "tylko i wyłącznie"), _defineProperty(_pl, "maximum", "maximum"), _defineProperty(_pl, "a_lot", "dużo"), _defineProperty(_pl, "medium", "średnio"), _defineProperty(_pl, "a_little", "trochę"), _defineProperty(_pl, "exclude", "wyklucz"), _defineProperty(_pl, "on_face", "na twarz"), _defineProperty(_pl, "cum_swallow", "z połykiem"), _defineProperty(_pl, "creampie", "w cipkę"), _defineProperty(_pl, "anal", "anal"), _defineProperty(_pl, "cum_on_face", "wytrysk na twarz"), _defineProperty(_pl, "anal_creampie", "w dupkę"), _defineProperty(_pl, "on_tits", "na cycki"), _defineProperty(_pl, "on_pussy", "na cipkę"), _defineProperty(_pl, "on_ass", "na dupkę"), _defineProperty(_pl, "on_feet", "na stopy"), _defineProperty(_pl, "on_many_places", "na wiele miejsc"), _defineProperty(_pl, "on_other_body_parts", "na inne miejsca"), _defineProperty(_pl, "american_nationality", "amerykańska"), _defineProperty(_pl, "japanese_nationality", "japońska"), _defineProperty(_pl, "german_nationality", "niemiecka"), _defineProperty(_pl, "czech_nationality", "czeska"), _defineProperty(_pl, "russian_nationality", "rosyjska"), _defineProperty(_pl, "british_nationality", "brytyjska"), _defineProperty(_pl, "swedish_nationality", "szwedzka"), _defineProperty(_pl, "ukrainian_nationality", "ukraińska"), _defineProperty(_pl, "slovac_nationality", "słowacka"), _defineProperty(_pl, "hanguarian_nationality", "węgierska"), _defineProperty(_pl, "polish_nationality", "polska"), _defineProperty(_pl, "dutch_nationality", "holenderska"), _defineProperty(_pl, "hindu_nationality", "hinduska"), _defineProperty(_pl, "french_nationality", "francuska"), _defineProperty(_pl, "spanish_nationality", "hiszpańska"), _defineProperty(_pl, "italian_nationality", "włoska"), _defineProperty(_pl, "canadian_nationality", "kanadyjska"), _defineProperty(_pl, "argentinian_nationality", "argentyńska"), _defineProperty(_pl, "house", "dom"), _defineProperty(_pl, "bathroom", "łazienka"), _defineProperty(_pl, "office", "biuro"), _defineProperty(_pl, "school", "szkoła"), _defineProperty(_pl, "public_place", "miejsca publiczne"), _defineProperty(_pl, "car", "samochód"), _defineProperty(_pl, "nature", "łono natury"), _defineProperty(_pl, "solarium", "solarium"), _defineProperty(_pl, "elevator", "winda"), _defineProperty(_pl, "beach", "plaża"), _defineProperty(_pl, "gym", "siłownia"), _defineProperty(_pl, "POV", "POV"), _defineProperty(_pl, "weight", "waga"), _defineProperty(_pl, "outside_camera_style", "z zewnątrz"), _defineProperty(_pl, "mixed_camera_style", "mieszane"), _defineProperty(_pl, "female_pupil", "uczennica"), _defineProperty(_pl, "female_employee", "pracownica"), _defineProperty(_pl, "female_student", "studentka"), _defineProperty(_pl, "wife", "żona"), _defineProperty(_pl, "female_teacher", "nauczycielka"), _defineProperty(_pl, "nurse", "pielęgniarka"), _defineProperty(_pl, "female_slave", "niewolnica"), _defineProperty(_pl, "nun", "zakonnica"), _defineProperty(_pl, "female_police_officer", "policjantka"), _defineProperty(_pl, "prostitute", "prostytutka"), _defineProperty(_pl, "female_boss", "szefowa"), _defineProperty(_pl, "cleaner", "sprzątaczka"), _defineProperty(_pl, "mommy", "mamusia"), _defineProperty(_pl, "amateur", "amatorski"), _defineProperty(_pl, "professional", "profesjonalny"), _defineProperty(_pl, "save", "zapisz"), _defineProperty(_pl, "choose_option", "wybierz opcję"), _defineProperty(_pl, "these_photos_currently_await_validation", "Te zdjęcia lub część z nich aktualnie czekają na weryfikację"), _defineProperty(_pl, "saving_notice", "Zapisywanie ogłoszenia"), _defineProperty(_pl, "announcement_update_info", "Wszelkie informacje zostaną zaktualizowane natychmiast, jeżeli dodano jakiekolwiek nowe zdjęcia, należy poczekać na weryfikację - do tego momentu wyświetlane będę zdjęcia z przed zmiany. Jeżeli tylko usunięto zdjęcie zmiana będzie widoczna natychmiast i nie trzeba czekać na weryfikację. Przypominamy, że zmiana daty urodzenia nie jest możliwa."), _defineProperty(_pl, "announcement_must_be_validated_reminder", "Proszę pamiętać, że ogłoszenie nie zostanie dodane natychmiast. Musi najpierw zostać zweryfikowane, jednakże nie dłużej niż 48 godzin. "), _defineProperty(_pl, "prostitute_save_announcement_info", "To już koniec wypełniania formularzy. Jeśli wszystko się zgadza, można kliknąć w przycisk poniżej aby dodać ogłoszenie. "), _defineProperty(_pl, "choose_options", "wybierz opcje"), _defineProperty(_pl, "included_in_price", "wliczone w cenę"), _defineProperty(_pl, "client_rimming", "rimming w stronę klienta"), _defineProperty(_pl, "cum_on_body", "wytrysk na ciało"), _defineProperty(_pl, "kisses", "pocałunki"), _defineProperty(_pl, "aditional_payment", "za dopłatą"), _defineProperty(_pl, "classic_sex", "sex klasyczny"), _defineProperty(_pl, "only_in_condom", "tylko w gumce"), _defineProperty(_pl, "without_condom", "bez gumki"), _defineProperty(_pl, "without_condom_with_aditional_payments", "bez gumki, za dopłatą"), _defineProperty(_pl, "role_playing", "odgrywanie ról"), _defineProperty(_pl, "a_payment_type_can_be_chosen_only_once", "dany typ płatności można wybrać tylko raz"), _defineProperty(_pl, "announcement_description", "Treść ogłoszenia, max: 2000 znaków"), _defineProperty(_pl, "oral_creampie", "wytrysk do ust"), _defineProperty(_pl, "most_important_services_description", "Poniżej lista najważniejszych usług jakimi interesują się klienci. Aktualnie ceny podawane są w złotówkach. Pracujemy nad cennikiem w innych walutach. Informacje, ułatwią użytkownikom wyszukiwanie i Tobie pomogą znaleźć klientów. Jeżeli formularze nie do końca odpowiadają Twej ofercie możesz doprecyzować to w opisie w dalszej sekcji."), _defineProperty(_pl, "remaining_services_description", "Pozostałe usługi nie ujęte na liście najważniejszych (opcjonalnie)"), _defineProperty(_pl, "click_to_chose_remaining_services", "Kliknij aby wybrać pozostałe usługi"), _defineProperty(_pl, "blowjob", "lodzik"), _defineProperty(_pl, "currencies_you_accept", "waluty jakie akceptujesz"), _defineProperty(_pl, "trips", "wyjazdy"), _defineProperty(_pl, "prices_for_your_services_description", "Ceny Twoich usług. Możesz podać kilka opcji. Kliknij w zielony przycisk aby dodać kolejną pozycję i czerwony przycisk aby usunąć."), _defineProperty(_pl, "add_payment_type", "dodaj typ płatności"), _defineProperty(_pl, "remove_payment_type", "usuń typ płatności"), _defineProperty(_pl, "remove", "usuń"), _defineProperty(_pl, "streaptease", "striptiz"), _defineProperty(_pl, "dancing", "taniec"), _defineProperty(_pl, "latex", "lateks"), _defineProperty(_pl, "double_penetration", "podwójna penetracja"), _defineProperty(_pl, "for_hour", "za godzinę"), _defineProperty(_pl, "for_30_minutes", "za pół godziny"), _defineProperty(_pl, "for_15_minutes", "za 15 minut"), _defineProperty(_pl, "for_night", "za noc"), _defineProperty(_pl, "for_blowjob", "za lodzika"), _defineProperty(_pl, "until_first_cumshot", "do pierwszego wystrzału"), _defineProperty(_pl, "location_and_working_hours", "lokalizacja i godziny pracy"), _defineProperty(_pl, "for_2_hours", "za 2 godziny"), _defineProperty(_pl, "for_3_hours", "za 3 godziny"), _defineProperty(_pl, "never", "nigdy"), _defineProperty(_pl, "height", "wzrost"), _defineProperty(_pl, "search", "szukaj"), _defineProperty(_pl, "remove_option", "usuń opcję"), _defineProperty(_pl, "you_have_exceeded_photos_limit", "Przekroczono limit zdjęć"), _defineProperty(_pl, "monday", "poniedziałek"), _defineProperty(_pl, "tuesday", "wtorek"), _defineProperty(_pl, "wednesday", "środa"), _defineProperty(_pl, "thursday", "czwartek"), _defineProperty(_pl, "friday", "piątek"), _defineProperty(_pl, "saturday", "sobota"), _defineProperty(_pl, "sunday", "niedziela"), _defineProperty(_pl, "show_each_single_day_from_monday_to_friday", "Pokaż pojedyncze dni powszednie"), _defineProperty(_pl, "close", "zamknij"), _defineProperty(_pl, "day_of", "wolne"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd, w razie potrzeby prosimy odświeżyć stronę"), _defineProperty(_pl, "show_weekdays_as_one_row", "Pokaż dni powszednie w jednym wierszu"), _defineProperty(_pl, "fetching_pornstars", "Pobieram listę gwiazd"), _defineProperty(_pl, "not_selected", "nie wybrano"), _defineProperty(_pl, "minutes_inflected", "minut(y)"), _defineProperty(_pl, "views_inflected", "wyświetleń"), _defineProperty(_pl, "phone_number_must_contain_at_least_7_characters", "Numer telefonu musi zawierać co najmniej 7 znaków"), _defineProperty(_pl, "height_must_be_an_integer_between_90_and_270", "Podaj liczbę między 90 a 270"), _defineProperty(_pl, "weight_must_be_an_integer_between_30_and_800", "Podal liczbę pomiędzy 30 a 800"), _defineProperty(_pl, "file_size_has_been_exceeded_for_following_files", "Następujące pliki mają za duży rozmiar"), _defineProperty(_pl, "prostitute_photos_allowed_size", "Maksymalny rozmiar zdjęcia to 1MB"), _defineProperty(_pl, "unexpected_error_occured", "Pojawił się bliżej niezidentyfikowany błąd"), _defineProperty(_pl, "nothing_has_been_modified", "Nic nie zostało zmodyfikowane od ostatniego zapisu"), _defineProperty(_pl, "titsSize", "rozmiar cycków"), _defineProperty(_pl, "assSize", "rozmiar dupci"), _defineProperty(_pl, "thicknessSize", "tusza"), _defineProperty(_pl, "ageRange", "przedział wiekowy"), _defineProperty(_pl, "hairColor", "kolor włosów"), _defineProperty(_pl, "race", "rasa"), _defineProperty(_pl, "abundanceType", "liczebność"), _defineProperty(_pl, "cumshotType", "typ wytrysku"), _defineProperty(_pl, "nationality", "narodowość"), _defineProperty(_pl, "location", "lokalizacja"), _defineProperty(_pl, "cameraStyle", "ujęcie kamery"), _defineProperty(_pl, "storyOrCostume", "motyw fabularno kostiumowy"), _defineProperty(_pl, "professionalismLevel", "poziom filmu"), _defineProperty(_pl, "shavedPussy", "wygolona cipka"), _defineProperty(_pl, "analAmount", "anal"), _defineProperty(_pl, "blowjob", "obciąganie"), _defineProperty(_pl, "handjob", "walenie konika"), _defineProperty(_pl, "blondes", "blondynki"), _defineProperty(_pl, "tittfuck", "na hiszpana"), _defineProperty(_pl, "pissing", "obsikiwanie"), _defineProperty(_pl, "strapon", "sztuczny penis"), _defineProperty(_pl, "fingering", "palcówka"), _defineProperty(_pl, "licking_balls", "lizanie jąder"), _defineProperty(_pl, "spanking", "klapsy"), _defineProperty(_pl, "pussy_licking", "minetka"), _defineProperty(_pl, "petting_with_feet", "pieszczenie stopami"), _defineProperty(_pl, "feet", "stopy"), _defineProperty(_pl, "femdom", "kobieca dominacja"), _defineProperty(_pl, "brunettes", "brunetki"), _defineProperty(_pl, "redheads", "rude"), _defineProperty(_pl, "milfs", "dojrzałe"), _defineProperty(_pl, "teens", 'nastolatki'), _defineProperty(_pl, "amateur", "amatorskie"), _defineProperty(_pl, "asian", 'azjatki'), _defineProperty(_pl, "latins", 'latynoski'), _defineProperty(_pl, "ebony", 'murzynki'), _defineProperty(_pl, "lesbians", 'lesbijki'), _defineProperty(_pl, "group", 'grupowy'), _defineProperty(_pl, "cumshot_compilation", 'kompilacja wytrysków'), _defineProperty(_pl, "cumshot_compilations", 'kompilacje wytrysków'), _defineProperty(_pl, "cum_on_face", 'wytrysk na twarz'), _defineProperty(_pl, "cum_swallow", 'połykanie spermy'), _defineProperty(_pl, "cum_on_feet", 'wytrysk na stopy'), _defineProperty(_pl, "creampie", 'wytrysk w cipkę'), _defineProperty(_pl, "cum_in_ass", 'wytrysk w dupkę'), _defineProperty(_pl, "cum_on_titts", 'wytrysk na cycki'), _defineProperty(_pl, "pantyhose", 'rajstopki'), _defineProperty(_pl, "high_heels", 'szpile'), _defineProperty(_pl, "insults", "wyzwiska"), _defineProperty(_pl, "hugging", "przytulanie"), _defineProperty(_pl, "shared_bath", "wspólna kąpiel"), _defineProperty(_pl, "sex_with_2_males", "na 2 baty"), _defineProperty(_pl, "nurses", 'pielęgniarki'), _defineProperty(_pl, "teachers", 'nauczycielki'), _defineProperty(_pl, "japanese", 'japonki'), _defineProperty(_pl, "russian", 'rosjanki'), _defineProperty(_pl, "pornstars", 'gwiazdy porno'), _defineProperty(_pl, "blowjobAmount", 'obciąganie'), _defineProperty(_pl, "money_amount", "kwota"), _defineProperty(_pl, "handjobAmount", 'walenie konika'), _defineProperty(_pl, "doublePenetrationamount", "wtyczka"), _defineProperty(_pl, "vaginalamount", "waginalny"), _defineProperty(_pl, "pussyLickingAmount", 'minetka'), _defineProperty(_pl, "feetPettingAmount", 'pieszczenie stóp'), _defineProperty(_pl, "position69amount", 'pozycja 69'), _defineProperty(_pl, "titfuckAmount", "na hiszpana"), _defineProperty(_pl, "isCumshotCompilation", 'kompilacja wytrysków'), _defineProperty(_pl, "recordedBySpamCamera", 'nagrany kamerą szpiegowską'), _defineProperty(_pl, "isSadisticOrMasochistic", 'sado-masochostyczny'), _defineProperty(_pl, "isFemaleDomination", 'kobieca dominacja'), _defineProperty(_pl, "isTranslatedToPolish", 'polska wersja językowa'), _defineProperty(_pl, "showPantyhose", 'rajstopy'), _defineProperty(_pl, "showStockings", 'pończochy'), _defineProperty(_pl, "showGlasses", 'okulary'), _defineProperty(_pl, "showHighHeels", 'szpile'), _defineProperty(_pl, "showHugeCock", 'wielki kutas'), _defineProperty(_pl, "showWhips", 'bicze'), _defineProperty(_pl, "whips", 'bicze'), _defineProperty(_pl, "showSexToys", 'sex-zabawki'), _defineProperty(_pl, "minimumMovieTime", "minimalny czas"), _defineProperty(_pl, "maximumMovieTime", "maksymalny czas"), _defineProperty(_pl, "minimumMovieViews", 'minimalna liczba wyświetleń'), _defineProperty(_pl, "maximumMovieViews", 'maksymalna liczba wyświetleń'), _defineProperty(_pl, "hasStory", 'zawiera fabułę'), _defineProperty(_pl, "total_movies_found", "Ilość znalezionych filmów"), _defineProperty(_pl, "rules", "zasady"), _defineProperty(_pl, "movie_with_following_pornstars", "występują jednocześnie następujące gwiazdy"), _defineProperty(_pl, "last_page", "ostatnia"), _defineProperty(_pl, "movie_with_pornstar", "Film w którym występuje"), _defineProperty(_pl, "no_movies_have_been_found", "Nie znaleziono żadnych filmów pasujących do wybranych kryteriów"), _defineProperty(_pl, "no_options_have_been_selected", "Nie wybrano żadnych opcji"), _defineProperty(_pl, "failed_to_fetch_pornstars_list", "Nie udało się pobrać listy gwiazd"), _defineProperty(_pl, "because_of_security_reasons_search_was_blocked", "Ze względów bezpieczeństwa ilość zapytań do wyszukiwarki w ciągu minuty jest ograniczona. Prosimy zaczekać chwilę i spróbować ponownie."), _defineProperty(_pl, "popular_categories", "Popularne kategorie"), _defineProperty(_pl, "categories_list", "Lista kategorii"), _defineProperty(_pl, "personalities", "personalia"), _defineProperty(_pl, "section", "sekcja"), _defineProperty(_pl, "big_titts", "duże cycki"), _defineProperty(_pl, "categories", "Kategorie"), _defineProperty(_pl, "teenagers", "nastolatki"), _defineProperty(_pl, "spermatozoid_has_been_asigned", "Przyznano plemnika. Musisz odczekać minimum pół godziny aby przyznać kolejnego."), _defineProperty(_pl, "you_have_exceeded_cum_limit", "Możesz przyznać maksymalnie jednego plemnika na pół godziny niezależnie od filmu"), _defineProperty(_pl, "spermatozoid_rate_data_is_incorrect", "Niepoprawne dane filmu"), _defineProperty(_pl, "movie_views", "Liczba wyświetleń"), _defineProperty(_pl, "movie_added_at", "Data dodania"), _defineProperty(_pl, "movie_average_rating", "Średnia ocen"), _defineProperty(_pl, "this_pornstar_does_not_have_enough_votes_to_calculate_average", "Ta gwiazda ma za mało głosów aby policzyć średnią (wymagane minimum to 10)"), _defineProperty(_pl, "fetching_rating_in_progress", "Pobieram dane rankingu"), _defineProperty(_pl, "average_rate_not_available_yet", "jeszcze niedostępna"), _defineProperty(_pl, "ammount_of_spermatozoids", "Liczba plemników"), _defineProperty(_pl, "your_spermatozoids", "twoich"), _defineProperty(_pl, "number_of_likes", "Polubień"), _defineProperty(_pl, "failed_to_load_movie_data", "Nie udało się pobrać szczegółowych danych filmu"), _defineProperty(_pl, "failed_to_load_similar_movies", "Nie udało się załadować podobnych filmów"), _defineProperty(_pl, "you_like_it", "Lubisz to"), _defineProperty(_pl, "you_already_like_this_movie", "Już wcześniej polubiłeś ten film"), _defineProperty(_pl, "you_and", "Ty i"), _defineProperty(_pl, "people_like_it", "osób lubi to"), _defineProperty(_pl, "no_comments", "Brak komentarzy"), _defineProperty(_pl, "services_range_and_pricing", "usługi i cennik"), _defineProperty(_pl, "working_hours", "Godziny pracy"), _defineProperty(_pl, "location", "Lokalizacja"), _defineProperty(_pl, "voivodeship", "Województwo"), _defineProperty(_pl, "fetching_announcements", "Pobieram ogłoszenia"), _defineProperty(_pl, "you_dont_have_any_announcements", "Nie posiadasz żadnych ogłoszeń"), _defineProperty(_pl, "city", "Miasto"), _defineProperty(_pl, "hidden_by_a_user", "Ukryte przez użytkownika"), _defineProperty(_pl, "not_valid_awaiting_verification_not_visible_for_users", "Nieważne, niewidoczne dla użytkowników. Czeka na weryfikację"), _defineProperty(_pl, "monday", "poniedziałek"), _defineProperty(_pl, "actions", "działania"), _defineProperty(_pl, "not_provided", "nie podano"), _defineProperty(_pl, "friday", "piątek"), _defineProperty(_pl, "please_decide", "proszę zdecydować"), _defineProperty(_pl, "invalid_time_format", "Błędny format"), _defineProperty(_pl, "probably_your_session_has_expired", "Jesteś niezalogowany, prawdopodbnie zostało to spowodowane dłuższym czasem bezczynności - w takiej sytuacji aplikacja wylogowuje użytkownika. Niestety chcąc kontynuować należy ponownie się zalogować."), _defineProperty(_pl, "time_since_must_be_earlier_than_time_until", "W przypadku co najmniej jednego dnia, godzina rozpoczęcia jest później niż godzina zakończenia lub są one równe. Zaznaczono te kontrolki na czerwono"), _defineProperty(_pl, "prostitution_announcements_are_free", "Zamieszczenie oferty jest całkowicie darmowe. Obowiązuje limit : 1 ogłoszenie. Wyjątkiem są właściciele agencji towarzyskich/salonów masażu, którzy chcieliby przedstawić poszczególnych pracowników. "), _defineProperty(_pl, "dont_spam_with_announcements", "Nie kombinuj, nie spamuj ogłoszeniami - administracja i tak prędzej czy później takowe oferty usuwa i banuje użytkowników. Dodawaj tylko i wyłącznie swoje aktualne zdjęcia. "), _defineProperty(_pl, "announcement_will_not_be_added_immidiatelly", "Ogłoszenie nie zostanie dodane natychmiastowo, musi najpierw zostać zweryfikowane przez administrację. Czas weryfikacji to maksimum 48 godzin. Aby dodać kolejne ogłoszenie poprzednie musi najpierw zostać zweryfikowane. "), _defineProperty(_pl, "in_case_of_a_problem_please_contact_us_using_the_contact_form", "W razie problemów, prosimy o kontakt poprzez formularz "), _defineProperty(_pl, "empire_policy_for_working_hours_of_prostitutes", "Proszę zdecydować czy podać konkretne godziny pracy, czy też pozostawić niezdefiniowane - na zasadzie mam włączony telefon to jestem a jak jest wyłączony to mnie nie ma. Warto wziąć pod uwagę, że podanie precyzyjnych godzin pozytywnie wpłynie na odbiór klientów. W przyszłości będzie można zaznaczyć opcję ukrywania ogłoszenia poza godzinami pracy. Nie wystarczy podać przedziału czasowego w opisie (w sekcji : personalia), aby w 100% poprawnie zapisał się w systemie i aby ułatwiał wyszukiwanie użytkownikom."), _defineProperty(_pl, "prostitution_offer_policy_description", "Nie kombinuj, nie spamuj ogłoszeniami - administracja i tak prędzej czy później takowe oferty usuwa i banuje użytkowników. Dodawaj tylko i wyłącznie swoje aktualne zdjęcia. Ogłoszenie nie zostanie dodane natychmiastowo, musi najpierw zostać zweryfikowane przez administrację. Czas weryfikacji to maksimum 48 godzin. W razie problemów, prosimy o kontakt poprzez formularz, "), _defineProperty(_pl, "everyone_can_comment_a_prostitute", "Każdy zarejestrowany użytkownik może dodać komentarz pod dowolnym ogłoszeniem. Autor ogłoszenia nie ma możliwości usuwania komentarzy użytkowników, a już tym bardziej tych nieprzychylnych. "), _defineProperty(_pl, "comments_are_filtered_by_admins_to_prevent_revealing_classified_information", "Jednocześnie przed opublikowaniem jakiegokolwiek komentarza administracja dba o to aby nie zostały upublicznione poufne dane takie jak adres, imię i nazwisko itp. "), _defineProperty(_pl, "do_you_want_to_set_precise_working_hours", "Podać godziny pracy"), _defineProperty(_pl, "cookie_notification_header", "Ta strona wykorzystuje pliki cookie"), _defineProperty(_pl, "prostitute_photos_just_one_reminder", "Przypominamy, że poza wyjątkiem właścicieli agencji towarzyskich/salonów masażu można dodać tylko 1 ogłoszenie. Przypominamy również, że aby dodać kolejną ofertę wszystkie poprzednie muszą najpierw zostać zaakceptowane. Ewentualne zmiany w treści ogłoszenia są możliwe w panelu użytkownika."), _defineProperty(_pl, "cookie_notification_body", "Poprzez dalsze korzystanie z portalu lub naci\u015Bni\u0119cie przycisku \"Akceptuj\u0119\" wyra\u017Casz zgod\u0119 na przechowywanie plik\xF3w cookie na Twej maszynie"), _defineProperty(_pl, "accept_button_caption", "Akceptuję - zamknij"), _defineProperty(_pl, "show_content_side_bar_title", "Rozwiń nawigację strony dla wersji mobilnej"), _defineProperty(_pl, "show_content_side_bar_caption", "Menu"), _defineProperty(_pl, "cancel_like", "cofnij like'a"), _defineProperty(_pl, "fetching_cities", "Pobieram listę miast"), _defineProperty(_pl, "show_authenticated_user_sidebar_title", "Rozwiń menu użytkownika, ustawienia profilu, wylogowanie itp."), _defineProperty(_pl, "show_authenticated_user_sidebar_caption", "Profil"), _defineProperty(_pl, "user_type_is_required", "Wymagane jest podanie typu użytkownika"), _defineProperty(_pl, "you_mustnot_choose_tits_size_if_you_are_a_male", "Nie możesz wybrać rozmiaru cycków będąc mężczyzną"), _defineProperty(_pl, "one_announcement_is_awaiting_validation", "Aktualnie posiadasz już 1 ogłoszenie oczekujące na weryfikację w związku z czym nie można dodać kolejnego"), _defineProperty(_pl, "selected_avatar", "Nowy avatar"), _defineProperty(_pl, "no_avatar_has_been_choosen", "Nie wybrano avataru"), _defineProperty(_pl, "notices_policy", "polityka dodawania ogłoszeń"), _defineProperty(_pl, "current_avatar", "Wybrany avatar"), _defineProperty(_pl, "basic_information", "Podstawowe informacje"), _defineProperty(_pl, "the_latest", "Najnowsze"), _defineProperty(_pl, "the_most_popular", "Najpopularniejsze"), _defineProperty(_pl, "advanced_search", "Szukanie zaawansowane"), _defineProperty(_pl, "login_or_email", "Login lub email"), _defineProperty(_pl, "remember_me", "Zapamiętaj mnie"), _defineProperty(_pl, "scroll_movies_list_left", "Przewiń listę filmów w lewo"), _defineProperty(_pl, "scroll_movies_list_right", "Przewiń listę filmów w prawo"), _defineProperty(_pl, "dictionary", "Słownik"), _defineProperty(_pl, "comment_text", "Treść komentarza"), _defineProperty(_pl, "generate_new_token", "Generuj nowy token"), _defineProperty(_pl, "use_old_token", "Użyj starego tokena"), _defineProperty(_pl, "prostitution", "Prostytucja"), _defineProperty(_pl, "add_notice", "Dodaj ogłoszenie"), _defineProperty(_pl, "no_working_period_has_been_provided", "Skoro zdecydowałaś(eś) się podać godziny pracy to nie możesz mieć cały czas wolne"), _defineProperty(_pl, "notices_list", "Lista ogłoszeń"), _defineProperty(_pl, "you_have_to_be_logged_in_to_add_notice", "Musisz być zalogowany aby dodać ogłoszenie"), _defineProperty(_pl, "phone_number_format_must_be_valid", "Numer telefonu musi być w prawidłowym formacie"), _defineProperty(_pl, "phone_number_must_not_exceed_16_characters", "Numer telefonu nie może być dłuższy niż 16 znaków"), _defineProperty(_pl, "valid_until", "ważny do"), _defineProperty(_pl, "phone_number", "numer telefonu"), _defineProperty(_pl, "two_types_of_photo_edition_is_available", "Są możliwe 2 rodzaje edycji zdjęć"), _defineProperty(_pl, "announcement_has_been_successfully_updated", "Pomyślnie zaktualizowano ogłoszenie"), _defineProperty(_pl, "prolonging_prostitution_announcement", "Przedłużanie ogłoszenia o kolejne 3 miesiące"), _defineProperty(_pl, "updating_prostitution_announcement_until_expiration_date", "Zmiana bez przedłużania"), _defineProperty(_pl, "if_you_want_to_prolong_your_prostitution_announcement", "Jeżeli chcesz przedłużyć ważność Twego ogłoszenia o kolejne 3 miesiące musisz dodać zdjęcia z świeżo wygenerowanym tokenem. Ważne jest aby każde zdjęcie zawierało jeden i ten sam świeżo wygenerowany token. Aby wygenerować nowy token kliknij w przycisk poniżej."), _defineProperty(_pl, "birth_date_restrictions", "Po zatwierdzeniu ogłoszenia zmiana daty urodzenia nie będzie możliwa. Prosimy nie zaniżać swojego wieku - w przyszłości może zostać wprowadzony mechanizm weryfikowania i kłamliwe ogłoszenia zostaną usunięte"), _defineProperty(_pl, "if_you_dont_want_to_prolong_your_prostitution_announcement", "Jeśli nie zależy Ci na przedłużaniu daty ważności ogłoszenia, należy dodać zdjęcia ze starym tokenem wygenerowanym po ostatniej akceptacji. Usuwanie zdjęć odbywa się natychmiast bez konieczności akceptowania."), _defineProperty(_pl, "old_token", "stary token"), _defineProperty(_pl, "new_token", "nowy token"), _defineProperty(_pl, "setting_in_progress", "Trwa ustawianie"), _defineProperty(_pl, "updating_announcement", "Aktualizuję ogłoszenie"), _defineProperty(_pl, "hide", "ukryj"), _defineProperty(_pl, "announcement_wil_not_be_displayed_for_potential_clients", "Ogłoszenie nie będzie widoczne dla potencjalnych klientów"), _defineProperty(_pl, "because_of_security_reasons_token_generation_is_limited", "Ze względów bezpieczeństwa liczba generowanych nowych tokenów w ciągu minuty jest ograniczona"), _defineProperty(_pl, "error_occured_while_token_processing", "Podczas ustawiania tokena pojawił się błąd. Zweryfikuj swe łącze internetowe i w razie problemów prosimy o kontakt z administracją portalu"), _defineProperty(_pl, "packages", {
     content_sidebar: {
       hide_side_bar_title: "Schowaj boczne menu",
       hide_side_bar_caption: "Schowaj",
@@ -31246,6 +31571,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\n.cls-1[data-v-38a255cb] {\n  fill: #ed1b24;\n  fill-rule: evenodd;\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/decoration/icons/svg/heart_rate_icon.vue"],"names":[],"mappings":";AAgBA;EACE,aAAa;EACb,kBAAkB;AACpB","sourcesContent":["<template>\n  <svg\n    id=\"Layer_1\"\n    data-name=\"Layer 1\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n    viewBox=\"0 0 122.88 107.39\"\n  >\n    <title>heart-rate</title>\n    <path\n      class=\"cls-1\"\n      d=\"M60.83,17.18c8-8.35,13.62-15.57,26-17C110-2.46,131.27,21.26,119.57,44.61c-2.19,4.37-5.86,9.27-10.24,14.32v-.61h-30l-1.06,1.1L73.5,64.36l-9.88-19-3.28-6.3L57.2,45.46l-9,18.16L39.38,50.75l-3.12-4.52-7,11.4H11C4.74,49.1.38,39.89,0,29.94-.63,11.74,13.73.08,30.25.3c14.76.19,21,7.53,30.58,16.88Zm42.48,48.34L102,66.93c-8.23,8.52-17.34,16.87-23.72,23.2l-17.4,17.26L46.46,93.55c-8.76-8.44-20.32-18-29.71-28.72H33.19l1.06-1.72,2.32-3.76L45.8,72.74l3.47,5L52,72.29,60.48,55,69.37,72.1l2.3,4.43L75.14,73l7.2-7.42Z\"\n    />\n  </svg>\n</template>\n\n<style scoped>\n.cls-1 {\n  fill: #ed1b24;\n  fill-rule: evenodd;\n}\n</style>\n\n<script lang=\"ts\">\nimport { Vue, Options } from \"vue-property-decorator\";\n\n@Options({ name: \"HeartRateIcon\" })\nexport default class HeartRateIcon extends Vue {}\n</script>\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-26.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-26.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=style&index=0&id=7bd8eea0&lang=css":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-26.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-26.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=style&index=0&id=7bd8eea0&lang=css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.st0 {\n  fill-rule: evenodd;\n  clip-rule: evenodd;\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/decoration/icons/svg/hide_eye_icon.vue"],"names":[],"mappings":";AAqBA;EACE,kBAAkB;EAClB,kBAAkB;AACpB","sourcesContent":["<template>\n  <svg\n    version=\"1.1\"\n    id=\"Layer_1\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n    xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n    x=\"0px\"\n    y=\"0px\"\n    viewBox=\"0 0 122.88 122.42\"\n    style=\"enable-background: new 0 0 122.88 122.42\"\n    xml:space=\"preserve\"\n  >\n    <g>\n      <path\n        class=\"st0\"\n        d=\"M99.52,40.18c5.66,5.21,13.22,11.64,17.27,18.98l0.56,1.01l-0.56,1c-5.71,10.37-15.85,18.9-24.58,24.78 c-7.34,4.94-15.51,8.03-24.19,8.79l5.59-9.68c4.36-1.18,8.5-3.12,12.36-5.73c6.79-4.57,15.29-11.16,19.86-19.17 c-2.47-4.33-7.94-8.25-11.12-11.66L99.52,40.18L99.52,40.18L99.52,40.18z M24.74,0H93.7L76.73,28.22 c-5.56-2.12-11.44-3.27-17.54-3.27c-10.26,0-22.54,3.24-31.06,8.98C19.38,39.81,11.86,48.34,6.15,58.7l-0.56,1.01l0.56,1.01 c5.71,10.36,13.24,18.89,21.98,24.77c3.15,2.12,9.05,3.89,12.48,5.29l-18.19,31.52C9.89,121.13,0,110.51,0,97.69V24.74 C0,11.13,11.13,0,24.74,0L24.74,0z M112.17,4.39c6.46,4.47,10.71,11.94,10.71,20.35v72.95c0,13.61-11.13,24.74-24.74,24.74H42.23 L112.17,4.39L112.17,4.39z M45.01,83.17l4.15-7.2c-4.93-3.14-8.21-8.65-8.21-14.93c0-9.77,7.92-17.69,17.69-17.69 c2.95,0,5.74,0.72,8.19,2.01l5.49-9.49c-4.18-1.54-8.59-2.37-13.14-2.37c-7.98,0-18.13,2.54-24.81,7.04 c-6.79,4.57-12.69,11.16-17.26,19.18c4.56,8.02,10.47,14.61,17.26,19.17C36.93,80.61,42.22,82.05,45.01,83.17L45.01,83.17 L45.01,83.17z M61.25,55.04l5.58-9.68c-1.51-0.79-3.13-1.36-4.8-1.68c-1.2,1.81-1.92,4-1.92,6.36 C60.11,51.84,60.53,53.54,61.25,55.04L61.25,55.04L61.25,55.04L61.25,55.04z\"\n      />\n    </g>\n  </svg>\n</template>\n<style type=\"text/css\">\n.st0 {\n  fill-rule: evenodd;\n  clip-rule: evenodd;\n}\n</style>\n\n<script lang=\"ts\">\nexport default {\n  name: \"hide-eye-icon\",\n};\n</script>\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -31677,7 +32026,31 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".label[data-v-72840798] {\n  padding-top: 4px;\n}\n.edit-button[data-v-72840798] {\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-align-content: center;\n      -ms-flex-line-pack: center;\n          align-content: center;\n  padding: 0;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n}\n.edit-button[data-v-72840798]:active {\n    -webkit-transform: scale(1.1);\n       -moz-transform: scale(1.1);\n        -ms-transform: scale(1.1);\n         -o-transform: scale(1.1);\n            transform: scale(1.1);\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/form_controls/delete_button_vertical.vue"],"names":[],"mappings":"AAAA;EACE,gBAAgB;AAAE;AAEpB;EACE,2BAAoB;EAApB,4BAAoB;EAApB,wBAAoB;EAApB,2BAAoB;EAApB,oBAAoB;EACpB,4BAAsB;EAAtB,6BAAsB;EAAtB,8BAAsB;KAAtB,yBAAsB;KAAtB,0BAAsB;MAAtB,0BAAsB;UAAtB,sBAAsB;EACtB,6BAAqB;MAArB,0BAAqB;UAArB,qBAAqB;EACrB,UAAU;EACV,uBAAuB;EACvB,YAAY;EACZ,eAAe;AAAE;AACjB;IACE,6BAAqB;OAArB,0BAAqB;QAArB,yBAAqB;SAArB,wBAAqB;YAArB,qBAAqB;AAAE","sourcesContent":[".label {\n  padding-top: 4px; }\n\n.edit-button {\n  display: inline-flex;\n  flex-direction: column;\n  align-content: center;\n  padding: 0;\n  background: transparent;\n  border: none;\n  cursor: pointer; }\n  .edit-button:active {\n    transform: scale(1.1); }\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".icon[data-v-72840798] {\n  height: 2.5em;\n  display: block;\n  margin: 0 auto;\n}\n.label[data-v-72840798] {\n  padding-top: 4px;\n  font-size: inherit;\n}\n.delete-button[data-v-72840798] {\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-align-content: center;\n      -ms-flex-line-pack: center;\n          align-content: center;\n  padding: 0;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n}\n.delete-button[data-v-72840798]:active {\n    -webkit-transform: scale(1.1);\n       -moz-transform: scale(1.1);\n        -ms-transform: scale(1.1);\n         -o-transform: scale(1.1);\n            transform: scale(1.1);\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/form_controls/delete_button_vertical.vue"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,cAAc;EACd,cAAc;AAAE;AAElB;EACE,gBAAgB;EAChB,kBAAkB;AAAE;AAEtB;EACE,2BAAoB;EAApB,4BAAoB;EAApB,wBAAoB;EAApB,2BAAoB;EAApB,oBAAoB;EACpB,4BAAsB;EAAtB,6BAAsB;EAAtB,8BAAsB;KAAtB,yBAAsB;KAAtB,0BAAsB;MAAtB,0BAAsB;UAAtB,sBAAsB;EACtB,6BAAqB;MAArB,0BAAqB;UAArB,qBAAqB;EACrB,UAAU;EACV,uBAAuB;EACvB,YAAY;EACZ,eAAe;AAAE;AACjB;IACE,6BAAqB;OAArB,0BAAqB;QAArB,yBAAqB;SAArB,wBAAqB;YAArB,qBAAqB;AAAE","sourcesContent":[".icon {\n  height: 2.5em;\n  display: block;\n  margin: 0 auto; }\n\n.label {\n  padding-top: 4px;\n  font-size: inherit; }\n\n.delete-button {\n  display: inline-flex;\n  flex-direction: column;\n  align-content: center;\n  padding: 0;\n  background: transparent;\n  border: none;\n  cursor: pointer; }\n  .delete-button:active {\n    transform: scale(1.1); }\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=style&index=0&id=f522a2ca&lang=scss&scoped=true":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=style&index=0&id=f522a2ca&lang=scss&scoped=true ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".icon[data-v-f522a2ca] {\n  height: 2.5em;\n  display: block;\n  margin: 0 auto;\n}\n.label[data-v-f522a2ca] {\n  padding-top: 4px;\n  font-size: inherit;\n}\n.show-button[data-v-f522a2ca] {\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-align-content: center;\n      -ms-flex-line-pack: center;\n          align-content: center;\n  padding: 0;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n}\n.show-button[data-v-f522a2ca]:active {\n    -webkit-transform: scale(1.1);\n       -moz-transform: scale(1.1);\n        -ms-transform: scale(1.1);\n         -o-transform: scale(1.1);\n            transform: scale(1.1);\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/form_controls/dont_hide_button_vertical.vue"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,cAAc;EACd,cAAc;AAAE;AAElB;EACE,gBAAgB;EAChB,kBAAkB;AAAE;AAEtB;EACE,2BAAoB;EAApB,4BAAoB;EAApB,wBAAoB;EAApB,2BAAoB;EAApB,oBAAoB;EACpB,4BAAsB;EAAtB,6BAAsB;EAAtB,8BAAsB;KAAtB,yBAAsB;KAAtB,0BAAsB;MAAtB,0BAAsB;UAAtB,sBAAsB;EACtB,6BAAqB;MAArB,0BAAqB;UAArB,qBAAqB;EACrB,UAAU;EACV,uBAAuB;EACvB,YAAY;EACZ,eAAe;AAAE;AACjB;IACE,6BAAqB;OAArB,0BAAqB;QAArB,yBAAqB;SAArB,wBAAqB;YAArB,qBAAqB;AAAE","sourcesContent":[".icon {\n  height: 2.5em;\n  display: block;\n  margin: 0 auto; }\n\n.label {\n  padding-top: 4px;\n  font-size: inherit; }\n\n.show-button {\n  display: inline-flex;\n  flex-direction: column;\n  align-content: center;\n  padding: 0;\n  background: transparent;\n  border: none;\n  cursor: pointer; }\n  .show-button:active {\n    transform: scale(1.1); }\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -31701,7 +32074,31 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".label[data-v-1384ba92] {\n  padding-top: 4px;\n}\n.edit-button[data-v-1384ba92] {\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-align-content: center;\n      -ms-flex-line-pack: center;\n          align-content: center;\n  padding: 0;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n}\n.edit-button[data-v-1384ba92]:active {\n    -webkit-transform: scale(1.1);\n       -moz-transform: scale(1.1);\n        -ms-transform: scale(1.1);\n         -o-transform: scale(1.1);\n            transform: scale(1.1);\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/form_controls/edit_button_vertical.vue"],"names":[],"mappings":"AAAA;EACE,gBAAgB;AAAE;AAEpB;EACE,2BAAoB;EAApB,4BAAoB;EAApB,wBAAoB;EAApB,2BAAoB;EAApB,oBAAoB;EACpB,4BAAsB;EAAtB,6BAAsB;EAAtB,8BAAsB;KAAtB,yBAAsB;KAAtB,0BAAsB;MAAtB,0BAAsB;UAAtB,sBAAsB;EACtB,6BAAqB;MAArB,0BAAqB;UAArB,qBAAqB;EACrB,UAAU;EACV,uBAAuB;EACvB,YAAY;EACZ,eAAe;AAAE;AACjB;IACE,6BAAqB;OAArB,0BAAqB;QAArB,yBAAqB;SAArB,wBAAqB;YAArB,qBAAqB;AAAE","sourcesContent":[".label {\n  padding-top: 4px; }\n\n.edit-button {\n  display: inline-flex;\n  flex-direction: column;\n  align-content: center;\n  padding: 0;\n  background: transparent;\n  border: none;\n  cursor: pointer; }\n  .edit-button:active {\n    transform: scale(1.1); }\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".icon[data-v-1384ba92] {\n  height: 2.5em;\n  display: block;\n  margin: 0 auto;\n}\n.label[data-v-1384ba92] {\n  padding-top: 4px;\n  font-size: inherit;\n}\n.edit-button[data-v-1384ba92] {\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-align-content: center;\n      -ms-flex-line-pack: center;\n          align-content: center;\n  padding: 0;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n}\n.edit-button[data-v-1384ba92]:active {\n    -webkit-transform: scale(1.1);\n       -moz-transform: scale(1.1);\n        -ms-transform: scale(1.1);\n         -o-transform: scale(1.1);\n            transform: scale(1.1);\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/form_controls/edit_button_vertical.vue"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,cAAc;EACd,cAAc;AAAE;AAElB;EACE,gBAAgB;EAChB,kBAAkB;AAAE;AAEtB;EACE,2BAAoB;EAApB,4BAAoB;EAApB,wBAAoB;EAApB,2BAAoB;EAApB,oBAAoB;EACpB,4BAAsB;EAAtB,6BAAsB;EAAtB,8BAAsB;KAAtB,yBAAsB;KAAtB,0BAAsB;MAAtB,0BAAsB;UAAtB,sBAAsB;EACtB,6BAAqB;MAArB,0BAAqB;UAArB,qBAAqB;EACrB,UAAU;EACV,uBAAuB;EACvB,YAAY;EACZ,eAAe;AAAE;AACjB;IACE,6BAAqB;OAArB,0BAAqB;QAArB,yBAAqB;SAArB,wBAAqB;YAArB,qBAAqB;AAAE","sourcesContent":[".icon {\n  height: 2.5em;\n  display: block;\n  margin: 0 auto; }\n\n.label {\n  padding-top: 4px;\n  font-size: inherit; }\n\n.edit-button {\n  display: inline-flex;\n  flex-direction: column;\n  align-content: center;\n  padding: 0;\n  background: transparent;\n  border: none;\n  cursor: pointer; }\n  .edit-button:active {\n    transform: scale(1.1); }\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=style&index=0&id=00b17422&lang=scss&scoped=true":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=style&index=0&id=00b17422&lang=scss&scoped=true ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".icon[data-v-00b17422] {\n  height: 2.5em;\n  display: block;\n  margin: 0 auto;\n}\n.label[data-v-00b17422] {\n  padding-top: 4px;\n  font-size: inherit;\n}\n.edit-button[data-v-00b17422] {\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-align-content: center;\n      -ms-flex-line-pack: center;\n          align-content: center;\n  padding: 0;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n}\n.edit-button[data-v-00b17422]:active {\n    -webkit-transform: scale(1.1);\n       -moz-transform: scale(1.1);\n        -ms-transform: scale(1.1);\n         -o-transform: scale(1.1);\n            transform: scale(1.1);\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/form_controls/hide_button_vertical.vue"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,cAAc;EACd,cAAc;AAAE;AAElB;EACE,gBAAgB;EAChB,kBAAkB;AAAE;AAEtB;EACE,2BAAoB;EAApB,4BAAoB;EAApB,wBAAoB;EAApB,2BAAoB;EAApB,oBAAoB;EACpB,4BAAsB;EAAtB,6BAAsB;EAAtB,8BAAsB;KAAtB,yBAAsB;KAAtB,0BAAsB;MAAtB,0BAAsB;UAAtB,sBAAsB;EACtB,6BAAqB;MAArB,0BAAqB;UAArB,qBAAqB;EACrB,UAAU;EACV,uBAAuB;EACvB,YAAY;EACZ,eAAe;AAAE;AACjB;IACE,6BAAqB;OAArB,0BAAqB;QAArB,yBAAqB;SAArB,wBAAqB;YAArB,qBAAqB;AAAE","sourcesContent":[".icon {\n  height: 2.5em;\n  display: block;\n  margin: 0 auto; }\n\n.label {\n  padding-top: 4px;\n  font-size: inherit; }\n\n.edit-button {\n  display: inline-flex;\n  flex-direction: column;\n  align-content: center;\n  padding: 0;\n  background: transparent;\n  border: none;\n  cursor: pointer; }\n  .edit-button:active {\n    transform: scale(1.1); }\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -32277,7 +32674,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".dialog[data-v-451e181e] {\n  background: black;\n  border: 1px solid red;\n  width: 200px;\n  -webkit-box-shadow: 2px 2px 2px 2px black;\n     -moz-box-shadow: 2px 2px 2px 2px black;\n          box-shadow: 2px 2px 2px 2px black;\n}\n.edit[data-v-451e181e] {\n  fill: #10d51b;\n  color: white;\n  margin: 4px;\n  font-size: 12px;\n  font-family: \"Exo 2\", sans-serif;\n}\n.edit[data-v-451e181e]:hover {\n    fill: #e7109f;\n}\n.delete[data-v-451e181e] {\n  margin: 4px;\n  font-size: 12px;\n  font-family: \"Exo 2\", sans-serif;\n  fill: #e30c0c;\n  color: white;\n}\n.list-header[data-v-451e181e] {\n  font-size: 15px;\n  font-family: \"Exo 2\", sans-serif;\n  background: black;\n  border: 2px solid green;\n  padding: 5px;\n  color: white;\n}\n.announcements-table[data-v-451e181e] {\n  border-collapse: collapse;\n  -webkit-border-radius: 5px;\n     -moz-border-radius: 5px;\n          border-radius: 5px;\n}\n.announcement-cell[data-v-451e181e] {\n  border: 2px solid green;\n  color: white;\n  font-size: 15px;\n  font-family: \"Exo 2\", sans-serif;\n  text-align: center;\n}\n.list-container[data-v-451e181e] {\n  min-height: 200px;\n  position: relative;\n  min-width: 50vw;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n     -moz-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.no-announcements-info[data-v-451e181e] {\n  color: white;\n  font-size: 1.4vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.no-announcements-info[data-v-451e181e] {\n      font-size: 16px;\n}\n}\n@media (max-width: 950px) {\n.list-header[data-v-451e181e] {\n    overflow: hidden;\n    width: 1px;\n    height: 1px;\n    position: absolute;\n    top: -9999px;\n    left: -9999px;\n}\n.announcement-cell[data-v-451e181e] {\n    display: block;\n    padding: 7px;\n    text-align: right;\n}\n.announcement-cell[data-v-451e181e]::before {\n      content: attr(data-label) \" : \";\n      float: left;\n      margin-right: 5px;\n      font-weight: bold;\n}\n.announcements-table[data-v-451e181e] {\n    min-width: 300px;\n}\n.announcement-row[data-v-451e181e] {\n    display: block;\n}\n.announcement-row[data-v-451e181e]:not(:last-child) {\n    margin-bottom: 10px;\n}\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/prostitution/notice_editor/prostitution_announcements_list.vue"],"names":[],"mappings":"AAAA;EACE,iBAAiB;EACjB,qBAAqB;EACrB,YAAY;EACZ,yCAAiC;KAAjC,sCAAiC;UAAjC,iCAAiC;AAAE;AAErC;EACE,aAAa;EACb,YAAY;EACZ,WAAW;EACX,eAAe;EACf,gCAAgC;AAAE;AAClC;IACE,aAAa;AAAE;AAEnB;EACE,WAAW;EACX,eAAe;EACf,gCAAgC;EAChC,aAAa;EACb,YAAY;AAAE;AAEhB;EACE,eAAe;EACf,gCAAgC;EAChC,iBAAiB;EACjB,uBAAuB;EACvB,YAAY;EACZ,YAAY;AAAE;AAEhB;EACE,yBAAyB;EACzB,0BAAkB;KAAlB,uBAAkB;UAAlB,kBAAkB;AAAE;AAEtB;EACE,uBAAuB;EACvB,YAAY;EACZ,eAAe;EACf,gCAAgC;EAChC,kBAAkB;AAAE;AAEtB;EACE,iBAAiB;EACjB,kBAAkB;EAClB,eAAe;EACf,oBAAa;EAAb,qBAAa;EAAb,iBAAa;EAAb,oBAAa;EAAb,aAAa;EACb,4BAAsB;EAAtB,6BAAsB;EAAtB,8BAAsB;KAAtB,yBAAsB;KAAtB,0BAAsB;MAAtB,0BAAsB;UAAtB,sBAAsB;EACtB,wBAAuB;EAAvB,+BAAuB;KAAvB,qBAAuB;MAAvB,qBAAuB;UAAvB,uBAAuB;EACvB,yBAAmB;EAAnB,2BAAmB;KAAnB,sBAAmB;MAAnB,sBAAmB;UAAnB,mBAAmB;AAAE;AAEvB;EACE,YAAY;EACZ,gBAAgB;EAChB,gCAAgC;AAAE;AAClC;AACE;MACE,eAAe;AAAE;AAAE;AAEzB;AACE;IACE,gBAAgB;IAChB,UAAU;IACV,WAAW;IACX,kBAAkB;IAClB,YAAY;IACZ,aAAa;AAAE;AACjB;IACE,cAAc;IACd,YAAY;IACZ,iBAAiB;AAAE;AACnB;MACE,+BAA+B;MAC/B,WAAW;MACX,iBAAiB;MACjB,iBAAiB;AAAE;AACvB;IACE,gBAAgB;AAAE;AACpB;IACE,cAAc;AAAE;AAClB;IACE,mBAAmB;AAAE;AAAE","sourcesContent":[".dialog {\n  background: black;\n  border: 1px solid red;\n  width: 200px;\n  box-shadow: 2px 2px 2px 2px black; }\n\n.edit {\n  fill: #10d51b;\n  color: white;\n  margin: 4px;\n  font-size: 12px;\n  font-family: \"Exo 2\", sans-serif; }\n  .edit:hover {\n    fill: #e7109f; }\n\n.delete {\n  margin: 4px;\n  font-size: 12px;\n  font-family: \"Exo 2\", sans-serif;\n  fill: #e30c0c;\n  color: white; }\n\n.list-header {\n  font-size: 15px;\n  font-family: \"Exo 2\", sans-serif;\n  background: black;\n  border: 2px solid green;\n  padding: 5px;\n  color: white; }\n\n.announcements-table {\n  border-collapse: collapse;\n  border-radius: 5px; }\n\n.announcement-cell {\n  border: 2px solid green;\n  color: white;\n  font-size: 15px;\n  font-family: \"Exo 2\", sans-serif;\n  text-align: center; }\n\n.list-container {\n  min-height: 200px;\n  position: relative;\n  min-width: 50vw;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center; }\n\n.no-announcements-info {\n  color: white;\n  font-size: 1.4vw;\n  font-family: \"Exo 2\", sans-serif; }\n  @media (max-width: 1200px) {\n    .no-announcements-info {\n      font-size: 16px; } }\n\n@media (max-width: 950px) {\n  .list-header {\n    overflow: hidden;\n    width: 1px;\n    height: 1px;\n    position: absolute;\n    top: -9999px;\n    left: -9999px; }\n  .announcement-cell {\n    display: block;\n    padding: 7px;\n    text-align: right; }\n    .announcement-cell::before {\n      content: attr(data-label) \" : \";\n      float: left;\n      margin-right: 5px;\n      font-weight: bold; }\n  .announcements-table {\n    min-width: 300px; }\n  .announcement-row {\n    display: block; }\n  .announcement-row:not(:last-child) {\n    margin-bottom: 10px; } }\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".hide-eye-icon[data-v-451e181e] {\n  width: 2.5em;\n  height: 2.5em;\n  fill: #ede30b;\n}\n.toggle-visibility[data-v-451e181e] {\n  fill: #ede30b;\n  color: white;\n  margin: 4px;\n  font-size: 12px;\n  font-family: \"Exo 2\", sans-serif;\n}\n.control-panel-button[data-v-451e181e] {\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -moz-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-align-content: center;\n      -ms-flex-line-pack: center;\n          align-content: center;\n  padding: 0;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n}\n.dialog[data-v-451e181e] {\n  background: black;\n  border: 1px solid red;\n  width: 200px;\n  -webkit-box-shadow: 2px 2px 2px 2px black;\n     -moz-box-shadow: 2px 2px 2px 2px black;\n          box-shadow: 2px 2px 2px 2px black;\n}\n.edit[data-v-451e181e] {\n  fill: #10d51b;\n  color: white;\n  margin: 4px;\n  font-size: 12px;\n  font-family: \"Exo 2\", sans-serif;\n}\n.edit[data-v-451e181e]:hover {\n    fill: #e7109f;\n}\n.delete[data-v-451e181e] {\n  margin: 4px;\n  font-size: 12px;\n  font-family: \"Exo 2\", sans-serif;\n  fill: #e30c0c;\n  color: white;\n}\n.list-header[data-v-451e181e] {\n  font-size: 15px;\n  font-family: \"Exo 2\", sans-serif;\n  background: black;\n  border: 2px solid green;\n  padding: 5px;\n  color: white;\n}\n.announcements-table[data-v-451e181e] {\n  border-collapse: collapse;\n  -webkit-border-radius: 5px;\n     -moz-border-radius: 5px;\n          border-radius: 5px;\n}\n.announcement-cell[data-v-451e181e] {\n  border: 2px solid green;\n  color: white;\n  font-size: 15px;\n  font-family: \"Exo 2\", sans-serif;\n  text-align: center;\n}\n.list-container[data-v-451e181e] {\n  min-height: 200px;\n  position: relative;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n     -moz-box-orient: vertical;\n     -moz-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n     -moz-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n     -moz-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.no-announcements-info[data-v-451e181e] {\n  color: white;\n  font-size: 1.4vw;\n  font-family: \"Exo 2\", sans-serif;\n}\n@media (max-width: 1200px) {\n.no-announcements-info[data-v-451e181e] {\n      font-size: 16px;\n}\n}\n@media (max-width: 950px) {\n.list-header[data-v-451e181e] {\n    overflow: hidden;\n    width: 1px;\n    height: 1px;\n    position: absolute;\n    top: -9999px;\n    left: -9999px;\n}\n.announcement-cell[data-v-451e181e] {\n    display: block;\n    padding: 7px;\n    text-align: right;\n}\n.announcement-cell[data-v-451e181e]::before {\n      content: attr(data-label) \" : \";\n      float: left;\n      margin-right: 5px;\n      font-weight: bold;\n}\n.announcements-table[data-v-451e181e] {\n    min-width: 300px;\n}\n.announcement-row[data-v-451e181e] {\n    display: block;\n}\n.announcement-row[data-v-451e181e]:not(:last-child) {\n    margin-bottom: 10px;\n}\n}\n", "",{"version":3,"sources":["webpack://./resources/js/components/prostitution/notice_editor/prostitution_announcements_list.vue"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,aAAa;EACb,aAAa;AAAE;AAEjB;EACE,aAAa;EACb,YAAY;EACZ,WAAW;EACX,eAAe;EACf,gCAAgC;AAAE;AAEpC;EACE,2BAAoB;EAApB,4BAAoB;EAApB,wBAAoB;EAApB,2BAAoB;EAApB,oBAAoB;EACpB,4BAAsB;EAAtB,6BAAsB;EAAtB,8BAAsB;KAAtB,yBAAsB;KAAtB,0BAAsB;MAAtB,0BAAsB;UAAtB,sBAAsB;EACtB,6BAAqB;MAArB,0BAAqB;UAArB,qBAAqB;EACrB,UAAU;EACV,uBAAuB;EACvB,YAAY;EACZ,eAAe;AAAE;AAEnB;EACE,iBAAiB;EACjB,qBAAqB;EACrB,YAAY;EACZ,yCAAiC;KAAjC,sCAAiC;UAAjC,iCAAiC;AAAE;AAErC;EACE,aAAa;EACb,YAAY;EACZ,WAAW;EACX,eAAe;EACf,gCAAgC;AAAE;AAClC;IACE,aAAa;AAAE;AAEnB;EACE,WAAW;EACX,eAAe;EACf,gCAAgC;EAChC,aAAa;EACb,YAAY;AAAE;AAEhB;EACE,eAAe;EACf,gCAAgC;EAChC,iBAAiB;EACjB,uBAAuB;EACvB,YAAY;EACZ,YAAY;AAAE;AAEhB;EACE,yBAAyB;EACzB,0BAAkB;KAAlB,uBAAkB;UAAlB,kBAAkB;AAAE;AAEtB;EACE,uBAAuB;EACvB,YAAY;EACZ,eAAe;EACf,gCAAgC;EAChC,kBAAkB;AAAE;AAEtB;EACE,iBAAiB;EACjB,kBAAkB;EAClB,oBAAa;EAAb,qBAAa;EAAb,iBAAa;EAAb,oBAAa;EAAb,aAAa;EACb,4BAAsB;EAAtB,6BAAsB;EAAtB,8BAAsB;KAAtB,yBAAsB;KAAtB,0BAAsB;MAAtB,0BAAsB;UAAtB,sBAAsB;EACtB,wBAAuB;EAAvB,+BAAuB;KAAvB,qBAAuB;MAAvB,qBAAuB;UAAvB,uBAAuB;EACvB,yBAAmB;EAAnB,2BAAmB;KAAnB,sBAAmB;MAAnB,sBAAmB;UAAnB,mBAAmB;AAAE;AAEvB;EACE,YAAY;EACZ,gBAAgB;EAChB,gCAAgC;AAAE;AAClC;AACE;MACE,eAAe;AAAE;AAAE;AAEzB;AACE;IACE,gBAAgB;IAChB,UAAU;IACV,WAAW;IACX,kBAAkB;IAClB,YAAY;IACZ,aAAa;AAAE;AACjB;IACE,cAAc;IACd,YAAY;IACZ,iBAAiB;AAAE;AACnB;MACE,+BAA+B;MAC/B,WAAW;MACX,iBAAiB;MACjB,iBAAiB;AAAE;AACvB;IACE,gBAAgB;AAAE;AACpB;IACE,cAAc;AAAE;AAClB;IACE,mBAAmB;AAAE;AAAE","sourcesContent":[".hide-eye-icon {\n  width: 2.5em;\n  height: 2.5em;\n  fill: #ede30b; }\n\n.toggle-visibility {\n  fill: #ede30b;\n  color: white;\n  margin: 4px;\n  font-size: 12px;\n  font-family: \"Exo 2\", sans-serif; }\n\n.control-panel-button {\n  display: inline-flex;\n  flex-direction: column;\n  align-content: center;\n  padding: 0;\n  background: transparent;\n  border: none;\n  cursor: pointer; }\n\n.dialog {\n  background: black;\n  border: 1px solid red;\n  width: 200px;\n  box-shadow: 2px 2px 2px 2px black; }\n\n.edit {\n  fill: #10d51b;\n  color: white;\n  margin: 4px;\n  font-size: 12px;\n  font-family: \"Exo 2\", sans-serif; }\n  .edit:hover {\n    fill: #e7109f; }\n\n.delete {\n  margin: 4px;\n  font-size: 12px;\n  font-family: \"Exo 2\", sans-serif;\n  fill: #e30c0c;\n  color: white; }\n\n.list-header {\n  font-size: 15px;\n  font-family: \"Exo 2\", sans-serif;\n  background: black;\n  border: 2px solid green;\n  padding: 5px;\n  color: white; }\n\n.announcements-table {\n  border-collapse: collapse;\n  border-radius: 5px; }\n\n.announcement-cell {\n  border: 2px solid green;\n  color: white;\n  font-size: 15px;\n  font-family: \"Exo 2\", sans-serif;\n  text-align: center; }\n\n.list-container {\n  min-height: 200px;\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center; }\n\n.no-announcements-info {\n  color: white;\n  font-size: 1.4vw;\n  font-family: \"Exo 2\", sans-serif; }\n  @media (max-width: 1200px) {\n    .no-announcements-info {\n      font-size: 16px; } }\n\n@media (max-width: 950px) {\n  .list-header {\n    overflow: hidden;\n    width: 1px;\n    height: 1px;\n    position: absolute;\n    top: -9999px;\n    left: -9999px; }\n  .announcement-cell {\n    display: block;\n    padding: 7px;\n    text-align: right; }\n    .announcement-cell::before {\n      content: attr(data-label) \" : \";\n      float: left;\n      margin-right: 5px;\n      font-weight: bold; }\n  .announcements-table {\n    min-width: 300px; }\n  .announcement-row {\n    display: block; }\n  .announcement-row:not(:last-child) {\n    margin-bottom: 10px; } }\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -32770,6 +33167,33 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-26.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-26.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=style&index=0&id=7bd8eea0&lang=css":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-26.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-26.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=style&index=0&id=7bd8eea0&lang=css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_26_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_26_use_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_eye_icon_vue_vue_type_style_index_0_id_7bd8eea0_lang_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-26.use[1]!../../../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-26.use[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./hide_eye_icon.vue?vue&type=style&index=0&id=7bd8eea0&lang=css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-26.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-26.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=style&index=0&id=7bd8eea0&lang=css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_26_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_26_use_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_eye_icon_vue_vue_type_style_index_0_id_7bd8eea0_lang_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_26_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_26_use_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_eye_icon_vue_vue_type_style_index_0_id_7bd8eea0_lang_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-26.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-26.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/id_card_icon.vue?vue&type=style&index=0&id=2cef1f70&lang=css":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-26.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-26.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/id_card_icon.vue?vue&type=style&index=0&id=2cef1f70&lang=css ***!
@@ -33256,6 +33680,33 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=style&index=0&id=f522a2ca&lang=scss&scoped=true":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=style&index=0&id=f522a2ca&lang=scss&scoped=true ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_dont_hide_button_vertical_vue_vue_type_style_index_0_id_f522a2ca_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./dont_hide_button_vertical.vue?vue&type=style&index=0&id=f522a2ca&lang=scss&scoped=true */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=style&index=0&id=f522a2ca&lang=scss&scoped=true");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_dont_hide_button_vertical_vue_vue_type_style_index_0_id_f522a2ca_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_dont_hide_button_vertical_vue_vue_type_style_index_0_id_f522a2ca_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/edit_button_vertical.vue?vue&type=style&index=0&id=1384ba92&lang=scss&scoped=true":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/edit_button_vertical.vue?vue&type=style&index=0&id=1384ba92&lang=scss&scoped=true ***!
@@ -33280,6 +33731,33 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_edit_button_vertical_vue_vue_type_style_index_0_id_1384ba92_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=style&index=0&id=00b17422&lang=scss&scoped=true":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=style&index=0&id=00b17422&lang=scss&scoped=true ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_button_vertical_vue_vue_type_style_index_0_id_00b17422_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./hide_button_vertical.vue?vue&type=style&index=0&id=00b17422&lang=scss&scoped=true */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=style&index=0&id=00b17422&lang=scss&scoped=true");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_button_vertical_vue_vue_type_style_index_0_id_00b17422_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_button_vertical_vue_vue_type_style_index_0_id_00b17422_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -35553,6 +36031,35 @@ _heart_rate_icon_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["defau
 
 /***/ }),
 
+/***/ "./resources/js/components/decoration/icons/svg/hide_eye_icon.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/decoration/icons/svg/hide_eye_icon.vue ***!
+  \************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _hide_eye_icon_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__.__esModule; }
+/* harmony export */ });
+/* harmony import */ var _hide_eye_icon_vue_vue_type_template_id_7bd8eea0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hide_eye_icon.vue?vue&type=template&id=7bd8eea0 */ "./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=template&id=7bd8eea0");
+/* harmony import */ var _hide_eye_icon_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hide_eye_icon.vue?vue&type=script&lang=ts */ "./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=script&lang=ts");
+/* harmony import */ var _hide_eye_icon_vue_vue_type_style_index_0_id_7bd8eea0_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hide_eye_icon.vue?vue&type=style&index=0&id=7bd8eea0&lang=css */ "./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=style&index=0&id=7bd8eea0&lang=css");
+
+
+
+
+;
+_hide_eye_icon_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].render = _hide_eye_icon_vue_vue_type_template_id_7bd8eea0__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_hide_eye_icon_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/components/decoration/icons/svg/hide_eye_icon.vue"
+
+/* harmony default export */ __webpack_exports__["default"] = (_hide_eye_icon_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+/***/ }),
+
 /***/ "./resources/js/components/decoration/icons/svg/id_card_icon.vue":
 /*!***********************************************************************!*\
   !*** ./resources/js/components/decoration/icons/svg/id_card_icon.vue ***!
@@ -35965,6 +36472,32 @@ _settings_icon_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default
 
 /***/ }),
 
+/***/ "./resources/js/components/decoration/icons/svg/show_eye_icon.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/decoration/icons/svg/show_eye_icon.vue ***!
+  \************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _show_eye_icon_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.__esModule; }
+/* harmony export */ });
+/* harmony import */ var _show_eye_icon_vue_vue_type_template_id_15d3f2d5__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./show_eye_icon.vue?vue&type=template&id=15d3f2d5 */ "./resources/js/components/decoration/icons/svg/show_eye_icon.vue?vue&type=template&id=15d3f2d5");
+/* harmony import */ var _show_eye_icon_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./show_eye_icon.vue?vue&type=script&lang=js */ "./resources/js/components/decoration/icons/svg/show_eye_icon.vue?vue&type=script&lang=js");
+
+
+
+_show_eye_icon_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].render = _show_eye_icon_vue_vue_type_template_id_15d3f2d5__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_show_eye_icon_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/components/decoration/icons/svg/show_eye_icon.vue"
+
+/* harmony default export */ __webpack_exports__["default"] = (_show_eye_icon_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+/***/ }),
+
 /***/ "./resources/js/components/decoration/icons/svg/signup_icon.vue":
 /*!**********************************************************************!*\
   !*** ./resources/js/components/decoration/icons/svg/signup_icon.vue ***!
@@ -36221,6 +36754,36 @@ _delete_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__
 
 /***/ }),
 
+/***/ "./resources/js/components/form_controls/dont_hide_button_vertical.vue":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/form_controls/dont_hide_button_vertical.vue ***!
+  \*****************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _dont_hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__.__esModule; }
+/* harmony export */ });
+/* harmony import */ var _dont_hide_button_vertical_vue_vue_type_template_id_f522a2ca_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dont_hide_button_vertical.vue?vue&type=template&id=f522a2ca&scoped=true */ "./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=template&id=f522a2ca&scoped=true");
+/* harmony import */ var _dont_hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dont_hide_button_vertical.vue?vue&type=script&lang=ts */ "./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=script&lang=ts");
+/* harmony import */ var _dont_hide_button_vertical_vue_vue_type_style_index_0_id_f522a2ca_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dont_hide_button_vertical.vue?vue&type=style&index=0&id=f522a2ca&lang=scss&scoped=true */ "./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=style&index=0&id=f522a2ca&lang=scss&scoped=true");
+
+
+
+
+;
+_dont_hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].render = _dont_hide_button_vertical_vue_vue_type_template_id_f522a2ca_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render
+_dont_hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].__scopeId = "data-v-f522a2ca"
+/* hot reload */
+if (false) {}
+
+_dont_hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/components/form_controls/dont_hide_button_vertical.vue"
+
+/* harmony default export */ __webpack_exports__["default"] = (_dont_hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+/***/ }),
+
 /***/ "./resources/js/components/form_controls/edit_button_vertical.vue":
 /*!************************************************************************!*\
   !*** ./resources/js/components/form_controls/edit_button_vertical.vue ***!
@@ -36248,6 +36811,36 @@ if (false) {}
 _edit_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/components/form_controls/edit_button_vertical.vue"
 
 /* harmony default export */ __webpack_exports__["default"] = (_edit_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+/***/ }),
+
+/***/ "./resources/js/components/form_controls/hide_button_vertical.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/form_controls/hide_button_vertical.vue ***!
+  \************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__.__esModule; }
+/* harmony export */ });
+/* harmony import */ var _hide_button_vertical_vue_vue_type_template_id_00b17422_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hide_button_vertical.vue?vue&type=template&id=00b17422&scoped=true */ "./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=template&id=00b17422&scoped=true");
+/* harmony import */ var _hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hide_button_vertical.vue?vue&type=script&lang=ts */ "./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=script&lang=ts");
+/* harmony import */ var _hide_button_vertical_vue_vue_type_style_index_0_id_00b17422_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hide_button_vertical.vue?vue&type=style&index=0&id=00b17422&lang=scss&scoped=true */ "./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=style&index=0&id=00b17422&lang=scss&scoped=true");
+
+
+
+
+;
+_hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].render = _hide_button_vertical_vue_vue_type_template_id_00b17422_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render
+_hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].__scopeId = "data-v-00b17422"
+/* hot reload */
+if (false) {}
+
+_hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"].__file = "resources/js/components/form_controls/hide_button_vertical.vue"
+
+/* harmony default export */ __webpack_exports__["default"] = (_hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 /***/ }),
 
@@ -37489,6 +38082,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=script&lang=ts":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=script&lang=ts ***!
+  \************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_eye_icon_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
+/* harmony export */   "default": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_eye_icon_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"]; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_eye_icon_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./hide_eye_icon.vue?vue&type=script&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=script&lang=ts");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/decoration/icons/svg/id_card_icon.vue?vue&type=script&lang=ts":
 /*!***********************************************************************************************!*\
   !*** ./resources/js/components/decoration/icons/svg/id_card_icon.vue?vue&type=script&lang=ts ***!
@@ -37863,6 +38473,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=script&lang=ts":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=script&lang=ts ***!
+  \*****************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_dont_hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
+/* harmony export */   "default": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_dont_hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"]; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_dont_hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./dont_hide_button_vertical.vue?vue&type=script&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=script&lang=ts");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/form_controls/edit_button_vertical.vue?vue&type=script&lang=ts":
 /*!************************************************************************************************!*\
   !*** ./resources/js/components/form_controls/edit_button_vertical.vue?vue&type=script&lang=ts ***!
@@ -37876,6 +38503,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_edit_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"]; }
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_edit_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./edit_button_vertical.vue?vue&type=script&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/edit_button_vertical.vue?vue&type=script&lang=ts");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=script&lang=ts":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=script&lang=ts ***!
+  \************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
+/* harmony export */   "default": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__["default"]; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_button_vertical_vue_vue_type_script_lang_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./hide_button_vertical.vue?vue&type=script&lang=ts */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=script&lang=ts");
  
 
 /***/ }),
@@ -38390,6 +39034,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/decoration/icons/svg/show_eye_icon.vue?vue&type=script&lang=js":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/decoration/icons/svg/show_eye_icon.vue?vue&type=script&lang=js ***!
+  \************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_show_eye_icon_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
+/* harmony export */   "default": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_show_eye_icon_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"]; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_show_eye_icon_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./show_eye_icon.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/show_eye_icon.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/form_controls/phantom_button.vue?vue&type=script&lang=js":
 /*!******************************************************************************************!*\
   !*** ./resources/js/components/form_controls/phantom_button.vue?vue&type=script&lang=js ***!
@@ -38849,6 +39510,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=template&id=7bd8eea0":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=template&id=7bd8eea0 ***!
+  \******************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_eye_icon_vue_vue_type_template_id_7bd8eea0__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
+/* harmony export */   "render": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_eye_icon_vue_vue_type_template_id_7bd8eea0__WEBPACK_IMPORTED_MODULE_0__.render; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_eye_icon_vue_vue_type_template_id_7bd8eea0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./hide_eye_icon.vue?vue&type=template&id=7bd8eea0 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=template&id=7bd8eea0");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/decoration/icons/svg/id_card_icon.vue?vue&type=template&id=2cef1f70":
 /*!*****************************************************************************************************!*\
   !*** ./resources/js/components/decoration/icons/svg/id_card_icon.vue?vue&type=template&id=2cef1f70 ***!
@@ -39104,6 +39782,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/decoration/icons/svg/show_eye_icon.vue?vue&type=template&id=15d3f2d5":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/decoration/icons/svg/show_eye_icon.vue?vue&type=template&id=15d3f2d5 ***!
+  \******************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_show_eye_icon_vue_vue_type_template_id_15d3f2d5__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
+/* harmony export */   "render": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_show_eye_icon_vue_vue_type_template_id_15d3f2d5__WEBPACK_IMPORTED_MODULE_0__.render; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_show_eye_icon_vue_vue_type_template_id_15d3f2d5__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./show_eye_icon.vue?vue&type=template&id=15d3f2d5 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/show_eye_icon.vue?vue&type=template&id=15d3f2d5");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/decoration/icons/svg/signup_icon.vue?vue&type=template&id=75d53acc&scoped=true":
 /*!****************************************************************************************************************!*\
   !*** ./resources/js/components/decoration/icons/svg/signup_icon.vue?vue&type=template&id=75d53acc&scoped=true ***!
@@ -39257,6 +39952,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=template&id=f522a2ca&scoped=true":
+/*!***********************************************************************************************************************!*\
+  !*** ./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=template&id=f522a2ca&scoped=true ***!
+  \***********************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_dont_hide_button_vertical_vue_vue_type_template_id_f522a2ca_scoped_true__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
+/* harmony export */   "render": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_dont_hide_button_vertical_vue_vue_type_template_id_f522a2ca_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_dont_hide_button_vertical_vue_vue_type_template_id_f522a2ca_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./dont_hide_button_vertical.vue?vue&type=template&id=f522a2ca&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=template&id=f522a2ca&scoped=true");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/form_controls/edit_button_vertical.vue?vue&type=template&id=1384ba92&scoped=true":
 /*!******************************************************************************************************************!*\
   !*** ./resources/js/components/form_controls/edit_button_vertical.vue?vue&type=template&id=1384ba92&scoped=true ***!
@@ -39270,6 +39982,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_edit_button_vertical_vue_vue_type_template_id_1384ba92_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render; }
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_edit_button_vertical_vue_vue_type_template_id_1384ba92_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./edit_button_vertical.vue?vue&type=template&id=1384ba92&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/edit_button_vertical.vue?vue&type=template&id=1384ba92&scoped=true");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=template&id=00b17422&scoped=true":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=template&id=00b17422&scoped=true ***!
+  \******************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__esModule": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_button_vertical_vue_vue_type_template_id_00b17422_scoped_true__WEBPACK_IMPORTED_MODULE_0__.__esModule; },
+/* harmony export */   "render": function() { return /* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_button_vertical_vue_vue_type_template_id_00b17422_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_button_vertical_vue_vue_type_template_id_00b17422_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./hide_button_vertical.vue?vue&type=template&id=00b17422&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=template&id=00b17422&scoped=true");
 
 
 /***/ }),
@@ -39871,6 +40600,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=style&index=0&id=7bd8eea0&lang=css":
+/*!********************************************************************************************************************!*\
+  !*** ./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=style&index=0&id=7bd8eea0&lang=css ***!
+  \********************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_26_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_26_use_2_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_eye_icon_vue_vue_type_style_index_0_id_7bd8eea0_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader/dist/cjs.js!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-26.use[1]!../../../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-26.use[2]!../../../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./hide_eye_icon.vue?vue&type=style&index=0&id=7bd8eea0&lang=css */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-26.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-26.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/decoration/icons/svg/hide_eye_icon.vue?vue&type=style&index=0&id=7bd8eea0&lang=css");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/decoration/icons/svg/id_card_icon.vue?vue&type=style&index=0&id=2cef1f70&lang=css":
 /*!*******************************************************************************************************************!*\
   !*** ./resources/js/components/decoration/icons/svg/id_card_icon.vue?vue&type=style&index=0&id=2cef1f70&lang=css ***!
@@ -40105,6 +40847,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=style&index=0&id=f522a2ca&lang=scss&scoped=true":
+/*!**************************************************************************************************************************************!*\
+  !*** ./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=style&index=0&id=f522a2ca&lang=scss&scoped=true ***!
+  \**************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_dont_hide_button_vertical_vue_vue_type_style_index_0_id_f522a2ca_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./dont_hide_button_vertical.vue?vue&type=style&index=0&id=f522a2ca&lang=scss&scoped=true */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/dont_hide_button_vertical.vue?vue&type=style&index=0&id=f522a2ca&lang=scss&scoped=true");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/form_controls/edit_button_vertical.vue?vue&type=style&index=0&id=1384ba92&lang=scss&scoped=true":
 /*!*********************************************************************************************************************************!*\
   !*** ./resources/js/components/form_controls/edit_button_vertical.vue?vue&type=style&index=0&id=1384ba92&lang=scss&scoped=true ***!
@@ -40114,6 +40869,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_edit_button_vertical_vue_vue_type_style_index_0_id_1384ba92_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./edit_button_vertical.vue?vue&type=style&index=0&id=1384ba92&lang=scss&scoped=true */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/edit_button_vertical.vue?vue&type=style&index=0&id=1384ba92&lang=scss&scoped=true");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=style&index=0&id=00b17422&lang=scss&scoped=true":
+/*!*********************************************************************************************************************************!*\
+  !*** ./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=style&index=0&id=00b17422&lang=scss&scoped=true ***!
+  \*********************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_29_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_29_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_29_use_3_node_modules_vue_loader_dist_index_js_ruleSet_1_rules_32_use_0_hide_button_vertical_vue_vue_type_style_index_0_id_00b17422_lang_scss_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!../../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./hide_button_vertical.vue?vue&type=style&index=0&id=00b17422&lang=scss&scoped=true */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-29.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-29.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-29.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[32].use[0]!./resources/js/components/form_controls/hide_button_vertical.vue?vue&type=style&index=0&id=00b17422&lang=scss&scoped=true");
 
 
 /***/ }),

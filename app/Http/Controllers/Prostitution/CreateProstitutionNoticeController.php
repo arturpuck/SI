@@ -37,7 +37,7 @@ class CreateProstitutionNoticeController extends Controller
         return $handler->handle($request);
     }
 
-    public function getAnnouncementPhotoForEditor(GetAnnouncementPhotoForEditorPanelRequest $request, GetAnnouncementPhotoForEditorPanelHandler $handler)
+    public function getProstitutionAnnouncementPhoto(GetAnnouncementPhotoForEditorPanelRequest $request, GetAnnouncementPhotoForEditorPanelHandler $handler)
     {
         return $handler->handle($request);
     }

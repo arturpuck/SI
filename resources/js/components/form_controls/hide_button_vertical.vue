@@ -1,24 +1,24 @@
 <template>
-  <button class="delete-button">
-    <trash-can-icon class="icon"></trash-can-icon>
+  <button class="edit-button">
+    <hide-eye-icon class="icon"></hide-eye-icon>
     <span class="label" v-text="label"></span>
   </button>
 </template>
 
 <script lang="ts">
 import Translator from "@jsmodules/translator";
-import TrashCanIcon from "@svgicon/trash_can_icon.vue";
+import HideEyeIcon from "@svgicon/hide_eye_icon.vue";
 
 export default {
-  name: "delete-button-vertical",
+  name: "edit-button-vertical",
 
   components: {
-    TrashCanIcon,
+    HideEyeIcon,
   },
 
   data() {
     return {
-      label: Translator.translate("delete"),
+      label: Translator.translate("hide"),
     };
   },
 };
@@ -26,6 +26,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "~sass/fonts";
+
 .icon {
   height: 2.5em;
   display: block;
@@ -37,7 +38,7 @@ export default {
   font-size: inherit;
 }
 
-.delete-button {
+.edit-button {
   &:active {
     transform: scale(1.1);
   }

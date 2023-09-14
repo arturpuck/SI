@@ -5,8 +5,6 @@ namespace App\Http\Requests\Prostitution;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\Rule;
-use App\Enum\Prostitution\AnnouncementPhotoType;
 
 
 class GetAnnouncementPhotoForEditorPanelRequest extends FormRequest
@@ -31,11 +29,6 @@ class GetAnnouncementPhotoForEditorPanelRequest extends FormRequest
         return [
             'announcementUniqueIdentifier' => ['required'],
             'fileName' => ['required'],
-            'status' => ['required', 
-                Rule::in([
-                    AnnouncementPhotoType::VALIDATED->value,
-                    AnnouncementPhotoType::AWAITING_VERIFICATION->value
-                ])]
         ];
     }
 
@@ -44,7 +37,6 @@ class GetAnnouncementPhotoForEditorPanelRequest extends FormRequest
         return [
             'announcementUniqueIdentifier' => $this->query('announcementUniqueIdentifier'),
             'fileName' => $this->query('fileName'),
-            'status' => $this->query('status'),
         ];
     }
 

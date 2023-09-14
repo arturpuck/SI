@@ -15,7 +15,8 @@ const translations : {
     notValidAwaitingVerificationNotVisibleForUsers : string,
     fetchingAnnouncements : string,
     youDontHaveAnyAnnouncements : string,
-    announcementsCannotBeDisplayedBecauseAnErrorOccured : string
+    announcementsCannotBeDisplayedBecauseAnErrorOccured : string,
+    announcementWilNotBeDisplayedForPotentialClients : string,
 } = {
     city : Translator.translate("city"),
     hiddenByAUser : Translator.translate('hidden_by_a_user'),
@@ -31,7 +32,8 @@ const translations : {
     notValidAwaitingVerificationNotVisibleForUsers : Translator.translate("not_valid_awaiting_verification_not_visible_for_users"),
     fetchingAnnouncements : Translator.translate("fetching_announcements"),
     youDontHaveAnyAnnouncements : Translator.translate("you_dont_have_any_announcements"),
-    announcementsCannotBeDisplayedBecauseAnErrorOccured : Translator.translate("announcements_cannot_be_displayed_because_an_error_occured")
+    announcementsCannotBeDisplayedBecauseAnErrorOccured : Translator.translate("announcements_cannot_be_displayed_because_an_error_occured"),
+    announcementWilNotBeDisplayedForPotentialClients : Translator.translate("announcement_wil_not_be_displayed_for_potential_clients")
 };
 
 export default translations;
