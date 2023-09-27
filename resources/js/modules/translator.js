@@ -616,6 +616,8 @@ export default {
       announcement_wil_not_be_displayed_for_potential_clients : "Ogłoszenie nie będzie widoczne dla potencjalnych klientów",
       because_of_security_reasons_token_generation_is_limited : "Ze względów bezpieczeństwa liczba generowanych nowych tokenów w ciągu minuty jest ograniczona",
       error_occured_while_token_processing : "Podczas ustawiania tokena pojawił się błąd. Zweryfikuj swe łącze internetowe i w razie problemów prosimy o kontakt z administracją portalu",
+      any_voivodeship_must_be_selected : "Należy najpierw wybrać województwo",
+      error_during_fetching_announcement_types_remaining_options_should_be_available : "Wystąpił błąd podczas pobierania typów wyszukiwanych ogłoszeń, jednak reszta opcji powinna być dostępna",
       packages: {
          content_sidebar: {
             hide_side_bar_title: "Schowaj boczne menu",

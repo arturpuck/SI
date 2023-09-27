@@ -6,7 +6,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use App\Traits\ColumnToRequestField;
 use App\City;
 use App\Services\Prostitution\Announcements\ProstitutionAnnouncementsFileSystemService;
-use App\Services\Prostitution\Announcements\ProstitutionAnnouncementsFileSystem;
 
 class ProstitutionAnnouncementEditorFormResource extends JsonResource
 {

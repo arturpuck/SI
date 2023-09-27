@@ -69,7 +69,7 @@ export default class SimpleLabeledSelect extends Vue {
   created() {
     this.selectOptions = this.options;
     //@ts-ignore
-    this.emitter.on(`updateSelectValues${this.name}`, this.updateSelectValues); 
+    this.emitter.on(`updateSelectValues${this.name}`, this.updateSelectValues);
   }
 
   updateSelectValues(options: object) {
@@ -108,7 +108,7 @@ export default class SimpleLabeledSelect extends Vue {
   background: #242229;
   outline: none;
   margin-left: 4px;
-  flex-grow:100;
+  flex-grow: 100;
 }
 
 .select-container__select,

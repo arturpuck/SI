@@ -11,6 +11,7 @@ use App\Http\Requests\User\AvatarValidationRequest;
 use App\Http\Requests\User\ChangeAvatarRequest;
 use App\Http\Requests\User\ChangeUserPasswordRequest;
 use App\Http\Requests\User\ChangeOtherUserSettingsRequest;
+use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserSettingsController extends Controller
@@ -41,5 +42,10 @@ class UserSettingsController extends Controller
 
     public function changeOtherSettings(ChangeOtherUserSettingsRequest $request){
          return auth()->user()->changeOtherSettings($request);
+    }
+
+    public function getUserTypes() : JsonResponse
+    {
+        return new JsonResponse(UserType::all(), 200);
     }
 }

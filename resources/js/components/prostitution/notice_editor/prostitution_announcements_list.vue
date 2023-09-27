@@ -67,7 +67,7 @@
             >
             </edit-button-vertical>
             <delete-button-vertical
-              v-on:click="initiateAnnouncementDeletion(announcement.id)"
+              v-on:click="initiateAnnouncementDeletion(announcement.universallyUniqueID)"
               class="delete"
             ></delete-button-vertical>
             <component
@@ -208,7 +208,7 @@ export default {
       const requestData = {
         method: "DELETE",
         body: JSON.stringify({
-          announcementID: this.announcementIDMarkedAsConsideredToDelete,
+          announcementUid: this.announcementUidMarkedAsConsideredToDelete,
         }),
         headers: {
           "X-CSRF-TOKEN": this.csrfToken,
@@ -276,9 +276,9 @@ export default {
       this.dialogIsVisible = true;
     },
 
-    initiateAnnouncementDeletion(announcementID: number): void {
+    initiateAnnouncementDeletion(announcementUid: number): void {
       this.showDialog();
-      this.announcementIDMarkedAsConsideredToDelete = announcementID;
+      this.announcementUidMarkedAsConsideredToDelete = announcementUid;
     },
   },
 
@@ -315,7 +315,7 @@ export default {
       announcementsBasicInformationList: [],
       translations: Translations,
       dialogIsVisible: false,
-      announcementIDMarkedAsConsideredToDelete: undefined,
+      announcementUidMarkedAsConsideredToDelete: undefined,
       fetchingInProgress: true,
       errorOccuredDuringFetchingList: false,
     };

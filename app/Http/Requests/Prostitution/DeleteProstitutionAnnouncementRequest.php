@@ -26,7 +26,7 @@ class DeleteProstitutionAnnouncementRequest extends FormRequest
     public function rules()
     {
         return [
-            'announcementID' => ['required', 'exists:prostitution_announcements,id']
+            'announcementUid' => ['required', 'exists:prostitution_announcements,uniqueID']
         ];
     }
 

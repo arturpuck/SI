@@ -28,6 +28,12 @@ Route::get('porno-słownik/{range?}', 'PornDictionaryController@showDictionary')
 
 Route::get('/aktualności/{pageNumber?}', 'NewsController@showNews')->name('news.list');
 
+Route::get('/cities', [CountryRegionsController::class, 'getCities']);
+
+Route::get('/voivodeships', [CountryRegionsController::class, 'getVoivodeships']);
+
+Route::get('/user-types', 'Auth\User\UserSettingsController@getUserTypes');
+
 
 Route::namespace ('Movies')->name('movies.')->group(function () {
 
@@ -161,20 +167,28 @@ Route::namespace ('Prostitution')->prefix('prostytucja/')->name('prostitution.')
     Route::get('notice-form-options', 'CreateProstitutionNoticeController@getNoticeFormOptions')
         ->name('notice-form-options')->middleware('authWithoutRedirecting');
 
-    Route::post('announcements', 'CreateProstitutionNoticeController@createProstitutionAnnouncement')
+    Route::post('', 'CreateProstitutionNoticeController@createProstitutionAnnouncement')
         ->name('create.announcement')->middleware('authWithoutRedirecting');
 
-    Route::patch('announcements', 'CreateProstitutionNoticeController@updateProstitutionAnnouncement')
+    Route::patch('announcement', 'CreateProstitutionNoticeController@updateProstitutionAnnouncement')
         ->name('update.announcement')->middleware(['authWithoutRedirecting', 'throttle:10,1']);
 
     Route::get('lista-moich-ogłoszeń', 'ProstitutionListController@showAnnouncementsList')
         ->name('show.announcements.list')->middleware('auth');
 
-    Route::get('announcements', 'ProstitutionListController@getAnnouncementInformation')
+    Route::get('/ogłoszenie/{announcementUid}', 'ProstitutionListController@showAnnouncement')
+        ->name('show.announcement');
+
+    Route::get('/announcements', 'ProstitutionListController@searchAnnouncements');
+
+    Route::get('announcement', 'ProstitutionListController@getAnnouncementInformation')
         ->name('announcement.information')->middleware('authWithoutRedirecting');
 
-    Route::delete('announcements', 'ProstitutionListController@deleteAnnouncement')
+    Route::delete('announcement', 'ProstitutionListController@deleteAnnouncement')
         ->name('announcement.deletion')->middleware('authWithoutRedirecting');
+
+    Route::get('ogłoszenia', 'ProstitutionListController@announcementsBrowse')
+        ->name('announcement.browse');
 
     Route::put('photo-token', 'ProstitutionAnnouncementTokenController@setVerificationToken')
         ->name('announcement.set-photo-token')->middleware(['authWithoutRedirecting', 'throttle:10,1']);
@@ -187,7 +201,5 @@ Route::namespace ('Prostitution')->prefix('prostytucja/')->name('prostitution.')
 
 });
 
-Route::middleware(['authWithoutRedirecting'])->group(function(){
-    Route::get('/cities', [CountryRegionsController::class, 'getCities']);
 
-});
+

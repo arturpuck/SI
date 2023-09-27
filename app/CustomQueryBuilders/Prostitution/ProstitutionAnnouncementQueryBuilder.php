@@ -41,4 +41,28 @@ class ProstitutionAnnouncementQueryBuilder extends Builder
         $this->where('uniqueID', $uniqueID);
         return $this;
     }
+
+    public function filterByOnlyApproved() : self
+    {
+        $this->where('valid_until', '=>', date('Y-m-d'));
+        return $this;
+    }
+
+    public function filterByCityId(int $cityId) : self
+    {
+        $this->where('city_id', $cityId);
+        return $this;
+    }
+
+    public function filterByVoivodeshipId(int $voivodeshipId) : self
+    {
+        $this->where('region_id', $voivodeshipId);
+        return $this;
+    }
+
+    public function filterByUserTypeId(int $userTypeId) : self
+    {
+        $this->where('user_type_id', $userTypeId);
+        return $this;
+    }
 }

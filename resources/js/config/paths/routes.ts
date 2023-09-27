@@ -4,13 +4,16 @@ const prostitutionRoutes = {
     announcementsList : '/prostytucja/ogłoszenia',
     noticeFormOptions : '/prostytucja/notice-form-options',
     myNoticesList : '/prostytucja/lista-moich-ogłoszeń',
-    noticesManagement : '/prostytucja/announcements',
-    photoToken : '/prostytucja/photo-token'
+    noticesManagement : '/prostytucja/announcement',
+    photoToken : '/prostytucja/photo-token',
+    noticesSet: '/prostytucja/announcements'
 }
 
 export default {
     news : '/aktualności',
     ...prostitutionRoutes,
     contact : '/kontakt',
-    cities : `/cities`
+    cities : `/cities`,
+    voivodeships : `/voivodeships`,
+    userTypes : `/user-types`
 }

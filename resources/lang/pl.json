@@ -366,5 +366,11 @@
     "news_title" : "Aktualności z życia imperium oraz świata seksu",
     "news_description" : "Ciekawe wydarzenia ze świata porno, życie gwiazd, nowe trendy. Nowości i zmiany wprowadzone na portalu.",
     "your_prostitution_notices_list" : "Lista Twoich ogłoszeń usług seksualnych",
-    "prostitution_notices_list_description" : "Lista Twoich ogłoszeń usług seksualnych, przeglądaj lub edytuj"
+    "prostitution_notices_list_description" : "Lista Twoich ogłoszeń usług seksualnych, przeglądaj lub edytuj",
+    "browse_prostitution_list" : "Przeglądaj ogłoszenia prostytucji",
+    "browse_prostitution_notices_list_description" : "Przeglądaj zweryfikowane ogłoszenia usług seksualnych. Sex-Imperium kładzie nacisk na jakość i rzetelność ogłoszeniodawców. Ogłoszenia ze zdjęciami nie starszymi niż 3 miesiące.",
+    "voivodeship" : "województwo",
+    "city" : "miasto",
+    "search" : "szukaj",
+    "what_are_you_looking_for" : "czego szukasz"
 }

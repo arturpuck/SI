@@ -1,0 +1,46 @@
+@import "~sass/basic";
+@import "~sass/fonts";
+@import "~sass/standard_background";
+
+.search-panel {
+    background-image: url('/images/decoration/prostitution/prostitution_browse_header_cut.jpg');
+    background-size: cover;
+    background-position: center;
+    padding:15vh 0;
+    margin-top: -2%;
+    border-bottom: 2px solid black;
+}
+
+.controls-container {
+    display:flex;
+    justify-content: center;
+}
+
+.search-panel-element {
+    margin:0 5px;
+}
+
+.magnifier-icon {
+    width:1.3em;
+}
+
+.accept-button {
+    width: initial;
+    margin: 0 5px;
+}
+
+.full-body {
+    background:#141414;
+}
+
+@media(max-width:990px) {
+    .controls-container {
+        flex-direction: column;
+        max-width:320px;
+        margin:0 auto;
+    }
+
+    .search-panel-element {
+        margin:5px 0;
+    }
+}
