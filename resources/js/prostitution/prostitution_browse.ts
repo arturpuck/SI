@@ -8,6 +8,7 @@ import SearchButton from "@jscomponents-form-controls/search_button.vue";
 import Translator from "@jsmodules/translator.js";
 import ProstitutionAnnouncementSearchCriteria from '@js/interfaces/prostitution/ProstitutionAnnouncementSearchCriteria';
 import ProstitutionAnnouncementsSet from "@jscomponents/prostitution/prostitution_announcements_set.vue";
+import ExpectShadowCircle from '@jscomponents/decoration/expect_shadow_circle.vue';
 
 const settings = {
 
@@ -17,6 +18,7 @@ const settings = {
         MagnifierIcon,
         SearchButton,
         ProstitutionAnnouncementsSet,
+        ExpectShadowCircle
     },
 
     data() {
@@ -24,7 +26,8 @@ const settings = {
             selectedVoivodeship : "",
             selectedCity : "",
             selectedUserType : "",
-            translator : Translator
+            translator : Translator,
+            loadingDecorationIsVisible : false,
         }
     },
 
@@ -63,15 +66,19 @@ const settings = {
         if(this.selectedUserType) {
             searchCriteria.userTypeId = this.selectedUserType;
         }
-
+        this.loadingDecorationIsVisible = true;
         this.fetchAnnouncements(searchCriteria).
             then(this.loadAnnouncements)
       },
 
       async loadAnnouncements(response : Response) {
-
-        const announcements = await response.json();
-        this.updateAnnouncementsList(announcements);
+          if(response.status !== 200) {
+              this.showErrorNotification('undefined_error');
+            } else {
+            const announcements = await response.json();
+            this.updateAnnouncementsList(announcements);
+        }
+        this.loadingDecorationIsVisible = false;
       },
     
     async fetchAnnouncements(criteria : ProstitutionAnnouncementSearchCriteria) {
@@ -185,6 +192,10 @@ const settings = {
     computed : {
         cityCannotBeSelected() : boolean {
             return !this.selectedVoivodeship;
+        },
+
+        loadingDecorationLabel() : string {
+            return this.translator.translate('fetching_announcements')
         }
     },
 

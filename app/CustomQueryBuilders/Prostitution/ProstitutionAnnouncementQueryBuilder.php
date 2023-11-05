@@ -44,7 +44,7 @@ class ProstitutionAnnouncementQueryBuilder extends Builder
 
     public function filterByOnlyApproved() : self
     {
-        $this->where('valid_until', '=>', date('Y-m-d'));
+        $this->where('valid_until', '>=', date('Y-m-d'));
         return $this;
     }
 

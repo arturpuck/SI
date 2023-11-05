@@ -30,6 +30,13 @@ class ProstitutionAnnouncement extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function getAge() : int
+    {
+        $currentDate = Carbon::now();
+        $dateOfBirth = Carbon::createFromFormat('Y-m-d', $this->birth_date);
+        return $dateOfBirth->diffInYears($currentDate);
+    }
+
     public function addControlSum(AnnouncementPhotoType $type, string $key, string $value) : void
     {
         $currentSum = json_decode($this->photos_control_sum, true);

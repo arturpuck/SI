@@ -8,12 +8,11 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use App\Handlers\Prostitution\ShowCreatorPanelHandler;
 use App\Handlers\Prostitution\GetFormOptionsHandler;
-use App\Handlers\Prostitution\GetAnnouncementPhotoForEditorPanelHandler;
 use App\Handlers\Prostitution\CreateProstitutionAnnouncementHandler;
 use App\Handlers\Prostitution\UpdateProstitutionAnnouncementHandler;
 use App\Http\Requests\Prostitution\CreateProstitutionAnnouncementRequest;
 use App\Http\Requests\Prostitution\UpdateProstitutionAnnouncementRequest;
-use App\Http\Requests\Prostitution\GetAnnouncementPhotoForEditorPanelRequest;
+
 
 class CreateProstitutionNoticeController extends Controller
 {
@@ -37,8 +36,4 @@ class CreateProstitutionNoticeController extends Controller
         return $handler->handle($request);
     }
 
-    public function getProstitutionAnnouncementPhoto(GetAnnouncementPhotoForEditorPanelRequest $request, GetAnnouncementPhotoForEditorPanelHandler $handler)
-    {
-        return $handler->handle($request);
-    }
 }

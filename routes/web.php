@@ -173,10 +173,10 @@ Route::namespace ('Prostitution')->prefix('prostytucja/')->name('prostitution.')
     Route::patch('announcement', 'CreateProstitutionNoticeController@updateProstitutionAnnouncement')
         ->name('update.announcement')->middleware(['authWithoutRedirecting', 'throttle:10,1']);
 
-    Route::get('lista-moich-ogłoszeń', 'ProstitutionListController@showAnnouncementsList')
+    Route::get('lista-moich-ogłoszeń', 'ProstitutionListController@showAnnouncementsAddedByUser')
         ->name('show.announcements.list')->middleware('auth');
 
-    Route::get('/ogłoszenie/{announcementUid}', 'ProstitutionListController@showAnnouncement')
+    Route::get('/ogłoszenie/{announcementUid}', 'ProstitutionListController@showAnnouncementDetailsPage')
         ->name('show.announcement');
 
     Route::get('/announcements', 'ProstitutionListController@searchAnnouncements');
@@ -196,8 +196,8 @@ Route::namespace ('Prostitution')->prefix('prostytucja/')->name('prostitution.')
     Route::delete('photo-token', 'ProstitutionAnnouncementTokenController@unsetVerificationToken')
         ->name('announcement.unset-photo-token');
 
-    Route::get('/announcement-photo', 'CreateProstitutionNoticeController@getProstitutionAnnouncementPhoto')
-        ->name('announcement.photo')->middleware('authWithoutRedirecting');
+    Route::get('/announcement-photo', 'ProstitutionListController@getProstitutionAnnouncementPhoto')
+        ->name('announcement.photo');
 
 });
 

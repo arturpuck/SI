@@ -28,11 +28,4 @@ class ProstitutionAnnouncementVisibleInSearchPanel extends JsonResource
         ];
     }
 
-    protected function getAge() : int
-    {
-        $currentDate = Carbon::now();
-        $dateOfBirth = Carbon::createFromFormat('Y-m-d', $this->birth_date);
-        return $dateOfBirth->diffInYears($currentDate);
-    }
-
 }

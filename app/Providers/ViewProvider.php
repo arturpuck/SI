@@ -37,7 +37,8 @@ class ViewProvider extends ServiceProvider
                 'news_list',
                 'prostitution_notice_creator_panel',
                 'prostitution_notices_list',
-                'prostitution_browse'
+                'prostitution_browse',
+                'show_announcement_details'
             ];
 
             $viewName = Str::afterLast($view->getName(), ".");

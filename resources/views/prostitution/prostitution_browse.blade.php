@@ -8,6 +8,9 @@
         </div>
     </section>
     <main>
-        <prostitution-announcements-set></prostitution-announcements-set>
+        <div class="announcements-container">
+            <expect-shadow-circle v-bind:circle-label="loadingDecorationLabel" v-show="loadingDecorationIsVisible"></expect-shadow-circle>
+            <prostitution-announcements-set class="announcements-set"></prostitution-announcements-set>
+        </div>
     </main>
 </x-base>

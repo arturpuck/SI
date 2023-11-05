@@ -205,6 +205,11 @@
 .full-body {
   background: #141414; }
 
+.announcements-container {
+  padding: 10px;
+  position: relative;
+  min-height: 320px; }
+
 @media (max-width: 990px) {
   .controls-container {
     -webkit-box-orient: vertical;

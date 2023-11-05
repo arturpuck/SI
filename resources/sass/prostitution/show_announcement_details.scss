@@ -1,0 +1,13 @@
+@import "~sass/basic";
+@import "~sass/fonts";
+@import "~sass/standard_background";
+
+.full-body {
+    background: #1a1919;
+}
+
+.images-gallery {
+    width:20vw;
+    min-width:200px;
+    margin:20px auto;
+}
