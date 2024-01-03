@@ -161,6 +161,12 @@ Route::middleware(['auth'])->name('auth.user.')->namespace('Auth\User')->group(f
 
 Route::namespace ('Prostitution')->prefix('prostytucja/')->name('prostitution.')->group(function () {
 
+    Route::post('prostitue-comment', 'ProstitutionAnnouncementCommentController@addComment')
+        ->name('add.comment')->middleware('authWithoutRedirecting');
+
+    Route::get('prostitue-comment', 'ProstitutionAnnouncementCommentController@getComments')
+        ->name('get.comment');
+
     Route::get('dodaj-ogłoszenie', 'CreateProstitutionNoticeController@showCreatorPanel')
         ->name('creator.panel')->middleware('auth');
 
@@ -198,6 +204,9 @@ Route::namespace ('Prostitution')->prefix('prostytucja/')->name('prostitution.')
 
     Route::get('/announcement-photo', 'ProstitutionListController@getProstitutionAnnouncementPhoto')
         ->name('announcement.photo');
+
+    Route::get('phone-number', 'ProstitutionListController@getProstitutePhoneNumber')
+        ->name('announcement.phone-number');
 
 });
 

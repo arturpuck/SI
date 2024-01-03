@@ -10,6 +10,8 @@ use App\City;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Enum\Prostitution\AnnouncementPhotoType;
 use Carbon\Carbon;
+use App\UserType;
+use App\SexualOrientation;
 
 class ProstitutionAnnouncement extends Model
 {
@@ -28,6 +30,16 @@ class ProstitutionAnnouncement extends Model
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+
+    public function userType()
+    {
+        return $this->belongsTo(UserType::class);
+    }
+
+    public function sexualOrientation()
+    {
+        return $this->belongsTo(SexualOrientation::class);
     }
 
     public function getAge() : int

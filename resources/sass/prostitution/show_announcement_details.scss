@@ -7,7 +7,248 @@
 }
 
 .images-gallery {
-    width:20vw;
     min-width:200px;
-    margin:20px auto;
+}
+
+.announcement-information {
+    display: grid;
+    justify-content: space-evenly;
+    justify-items: stretch;
+    align-items: start;
+    grid-template-columns: 24% 24% 24% 24%;
+    grid-row-gap: 8px;
+    @media only screen and (min-width : 820px) and (max-width : 1200px) {
+        grid-template-columns: 45% 45%;
+    } 
+    @media only screen and (max-width : 819px) {
+        grid-template-columns: 95%;
+    }
+}
+
+.table-container {
+    border-radius: 5px;
+    border: 1px solid #710f2f;
+}
+
+.phone-number-row {
+    border-bottom: 1px solid #710f2f;
+}
+
+.announcement-details {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.details-header {
+    font-family: "Aldrich", sans-serif;
+    font-weight:bold;
+    @include responsive-font();
+    color:white;
+    padding: 5px 10px 5px 10px;
+    text-align:left;
+}
+
+.details-value {
+    padding: 5px 10px 5px 5px;
+    text-align: right;
+}
+
+.phone-header {
+    display: flex;
+    align-items: center;
+}
+
+.details-cell {
+    color: white;
+    font-family: "Exo 2", sans-serif;
+}
+
+.phone-button {
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.phone-number {
+    color:inherit;
+    font:inherit;
+}
+
+@mixin header-icon {
+    height:1.3em;
+    margin: 0 5px;
+    min-height: 25px;
+}
+
+.services-icon {
+    @include header-icon();
+    fill: #df0c67
+}
+
+.money-section-icon {
+    fill:gold;
+    @include header-icon();
+}
+
+.phone-icon {
+    fill: #00c800;
+    @include header-icon();
+}
+
+.section-header {
+    color:white;
+    @include responsive-font();
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    padding:5px;
+    border-bottom: 1px solid #710f2f;
+}
+
+.services-separator {
+    border-top: 1px solid #710f2f;
+    color:white;
+    @include responsive-font(1.2vw, 14px);
+    text-align: center;
+}
+
+.remaining-services-list {
+    list-style: none;
+    padding:4px;
+    margin:0;
+}
+
+.secondary-service {
+    display: inline-block;
+    color: white;
+    background: #48a116;
+    border-radius: 3px;
+    padding: 3px;
+    @include responsive-font(1.1vw, 13px);
+    margin: 2px;
+}
+
+.prostitute-nickname {
+    color: white;
+    @include responsive-font(1.7vw, 20px);
+    padding:6px;
+    margin:0;
+    text-align:center;
+}
+
+.announcement-description {
+    color:white;
+    @include responsive-font();
+}
+
+.table-separator {
+    border-top: 1px solid #710f2f;
+}
+
+.no-working-hours-info {
+    padding: 5px;
+    text-align: center;
+    color: #db0e0e;
+    @include responsive-font(1.4vw, 18px);
+}
+
+.announcement-secondary-information {
+    background: black;
+    margin-top: 5px;
+    padding: 10px 0;
+}
+
+.announcement-description {
+    padding:5px 10px;
+    text-align: center;
+}
+
+.info-icon {
+    fill: #3ce90d;
+    width: 2em;
+    height: 2em;
+    display:block;
+    margin:4px auto;
+}
+
+.comments-for-authenticated-only-icon {
+    fill:#e70d2b;
+    display:block;
+    width:2em;
+    height:2em;
+    margin: 0 auto 5px auto;
+}
+
+.only-authenticated-users-info {
+    padding: 5px;
+    border-radius:4px;
+    border: 2px solid #e70d2b;
+    @include responsive-font();
+    color:white;
+    width:max-content;
+    margin:0 auto;
+}
+
+.comments-tablist {
+    list-style-type: none;
+    margin:0;
+    padding: 5px 0 0px 15px;
+}
+
+.comments-tab {
+    display: inline-flex;
+    cursor: pointer;
+    @include responsive-font();
+    color:white;
+    justify-content: center;
+    text-wrap: nowrap;
+    padding: 6px;
+    border-radius: 5px 5px 0 0;
+}
+
+.comment-tab-icon {
+    fill:white;
+    width:1.5em;
+    margin:0 6px;
+}
+
+.seleced-tab {
+    background: #242229;
+}
+
+.comments-section-container {
+    border: 10px solid #242229;
+    position: relative;
+    min-height: 30vh;
+}
+
+.comment-box-section {
+    width:40vw;
+    min-width:300px;
+    padding:5px;
+    margin:0 auto;
+    color:white;
+    @include responsive-font();
+}
+
+.adding-comments-limitations {
+    text-align: center;
+    color: #03b313;
+    padding-top: 4px;
+    @include responsive-font();
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hidden-section {
+    display: none;
+}
+
+.comments-list {
+    max-width:800px;
+}
+
+.comments-list-container {
+    display: flex;
+    justify-content:center;
 }

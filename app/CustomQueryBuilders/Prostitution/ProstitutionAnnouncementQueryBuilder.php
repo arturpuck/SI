@@ -65,4 +65,10 @@ class ProstitutionAnnouncementQueryBuilder extends Builder
         $this->where('user_type_id', $userTypeId);
         return $this;
     }
+
+    public function filterByVisibleOnly() : self
+    {
+        $this->where('hidden_by_a_user', false);
+        return $this;
+    }
 }

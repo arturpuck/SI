@@ -2,9 +2,7 @@
 
 namespace App\Http\Resources\Prostitution;
 
-use App\ProstitutionAnnouncement;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Carbon\Carbon;
 use App\Services\Prostitution\Announcements\ProstitutionAnnouncementsFileSystemService;
 use App\Services\Prostitution\Announcements\ProstitutionAnnouncementsFileSystem;
 

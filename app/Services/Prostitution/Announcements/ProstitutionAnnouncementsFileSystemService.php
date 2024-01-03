@@ -75,6 +75,29 @@ final class ProstitutionAnnouncementsFileSystemService implements ProstitutionAn
         return $this->getPhotoBaseURL().'?'.$queryString;
     }
 
+    public function getAcceptedPhotosURLs(ProstitutionAnnouncement $announcement) : array
+    {
+        $fileNames = json_decode($announcement->photos_control_sum, true);
+        if(!is_array($fileNames)) {
+            return [];
+        }
+        if(!array_key_exists('accepted', $fileNames)) {
+           return [];
+        }
+
+        $result = [];
+
+        foreach($fileNames['accepted'] as $fileName => $controlSum) {
+            $queryParams = [
+                'announcementUniqueIdentifier' => $announcement->uniqueID,
+                'fileName' => $fileName,
+            ];
+            $queryString = http_build_query($queryParams);
+            $result[] = $this->getPhotoBaseURL().'?'.$queryString;
+        }
+        return $result;
+    }
+
     public function getAnnouncementURL(string $announcementUid) : string
     {
         return urldecode(route('prostitution.show.announcement', compact('announcementUid')));

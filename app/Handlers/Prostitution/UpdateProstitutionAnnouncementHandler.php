@@ -56,7 +56,8 @@ final class UpdateProstitutionAnnouncementHandler
             'paymentForms' => self::STORE_AS_JSON_METHOD_NAME,
             'workingHours' => self::STORE_AS_JSON_METHOD_NAME,
 
-            'photos' => self::PHOTOS_METHOD_NAME
+            'photos' => self::PHOTOS_METHOD_NAME,
+            'preciseHoursDecision' => 'removeWorkingHoursIfNecessary'
     ];
 
     public function __construct(private ProstitutionAnnouncementsFileSystem $photosFileSystem = new ProstitutionAnnouncementsFileSystemService()) {}
@@ -79,6 +80,13 @@ final class UpdateProstitutionAnnouncementHandler
         $this->announcement->save();
         ProstitutionAnnouncementPhotoToken::query()->removeFromCurrentUser();
         return new Response(status:200);
+    }
+
+    private function removeWorkingHoursIfNecessary(string $key, $value): void
+    {
+        if($value === '0') {
+            $this->announcement->working_hours = null;
+        }
     }
 
     private function filterRequest(UpdateProstitutionAnnouncementRequest $request, bool $tokenHasBeenSent) : void
@@ -111,12 +119,13 @@ final class UpdateProstitutionAnnouncementHandler
 
     private function updateMainService(string $key, string $value) : void
     {
-        if($value === 'never') {
-            $this->announcement->unset('mainServices->'.$key);
-            return;
-        }
         $currentData = json_decode($this->announcement->main_services, true) ?? [];
-        $currentData[$key] = $value;
+        if($value === 'never') {
+            unset($currentData[$key]);
+        } else {
+            $currentData[$key] = $value;
+        }
+
         $this->announcement->setAttribute('main_services', json_encode($currentData));
     }
 

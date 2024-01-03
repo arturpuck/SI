@@ -24,6 +24,7 @@ export default {
     urls: {
       required: true,
       type: Array,
+      default: [],
     },
 
     alt: {
@@ -54,7 +55,7 @@ export default {
   width:100%;
   border-radius: 5px;
   border: 1px solid #716a6e;
-  min-height: 200px;
+  min-height: 300px;
   height: 30vh;
 }
 </style>

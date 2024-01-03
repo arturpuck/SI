@@ -12,7 +12,8 @@ class SearchProstitutionAnnouncementsHandler {
     public function handle(SearchProstitutionAnnouncementsRequest $request) : JsonResource
     {
         $query = ProstitutionAnnouncement::query()
-                                            ->filterByOnlyApproved();
+                                            ->filterByOnlyApproved()
+                                            ->filterByVisibleOnly();
 
         if($userTypeId = $request->query->get('userTypeId')) {
             $query->filterByUserTypeId($userTypeId);

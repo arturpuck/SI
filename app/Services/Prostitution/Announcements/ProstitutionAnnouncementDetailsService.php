@@ -50,4 +50,5 @@ class ProstitutionAnnouncementDetailsService
         }
         return $result;
     }
+
 }

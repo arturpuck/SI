@@ -145,7 +145,7 @@ class UpdateProstitutionAnnouncementRequest extends FormRequest
 
             'secondaryServices' => ['array'],
             'secondaryServices.*' => Rule::in(self::SECONDARY_SERVICES),
-
+            'preciseHoursDecision' => ['nullable', 'boolean'],
             'paymentForms' => ['array', new EveryPaymentFormContainsOnlyRequiredFields()],
             'paymentForms.*.unit' => Rule::in(self::AVAILABLE_SERVICE_FORMS),
             'paymentForms.*.price' => self::POSITIVE_NUMERIC,

@@ -30,7 +30,7 @@ final class GetAnnouncementInformationHandler
         
     protected function processRequirements() : void
     {
-        $this->announcementsQuery->with(['region', 'city']);
+        $this->announcementsQuery->with(['region', 'city', 'userType', 'sexualOrientation']);
         $this->processUserID();
         $this->processAnnouncementID();
     }

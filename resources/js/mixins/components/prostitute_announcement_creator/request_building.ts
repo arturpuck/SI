@@ -4,6 +4,15 @@ interface WorkingPeriodRange {
 }
 
 import { Weekdays } from "@js/enum/weekdays";
+const orderedWeekDays = {
+    monday: 1,
+    tuesday: 2,
+    wednesday: 3,
+    thursday: 4,
+    friday: 5,
+    saturday: 6,
+    sunday: 7,
+};
 
 export default {
     methods : {
@@ -15,8 +24,12 @@ export default {
 
         extractWorkingHoursForEverySingleDayOfWeek(): object {
             let workingHoursCopy = { ...this.workingHours };
+            
             let result = {};
             delete workingHoursCopy['mondayToFriday'];
+            let orderedDays = Object.keys(workingHoursCopy).sort(function(first: string, second: string): number {
+                return orderedWeekDays[second] > orderedWeekDays[first] ? -1 : 1;
+            })
 
             Object.keys(workingHoursCopy).forEach(dayOfWeek => {
                 if (this.userWorksDuringThisDayOrPeriod(workingHoursCopy[dayOfWeek])) {

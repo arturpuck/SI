@@ -84,6 +84,7 @@ final class CreateProstitutionAnnouncementHandler
     private function assignLocationAndWorkingHours() : void
     {
         if($this->request->has('workingHours')) {
+            
             $this->announcement->working_hours = json_encode($this->request->get('workingHours'));
         }
         $this->announcement->city_id = $this->request->get('cityId');

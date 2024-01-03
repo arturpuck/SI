@@ -20,6 +20,7 @@ import ExpectShadowCircle from "@jscomponents-decoration/expect_shadow_circle.vu
 import SaveButton from "@jscomponents-form-controls/save_button.vue";
 import RequestBuilding from "@mixins/components/prostitute_announcement_creator/request_building";
 import NotificationFunction from "@jsmodules/notification_function";
+import { EmptyInputValue } from '@js/components/empty_input_option';
 
 export default {
   name: "prostitution-save-edited-notice",
@@ -44,9 +45,23 @@ export default {
   methods: {
     notifyUser: NotificationFunction,
 
+    prepareBlowjobPreference(requestBody, newValue) : void {
+      requestBody["blowjobPreference"] = newValue;
+      if(newValue === 'never' || newValue === 'only_in_condom') {
+        requestBody['oralCreampiePreference'] = 'never';
+      }
+    },
+
+    createRequestObjectWorkingHoursPart(): object {
+            return this.showEverySingleWeekday ?
+                this.extractWorkingHoursForEverySingleDayOfWeek() :
+                this.extractWorkingHoursWhenUserChoseMondayToFridayAsOneOption();
+     },
+
     getRequestBody(): FormData {
       let requestBody = {};
       let formData = new FormData();
+
 
       this.modifiedFields.forEach((modifiedField) => {
         switch (modifiedField) {
@@ -70,6 +85,14 @@ export default {
 
           case "token":
             break;
+
+          case 'blowjobPreference':
+            this.prepareBlowjobPreference(requestBody, this[modifiedField]);
+            break;
+
+          case 'preciseHoursDecision':
+              requestBody[modifiedField] = this.preciseHoursDecision === '0' ? 0 : 1;
+          break;
 
           default:
             requestBody[modifiedField] =

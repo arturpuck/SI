@@ -93,7 +93,6 @@ export default {
       } else {
         styleWidth = `${totalSizeOfElements}px`;
       }
-      console.log(this.getArrowsWidth());
       document.getElementById("image-tiles-outer-container").style.width = styleWidth;
       this.numberOfSkippedElements = 0;
       this.setArrowsVisibleOrNot();

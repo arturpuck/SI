@@ -6,7 +6,10 @@ const prostitutionRoutes = {
     myNoticesList : '/prostytucja/lista-moich-ogłoszeń',
     noticesManagement : '/prostytucja/announcement',
     photoToken : '/prostytucja/photo-token',
-    noticesSet: '/prostytucja/announcements'
+    noticesSet: '/prostytucja/announcements',
+    prostitutePhoneNumber : '/prostytucja/phone-number',
+    saveProstituteComment : '/prostytucja/prostitue-comment',
+    getProstitutueComment : '/prostytucja/prostitue-comment'
 }
 
 export default {
@@ -15,5 +18,6 @@ export default {
     contact : '/kontakt',
     cities : `/cities`,
     voivodeships : `/voivodeships`,
-    userTypes : `/user-types`
+    userTypes : `/user-types`,
+
 }
