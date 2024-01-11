@@ -113,6 +113,71 @@
           ></span>
         </a>
       </li>
+
+
+
+
+
+
+       <li class="content-sidebar-list-element">
+        <phantom-button
+          class="expandable-icon hoverable-element"
+          v-on:click="toggleProstitutionMenu"
+        >
+          <component v-bind:is="prostitutionIconName" class="content-sidebar-icon"></component>
+          <span
+            v-text="translations['prostitution']"
+            class="content-sidebar-description"
+          ></span>
+        </phantom-button>
+        <ul
+          v-bind:aria-hidden="!prostitutionSubMenuIsVisible"
+          class="nested-user-sidebar-list"
+          v-bind:class="{
+            'visible-sidebar-menu': prostitutionSubMenuIsVisible,
+            'hidden-sidebar-menu': !prostitutionSubMenuIsVisible,
+          }"
+        >
+        <li
+            v-bind:title="translations['prostitution_announcements_list_title']"
+            class="content-sidebar-list-element hoverable-element"
+          >
+            <a v-bind:href="routes.addAnnouncement" class="sub-menu-link">
+              <price-list-icon class="content-sidebar-icon-nested"></price-list-icon>
+              <span
+                v-text="translations['add_announcement_label']"
+                class="content-sidebar-description"
+              ></span>
+            </a>
+          </li>
+
+          <li
+            v-bind:title="translations['announcement_list_title']"
+            class="content-sidebar-list-element hoverable-element"
+          >
+            <a v-bind:href="routes.announcementsList" class="sub-menu-link">
+              <find-love-icon class="content-sidebar-icon-nested"></find-love-icon>
+              <span
+                v-text="translations['announcement_list_label']"
+                class="content-sidebar-description"
+              ></span>
+            </a>
+          </li>
+          
+          <li
+            v-bind:title="translations['my_prostitution_announcements_list_title']"
+            class="content-sidebar-list-element hoverable-element"
+          >
+            <a v-bind:href="routes.myNoticesList" class="sub-menu-link">
+              <notices-board-icon class="content-sidebar-icon-nested"></notices-board-icon>
+              <span
+                v-text="translations['my_prostitution_announcements_list_label']"
+                class="content-sidebar-description"
+              ></span>
+            </a>
+          </li>
+        </ul>
+      </li>
     </ul>
   </nav>
 </template>
@@ -130,6 +195,10 @@ import StarFullIcon from "@svgicon/star_full_icon.vue";
 import DictionaryIcon from "@svgicon/dictionary_icon.vue";
 import AddFileIcon from "@svgicon/add_file_icon.vue";
 import EventEmmiter from "mitt";
+import PriceListIcon from "@svgicon/price_list_icon.vue";
+import FindLoveIcon from "@svgicon/find_love_icon.vue";
+import NoticesBoardIcon from "@svgicon/notices_board_icon.vue";
+import MoneyBagIcon from "@svgicon/money_bag_icon.vue";
 const EventBus = EventEmmiter();
 
 export default {
@@ -139,6 +208,7 @@ export default {
     return {
       translations: Translator.getPackage("content_sidebar"),
       moviesSubMenuIsVisible:  false,
+      prostitutionSubMenuIsVisible: false,
       routes : RoutesConfig
     }
   },
@@ -152,7 +222,11 @@ export default {
     MagnifierIcon,
     StarFullIcon,
     DictionaryIcon,
-    AddFileIcon
+    AddFileIcon,
+    PriceListIcon,
+    FindLoveIcon,
+    NoticesBoardIcon,
+    MoneyBagIcon
   },
 
   methods : {
@@ -168,12 +242,21 @@ export default {
 
   toggleMoviesMenu() {
     this.moviesSubMenuIsVisible = !this.moviesSubMenuIsVisible;
+  },
+
+  toggleProstitutionMenu() {
+    this.prostitutionSubMenuIsVisible = !this.prostitutionSubMenuIsVisible;
   }
+
   },
 
   computed : {
     moviesIconName(): string {
     return this.moviesSubMenuIsVisible ? "AngleTopIcon" : "MovieMediaPlayerIcon";
+  },
+
+  prostitutionIconName(): string {
+    return this.prostitutionSubMenuIsVisible ? "AngleTopIcon" : "MoneyBagIcon";
   }
   }
 }

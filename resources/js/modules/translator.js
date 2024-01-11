@@ -622,6 +622,7 @@ export default {
       setting_in_progress : "Trwa ustawianie",
       updating_announcement : "Aktualizuję ogłoszenie",
       hide : "ukryj",
+      example_of_valid_prostitute_photo : "Przykładowe poprawne zdjęcie do ogłoszenia",
       you_have_to_be_logged_in_maybe_your_session_has_expired : "Komentarze można dodawać tylko będąc zalogowanym. Być może przez dłuższy czas nie podjęto żadnej akcji i dlatego doszło do automatycznego wylogowania",
       you_can_add_only_one_comment_for_one_announcement : "Można dodać tylko 1 komentarz na dane ogłoszenie",
       announcement_wil_not_be_displayed_for_potential_clients : "Ogłoszenie nie będzie widoczne dla potencjalnych klientów",
@@ -645,7 +646,15 @@ export default {
             movies_caption: "Filmy",
             pornstars: "Gwiazdy porno",
             dictionary : "Słownik",
-            news_latest : "Aktualności"
+            news_latest : "Aktualności",
+            prostitution : "Prostytucja",
+            add_announcement_title : "Dodaj ogłoszenie z ofertą prostytucji",
+            add_announcement_label : "Dodaj ogłoszenie",
+            prostitution_announcements_list_title : "Dodaj ogłoszenie z ofertą prostytucji",
+            my_prostitution_announcements_list_title : "Lista Twoich ogłoszeń z ofertami prostytucji",
+            my_prostitution_announcements_list_label : "Moje ogłoszenia",
+            announcement_list_title : "Lista ogłoszeń ofert prostytucji",
+            announcement_list_label : "Lista ogłoszeń"
          },
 
          authenticated_user_sidebar: {

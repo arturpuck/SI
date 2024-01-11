@@ -6,6 +6,8 @@
     <div class="photos-restrictions-information">
       <strong v-text="Translations.prostitute_photos_allowed_size"></strong>
     </div>
+      <div class="example-photo-description" v-text="Translations.example_of_valid_prostitute_photo"></div>
+      <img src="/images/prostitution/photo_example.jpg" class="example-photo" v-bind:alt="Translations.example_of_valid_prostitute_photo">
     <multifile-image-upload
       v-on:number-of-images-limit-exceeded="notifyUserAboutToManyPhotos"
       v-on:added-photos="assignPhotos"
@@ -83,6 +85,23 @@ export default {
 
 <style lang="scss" scoped>
 @import "~sass/fonts";
+
+.example-photo-description {
+  text-align:center;
+  padding: 5px;
+  @include responsive-font(1.4vw, 19px);
+  text-align: center;
+  color:white;
+  background:#1275b5;
+}
+
+.example-photo {
+  border-radius: 5px;
+  width: 200px;
+  border: 2px solid #dfca1b;
+  display: block;
+  margin: 7px auto;
+}
 
 .photos-restrictions-information {
   background: #ddd713;
