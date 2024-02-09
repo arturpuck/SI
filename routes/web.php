@@ -173,7 +173,7 @@ Route::namespace ('Prostitution')->prefix('prostytucja/')->name('prostitution.')
     Route::get('notice-form-options', 'CreateProstitutionNoticeController@getNoticeFormOptions')
         ->name('notice-form-options')->middleware('authWithoutRedirecting');
 
-    Route::post('', 'CreateProstitutionNoticeController@createProstitutionAnnouncement')
+    Route::post('announcement', 'CreateProstitutionNoticeController@createProstitutionAnnouncement')
         ->name('create.announcement')->middleware('authWithoutRedirecting');
 
     Route::patch('announcement', 'CreateProstitutionNoticeController@updateProstitutionAnnouncement')
